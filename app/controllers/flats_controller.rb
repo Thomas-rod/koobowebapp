@@ -3,6 +3,21 @@ class FlatsController < ApplicationController
     @flats = Flat.all
   end
 
+  def new
+    @flat = Flat.new
+    @user = current_user
+  end
+
+  def create
+    @flat.user = current_user
+    @flat = Flat.new(flat_params)
+      if @flat.save
+        redirect_to flats_path
+      else
+        render :new
+      end
+  end
+
   private
 
   def flat_params
