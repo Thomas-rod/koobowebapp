@@ -1,6 +1,7 @@
 <div class="container">
   <%= simple_form_for [@flat.user, @flat] do |f| %>
-    <%= f.input :name, label: "Titre" %>
+    <span>Hello, c'est l'appart <%= f.input :name, label: false %></span>
+
     <%= f.input :address, label: "Adresse" %>
     <%= f.input :monthly_price, label: "Prix mensuel" %>
     <%= f.input :description, label: "Description", placeholder: "Superficie, étage, commodités, type de chauffage,..." %>
