@@ -27,9 +27,16 @@ initSelect2();
 // WRITE YOUR OWN JS STARTING FROM HERE 👇
 // ----------------------------------------------------
 import "bootstrap";
+
+import { initFlatpicker } from '../plugins/flatpickr';
+
+document.addEventListener('turbolinks:load', () => {
+  initFlatpicker();
+
 import { initUpdateNavbarOnScroll } from '../components/navbar';
 import { clickElementDashboard } from '../components/dashboard';
 
 document.addEventListener('turbolinks:load', () => {
   clickElementDashboard();
+
 });

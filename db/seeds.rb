@@ -6,13 +6,71 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-def attach_photo_flat(string, flat)
-  file = URI.open(string)
-  flat.photos.attach(io: file, filename: 'nes.png', content_type: 'image/png')
+require 'open-uri'
+require 'json'
+require 'faker'
+
+  # url = 'https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list'
+  # ingredients_serialized = open(url).read
+  # ingredients = JSON.parse(ingredients_serialized)
+puts "cleaning user, Flats, shedules"
+User.destroy_all
+Flat.destroy_all
+Schedule.destroy_all
+puts "table flats shedules user have been deleted"
+
+puts "creating User"
+
+roxane = User.new(first_name: "Roxane", last_name: "Haddad", phone_number: "0664784489", email: "roxane.haddad@gmail.com", password: "123412")
+roxane.save
+john = User.create!(first_name: "Jonathan", last_name: "Courdavault", phone_number: "0778381974", email: "jo.courdavault@gmail.com", password: "567856")
+john.save
+thomas = User.create!(first_name: "Thomas", last_name: "Rodier", phone_number: "0668489169", email: "rodiert17@gmail.com", password: "432143")
+thomas.save
+mao = User.create!(first_name: "Maodo", last_name: "Diop", phone_number: "0663906049", email: "maodod1@gmail.com", password: "876587")
+mao.save
+puts "#{User.count} users have beeen crerated"
+
+puts "Flats seeding..."
+num = roxane.id - 1
+4.times do
+  num += 1
+  address = Faker::Address.full_address
+  description = Faker::Lorem.sentence(word_count: 25)
+  monthly_price = Faker::Number.within(range: 500..1500)
+  Flat.create!(address: address, description: description, monthly_price: monthly_price.to_i, user_id: num)
+end
+puts "#{Flat.count} flats have been created"
+puts "Now we creating 4 Shedules by flats"
+puts "........."
+ roxane.flats.each do |flat|
+  Schedule.create!(start:Time.new(2020, 3, 2, 8, 0, 0, "+02:00"),end:Time.new(2020, 3, 2, 8, 30, 0, "+02:00"),flat_id:flat.id)
+  Schedule.create!(start:Time.new(2020, 3, 2, 8, 30, 0, "+02:00"),end:Time.new(2020, 3, 2, 9, 0, 0, "+02:00"),flat_id:flat.id)
+  Schedule.create!(start:Time.new(2020, 3, 2, 9, 0, 0, "+02:00"),end:Time.new(2020, 3, 2, 9, 30, 0, "+02:00"),flat_id:flat.id)
+  Schedule.create!(start:Time.new(2020, 3, 2, 9, 30, 0, "+02:00"),end:Time.new(2020, 3, 2, 10, 0, 0, "+02:00"),flat_id:flat.id)
 end
 
-roxane = User.create!(first_name: "Roxane", last_name: "Haddad", email: "roxane.haddad@gmail.com", password: "123412", phone_number: "0664784489")
-flat = Flat.new(name: "Mon flat", address: "4 rue des Prêtres Saint-Séverin, 75005, Paris", description: "23m2, 5ème étage, deux pièces", monthly_price: "783", visible: true, rented: false, user: roxane)
-attach_photo_flat("https://images.unsplash.com/photo-1529408632839-a54952c491e5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60", flat)
-attach_photo_flat("https://images.unsplash.com/photo-1451153378752-16ef2b36ad05?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60", flat)
-flat.save
+ john.flats.each do |flat|
+  Schedule.create!(start:Time.new(2020, 3, 2, 13, 0, 0, "+02:00"),end:Time.new(2020, 3, 2, 13, 30, 0, "+02:00"),flat_id:flat.id)
+  Schedule.create!(start:Time.new(2020, 3, 2, 13, 30, 0, "+02:00"),end:Time.new(2020, 3, 2, 14, 0, 0, "+02:00"),flat_id:flat.id)
+  Schedule.create!(start:Time.new(2020, 3, 2, 14, 0, 0, "+02:00"),end:Time.new(2020, 3, 2, 14, 30, 0, "+02:00"),flat_id:flat.id)
+  Schedule.create!(start:Time.new(2020, 3, 2, 14, 30, 0, "+02:00"),end:Time.new(2020, 3, 2, 15, 0, 0, "+02:00"),flat_id:flat.id)
+end
+ thomas.flats.each do |flat|
+  Schedule.create!(start:Time.new(2020, 3, 2, 7, 0, 0, "+02:00"),end:Time.new(2020, 3, 2, 7, 30, 0, "+02:00"),flat_id:flat.id)
+  Schedule.create!(start:Time.new(2020, 3, 2, 8, 30, 0, "+02:00"),end:Time.new(2020, 3, 2, 9, 0, 0, "+02:00"),flat_id:flat.id)
+  Schedule.create!(start:Time.new(2020, 3, 2, 9, 0, 0, "+02:00"),end:Time.new(2020, 3, 2, 9, 30, 0, "+02:00"),flat_id:flat.id)
+  Schedule.create!(start:Time.new(2020, 3, 2, 9, 30, 0, "+02:00"),end:Time.new(2020, 3, 2, 10, 0, 0, "+02:00"),flat_id:flat.id)
+end
+ mao.flats.each do |flat|
+  Schedule.create!(start:Time.new(2020, 3, 2, 17, 0, 0, "+02:00"),end:Time.new(2020, 3, 2, 17, 30, 0, "+02:00"),flat_id:flat.id)
+  Schedule.create!(start:Time.new(2020, 3, 2, 17, 30, 0, "+02:00"),end:Time.new(2020, 3, 2, 18, 0, 0, "+02:00"),flat_id:flat.id)
+  Schedule.create!(start:Time.new(2020, 3, 2, 18, 0, 0, "+02:00"),end:Time.new(2020, 3, 2, 18, 30, 0, "+02:00"),flat_id:flat.id)
+  Schedule.create!(start:Time.new(2020, 3, 2, 18, 30, 0, "+02:00"),end:Time.new(2020, 3, 2, 19, 0, 0, "+02:00"),flat_id:flat.id)
+end
+
+puts "you have now 4 schedules by flats "
+puts "total schedules = #{Schedule.count}"
+puts "G O O D     L U C K      G U Y S"
+
+
