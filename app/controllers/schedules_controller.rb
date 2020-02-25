@@ -3,6 +3,7 @@ class SchedulesController < ApplicationController
   def index
   @schedules = Schedule.all
   @flats = Flat.all
+  @documents = Document.all
   end
 
   def create

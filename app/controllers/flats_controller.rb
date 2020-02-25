@@ -1,6 +1,8 @@
 class FlatsController < ApplicationController
   def index
     @flats = Flat.all
+    @schedules = Schedule.all
+    @documents = Document.all
   end
 
   def show

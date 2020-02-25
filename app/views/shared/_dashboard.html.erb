@@ -4,28 +4,28 @@
       <a href=""><p class="logo-text"><span id="k-logo">K</span>oobo</p></a>
     </div>
       <div class="dashboard-line mb-3" id="appartements">
-        <a href="<% link_to flats_path %>">
+        <%= link_to flats_path do %>
           <i class="fas fa-home icon-dashboard fa-2x"></i>
           <p>Appartements</p>
           <span class="notif-counter"></span>
-        </a>
+        <% end %>
       </div>
       <div class="dashboard-line mb-3" id="calendrier">
-        <a href="#">
+        <%= link_to schedules_path do %>
           <i class="far fa-calendar-alt icon-dashboard fa-2x"></i>
           <p>Calendrier</p>
           <span class="notif-counter">1</span>
-        </a>
+        <% end %>
       </div>
       <div class="dashboard-line mb-3" id="documents">
-        <a href="#">
+        <%= link_to documents_path do %>
           <i class="far fa-file-alt icon-dashboard fa-2x"></i>
           <p>Documents</p>
           <span class="notif-counter"></span>
-        </a>
+        <% end %>
       </div>
       <div class="dashboard-line mb-3" id="profil">
-        <a href="#">
+        <a href="">
           <i class="far fa-user icon-dashboard fa-2x"></i>
           <p>Profil</p>
           <span class="notif-counter"></span>
