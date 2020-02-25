@@ -1,8 +1,7 @@
 <div class="dashboard-data-set" data-line="appartements">
   <div class="d-flex">
-
     <%= render partial: 'shared/dashboard', locals: { flats: @flats, schedules: @schedules, documents: @documents} %>
-    <div>
+    <div style=" width:100%;">
       <%= render 'shared/navbar_dashboard' %>
       <div class="container">
         <% @flats.each do |flat| %>
