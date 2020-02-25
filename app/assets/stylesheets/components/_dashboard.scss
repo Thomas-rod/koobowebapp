@@ -1,1 +1,84 @@
+// WRAPPER AND SPACE
+p {
+  margin: 0px;
+}
 
+.dashboard-wrapper {
+  background-color: $blue;
+  // opacity: .99;
+  height:100vh;
+  width: 350px;
+  text-align: center;
+  & a {
+    text-decoration:none;
+  }
+}
+
+.dashboard-line {
+  display:flex;
+  color: $white;
+  padding: 10px 0px 10px 50px;
+  height:80px;
+  border-radius: 5px;
+  &:hover {
+    background-color: #4A4972;
+  }
+  & a {
+    display:grid;
+    grid-template-columns: repeat(12, 1fr);
+    align-items: center;
+    text-decoration:none;
+    color: $white;
+    width:100%;
+  }
+}
+.dashboard-line a {
+  font-size: 20px;
+  & i {
+    grid-column: 1/2;
+  }
+  & p {
+   grid-column: 3/10;
+   text-align:left;
+  }
+  & .notif-counter {
+    grid-column: 10/12;
+  }
+}
+
+// FONT
+.logo-text {
+  color: $white;
+  font-family: $logo-font;
+  font-size: 50px;
+}
+
+#k-logo {
+  color: $coral;
+}
+
+// ICON
+.icon-dashboard {
+  font-size: 30px;
+  width: 50px;
+  height: 50px;
+  color: $white;
+  margin-top: 0;
+}
+.far, .fas {
+  margin-top: 15px;
+}
+// NOTIFICATIONS
+.notif-counter {
+  background-color: $coral;
+  padding: 5px 10px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+// HOVER WRAPPER
+.active-dashboard {
+  background-color: #4A4972;
+  border-right: 7px solid $coral;
+}
