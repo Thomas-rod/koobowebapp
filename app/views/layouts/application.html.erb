@@ -9,10 +9,12 @@
     <%= stylesheet_pack_tag 'application' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
 
+    <%= favicon_link_tag asset_path('logo.png') %>
   </head>
 
   <body>
     <%= render 'shared/flashes' %>
+
 
     <%= yield %>
   </body>

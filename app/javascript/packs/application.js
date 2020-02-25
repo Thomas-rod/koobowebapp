@@ -27,6 +27,7 @@ initSelect2();
 // WRITE YOUR OWN JS STARTING FROM HERE 👇
 // ----------------------------------------------------
 import "bootstrap";
+import { initUpdateNavbarOnScroll } from '../components/navbar';
 import { clickElementDashboard } from '../components/dashboard';
 
 document.addEventListener('turbolinks:load', () => {
