@@ -22,8 +22,8 @@ require("channels")
 // WRITE YOUR OWN JS STARTING FROM HERE 👇
 // ----------------------------------------------------
 import "bootstrap";
-import { hoverElementDashboard } from '../components/dashboard';
+import { clickElementDashboard } from '../components/dashboard';
 
 document.addEventListener('turbolinks:load', () => {
-  hoverElementDashboard();
+  clickElementDashboard();
 });

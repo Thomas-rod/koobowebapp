@@ -19,6 +19,10 @@ p {
   color: $white;
   padding: 10px 0px 10px 50px;
   height:80px;
+  border-radius: 5px;
+  &:hover {
+    background-color: #4A4972;
+  }
   & a {
     display:grid;
     grid-template-columns: repeat(12, 1fr);
@@ -63,6 +67,14 @@ p {
 }
 .far, .fas {
   margin-top: 15px;
+}
+// NOTIFICATIONS
+.notif-counter {
+  background-color: $coral;
+  padding: 5px 10px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: bold;
 }
 
 // HOVER WRAPPER

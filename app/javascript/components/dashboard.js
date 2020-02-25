@@ -1,9 +1,10 @@
 
-const hoverElementDashboard = () => {
-  const hoverButton = document.querySelector('#dashboard-js')
-  console.log(hoverButton)
-}
+const clickElementDashboard = () => {
+
+  const allDashboardLine = document.querySelector('.dashboard-data-set')
+    document.getElementById(allDashboardLine.dataset.line).classList.add('active-dashboard');
+  }
 
 
 
-export { hoverElementDashboard };
+export { clickElementDashboard };
