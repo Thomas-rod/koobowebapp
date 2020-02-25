@@ -5,7 +5,7 @@
       <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
     <% end %>
     <h4><%= flat.address %></h3>
-    <h5><%= flat.monthly_price %></h4>
+    <h5><%= flat.monthly_price.round %>€/mois</h4>
     <p><%= flat.description %></p>
   <% end %>
 </div>
