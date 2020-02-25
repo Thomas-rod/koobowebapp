@@ -5,6 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
 require 'open-uri'
 require 'json'
 require 'faker'
@@ -71,7 +72,5 @@ end
 puts "you have now 4 schedules by flats "
 puts "total schedules = #{Schedule.count}"
 puts "G O O D     L U C K      G U Y S"
-
-
 
 
