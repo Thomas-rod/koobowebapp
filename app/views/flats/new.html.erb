@@ -1,7 +1,7 @@
 <div class="container">
   <%= simple_form_for [@flat.user, @flat] do |f| %>
   <div class="special-form">
-    <span class="form-part">Je nomme mon appartement</span><span class="form-part"><%= f.input :name, label: false, placeholder: "Titre"  %></span><span class="form-part">.</span>
+    <span class="form-part">Je nomme mon appartement</span><span class="form-part"><%= f.input :name, label: false, placeholder: "Titre" %></span><span class="form-part">.</span>
   </div>
   <div class="special-form">
     <span class="form-part">Il est au</span><span class="form-part"><%= f.input :floor, label: false, placeholder: "N étage" %></span><span class="form-part"> ème étage de l'immeuble situé</span><span class="form-part"><%= f.input :address, label: false, placeholder: "Adresse" %></span><span class="form-part">.</span>

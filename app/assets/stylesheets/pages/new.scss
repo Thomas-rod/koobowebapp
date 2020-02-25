@@ -3,5 +3,9 @@
 }
 
 .form-part {
-padding-right: 5px;
+  padding-right: 5px;
+  & input {
+    height: 28px;
+    width: 200px
+  }
 }
