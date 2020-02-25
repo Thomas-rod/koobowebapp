@@ -22,3 +22,4 @@ require("channels")
 // WRITE YOUR OWN JS STARTING FROM HERE 👇
 // ----------------------------------------------------
 import "bootstrap";
+import { initUpdateNavbarOnScroll } from '../components/navbar';

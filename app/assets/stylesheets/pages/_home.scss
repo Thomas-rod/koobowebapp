@@ -1,1 +1,88 @@
 // Specific CSS for your home-page
+.container-nav-home {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-right: 25px;
+  margin-left: 25px;
+}
+
+.navbar-home {
+  width: 100%;
+  box-shadow: 0 4px 2px -2px rgba(0,0,0,.2);
+}
+
+.nav-item {
+    margin-bottom: 10px;
+}
+
+.nav-link {
+    display: inline-block;
+    color: #000;
+    text-decoration: none;
+}
+
+.nav-link::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #000;
+    transition: width .3s;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+    //transition: width .3s;
+}
+
+.title {
+  font-family: $logo-font;
+  color: $blue;
+}
+
+.container-title-top {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-strong-point {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 16px;
+}
+
+.container-card-koobo {
+  border-radius: 25px;
+  text-align: center;
+  align-items: center;
+  background: white;
+  padding: 2px 16px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  height: 300px;
+  & h4 {
+    height: 10%;
+    margin: 10px 0px;
+  }
+
+  & img {
+    height: 40%;
+    width: auto;
+    margin-bottom: 10px;
+  }
+  & ul {
+    padding-top: 10px;
+    height:50%;
+
+  }
+}
+
+// .two-element-left {
+//   float: left;
+// }
+
+// .two-element-right {
+//   float: right;
+
+// }
