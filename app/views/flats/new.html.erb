@@ -1,35 +1,28 @@
 <div class="container">
   <%= simple_form_for [@flat.user, @flat] do |f| %>
   <div class="special-form">
-    <span class="form-part">Je souhaite donner le titre</span><span class="form-part"><%= f.input :name, label: false, placeholder: "Titre"  %></span><span class="form-part">à mon appartement.</span>
+    <span class="form-part">Je nomme mon appartement</span><span class="form-part"><%= f.input :name, label: false, placeholder: "Titre"  %></span><span class="form-part">.</span>
   </div>
   <div class="special-form">
-    <span class="form-part">Il est situé au</span><span class="form-part"><%= f.input :monthly_price, label: false, placeholder: "Adresse" %></span><span class="form-part">.</span>
+    <span class="form-part">Il est au</span><span class="form-part"><%= f.input :floor, label: false, placeholder: "N étage" %></span><span class="form-part"> ème étage de l'immeuble situé</span><span class="form-part"><%= f.input :address, label: false, placeholder: "Adresse" %></span><span class="form-part">.</span>
   </div>
   <div class="special-form">
-    <span class="form-part">Je souhaite le louer pour</span><span class="form-part"><%= f.input :name, label: false, placeholder: "Loyer mensuel"  %></span><span class="form-part"> €/mois.</span>
+    <span class="form-part">Je souhaite le louer pour</span><span class="form-part"><%= f.input :monthly_price, label: false, placeholder: "Loyer mensuel" %></span><span class="form-part"> €/mois.</span>
   </div>
   <div class="special-form">
-    <span class="form-part">Je souhaite le louer pour</span><span class="form-part"><%= f.input :name, label: false, placeholder: "Loyer mensuel"  %></span><span class="form-part"> €/mois.</span>
+    <span class="form-part">Il a une superficie de </span><span class="form-part"><%= f.input :surface, label: false, placeholder: "Superficie" %></span><span class="form-part"> m².</span>
   </div>
   <div class="special-form">
-    <span class="form-part">Je souhaite le louer pour</span><span class="form-part"><%= f.input :name, label: false, placeholder: "Loyer mensuel"  %></span><span class="form-part"> €/mois.</span>
+    <span class="form-part">Il est composé de </span><span class="form-part"><%= f.input :number_of_rooms, label: false, placeholder: "Nombre de pièces" %></span><span class="form-part"> pièces, dont </span><span class="form-part"><%= f.input :number_of_bedrooms, label: false, placeholder: "Nombre de chambres" %></span><span class="form-part">chambres.</span>
   </div>
   <div class="special-form">
-    <span class="form-part">Je souhaite le louer pour</span><span class="form-part"><%= f.input :name, label: false, placeholder: "Loyer mensuel"  %></span><span class="form-part"> €/mois.</span>
+    <span class="form-part">Le chauffage est </span><span class="form-part"><%= f.input :heating_system, label: false, collection: Flat::HEATING, input_html: { multiple: true } %></span><span class="form-part">. </span>
   </div>
+    <span class="form-part">Je donne quelques informations supplémentaires à mon futur locataire : </span>
   <div class="special-form">
-    <span class="form-part">Je souhaite le louer pour</span><span class="form-part"><%= f.input :name, label: false, placeholder: "Loyer mensuel"  %></span><span class="form-part"> €/mois.</span>
+      <span class="form-part"><%= f.input :elevator, label: "Ascenseur", as: :radio_buttons %></span><span><%= f.input :balcony, label: "Balcon", as: :radio_buttons %></span><span><%= f.input :parking, as: :radio_buttons %></span><span><%= f.input :cellar, label: "Cave", as: :radio_buttons %></span>
   </div>
-  <div class="special-form">
-    <span class="form-part">Je souhaite le louer pour</span><span class="form-part"><%= f.input :name, label: false, placeholder: "Loyer mensuel"  %></span><span class="form-part"> €/mois.</span>
-  </div>
-  <div class="special-form">
-    <span class="form-part">Je souhaite le louer pour</span><span class="form-part"><%= f.input :name, label: false, placeholder: "Loyer mensuel"  %></span><span class="form-part"> €/mois.</span>
-  </div>
-
-
-    <%= f.input :description, label: "Description", placeholder: "Superficie, étage, commodités, type de chauffage,..." %>
+    <span class="form-part"><%= f.input :description, label: false, placeholder: "J'ai encore quelques détails à préciser..." %></span>
     <%= f.input :photos, as: :file, input_html: { multiple: true } %>
     <%= f.submit "Créer appartement" %>
   <% end %>
