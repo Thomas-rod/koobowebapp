@@ -19,17 +19,30 @@ Flat.destroy_all
 Schedule.destroy_all
 puts "table flats shedules user have been deleted"
 
+def attach_photo_user(string, user)
+  file = URI.open(string)
+  user.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
+end
+def attach_photo_flat(string, flat)
+  file = URI.open(string)
+  flat.photos.attach(io: file, filename: 'nes.png', content_type: 'image/png')
+end
+
 puts "creating User"
 
 roxane = User.new(first_name: "Roxane", last_name: "Haddad", phone_number: "0664784489", email: "roxane.haddad@gmail.com", password: "123412")
+attach_photo_user("https://avatars0.githubusercontent.com/u/54777799?v=4", roxane)
 roxane.save
 john = User.create!(first_name: "Jonathan", last_name: "Courdavault", phone_number: "0778381974", email: "jo.courdavault@gmail.com", password: "567856")
+attach_photo_user("https://avatars2.githubusercontent.com/u/58211236?v=4", john)
 john.save
 thomas = User.create!(first_name: "Thomas", last_name: "Rodier", phone_number: "0668489169", email: "rodiert17@gmail.com", password: "432143")
+attach_photo_user("https://avatars1.githubusercontent.com/u/57214511?v=4", thomas)
 thomas.save
 mao = User.create!(first_name: "Maodo", last_name: "Diop", phone_number: "0663906049", email: "maodod1@gmail.com", password: "876587")
+attach_photo_user("https://avatars1.githubusercontent.com/u/56120487?v=4", mao)
 mao.save
-puts "#{User.count} users have beeen crerated"
+puts "#{User.count} users have beeen created"
 
 puts "Flats seeding..."
 num = roxane.id - 1
