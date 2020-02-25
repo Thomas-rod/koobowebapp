@@ -1,4 +1,5 @@
 class Flat < ApplicationRecord
+  HEATING = ["individuel", "électrique", "central", "gaz"]
   belongs_to :user
   has_many :schedules, dependent: :destroy
   has_many :visits, through: :schedules
