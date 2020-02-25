@@ -27,3 +27,8 @@ initSelect2();
 // WRITE YOUR OWN JS STARTING FROM HERE 👇
 // ----------------------------------------------------
 import "bootstrap";
+import { clickElementDashboard } from '../components/dashboard';
+
+document.addEventListener('turbolinks:load', () => {
+  clickElementDashboard();
+});
