@@ -22,3 +22,8 @@ require("channels")
 // WRITE YOUR OWN JS STARTING FROM HERE 👇
 // ----------------------------------------------------
 import "bootstrap";
+import { initFlatpicker } from '../plugins/flatpickr';
+
+document.addEventListener('turbolinks:load', () => {
+  initFlatpicker();
+});

@@ -3,6 +3,11 @@ class FlatsController < ApplicationController
     @flats = Flat.all
   end
 
+  def show
+    @flat = Flat.find(params[:id])
+    @schedule = Schedule.new
+  end
+
   private
 
   def flat_params
