@@ -5,7 +5,6 @@
   display: flex;
   margin-bottom: 8px;
 }
-
 .form-part {
   padding-right: 5px;
   & input {
@@ -19,38 +18,30 @@
     border-radius: 10px;
   }
 }
-
 #heating {
   margin-top: 7px;
 }
-
 #special-radio {
   margin-top: 8px;
 }
-
 .select2-selection.select2-selection--multiple {
   width: 200px;
   border-radius: 40px;
   border: 0.5px solid #EE8572 !important;
 }
-
 .select2-dropdown.select2-dropdown--below {
   width: 200px !important;
 }
-
 .radio-part {
   margin-right: 75px;
 }
-
 .form-check input {
   vertical-align: middle;
 }
-
 .form-check label {
   vertical-align: middle;
   margin-top: 5px;
 }
-
 .select2-search__field {
   width: 200px !important;
 }
