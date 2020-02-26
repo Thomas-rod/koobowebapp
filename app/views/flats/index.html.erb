@@ -13,6 +13,7 @@
           <h4><%= flat.address %></h3>
           <h5><%= flat.monthly_price.round %>€/mois</h4>
           <p><%= flat.description %></p>
+          <%= link_to "Voir cet appartement", flat_path(flat), class: "see-flat-button" %>
         <% end %>
       </div>
     </div>
