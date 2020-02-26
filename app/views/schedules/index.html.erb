@@ -2,7 +2,7 @@
   <div class="d-flex">
     <%= render partial: 'shared/dashboard', locals: { flats: @flats, schedules: @schedules, documents: @documents} %>
     <div style=" width:100%;">
-      <%= render 'shared/navbar_dashboard' %>
+      <%= render 'shared/navbar_dashboard', page_title: 'Calendrier' %>
       <div class="container" >
         <% @schedules.each do |time| %>
         <p> <%= time.start %> <%= time.end %></p>

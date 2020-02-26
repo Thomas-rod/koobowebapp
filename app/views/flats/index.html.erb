@@ -2,7 +2,7 @@
   <div class="d-flex">
     <%= render partial: 'shared/dashboard', locals: { flats: @flats, schedules: @schedules, documents: @documents} %>
     <div style=" width:100%;">
-      <%= render 'shared/navbar_dashboard' %>
+      <%= render partial: 'shared/navbar_dashboard', locals: { page_title: 'Appartements'}%>
       <div class="container">
         <% @flats.each do |flat| %>
           <h2><%= flat.name %></h2>
