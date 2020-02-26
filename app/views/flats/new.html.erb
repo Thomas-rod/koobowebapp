@@ -1,8 +1,8 @@
 <div class="dashboard-data-set" data-line="appartements">
   <div class="d-flex">
     <%= render partial: 'shared/dashboard', locals: { flats: @flats, schedules: @schedules, documents: @documents} %>
-    <div>
-      <%= render 'shared/navbar_dashboard' %>
+    <div style=" width:100%;">
+      <%= render partial: 'shared/navbar_dashboard', locals: { page_title: 'Appartements'}%>
       <div class="container">
         <div class="container-new-form">
           <%= simple_form_for [@flat.user, @flat] do |f| %>
