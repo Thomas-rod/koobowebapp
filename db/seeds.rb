@@ -63,6 +63,8 @@ attach_photo_flat("https://images.unsplash.com/photo-1464890100898-a385f744067f?
 attach_photo_flat("https://images.unsplash.com/photo-1451153378752-16ef2b36ad05?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60", mao_flat)
 mao_flat.save
 
+renting_mao_roxane = Renting.create!(flat: roxane_flat, user: mao)
+
 puts "#{Flat.count} flats have been created"
 puts "Now we creating 4 Shedules by flats"
 puts "........."

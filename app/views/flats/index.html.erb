@@ -43,7 +43,9 @@
                     <p><%= flat.address %></p>
                   </div>
                   <h2 class="card-trip-pricing"><%= flat.monthly_price.round %>€/mois</h2>
-                  <%= cl_image_tag flat.user.photo.key, class: "card-trip-user avatar-bordered" %>
+                  <% if flat.rentings.last&.user&.photo&.attached?  %>
+                  <%= cl_image_tag flat.rentings.last.user.photo.key, class: "card-trip-user avatar-bordered" %>
+                  <% end %>
                 </div>
               </div>
             <% end %>
