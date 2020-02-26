@@ -5,7 +5,7 @@ p {
 
 .dashboard-wrapper {
   background-color: $blue;
-  // opacity: .99;
+  position: sticky;
   height:100vh;
   width: 300px;
   text-align: center;
@@ -22,7 +22,7 @@ p {
   height:60px;
   border-radius: 5px;
   &:hover {
-    background-color: #4A4972;
+    background-color: $blue-light;
   }
   & a {
     display:grid;
@@ -80,6 +80,6 @@ p {
 
 // HOVER WRAPPER
 .active-dashboard {
-  background-color: #4A4972;
+  background-color: $blue-light;
   border-right: 7px solid $coral;
 }
