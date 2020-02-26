@@ -40,7 +40,7 @@
                 <div class="card-trip-infos">
                   <div>
                     <h2><%= link_to flat.name, flat_path(flat) %></h2>
-                    <p><%= flat.address %></p>
+                    <p><%= flat.address %> </p>
                   </div>
                   <h2 class="card-trip-pricing"><%= flat.monthly_price.round %>€/mois</h2>
                   <% if flat.rentings.last&.user&.photo&.attached?  %>
