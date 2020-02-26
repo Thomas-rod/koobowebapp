@@ -4,15 +4,52 @@
     <div style=" width:100%;">
       <%= render partial: 'shared/navbar_dashboard', locals: { page_title: 'Appartements'}%>
       <div class="container">
-        <% @flats.each do |flat| %>
-          <h2><%= flat.name %></h2>
-          <% flat.photos.each do |photo| %>
-            <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-          <% end %>
-          <h4><%= flat.address %></h3>
-          <h5><%= flat.monthly_price.round %>€/mois</h4>
-          <p><%= flat.description %></p>
-        <% end %>
+        <div class="container index-container mt-5 mb-5">
+          <div class="cards cards-index" id = "index-cards">
+            <% number = 0 %>
+            <% @flats.each do |flat| %>
+              <% number += 1 %>
+            <div class="card-trip card-trip-index">
+              <div id="carouselExampleIndicators<%= number %>" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                  <li data-target="#carouselExampleIndicators<%= number %>" data-slide-to="0" class="active"></li>
+                  <li data-target="#carouselExampleIndicators<%= number %>" data-slide-to="1"></li>
+                  <li data-target="#carouselExampleIndicators<%= number %>" data-slide-to="2"></li>
+                </ol>
+                  <div class="carousel-inner">
+                    <div class="carousel-item active">
+                      <%= cl_image_tag flat.photos[0].key, class: "d-block w-100 image"%>
+                    </div>
+                    <% flat.photos[1..flat.photos.count].each do |photo| %>
+                      <div class="carousel-item ">
+                        <%= cl_image_tag photo.key, class: "d-block w-100 image" %>
+                      </div>
+                    <% end %>
+                  </div>
+                    <a class="carousel-control-prev" href="#carouselExampleIndicators<%= number %>" role="button" data-slide="prev">
+                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                      <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleIndicators<%= number %>" role="button" data-slide="next">
+                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                      <span class="sr-only">Next</span>
+                    </a>
+              </div>
+                <div class="card-trip-infos">
+                  <div>
+                    <h2><%= link_to flat.name, flat_path(flat) %></h2>
+                    <p><%= flat.address %> </p>
+                  </div>
+                  <h2 class="card-trip-pricing"><%= flat.monthly_price.round  %>€/mois</h2>
+                  <% if flat.rentings.last&.user&.photo&.attached?  %>
+                  <%= cl_image_tag flat.rentings.last.user.photo.key, class: "card-trip-user avatar-bordered" %>
+                  <% end %>
+                </div>
+              </div>
+            <% end %>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

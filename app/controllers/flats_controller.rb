@@ -1,6 +1,6 @@
 class FlatsController < ApplicationController
   def index
-    @flats = Flat.all
+    @flats = current_user.flats
     @schedules = Schedule.all
     @documents = Document.all
   end
