@@ -1,10 +1,8 @@
 <div class="dashboard-data-set" data-line="appartements">
   <div class="d-flex">
-
     <%= render partial: 'shared/dashboard', locals: { flats: @flats, schedules: @schedules, documents: @documents} %>
-    <div>
-      <%= render 'shared/navbar_dashboard' %>
-
+    <div style=" width:100%;">
+      <%= render partial: 'shared/navbar_dashboard', locals: { page_title: 'Appartements'}%>
       <div class="container">
         <div class="container index-container mt-5 mb-5">
           <div class="cards cards-index" id = "index-cards">
@@ -40,9 +38,9 @@
                 <div class="card-trip-infos">
                   <div>
                     <h2><%= link_to flat.name, flat_path(flat) %></h2>
-                    <p><%= flat.address %></p>
+                    <p><%= flat.address %> </p>
                   </div>
-                  <h2 class="card-trip-pricing"><%= flat.monthly_price.round %>€/mois</h2>
+                  <h2 class="card-trip-pricing"><%= flat.monthly_price.round  %>€/mois</h2>
                   <% if flat.rentings.last&.user&.photo&.attached?  %>
                   <%= cl_image_tag flat.rentings.last.user.photo.key, class: "card-trip-user avatar-bordered" %>
                   <% end %>
