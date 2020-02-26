@@ -14,11 +14,13 @@
                   <%= link_to "Vos biens", flats_path, class: "nav-link" %>
                 </li>
                 <li class="nav-item dropdown">
+
                   <% if current_user.photo.attached? %>
                     <%= cl_image_tag current_user.photo.key, height: 40, width: 40, crop: :fill, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
                   <% else %>
                     <%=  image_tag ("avatar.png"), class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
                   <% end %>
+
                   <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                     <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
                   </div>
