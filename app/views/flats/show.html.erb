@@ -41,22 +41,35 @@
           </div>
         <% end %>
         <div class="card-locataire">
+          <button class="koobo-button">Voir description</button>
           <div class="container">
-            <% if @flat.rentings&.last&.user&.photo&.attached?  %>
-              <%= cl_image_tag @flat.rentings.last.user.photo.key, class: 'avatar-extra-large' %>
+            <% if @flat.rentings&.last&.user.nil? %>
+              <h3>Votre annonce est en ce moment sur :</h3>
+              <ul>
+                <li> PAP : <%= @flat.pap %> </li>
+                <li> Leboncoin :<%= @flat.leboncoin %></li>
+                <li> Seloger : <%= @flat.seloger %></li>
+                <li> Bienici : <%= @flat.bienici%></li>
+              </ul>
+            <% else %>
+              <% if @flat.rentings&.last&.user&.photo&.attached?  %>
+                <%= cl_image_tag @flat.rentings.last.user.photo.key, class: 'avatar-extra-large' %>
+              <% else %>
+                <%= image_tag ("avatar.png"), class: "avatar-extra-large" %>
+              <% end %>
+              <h3><%= @flat.rentings.last.user.first_name %><%= @flat.rentings.last.user.last_name %></h3>
+              <ul>
+                <li>
+                  <p>Locataire depuis <%= ((Time.now - @flat.rentings.last.created_at) / 86400).to_i %> jours</p>
+                </li>
+                <li>
+                  <p>Tél : <%= @flat.rentings.last.user.phone_number %></p>
+                </li>
+                <li>
+                  <p>Mail : <%= @flat.rentings.last.user.email %></p>
+                </li>
+              </ul>
             <% end %>
-            <h3><%= @flat.rentings.last.user.first_name %><%= @flat.rentings.last.user.last_name %></h3>
-            <ul>
-              <li>
-                <p>Locataire depuis <%= ((Time.now - @flat.rentings.last.created_at) / 86400).to_i %> jours</p>
-              </li>
-              <li>
-                <p>Tél : <%= @flat.rentings.last.user.phone_number %></p>
-              </li>
-              <li>
-                <p>Mail : <%= @flat.rentings.last.user.email %></p>
-              </li>
-            </ul>
           </div>
         </div>
       </div>
@@ -68,11 +81,63 @@
           </div>
           <h4><%= @flat.address %></h4>
           <div class="calendar-placeholder">
-            <h2>Placeholder calendar</h2>
+            <div class="d-flex align-items-center mb-3">
+              <p>Créneaux de visite sélectionnés </p>
+              <div id="blue-visite" class="ml-3"></div>
+            </div>
+
+            <div class="container schedules-container">
+              <table class = "table-schedules">
+              <thead class = "jour">
+                <tr>
+                  <th class="schedules-tht">h</th>
+                  <th class="schedules-th">lun</th>
+                  <th class="schedules-th">mar</th>
+                  <th class="schedules-th">mer</th>
+                  <th class="schedules-th">jeu</th>
+                  <th class="schedules-th">ven</th>
+                  <th class="schedules-th">sam</th>
+                  <th class="schedules-th">dim</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% hour = 7 %>
+                <% 13.times do %>
+                <% hour += 1 %>
+                <% demi = "30" %>
+                <% pile = "00" %>
+                <tr>
+                  <th class= "schedule-th"> <%= hour %></th>
+                  <% day = 0 %>
+                  <% 7.times do %>
+                    <% day += 1 %>
+                    <% if current_user.schedules.select {|time| time.start == Time.new(2020, 3, day, hour, 0, 0)} != []%>
+                      <td class = "schedules-td schedules-selected"></td>
+                    <% else %>
+                      <td class = "schedules-td schedules-unselected"><%=link_to "", flat_schedules_path(current_user.flats.first, schedule: { start: Time.new(2020, 3, day, hour, 0, 0), end:Time.new(2020, 3, day, hour, 30, 0)}), method: :post, remote: true, class: "schedules-button" %></td>
+                    <% end %>
+                  <% end %>
+                </tr>
+                <tr>
+                  <th class= "schedule-th"> <%= hour %>: <%= demi %></th>
+                  <% day = 0 %>
+                  <% 7.times do %>
+                    <% day += 1 %>
+                     <% if current_user.schedules.select {|time| time.start == Time.new(2020, 3, day,hour, 30, 0)} != []%>
+                        <td class = "schedules-td schedules-selected"></td>
+                     <% else %>
+                        <td class = "schedules-td schedules-unselected"><%=link_to "", flat_schedules_path(current_user.flats.first, schedule: { start: Time.new(2020, 3, day, hour, 30, 0), end:Time.new(2020, 3, day, (hour+1) , 0, 0)}), method: :post , class: "schedules-button" %></td>
+                      <% end %>
+                  <% end %>
+                </tr>
+                <% end %>
+              </tbody>
+             </table>
+            </div>
           </div>
         </div>
         <div id="title-description">
-          <h4>Description appartement:</h4>
+          <h4>Confort et Equipement:</h4>
           <div class="d-flex">
               <div class="flat-informations-left">
                 <p>
@@ -129,11 +194,11 @@
                 <% end %>
                 <input type="checkbox" id="switch" class="switch-input" /><label for="switch" class="switch-label">Toggle</label>
               </div>
-            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+
 

@@ -16,12 +16,12 @@ width: 560px;
 }
 
 .schedules-td:hover {
-background-color: #4671F4;
+background-color: $blue-lighter;
 opacity: 0.5;
 }
 
 .schedules-selected {
-  background-color: #4671F4;
+  background-color: $blue-light;
 
 }
 
