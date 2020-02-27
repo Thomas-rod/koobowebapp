@@ -1,0 +1,64 @@
+.schedules-th {
+  width: 120px;
+}
+.schedules-tht {
+  width: 120px;
+}
+
+.schedules-container{
+overflow-y: scroll;
+height: 296px;
+width: 560px;
+}
+
+.shedules-td {
+  max-height: 30px;
+}
+
+.schedules-td:hover {
+background-color: #4671F4;
+opacity: 0.5;
+}
+
+.schedules-selected {
+  background-color: #4671F4;
+
+}
+
+th.schedules-th{
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    opacity: inherit;
+    border-radius: unset;
+    margin-top: 0px;
+}
+
+.table-schedules{
+  border: 1px solid rgba(232, 232, 232, 1);
+  border-radius: 5px;
+  th {
+  border: 1px solid rgba(232, 232, 232, 1);
+  border-radius: 5px;
+  font-family: Poppins;
+  font-weight: 300;
+  text-align: center;
+  color: #262626;
+  opacity: 0.6;
+  }
+  td {
+  border: 1px solid rgba(232, 232, 232, 1);
+  border-radius: 5px;
+  font-family: Poppins;
+  font-weight: 300;
+    position:relative;
+    a {
+      position: absolute;
+      top: 0;
+      left:0;
+      right: 0;
+      bottom: 0;
+    }
+  }
+
+}
