@@ -1,0 +1,17 @@
+.flat-informations {
+  width: 60%;
+  margin: 10px 30px 0px 30px;
+}
+
+
+.flat-informations-left, .flat-informations-right {
+  margin: 10px 30px 0px 0px;
+}
+
+#title-description {
+  & h4 {
+    margin-top: 15px;
+    font-size: 20px;
+    font-weight: lighter;
+  }
+}

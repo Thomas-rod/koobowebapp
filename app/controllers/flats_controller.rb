@@ -17,17 +17,42 @@ class FlatsController < ApplicationController
 
   def create
     @flat = Flat.new(flat_params)
+    flat_params[:heating_system].each do |param|
+      if param != ""
+        @flat.heating_system << param
+      end
+    end
     @flat.user = current_user
       if @flat.save
-        redirect_to flats_path
+        redirect_to edit_publication_path(@flat)
       else
         render :new
       end
   end
 
+  def edit_publication
+    @flat = Flat.last
+  end
+
+   def update_publication
+    @flat = Flat.find(params[:id])
+    @flat.update(flat_params)
+    redirect_to flat_path(@flat)
+  end
+
+  def edit
+    @flat = Flat.find(params[:id])
+  end
+
+  def update
+    @flat = Flat.find(params[:id])
+    @flat.update(flat_params)
+    redirect_to edit_publication_path(@flat)
+  end
+
   private
 
   def flat_params
-    params.require(:flat).permit(:name, :address, :description, :monthly_price, :visible, :rented, :number_of_rooms, :number_of_bedrooms, :surface, :floor, :elevator, :balcony, :cellar, :parking, :heating_system, :furnished, photos: [])
+    params.require(:flat).permit(:name, :address, :description, :monthly_price, :visible, :rented, :number_of_rooms, :number_of_bedrooms, :surface, :floor, :elevator, :balcony, :cellar, :parking, :furnished, :pap, :leboncoin, :bienici, :seloger, heating_system: [], photos: [])
   end
 end
