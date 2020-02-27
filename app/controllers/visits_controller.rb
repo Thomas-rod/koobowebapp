@@ -9,7 +9,10 @@ class VisitsController < ApplicationController
     @visit.user = current_user
     @visit.status = 'pending'
     @visit.save!
-    # Broadcast au proprio (recup l'id du proprio) pour la notif et le schedule
+    UserChannel.broadcast_to(
+      @visit.schedule.flat.user,
+      render_to_string(partial: "shared/notif", locals: { visit: @visit })
+    )
     redirect_to new_flat_visit_path
   end
 
