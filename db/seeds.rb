@@ -69,29 +69,29 @@ puts "#{Flat.count} flats have been created"
 puts "Now we creating 4 Shedules by flats"
 puts "........."
  roxane.flats.each do |flat|
-  Schedule.create!(start:Time.new(2020, 3, 2, 8, 0, 0, "+02:00"),end:Time.new(2020, 3, 2, 8, 30, 0, "+02:00"),flat_id:flat.id)
-  Schedule.create!(start:Time.new(2020, 3, 2, 8, 30, 0, "+02:00"),end:Time.new(2020, 3, 2, 9, 0, 0, "+02:00"),flat_id:flat.id)
-  Schedule.create!(start:Time.new(2020, 3, 2, 9, 0, 0, "+02:00"),end:Time.new(2020, 3, 2, 9, 30, 0, "+02:00"),flat_id:flat.id)
-  Schedule.create!(start:Time.new(2020, 3, 2, 9, 30, 0, "+02:00"),end:Time.new(2020, 3, 2, 10, 0, 0, "+02:00"),flat_id:flat.id)
+  Schedule.create!(start:Time.new(2020, 3, 2, 8, 0, 0),end:Time.new(2020, 3, 2, 8, 30, 0),flat_id:flat.id)
+  Schedule.create!(start:Time.new(2020, 3, 2, 8, 30, 0),end:Time.new(2020, 3, 2, 9, 0, 0),flat_id:flat.id)
+  Schedule.create!(start:Time.new(2020, 3, 3, 9, 0, 0),end:Time.new(2020, 3, 3, 9, 30, 0),flat_id:flat.id)
+  Schedule.create!(start:Time.new(2020, 3, 4, 9, 30, 0),end:Time.new(2020, 3, 4, 10, 0, 0),flat_id:flat.id)
 end
 
  john.flats.each do |flat|
-  Schedule.create!(start:Time.new(2020, 3, 2, 13, 0, 0, "+02:00"),end:Time.new(2020, 3, 2, 13, 30, 0, "+02:00"),flat_id:flat.id)
-  Schedule.create!(start:Time.new(2020, 3, 2, 13, 30, 0, "+02:00"),end:Time.new(2020, 3, 2, 14, 0, 0, "+02:00"),flat_id:flat.id)
-  Schedule.create!(start:Time.new(2020, 3, 2, 14, 0, 0, "+02:00"),end:Time.new(2020, 3, 2, 14, 30, 0, "+02:00"),flat_id:flat.id)
-  Schedule.create!(start:Time.new(2020, 3, 2, 14, 30, 0, "+02:00"),end:Time.new(2020, 3, 2, 15, 0, 0, "+02:00"),flat_id:flat.id)
+  Schedule.create!(start:Time.new(2020, 3, 2, 13, 0, 0),end:Time.new(2020, 3, 2, 13, 30, 0),flat_id:flat.id)
+  Schedule.create!(start:Time.new(2020, 3, 2, 13, 30, 0),end:Time.new(2020, 3, 2, 14, 0, 0),flat_id:flat.id)
+  Schedule.create!(start:Time.new(2020, 3, 2, 14, 0, 0),end:Time.new(2020, 3, 2, 14, 30, 0),flat_id:flat.id)
+  Schedule.create!(start:Time.new(2020, 3, 2, 14, 30, 0),end:Time.new(2020, 3, 2, 15, 0, 0),flat_id:flat.id)
 end
  thomas.flats.each do |flat|
-  Schedule.create!(start:Time.new(2020, 3, 2, 7, 0, 0, "+02:00"),end:Time.new(2020, 3, 2, 7, 30, 0, "+02:00"),flat_id:flat.id)
-  Schedule.create!(start:Time.new(2020, 3, 2, 8, 30, 0, "+02:00"),end:Time.new(2020, 3, 2, 9, 0, 0, "+02:00"),flat_id:flat.id)
-  Schedule.create!(start:Time.new(2020, 3, 2, 9, 0, 0, "+02:00"),end:Time.new(2020, 3, 2, 9, 30, 0, "+02:00"),flat_id:flat.id)
-  Schedule.create!(start:Time.new(2020, 3, 2, 9, 30, 0, "+02:00"),end:Time.new(2020, 3, 2, 10, 0, 0, "+02:00"),flat_id:flat.id)
+  Schedule.create!(start:Time.new(2020, 3, 2, 7, 0, 0),end:Time.new(2020, 3, 2, 7, 30, 0),flat_id:flat.id)
+  Schedule.create!(start:Time.new(2020, 3, 2, 8, 30, 0),end:Time.new(2020, 3, 2, 9, 0, 0),flat_id:flat.id)
+  Schedule.create!(start:Time.new(2020, 3, 2, 9, 0, 0),end:Time.new(2020, 3, 2, 9, 30, 0),flat_id:flat.id)
+  Schedule.create!(start:Time.new(2020, 3, 2, 9, 30, 0),end:Time.new(2020, 3, 2, 10, 0, 0),flat_id:flat.id)
 end
  mao.flats.each do |flat|
-  Schedule.create!(start:Time.new(2020, 3, 2, 17, 0, 0, "+02:00"),end:Time.new(2020, 3, 2, 17, 30, 0, "+02:00"),flat_id:flat.id)
-  Schedule.create!(start:Time.new(2020, 3, 2, 17, 30, 0, "+02:00"),end:Time.new(2020, 3, 2, 18, 0, 0, "+02:00"),flat_id:flat.id)
-  Schedule.create!(start:Time.new(2020, 3, 2, 18, 0, 0, "+02:00"),end:Time.new(2020, 3, 2, 18, 30, 0, "+02:00"),flat_id:flat.id)
-  Schedule.create!(start:Time.new(2020, 3, 2, 18, 30, 0, "+02:00"),end:Time.new(2020, 3, 2, 19, 0, 0, "+02:00"),flat_id:flat.id)
+  Schedule.create!(start:Time.new(2020, 3, 2, 17, 0, 0),end:Time.new(2020, 3, 2, 17, 30, 0),flat_id:flat.id)
+  Schedule.create!(start:Time.new(2020, 3, 2, 17, 30, 0),end:Time.new(2020, 3, 2, 18, 0, 0),flat_id:flat.id)
+  Schedule.create!(start:Time.new(2020, 3, 2, 18, 0, 0),end:Time.new(2020, 3, 2, 18, 30, 0),flat_id:flat.id)
+  Schedule.create!(start:Time.new(2020, 3, 2, 18, 30, 0),end:Time.new(2020, 3, 2, 19, 0, 0),flat_id:flat.id)
 end
 
 puts "you have now 4 schedules by flats "

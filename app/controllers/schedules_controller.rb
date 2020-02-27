@@ -10,7 +10,7 @@ class SchedulesController < ApplicationController
     @schedule = Schedule.new(params_schedule)
     @schedule.flat = Flat.find(params[:flat_id])
     @schedule.save!
-    redirect_to flat_path(@schedule.flat)
+    redirect_to schedules_path
   end
 
   def params_schedule
