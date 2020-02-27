@@ -2,7 +2,8 @@
   position: relative;
   overflow: hidden;
   background: white;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  box-shadow: 0 0 15px rgba(0,0,0,0.8);
+  border-radius: 5px;
 }
 
 .image {
@@ -49,3 +50,31 @@
 }
 
 
+.card-flat {
+  width: 65%;
+  margin: 0px 30px ;
+}
+
+.card-locataire {
+  color:white;
+  width: 35%;
+  height: 300px;
+  border-radius: 15px;
+  background-color: $blue;
+  text-align:center;
+  box-shadow: 0 1px 24px rgba(0,0,0,0.8);
+  & h3, img {
+    margin-top:10px;
+  }
+  & ul {
+    margin-top: 20px;
+  }
+  & li {
+    text-align:left;
+  }
+}
+.card-locataire li {
+  & p {
+    margin-top: 10px;
+  }
+}

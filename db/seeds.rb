@@ -39,7 +39,7 @@ john.save
 thomas = User.new(first_name: "Thomas", last_name: "Rodier", phone_number: "0668489169", email: "rodiert17@gmail.com", password: "432143")
 attach_photo_user("https://avatars1.githubusercontent.com/u/57214511?v=4", thomas)
 thomas.save
-mao = User.new(first_name: "Maodo", last_name: "Diop", phone_number: "0663906049", email: "maodod1@gmail.com", password: "876587")
+mao = User.new(first_name: "Maodo", last_name: "Diop", phone_number: "0663906049", email: "maodod1@gmail.com", password: "876587", description: 'Best cooker in the world !! ')
 attach_photo_user("https://avatars1.githubusercontent.com/u/56120487?v=4", mao)
 mao.save
 puts "#{User.count} users have beeen created"
