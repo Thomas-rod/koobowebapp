@@ -54,33 +54,32 @@ puts "#{User.count} users have beeen created"
 #   Flat.create!(address: address, description: description, monthly_price: monthly_price.to_i, user_id: num)
 # end
 
-roxane_flat = Flat.new(user: roxane, address: "4 rue des Prêtres Saint-Séverin, 75005, Paris", description: "Quartier central et animé, appartement cosy avec magnifique vue.", monthly_price: 783, visible: true, rented: false, name: "Haddad House", number_of_rooms: 2, number_of_bedrooms: 1, surface: 23, floor: 5, elevator: true, balcony: false, cellar: false, parking: false, heating_system: ["individuel", "électrique"], furnished: false)
+roxane_flat = Flat.new(user_id: roxane.id, address: "4 rue des Prêtres Saint-Séverin, 75005, Paris", description: "Quartier central et animé, appartement cosy avec magnifique vue.", monthly_price: 783, visible: true, rented: false, name: "Haddad House", number_of_rooms: 2, number_of_bedrooms: 1, surface: 23, floor: 5, elevator: true, balcony: false, cellar: false, parking: false, heating_system: ["individuel", "électrique"], furnished: false)
 attach_photo_flat("https://images.unsplash.com/photo-1471623320832-752e8bbf8413?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60", roxane_flat)
 attach_photo_flat("https://images.unsplash.com/photo-1529408632839-a54952c491e5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60", roxane_flat)
 roxane_flat.save
-mao_flat = Flat.new(user: mao, address: "12 rue Madeleine Laffitte, 93100, Montreuil", description: "Superbe pavillon, parfait pour une famille aimant cuisiner.", monthly_price: 2200, visible: true, rented: false, name: "Diop House", number_of_rooms: 7, number_of_bedrooms: 5, surface: 80, floor: 3, elevator: false, balcony: true, cellar: true, parking: true, heating_system: ["collectif", "gaz"], furnished: false)
+mao_flat = Flat.new(user_id: roxane.id, address: "12 rue Madeleine Laffitte, 93100, Montreuil", description: "Superbe pavillon, parfait pour une famille aimant cuisiner.", monthly_price: 2200, visible: true, rented: false, name: "Diop House", number_of_rooms: 7, number_of_bedrooms: 5, surface: 80, floor: 3, elevator: false, balcony: true, cellar: true, parking: true, heating_system: ["collectif", "gaz"], furnished: false)
 attach_photo_flat("https://images.unsplash.com/photo-1464890100898-a385f744067f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60", mao_flat)
 attach_photo_flat("https://images.unsplash.com/photo-1451153378752-16ef2b36ad05?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60", mao_flat)
 mao_flat.save
 
 renting_mao_roxane = Renting.create!(flat: roxane_flat, user: mao)
 
-puts "#{Flat.count} flats have been created"
+puts "#{roxane.flats.count} flats have been created"
 puts "Now we creating 4 Shedules by flats"
 puts "........."
- roxane.flats.each do |flat|
-  Schedule.create!(start:Time.new(2020, 3, 2, 8, 0, 0),end:Time.new(2020, 3, 2, 8, 30, 0),flat_id:flat.id)
-  Schedule.create!(start:Time.new(2020, 3, 2, 8, 30, 0),end:Time.new(2020, 3, 2, 9, 0, 0),flat_id:flat.id)
-  Schedule.create!(start:Time.new(2020, 3, 3, 9, 0, 0),end:Time.new(2020, 3, 3, 9, 30, 0),flat_id:flat.id)
-  Schedule.create!(start:Time.new(2020, 3, 4, 9, 30, 0),end:Time.new(2020, 3, 4, 10, 0, 0),flat_id:flat.id)
-end
 
- john.flats.each do |flat|
-  Schedule.create!(start:Time.new(2020, 3, 2, 13, 0, 0),end:Time.new(2020, 3, 2, 13, 30, 0),flat_id:flat.id)
-  Schedule.create!(start:Time.new(2020, 3, 2, 13, 30, 0),end:Time.new(2020, 3, 2, 14, 0, 0),flat_id:flat.id)
-  Schedule.create!(start:Time.new(2020, 3, 2, 14, 0, 0),end:Time.new(2020, 3, 2, 14, 30, 0),flat_id:flat.id)
-  Schedule.create!(start:Time.new(2020, 3, 2, 14, 30, 0),end:Time.new(2020, 3, 2, 15, 0, 0),flat_id:flat.id)
-end
+  Schedule.create!(start:Time.new(2020, 3, 2, 8, 0, 0),end:Time.new(2020, 3, 2, 8, 30, 0),flat_id:roxane.flats.first.id)
+  Schedule.create!(start:Time.new(2020, 3, 2, 8, 30, 0),end:Time.new(2020, 3, 2, 9, 0, 0),flat_id:roxane.flats.first.id)
+  Schedule.create!(start:Time.new(2020, 3, 3, 9, 0, 0),end:Time.new(2020, 3, 3, 9, 30, 0),flat_id:roxane.flats.first.id)
+  Schedule.create!(start:Time.new(2020, 3, 4, 9, 30, 0),end:Time.new(2020, 3, 4, 10, 0, 0),flat_id:roxane.flats.first.id)
+
+
+  Schedule.create!(start:Time.new(2020, 3, 2, 13, 0, 0),end:Time.new(2020, 3, 2, 13, 30, 0),flat_id:roxane.flats.last.id)
+  Schedule.create!(start:Time.new(2020, 3, 2, 13, 30, 0),end:Time.new(2020, 3, 2, 14, 0, 0),flat_id:roxane.flats.last.id)
+  Schedule.create!(start:Time.new(2020, 3, 2, 14, 0, 0),end:Time.new(2020, 3, 2, 14, 30, 0),flat_id:roxane.flats.last.id)
+  Schedule.create!(start:Time.new(2020, 3, 2, 14, 30, 0),end:Time.new(2020, 3, 2, 15, 0, 0),flat_id:roxane.flats.last.id)
+
  thomas.flats.each do |flat|
   Schedule.create!(start:Time.new(2020, 3, 2, 7, 0, 0),end:Time.new(2020, 3, 2, 7, 30, 0),flat_id:flat.id)
   Schedule.create!(start:Time.new(2020, 3, 2, 8, 30, 0),end:Time.new(2020, 3, 2, 9, 0, 0),flat_id:flat.id)
