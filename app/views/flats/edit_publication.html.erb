@@ -38,7 +38,7 @@
           <div class="special-form" id="special-radio">
               <span class="form-part radio-part"><%= f.input :leboncoin, label: "Le Bon Coin", as: :boolean %></span><span class="form-part radio-part"><%= f.input :bienici, label: "Bien Ici", collection: ["Oui", "Non"], as: :boolean %></span><span class="form-part radio-part"><%= f.input :seloger, label: "Se Loger", collection: ["Oui", "Non"], as: :boolean %></span><span class="form-part radio-part"><%= f.input :pap, label: "PAP, Particulier à Particulier", collection: ["Oui", "Non"], as: :boolean %></span>
           </div>
-          <%= f.submit "Modifier l'annoncer", id: "edit-pub-btn" %>
+          <%= link_to "Modifier l'annonce", edit_flat_path, id: "edit-pub-btn" %>
           <%= f.submit "Valider l'annonce", id: "edit-pub-btn" %>
           <% end %>
       </div>

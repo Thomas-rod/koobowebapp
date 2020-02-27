@@ -29,6 +29,10 @@ class FlatsController < ApplicationController
     @flat = Flat.find(params[:id])
   end
 
+  def edit
+    @flat = Flat.find(params[:id])
+  end
+
   def update
     @flat = Flat.find(params[:id])
     @flat.update(flat_params)
