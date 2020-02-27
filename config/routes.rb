@@ -11,4 +11,6 @@ Rails.application.routes.draw do
     resources :visits, only: :update
   end
   resources :documents, only: :index
+  get "flats/:id/edit_publication", to: "flats#edit_publication", as: :edit_publication
+  patch "flats/:id/update_publication", to: "flats#update_publication", as: :update_publication
 end

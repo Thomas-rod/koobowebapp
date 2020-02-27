@@ -54,7 +54,7 @@ puts "#{User.count} users have beeen created"
 #   Flat.create!(address: address, description: description, monthly_price: monthly_price.to_i, user_id: num)
 # end
 
-roxane_flat = Flat.new(user: roxane, address: "4 rue des Prêtres Saint-Séverin, 75005, Paris", description: "Quartier central et animé, appartement cosy avec magnifique vue.", monthly_price: 783, visible: true, rented: false, name: "Haddad House", number_of_rooms: 2, number_of_bedrooms: 1, surface: 23, floor: 5, elevator: true, balcony: false, cellar: false, parking: false, heating_system: ["individuel", "électrique"], furnished: false)
+roxane_flat = Flat.new(user: roxane, address: "4 rue des Prêtres Saint-Séverin, 75005, Paris", description: "Quartier central et animé, appartement cosy avec magnifique vue.", monthly_price: 783, visible: true, rented: false, name: "Haddad House", number_of_rooms: 2, number_of_bedrooms: 1, surface: 23, floor: 5, elevator: true, balcony: false, cellar: true, parking: false, heating_system: ["individuel", "électrique"], furnished: false)
 attach_photo_flat("https://images.unsplash.com/photo-1471623320832-752e8bbf8413?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60", roxane_flat)
 attach_photo_flat("https://images.unsplash.com/photo-1529408632839-a54952c491e5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60", roxane_flat)
 roxane_flat.save
