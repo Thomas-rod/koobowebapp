@@ -3,8 +3,8 @@
     <%= render partial: 'shared/dashboard', locals: { flats: @flats, schedules: @schedules, documents: @documents} %>
     <div style=" width:100%;">
       <%= render partial: 'shared/navbar_dashboard', locals: { page_title: 'Appartements'}%>
-      <div class="container">
-        <div class="container index-container mt-5 mb-5">
+      <div class="container ">
+        <div class="index-container mt-5 mb-5">
           <div class="cards cards-index" id = "index-cards">
             <% number = 0 %>
             <% @flats.each do |flat| %>

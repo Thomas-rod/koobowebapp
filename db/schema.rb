@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_25_131828) do
+ActiveRecord::Schema.define(version: 2020_02_27_163752) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,11 +59,15 @@ ActiveRecord::Schema.define(version: 2020_02_25_131828) do
     t.float "surface"
     t.integer "floor"
     t.boolean "elevator"
-    t.boolean "balcony"
-    t.boolean "cellar"
-    t.boolean "parking"
-    t.string "heating_system"
-    t.boolean "furnished"
+    t.boolean "balcony", default: false
+    t.boolean "cellar", default: false
+    t.boolean "parking", default: false
+    t.boolean "furnished", default: false
+    t.boolean "pap", default: false
+    t.boolean "leboncoin", default: false
+    t.boolean "seloger", default: false
+    t.boolean "bienici", default: false
+    t.string "heating_system", default: [], array: true
     t.index ["user_id"], name: "index_flats_on_user_id"
   end
 

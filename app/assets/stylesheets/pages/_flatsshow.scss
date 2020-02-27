@@ -1,0 +1,39 @@
+.flat-informations {
+  width: 60%;
+  margin: 10px 30px 0px 30px;
+  & h2 {
+    font-size: 24px;
+  }
+  & h4 {
+    font-size:16px;
+    padding-bottom:15px;
+    border-bottom: 1px solid $blue-lighter;
+  }
+}
+
+
+.flat-informations-left, .flat-informations-right {
+  margin: 10px 30px 0px 0px;
+}
+
+#title-description {
+  flex-grow:1;
+  margin-top: 20px;
+  margin-left:10px;
+  align-items:flex-start;
+  & h4 {
+    font-size: 20px;
+  }
+}
+
+.calendar-placeholder {
+  margin-top:15px;
+  margin-bottom: 15px;
+}
+
+#blue-visite {
+  width:30px;
+  height:20px;
+  background-color: $blue-light;
+  border-radius:5px;
+}

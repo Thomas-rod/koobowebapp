@@ -5,7 +5,7 @@
       <%= render partial: 'shared/navbar_dashboard', locals: { page_title: 'Appartements'}%>
       <div class="container">
         <div class="container-new-form">
-          <%= simple_form_for @flat do |f| %>
+          <%= simple_form_for [@flat] do |f| %>
           <div class="special-form">
             <span class="form-part">Je nomme mon appartement</span><span class="form-part"><%= f.input :name, label: false, placeholder: "Titre" %></span><span class="form-part">.</span>
           </div>
@@ -30,11 +30,10 @@
           </div>
             <span class="form-part"><%= f.input :description, label: false, placeholder: "J'ai encore quelques détails à préciser..." %></span>
             <%= f.input :photos, as: :file, id: "special-photo-btn", input_html: { multiple: true } %>
-            <%= f.submit "Suivant", id: "special-form-btn" %>
+            <%= f.submit "Valider", id: "special-form-btn" %>
           <% end %>
         </div>
       </div>
     </div>
   </div>
 </div>
-

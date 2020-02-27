@@ -1,6 +1,7 @@
 
 .navbar-dashboard {
   position: sticky;
+  right:0px;
   margin: 30px auto;
   display:flex;
   justify-content:space-between;
@@ -48,6 +49,9 @@
   }
 }
 
+.drodropdown-menu-dashboard {
+  border:none;
+}
 
 #bell-notification {
   margin:0px;
