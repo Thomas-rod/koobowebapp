@@ -1,4 +1,13 @@
 // Specific CSS for your home-page
+body {
+  background-color: white;
+  color: #201E50;
+}
+
+ul {
+  list-style-type: none;
+}
+
 .container-nav-home {
   display: flex;
   justify-content: space-between;
@@ -20,6 +29,7 @@
     display: inline-block;
     color: #000;
     text-decoration: none;
+    margin-right: 15px;
 }
 
 .nav-link::after {
@@ -78,11 +88,88 @@
   }
 }
 
-// .two-element-left {
-//   float: left;
-// }
+.two-element-right img {
+  max-height: 320px;
+  width: auto;
+  margin-top: 60px;
+}
 
-// .two-element-right {
-//   float: right;
 
-// }
+.two-element-left {
+  text-align: center;
+
+  & h3 {
+    padding: 15px;
+  }
+
+  & p {
+    padding: 15px;
+  }
+ .btn {
+    padding: 15px 50px;
+    background-color: #EE8572;
+    border-radius: 4px;
+    border: none;
+    margin-top: 25px
+  }
+
+  & a:hover {
+    opacity: 0.9;
+  }
+}
+
+.card-saving {
+  text-align: center;
+  border-radius: 25px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  border: none !important;
+  & h3{
+    padding: 15px;
+  }
+  & p {
+    padding: 15px;
+  }
+}
+
+.peaceful-left img {
+  max-height: 320px;
+  width: auto;
+}
+
+.peaceful-right {
+  text-align: center;
+  & h3 {
+    padding: 15px;
+  }
+  & p {
+    padding: 15px;
+  }
+   .btn {
+    padding: 15px 50px;
+    background-color: #EE8572;
+    border-radius: 4px;
+    border: none;
+    margin-top: 25px
+  }
+  & a:hover {
+    opacity: 0.9;
+  }
+}
+
+.container-data-protection {
+  margin: 40px;
+}
+
+.card-data-protection {
+  border-radius: 25px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: $blue;
+  opacity: 0.9;
+  h3 {
+
+    color: white;
+    font-weight: bold;
+  }
+}

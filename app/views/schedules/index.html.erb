@@ -7,57 +7,56 @@
 <% end %>
 <div class="dashboard-data-set" data-line="calendrier">
   <div class="d-flex">
-
     <%= render partial: 'shared/dashboard', locals: { flats: @flats, schedules: @schedules, documents: @documents} %>
-    <div>
-      <%= render 'shared/navbar_dashboard' %>
+    <div style=" width:100%;">
+      <%= render 'shared/navbar_dashboard', page_title: 'Calendrier' %>
       <div class="container schedules-container">
-              <table class = "table-schedules">
-              <thead class = "jour">
-                <tr>
-                  <th class="schedules-tht">h</th>
-                  <th class="schedules-th">lun</th>
-                  <th class="schedules-th">mar</th>
-                  <th class="schedules-th">mer</th>
-                  <th class="schedules-th">jeu</th>
-                  <th class="schedules-th">ven</th>
-                  <th class="schedules-th">sam</th>
-                  <th class="schedules-th">dim</th>
-                </tr>
-              </thead>
-              <tbody>
-                <% hour = 7 %>
-                <% 13.times do %>
-                <% hour += 1 %>
-                <% demi = "30" %>
-                <% pile = "00" %>
-                <tr>
-                  <th class= "schedule-th"> <%= hour %></th>
-                  <% day = 0 %>
-                  <% 7.times do %>
-                    <% day += 1 %>
-                    <% if current_user.schedules.select {|time| time.start == Time.new(2020, 3, day, hour, 0, 0)} != []%>
-                      <td class = "schedules-td schedules-selected"></td>
-                    <% else %>
-                      <td class = "schedules-td schedules-unselected"><%=link_to "", flat_schedules_path(current_user.flats.first, schedule: { start: Time.new(2020, 3, day, hour, 0, 0), end:Time.new(2020, 3, day, hour, 30, 0)}), method: :post, remote: true, class: "schedules-button" %></td>
-                    <% end %>
-                  <% end %>
-                </tr>
-                <tr>
-                  <th class= "schedule-th"> <%= hour %>: <%= demi %></th>
-                  <% day = 0 %>
-                  <% 7.times do %>
-                    <% day += 1 %>
-                     <% if current_user.schedules.select {|time| time.start == Time.new(2020, 3, day,hour, 30, 0)} != []%>
-                        <td class = "schedules-td schedules-selected"></td>
-                     <% else %>
-                        <td class = "schedules-td schedules-unselected"><%=link_to "", flat_schedules_path(current_user.flats.first, schedule: { start: Time.new(2020, 3, day, hour, 30, 0), end:Time.new(2020, 3, day, (hour+1) , 0, 0)}), method: :post , class: "schedules-button" %></td>
-                      <% end %>
-                  <% end %>
-                </tr>
+        <table class = "table-schedules">
+        <thead class = "jour">
+          <tr>
+            <th class="schedules-tht">h</th>
+            <th class="schedules-th">lun</th>
+            <th class="schedules-th">mar</th>
+            <th class="schedules-th">mer</th>
+            <th class="schedules-th">jeu</th>
+            <th class="schedules-th">ven</th>
+            <th class="schedules-th">sam</th>
+            <th class="schedules-th">dim</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% hour = 7 %>
+          <% 13.times do %>
+          <% hour += 1 %>
+          <% demi = "30" %>
+          <% pile = "00" %>
+          <tr>
+            <th class= "schedule-th"> <%= hour %></th>
+            <% day = 0 %>
+            <% 7.times do %>
+              <% day += 1 %>
+              <% if current_user.schedules.select {|time| time.start == Time.new(2020, 3, day, hour, 0, 0)} != []%>
+                <td class = "schedules-td schedules-selected"></td>
+              <% else %>
+                <td class = "schedules-td schedules-unselected"><%=link_to "", flat_schedules_path(current_user.flats.first, schedule: { start: Time.new(2020, 3, day, hour, 0, 0), end:Time.new(2020, 3, day, hour, 30, 0)}), method: :post, remote: true, class: "schedules-button" %></td>
+              <% end %>
+            <% end %>
+          </tr>
+          <tr>
+            <th class= "schedule-th"> <%= hour %>: <%= demi %></th>
+            <% day = 0 %>
+            <% 7.times do %>
+              <% day += 1 %>
+               <% if current_user.schedules.select {|time| time.start == Time.new(2020, 3, day,hour, 30, 0)} != []%>
+                  <td class = "schedules-td schedules-selected"></td>
+               <% else %>
+                  <td class = "schedules-td schedules-unselected"><%=link_to "", flat_schedules_path(current_user.flats.first, schedule: { start: Time.new(2020, 3, day, hour, 30, 0), end:Time.new(2020, 3, day, (hour+1) , 0, 0)}), method: :post , class: "schedules-button" %></td>
                 <% end %>
-              </tbody>
-            </table>
+            <% end %>
+          </tr>
+          <% end %>
+        </tbody>
+       </table>
       </div>
     </div>
   </div>

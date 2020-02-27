@@ -1,47 +1,58 @@
+.container-new-form {
+  padding-left: 80px;
+}
 .special-form {
   display: flex;
   margin-bottom: 8px;
 }
-
 .form-part {
   padding-right: 5px;
   & input {
     height: 28px;
     width: 200px;
-    border: 1px solid #aaa;
-    border-radius: 4px;
+    border: 0.5px solid #EE8572;
+    border-radius: 10px;
+  }
+  & textarea {
+    border: 0.5px solid #EE8572;
+    border-radius: 10px;
   }
 }
-
 #heating {
   margin-top: 7px;
 }
-
 #special-radio {
   margin-top: 8px;
 }
-
 .select2-selection.select2-selection--multiple {
   width: 200px;
+  border-radius: 15px !important;
+  border: 0.5px solid #EE8572 !important;
 }
-
 .select2-dropdown.select2-dropdown--below {
   width: 200px !important;
 }
-
 .radio-part {
   margin-right: 75px;
 }
-
 .form-check input {
   vertical-align: middle;
 }
-
 .form-check label {
   vertical-align: middle;
   margin-top: 5px;
 }
-
 .select2-search__field {
   width: 200px !important;
 }
+
+#special-form-btn {
+  padding: 15px 30px;
+  background-color: #EE8572;
+  border-radius: 4px;
+  border: none;
+  margin-top: 10px;
+  margin-left: 250px;
+  color: white;
+}
+

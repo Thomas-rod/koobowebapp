@@ -1,5 +1,5 @@
 .banner {
-  height: 70vh;
+  height: 60vh;
   border-radius: 25px;
   display: flex;
   justify-content: space-around;
@@ -8,6 +8,9 @@
   background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.1));
   background-size: cover;
   background-position: center;
+  img {
+  position: absolute;
+  }
   h1 {
     color: white;
     font-weight: bold;

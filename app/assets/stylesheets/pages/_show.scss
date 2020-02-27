@@ -1,0 +1,47 @@
+.carousel-inner {
+  width: 700px !important;
+}
+
+.switch-input {
+  height: 0;
+  width: 0;
+  visibility: hidden;
+}
+
+.switch-label {
+  cursor: pointer;
+  text-indent: -9999px;
+  width: 50px;
+  height: 25px;
+  background: #EE8572;
+  display: block;
+  border-radius: 100px;
+  position: relative;
+}
+
+.switch-label:after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 22px;
+  height: 22px;
+  background: #fff;
+  border-radius: 90px;
+  transition: 0.3s;
+}
+
+.switch-input:checked + .switch-label {
+  background: #201E50;
+}
+
+.switch-input:checked + .switch-label:after {
+  left: calc(100% - 5px);
+  transform: translateX(-100%);
+}
+
+.switch-label:active:after {
+  width: 32px;
+}
+
+
