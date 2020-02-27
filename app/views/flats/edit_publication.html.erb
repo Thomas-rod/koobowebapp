@@ -9,6 +9,7 @@
         <h6><%= @flat.description %></h6>
         <p>Charmant appartement situé au <%= @flat.floor %> er/ème étage de l'immeuble situé <%= @flat.address %>.</p>
         <p>L'appartement mesure <%= @flat.surface.round %> m² et est composé de <%= @flat.number_of_rooms %> pièce(s) dont <%= @flat.number_of_bedrooms %> chambre(s).</p>
+        <p>Le chauffage est <%=  @flat.heating_system[0] %> et  <%=  @flat.heating_system[1] %> </p>
         <% if @flat.furnished %>
            <p> Il est meublé
          <% else %>

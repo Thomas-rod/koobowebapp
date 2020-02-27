@@ -19,14 +19,14 @@ class FlatsController < ApplicationController
     @flat = Flat.new(flat_params)
     @flat.user = current_user
       if @flat.save
-        redirect_to edit_publication_path
+        redirect_to edit_publication_path(@flat)
       else
         render :new
       end
   end
 
   def edit_publication
-    @flat = Flat.find(params[:id])
+    @flat = Flat.last
   end
 
   def edit
