@@ -5,7 +5,17 @@ a {
   }
 }
 
+p {
+  margin: 0px;
+}
+
 ul {
   margin:0px;
   padding:0px;
+  list-style-type: none;
+}
+
+body {
+  background-color: white;
+  color: #201E50;
 }

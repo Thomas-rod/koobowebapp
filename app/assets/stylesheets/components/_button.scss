@@ -1,1 +1,13 @@
 
+.koobo-button {
+  padding: 7px 10px;
+  background-color: $coral-light;
+  border-radius: 5px;
+  color:white;
+  font-size:15px;
+  font-weight: bold;
+  border: none;
+  &:hover {
+    background-color: $coral;
+  }
+}
