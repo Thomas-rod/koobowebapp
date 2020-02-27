@@ -1,0 +1,8 @@
+<div class="notification">
+  <%= cl_image_tag visit.user.photo.key, class: "notif-avatar" %>
+  <div class="notification-content">
+
+    <p><small><%= time_ago_in_words visit.created_at %></small></p>
+    <p>Vous avez une demande de visite en attente</p>
+  </div>
+</div>
