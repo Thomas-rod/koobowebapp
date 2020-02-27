@@ -10,53 +10,102 @@
     <%= render partial: 'shared/dashboard', locals: { flats: @flats, schedules: @schedules, documents: @documents} %>
     <div style=" width:100%;">
       <%= render 'shared/navbar_dashboard', page_title: 'Calendrier' %>
-      <div class="container schedules-container">
-        <table class = "table-schedules">
-        <thead class = "jour">
-          <tr>
-            <th class="schedules-tht">h</th>
-            <th class="schedules-th">lun</th>
-            <th class="schedules-th">mar</th>
-            <th class="schedules-th">mer</th>
-            <th class="schedules-th">jeu</th>
-            <th class="schedules-th">ven</th>
-            <th class="schedules-th">sam</th>
-            <th class="schedules-th">dim</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% hour = 7 %>
-          <% 13.times do %>
-          <% hour += 1 %>
-          <% demi = "30" %>
-          <% pile = "00" %>
-          <tr>
-            <th class= "schedule-th"> <%= hour %></th>
-            <% day = 0 %>
-            <% 7.times do %>
-              <% day += 1 %>
-              <% if current_user.schedules.select {|time| time.start == Time.new(2020, 3, day, hour, 0, 0)} != []%>
-                <td class = "schedules-td schedules-selected"></td>
-              <% else %>
-                <td class = "schedules-td schedules-unselected"><%=link_to "", flat_schedules_path(current_user.flats.first, schedule: { start: Time.new(2020, 3, day, hour, 0, 0), end:Time.new(2020, 3, day, hour, 30, 0)}), method: :post, remote: true, class: "schedules-button" %></td>
-              <% end %>
-            <% end %>
-          </tr>
-          <tr>
-            <th class= "schedule-th"> <%= hour %>: <%= demi %></th>
-            <% day = 0 %>
-            <% 7.times do %>
-              <% day += 1 %>
-               <% if current_user.schedules.select {|time| time.start == Time.new(2020, 3, day,hour, 30, 0)} != []%>
-                  <td class = "schedules-td schedules-selected"></td>
-               <% else %>
-                  <td class = "schedules-td schedules-unselected"><%=link_to "", flat_schedules_path(current_user.flats.first, schedule: { start: Time.new(2020, 3, day, hour, 30, 0), end:Time.new(2020, 3, day, (hour+1) , 0, 0)}), method: :post , class: "schedules-button" %></td>
+      <div class="container">
+        <div class="row">
+        <div class="container schedules-container col-sm-8 .col-md-8">
+          <table class = "table-schedules">
+          <thead class = "jour">
+            <tr>
+              <th class="schedules-tht">h</th>
+              <th class="schedules-th">lun</th>
+              <th class="schedules-th">mar</th>
+              <th class="schedules-th">mer</th>
+              <th class="schedules-th">jeu</th>
+              <th class="schedules-th">ven</th>
+              <th class="schedules-th">sam</th>
+              <th class="schedules-th">dim</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% hour = 7 %>
+            <% 13.times do %>
+            <% hour += 1 %>
+            <% demi = "30" %>
+            <% pile = "00" %>
+            <tr>
+              <th class= "schedule-th"> <%= hour %></th>
+              <% day = 0 %>
+              <% 7.times do %>
+                <% day += 1 %>
+                <% scheduled = current_user.schedules.select {|time| time.start == Time.new(2020, 3, day, hour, 0, 0)} %>
+                <% if scheduled != []%>
+                  <td class = "schedules-td schedules-selected" data-schedule = "scheduled<%= scheduled[0].id %> "></td>
+                <% else %>
+                  <td class = "schedules-td schedules-unselected"><%=link_to "", flat_schedules_path(current_user.flats.first, schedule: { start: Time.new(2020, 3, day, hour, 0, 0), end:Time.new(2020, 3, day, hour, 30, 0)}), method: :post, remote: true, class: "schedules-button" %></td>
                 <% end %>
+              <% end %>
+            </tr>
+            <tr>
+              <th class= "schedule-th"> <%= hour %>: <%= demi %></th>
+              <% day = 0 %>
+              <% 7.times do %>
+                <% day += 1 %>
+                <% scheduled = current_user.schedules.select {|time| time.start == Time.new(2020, 3, day,hour, 30, 0)} %>
+                 <% if scheduled != []%>
+                    <td class = "schedules-td schedules-selected" data-schedule = "scheduled<%= scheduled[0].id %> "></td>
+                 <% else %>
+                    <td class = "schedules-td schedules-unselected"><%=link_to "", flat_schedules_path(current_user.flats.first, schedule: { start: Time.new(2020, 3, day, hour, 30, 0), end:Time.new(2020, 3, day, (hour+1) , 0, 0)}), method: :post , class: "schedules-button" %></td>
+                  <% end %>
+              <% end %>
+            </tr>
             <% end %>
-          </tr>
+          </tbody>
+         </table>
+        </div>
+        <div class="container col-4 .col-md-4">
+        <% number = 0 %>
+        <% current_user.schedules.each do |schedule| %>
+        <% number += 1 %>
+          <div class="card-trip card-trip-schedules d-none" id="scheduled<%= schedule.id %>" >
+            <div id="carouselExampleIndicators<%= number %>" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                  <li data-target="#carouselExampleIndicators<%= number %>" data-slide-to="0" class="active"></li>
+                  <li data-target="#carouselExampleIndicators<%= number %>" data-slide-to="1"></li>
+                  <li data-target="#carouselExampleIndicators<%= number %>" data-slide-to="2"></li>
+                </ol>
+                  <div class="carousel-inner">
+                    <div class="carousel-item active">
+                      <%= cl_image_tag schedule.flat.photos[0].key, class: "d-block w-100 image"%>
+                    </div>
+                    <% schedule.flat.photos[1..schedule.flat.photos.count].each do |photo| %>
+                      <div class="carousel-item ">
+                        <%= cl_image_tag photo.key, class: "d-block w-100 image" %>
+                      </div>
+                    <% end %>
+                  </div>
+                    <a class="carousel-control-prev" href="#carouselExampleIndicators<%= number %>" role="button" data-slide="prev">
+                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                      <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleIndicators<%= number %>" role="button" data-slide="next">
+                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                      <span class="sr-only">Next</span>
+                    </a>
+              </div>
+              <div class = "info-flat">
+                <h2><%= schedule.flat.name %></h2>
+                <p>Vous avez un rdv demain a N h</p>
+              </div>
+            <div class="card-trip-infos info-schedules">
+              <div>
+              </div>
+              <h2 class="card-trip-pricing"> <%= schedule.flat.monthly_price.round %>€ / month</h2>
+            </div>
+          </div>
           <% end %>
-        </tbody>
-       </table>
+        </div>
+
+        </div>
       </div>
     </div>
   </div>

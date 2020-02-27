@@ -57,22 +57,21 @@ attach_photo_flat("https://images.unsplash.com/photo-1451153378752-16ef2b36ad05?
 mao_flat.save
 
 
-puts "#{Flat.count} flats have been created"
+puts "#{roxane.flats.count} flats have been created"
 puts "Now we creating 4 Shedules by flats"
 puts "........."
- roxane.flats.each do |flat|
-  Schedule.create!(start:Time.new(2020, 3, 2, 8, 0, 0),end:Time.new(2020, 3, 2, 8, 30, 0),flat_id:flat.id)
-  Schedule.create!(start:Time.new(2020, 3, 2, 8, 30, 0),end:Time.new(2020, 3, 2, 9, 0, 0),flat_id:flat.id)
-  Schedule.create!(start:Time.new(2020, 3, 3, 9, 0, 0),end:Time.new(2020, 3, 3, 9, 30, 0),flat_id:flat.id)
-  Schedule.create!(start:Time.new(2020, 3, 4, 9, 30, 0),end:Time.new(2020, 3, 4, 10, 0, 0),flat_id:flat.id)
-end
 
- john.flats.each do |flat|
-  Schedule.create!(start:Time.new(2020, 3, 2, 13, 0, 0),end:Time.new(2020, 3, 2, 13, 30, 0),flat_id:flat.id)
-  Schedule.create!(start:Time.new(2020, 3, 2, 13, 30, 0),end:Time.new(2020, 3, 2, 14, 0, 0),flat_id:flat.id)
-  Schedule.create!(start:Time.new(2020, 3, 2, 14, 0, 0),end:Time.new(2020, 3, 2, 14, 30, 0),flat_id:flat.id)
-  Schedule.create!(start:Time.new(2020, 3, 2, 14, 30, 0),end:Time.new(2020, 3, 2, 15, 0, 0),flat_id:flat.id)
-end
+  Schedule.create!(start:Time.new(2020, 3, 2, 8, 0, 0),end:Time.new(2020, 3, 2, 8, 30, 0),flat_id:roxane.flats.first.id)
+  Schedule.create!(start:Time.new(2020, 3, 2, 8, 30, 0),end:Time.new(2020, 3, 2, 9, 0, 0),flat_id:roxane.flats.first.id)
+  Schedule.create!(start:Time.new(2020, 3, 3, 9, 0, 0),end:Time.new(2020, 3, 3, 9, 30, 0),flat_id:roxane.flats.first.id)
+  Schedule.create!(start:Time.new(2020, 3, 4, 9, 30, 0),end:Time.new(2020, 3, 4, 10, 0, 0),flat_id:roxane.flats.first.id)
+
+
+  Schedule.create!(start:Time.new(2020, 3, 2, 13, 0, 0),end:Time.new(2020, 3, 2, 13, 30, 0),flat_id:roxane.flats.last.id)
+  Schedule.create!(start:Time.new(2020, 3, 2, 13, 30, 0),end:Time.new(2020, 3, 2, 14, 0, 0),flat_id:roxane.flats.last.id)
+  Schedule.create!(start:Time.new(2020, 3, 2, 14, 0, 0),end:Time.new(2020, 3, 2, 14, 30, 0),flat_id:roxane.flats.last.id)
+  Schedule.create!(start:Time.new(2020, 3, 2, 14, 30, 0),end:Time.new(2020, 3, 2, 15, 0, 0),flat_id:roxane.flats.last.id)
+
  thomas.flats.each do |flat|
   Schedule.create!(start:Time.new(2020, 3, 2, 7, 0, 0),end:Time.new(2020, 3, 2, 7, 30, 0),flat_id:flat.id)
   Schedule.create!(start:Time.new(2020, 3, 2, 8, 30, 0),end:Time.new(2020, 3, 2, 9, 0, 0),flat_id:flat.id)
