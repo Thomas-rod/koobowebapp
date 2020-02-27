@@ -1,0 +1,22 @@
+<div class="dashboard-data-set" data-line="appartements">
+  <div class="d-flex">
+    <%= render partial: 'shared/dashboard', locals: { flats: @flats, schedules: @schedules, documents: @documents} %>
+    <div style=" width:100%;">
+      <%= render partial: 'shared/navbar_dashboard', locals: { page_title: 'Appartements'}%>
+      <div class="container">
+        <h3>Récapitulatif de votre annonce</h3>
+        <h5><%= @flat.name %></h5>
+        <h6><%= @flat.description %></h6>
+        <p>Charmant appartement situé au <%= @flat.floor %> er/ème étage de l'immeuble situé <%= @flat.address %>.</p>
+        <p>L'appartement mesure <%= @flat.surface.round %> m² et est composé de <%= @flat.number_of_rooms %> pièce(s) dont <%= @flat.number_of_bedrooms %> chambre(s).</p>
+        <div class="container-new-form">
+          <%= simple_form_for @flat do |f| %>
+          <div class="special-form" id="special-radio">
+              <span class="form-part radio-part"><%= f.input :leboncoin, label: "Le Bon Coin", as: :boolean %></span><span class="form-part radio-part"><%= f.input :bienici, label: "Bien Ici", collection: ["Oui", "Non"], as: :boolean %></span><span class="form-part radio-part"><%= f.input :seloger, label: "Se Loger", collection: ["Oui", "Non"], as: :boolean %></span><span class="form-part radio-part"><%= f.input :pap, label: "PAP, Particulier à Particulier", collection: ["Oui", "Non"], as: :boolean %></span>
+          </div>
+          <%= f.submit "Valider", id: "special-form-btn" %>
+          <% end %>
+      </div>
+    </div>
+  </div>
+</div>
