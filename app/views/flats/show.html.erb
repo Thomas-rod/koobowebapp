@@ -69,6 +69,7 @@
                 </ul>
               </div>
             <% else %>
+              <div id="coral-visite">Locataire</div>
               <% if @flat.rentings&.last&.user&.photo&.attached?  %>
                 <%= cl_image_tag @flat.rentings.last.user.photo.key, class: 'avatar-extra-large' %>
               <% else %>

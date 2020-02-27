@@ -18,6 +18,7 @@
                 </ol>
                   <div class="carousel-inner">
                     <div class="carousel-item active">
+
                       <%= cl_image_tag flat.photos[0].key, class: "d-block w-100 image"%>
                     </div>
                     <% flat.photos[1..flat.photos.count].each do |photo| %>
@@ -37,6 +38,15 @@
               </div>
                 <div class="card-trip-infos">
                   <div>
+                      <% if flat.rentings.last.nil? %>
+                        <div id="coral-visite-not-rented">
+                          En cours
+                        </div>
+                      <% else %>
+                        <div id="coral-visite-rented">
+                          Loué
+                        </div>
+                      <% end %>
                     <h2><%= link_to flat.name, flat_path(flat) %></h2>
                     <p><%= flat.address %> </p>
                   </div>
