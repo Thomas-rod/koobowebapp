@@ -3,8 +3,34 @@
     <%= render partial: 'shared/dashboard', locals: { flats: @flats, schedules: @schedules, documents: @documents} %>
     <div style=" width:100%;">
       <%= render partial: 'shared/navbar_dashboard', locals: { page_title: 'Appartements'}%>
-      <div class="container">
-        <h3>Récapitulatif de votre annonce</h3>
+      <div class="container my-container">
+        <h3 id="titre-recap">Récapitulatif de votre annonce</h3>
+        <% if @flat.photos.attached? %>
+          <div class="card-flat">
+            <div class="card-trip" id="my-carousel">
+              <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <%= cl_image_tag @flat.photos[0].key, class: "d-block w-100 image", style: "height: 300px"%>
+                  </div>
+                  <% @flat.photos[1..@flat.photos.count].each do |photo| %>
+                    <div class="carousel-item ">
+                      <%= cl_image_tag photo.key, class: "d-block w-100 image", style: "height: 300px"%>
+                    </div>
+                  <% end %>
+                  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                  </a>
+                  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
         <h5><%= @flat.name %> - <%= @flat.surface.round %> m² - <%= @flat.monthly_price.round %> €/mois</h5>
         <h6><%= @flat.description %></h6>
         <p>Charmant appartement situé au <%= @flat.floor %> er/ème étage de l'immeuble situé <%= @flat.address %>.</p>
