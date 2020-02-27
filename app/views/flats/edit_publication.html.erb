@@ -35,7 +35,7 @@
           </ul>
          <a href="#" id= "lien-visite"><em>Visiter cet appartement</em></a>
         <div class="container-new-form">
-          <%= simple_form_for @flat do |f| %>
+          <%= simple_form_for @flat, url: update_publication_path(@flat), method: :patch do |f| %>
           <div class="special-form" id="special-radio">
               <span class="form-part radio-part"><%= f.input :leboncoin, label: "Le Bon Coin", as: :boolean %></span><span class="form-part radio-part"><%= f.input :bienici, label: "Bien Ici", collection: ["Oui", "Non"], as: :boolean %></span><span class="form-part radio-part"><%= f.input :seloger, label: "Se Loger", collection: ["Oui", "Non"], as: :boolean %></span><span class="form-part radio-part"><%= f.input :pap, label: "PAP, Particulier à Particulier", collection: ["Oui", "Non"], as: :boolean %></span>
           </div>
