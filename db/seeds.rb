@@ -17,6 +17,7 @@ puts "cleaning user, Flats, shedules"
 User.destroy_all
 Flat.destroy_all
 Schedule.destroy_all
+Renting.destroy_all
 puts "table flats shedules user have been deleted"
 
 def attach_photo_user(string, user)
@@ -44,7 +45,7 @@ attach_photo_user("https://avatars1.githubusercontent.com/u/56120487?v=4", mao)
 mao.save
 puts "#{User.count} users have beeen created"
 
-# puts "Flats seeding..."
+puts "Flats seeding..."
 # num = roxane.id - 1
 # 4.times do
 #   num += 1
@@ -53,17 +54,15 @@ puts "#{User.count} users have beeen created"
 #   monthly_price = Faker::Number.within(range: 500..1500)
 #   Flat.create!(address: address, description: description, monthly_price: monthly_price.to_i, user_id: num)
 # end
-
-roxane_flat = Flat.new(user: roxane, address: "4 rue des Prêtres Saint-Séverin, 75005, Paris", description: "Quartier central et animé, appartement cosy avec magnifique vue.", monthly_price: 783, visible: true, rented: false, name: "Haddad House", number_of_rooms: 2, number_of_bedrooms: 1, surface: 23, floor: 5, elevator: true, balcony: false, cellar: true, parking: false, heating_system: ["individuel", "électrique"], furnished: false)
+roxane_flat = Flat.create!(user: roxane, address: "4 rue des Prêtres Saint-Séverin, 75005, Paris", description: "Quartier central et animé, appartement cosy avec magnifique vue.", monthly_price: 783, visible: true, rented: false, name: "Haddad House", number_of_rooms: 2, number_of_bedrooms: 1, surface: 23, floor: 5, elevator: true, balcony: false, cellar: true, parking: false, heating_system: ["", "individuel", "électrique"], furnished: false)
 attach_photo_flat("https://images.unsplash.com/photo-1471623320832-752e8bbf8413?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60", roxane_flat)
 attach_photo_flat("https://images.unsplash.com/photo-1529408632839-a54952c491e5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60", roxane_flat)
 roxane_flat.save
-mao_flat = Flat.new(user: mao, address: "12 rue Madeleine Laffitte, 93100, Montreuil", description: "Superbe pavillon, parfait pour une famille aimant cuisiner.", monthly_price: 2200, visible: true, rented: false, name: "Diop House", number_of_rooms: 7, number_of_bedrooms: 5, surface: 80, floor: 3, elevator: false, balcony: true, cellar: true, parking: true, heating_system: ["collectif", "gaz"], furnished: false)
+mao_flat = Flat.create!(user: mao, address: "12 rue Madeleine Laffitte, 93100, Montreuil", description: "Superbe pavillon, parfait pour une famille aimant cuisiner.", monthly_price: 2200, visible: true, rented: false, name: "Diop House", number_of_rooms: 7, number_of_bedrooms: 5, surface: 80, floor: 3, elevator: false, balcony: true, cellar: true, parking: true, heating_system: ["", "collectif", "gaz"], furnished: false)
 attach_photo_flat("https://images.unsplash.com/photo-1464890100898-a385f744067f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60", mao_flat)
 attach_photo_flat("https://images.unsplash.com/photo-1451153378752-16ef2b36ad05?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60", mao_flat)
 mao_flat.save
 
-renting_mao_roxane = Renting.create!(flat: roxane_flat, user: mao)
 
 puts "#{Flat.count} flats have been created"
 puts "Now we creating 4 Shedules by flats"
@@ -93,6 +92,8 @@ end
   Schedule.create!(start:Time.new(2020, 3, 2, 18, 0, 0),end:Time.new(2020, 3, 2, 18, 30, 0),flat_id:flat.id)
   Schedule.create!(start:Time.new(2020, 3, 2, 18, 30, 0),end:Time.new(2020, 3, 2, 19, 0, 0),flat_id:flat.id)
 end
+
+renting_mao_roxane = Renting.create!(flat: roxane_flat, user: mao)
 
 puts "you have now 4 schedules by flats "
 puts "total schedules = #{Schedule.count}"
