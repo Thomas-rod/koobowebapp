@@ -13,6 +13,7 @@
       <div class="container">
         <div class="row">
         <div class="container schedules-container col-sm-8 .col-md-8">
+          <p class="mb-2">Semaine du 03/03 au 09/03</p>
           <table class = "table-schedules">
           <thead class = "jour">
             <tr>
@@ -34,7 +35,7 @@
             <% pile = "00" %>
             <tr>
               <th class= "schedule-th"> <%= hour %></th>
-              <% day = 0 %>
+              <% day = 2 %>
               <% 7.times do %>
                 <% day += 1 %>
                 <% scheduled = current_user.schedules.select {|time| time.start == Time.new(2020, 3, day, hour, 0, 0)} %>
@@ -63,7 +64,7 @@
          </table>
         </div>
         <div class="container col-4 .col-md-4">
-        <% number = 0 %>
+        <% number = 2 %>
         <% current_user.schedules.each do |schedule| %>
         <% number += 1 %>
           <div class="card-trip card-trip-schedules d-none" id="scheduled<%= schedule.id %>" >
@@ -103,6 +104,18 @@
             </div>
           </div>
           <% end %>
+          <div class="card-trip product-flat p-3 d-none" id ="test">
+            <h2 class="p-3"> Choisissez l'appartement a booker </h2>
+          <% @flats.each do |flat| %>
+          <div class="card-product mt-3">
+            <%= cl_image_tag flat.photos[0].key%>
+            <div class="card-product-infos">
+              <h2><%= link_to flat.name, flat_path(flat) %></h2>
+              <p><%=flat.monthly_price.round %>€</p>
+            </div>
+          </div>
+          <% end %>
+          </div>
         </div>
 
         </div>

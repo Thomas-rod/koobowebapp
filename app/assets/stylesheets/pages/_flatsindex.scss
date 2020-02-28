@@ -3,13 +3,22 @@
 }
 
 .card-trip.card-trip-index {
-  margin-bottom: 20px;
   width: 450px;
-  margin-right: 20px;
+  max-width: 341px;
 }
 
-#index-cards {
+.card-category {
+  text-align: center;
+  margin: 0 auto;
   display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.fa-flat {
+  color: grey;
+  font-size: 70px;
+
 }
 
 #coral-visite-rented {
