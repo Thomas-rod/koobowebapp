@@ -77,13 +77,15 @@
           <li>Cave</li>
         <% end %>
           </ul>
-        <div class="container-new-form">
+        <div class="container-new-form-platforms">
           <%= simple_form_for @flat, url: update_publication_path(@flat), method: :patch do |f| %>
           <div class="special-form" id="special-radio">
               <span class="form-part radio-part"><%= f.input :leboncoin, label: "Le Bon Coin", as: :boolean %></span><span class="form-part radio-part"><%= f.input :bienici, label: "Bien Ici", collection: ["Oui", "Non"], as: :boolean %></span><span class="form-part radio-part"><%= f.input :seloger, label: "Se Loger", collection: ["Oui", "Non"], as: :boolean %></span><span class="form-part radio-part"><%= f.input :pap, label: "PAP, Particulier à Particulier", collection: ["Oui", "Non"], as: :boolean %></span>
           </div>
-          <%= link_to "Modifier l'annonce", edit_flat_path, id: "edit-pub-btn" %>
-          <%= f.submit "Valider l'annonce", id: "edit-pub-btn" %>
+          <div class="my-form-buttons">
+            <%= link_to "Modifier l'annonce", edit_flat_path, class: "edit-pub-btn" %>
+            <%= f.submit "Valider l'annonce", class: "edit-pub-btn", id: "edit-pub-btn-validate" %>
+          </div>
           <% end %>
       </div>
     </div>
