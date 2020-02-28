@@ -1,13 +1,3 @@
-<!-- <div class="container">
-<%= simple_form_for [@flat, @schedule] do |f| %>
-      <%= f.input :start, label: "heure de debut", as: :string, required: false, input_html: {class: "datepicker"} %>
-      <%= f.input :end, label: "heure de fin", as: :string, required: false, input_html: {class: "datepicker"} %>
-      <%= f.button :submit, "creer un creneau", class: "btn btn-primary" %>
-      <% end %>
-</div>
-
- -->
-
 <div class="dashboard-data-set" data-line="appartements">
   <div class="d-flex">
     <%= render partial: 'shared/dashboard', locals: { flats: @flats, schedules: @schedules, documents: @documents} %>
@@ -41,39 +31,84 @@
           </div>
         <% end %>
         <div class="card-locataire">
-          <button class="koobo-button">Voir description</button>
           <div class="container">
             <% if @flat.rentings&.last&.user.nil? %>
-              <h3>Votre annonce est sur</h3>
-              <ul>
-                <li> PAP : <%= @flat.pap %> </li>
-                <li> Leboncoin :<%= @flat.leboncoin %></li>
-                <li> Seloger : <%= @flat.seloger %></li>
-                <li> Bienici : <%= @flat.bienici%></li>
-              </ul>
+              <h3>Où est votre annonce</h3>
+              <div class="center-card-locataire">
+                <ul>
+                  <div class="card-locataire-inside">
+                    <li> PAP </li>
+                    <li>
+                      <% if @flat.pap == true %>
+                        <i class="fas fa-check-square"></i>
+                      <% else %>
+                        <i class="fas fa-times-circle"></i>
+                      <% end %>
+                      </li>
+                  </div>
+                  <div class="card-locataire-inside">
+                    <li> Leboncoin </li>
+                    <li>
+                      <% if @flat.leboncoin == true %>
+                        <i class="fas fa-check-square"></i>
+                          <%= @flat.leboncoin %>
+                        <% else %>
+                          <i class="fas fa-times-circle"></i>
+                      <% end %>
+                      </li>
+                  </div>
+                  <div class="card-locataire-inside">
+                    <li> Seloger </li>
+                    <li>
+                      <% if @flat.seloger == true %>
+                        <i class="fas fa-check-square"></i>
+                      <% else %>
+                        <i class="fas fa-times-circle"></i>
+                      <% end %>
+                    </li>
+                  </div>
+                  <div class="card-locataire-inside">
+                    <li> Bienici </li>
+                    <li>
+                      <% if @flat.bienici == true %>
+                        <i class="fas fa-check-square"></i>
+                      <% else %>
+                        <i class="fas fa-times-circle"></i>
+                      <% end %>
+                    </li>
+                  </div>
+                  <div class="card-locataire-inside mt-4">
+                    <%= link_to "Modifier", edit_flat_path(@flat), class: 'koobo-button' %>
+                    <%= link_to "Supprimer", '#', class: 'koobo-button' %>
+                  </div>
+                </ul>
+              </div>
             <% else %>
+              <div id="coral-visite">Locataire</div>
               <% if @flat.rentings&.last&.user&.photo&.attached?  %>
                 <%= cl_image_tag @flat.rentings.last.user.photo.key, class: 'avatar-extra-large' %>
               <% else %>
                 <%= image_tag ("avatar.png"), class: "avatar-extra-large" %>
               <% end %>
               <h3><%= @flat.rentings.last.user.first_name %><%= @flat.rentings.last.user.last_name %></h3>
-              <ul>
-                <li>
-                  <p>Locataire depuis <%= ((Time.now - @flat.rentings.last.created_at) / 86400).to_i %> jours</p>
-                </li>
-                <li>
-                  <p>Tél : <%= @flat.rentings.last.user.phone_number %></p>
-                </li>
-                <li>
-                  <p>Mail : <%= @flat.rentings.last.user.email %></p>
-                </li>
-              </ul>
+              <div class="center-card-locataire">
+                <ul>
+                  <li>
+                    <p>Locataire depuis <%= ((Time.now - @flat.rentings.last.created_at) / 86400).to_i %> jours</p>
+                  </li>
+                  <li>
+                    <p>Tél : <%= @flat.rentings.last.user.phone_number %></p>
+                  </li>
+                  <li>
+                    <p>Mail : <%= @flat.rentings.last.user.email %></p>
+                  </li>
+                </ul>
+              </div>
             <% end %>
           </div>
         </div>
       </div>
-      <div class="container d-flex justify-content-between">
+      <div class=" d-flex justify-content-between">
         <div class="flat-informations">
           <div class="d-flex justify-content-between align-items-center">
             <h2><%= @flat.name %></h2>
@@ -86,7 +121,7 @@
               <div id="blue-visite" class="ml-3"></div>
             </div>
 
-            <div class="container schedules-container">
+            <div class="container schedules-container-show">
               <table class = "table-schedules">
               <thead class = "jour">
                 <tr>
@@ -163,6 +198,7 @@
                   <% end %>
                 </p>
               </div>
+              <%# raise %>
               <div class="flat-informations-right">
                 <% if @flat.furnished %>
                       <p> Meublé : Oui</p>
@@ -189,10 +225,12 @@
                 <% else %>
                   <p> Balcon : Non</p>
                 <% end %>
-                <% @flat.heating_system.split(",").each do |heating| %>
-                  <p><%= heating %></p>
-                <% end %>
-                <input type="checkbox" id="switch" class="switch-input" /><label for="switch" class="switch-label">Toggle</label>
+                <p>Chauffage :
+                <% @flat.heating_system.each do |heating| %>
+                  <%= heating %>
+                  <% end %>
+                </p>
+
               </div>
           </div>
         </div>

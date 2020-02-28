@@ -33,9 +33,27 @@
         <% end %>
         <h5><%= @flat.name %> - <%= @flat.surface.round %> m² - <%= @flat.monthly_price.round %> €/mois</h5>
         <h6><%= @flat.description %></h6>
-        <p>Charmant appartement situé au <%= @flat.floor %> er/ème étage de l'immeuble situé <%= @flat.address %>.</p>
-        <p>L'appartement mesure <%= @flat.surface.round %> m² et est composé de <%= @flat.number_of_rooms %> pièce(s) dont <%= @flat.number_of_bedrooms %> chambre(s).</p>
-        <p>Le chauffage est <%=  @flat.heating_system[1] %> et  <%=  @flat.heating_system[2] %>.</p>
+        <% if @flat.floor == 1  %>
+          <p>Charmant appartement situé au <%= @flat.floor %>er étage de l'immeuble situé <%= @flat.address %>.</p>
+        <% else %>
+          <p>Charmant appartement situé au <%= @flat.floor %>ème étage de l'immeuble situé <%= @flat.address %>.</p>
+        <% end %>
+        <% if @flat.number_of_rooms == 1 %>
+          <p>L'appartement est un studio de <%= @flat.surface.round %></p>
+        <% elsif @flat.number_of_rooms != 1 && @flat.number_of_bedrooms != 1 %>
+          <p>L'appartement mesure <%= @flat.surface.round %> m² et est composé de <%= @flat.number_of_rooms %> pièces dont <%= @flat.number_of_bedrooms %> chambres.</p>
+        <% elsif @flat.number_of_rooms != 1 && @flat.number_of_bedrooms == 1 %>
+          <p>L'appartement mesure <%= @flat.surface.round %> m² et est composé de <%= @flat.number_of_rooms %> pièces dont <%= @flat.number_of_bedrooms %> chambre.</p>
+        <% end %>
+        <% if @flat.heating_system[1] == "individuel" %>
+          <p>Le chauffage est <%=  @flat.heating_system[1] %> et <%=  @flat.heating_system[2] %>.</p>
+        <% elsif @flat.heating_system[1] == "électrique" %>
+          <p>Le chauffage est <%=  @flat.heating_system[1] %> et <%=  @flat.heating_system[2] %>.</p>
+         <% elsif @flat.heating_system[1] == "central" %>
+          <p>Le chauffage est <%=  @flat.heating_system[1] %> et au <%=  @flat.heating_system[2] %>.</p>
+        <% elsif @flat.heating_system[1] == "gaz" %>
+          <p>Le chauffage est au <%=  @flat.heating_system[1] %> et <%=  @flat.heating_system[2] %>.</p>
+        <% end %>
         <% if @flat.furnished %>
            <p> Il est meublé
          <% else %>
@@ -59,14 +77,15 @@
           <li>Cave</li>
         <% end %>
           </ul>
-         <a href="#" id= "lien-visite"><em>Visiter cet appartement</em></a>
-        <div class="container-new-form">
+        <div class="container-new-form-platforms">
           <%= simple_form_for @flat, url: update_publication_path(@flat), method: :patch do |f| %>
           <div class="special-form" id="special-radio">
               <span class="form-part radio-part"><%= f.input :leboncoin, label: "Le Bon Coin", as: :boolean %></span><span class="form-part radio-part"><%= f.input :bienici, label: "Bien Ici", collection: ["Oui", "Non"], as: :boolean %></span><span class="form-part radio-part"><%= f.input :seloger, label: "Se Loger", collection: ["Oui", "Non"], as: :boolean %></span><span class="form-part radio-part"><%= f.input :pap, label: "PAP, Particulier à Particulier", collection: ["Oui", "Non"], as: :boolean %></span>
           </div>
-          <%= link_to "Modifier l'annonce", edit_flat_path, id: "edit-pub-btn" %>
-          <%= f.submit "Valider l'annonce", id: "edit-pub-btn" %>
+          <div class="my-form-buttons">
+            <%= link_to "Modifier l'annonce", edit_flat_path, class: "edit-pub-btn" %>
+            <%= f.submit "Valider l'annonce", class: "edit-pub-btn", id: "edit-pub-btn-validate" %>
+          </div>
           <% end %>
       </div>
     </div>
