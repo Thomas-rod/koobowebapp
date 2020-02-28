@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_27_163752) do
+ActiveRecord::Schema.define(version: 2020_02_28_143939) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,10 +59,10 @@ ActiveRecord::Schema.define(version: 2020_02_27_163752) do
     t.float "surface"
     t.integer "floor"
     t.boolean "elevator"
-    t.boolean "balcony", default: false
-    t.boolean "cellar", default: false
-    t.boolean "parking", default: false
-    t.boolean "furnished", default: false
+    t.boolean "balcony"
+    t.boolean "cellar"
+    t.boolean "parking"
+    t.boolean "furnished"
     t.boolean "pap", default: false
     t.boolean "leboncoin", default: false
     t.boolean "seloger", default: false
