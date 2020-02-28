@@ -31,7 +31,7 @@ class FlatsController < ApplicationController
   end
 
   def edit_publication
-    @flat = Flat.last
+    @flat = Flat.find(params[:id])
   end
 
    def update_publication
