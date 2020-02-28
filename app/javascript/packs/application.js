@@ -37,9 +37,10 @@ document.addEventListener('turbolinks:load', () => {
   initFlatpicker();
   clickElementDashboard();
   initSelect2();
+  clickableSchedule();
 });
 
 
 
-clickableSchedule();
+
 // chooseSchedule();
