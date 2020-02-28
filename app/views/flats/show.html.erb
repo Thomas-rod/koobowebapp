@@ -108,7 +108,7 @@
                 <% pile = "00" %>
                 <tr>
                   <th class= "schedule-th"> <%= hour %></th>
-                  <% day = 0 %>
+                  <% day = 2 %>
                   <% 7.times do %>
                     <% day += 1 %>
                     <% if @flat.schedules.select {|time| time.start == Time.new(2020, 3, day, hour, 0, 0)} != []%>
@@ -120,7 +120,7 @@
                 </tr>
                 <tr>
                   <th class= "schedule-th"> <%= hour %>: <%= demi %></th>
-                  <% day = 0 %>
+                  <% day = 2 %>
                   <% 7.times do %>
                     <% day += 1 %>
                      <% if @flat.schedules.select {|time| time.start == Time.new(2020, 3, day,hour, 30, 0)} != []%>
