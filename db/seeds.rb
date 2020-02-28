@@ -48,8 +48,9 @@ puts "#{User.count} users have beeen created"
 puts "Flats seeding..."
 
 roxane_flat = Flat.new(user: roxane, address: "4 rue des Prêtres Saint-Séverin, 75005, Paris", description: "Quartier central et animé, appartement cosy avec magnifique vue.", monthly_price: 783, visible: true, rented: false, name: "Haddad House", number_of_rooms: 2, number_of_bedrooms: 1, surface: 23, floor: 5, elevator: true, balcony: false, cellar: true, parking: false, heating_system: ["", "individuel", "électrique"], furnished: false)
-attach_photo_flat("https://images.unsplash.com/photo-1471623320832-752e8bbf8413?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60", roxane_flat)
-attach_photo_flat("https://images.unsplash.com/photo-1529408632839-a54952c491e5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60", roxane_flat)
+attach_photo_flat("https://images.unsplash.com/photo-1550581190-9c1c48d21d6c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60", roxane_flat)
+attach_photo_flat("https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60", roxane_flat)
+attach_photo_flat("https://images.unsplash.com/flagged/photo-1573168710465-7f7da9a23a15?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60", roxane_flat)
 roxane_flat.save
 mao_flat = Flat.new(user: mao, address: "12 rue Madeleine Laffitte, 93100, Montreuil", description: "Superbe pavillon, parfait pour une famille aimant cuisiner.", monthly_price: 2200, visible: true, rented: false, name: "Diop House", number_of_rooms: 7, number_of_bedrooms: 5, surface: 80, floor: 3, elevator: false, balcony: true, cellar: true, parking: true, heating_system: ["", "collectif", "gaz"], furnished: false)
 attach_photo_flat("https://images.unsplash.com/photo-1464890100898-a385f744067f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60", mao_flat)
