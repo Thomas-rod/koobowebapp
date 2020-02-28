@@ -85,7 +85,7 @@ end
   Schedule.create!(start:Time.new(2020, 3, 2, 18, 30, 0),end:Time.new(2020, 3, 2, 19, 0, 0),flat_id:flat.id)
 end
 
-renting_mao_roxane = Renting.create!(flat: roxane_flat, user: mao)
+renting_mao_roxane = Renting.create!(flat: roxane_flat, user: mao, created_at: 'Fri, 28 Dec 2019 14:27:32 UTC +00:00')
 
 puts "you have now 4 schedules by flats "
 puts "total schedules = #{Schedule.count}"
