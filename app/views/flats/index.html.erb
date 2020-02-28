@@ -6,6 +6,7 @@
       <div class="container ">
         <div class="index-container mt-5 mb-5">
           <div class="cards cards-index" id = "index-cards">
+
             <% number = 0 %>
             <% @flats.each do |flat| %>
               <% number += 1 %>
@@ -47,6 +48,11 @@
                 </div>
               </div>
             <% end %>
+              <div class="card-category">
+                <%= link_to new_flat_path do %>
+                <i class="fas fa-plus-circle fa-flat" title="Ajouter un appartement" ></i>
+                <% end %>
+              </div>
             </div>
           </div>
         </div>

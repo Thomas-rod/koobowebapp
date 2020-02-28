@@ -12,4 +12,20 @@ const clickableSchedule = () => {
   });
 }
 
+// const chooseSchedule = () => {
+
+//   const cases = document.querySelectorAll('.schedules-unselected')
+//   cases.forEach((casi) => {
+//     casi.addEventListener('click', (event) => {
+//       const card = document.querySelectorAll('.product-flat')
+//       document.getElementById('test').classList.remove('d-none')
+//     });
+//   });
+// }
+
+
+
+
+
 export { clickableSchedule };
+// export { chooseSchedule };

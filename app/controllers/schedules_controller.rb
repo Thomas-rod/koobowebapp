@@ -2,7 +2,7 @@ class SchedulesController < ApplicationController
 
   def index
   @schedules = Schedule.all
-  @flats = Flat.all
+  @flats = current_user.flats
   @documents = Document.all
   end
 
