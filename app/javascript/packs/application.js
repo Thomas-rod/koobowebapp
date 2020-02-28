@@ -36,9 +36,10 @@ import { clickableSchedule } from '../components/calendar';
 document.addEventListener('turbolinks:load', () => {
   initFlatpicker();
   clickElementDashboard();
+  initSelect2();
 });
 
-initSelect2();
+
 
 clickableSchedule();
 // chooseSchedule();

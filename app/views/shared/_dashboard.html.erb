@@ -1,6 +1,6 @@
 <% counter_appartement = 0 %>
-<% counter_calendrier = 1 %>
-<% counter_documents = 0 %>
+<% counter_calendrier = 0 %>
+<% counter_documents = 2 %>
 <% counter_profil = 0 %>
 
 <div id="dashboard-js">
@@ -14,7 +14,7 @@
           <p>Appartements</p>
           <% if counter_appartement == 0 %>
           <% else %>
-            <span class="notif-counter"></span>
+            <span class="notif-counter"><%= counter_appartement %></span>
           <% end %>
         <% end %>
       </div>
@@ -25,7 +25,7 @@
           <% if counter_calendrier == 0 %>
 
           <% else %>
-            <span class="notif-counter">1</span>
+            <span class="notif-counter"><%= counter_calendrier %></span>
           <% end %>
         <% end %>
       </div>
@@ -36,7 +36,7 @@
           <% if counter_documents == 0 %>
 
           <% else %>
-            <span class="notif-counter"></span>
+            <span class="notif-counter"><%= counter_documents %></span>
           <% end %>
         <% end %>
       </div>
@@ -47,7 +47,7 @@
           <% if counter_profil == 0 %>
 
           <% else %>
-            <span class="notif-counter"></span>
+            <span class="notif-counter"><%= counter_profil %></span>
           <% end %>
         </a>
       </div>

@@ -45,7 +45,11 @@
     <div class="banner">
       <div class="banner-content text-center">
         <h1>Quand les échanges entre propriétaires et locataires deviennent faciles</h1>
-        <%= link_to "Faciliter mes échanges", new_user_session_path, class: "btn btn-lg btn-primary"  %>
+          <% if user_signed_in? %>
+            <%= link_to "Faciliter mes échanges", flats_path, class: "btn btn-lg btn-primary"  %>
+          <% else %>
+            <%= link_to "Faciliter mes échanges", new_user_session_path, class: "btn btn-lg btn-primary"  %>
+          <% end %>
       </div>
     </div>
   </div>
