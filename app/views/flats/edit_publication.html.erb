@@ -33,8 +33,18 @@
         <% end %>
         <h5><%= @flat.name %> - <%= @flat.surface.round %> m² - <%= @flat.monthly_price.round %> €/mois</h5>
         <h6><%= @flat.description %></h6>
-        <p>Charmant appartement situé au <%= @flat.floor %> er/ème étage de l'immeuble situé <%= @flat.address %>.</p>
-        <p>L'appartement mesure <%= @flat.surface.round %> m² et est composé de <%= @flat.number_of_rooms %> pièce(s) dont <%= @flat.number_of_bedrooms %> chambre(s).</p>
+        <% if @flat.floor == 1  %>
+          <p>Charmant appartement situé au <%= @flat.floor %>er étage de l'immeuble situé <%= @flat.address %>.</p>
+        <% else %>
+          <p>Charmant appartement situé au <%= @flat.floor %>ème étage de l'immeuble situé <%= @flat.address %>.</p>
+        <% end %>
+        <% if @flat.number_of_rooms == 1 %>
+          <p>L'appartement est un studio de <%= @flat.surface.round %></p>
+        <% elsif @flat.number_of_rooms != 1 && @flat.number_of_bedrooms != 1 %>
+          <p>L'appartement mesure <%= @flat.surface.round %> m² et est composé de <%= @flat.number_of_rooms %> pièces dont <%= @flat.number_of_bedrooms %> chambres.</p>
+        <% elsif @flat.number_of_rooms != 1 && @flat.number_of_bedrooms == 1 %>
+          <p>L'appartement mesure <%= @flat.surface.round %> m² et est composé de <%= @flat.number_of_rooms %> pièces dont <%= @flat.number_of_bedrooms %> chambre.</p>
+        <% end %>
         <% if @flat.heating_system[1] == "individuel" %>
           <p>Le chauffage est <%=  @flat.heating_system[1] %> et <%=  @flat.heating_system[2] %>.</p>
         <% elsif @flat.heating_system[1] == "électrique" %>
