@@ -11,3 +11,27 @@
 #index-cards {
   display: flex;
 }
+
+#coral-visite-rented {
+  width:110px;
+  height:25px;
+  font-weight: bold;
+  background-color: $coral-light;
+  border-radius:5px;
+  margin:0.1px auto;
+  position: absolute;
+  top:-190px;
+  text-align:center;
+}
+
+#coral-visite-not-rented {
+  width:110px;
+  height:25px;
+  font-weight: bold;
+  background-color: $light-gray;
+  border-radius:5px;
+  margin:0.1px auto;
+  position: absolute;
+  top:-190px;
+  text-align:center;
+}
