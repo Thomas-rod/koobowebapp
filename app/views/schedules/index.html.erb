@@ -42,7 +42,7 @@
                 <% if scheduled != []%>
                   <td class = "schedules-td schedules-selected" data-schedule = "scheduled<%= scheduled[0].id %> "></td>
                 <% else %>
-                  <td class = "schedules-td schedules-unselected"><%=link_to "", flat_schedules_path(current_user.flats.first, schedule: { start: Time.new(2020, 3, day, hour, 0, 0), end:Time.new(2020, 3, day, hour, 30, 0)}), method: :post, remote: true, class: "schedules-button" %></td>
+                  <td class = "schedules-td schedules-unselected"></td>
                 <% end %>
               <% end %>
             </tr>
@@ -55,7 +55,7 @@
                  <% if scheduled != []%>
                     <td class = "schedules-td schedules-selected" data-schedule = "scheduled<%= scheduled[0].id %> "></td>
                  <% else %>
-                    <td class = "schedules-td schedules-unselected"><%=link_to "", flat_schedules_path(current_user.flats.first, schedule: { start: Time.new(2020, 3, day, hour, 30, 0), end:Time.new(2020, 3, day, (hour+1) , 0, 0)}), method: :post , class: "schedules-button" %></td>
+                    <td class = "schedules-td schedules-unselected"></td>
                   <% end %>
               <% end %>
             </tr>
@@ -95,7 +95,8 @@
               </div>
               <div class = "info-flat">
                 <h2><%= schedule.flat.name %></h2>
-                <p>Vous avez un rdv demain a N h</p>
+                <p>Cet appartement est libre pour une visite à ce crénau</p>
+                <p class = "mt-1"><%= link_to "Rajouter des crénaux pour #{schedule.flat.name}" , flat_path(schedule.flat), class: "link-schedule" %></p>
               </div>
             <div class="card-trip-infos info-schedules">
               <div>
