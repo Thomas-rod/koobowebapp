@@ -51,7 +51,6 @@
                     <li>
                       <% if @flat.leboncoin == true %>
                         <i class="fas fa-check-square"></i>
-                          <%= @flat.leboncoin %>
                         <% else %>
                           <i class="fas fa-times-circle"></i>
                       <% end %>
@@ -201,7 +200,7 @@
               <%# raise %>
               <div class="flat-informations-right">
                 <% if @flat.furnished %>
-                      <p> Meublé : Oui</p>
+                  <p> Meublé : Oui</p>
                 <% else %>
                   <p> Meublé : Non</p>
                 <% end %>

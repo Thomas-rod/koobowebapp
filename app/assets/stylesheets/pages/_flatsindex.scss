@@ -16,9 +16,11 @@
 }
 
 .fa-flat {
-  color: grey;
+  color: $coral-light;
   font-size: 70px;
-
+  &:hover {
+  color: #EE8572;
+ }
 }
 
 #coral-visite-rented {
