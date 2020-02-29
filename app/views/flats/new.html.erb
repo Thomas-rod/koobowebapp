@@ -10,7 +10,7 @@
             <span class="form-part">Je nomme mon appartement</span><span class="form-part"><%= f.input :name, label: false, placeholder: "Titre" %></span><span class="form-part">.</span>
           </div>
           <div class="special-form">
-            <span class="form-part">Il est au</span><span class="form-part"><%= f.input :floor, label: false, placeholder: "N étage" %></span><span class="form-part"> er/ème étage de l'immeuble situé</span><span class="form-part"><%= f.input :address, label: false, placeholder: "Adresse" %></span><span class="form-part">.</span>
+            <span class="form-part">Il est au</span><span class="form-part"><%= f.input :floor, label: false, placeholder: "N étage" %></span><span class="form-part"> er/ème étage de l'immeuble situé</span><span class="form-part"><%= f.input :address, label: false, id: "flat_address", placeholder: "Adresse" %></span><span class="form-part">.</span>
           </div>
           <div class="special-form">
             <span class="form-part">Je souhaite le louer pour</span><span class="form-part"><%= f.input :monthly_price, label: false, placeholder: "Loyer mensuel" %></span><span class="form-part"> €/mois.</span>

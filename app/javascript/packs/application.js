@@ -31,6 +31,7 @@ import { initFlatpicker } from '../plugins/flatpickr';
 import { initUpdateNavbarOnScroll } from '../components/navbar';
 import { clickElementDashboard } from '../components/dashboard';
 import { clickableSchedule } from '../components/calendar';
+import { initAutocomplete } from '../plugins/init_autocomplete';
 // import { chooseSchedule }from '../components/calendar';
 
 document.addEventListener('turbolinks:load', () => {
@@ -38,6 +39,7 @@ document.addEventListener('turbolinks:load', () => {
   clickElementDashboard();
   initSelect2();
   clickableSchedule();
+  initAutocomplete();
 });
 
 
