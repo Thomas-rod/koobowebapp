@@ -12,11 +12,11 @@
     height: 28px;
     width: 200px;
     border: none;
-    border-bottom: 2px dashed #EE8572;
+    border-bottom: 1px solid #EE8572;
   }
   & textarea {
     border: none;
-    border: 2px dashed #EE8572;
+    border: 1px solid #EE8572;
     width: 750px;
   }
 }
@@ -25,11 +25,12 @@
 }
 #special-radio {
   margin-top: 8px;
+  justify-content: space-between;
 }
 .select2-selection.select2-selection--multiple {
   width: 200px;
   border: none !important;
-  border-bottom: 2px dashed #EE8572 !important;
+  border-bottom: 1px solid #EE8572 !important;
 }
 
 .select2-dropdown.select2-dropdown--below {
@@ -37,6 +38,8 @@
 }
 .radio-part {
   margin-right: 75px;
+  display: flex;
+  justify-content: start;
 }
 .form-check input {
   vertical-align: middle;
@@ -59,3 +62,22 @@
   color: white;
 }
 
+.iconify {
+  background: url('https://api.iconify.design/oi-elevator.svg') no-repeat center center / contain;
+  content: url('https://api.iconify.design/oi-elevator.svg?height=8');
+  vertical-align: -0.125em;
+}
+
+.icon-link {
+  color: white;
+}
+
+#cellar-img {
+  width: 20px;
+  height: 20px;
+}
+
+#balcony-img {
+  width: 20px;
+  height: 20px;
+}
