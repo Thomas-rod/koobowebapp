@@ -13,7 +13,7 @@ require 'faker'
   # url = 'https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list'
   # ingredients_serialized = open(url).read
   # ingredients = JSON.parse(ingredients_serialized)
-puts "cleaning user, Flats, shedules"
+puts "cleaning Users, Flats, Schedules"
 User.destroy_all
 Flat.destroy_all
 Schedule.destroy_all
@@ -62,32 +62,43 @@ puts "#{roxane.flats.count} flats have been created"
 puts "Now we creating 4 Shedules by flats"
 puts "........."
 
-  Schedule.create!(start:Time.new(2020, 3, 2, 8, 0, 0),end:Time.new(2020, 3, 2, 8, 30, 0),flat_id:roxane.flats.first.id)
-  Schedule.create!(start:Time.new(2020, 3, 2, 8, 30, 0),end:Time.new(2020, 3, 2, 9, 0, 0),flat_id:roxane.flats.first.id)
-  Schedule.create!(start:Time.new(2020, 3, 3, 9, 0, 0),end:Time.new(2020, 3, 3, 9, 30, 0),flat_id:roxane.flats.first.id)
-  Schedule.create!(start:Time.new(2020, 3, 4, 9, 30, 0),end:Time.new(2020, 3, 4, 10, 0, 0),flat_id:roxane.flats.first.id)
+Schedule.create!(start:Time.new(2020, 3, 2, 8, 0, 0),end:Time.new(2020, 3, 2, 8, 30, 0),flat_id:roxane.flats.first.id)
+Schedule.create!(start:Time.new(2020, 3, 2, 8, 30, 0),end:Time.new(2020, 3, 2, 9, 0, 0),flat_id:roxane.flats.first.id)
+Schedule.create!(start:Time.new(2020, 3, 3, 9, 0, 0),end:Time.new(2020, 3, 3, 9, 30, 0),flat_id:roxane.flats.first.id)
+Schedule.create!(start:Time.new(2020, 3, 4, 9, 30, 0),end:Time.new(2020, 3, 4, 10, 0, 0),flat_id:roxane.flats.first.id)
 
+Schedule.create!(start:Time.new(2020, 3, 2, 13, 0, 0),end:Time.new(2020, 3, 2, 13, 30, 0),flat_id:roxane.flats.last.id)
+Schedule.create!(start:Time.new(2020, 3, 2, 13, 30, 0),end:Time.new(2020, 3, 2, 14, 0, 0),flat_id:roxane.flats.last.id)
+Schedule.create!(start:Time.new(2020, 3, 2, 14, 0, 0),end:Time.new(2020, 3, 2, 14, 30, 0),flat_id:roxane.flats.last.id)
+Schedule.create!(start:Time.new(2020, 3, 2, 14, 30, 0),end:Time.new(2020, 3, 2, 15, 0, 0),flat_id:roxane.flats.last.id)
 
-  Schedule.create!(start:Time.new(2020, 3, 2, 13, 0, 0),end:Time.new(2020, 3, 2, 13, 30, 0),flat_id:roxane.flats.last.id)
-  Schedule.create!(start:Time.new(2020, 3, 2, 13, 30, 0),end:Time.new(2020, 3, 2, 14, 0, 0),flat_id:roxane.flats.last.id)
-  Schedule.create!(start:Time.new(2020, 3, 2, 14, 0, 0),end:Time.new(2020, 3, 2, 14, 30, 0),flat_id:roxane.flats.last.id)
-  Schedule.create!(start:Time.new(2020, 3, 2, 14, 30, 0),end:Time.new(2020, 3, 2, 15, 0, 0),flat_id:roxane.flats.last.id)
-
- thomas.flats.each do |flat|
-  Schedule.create!(start:Time.new(2020, 3, 2, 7, 0, 0),end:Time.new(2020, 3, 2, 7, 30, 0),flat_id:flat.id)
-  Schedule.create!(start:Time.new(2020, 3, 2, 8, 30, 0),end:Time.new(2020, 3, 2, 9, 0, 0),flat_id:flat.id)
-  Schedule.create!(start:Time.new(2020, 3, 2, 9, 0, 0),end:Time.new(2020, 3, 2, 9, 30, 0),flat_id:flat.id)
-  Schedule.create!(start:Time.new(2020, 3, 2, 9, 30, 0),end:Time.new(2020, 3, 2, 10, 0, 0),flat_id:flat.id)
+thomas.flats.each do |flat|
+ Schedule.create!(start:Time.new(2020, 3, 2, 7, 0, 0),end:Time.new(2020, 3, 2, 7, 30, 0),flat_id:flat.id)
+ Schedule.create!(start:Time.new(2020, 3, 2, 8, 30, 0),end:Time.new(2020, 3, 2, 9, 0, 0),flat_id:flat.id)
+ Schedule.create!(start:Time.new(2020, 3, 2, 9, 0, 0),end:Time.new(2020, 3, 2, 9, 30, 0),flat_id:flat.id)
+ Schedule.create!(start:Time.new(2020, 3, 2, 9, 30, 0),end:Time.new(2020, 3, 2, 10, 0, 0),flat_id:flat.id)
 end
- mao.flats.each do |flat|
-  Schedule.create!(start:Time.new(2020, 3, 2, 17, 0, 0),end:Time.new(2020, 3, 2, 17, 30, 0),flat_id:flat.id)
-  Schedule.create!(start:Time.new(2020, 3, 2, 17, 30, 0),end:Time.new(2020, 3, 2, 18, 0, 0),flat_id:flat.id)
-  Schedule.create!(start:Time.new(2020, 3, 2, 18, 0, 0),end:Time.new(2020, 3, 2, 18, 30, 0),flat_id:flat.id)
-  Schedule.create!(start:Time.new(2020, 3, 2, 18, 30, 0),end:Time.new(2020, 3, 2, 19, 0, 0),flat_id:flat.id)
+mao.flats.each do |flat|
+ Schedule.create!(start:Time.new(2020, 3, 2, 17, 0, 0),end:Time.new(2020, 3, 2, 17, 30, 0),flat_id:flat.id)
+ Schedule.create!(start:Time.new(2020, 3, 2, 17, 30, 0),end:Time.new(2020, 3, 2, 18, 0, 0),flat_id:flat.id)
+ Schedule.create!(start:Time.new(2020, 3, 2, 18, 0, 0),end:Time.new(2020, 3, 2, 18, 30, 0),flat_id:flat.id)
+ Schedule.create!(start:Time.new(2020, 3, 2, 18, 30, 0),end:Time.new(2020, 3, 2, 19, 0, 0),flat_id:flat.id)
 end
 
 renting_mao_roxane = Renting.create!(flat: roxane_flat, user: mao, created_at: 'Fri, 28 Dec 2019 14:27:32 UTC +00:00')
 
+puts "Now we are doing visits !"
+
+Schedule.all.each do |schedule|
+
+  2.times do
+    Visit.create!(schedule: schedule, user: thomas, status: 'denied')
+  end
+end
+last_schedule = Schedule.last
+Visit.create!(schedule: last_schedule, user:thomas, status: 'accepted')
+
+puts "you have now #{Visit.count} visits"
 puts "you have now 4 schedules by flats "
 puts "total schedules = #{Schedule.count}"
 puts "G O O D     L U C K      G U Y S"
