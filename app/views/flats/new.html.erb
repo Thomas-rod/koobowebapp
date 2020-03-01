@@ -25,8 +25,11 @@
             <span class="form-part" id="heating">Le chauffage est </span><span class="form-part"><%= f.input :heating_system, label: false, input_html: {class: "select2", multiple: "multiple"}, collection: Flat::HEATING %></span><span class="form-part">.</span>
           </div>
             <span class="form-part">Je donne quelques informations supplémentaires à mon futur locataire : </span>
-          <div class="special-form" id="special-radio">
+       <!--    <div class="special-form" id="special-radio">
               <span class="form-part radio-part"> <%= f.input :furnished, label: "Meublé", as: :boolean %><i class="fas fa-couch"></i></span><span class="form-part radio-part"><%= f.input :elevator, label: "Ascenseur", as: :boolean %><span class="iconify" data-icon="oi-elevator" data-inline="false"></span></span><span class="form-part radio-part"><%= f.input :balcony, label: "Balcon", as: :boolean %><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcToZ0zQLAhC3nanPlXxL40ToffY-oj9kpDWMCXr-h3R6Rk7bmIX" id="balcony-img"></span><span class="form-part radio-part"><%= f.input :parking, as: :boolean %><i class="fas fa-parking"></i></span><span class="form-part radio-part"><%= f.input :cellar, label: "Cave", as: :boolean %><img src="https://image.flaticon.com/icons/svg/1200/1200913.svg" id="cellar-img"></span>
+          </div> -->
+          <div class="special-form" id="special-radio">
+              <span class="form-part radio-part"> <%= f.input :furnished, label: "Meublé", class: "hidden", as: :boolean %><i class="fas fa-couch"></i></span><span class="form-part radio-part"><%= f.input :elevator, label: "Ascenseur", as: :boolean %><span class="iconify" data-icon="oi-elevator" data-inline="false"></span></span><span class="form-part radio-part"><%= f.input :balcony, label: "Balcon", as: :boolean %><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcToZ0zQLAhC3nanPlXxL40ToffY-oj9kpDWMCXr-h3R6Rk7bmIX" id="balcony-img"></span><span class="form-part radio-part"><%= f.input :parking, as: :boolean %><i class="fas fa-parking"></i></span><span class="form-part radio-part"><%= f.input :cellar, label: "Cave", as: :boolean %><img src="https://image.flaticon.com/icons/svg/1200/1200913.svg" id="cellar-img"></span>
           </div>
             <span class="form-part"><%= f.input :description, label: false, placeholder: "J'ai encore quelques détails à préciser..." %></span>
             <%= f.input :photos, as: :file, id: "special-photo-btn", input_html: { multiple: true } %>

@@ -25,6 +25,10 @@
 }
 #special-radio {
   margin-top: 8px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 20px 0;
 }
 .select2-selection.select2-selection--multiple {
   width: 200px;
@@ -39,6 +43,21 @@
   margin-right: 75px;
   display: flex;
   justify-content: start;
+  background: #b7b7b7;
+  padding: 20px;
+  border-radius: 5px;
+  opacity: .4;
+  flex: 0 0 30%;
+  text-align: center;
+  &:hover {
+    opacity: 1;
+    cursor: pointer;
+  }
+  &.active {
+  background: #EE8572;
+  color: white;
+  opacity: 1;
+  }
 }
 .form-check input {
   vertical-align: middle;
@@ -79,4 +98,8 @@
 #balcony-img {
   width: 20px;
   height: 20px;
+}
+
+.form-check-input.boolean.optional {
+  display: none;
 }
