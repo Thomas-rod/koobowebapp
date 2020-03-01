@@ -24,13 +24,13 @@ require("channels")
 // ----------------------------------------------------
 import "bootstrap";
 
-
 import 'select2/dist/css/select2.css';
 import { initSelect2 } from '../components/init_select2';
 import { initFlatpicker } from '../plugins/flatpickr';
 import { initUpdateNavbarOnScroll } from '../components/navbar';
 import { clickElementDashboard } from '../components/dashboard';
 import { clickableSchedule } from '../components/calendar';
+import { loadDynamicBannerText } from '../components/banner';
 // import { chooseSchedule }from '../components/calendar';
 
 document.addEventListener('turbolinks:load', () => {
@@ -38,7 +38,9 @@ document.addEventListener('turbolinks:load', () => {
   clickElementDashboard();
   initSelect2();
   clickableSchedule();
+  loadDynamicBannerText();
 });
+
 
 
 

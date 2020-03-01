@@ -1,0 +1,50 @@
+.banner-home {
+  height: 60vh;
+  border-radius: 25px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  background-image: url("https://cdn.dribbble.com/users/1803663/screenshots/5642226/home2_4x.png"), linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.1));
+  background-size: 60%;
+  background-position: center;
+}
+.text-left {
+  display: block;
+  margin: 0px 0px 0px 114px;
+  text-align: left;
+  & h1 {
+    color: white;
+    font-weight: bold;
+    font-size: 45px;
+  }
+  & h2 {
+    color: white;
+    font-weight: bold;
+    font-size: 45px;
+  }
+}
+
+.button-banner {
+  background-color: $coral;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  padding: 15px 50px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 65px 0px 0px 114px;
+  font-size: 17px;
+  font-weight: lighter;
+  &:hover {
+    opacity: 0.9;
+    color: $coral;
+    background-color: $blue;
+  }
+}
+
+
+.container-banner {
+  margin: 40px;
+}
+
