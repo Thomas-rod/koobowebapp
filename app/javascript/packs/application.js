@@ -41,6 +41,7 @@ document.addEventListener('turbolinks:load', () => {
   initSelect2();
   clickableSchedule();
   initAutocomplete();
+  checkboxesjs();
 });
 
 
