@@ -1,5 +1,6 @@
 .container-new-form {
   padding-left: 80px;
+  margin-bottom: 20px;
 }
 .special-form {
   display: flex;
@@ -10,12 +11,13 @@
   & input {
     height: 28px;
     width: 200px;
-    border: 0.5px solid #EE8572;
-    border-radius: 10px;
+    border: none;
+    border-bottom: 1px solid #EE8572;
   }
   & textarea {
-    border: 0.5px solid #EE8572;
-    border-radius: 10px;
+    border: none;
+    border: 1px solid #EE8572;
+    width: 750px;
   }
 }
 #heating {
@@ -23,17 +25,39 @@
 }
 #special-radio {
   margin-top: 8px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 20px 0;
 }
 .select2-selection.select2-selection--multiple {
   width: 200px;
-  border-radius: 15px !important;
-  border: 0.5px solid #EE8572 !important;
+  border: none !important;
+  border-bottom: 1px solid #EE8572 !important;
 }
+
 .select2-dropdown.select2-dropdown--below {
   width: 200px !important;
 }
 .radio-part {
   margin-right: 75px;
+  display: flex;
+  justify-content: start;
+  background: #b7b7b7;
+  padding: 20px;
+  border-radius: 5px;
+  opacity: .4;
+  flex: 0 0 30%;
+  text-align: center;
+  &:hover {
+    opacity: 1;
+    cursor: pointer;
+  }
+  &.active {
+  background: #EE8572;
+  color: white;
+  opacity: 1;
+  }
 }
 .form-check input {
   vertical-align: middle;
@@ -56,3 +80,26 @@
   color: white;
 }
 
+.iconify {
+  background: url('https://api.iconify.design/oi-elevator.svg') no-repeat center center / contain;
+  content: url('https://api.iconify.design/oi-elevator.svg?height=8');
+  vertical-align: -0.125em;
+}
+
+.icon-link {
+  color: white;
+}
+
+#cellar-img {
+  width: 20px;
+  height: 20px;
+}
+
+#balcony-img {
+  width: 20px;
+  height: 20px;
+}
+
+.form-check-input.boolean.optional {
+  display: none;
+}
