@@ -38,35 +38,37 @@
       </div>
   </div>
 </div>
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-sm-4 col-sm-offset-4">
-      <!-- Insert form here -->
-      <div class="form-login">
+<div class="banner banner-sign" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2249&q=80);">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-4 col-sm-offset-4">
+        <!-- Insert form here -->
+        <div class="form-login">
 
-      <h2>Se connecter</h2>
-      <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-        <div class="form-inputs">
-          <%= f.input :email,
-                      required: false,
-                      autofocus: true,
-                      input_html: { autocomplete: "Email...." } %>
-          <%= f.input :password,
-                      required: false,
-                      input_html: { autocomplete: "Mot de passe...." } %>
-          <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+        <h2>Se connecter</h2>
+        <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <div class="form-inputs">
+            <%= f.input :email,
+                        required: false,
+                        autofocus: true,
+                        input_html: { autocomplete: "Email...." } %>
+            <%= f.input :password,
+                        required: false,
+                        input_html: { autocomplete: "Mot de passe...." } %>
+            <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+          </div>
+
+          <div class="form-actions">
+            <%= f.button :submit, "Se connecter" , class: "btn koobo-button"%>
+          </div>
+        <% end %>
+
+        <%= render "devise/shared/links" %>
         </div>
 
-        <div class="form-actions">
-          <%= f.button :submit, "Se connecter" , class: "btn koobo-button"%>
-        </div>
-      <% end %>
-
-      <%= render "devise/shared/links" %>
       </div>
-
     </div>
-  </div>
+</div>
 </div>
 
 
