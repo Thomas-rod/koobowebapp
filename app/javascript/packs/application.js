@@ -46,6 +46,7 @@ document.addEventListener('turbolinks:load', () => {
   clickableSchedule();
   loadDynamicBannerText();
   initAutocomplete();
+  checkboxesjs();
 });
 
 
