@@ -57,7 +57,7 @@
   border-radius: 15px;
   background-color: $blue;
   text-align:center;
-  box-shadow: 0 1px 24px rgba(0,0,0,0.8);
+  box-shadow: 0 0px 10px rgba(0,0,0,0.4);
   & h3, img {
     margin-top:10px;
   }
@@ -87,14 +87,30 @@
 }
 
 // ICON CARD SITE
-.fas.fa-check-square {
+.fas.fa-check {
   margin:0px !important;
   color: $green;
   font-size:20px;
   // $green;
 }
-.fas.fa-times-circle {
+.fa-times:before {
+    content: "\f00d";
+    margin-right: 5px;
+}
+
+.fa-times{
   margin:0px  !important;
   color:$red;
   font-size:20px;
+  margin-right: 6px;
+}
+
+.delete-link {
+  color: $coral-light;
+  margin-top: 12px;
+
+  &:hover {
+    color: $coral-light;
+    text-decoration: underline;
+  }
 }
