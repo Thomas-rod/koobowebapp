@@ -1,0 +1,16 @@
+<div class="dashboard-data-set" data-line="documents">
+  <div class="d-flex">
+    <%= render partial: 'shared/dashboard', locals: { flats: @flats, schedules: @schedules, documents: @documents} %>
+    <div style=" width:100%;">
+      <%= render partial: 'shared/navbar_dashboard', locals: { page_title: 'Documents'}%>
+      <div class="container">
+        <h2>Hello World</h2>
+        <% @flats_rented.each do |flat| %>
+        <div class="card-documents">
+          <h4><%= flat.name %></h4>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
