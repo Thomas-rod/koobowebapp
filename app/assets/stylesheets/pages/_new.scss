@@ -8,17 +8,26 @@
 }
 .form-part {
   padding-right: 5px;
-  & input {
+ input {
     height: 28px;
     width: 200px;
     border: none;
     border-bottom: 1px solid #EE8572;
   }
-  & textarea {
+ textarea {
     border: none;
     border: 1px solid #EE8572;
     width: 750px;
   }
+}
+
+.form-control:focus {
+  color: #495057;
+  background-color: none;
+  border-color: none;
+  outline: 0;
+  box-shadow: none;
+  border-bottom: 1px solid #EE8572;
 }
 #heating {
   margin-top: 7px;
