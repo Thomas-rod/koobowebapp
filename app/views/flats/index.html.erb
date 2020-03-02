@@ -58,11 +58,11 @@
               </div>
             <% end %>
               <div class="card-trip">
-                <%= link_to new_flat_path do %>
-                <i class="fas fa-plus-circle fa-flat" title="Ajouter un appartement" ></i>
-                <div class="card-trip-empty">
-                  <h6>Créer mon appartement</h6>
-                </div>
+                <%= link_to new_flat_path, class: 'button-new-flat' do %>
+                  <i class="fas fa-plus-circle fa-flat" title="Ajouter un appartement"></i>
+                  <div class="card-trip-empty">
+                    <h6>Créer mon appartement</h6>
+                  </div>
                 <% end %>
               </div>
             </div>
