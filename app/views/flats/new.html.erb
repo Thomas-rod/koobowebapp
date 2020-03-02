@@ -34,8 +34,8 @@
               <span class="form-part radio-part <%= @flat.cellar ? "active" : "" %>"><%= f.input :cellar, label: "Cave", as: :hidden, input_html: {id: "my-cellar-input"} %><img src="https://image.flaticon.com/icons/svg/1200/1200913.svg" id="cellar-img"></span>
             </div>
           </div>
-          <span class="form-part line-9 hide-carousel"><%= f.input :description, label: false, placeholder: "J'ai encore quelques détails à préciser..." %></span>
-            <div class="line-9 hide-carousel">
+          <span class="form-part line-9 hide-carousel"><%= f.input :description, label: false, placeholder: "J'ai encore quelques détails à préciser...", input_html: { id: "my-description-input"} %></span>
+            <div class="line-10 hide-carousel">
               <%= f.input :photos, as: :file, id: "special-photo-btn", input_html: { multiple: true, class: 'hidden d-none', id: 'photo-input' }, label_html: { class: 'upload-photo'}, label: "📷 J'ajoute des photos à mon appartement" %>
             </div>
             <% number = 0 %>
