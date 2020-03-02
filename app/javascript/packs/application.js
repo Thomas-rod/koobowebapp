@@ -32,6 +32,7 @@ import { initUpdateNavbarOnScroll } from '../components/navbar';
 import { clickElementDashboard } from '../components/dashboard';
 import { clickableSchedule } from '../components/calendar';
 import { initAutocomplete } from '../plugins/init_autocomplete';
+import { checkboxesjs } from '../components/checkboxes';
 // import { chooseSchedule }from '../components/calendar';
 
 document.addEventListener('turbolinks:load', () => {
@@ -40,6 +41,7 @@ document.addEventListener('turbolinks:load', () => {
   initSelect2();
   clickableSchedule();
   initAutocomplete();
+  checkboxesjs();
 });
 
 
