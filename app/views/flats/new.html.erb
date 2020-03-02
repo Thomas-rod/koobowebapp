@@ -37,7 +37,7 @@
 
             <% number = 0 %>
               <% number += 1 %>
-              <div id="carouselExampleIndicators<%= number %>" class="hide-carousel carousel slide" data-ride="carousel">
+              <div id="carouselExampleIndicators<%= number %>" class="hide-carousel carousel slide carousel-preview" data-ride="carousel">
                 <ol class="carousel-indicators">
                   <li data-target="#carouselExampleIndicators<%= number %>" data-slide-to="0" class="active"></li>
                   <li data-target="#carouselExampleIndicators<%= number %>" data-slide-to="1"></li>
@@ -45,13 +45,13 @@
                 </ol>
                   <div class=" carousel-inner">
                     <div class="carousel-item active">
-                      <%= image_tag "", width: 300, class: "hidden d-block w-100 image", id: "photo-preview" %>
+                      <%= image_tag "", class: "hidden d-block w-100 image image-preview", id: "photo-preview" %>
                     </div>
                       <div class="hidden carousel-item ">
-                        <%= image_tag "", width: 300, class: "hidden d-block w-100 image", id: "photo-preview2" %>
+                        <%= image_tag "", class: "hidden d-block w-100 image", id: "photo-preview2" %>
                       </div>
                       <div class="hidden carousel-item ">
-                        <%= image_tag "", width: 300, class: "hidden d-block w-100 image", id: "photo-preview3" %>
+                        <%= image_tag "", class: "hidden d-block w-100 image", id: "photo-preview3" %>
                       </div>
                     </div>
                     <a class="carousel-control-prev" href="#carouselExampleIndicators<%= number %>" role="button" data-slide="prev">

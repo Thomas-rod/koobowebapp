@@ -139,5 +139,14 @@
 }
 
 .hide-carousel {
-  visibility: hidden;
+  display: none;
+}
+
+.carousel-preview {
+  width: 600px;
+  margin-left: 25px;
+}
+
+.image-preview {
+  object-fit: cover
 }
