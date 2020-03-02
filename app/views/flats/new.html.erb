@@ -33,7 +33,8 @@
             <span class="form-part radio-part <%= @flat.cellar ? "active" : "" %>"><%= f.input :cellar, label: "Cave", as: :hidden %><img src="https://image.flaticon.com/icons/svg/1200/1200913.svg" id="cellar-img"></span>
           </div>
           <span class="form-part"><%= f.input :description, label: false, placeholder: "J'ai encore quelques détails à préciser..." %></span>
-            <%= f.input :photos, as: :file, id: "special-photo-btn", input_html: { multiple: true }, input_html: { class: 'hidden'}, input_html: { class: 'd-none' }, label_html: { class: 'upload-photo'}, label: "📷 J'ajoute des photos à mon appartement" %>
+            <%= f.input :photos, as: :file, id: "special-photo-btn", input_html: { multiple: true, class: 'hidden d-none', id: 'photo-input' }, label_html: { class: 'upload-photo'}, label: "📷 J'ajoute des photos à mon appartement" %>
+            <%= image_tag "", width: 300, class: "hidden", id: "photo-preview" %>
             <%= f.submit "Suivant", id: "special-form-btn" %>
           <% end %>
           <a href="https://icons8.com/icon/59644/balcon" class="icon-link">Balcon icon by Icons8</a>
