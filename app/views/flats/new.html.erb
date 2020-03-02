@@ -27,11 +27,11 @@
             <span class="form-part line-7 hide-carousel">Je donne quelques informations supplémentaires à mon futur locataire : </span>
           <div class="line-8 hide-carousel">
             <div class="special-form" id="special-radio">
-              <span class="form-part radio-part <%= @flat.furnished ? "active" : "" %>"> <%= f.input :furnished, label: "Meublé", as: :hidden %><i class="fas fa-couch"></i></span>
-              <span class="form-part radio-part <%= @flat.elevator ? "active" : "" %>"><%= f.input :elevator, label: "Ascenseur", as: :hidden %><span class="iconify" data-icon="oi-elevator" data-inline="false"></span></span>
-              <span class="form-part radio-part <%= @flat.balcony ? "active" : "" %>"><%= f.input :balcony, label: "Balcon", as: :hidden %><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcToZ0zQLAhC3nanPlXxL40ToffY-oj9kpDWMCXr-h3R6Rk7bmIX" id="balcony-img"></span>
-              <span class="form-part radio-part <%= @flat.parking ? "active" : "" %>"><%= f.input :parking, label: "Parking", as: :hidden %><i class="fas fa-parking"></i></span>
-              <span class="form-part radio-part <%= @flat.cellar ? "active" : "" %>"><%= f.input :cellar, label: "Cave", as: :hidden, input_html: {id: "my-cellar-input"} %><img src="https://image.flaticon.com/icons/svg/1200/1200913.svg" id="cellar-img"></span>
+              <span class="form-part radio-part <%= @flat.furnished ? "active" : "" %>"> <%= f.input :furnished, label: "Meublé", as: :hidden, input_html: {class: "my-checkbox-input"} %><i class="fas fa-couch"></i></span>
+              <span class="form-part radio-part <%= @flat.elevator ? "active" : "" %>"><%= f.input :elevator, label: "Ascenseur", as: :hidden, input_html: {class: "my-checkbox-input"} %><span class="iconify" data-icon="oi-elevator" data-inline="false"></span></span>
+              <span class="form-part radio-part <%= @flat.balcony ? "active" : "" %>"><%= f.input :balcony, label: "Balcon", as: :hidden, input_html: {class: "my-checkbox-input"} %><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcToZ0zQLAhC3nanPlXxL40ToffY-oj9kpDWMCXr-h3R6Rk7bmIX" id="balcony-img"></span>
+              <span class="form-part radio-part <%= @flat.parking ? "active" : "" %>"><%= f.input :parking, label: "Parking", as: :hidden, input_html: {class: "my-checkbox-input"} %><i class="fas fa-parking"></i></span>
+              <span class="form-part radio-part <%= @flat.cellar ? "active" : "" %>"><%= f.input :cellar, label: "Cave", as: :hidden, input_html: {class: "my-checkbox-input"} %><img src="https://image.flaticon.com/icons/svg/1200/1200913.svg" id="cellar-img"></span>
             </div>
           </div>
           <span class="form-part line-9 hide-carousel"><%= f.input :description, label: false, placeholder: "J'ai encore quelques détails à préciser...", input_html: { id: "my-description-input"} %></span>

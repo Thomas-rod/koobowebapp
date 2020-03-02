@@ -8,7 +8,7 @@ const makeFormAppear = () => {
   const input4 = document.getElementById("my-size-input");
   const input5 = document.getElementById("my-bedroom-input");
   const input6 = document.getElementById("my-heating-input");
-  const input7 = document.getElementById("my-cellar-input");
+  const input7 = document.querySelector(".my-checkbox-input");
   const input8 = document.getElementById("my-description-input");
 
   if (input1) {
@@ -43,18 +43,7 @@ const makeFormAppear = () => {
     });
   }
   if (input7) {
-    $(document).ready(function() {
-      $('#my-cellar-input').change(function()
-      {
-        if(this.checked != false)
-        {
-      displayNextLine(input1, input2, input3, input4, input5, input6, input7, input8);
-        }
-      });
-    });
-  }
-  if (input8) {
-    input8.addEventListener('change', () => {
+    $('.my-checkbox-input').change(function() {
       displayNextLine(input1, input2, input3, input4, input5, input6, input7, input8);
     });
   }
@@ -80,8 +69,8 @@ const displayNextLine = (input1, input2, input3, input4, input5, input6, input7,
     document.querySelector(".line-7").classList.remove('hide-carousel')
     document.querySelector(".line-8").classList.remove('hide-carousel')
   }
-  if (input7.value !== false) {
-    console.log(input7.value)
+  if (input7.checked !== true) {
+    console.log(input7.checked)
     document.querySelector(".line-9").classList.remove('hide-carousel')
   }
   if (input8.value !== "") {
