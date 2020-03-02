@@ -11,7 +11,7 @@
       <div class="dashboard-line" id="appartements">
         <%= link_to flats_path do %>
           <i class="fas fa-home icon-dashboard fa-2x"></i>
-          <p>Appartements</p>
+          <p>Mes appartements</p>
           <% if counter_appartement == 0 %>
           <% else %>
             <span class="notif-counter"><%= counter_appartement %></span>
@@ -21,7 +21,7 @@
       <div class="dashboard-line mb-3" id="calendrier">
         <%= link_to schedules_path do %>
           <i class="far fa-calendar-alt icon-dashboard fa-2x"></i>
-          <p>Calendrier</p>
+          <p>Mes visites</p>
           <% if counter_calendrier == 0 %>
 
           <% else %>
@@ -32,7 +32,7 @@
       <div class="dashboard-line mb-3" id="documents">
         <%= link_to documents_path do %>
           <i class="far fa-file-alt icon-dashboard fa-2x"></i>
-          <p>Documents</p>
+          <p>Mes documents</p>
           <% if counter_documents == 0 %>
 
           <% else %>
@@ -43,7 +43,7 @@
       <div class="dashboard-line mb-3" id="profil">
         <a href="">
           <i class="far fa-user icon-dashboard fa-2x"></i>
-          <p>Profil</p>
+          <p>Mon profil</p>
           <% if counter_profil == 0 %>
 
           <% else %>
