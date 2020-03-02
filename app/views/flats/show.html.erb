@@ -2,7 +2,7 @@
   <div class="d-flex">
     <%= render partial: 'shared/dashboard', locals: { flats: @flats, schedules: @schedules, documents: @documents} %>
     <div style=" width:100%;">
-      <%= render partial: 'shared/navbar_dashboard', locals: { page_title: 'Appartements'}%>
+      <%= render partial: 'shared/navbar_dashboard', locals: { page_title: 'Appartements', notif_counter: @counter} %>
       <div class="container d-flex justify-content-between">
         <% if @flat.photos.attached? %>
           <div class="card-flat">
@@ -40,9 +40,9 @@
                     <li> PAP </li>
                     <li>
                       <% if @flat.pap == true %>
-                        <i class="fas fa-check-square"></i>
+                        <i class="fas fa-check"></i>
                       <% else %>
-                        <i class="fas fa-times-circle"></i>
+                        <i class="fas fa-times"></i>
                       <% end %>
                       </li>
                   </div>
@@ -50,9 +50,9 @@
                     <li> Leboncoin </li>
                     <li>
                       <% if @flat.leboncoin == true %>
-                        <i class="fas fa-check-square"></i>
+                        <i class="fas fa-check"></i>
                         <% else %>
-                          <i class="fas fa-times-circle"></i>
+                          <i class="fas fa-times"></i>
                       <% end %>
                       </li>
                   </div>
@@ -60,9 +60,9 @@
                     <li> Seloger </li>
                     <li>
                       <% if @flat.seloger == true %>
-                        <i class="fas fa-check-square"></i>
+                         <i class="fas fa-check"></i>
                       <% else %>
-                        <i class="fas fa-times-circle"></i>
+                        <i class="fas fa-times"></i>
                       <% end %>
                     </li>
                   </div>
@@ -70,15 +70,15 @@
                     <li> Bienici </li>
                     <li>
                       <% if @flat.bienici == true %>
-                        <i class="fas fa-check-square"></i>
+                        <i class="fas fa-check"></i>
                       <% else %>
-                        <i class="fas fa-times-circle"></i>
+                        <i class="fas fa-times"></i>
                       <% end %>
                     </li>
                   </div>
                   <div class="card-locataire-inside mt-4">
                     <%= link_to "Modifier", edit_flat_path(@flat), class: 'koobo-button' %>
-                    <%= link_to "Supprimer", '#', class: 'koobo-button' %>
+                    <%= link_to "Supprimer l'annonce", '#',class: "delete-link" %>
                   </div>
                 </ul>
               </div>

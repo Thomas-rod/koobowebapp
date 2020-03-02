@@ -2,7 +2,7 @@
   <div class="d-flex">
     <%= render partial: 'shared/dashboard', locals: { flats: @flats, schedules: @schedules, documents: @documents} %>
     <div style=" width:100%;">
-      <%= render partial: 'shared/navbar_dashboard', locals: { page_title: 'Appartements'}%>
+      <%= render partial: 'shared/navbar_dashboard', locals: { page_title: 'Appartements', notif_counter: @counter} %>
       <div class="container my-container">
         <h3 id="titre-recap">Récapitulatif de votre annonce</h3>
         <% if @flat.photos.attached? %>
