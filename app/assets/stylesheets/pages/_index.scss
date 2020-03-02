@@ -1,9 +1,11 @@
 // Import page-specific CSS files here.
-@import "home";
-@import "new";
+
+@import "documentsindex";
+@import "edit_publication";
+@import "edit";
 @import "flatsindex";
 @import "flatsshow";
+@import "home";
+@import "new";
 @import "show";
-@import "edit_publication";
-@import "registration";
-@import "session";
+
