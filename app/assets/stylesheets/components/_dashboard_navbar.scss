@@ -1,6 +1,7 @@
 
 .navbar-dashboard {
   position: sticky;
+  z-index: 1000;
   right:0px;
   margin: 30px auto;
   display:flex;
@@ -50,10 +51,28 @@
 }
 
 .drodropdown-menu-dashboard {
-  border:none;
+  border: none;
+  background-color: rgba(0, 0, 0, 0);
+  top: 48px !important;
+  left: 163px !important;
+  // a {
+  //   border: none;
+  //   background: none;
+  // }
+  :hover {
+    background-color: rgba(0, 0, 0, 0);
+  }
 }
 
 #bell-notification {
   margin:0px;
   margin-right: 60px;
 }
+
+.drop-profil {
+  top: 48px !important;
+  left: 50px !important;
+}
+
+
+

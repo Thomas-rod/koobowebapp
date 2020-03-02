@@ -4,63 +4,131 @@
   <title>We're sorry, but something went wrong (500)</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <style>
-  .rails-default-error-page {
-    background-color: #EFEFEF;
-    color: #2E2F30;
-    text-align: center;
-    font-family: arial, sans-serif;
-    margin: 0;
-  }
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
 
-  .rails-default-error-page div.dialog {
-    width: 95%;
-    max-width: 33em;
-    margin: 4em auto 0;
-  }
+body{
+  background-image: url('data:image/svg+xml,%3Csvg width="52" height="26" viewBox="0 0 52 26" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%239C92AC" fill-opacity="0.4"%3E%3Cpath d="M10 10c0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6h2c0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4v2c-3.314 0-6-2.686-6-6 0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6zm25.464-1.95l8.486 8.486-1.414 1.414-8.486-8.486 1.414-1.414z" /%3E%3C/g%3E%3C/g%3E%3C/svg%3E');
+  font-family: 'Montserrat', sans-serif;
+}
 
-  .rails-default-error-page div.dialog > div {
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #BBB;
-    border-top: #B00100 solid 4px;
-    border-top-left-radius: 9px;
-    border-top-right-radius: 9px;
-    background-color: white;
-    padding: 7px 12% 0;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
-  }
+.content{
+  width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  position:relative;
+}
+h1{
+  position: absolute;
+  font-size: 80px;
+  text-align:center;
+  width: 300px;
+}
 
-  .rails-default-error-page h1 {
-    font-size: 100%;
-    color: #730E15;
-    line-height: 1.5em;
-  }
+h1#five{
+  left: -50px;
+}
 
-  .rails-default-error-page div.dialog > p {
-    margin: 0 0 1em;
-    padding: 1em;
-    background-color: #F7F7F7;
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #999;
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
-    border-top-color: #DADADA;
-    color: #666;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
+h1#zero2{
+  left: 50px;
+
+}
+h1#point1{
+  font-size: 100px;
+  top: -50px;
+   left: 0px;
+  animation: moveeye1 7s infinite ease-in;
+}
+h1#point2{
+  font-size: 100px;
+  top: -50px;
+  left: 50px;
+  animation: moveeye2 7s infinite ease-in;
+}
+
+h2{
+  position: absolute;
+  font-size: 20px;
+  text-align:center;
+  width: 300px;
+}
+
+h2#err{
+  top: 5px;
+}
+h2#what{
+  top: 160px;
+}
+@keyframes moveeye1{
+  0%{
+    top: -50px;
+    left: 0px;
   }
+  20%{
+    top: -70px;
+    left: 10px;
+  }
+  40%{
+    top: -70px;
+    left: 10px;
+  }
+  60%{
+    top: -40px;
+    left: -10px;
+  }
+  80%{
+    top: -40px;
+    left: 10px;
+  }
+  100%{
+    top: -50px;
+    left: 0px;
+  }
+}
+
+@keyframes moveeye2{
+  0%{
+    top: -50px;
+    left: 50px;
+  }
+  20%{
+    top: -70px;
+    left: 60px;
+  }
+  40%{
+    top: -70px;
+    left: 60px;
+  }
+  60%{
+    top: -40px;
+    left: 40px;
+  }
+  80%{
+    top: -40px;
+    left: 60px;
+  }
+  100%{
+    top: -50px;
+    left: 50px;
+  }
+}
   </style>
 </head>
 
 <body class="rails-default-error-page">
   <!-- This file lives in public/500.html -->
-  <div class="dialog">
-    <div>
-      <h1>We're sorry, but something went wrong.</h1>
-    </div>
-    <p>If you are the application owner check the logs for more information.</p>
+<div class="container">
+  <div class="content">
+    <h1 id="five"> 5 </h1>
+    <h1 id="zero1"> 0 </h1>
+    <h1 id="zero2"> 0 </h1>
+    <h1 id="point1"> . </h1>
+    <h1 id="point2"> . </h1>
+
+    <h2 id="err"> Ce n'est pas vous. C'est nous. </h2>
+   <h2 id="what"> Ne vous inquitez pas, nous recherchons le probleme. </h2>
   </div>
+
+</div>
 </body>
 </html>

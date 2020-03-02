@@ -5,11 +5,11 @@
         <% if @counter != 0 %>
           <%= link_to "#" , id: "navbarDropdownNotif", data: { toggle: "dropdown", "user-id" => current_user.id }, 'aria-haspopup': true, 'aria-expanded': false do %>
             <i class="far fa-bell fa-2x" id="bell-notification"></i>
-            <span><%= @counter %></span>
-          <% end %>
+            <span id="bell-counter"><%= @counter %></span>
+        <% end %>
           <div class="dropdown-menu drodropdown-menu-dashboard" aria-labelledby="navbarDropdownNotif">
-            <%= link_to render(:partial => 'shared/notifications') , schedules_path, class: 'dropdown-item' %>
-            <!-- WILL BE HERE ALL VISITE PENDING AND DOCUMENTS NOTIFICATIONS-->
+            <!-- HERE ALL VISITE PENDING AND DOCUMENTS NOTIFICATIONS-->
+            <%= link_to render(:partial => 'shared/notifications'), schedules_path, class: 'dropdown-item' %>
           </div>
         <% end %>
       </div>
@@ -18,10 +18,10 @@
           <% if current_user.photo.attached? %>
             <%= cl_image_tag current_user.photo.key, class: "avatar-bordered mr-5" %>
           <% else %>
-            <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier" %>
+            <%= image_tag ("avatar.png") %>
           <% end %>
         <% end %>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownProfil">
+        <div class="dropdown-menu drop-profil" aria-labelledby="navbarDropdownProfil">
           <%= link_to 'Profil', flats_path, class: 'dropdown-item' %>
           <%= link_to 'Se déconnecter', destroy_user_session_path, class: 'dropdown-item', method: 'delete' %>
         </div>
