@@ -15,12 +15,27 @@
   align-items: center;
 }
 
+.card-trip-empty {
+  position:absolute;
+  bottom: 10%;
+  left:20%;
+  h6 {
+  font-weight:bold;
+  }
+}
+
 .fa-flat {
   color: $coral-light;
   font-size: 70px;
   &:hover {
   color: #EE8572;
  }
+}
+
+.fa-plus-circle{
+  position:absolute;
+  top:30%;
+  right:42%
 }
 
 #coral-visite-rented {
