@@ -16,6 +16,14 @@ const displayPreview = (input) => {
     reader.readAsDataURL(input.files[0])
     document.getElementById('photo-preview').classList.remove('hidden');
   }
+  if (input.files && input.files[1]) {
+    const reader2 = new FileReader();
+    reader2.onload = (event) => {
+      document.getElementById('photo-preview2').src = event.currentTarget.result;
+    }
+    reader2.readAsDataURL(input.files[1])
+    document.getElementById('photo-preview2').classList.remove('hidden');
+  }
 }
 
 export { previewImageOnFileSelect };
