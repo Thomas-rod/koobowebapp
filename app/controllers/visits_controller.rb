@@ -17,6 +17,9 @@ class VisitsController < ApplicationController
   end
 
   def update
+     @visit = Visit.find(params[:id])
+     @visit.update(visit_params)
+     redirect_to schedules_path
     # switch visit status to accepted
     # Broadcast to locataire (recup l'id du locataire)
   end

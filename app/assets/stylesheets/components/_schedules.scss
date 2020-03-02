@@ -74,3 +74,10 @@ th.schedules-th{
 a.link-schedule {
     text-decoration: underline;
 }
+.selected-pending{
+ background-color: $orange;
+}
+
+.selected-accepted{
+background-color: $green;
+}

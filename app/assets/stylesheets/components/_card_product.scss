@@ -11,7 +11,7 @@
 
 .card-product img {
   height: 100%;
-  width: 120px;
+  width: 105px;
   object-fit: cover;
 }
 
@@ -31,4 +31,11 @@
 
 .card-product .card-product-infos {
   padding: 16px;
+}
+
+
+
+h2.price-calendar{
+  font-weight: initial;
+  margin: 3px 0px;
 }

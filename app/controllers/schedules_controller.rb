@@ -2,9 +2,9 @@ class SchedulesController < ApplicationController
 before_action :notif_counter
 
   def index
-  @schedules = Schedule.all
   @flats = current_user.flats
   @documents = Document.all
+  @visits_user = visits_user
   end
 
   def create
@@ -24,6 +24,16 @@ before_action :notif_counter
   #   redirect_to schedules_path
   # end
   private
+
+  def visits_user
+    visit_user =[]
+    Visit.all.each do |visit|
+      if visit.schedule.flat.user == current_user
+        visit_user << visit
+      end
+    end
+    visit_user
+  end
 
   def notif_counter
     @visit_pending_flat = notif_visit
