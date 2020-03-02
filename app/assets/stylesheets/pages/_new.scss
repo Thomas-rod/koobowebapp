@@ -24,11 +24,11 @@
   margin-top: 7px;
 }
 #special-radio {
-  margin-top: 8px;
   display: flex;
-  justify-content: space-between;
+  justify-content: start;
   flex-wrap: wrap;
   margin: 20px 0;
+  width: 700px;
 }
 .select2-selection.select2-selection--multiple {
   width: 200px;
@@ -41,17 +41,22 @@
 }
 
 .radio-part {
-  margin-right: 75px;
   display: flex;
 }
 .form-part.radio-part {
+  display: flex;
   justify-content: start;
   opacity: .4;
   flex: 0 0 30%;
   text-align: center;
+  width: 40px;
+  height: 40px;
+  & label {
+    margin-right: 10px;
+  }
   &:hover {
+    border-bottom: 0.5px solid #EE8572;
     cursor: pointer;
-    border-bottom: 1px solid #EE8572
   }
   &.active {
   color: #201E50;
@@ -99,12 +104,4 @@
   width: 20px;
   height: 20px;
 }
-
-// .form-check-input.boolean.optional:checked {
-//   opacity: 0;
-// }
-
-// .form-check-input.boolean.optional:not(:checked) {
-//   opacity: 0;
-// }
 
