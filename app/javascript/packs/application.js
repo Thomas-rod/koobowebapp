@@ -25,6 +25,7 @@ require("channels");
 // WRITE YOUR OWN JS STARTING FROM HERE 👇
 // ----------------------------------------------------
 import "bootstrap";
+import places from 'places.js';
 
 import 'select2/dist/css/select2.css';
 import { checkboxesjs } from '../components/checkboxes';
