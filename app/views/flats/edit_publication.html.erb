@@ -80,7 +80,10 @@
         <div class="container-new-form-platforms">
           <%= simple_form_for @flat, url: update_publication_path(@flat), method: :patch do |f| %>
           <div class="special-form" id="special-radio">
-              <span class="form-part radio-part"><%= f.input :leboncoin, label: "Le Bon Coin", as: :boolean %></span><span class="form-part radio-part"><%= f.input :bienici, label: "Bien Ici", collection: ["Oui", "Non"], as: :boolean %></span><span class="form-part radio-part"><%= f.input :seloger, label: "Se Loger", collection: ["Oui", "Non"], as: :boolean %></span><span class="form-part radio-part"><%= f.input :pap, label: "PAP, Particulier à Particulier", collection: ["Oui", "Non"], as: :boolean %></span>
+              <span class="form-part radio-part <%= @flat.leboncoin ? "active" : "" %>"><%= f.input :leboncoin, label: "Le Bon Coin", as: :hidden %></span>
+              <span class="form-part radio-part <%= @flat.bienici ? "active" : "" %>"><%= f.input :bienici, label: "Bien Ici", as: :hidden %></span>
+              <span class="form-part radio-part <%= @flat.seloger ? "active" : "" %>"><%= f.input :seloger, label: "Se Loger", as: :hidden %></span>
+              <span class="form-part radio-part <%= @flat.pap ? "active" : "" %>"><%= f.input :pap, label: "PAP, Particulier à Particulier", as: :hidden %></span>
           </div>
           <div class="my-form-buttons">
             <%= link_to "Modifier l'annonce", edit_flat_path, class: "edit-pub-btn" %>

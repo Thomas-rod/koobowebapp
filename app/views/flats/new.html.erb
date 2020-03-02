@@ -26,116 +26,45 @@
           </div>
             <span class="form-part">Je donne quelques informations supplémentaires à mon futur locataire : </span>
           <div class="special-form" id="special-radio">
-              <span class="form-part radio-part <%= @flat.furnished ? "active" : "" %>"> <%= f.input :furnished, label: "Meublé", as: :hidden %><i class="fas fa-couch"></i></span>
-              <span class="form-part radio-part <%= @flat.elevator ? "active" : "" %>"><%= f.input :elevator, label: "Ascenseur", as: :hidden %><span class="iconify" data-icon="oi-elevator" data-inline="false"></span></span>
-                <span class="form-part radio-part <%= @flat.balcony ? "active" : "" %>"><%= f.input :balcony, label: "Balcon", as: :hidden %><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcToZ0zQLAhC3nanPlXxL40ToffY-oj9kpDWMCXr-h3R6Rk7bmIX" id="balcony-img"></span>
-                <span class="form-part radio-part <%= @flat.parking ? "active" : "" %>"><%= f.input :parking, label: "Parking", as: :hidden %><i class="fas fa-parking"></i></span>
-                <span class="form-part radio-part <%= @flat.cellar ? "active" : "" %>"><%= f.input :cellar, label: "Cave", as: :hidden %><img src="https://image.flaticon.com/icons/svg/1200/1200913.svg" id="cellar-img"></span>
+            <span class="form-part radio-part <%= @flat.furnished ? "active" : "" %>"> <%= f.input :furnished, label: "Meublé", as: :hidden %><i class="fas fa-couch"></i></span>
+            <span class="form-part radio-part <%= @flat.elevator ? "active" : "" %>"><%= f.input :elevator, label: "Ascenseur", as: :hidden %><span class="iconify" data-icon="oi-elevator" data-inline="false"></span></span>
+            <span class="form-part radio-part <%= @flat.balcony ? "active" : "" %>"><%= f.input :balcony, label: "Balcon", as: :hidden %><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcToZ0zQLAhC3nanPlXxL40ToffY-oj9kpDWMCXr-h3R6Rk7bmIX" id="balcony-img"></span>
+            <span class="form-part radio-part <%= @flat.parking ? "active" : "" %>"><%= f.input :parking, label: "Parking", as: :hidden %><i class="fas fa-parking"></i></span>
+            <span class="form-part radio-part <%= @flat.cellar ? "active" : "" %>"><%= f.input :cellar, label: "Cave", as: :hidden %><img src="https://image.flaticon.com/icons/svg/1200/1200913.svg" id="cellar-img"></span>
           </div>
+          <span class="form-part"><%= f.input :description, label: false, placeholder: "J'ai encore quelques détails à préciser..." %></span>
+            <%= f.input :photos, as: :file, id: "special-photo-btn", input_html: { multiple: true, class: 'hidden d-none', id: 'photo-input' }, label_html: { class: 'upload-photo'}, label: "📷 J'ajoute des photos à mon appartement" %>
 
-         <!--  <div class="special-form" id="special-radio">
-              <span class="form-part radio-part">
-                <fieldset class="form-group boolean optional flat_furnished">
-                  <div class="form-check">
-                      <input class="form-check-input boolean optional" type="hidden" type="checkbox" value="0" name="flat[furnished]" id="flat_furnished">
-                        <label class="form-check-label boolean optional" for="flat_furnished">Meublé</label>
-                  </div>
-                </fieldset>
-                <i class="fas fa-couch"></i>
-              </span>
-                  <span class="form-part radio-part">
-                    <fieldset class="form-group boolean optional flat_elevator">
-                      <div class="form-check">
-                        <input class="form-check-input boolean optional" type="hidden" type="checkbox" value="0" name="flat[elevator]" id="flat_elevator">
-                        <label class="form-check-label boolean optional" for="flat_elevator">Ascenseur</label>
-                      </div>
-                    </fieldset>
-                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1em" height="1em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 8 8" class="iconify" data-icon="oi-elevator" data-inline="false">
-                      <path d="M4 0L1 3h6L4 0zM1 5l3 3l3-3H1z" fill="currentColor"></path>
-                    </svg>
-                  </span>
-                  <span class="form-part radio-part">
-                    <fieldset class="form-group boolean optional flat_balcony">
-                      <div class="form-check">
-                        <input class="form-check-input boolean optional" type="hidden" type="checkbox" value="0" name="flat[balcony]" id="flat_balcony">
-                        <label class="form-check-label boolean optional" for="flat_balcony">Balcon</label>
-                      </div>
-                    </fieldset>
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcToZ0zQLAhC3nanPlXxL40ToffY-oj9kpDWMCXr-h3R6Rk7bmIX" id="balcony-img">
-                  </span>
-                  <span class="form-part radio-part">
-                    <fieldset class="form-group boolean optional flat_parking">
-                      <div class="form-check">
-                        <input class="form-check-input boolean optional" type="hidden" type="checkbox" value="0" name="flat[parking]" id="flat_parking">
-                        <label class="form-check-label boolean optional" for="flat_parking">Parking</label>
-                      </div>
-                    </fieldset><i class="fas fa-parking"></i>
-                  </span>
-                  <span class="form-part radio-part">
-                    <fieldset class="form-group boolean optional flat_cellar">
-                      <div class="form-check">
-                        <input name="flat[cellar]" type="hidden" value="0">
-                        <input class="form-check-input boolean optional" type="hidden" type="checkbox" value="0" name="flat[cellar]" id="flat_cellar">
-                        <label class="form-check-label boolean optional" for="flat_cellar">Cave</label>
-                      </div>
-                    </fieldset>
-                    <img src="https://image.flaticon.com/icons/svg/1200/1200913.svg" id="cellar-img"></span>
-          </div> -->
-   <!--        <div class="special-form" id="special-radio">
-              <span class="form-part radio-part"> <%= f.input :furnished, label: "Meublé", as: :boolean, checked_value: true, unchecked_value: false %><i class="fas fa-couch"></i></span><span class="form-part radio-part"><%= f.input :elevator, label: "Ascenseur", as: :boolean, checked_value: true, unchecked_value: false %><span class="iconify" data-icon="oi-elevator" data-inline="false"></span></span><span class="form-part radio-part"><%= f.input :balcony, label: "Balcon", as: :boolean, checked_value: true, unchecked_value: false %><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcToZ0zQLAhC3nanPlXxL40ToffY-oj9kpDWMCXr-h3R6Rk7bmIX" id="balcony-img"></span><span class="form-part radio-part"><%= f.input :parking, as: :boolean, checked_value: true, unchecked_value: false %><i class="fas fa-parking"></i></span><span class="form-part radio-part"><%= f.input :cellar, label: "Cave", as: :boolean, checked_value: true, unchecked_value: false %><img src="https://image.flaticon.com/icons/svg/1200/1200913.svg" id="cellar-img"></span>
-          </div>
-
-
- -->
-         <!--  <div class="special-form" id="special-radio">
-                        <span class="form-part radio-part">
-                            <div class="form-check">
-                              <input name="flat[furnished]" hidden value="0">
-                              <input class="form-check-input boolean optional" hidden type="checkbox" value="" name="flat[furnished]" id="flat_furnished">
-                              <label class="form-check-label boolean optional" for="flat_furnished">Meublé</label>
-                            </div>
-                          <i class="fas fa-couch"></i>
-                        </span>
-                        <span class="form-part radio-part">
-                            <div class="form-check">
-                              <input name="flat[elevator]" hidden value="0">
-                              <input class="form-check-input boolean optional" hidden type="checkbox" value="0" name="flat[elevator]" id="flat_elevator">
-                              <label class="form-check-label boolean optional" for="flat_elevator">Ascenseur</label>
-                            </div>
-                          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1em" height="1em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 8 8" class="iconify" data-icon="oi-elevator" data-inline="false">
-                            <path d="M4 0L1 3h6L4 0zM1 5l3 3l3-3H1z" fill="currentColor"></path>
-                          </svg>
-                        </span>
-                        <span class="form-part radio-part">
-                            <div class="form-check">
-                              <input name="flat[balcony]" hidden value="0">
-                              <input class="form-check-input boolean optional" hidden type="checkbox" value="0" name="flat[balcony]" id="flat_balcony">
-                              <label class="form-check-label boolean optional" for="flat_balcony">Balcon</label>
-                            </div>
-                          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcToZ0zQLAhC3nanPlXxL40ToffY-oj9kpDWMCXr-h3R6Rk7bmIX" id="balcony-img">
-                        </span>
-                        <span class="form-part radio-part">
-                            <div class="form-check">
-                              <input name="flat[parking]" hidden value="0">
-                              <input class="form-check-input boolean optional" hidden type="checkbox" value="0" name="flat[parking]" id="flat_parking">
-                              <label class="form-check-label boolean optional" for="flat_parking">Parking</label>
-                            </div>
-                          <i class="fas fa-parking"></i>
-                        </span>
-                        <span class="form-part radio-part">
-                            <div class="form-check">
-                              <input name="flat[cellar]" hidden value="0">
-                              <input class="form-check-input boolean optional" hidden type="checkbox" value="0" name="flat[cellar]" id="flat_cellar">
-                              <label class="form-check-label boolean optional" for="flat_cellar">Cave</label>
-                            </div>
-                          <img src="https://image.flaticon.com/icons/svg/1200/1200913.svg" id="cellar-img">
-                        </span>
+            <% number = 0 %>
+              <% number += 1 %>
+              <div id="carouselExampleIndicators<%= number %>" class="hide-carousel carousel slide carousel-preview" data-ride="carousel">
+                <ol class="carousel-indicators">
+                  <li data-target="#carouselExampleIndicators<%= number %>" data-slide-to="0" class="active"></li>
+                  <li data-target="#carouselExampleIndicators<%= number %>" data-slide-to="1"></li>
+                  <li data-target="#carouselExampleIndicators<%= number %>" data-slide-to="2"></li>
+                </ol>
+                  <div class=" carousel-inner">
+                    <div class="carousel-item active">
+                      <%= image_tag "", class: "hidden d-block w-100 image image-preview", id: "photo-preview" %>
                     </div>
- -->
+                      <div class="hidden carousel-item ">
+                        <%= image_tag "", class: "hidden d-block w-100 image", id: "photo-preview2" %>
+                      </div>
+                      <div class="hidden carousel-item ">
+                        <%= image_tag "", class: "hidden d-block w-100 image", id: "photo-preview3" %>
+                      </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleIndicators<%= number %>" role="button" data-slide="prev">
+                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                      <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleIndicators<%= number %>" role="button" data-slide="next">
+                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                      <span class="sr-only">Next</span>
+                    </a>
+              </div>
 
 
-            <span class="form-part"><%= f.input :description, label: false, placeholder: "J'ai encore quelques détails à préciser..." %></span>
-            <%= f.input :photos, as: :file, id: "special-photo-btn", input_html: { multiple: true } %>
             <%= f.submit "Suivant", id: "special-form-btn" %>
           <% end %>
           <a href="https://icons8.com/icon/59644/balcon" class="icon-link">Balcon icon by Icons8</a>

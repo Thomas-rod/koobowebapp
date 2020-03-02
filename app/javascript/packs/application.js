@@ -36,6 +36,7 @@ import { initAutocomplete } from '../plugins/init_autocomplete';
 import { initFlatpicker } from '../plugins/flatpickr';
 import { initSelect2 } from '../components/init_select2';
 import { initUpdateNavbarOnScroll } from '../components/navbar';
+import { previewImageOnFileSelect } from '../components/photo_preview';
 
 // import { chooseSchedule }from '../components/calendar';
 
@@ -44,9 +45,9 @@ document.addEventListener('turbolinks:load', () => {
   clickElementDashboard();
   initSelect2();
   clickableSchedule();
-  loadDynamicBannerText();
   initAutocomplete();
   checkboxesjs();
+  previewImageOnFileSelect();
 });
 
 

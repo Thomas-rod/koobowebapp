@@ -8,27 +8,37 @@
 }
 .form-part {
   padding-right: 5px;
-  & input {
+ input {
     height: 28px;
     width: 200px;
     border: none;
     border-bottom: 1px solid #EE8572;
   }
-  & textarea {
+ textarea {
     border: none;
     border: 1px solid #EE8572;
     width: 750px;
   }
 }
+
+.form-control:focus {
+  color: #495057;
+  background-color: none;
+  border-color: none;
+  outline: 0;
+  box-shadow: none;
+  border-bottom: 1px solid #EE8572;
+}
 #heating {
   margin-top: 7px;
 }
 #special-radio {
-  margin-top: 8px;
   display: flex;
-  justify-content: space-between;
+  justify-content: start;
   flex-wrap: wrap;
   margin: 20px 0;
+  width: 700px;
+  justify-content: space-between;
 }
 .select2-selection.select2-selection--multiple {
   width: 200px;
@@ -40,22 +50,34 @@
   width: 200px !important;
 }
 
+.select2-container--default .select2-selection--multiple {
+  border-radius: 0px !important;
+}
+
 .radio-part {
-  margin-right: 75px;
   display: flex;
 }
 .form-part.radio-part {
-  justify-content: start;
+  display: flex;
   opacity: .4;
-  flex: 0 0 30%;
   text-align: center;
+  height: 40px;
+  & label {
+    margin-right: 10px;
+  }
   &:hover {
-    cursor: pointer;
-    border-bottom: 1px solid #EE8572
+    padding: 7px 10px;
+    background-color: none;
+    border-radius: 5px;
+    font-size:15px;
+    font-weight: bold;
+    border: 1px solid #EE8572;
   }
   &.active {
   color: #201E50;
   opacity: 1;
+  font-size:15px;
+  font-weight: bold;
   }
 }
 .form-check input {
@@ -88,6 +110,9 @@
 
 .icon-link {
   color: white;
+  &:hover {
+    color: white;
+  }
 }
 
 #cellar-img {
@@ -100,11 +125,28 @@
   height: 20px;
 }
 
-// .form-check-input.boolean.optional:checked {
-//   opacity: 0;
-// }
+.upload-photo {
+  border:none;
+  padding: 16px 24px;
+  cursor: pointer;
+  font-weight: 500;
+  background: white;
+  border-radius: 2px;
+  font-style: italic;
+  &:hover {
+    color: #EE8572;
+  }
+}
 
-// .form-check-input.boolean.optional:not(:checked) {
-//   opacity: 0;
-// }
+.hide-carousel {
+  display: none;
+}
 
+.carousel-preview {
+  width: 600px;
+  margin-left: 25px;
+}
+
+.image-preview {
+  object-fit: cover
+}
