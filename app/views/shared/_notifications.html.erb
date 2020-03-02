@@ -1,10 +1,9 @@
 <div id="notifications">
-
-<%= current_user.flats.sum { |flat| flat.visits.where(status: "pending").count }  %>
-
   <% current_user.flats.each do |flat| %>
     <% flat.visits.where(status: "pending").each do |visit| %>
       <%= render "shared/notif", visit: visit %>
     <% end %>
   <% end %>
 </div>
+
+ <!-- current_user.flats.sum { |flat| flat.visits.where(status: "pending").count }  %> -->

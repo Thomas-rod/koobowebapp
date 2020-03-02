@@ -5,6 +5,13 @@
   background: $coral;
   padding: 8px 16px;
   border: 1px solid rgb(235,235,235);
+  // :hover{
+  //   background-color: $coral-light;
+  // }
+}
+
+.notif-item:hover{
+  background-color: $coral-light;
 }
 
 .notif-avatar {
