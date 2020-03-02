@@ -50,6 +50,10 @@
   width: 200px !important;
 }
 
+.select2-container--default .select2-selection--multiple {
+  border-radius: 0px !important;
+}
+
 .radio-part {
   display: flex;
 }
@@ -132,4 +136,8 @@
   &:hover {
     color: #EE8572;
   }
+}
+
+.hide-carousel {
+  visibility: hidden;
 }

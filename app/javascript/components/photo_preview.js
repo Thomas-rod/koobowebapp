@@ -15,6 +15,7 @@ const displayPreview = (input) => {
     }
     reader.readAsDataURL(input.files[0])
     document.getElementById('photo-preview').classList.remove('hidden');
+    document.querySelector(".hide-carousel").classList.remove('hide-carousel')
   }
   if (input.files && input.files[1]) {
     const reader2 = new FileReader();
@@ -23,7 +24,19 @@ const displayPreview = (input) => {
     }
     reader2.readAsDataURL(input.files[1])
     document.getElementById('photo-preview2').classList.remove('hidden');
+    document.querySelector(".hide-carousel").classList.remove('hide-carousel')
+  }
+  if (input.files && input.files[2]) {
+    const reader3 = new FileReader();
+    reader2.onload = (event) => {
+      document.getElementById('photo-preview3').src = event.currentTarget.result;
+    }
+    reader3.readAsDataURL(input.files[2])
+    document.getElementById('photo-preview3').classList.remove('hidden');
+    document.querySelector(".hide-carousel").classList.remove('hide-carousel')
   }
 }
 
 export { previewImageOnFileSelect };
+
+
