@@ -35,38 +35,29 @@
       </div>
   </div>
 </div>
-<div class="bg-image">
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-12 col-sm-4 col-sm-offset-4">
-        <div class="form-login">
-
-          <h2>Créer un compte</h2>
-          <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-            <%= f.error_notification %>
-
-            <div class="form-inputs">
-              <%= f.input :email,
-                          required: true,
-                          autofocus: true,
-                          input_html: { autocomplete: "Email" }%>
-              <%= f.input :password,
-                          required: true,
-                          hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                          input_html: { autocomplete: "Mot de passe" } %>
-              <%= f.input :password_confirmation,
-                          required: true,
-                          input_html: { autocomplete: "Mot de passe" } %>
-            </div>
-
-            <div class="form-actions">
-              <%= f.button :submit, "Créer un compte", class: "btn koobo-button" %>
-            </div>
-          <% end %>
-
-          <%= render "devise/shared/links" %>
-        </div>
+<div class="container signup-container">
+  <div class="form-login">
+    <h2>Créer un compte</h2>
+    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= f.error_notification %>
+      <div class="form-inputs">
+        <%= f.input :email,
+                    required: true,
+                    autofocus: true,
+                    input_html: { autocomplete: "Email" }%>
+        <%= f.input :password,
+                    required: true,
+                    hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                    input_html: { autocomplete: "Mot de passe" } %>
+        <%= f.input :password_confirmation,
+                    required: true,
+                    input_html: { autocomplete: "Confirmer le mot de passe" } %>
       </div>
-    </div>
+      <div class="form-actions">
+        <%= f.button :submit, "Créer un compte", class: "btn koobo-button" %>
+      </div>
+    <% end %>
+    <%= render "devise/shared/links" %>
   </div>
+    <img src="signup.png" alt="" class="image-signup">
 </div>

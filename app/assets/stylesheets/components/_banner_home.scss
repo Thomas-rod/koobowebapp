@@ -2,25 +2,32 @@
   height: 60vh;
   border-radius: 25px;
   display: flex;
-  justify-content: start;
+  justify-content: space-between;
   align-items: center;
-  background-image: url("https://cdn.dribbble.com/users/1803663/screenshots/5642226/home2_4x.png"), linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.1));
+  background-color: $blue;
   background-size: 60%;
   background-position: center;
+  img {
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
+  height:60vh;
+  }
 }
-.text-left {
+.typing-words {
   display: block;
-  margin: 0px 0px 0px 114px;
-  text-align: left;
+  text-align: center;
+  flex-grow: 1;
+
   & h1 {
     color: white;
     font-weight: bold;
     font-size: 45px;
   }
   & h2 {
-    color: white;
+    color: $coral;
     font-weight: bold;
     font-size: 45px;
+    height:55px;
   }
 }
 
@@ -33,13 +40,11 @@
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  margin: 65px 0px 0px 114px;
-  font-size: 17px;
+  margin: 65px 0px 0px 0px;
+  font-size: 22px;
   font-weight: lighter;
   &:hover {
     opacity: 0.9;
-    color: $coral;
-    background-color: $blue;
   }
 }
 
@@ -48,3 +53,9 @@
   margin: 40px;
 }
 
+@include media-breakpoint-down(md) {
+
+  .banner-home img {
+    display: none;
+  }
+}
