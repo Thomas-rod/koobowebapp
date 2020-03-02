@@ -3,81 +3,65 @@
     <%= render partial: 'shared/dashboard', locals: { flats: @flats, schedules: @schedules, documents: @documents} %>
     <div style=" width:100%;">
       <%= render partial: 'shared/navbar_dashboard', locals: { page_title: 'Appartements', notif_counter: @counter} %>
-      <div class="container my-container">
-        <h3 id="titre-recap">Récapitulatif de votre annonce</h3>
-        <% if @flat.photos.attached? %>
-          <div class="card-flat">
-            <div class="card-trip" id="my-carousel">
-              <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                <div class="carousel-inner">
-                  <div class="carousel-item active">
-                    <%= cl_image_tag @flat.photos[0].key, class: "d-block w-100 image", style: "height: 300px"%>
-                  </div>
-                  <% @flat.photos[1..@flat.photos.count].each do |photo| %>
-                    <div class="carousel-item ">
-                      <%= cl_image_tag photo.key, class: "d-block w-100 image", style: "height: 300px"%>
-                    </div>
+      <!-- METTRE UNE BARRE DE PROGRESSION EN JS APRES -->
+      <div class="step-form">
+        <p> Tu y es presque, plus que X étapes ! </p>
+        <div class="" id="calendar-publication">
+          <p class="text-second-step">Je souhaite faire visiter mon appartement</p>
+          <div class="schedules-container-show-edit">
+            <table class = "table-schedules">
+            <thead class = "jour">
+              <tr>
+                <th class="schedules-tht">h</th>
+                <th class="schedules-th">lun</th>
+                <th class="schedules-th">mar</th>
+                <th class="schedules-th">mer</th>
+                <th class="schedules-th">jeu</th>
+                <th class="schedules-th">ven</th>
+                <th class="schedules-th">sam</th>
+                <th class="schedules-th">dim</th >
+              </tr>
+            </thead>
+            <tbody>
+              <% hour = 7 %>
+              <% 13.times do %>
+              <% hour += 1 %>
+              <% demi = "30" %>
+              <% pile = "00" %>
+              <tr>
+                <th class= "schedule-th"> <%= hour %></th>
+                <% day = 2 %>
+                <% 7.times do %>
+                  <% day += 1 %>
+                  <% if @flat.schedules.select {|time| time.start == Time.new(2020, 3, day, hour, 0, 0)} != []%>
+                    <td class = "schedules-td schedules-selected"></td>
+                  <% else %>
+                    <td class = "schedules-td schedules-unselected"><%=link_to "", flat_schedules_path(@flat, schedule: { start: Time.new(2020, 3, day, hour, 0, 0), end:Time.new(2020, 3, day, hour, 30, 0)}), method: :post, remote: true, class: "schedules-button" %></td>
                   <% end %>
-                  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                  </a>
-                  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                  </a>
-                </div>
-              </div>
-            </div>
+                <% end %>
+              </tr>
+              <tr>
+                <th class= "schedule-th"> <%= hour %>: <%= demi %></th>
+                <% day = 2 %>
+                <% 7.times do %>
+                  <% day += 1 %>
+                   <% if @flat.schedules.select {|time| time.start == Time.new(2020, 3, day,hour, 30, 0)} != []%>
+                      <td class = "schedules-td schedules-selected"></td>
+                   <% else %>
+                      <td class = "schedules-td schedules-unselected"><%=link_to "", flat_schedules_path(@flat, schedule: { start: Time.new(2020, 3, day, hour, 30, 0), end:Time.new(2020, 3, day, (hour+1) , 0, 0)}), method: :post , class: "schedules-button" %></td>
+                    <% end %>
+                <% end %>
+              </tr>
+              <% end %>
+            </tbody>
+           </table>
           </div>
-        <% end %>
-        <h5><%= @flat.name %> - <%= @flat.surface.round %> m² - <%= @flat.monthly_price.round %> €/mois</h5>
-        <h6><%= @flat.description %></h6>
-        <% if @flat.floor == 1  %>
-          <p>Charmant appartement situé au <%= @flat.floor %>er étage de l'immeuble situé <%= @flat.address %>.</p>
-        <% else %>
-          <p>Charmant appartement situé au <%= @flat.floor %>ème étage de l'immeuble situé <%= @flat.address %>.</p>
-        <% end %>
-        <% if @flat.number_of_rooms == 1 %>
-          <p>L'appartement est un studio de <%= @flat.surface.round %></p>
-        <% elsif @flat.number_of_rooms != 1 && @flat.number_of_bedrooms != 1 %>
-          <p>L'appartement mesure <%= @flat.surface.round %> m² et est composé de <%= @flat.number_of_rooms %> pièces dont <%= @flat.number_of_bedrooms %> chambres.</p>
-        <% elsif @flat.number_of_rooms != 1 && @flat.number_of_bedrooms == 1 %>
-          <p>L'appartement mesure <%= @flat.surface.round %> m² et est composé de <%= @flat.number_of_rooms %> pièces dont <%= @flat.number_of_bedrooms %> chambre.</p>
-        <% end %>
-        <% if @flat.heating_system[1] == "individuel" %>
-          <p>Le chauffage est <%=  @flat.heating_system[1] %> et <%=  @flat.heating_system[2] %>.</p>
-        <% elsif @flat.heating_system[1] == "électrique" %>
-          <p>Le chauffage est <%=  @flat.heating_system[1] %> et <%=  @flat.heating_system[2] %>.</p>
-         <% elsif @flat.heating_system[1] == "central" %>
-          <p>Le chauffage est <%=  @flat.heating_system[1] %> et au <%=  @flat.heating_system[2] %>.</p>
-        <% elsif @flat.heating_system[1] == "gaz" %>
-          <p>Le chauffage est au <%=  @flat.heating_system[1] %> et <%=  @flat.heating_system[2] %>.</p>
-        <% end %>
-        <% if @flat.furnished %>
-           <p> Il est meublé
-         <% else %>
-           <p> Il est non-meublé
-        <% end %>
-        <% if @flat.elevator || @flat.balcony || @flat.parking || @flat.cellar %>
-           <span>et donne accès aux commodités suivantes :</span>
-           </p>
-           <ul>
-        <% end %>
-        <% if @flat.elevator %>
-          <li>Ascenseur</li>
-        <% end %>
-        <% if @flat.balcony %>
-          <li>Balcon</li>
-        <% end %>
-        <% if @flat.parking %>
-          <li>Parking</li>
-        <% end %>
-        <% if @flat.cellar %>
-          <li>Cave</li>
-        <% end %>
-          </ul>
-        <div class="container-new-form-platforms">
+          <div class="button-second-step-form">
+            <%= link_to 'Revenir en arrière', :back%>
+            <button id="first-step-form" class="edit-pub-btn">Suivant</button>
+          </div>
+        </div>
+        <div id="div-second-step" class="d-none">
           <%= simple_form_for @flat, url: update_publication_path(@flat), method: :patch do |f| %>
           <div class="special-form" id="special-radio">
               <span class="form-part radio-part <%= @flat.leboncoin ? "active" : "" %>"><%= f.input :leboncoin, label: "Le Bon Coin", as: :hidden %></span>
@@ -86,10 +70,100 @@
               <span class="form-part radio-part <%= @flat.pap ? "active" : "" %>"><%= f.input :pap, label: "PAP, Particulier à Particulier", as: :hidden %></span>
           </div>
           <div class="my-form-buttons">
-            <%= link_to "Modifier l'annonce", edit_flat_path, class: "edit-pub-btn" %>
-            <%= f.submit "Valider l'annonce", class: "edit-pub-btn", id: "edit-pub-btn-validate" %>
+            <%= link_to "Modifier l'annonce", edit_flat_path %>
+            <%= f.submit "Valider l'annonce", class: "second-step-form edit-pub-btn", id: "edit-pub-btn-validate" %>
           </div>
           <% end %>
+        </div>
+        <!-- Last Step -->
+        <div id="div-third-step" class="d-none">
+          <h3 id="titre-recap">Récapitulatif de votre annonce</h3>
+          <% if @flat.photos.attached? %>
+            <div class="card-flat">
+              <div class="card-trip" id="my-carousel">
+                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                  <div class="carousel-inner">
+                    <div class="carousel-item active">
+                      <%= cl_image_tag @flat.photos[0].key, class: "d-block w-100 image", style: "height: 300px"%>
+                    </div>
+                    <% @flat.photos[1..@flat.photos.count].each do |photo| %>
+                      <div class="carousel-item ">
+                        <%= cl_image_tag photo.key, class: "d-block w-100 image", style: "height: 300px"%>
+                      </div>
+                    <% end %>
+                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                      <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                      <span class="sr-only">Next</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <% end %>
+          <h5><%= @flat.name %> - <%= @flat.surface.round %> m² - <%= @flat.monthly_price.round %> €/mois</h5>
+          <h6><%= @flat.description %></h6>
+          <% if @flat.floor == 1  %>
+            <p>Charmant appartement situé au <%= @flat.floor %>er étage de l'immeuble situé <%= @flat.address %>.</p>
+          <% else %>
+            <p>Charmant appartement situé au <%= @flat.floor %>ème étage de l'immeuble situé <%= @flat.address %>.</p>
+          <% end %>
+          <% if @flat.number_of_rooms == 1 %>
+            <p>L'appartement est un studio de <%= @flat.surface.round %></p>
+          <% elsif @flat.number_of_rooms != 1 && @flat.number_of_bedrooms != 1 %>
+            <p>L'appartement mesure <%= @flat.surface.round %> m² et est composé de <%= @flat.number_of_rooms %> pièces dont <%= @flat.number_of_bedrooms %> chambres.</p>
+          <% elsif @flat.number_of_rooms != 1 && @flat.number_of_bedrooms == 1 %>
+            <p>L'appartement mesure <%= @flat.surface.round %> m² et est composé de <%= @flat.number_of_rooms %> pièces dont <%= @flat.number_of_bedrooms %> chambre.</p>
+          <% end %>
+          <% if @flat.heating_system[1] == "individuel" %>
+            <p>Le chauffage est <%=  @flat.heating_system[1] %> et <%=  @flat.heating_system[2] %>.</p>
+          <% elsif @flat.heating_system[1] == "électrique" %>
+            <p>Le chauffage est <%=  @flat.heating_system[1] %> et <%=  @flat.heating_system[2] %>.</p>
+           <% elsif @flat.heating_system[1] == "central" %>
+            <p>Le chauffage est <%=  @flat.heating_system[1] %> et au <%=  @flat.heating_system[2] %>.</p>
+          <% elsif @flat.heating_system[1] == "gaz" %>
+            <p>Le chauffage est au <%=  @flat.heating_system[1] %> et <%=  @flat.heating_system[2] %>.</p>
+          <% end %>
+          <% if @flat.furnished %>
+             <p> Il est meublé
+           <% else %>
+             <p> Il est non-meublé
+          <% end %>
+          <% if @flat.elevator || @flat.balcony || @flat.parking || @flat.cellar %>
+             <span>et donne accès aux commodités suivantes :</span>
+             </p>
+             <ul>
+          <% end %>
+          <% if @flat.elevator %>
+            <li>Ascenseur</li>
+          <% end %>
+          <% if @flat.balcony %>
+            <li>Balcon</li>
+          <% end %>
+          <% if @flat.parking %>
+            <li>Parking</li>
+          <% end %>
+          <% if @flat.cellar %>
+            <li>Cave</li>
+          <% end %>
+            </ul>
+          <div class="container-new-form-platforms">
+            <%= simple_form_for @flat, url: flat_path(@flat), method: :patch do |f| %>
+            <div class="special-form" id="special-radio">
+                <span class="form-part radio-part <%= @flat.leboncoin ? "active" : "" %>"><%= f.input :leboncoin, label: "Le Bon Coin", as: :hidden %></span>
+                <span class="form-part radio-part <%= @flat.bienici ? "active" : "" %>"><%= f.input :bienici, label: "Bien Ici", as: :hidden %></span>
+                <span class="form-part radio-part <%= @flat.seloger ? "active" : "" %>"><%= f.input :seloger, label: "Se Loger", as: :hidden %></span>
+                <span class="form-part radio-part <%= @flat.pap ? "active" : "" %>"><%= f.input :pap, label: "PAP, Particulier à Particulier", as: :hidden %></span>
+            </div>
+            <div class="my-form-buttons">
+              <%= link_to "Modifier l'annonce", edit_flat_path %>
+              <%= f.submit "Valider l'annonce", class: "edit-pub-btn third-step-form", id: "edit-pub-btn-validate" %>
+            </div>
+            <% end %>
+        </div>
       </div>
     </div>
   </div>

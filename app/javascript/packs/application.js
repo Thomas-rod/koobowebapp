@@ -30,8 +30,8 @@ import 'select2/dist/css/select2.css';
 import { checkboxesjs } from '../components/checkboxes';
 import { clickElementDashboard } from '../components/dashboard';
 import { clickableSchedule } from '../components/calendar';
-
 import { loadDynamicBannerText } from '../components/banner';
+import { loaderFormNewFlat } from '../components/form_loader';
 import { initAutocomplete } from '../plugins/init_autocomplete';
 import { initFlatpicker } from '../plugins/flatpickr';
 import { initSelect2 } from '../components/init_select2';
@@ -41,12 +41,13 @@ import { previewImageOnFileSelect } from '../components/photo_preview';
 // import { chooseSchedule }from '../components/calendar';
 
 document.addEventListener('turbolinks:load', () => {
-  initFlatpicker();
-  clickElementDashboard();
-  initSelect2();
-  clickableSchedule();
-  initAutocomplete();
   checkboxesjs();
+  clickElementDashboard();
+  clickableSchedule();
+  initFlatpicker();
+  initSelect2();
+  initAutocomplete();
+  loaderFormNewFlat();
   previewImageOnFileSelect();
 });
 
