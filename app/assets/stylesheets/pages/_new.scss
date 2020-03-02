@@ -50,8 +50,8 @@
   flex: 0 0 30%;
   text-align: center;
   &:hover {
-    opacity: 1;
     cursor: pointer;
+    border-bottom: 1px solid #EE8572
   }
   &.active {
   color: #201E50;
@@ -108,6 +108,3 @@
 //   opacity: 0;
 // }
 
-.hidden {
-  opacity: 0;
-}

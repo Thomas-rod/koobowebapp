@@ -42,6 +42,7 @@ class FlatsController < ApplicationController
 
   def edit
     @flat = Flat.find(params[:id])
+    render :new
   end
 
   def update

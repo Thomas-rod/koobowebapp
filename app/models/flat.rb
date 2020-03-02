@@ -6,5 +6,5 @@ class Flat < ApplicationRecord
   has_many :documents, through: :rentings
   has_many :rentings, dependent: :destroy
   has_many_attached :photos
-  validates :name, :address, :monthly_price, :number_of_rooms, :number_of_bedrooms, :surface, :floor, :heating_system, presence: true
+  # validates :name, :address, :monthly_price, :number_of_rooms, :number_of_bedrooms, :surface, :floor, :heating_system, presence: true
 end
