@@ -2,7 +2,7 @@
   <div class="d-flex">
     <%= render partial: 'shared/dashboard', locals: { flats: @flats, schedules: @schedules, documents: @documents} %>
     <div style=" width:100%;">
-      <%= render partial: 'shared/navbar_dashboard', locals: { page_title: 'Appartements'}%>
+      <%= render partial: 'shared/navbar_dashboard', locals: { page_title: 'Appartements', notif_counter: @counter}%>
       <div class="container">
         <div class="container-new-form">
           <%= simple_form_for [@flat] do |f| %>

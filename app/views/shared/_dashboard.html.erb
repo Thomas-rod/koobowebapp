@@ -1,8 +1,3 @@
-<% counter_appartement = 0 %>
-<% counter_calendrier = 0 %>
-<% counter_documents = 2 %>
-<% counter_profil = 0 %>
-
 <div id="dashboard-js">
   <div class="dashboard-wrapper">
     <div class="pt-3 pb-5">
@@ -12,9 +7,9 @@
         <%= link_to flats_path do %>
           <i class="fas fa-home icon-dashboard fa-2x"></i>
           <p>Appartements</p>
-          <% if counter_appartement == 0 %>
+          <% if @counter_appartement == 0 %>
           <% else %>
-            <span class="notif-counter"><%= counter_appartement %></span>
+            <span class="notif-counter"><%= @counter_appartement %></span>
           <% end %>
         <% end %>
       </div>
@@ -22,10 +17,9 @@
         <%= link_to schedules_path do %>
           <i class="far fa-calendar-alt icon-dashboard fa-2x"></i>
           <p>Calendrier</p>
-          <% if counter_calendrier == 0 %>
-
+          <% if @counter_calendar == 0 %>
           <% else %>
-            <span class="notif-counter"><%= counter_calendrier %></span>
+            <span class="notif-counter"><%= @counter_calendar %></span>
           <% end %>
         <% end %>
       </div>
@@ -33,10 +27,9 @@
         <%= link_to documents_path do %>
           <i class="far fa-file-alt icon-dashboard fa-2x"></i>
           <p>Documents</p>
-          <% if counter_documents == 0 %>
-
+          <% if @counter_documents == 0 %>
           <% else %>
-            <span class="notif-counter"><%= counter_documents %></span>
+            <span class="notif-counter"><%= @counter_documents %></span>
           <% end %>
         <% end %>
       </div>
@@ -44,10 +37,9 @@
         <a href="">
           <i class="far fa-user icon-dashboard fa-2x"></i>
           <p>Profil</p>
-          <% if counter_profil == 0 %>
-
+          <% if @counter_profil == 0 %>
           <% else %>
-            <span class="notif-counter"><%= counter_profil %></span>
+            <span class="notif-counter"><%= @counter_profil %></span>
           <% end %>
         </a>
       </div>

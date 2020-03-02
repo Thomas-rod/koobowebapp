@@ -9,7 +9,7 @@
   <div class="d-flex">
     <%= render partial: 'shared/dashboard', locals: { flats: @flats, schedules: @schedules, documents: @documents} %>
     <div style=" width:100%;">
-      <%= render 'shared/navbar_dashboard', page_title: 'Calendrier' %>
+      <%= render 'shared/navbar_dashboard', locals: { page_title: 'Calendrier', notif_counter: @counter} %>
       <div class="container">
         <div class="row">
         <div class="container schedules-container col-sm-8 .col-md-8">
