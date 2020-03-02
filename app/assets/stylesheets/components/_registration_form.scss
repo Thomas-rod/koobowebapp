@@ -1,0 +1,36 @@
+.form-login {
+  background: white;
+  padding: 10px 20px;
+  margin-top: 100px;
+  border-radius: 3px;
+  box-shadow: 1px 1px 15px rgba(0,0,0,0.2);
+  min-width: 350px;
+  z-index: 1;
+  h2 {
+    font-size: 25px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+  .btn {
+    width: 100%;
+    margin-bottom: 20px;
+    background-color: $coral;
+  }
+}
+.signup-container{
+display: flex;
+margin-top: 60px;
+justify-content: space-between;
+align-items: flex-end;
+}
+
+.banner-sign {
+  height: 92vh;
+  border-radius: none;
+}
+
+.image-signup{
+  max-width: 700px;
+  object-fit: cover;
+}

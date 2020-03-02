@@ -1,6 +1,5 @@
 // Specific CSS for your home-page
 
-
 .container-nav-home {
   display: flex;
   justify-content: space-between;
@@ -136,10 +135,10 @@
 
 .peaceful-right {
   text-align: center;
-  & h3 {
+  h3 {
     padding: 15px;
   }
-  & p {
+  p {
     padding: 15px;
   }
 }
@@ -175,6 +174,23 @@
   & h3 {
     color: white;
     font-weight: bold;
+  }
+}
+
+@include media-breakpoint-down(md) {
+  /* For a screen < 768px, this CSS will be read */
+
+  .card-strong-point {
+    display: block;
+  }
+  .container-card-koobo {
+    margin: 25px;
+  }
+  .two-element-right img {
+    display: none;
+  }
+  .peaceful-left img {
+    display: none;
   }
 }
 
