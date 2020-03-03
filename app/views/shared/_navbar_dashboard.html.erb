@@ -9,7 +9,9 @@
         <% end %>
           <div class="dropdown-menu drodropdown-menu-dashboard" aria-labelledby="navbarDropdownNotif">
             <!-- HERE ALL VISITE PENDING AND DOCUMENTS NOTIFICATIONS-->
-            <%= link_to render(:partial => 'shared/notifications'), schedules_path, class: 'dropdown-item' %>
+            <div class="dropdown-item">
+              <%= render(:partial => 'shared/notifications') %>
+            </div>
           </div>
         <% end %>
       </div>
