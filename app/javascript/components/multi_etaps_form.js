@@ -41,10 +41,17 @@ const makeFormAppear = () => {
       displayNextLine(input1, input2, input3, input4, input5, input6, input7);
     });
   }
+
+  $(document).ready(function(){
+    $(".form-part.radio-part").click(function(){
+      document.querySelector(".line-9").classList.remove('hide-carousel');
+    });
+  });
+
   if (input7) {
     input7.addEventListener('change', () => {
       displayNextLine(input1, input2, input3, input4, input5, input6, input7);
-    })
+    });
   }
 }
 
