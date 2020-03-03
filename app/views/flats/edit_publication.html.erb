@@ -2,10 +2,11 @@
   <div class="d-flex">
     <%= render partial: 'shared/dashboard', locals: { flats: @flats, schedules: @schedules, documents: @documents} %>
     <div style=" width:100%;">
-      <%= render partial: 'shared/navbar_dashboard', locals: { page_title: 'Appartements', notif_counter: @counter} %>
       <!-- METTRE UNE BARRE DE PROGRESSION EN JS APRES -->
-      <div class="step-form">
+      <div class="advance-barre">
         <p> Tu y es presque, plus que X étapes ! </p>
+      </div>
+      <div class="step-form">
         <div class="" id="calendar-publication">
           <p class="text-second-step">Je souhaite faire visiter mon appartement</p>
           <div class="schedules-container-show-edit">
@@ -57,12 +58,13 @@
            </table>
           </div>
           <div class="button-second-step-form">
-            <%= link_to 'Revenir en arrière', :back%>
+            <%= link_to 'Revenir en arrière', id: 'back-form-one'%>
             <button id="first-step-form" class="edit-pub-btn">Suivant</button>
           </div>
         </div>
         <div id="div-second-step" class="d-none">
-          <%= simple_form_for @flat, url: update_publication_path(@flat), method: :patch do |f| %>
+          <p class="text-second-step">Je souhaite que mon annonce soit publiée sur </p>
+          <%= simple_form_for @flat, url: update_publication_path(@flat, remote: true), method: :patch do |f| %>
           <div class="special-form" id="special-radio">
               <span class="form-part radio-part <%= @flat.leboncoin ? "active" : "" %>"><%= f.input :leboncoin, label: "Le Bon Coin", as: :hidden %></span>
               <span class="form-part radio-part <%= @flat.bienici ? "active" : "" %>"><%= f.input :bienici, label: "Bien Ici", as: :hidden %></span>
@@ -70,8 +72,8 @@
               <span class="form-part radio-part <%= @flat.pap ? "active" : "" %>"><%= f.input :pap, label: "PAP, Particulier à Particulier", as: :hidden %></span>
           </div>
           <div class="my-form-buttons">
-            <%= link_to "Modifier l'annonce", edit_flat_path %>
-            <%= f.submit "Valider l'annonce", class: "second-step-form edit-pub-btn", id: "edit-pub-btn-validate" %>
+            <%= link_to 'Revenir en arrière', id: 'back-form-two'%>
+            <%= f.submit "Valider l'annonce", class: "second-step-form edit-pub-btn" %>
           </div>
           <% end %>
         </div>
