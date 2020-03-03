@@ -18,13 +18,29 @@ class VisitsController < ApplicationController
 
   def update
      @visit = Visit.find(params[:id])
-     @visit.update(visit_params)
-     redirect_to schedules_path
+     @visit.update(params_visit)
+     @schedule = Schedule.find(params[:schedule_id])
+     deny_pending_visits
+     redirect_to schedules_path(anchor: "scheduled#{@schedule.id}")
     # switch visit status to accepted
     # Broadcast to locataire (recup l'id du locataire)
   end
 
+
+  private
+
   def params_visit
-    params.require(:visit).permit(:schedule_id)
+    params.require(:visit).permit(:schedule_id, :status)
   end
+
+  def deny_pending_visits
+    pending_visits = @schedule.visits.select do |visit|
+     visit.status != "accepted"
+    end
+    pending_visits.each do |visit|
+     visit.status = "denied"
+     visit.save
+  end
+end
+
 end

@@ -96,13 +96,16 @@ puts "Now we are doing visits !"
 #   end
 # end
 
-Visit.create!(schedule: s1, user:thomas, status: 'accepted')
+Visit.create!(schedule: s1, user:thomas, status: 'pending')
 Visit.create!(schedule: s1, user:mao, status: 'pending')
 
 Visit.create!(schedule: s2, user:thomas, status: 'pending')
 Visit.create!(schedule: s2, user:mao , status: 'pending')
 Visit.create!(schedule: s2, user:john, status: 'pending')
 Visit.create!(schedule: s2, user:roxane, status: 'pending')
+
+Visit.create!(schedule: s3, user:thomas, status: 'pending')
+Visit.create!(schedule: s3, user:mao , status: 'pending')
 
 
 puts "you have now #{Visit.count} visits"

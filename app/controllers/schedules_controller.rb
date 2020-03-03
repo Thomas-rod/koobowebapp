@@ -2,7 +2,7 @@ class SchedulesController < ApplicationController
 before_action :notif_counter
 
   def index
-  @flats = current_user.flats
+  @flats = renting?
   @documents = Document.all
   @visits_user = visits_user
   end
@@ -33,6 +33,13 @@ before_action :notif_counter
       end
     end
     visit_user
+  end
+
+  def renting?
+    blabla = current_user.flats.select do |flat|
+      flat.rentings == nil
+    end
+    blabla
   end
 
   def notif_counter
