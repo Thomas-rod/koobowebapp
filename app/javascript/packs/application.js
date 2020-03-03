@@ -49,6 +49,7 @@ document.addEventListener('turbolinks:load', () => {
   initAutocomplete();
   loaderFormNewFlat();
   previewImageOnFileSelect();
+  loadDynamicBannerText();
 });
 
 

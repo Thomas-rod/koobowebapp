@@ -1,4 +1,4 @@
 <%= simple_form_for [@flat, @visit] do |f| %>
-<%= f.association :schedule %>
+<%= f.association :schedule, collection: @flat.schedules%>
 <%= f.submit %>
 <% end %>
