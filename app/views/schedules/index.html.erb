@@ -39,8 +39,8 @@
               <% 7.times do %>
                 <% day += 1 %>
                 <% scheduled = current_user.schedules.select {|time| time.start == Time.zone.local(2020, 3, day, hour, 0, 0)} %>
-                <% if scheduled != [] %>
-                  <% if scheduled[0].visits.any?{|visit| visit.status == "accepted"} %>
+                <% if scheduled != []%>
+                  <% if scheduled[0].visits.any?{|visit| visit.status == []} %>
                     <td class = "schedules-td schedules-selected selected-accepted" data-schedule = "scheduled<%= scheduled[0].id %> "></td>
                   <% elsif scheduled[0].visits.any?{|visit| visit.status == "pending"} %>
                     <td class = "schedules-td schedules-selected selected-pending" data-schedule = "scheduled<%= scheduled[0].id %> "></td>
@@ -75,87 +75,73 @@
           </tbody>
          </table>
         </div>
-        <div class="container side-card-schedule col-4 .col-md-4">
-        <% number = 2 %>
-        <% current_user.schedules.each do |schedule| %>
-        <% number += 1 %>
-          <div class="card-trip card-trip-schedules d-none" id="scheduled<%= schedule.id %>" style="overflow:scroll;" >
-            <div id="carouselExampleIndicators<%= number %>" class="carousel slide" data-ride="carousel">
-                <ol class="carousel-indicators">
-                  <li data-target="#carouselExampleIndicators<%= number %>" data-slide-to="0" class="active"></li>
-                  <li data-target="#carouselExampleIndicators<%= number %>" data-slide-to="1"></li>
-                  <li data-target="#carouselExampleIndicators<%= number %>" data-slide-to="2"></li>
-                </ol>
-                  <div class="carousel-inner">
-                    <div class="carousel-item active">
-                      <%= cl_image_tag schedule.flat.photos[0].key, class: "d-block w-100 image"%>
-                    </div>
-                    <% schedule.flat.photos[1..schedule.flat.photos.count].each do |photo| %>
-                      <div class="carousel-item ">
-                        <%= cl_image_tag photo.key, class: "d-block w-100 image" %>
+          <div class="container side-card-schedule col-4 .col-md-4">
+          <% number = 2 %>
+          <% current_user.schedules.each do |schedule| %>
+          <% number += 1 %>
+            <div class="card-trip card-trip-schedules d-none" id="scheduled<%= schedule.id %>" style="overflow:scroll;" >
+              <div id="carouselExampleIndicators<%= number %>" class="carousel slide" data-ride="carousel">
+                  <ol class="carousel-indicators">
+                    <li data-target="#carouselExampleIndicators<%= number %>" data-slide-to="0" class="active"></li>
+                    <li data-target="#carouselExampleIndicators<%= number %>" data-slide-to="1"></li>
+                    <li data-target="#carouselExampleIndicators<%= number %>" data-slide-to="2"></li>
+                  </ol>
+                    <div class="carousel-inner">
+                      <div class="carousel-item active">
+                        <%= cl_image_tag schedule.flat.photos[0].key, class: "d-block w-100 image"%>
                       </div>
-                    <% end %>
-                  </div>
-                    <a class="carousel-control-prev" href="#carouselExampleIndicators<%= number %>" role="button" data-slide="prev">
-                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                      <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="carousel-control-next" href="#carouselExampleIndicators<%= number %>" role="button" data-slide="next">
-                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                      <span class="sr-only">Next</span>
-                    </a>
-              </div>
-              <div class = "info-flat">
-                <h2><%= schedule.flat.name %></h2>
-                <h2 class = "price-calendar"><%= schedule.flat.monthly_price.round %> € / month</h2>
-                <p class = "my-1"><%= link_to "Rajouter des crénaux pour #{schedule.flat.name}" , flat_path(schedule.flat), class: "link-schedule" %></p>
-                <% accepted_visit = schedule.visits.select {|visit| visit.status == "accepted"} %>
-                <% pending_visit = schedule.visits.select {|visit| visit.status == "pending"} %>
-                <% if accepted_visit != [] %>
-                  <div class="card-product mt-3">
-                    <%= cl_image_tag accepted_visit[0].user.photo.key%>
-                    <div class="card-product-infos">
-                      <p><%= accepted_visit.first.user.first_name %> viendra visiter votre appartement le <%= schedule.start.strftime("%m/%d") %> de <%= schedule.start.strftime("%H:%M") %> à <%= schedule.end.strftime("%H:%M") %></p>
-                  <!--     <div class="status-change d-flex">
-                        <%# link_to "accepter",schedule_visit(visit, visit: { status: "accepted"}), method: :patch, remote: true %>
-                      </div> -->
-                      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 24 30" style="enable-background:new 0 0 24 24;" xml:space="preserve" class= 'accepted-logo'><g><path fill="green" d="M10.125,17.544c0.061,0.054,0.139,0.083,0.22,0.083c0.007,0,0.014,0,0.021-0.001c0.088-0.006,0.17-0.046,0.228-0.112   l9.269-10.593c0.121-0.138,0.107-0.347-0.031-0.467c-0.137-0.12-0.347-0.107-0.467,0.031l-9.049,10.342l-5.709-5.075   c-0.136-0.121-0.347-0.11-0.467,0.028c-0.122,0.136-0.109,0.346,0.028,0.467L10.125,17.544z"/></g></svg>
+                      <% schedule.flat.photos[1..schedule.flat.photos.count].each do |photo| %>
+                        <div class="carousel-item ">
+                          <%= cl_image_tag photo.key, class: "d-block w-100 image" %>
+                        </div>
+                      <% end %>
                     </div>
-                  </div>
-                <% elsif pending_visit != []%>
-                  <h2>Ils veulent visiter cet appartement</h2>
-                    <% pending_visit.each do |visit| %>
-                    <div class="card-product my-3">
-                      <%= cl_image_tag visit.user.photo.key%>
+                      <a class="carousel-control-prev" href="#carouselExampleIndicators<%= number %>" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                      </a>
+                      <a class="carousel-control-next" href="#carouselExampleIndicators<%= number %>" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                      </a>
+                </div>
+                <div class = "info-flat">
+                  <h2><%= schedule.flat.name %></h2>
+                  <h2 class = "price-calendar"><%= schedule.flat.monthly_price.round %> € / month</h2>
+                  <p class = "my-1"><%= link_to "Rajouter des crénaux pour #{schedule.flat.name}" , flat_path(schedule.flat), class: "link-schedule" %></p>
+                  <% accepted_visit = schedule.visits.select {|visit| visit.status == "accepted"} %>
+                  <% pending_visit = schedule.visits.select {|visit| visit.status == "pending"} %>
+                  <% if accepted_visit != [] %>
+                    <div class="card-product mt-3">
+                      <%= cl_image_tag accepted_visit[0].user.photo.key%>
                       <div class="card-product-infos">
-                        <p><%= visit.user.first_name %></p>
-                         <div class="status-change d-flex">
-                          <%= link_to "accepter", schedule_visit_path(schedule, visit, visit: { status: "accepted"}), method: :patch, remote: :true, class: "btn koobo-button btn-accept"%>
+                        <p><%= accepted_visit.first.user.first_name %> viendra visiter votre appartement le <%= schedule.start.strftime("%m/%d") %> de <%= schedule.start.strftime("%H:%M") %> à <%= schedule.end.strftime("%H:%M") %></p>
+                    <!--     <div class="status-change d-flex">
+                          <%# link_to "accepter",schedule_visit(visit, visit: { status: "accepted"}), method: :patch, remote: true %>
+                        </div> -->
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 24 30" style="enable-background:new 0 0 24 24;" xml:space="preserve" class= 'accepted-logo'><g><path fill="green" d="M10.125,17.544c0.061,0.054,0.139,0.083,0.22,0.083c0.007,0,0.014,0,0.021-0.001c0.088-0.006,0.17-0.046,0.228-0.112   l9.269-10.593c0.121-0.138,0.107-0.347-0.031-0.467c-0.137-0.12-0.347-0.107-0.467,0.031l-9.049,10.342l-5.709-5.075   c-0.136-0.121-0.347-0.11-0.467,0.028c-0.122,0.136-0.109,0.346,0.028,0.467L10.125,17.544z"/></g></svg>
+                      </div>
+                    </div>
+                  <% elsif pending_visit != []%>
+                    <h2>Ils veulent visiter cet appartement</h2>
+                      <% pending_visit.each do |visit| %>
+                      <div class="card-product my-3">
+                        <%= cl_image_tag visit.user.photo.key%>
+                        <div class="card-product-infos">
+                          <p><%= visit.user.first_name %></p>
+                           <div class="status-change d-flex">
+                            <%= link_to "accepter", schedule_visit_path(schedule, visit, visit: { status: "accepted"}), method: :patch, remote: :true, class: "btn koobo-button btn-accept"%>
+                          </div>
                         </div>
                       </div>
-                    </div>
+                    <% end %>
+                  <% else %>
+                  <p>Cet appartement est libre pour une visite à ce crénau</p>
                   <% end %>
-                <% else %>
-                <p>Cet appartement est libre pour une visite à ce crénau</p>
-                <% end %>
+                </div>
               </div>
-            </div>
-            <% end %>
-
-          <div class="card-trip product-flat p-3 d-none" id ="test">
-            <h2 class="p-3"> Choisissez l'appartement a booker </h2>
-          <% @flats.each do |flat| %>
-          <div class="card-product mt-3">
-            <%= cl_image_tag flat.photos[0].key%>
-            <div class="card-product-infos">
-              <h2><%= link_to flat.name, flat_path(flat) %></h2>
-              <p><%=flat.monthly_price.round %>€</p>
-            </div>
+              <% end %>
           </div>
-          <% end %>
-          </div>
-        </div>
-
         </div>
       </div>
     </div>

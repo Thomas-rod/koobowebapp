@@ -36,10 +36,10 @@ before_action :notif_counter
   end
 
   def renting?
-    blabla = current_user.flats.select do |flat|
+    unrented_flat = current_user.flats.select do |flat|
       flat.rentings == nil
     end
-    blabla
+    unrented_flat
   end
 
   def notif_counter
