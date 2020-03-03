@@ -8,7 +8,7 @@ class FlatsController < ApplicationController
   end
 
   def show
-    @flat = Flat.find(params[:id])
+    find_flat
     @schedule = Schedule.new
   end
 
@@ -33,17 +33,21 @@ class FlatsController < ApplicationController
   end
 
   def edit_publication
-    @flat = Flat.find(params[:id])
+    find_flat
   end
 
    def update_publication
     @flat = Flat.find(params[:id])
     @flat.update(flat_params)
-    # redirect_to flat_path(@flat)
+    redirect_to recap_publication_path(@flat)
+  end
+
+  def recap_publication
+    find_flat
   end
 
   def edit
-    @flat = Flat.find(params[:id])
+    find_flat
     render :new
   end
 
@@ -73,6 +77,11 @@ class FlatsController < ApplicationController
       end
     end
   end
+
+  def find_flat
+    @flat = Flat.find(params[:id])
+  end
+
 
   def flat_params
     params.require(:flat).permit(:name, :address, :description, :monthly_price, :visible, :rented, :number_of_rooms, :number_of_bedrooms, :surface, :floor, :elevator, :balcony, :cellar, :parking, :furnished, :pap, :leboncoin, :bienici, :seloger, heating_system: [], photos: [])
