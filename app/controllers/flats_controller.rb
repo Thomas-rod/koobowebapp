@@ -19,11 +19,6 @@ class FlatsController < ApplicationController
 
   def create
     @flat = Flat.new(flat_params)
-    flat_params[:heating_system].each do |param|
-      if param != " "
-        @flat.heating_system << param
-      end
-    end
     @flat.user = current_user
       if @flat.save
         redirect_to edit_publication_path(@flat)
