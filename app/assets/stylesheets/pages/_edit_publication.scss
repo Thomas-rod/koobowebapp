@@ -30,7 +30,16 @@
 
 .my-form-buttons {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
+  align-items:center;
+  a {
+    text-decoration:none;
+    color:gray;
+    margin-top: 10px;
+    &:hover{
+      color:black;
+    }
+  }
 }
 
 #edit-pub-btn-validate {
@@ -38,9 +47,17 @@
 }
 
 .step-form {
-  margin: 0 10%;
+  margin: 5% 10%;
 }
 
+#div-third-step {
+  margin: 0px 10%;
+}
+
+// .advance-barre {
+//   margin: 5% 10%;
+//   text-align:center;
+// }
 .text-second-step {
   color:$blue;
   font-size: 30px;
@@ -67,4 +84,7 @@
   height:500px;
   width: 100%;
   margin-bottom:2%
+}
+#div-second-step {
+  height:40%;
 }

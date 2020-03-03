@@ -2,9 +2,15 @@
   <div class="d-flex">
     <%= render partial: 'shared/dashboard', locals: { flats: @flats, schedules: @schedules, documents: @documents} %>
     <div style=" width:100%;">
-      <%= render partial: 'shared/navbar_dashboard', locals: { page_title: 'Appartements', notif_counter: @counter} %>
+      <%#= render partial: 'shared/navbar_dashboard', locals: { page_title: 'Appartements', notif_counter: @counter} %>
       <div class="container">
-        <div class="container-new-form">
+        <div class="step-form">
+          <ul id="progressbar">
+            <li class="active"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+          </ul>
           <%= simple_form_for @flat do |f| %>
           <div class="special-form">
             <span class="form-part">Je nomme mon appartement</span><span class="form-part"><%= f.input :name, label: false, placeholder: "Titre", input_html: { id: "my-name-input"} %></span><span class="form-part">.</span>
@@ -67,9 +73,11 @@
                     </a>
               </div>
 
+
             <div class="line-11 hide-carousel">
               <%= f.submit "Suivant", id: "special-form-btn" %>
             </div>
+
           <% end %>
           <a href="https://icons8.com/icon/59644/balcon" class="icon-link">Balcon icon by Icons8</a>
           <div class="icon-link">Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik" class="icon-link">Freepik</a> from <a class="icon-link" href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
