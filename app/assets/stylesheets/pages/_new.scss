@@ -65,6 +65,7 @@
   text-align: center;
   height: 40px;
   padding: 7px 10px;
+  align-items: center;
   & label {
     margin-right: 10px;
   }
@@ -154,10 +155,6 @@
   object-fit: cover
 }
 
-.form-group {
-  margin: 0;
-}
-
 .form-control:focus {
   border-color: #EE8572;
 }
@@ -168,4 +165,8 @@ input#flat_address {
 
 .algolia-places {
   width: 400px;
+}
+
+.my-label-check {
+  margin-top: 25px;
 }
