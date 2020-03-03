@@ -3,7 +3,7 @@
     <%= render partial: 'shared/dashboard', locals: { flats: @flats, schedules: @schedules, documents: @documents} %>
     <div style=" width:100%;">
       <%= render partial: 'shared/navbar_dashboard', locals: { page_title: 'Appartements', notif_counter: @counter} %>
-      <div class="container d-flex justify-content-between">
+      <div class="d-flex justify-content-between px-4">
         <% if @flat.photos.attached? %>
           <div class="card-flat">
             <div class="card-trip">
@@ -83,7 +83,6 @@
                 </ul>
               </div>
             <% else %>
-              <div id="coral-visite">Locataire</div>
               <% if @flat.rentings&.last&.user&.photo&.attached?  %>
                 <%= cl_image_tag @flat.rentings.last.user.photo.key, class: 'avatar-extra-large' %>
               <% else %>
@@ -93,7 +92,7 @@
               <div class="center-card-locataire">
                 <ul>
                   <li>
-                    <p>Locataire depuis <%= ((Time.now - @flat.rentings.last.created_at) / 86400).to_i %> jours</p>
+                    <p> <strong>Locataire depuis <%= ((Time.now - @flat.rentings.last.created_at) / 86400).to_i %> jours</strong></p>
                   </li>
                   <li>
                     <p>Tél : <%= @flat.rentings.last.user.phone_number %></p>
@@ -102,6 +101,7 @@
                     <p>Mail : <%= @flat.rentings.last.user.email %></p>
                   </li>
                 </ul>
+                <div class ="bouton-locataire"><%= link_to "Echanges", '#', class: 'koobo-button' %></div>
               </div>
             <% end %>
           </div>
@@ -171,8 +171,7 @@
               </div>
             <% else %>
               <div class="d-flex justify-content-around">
-                <%= link_to "Documents", '#', class: 'koobo-button' %>
-                <%= link_to "Echanges", '#', class: 'koobo-button' %>
+                <h3>Fil d'actualités</h3>
               </div>
             <% end %>
           </div>

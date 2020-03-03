@@ -38,9 +38,15 @@
               <% day = 2 %>
               <% 7.times do %>
                 <% day += 1 %>
-                <% scheduled = current_user.schedules.select {|time| time.start == Time.new(2020, 3, day, hour, 0, 0)} %>
-                <% if scheduled != []%>
-                  <td class = "schedules-td schedules-selected" data-schedule = "scheduled<%= scheduled[0].id %> "></td>
+                <% scheduled = current_user.schedules.select {|time| time.start == Time.zone.local(2020, 3, day, hour, 0, 0)} %>
+                <% if scheduled != [] %>
+                  <% if scheduled[0].visits.any?{|visit| visit.status == "accepted"} %>
+                    <td class = "schedules-td schedules-selected selected-accepted" data-schedule = "scheduled<%= scheduled[0].id %> "></td>
+                  <% elsif scheduled[0].visits.any?{|visit| visit.status == "pending"} %>
+                    <td class = "schedules-td schedules-selected selected-pending" data-schedule = "scheduled<%= scheduled[0].id %> "></td>
+                    <% else %>
+                    <td class = "schedules-td schedules-selected" data-schedule = "scheduled<%= scheduled[0].id %> "></td>
+                  <% end %>
                 <% else %>
                   <td class = "schedules-td schedules-unselected"></td>
                 <% end %>
@@ -53,7 +59,13 @@
                 <% day += 1 %>
                 <% scheduled = current_user.schedules.select {|time| time.start == Time.new(2020, 3, day,hour, 30, 0)} %>
                  <% if scheduled != []%>
+                 <% if scheduled[0].visits.any?{|visit| visit.status == "accepted"} %>
+                   <td class = "schedules-td schedules-selected selected-accepted" data-schedule = "scheduled<%= scheduled[0].id %> "></td>
+                 <% elsif scheduled[0].visits.any?{|visit| visit.status == "pending"} %>
+                   <td class = "schedules-td schedules-selected selected-pending" data-schedule = "scheduled<%= scheduled[0].id %> "></td>
+                   <% else %>
                     <td class = "schedules-td schedules-selected" data-schedule = "scheduled<%= scheduled[0].id %> "></td>
+                  <% end %>
                  <% else %>
                     <td class = "schedules-td schedules-unselected"></td>
                   <% end %>
@@ -63,11 +75,11 @@
           </tbody>
          </table>
         </div>
-        <div class="container col-4 .col-md-4">
+        <div class="container side-card-schedule col-4 .col-md-4">
         <% number = 2 %>
         <% current_user.schedules.each do |schedule| %>
         <% number += 1 %>
-          <div class="card-trip card-trip-schedules d-none" id="scheduled<%= schedule.id %>" >
+          <div class="card-trip card-trip-schedules d-none" id="scheduled<%= schedule.id %>" style="overflow:scroll;" >
             <div id="carouselExampleIndicators<%= number %>" class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">
                   <li data-target="#carouselExampleIndicators<%= number %>" data-slide-to="0" class="active"></li>
@@ -95,16 +107,33 @@
               </div>
               <div class = "info-flat">
                 <h2><%= schedule.flat.name %></h2>
+                <h2 class = "price-calendar"><%= schedule.flat.monthly_price.round %> € / month</h2>
+                <p class = "my-1"><%= link_to "Rajouter des crénaux pour #{schedule.flat.name}" , flat_path(schedule.flat), class: "link-schedule" %></p>
+                <% accepted_visit = schedule.visits.select {|visit| visit.status == "accepted"} %>
+                <% pending_visit = schedule.visits.select {|visit| visit.status == "pending"} %>
+                <% if accepted_visit != [] %>
+                  <p> La demande de <%= accepted_visit.first.user.first_name %> est <%= accepted_visit.first.status %></p>
+                <% elsif pending_visit != []%>
+                <h2>Ils veulent louer cet appartement</h2>
+                 <% pending_visit.each do |visit| %>
+                <div class="card-product mt-3">
+                  <%= cl_image_tag visit.user.photo.key%>
+                  <div class="card-product-infos">
+                    <p><%= visit.user.first_name %></p>
+                <!--     <div class="status-change d-flex">
+                      <%# link_to "accepter",schedule_visit(visit, visit: { status: "accepted"}), method: :patch, remote: true %>
+                    </div> -->
+                  </div>
+                </div>
+                <% end %>
+                <% else %>
                 <p>Cet appartement est libre pour une visite à ce crénau</p>
+                <% end %>
                 <p class = "mt-1"><%= link_to "Rajouter des crénaux pour #{schedule.flat.name}" , flat_path(schedule.flat), class: "link-schedule" %></p>
               </div>
-            <div class="card-trip-infos info-schedules">
-              <div>
-              </div>
-              <h2 class="card-trip-pricing"> <%= schedule.flat.monthly_price.round %>€ / month</h2>
             </div>
-          </div>
-          <% end %>
+            <% end %>
+
           <div class="card-trip product-flat p-3 d-none" id ="test">
             <h2 class="p-3"> Choisissez l'appartement a booker </h2>
           <% @flats.each do |flat| %>
