@@ -12,7 +12,11 @@ before_action :notif_counter
     @flat = Flat.find(params[:flat_id])
     @schedule.flat = @flat
     @schedule.save!
-    # redirect_to flat_path(@flat)
+    if request.referer.include?('edit_publication')
+      redirect_to edit_publication_path(@flat)
+    else
+      redirect_to flat_path(@flat)
+    end
   end
 
   # WE WILL NEED AN OTHER ROUTES TO REDIRECT TO THE CALENDAR WHEN WE ARE ON CALENDAR
