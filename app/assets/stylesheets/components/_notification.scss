@@ -13,6 +13,10 @@
   background-color: $coral-light;
 }
 
+.notif-link{
+ display: flex!important;
+}
+
 .notif-avatar {
   width: 40px;
   border-radius: 50%;
@@ -34,6 +38,12 @@
   // color: white;
   font-weight: bold;
 }
+
+.dropdown-item.active, .dropdown-item:active{
+  background-color: white!important;
+  color: $blue;
+}
+
 .notification .notification-actions {
   opacity: 0;
   display: flex;
