@@ -112,24 +112,32 @@
                 <% accepted_visit = schedule.visits.select {|visit| visit.status == "accepted"} %>
                 <% pending_visit = schedule.visits.select {|visit| visit.status == "pending"} %>
                 <% if accepted_visit != [] %>
-                  <p> La demande de <%= accepted_visit.first.user.first_name %> est <%= accepted_visit.first.status %></p>
-                <% elsif pending_visit != []%>
-                <h2>Ils veulent louer cet appartement</h2>
-                 <% pending_visit.each do |visit| %>
-                <div class="card-product mt-3">
-                  <%= cl_image_tag visit.user.photo.key%>
-                  <div class="card-product-infos">
-                    <p><%= visit.user.first_name %></p>
-                <!--     <div class="status-change d-flex">
-                      <%# link_to "accepter",schedule_visit(visit, visit: { status: "accepted"}), method: :patch, remote: true %>
-                    </div> -->
+                  <div class="card-product mt-3">
+                    <%= cl_image_tag accepted_visit[0].user.photo.key%>
+                    <div class="card-product-infos">
+                      <p><%= accepted_visit.first.user.first_name %> viendra visiter votre appartement le <%= schedule.start.strftime("%m/%d") %> de <%= schedule.start.strftime("%H:%M") %> à <%= schedule.end.strftime("%H:%M") %></p>
+                  <!--     <div class="status-change d-flex">
+                        <%# link_to "accepter",schedule_visit(visit, visit: { status: "accepted"}), method: :patch, remote: true %>
+                      </div> -->
+                      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 24 30" style="enable-background:new 0 0 24 24;" xml:space="preserve" class= 'accepted-logo'><g><path fill="green" d="M10.125,17.544c0.061,0.054,0.139,0.083,0.22,0.083c0.007,0,0.014,0,0.021-0.001c0.088-0.006,0.17-0.046,0.228-0.112   l9.269-10.593c0.121-0.138,0.107-0.347-0.031-0.467c-0.137-0.12-0.347-0.107-0.467,0.031l-9.049,10.342l-5.709-5.075   c-0.136-0.121-0.347-0.11-0.467,0.028c-0.122,0.136-0.109,0.346,0.028,0.467L10.125,17.544z"/></g></svg>
+                    </div>
                   </div>
-                </div>
-                <% end %>
+                <% elsif pending_visit != []%>
+                  <h2>Ils veulent visiter cet appartement</h2>
+                    <% pending_visit.each do |visit| %>
+                    <div class="card-product my-3">
+                      <%= cl_image_tag visit.user.photo.key%>
+                      <div class="card-product-infos">
+                        <p><%= visit.user.first_name %></p>
+                         <div class="status-change d-flex">
+                          <%= link_to "accepter", schedule_visit_path(schedule, visit, visit: { status: "accepted"}), method: :patch, remote: :true, class: "btn koobo-button btn-accept"%>
+                        </div>
+                      </div>
+                    </div>
+                  <% end %>
                 <% else %>
                 <p>Cet appartement est libre pour une visite à ce crénau</p>
                 <% end %>
-                <p class = "mt-1"><%= link_to "Rajouter des crénaux pour #{schedule.flat.name}" , flat_path(schedule.flat), class: "link-schedule" %></p>
               </div>
             </div>
             <% end %>

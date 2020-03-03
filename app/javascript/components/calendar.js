@@ -1,6 +1,6 @@
 const clickableSchedule = () => {
   const cases = document.querySelectorAll('.schedules-selected')
-
+  const anchor = window.location.hash
   cases.forEach((casi) => {
     casi.addEventListener('click', (event) => {
       const cards = document.querySelectorAll('.card-trip-schedules')
@@ -10,7 +10,14 @@ const clickableSchedule = () => {
       document.querySelector(`#${casi.dataset.schedule}`).classList.remove('d-none')
     });
   });
+
+  document.querySelector(anchor).classList.remove('d-none')
+
+
 }
+
+
+
 
 // const chooseSchedule = () => {
 
