@@ -7,34 +7,37 @@
         <div class="container-new-form">
           <%= simple_form_for @flat do |f| %>
           <div class="special-form">
-            <span class="form-part">Je nomme mon appartement</span><span class="form-part"><%= f.input :name, label: false, placeholder: "Titre" %></span><span class="form-part">.</span>
+            <span class="form-part">Je nomme mon appartement</span><span class="form-part"><%= f.input :name, label: false, placeholder: "Titre", input_html: { id: "my-name-input"} %></span><span class="form-part">.</span>
           </div>
-          <div class="special-form">
-            <span class="form-part">Il est au</span><span class="form-part"><%= f.input :floor, label: false, placeholder: "N étage" %></span><span class="form-part"> er/ème étage de l'immeuble situé</span><span class="form-part"><%= f.input :address, label: false, id: "flat_address", placeholder: "Adresse" %></span><span class="form-part">.</span>
+          <div class="special-form line-2 hide-carousel">
+            <span class="form-part">Il est au</span><span class="form-part"><%= f.input :floor, label: false, placeholder: "N étage" %></span><span class="form-part"> er/ème étage de l'immeuble situé</span><span class="form-part"><%= f.input :address, label: false, id: "flat_address", placeholder: "Adresse", input_html: { class: "my-address-input"} %></span><span class="form-part">.</span>
           </div>
-          <div class="special-form">
-            <span class="form-part">Je souhaite le louer pour</span><span class="form-part"><%= f.input :monthly_price, label: false, placeholder: "Loyer mensuel" %></span><span class="form-part"> €/mois.</span>
+          <div class="special-form line-3 hide-carousel">
+            <span class="form-part">Je souhaite le louer pour</span><span class="form-part"><%= f.input :monthly_price, label: false, placeholder: "Loyer mensuel", input_html: { id: "my-rent-input"} %></span><span class="form-part"> €/mois.</span>
           </div>
-          <div class="special-form">
-            <span class="form-part">Il a une superficie de </span><span class="form-part"><%= f.input :surface, label: false, placeholder: "Superficie" %></span><span class="form-part"> m².</span>
+          <div class="special-form line-4 hide-carousel">
+            <span class="form-part">Il a une superficie de </span><span class="form-part"><%= f.input :surface, label: false, placeholder: "Superficie", input_html: { id: "my-size-input"} %></span><span class="form-part"> m².</span>
           </div>
-          <div class="special-form">
-            <span class="form-part">Il est composé de </span><span class="form-part"><%= f.input :number_of_rooms, label: false, placeholder: "Nombre de pièces" %></span><span class="form-part"> pièce(s), dont </span><span class="form-part"><%= f.input :number_of_bedrooms, label: false, placeholder: "Nombre de chambres" %></span><span class="form-part">chambre(s).</span>
+          <div class="special-form line-5 hide-carousel">
+            <span class="form-part">Il est composé de </span><span class="form-part"><%= f.input :number_of_rooms, label: false, placeholder: "Nombre de pièces" %></span><span class="form-part"> pièce(s), dont </span><span class="form-part"><%= f.input :number_of_bedrooms, label: false, placeholder: "Nombre de chambres", input_html: { id: "my-bedroom-input"} %></span><span class="form-part">chambre(s).</span>
           </div>
-          <div class="special-form">
-            <span class="form-part" id="heating">Le chauffage est </span><span class="form-part"><%= f.input :heating_system, label: false, input_html: {class: "select2", multiple: "multiple"}, collection: Flat::HEATING %></span><span class="form-part">.</span>
+          <div class="special-form line-6 hide-carousel">
+            <span class="form-part" id="heating">Le chauffage est </span><span class="form-part"><%= f.input :heating_system, label: false, input_html: {class: "select2", multiple: "multiple", id: "my-heating-input"}, collection: Flat::HEATING %></span><span class="form-part">.</span>
           </div>
-            <span class="form-part">Je donne quelques informations supplémentaires à mon futur locataire : </span>
-          <div class="special-form" id="special-radio">
-            <span class="form-part radio-part <%= @flat.furnished ? "active" : "" %>"> <%= f.input :furnished, label: "Meublé", as: :hidden %><i class="fas fa-couch"></i></span>
-            <span class="form-part radio-part <%= @flat.elevator ? "active" : "" %>"><%= f.input :elevator, label: "Ascenseur", as: :hidden %><span class="iconify" data-icon="oi-elevator" data-inline="false"></span></span>
-            <span class="form-part radio-part <%= @flat.balcony ? "active" : "" %>"><%= f.input :balcony, label: "Balcon", as: :hidden %><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcToZ0zQLAhC3nanPlXxL40ToffY-oj9kpDWMCXr-h3R6Rk7bmIX" id="balcony-img"></span>
-            <span class="form-part radio-part <%= @flat.parking ? "active" : "" %>"><%= f.input :parking, label: "Parking", as: :hidden %><i class="fas fa-parking"></i></span>
-            <span class="form-part radio-part <%= @flat.cellar ? "active" : "" %>"><%= f.input :cellar, label: "Cave", as: :hidden %><img src="https://image.flaticon.com/icons/svg/1200/1200913.svg" id="cellar-img"></span>
+            <span class="form-part line-7 hide-carousel">Je donne quelques informations supplémentaires à mon futur locataire : </span>
+          <div class="line-8 hide-carousel">
+            <div class="special-form" id="special-radio">
+              <span class="form-part radio-part <%= @flat.furnished ? "active" : "" %>"> <%= f.input :furnished, label: "Meublé", as: :hidden, input_html: {class: "my-checkbox-input"} %><i class="fas fa-couch"></i></span>
+              <span class="form-part radio-part <%= @flat.elevator ? "active" : "" %>"><%= f.input :elevator, label: "Ascenseur", as: :hidden, input_html: {class: "my-checkbox-input"} %><span class="iconify" data-icon="oi-elevator" data-inline="false"></span></span>
+              <span class="form-part radio-part <%= @flat.balcony ? "active" : "" %>"><%= f.input :balcony, label: "Balcon", as: :hidden, input_html: {class: "my-checkbox-input"} %><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcToZ0zQLAhC3nanPlXxL40ToffY-oj9kpDWMCXr-h3R6Rk7bmIX" id="balcony-img"></span>
+              <span class="form-part radio-part <%= @flat.parking ? "active" : "" %>"><%= f.input :parking, label: "Parking", as: :hidden, input_html: {class: "my-checkbox-input"} %><i class="fas fa-parking"></i></span>
+              <span class="form-part radio-part <%= @flat.cellar ? "active" : "" %>"><%= f.input :cellar, label: "Cave", as: :hidden, input_html: {class: "my-checkbox-input"} %><img src="https://image.flaticon.com/icons/svg/1200/1200913.svg" id="cellar-img"></span>
+            </div>
           </div>
-          <span class="form-part"><%= f.input :description, label: false, placeholder: "J'ai encore quelques détails à préciser..." %></span>
-            <%= f.input :photos, as: :file, id: "special-photo-btn", input_html: { multiple: true, class: 'hidden d-none', id: 'photo-input' }, label_html: { class: 'upload-photo'}, label: "📷 J'ajoute des photos à mon appartement" %>
-
+          <span class="form-part line-9 hide-carousel"><%= f.input :description, label: false, placeholder: "J'ai encore quelques détails à préciser...", input_html: { id: "my-description-input"} %></span>
+            <div class="line-10 hide-carousel">
+              <%= f.input :photos, as: :file, id: "special-photo-btn", input_html: { multiple: true, class: 'hidden d-none', id: 'photo-input' }, label_html: { class: 'upload-photo'}, label: "📷 J'ajoute des photos à mon appartement" %>
+            </div>
             <% number = 0 %>
               <% number += 1 %>
               <div id="carouselExampleIndicators<%= number %>" class="hide-carousel carousel slide carousel-preview" data-ride="carousel">
@@ -64,8 +67,9 @@
                     </a>
               </div>
 
-
-            <%= f.submit "Suivant", id: "special-form-btn" %>
+            <div class="line-11 hide-carousel">
+              <%= f.submit "Suivant", id: "special-form-btn" %>
+            </div>
           <% end %>
           <a href="https://icons8.com/icon/59644/balcon" class="icon-link">Balcon icon by Icons8</a>
           <div class="icon-link">Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik" class="icon-link">Freepik</a> from <a class="icon-link" href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
