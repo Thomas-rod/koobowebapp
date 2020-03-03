@@ -45,7 +45,7 @@ import { makeFormAppear } from '../components/multi_etaps_form';
 document.addEventListener('turbolinks:load', () => {
   checkboxesjs();
   clickElementDashboard();
-  clickableSchedule();
+  // clickableSchedule();
   initFlatpicker();
   initSelect2();
   initAutocomplete();
