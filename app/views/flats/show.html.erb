@@ -180,61 +180,61 @@
           <h4>Confort et Equipement:</h4>
           <div class="d-flex">
               <div class="flat-informations-left">
-                <p>
+                <p class="flat-column-category">
                   <% if @flat.number_of_rooms == 1 %>
-                    <%= @flat.number_of_rooms %> pièce
+                    <span class= "pink-to-be"><%= @flat.number_of_rooms %> pièce
                   <% else %>
-                    <%= @flat.number_of_rooms %> pièces
+                    <span class= "pink-to-be"><%= @flat.number_of_rooms %></span> pièces
                   <% end %>
                 </p>
-                <p>
+                <p class="flat-column-category">
                   <% if @flat.number_of_bedrooms == 1 %>
-                    <%= @flat.number_of_bedrooms %> chambre
+                    <span class= "pink-to-be"><%= @flat.number_of_bedrooms %></span> chambre
                   <% else %>
-                    <%= @flat.number_of_bedrooms %> chambres
+                    <span class= "pink-to-be"><%= @flat.number_of_bedrooms %></span> chambres
                   <% end %>
                 </p>
-                <p><%= @flat.surface.round %> m²</p>
-                <p>
+                <p class="flat-column-category"><span class= "pink-to-be"><%= @flat.surface.round %></span> m²</p>
+                <p class="flat-column-category">
                   <% if @flat.floor == 1 %>
-                    <%= @flat.floor %> er étage
+                    <span class= "pink-to-be"><%= @flat.floor %></span>er étage
                   <% else %>
-                    <%= @flat.floor %> éme étage
+                    <span class= "pink-to-be"><%= @flat.floor %></span>ème étage
                   <% end %>
                 </p>
               </div>
               <%# raise %>
               <div class="flat-informations-right">
                 <% if @flat.furnished %>
-                  <p> Meublé : Oui</p>
+                  <span class="info-display"><i class="fas fa-couch"></i><p class="flat-column-category"> Meublé : <span class= "pink-to-be">Oui</span></p></span>
                 <% else %>
-                  <p> Meublé : Non</p>
+                  <span class="info-display"><i class="fas fa-couch"></i><p class="flat-column-category"> Meublé : <span class= "pink-to-be">Non</span></p></span>
                 <% end %>
                 <% if @flat.cellar %>
-                  <p> Cave : Oui</p>
+                  <span class="info-display"><img src="https://image.flaticon.com/icons/svg/1200/1200913.svg" id="cellar-img"><p class="flat-column-category"> Cave : <span class= "pink-to-be">Oui</span></p></span>
                 <% else %>
-                  <p> Cave : Non</p>
+                  <span class="info-display"><img src="https://image.flaticon.com/icons/svg/1200/1200913.svg" id="cellar-img"><p class="flat-column-category"> Cave : <span class= "pink-to-be">Non</span></p></span>
                 <% end %>
                 <% if @flat.parking %>
-                  <p> Parking : Oui</p>
+                  <span class="info-display"><i class="fas fa-parking"></i><p class="flat-column-category"> Parking : <span class= "pink-to-be">Oui</span></p></span>
                 <% else %>
-                  <p> Parking : Non</p>
+                  <span class="info-display"><i class="fas fa-parking"></i><p class="flat-column-category"> Parking : <span class= "pink-to-be">Non</span></p></span>
                 <% end %>
                 <% if @flat.elevator %>
-                  <p> Ascenseur : Oui</p>
+                  <span class="info-display"><span class="iconify" data-icon="oi-elevator" data-inline="false"></span><p class="flat-column-category"> Ascenseur : <span class= "pink-to-be">Oui</span></p></span>
                 <% else %>
-                  <p> Ascenseur : Non</p>
+                  <span class="info-display"><span class="iconify" data-icon="oi-elevator" data-inline="false"></span><p class="flat-column-category"> Ascenseur : <span class= "pink-to-be">Non</span></p></span>
                 <% end %>
                 <% if @flat.balcony %>
-                  <p> Balcon : Oui</p>
+                  <span class="info-display"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcToZ0zQLAhC3nanPlXxL40ToffY-oj9kpDWMCXr-h3R6Rk7bmIX" id="balcony-img"><p class="flat-column-category"> Balcon : <span class= "pink-to-be">Oui</span></p></span>
                 <% else %>
-                  <p> Balcon : Non</p>
+                  <span class="info-display"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcToZ0zQLAhC3nanPlXxL40ToffY-oj9kpDWMCXr-h3R6Rk7bmIX" id="balcony-img"><p class="flat-column-category"> Balcon : <span class= "pink-to-be">Non</span></p></span>
                 <% end %>
-                <p>Chauffage :
+               <span class="info-display"><img src="https://img.icons8.com/ios-filled/24/000000/fireplace.png"><p class="flat-column-category"> Chauffage :</p>
                 <% @flat.heating_system.each do |heating| %>
-                  <%= heating %>
+                  <span class= "pink-to-be"><%= heating %></span></span>
                   <% end %>
-                </p>
+
 
               </div>
           </div>
@@ -242,6 +242,7 @@
       </div>
     </div>
   </div>
+  <a href="https://icons8.com/icon/39297/cheminée" class="icon-link">Cheminée icon by Icons8</a>
 </div>
 
 
