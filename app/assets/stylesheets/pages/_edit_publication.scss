@@ -18,7 +18,8 @@
 }
 
 .my-container {
-  width: 1000px;
+  // JUSTE USED IT, TELL ME IF IT'S FUCKED UP SOMETHING ON YOUR CODE
+  // width: 1000px;
   margin: 0 0 30px auto;
 }
 
@@ -34,4 +35,36 @@
 
 #edit-pub-btn-validate {
   margin-right: 250px;
+}
+
+.step-form {
+  margin: 0 10%;
+}
+
+.text-second-step {
+  color:$blue;
+  font-size: 30px;
+  margin-top:2%;
+  margin-bottom:2%;
+}
+
+.button-second-step-form {
+  display:flex;
+  justify-content:space-around;
+  align-items:center;
+  a {
+    text-decoration:none;
+    color:gray;
+    margin-top: 10px;
+    &:hover{
+      color:black;
+    }
+  }
+}
+
+.schedules-container-show-edit {
+  overflow-y: scroll;
+  height:500px;
+  width: 100%;
+  margin-bottom:2%
 }
