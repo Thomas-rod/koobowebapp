@@ -39,6 +39,7 @@
   margin: 20px 0;
   width: 700px;
   justify-content: space-between;
+  align-items: center;
 }
 .select2-selection.select2-selection--multiple {
   width: 200px;
@@ -57,11 +58,13 @@
 .radio-part {
   display: flex;
 }
+
 .form-part.radio-part {
   display: flex;
   opacity: .4;
   text-align: center;
   height: 40px;
+  padding: 7px 10px;
   & label {
     margin-right: 10px;
   }
@@ -151,7 +154,18 @@
   object-fit: cover
 }
 
-.form-check input {
-  display: none;
+.form-group {
+  margin: 0;
 }
 
+.form-control:focus {
+  border-color: #EE8572;
+}
+
+input#flat_address {
+  width: 400px !important;
+}
+
+.algolia-places {
+  width: 400px;
+}
