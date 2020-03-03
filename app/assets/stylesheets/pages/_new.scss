@@ -47,6 +47,10 @@
   border-bottom: 1px solid #EE8572 !important;
 }
 
+.select2-dropdown.select2-dropdown--above {
+  width: 200px !important;
+}
+
 .select2-dropdown.select2-dropdown--below {
   width: 200px !important;
 }
@@ -155,8 +159,12 @@
   object-fit: cover
 }
 
-.form-control:focus {
+.form-control {
+  font-size: 20px;
+  color: #201E50;
+  &:focus {
   border-color: #EE8572;
+  }
 }
 
 #calendar-publication {
@@ -178,3 +186,31 @@ input#flat_address {
 .my-label-check {
   margin-top: 25px;
 }
+
+#flat_floor {
+  width: 120px;
+}
+
+#my-rent-input {
+  width: 180px;
+}
+
+#my-size-input {
+  width: 150px;
+}
+
+#flat_number_of_rooms {
+  width: 210px
+}
+
+#my-bedroom-input {
+  width: 250px
+}
+
+#my-heating-input {
+  font-size: 20px;
+}
+
+
+
+
