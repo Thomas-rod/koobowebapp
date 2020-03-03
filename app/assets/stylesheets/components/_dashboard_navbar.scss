@@ -13,6 +13,11 @@
   }
 }
 
+
+.dropdown-item{
+  padding: 0px !important;
+}
+
 .element-right {
   flex-grow: 1;
   align-items: center;
@@ -52,16 +57,17 @@
 
 .drodropdown-menu-dashboard {
   border: none;
-  background-color: rgba(0, 0, 0, 0);
+  background-color: white;
   top: 48px !important;
   left: 163px !important;
+  box-shadow:  2px 2px 2px 2px #ededed !important;
   // a {
   //   border: none;
   //   background: none;
   // }
-  :hover {
-    background-color: rgba(0, 0, 0, 0);
-  }
+  // :hover {
+  //   background-color: white;
+  // }
 }
 
 #bell-notification {
@@ -73,6 +79,3 @@
   top: 48px !important;
   left: 50px !important;
 }
-
-
-
