@@ -1,6 +1,6 @@
 <div class="notif-item">
   <div class="notification">
-    <%= link_to schedules_path(anchor: "scheduled#{visit.schedule.id}") do %>
+    <%= link_to schedules_path(anchor: "scheduled#{visit.schedule.id}"), class: 'notif-link' do %>
       <%= cl_image_tag visit.user.photo.key, class: "notif-avatar" %>
       <div class="notification-content">
         <p><small>il y a <%= time_ago_in_words visit.created_at %></small></p>
