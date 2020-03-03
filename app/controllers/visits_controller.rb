@@ -20,8 +20,12 @@ class VisitsController < ApplicationController
      @visit = Visit.find(params[:id])
      @visit.update(params_visit)
      @schedule = Schedule.find(params[:schedule_id])
-     deny_pending_visits
-     redirect_to schedules_path(anchor: "scheduled#{@schedule.id}")
+     if @visit.status == "denied"
+      redirect_to schedules_path(anchor: "scheduled#{@schedule.id}")
+     else
+       deny_pending_visits
+       redirect_to schedules_path(anchor: "scheduled#{@schedule.id}")
+     end
     # switch visit status to accepted
     # Broadcast to locataire (recup l'id du locataire
   end

@@ -89,29 +89,87 @@ position: relative;
 top: 14px;
 left: 137px;
 }
-.infos-accepted{
-position: absolute;
 
-}
-
-.btn-accept{
+#btn-card-product{
   position: relative;
-  bottom: -18px;
-  left: 104px;
-
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 1s linear;
 }
 
 .card-trip-schedules{
 max-height: 730px;
 }
 
+.card-product .card-product-infos-pending {
+  padding: 16px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 10px;
+
+}
+
+.btn-refuse{
+    margin-top: 10px;
+    background: $red;
+    padding: 6px 16px;
+    opacity: 0.8;
+    &:hover {
+     background: $red;
+     opacity:1;
+    }
+}
+
+.btn-accept{
+  background: $green;
+  opacity:0.8;
+    &:hover {
+    background: $green;
+    opacity:1;
+  }
+}
 
 
+ .info-user{
+  display: flex;
+  align-items: center;
+ }
 
+#blabla:hover #btn-card-product {
+  visibility: visible;
+  opacity: 1;
+}
 
+.visite-schedule {
+  padding: 0px;
+  width: 156px;
+  text-align: center;
+  border-radius: 3px;
+  margin-right: 15px;
+  p {
+    color: white;
+  }
 
+}
 
+.green-v{
+  background-color: $green;
+}
 
+.orange-v {
+  background-color: $orange;
+
+}
+.blue-v {
+ background-color: #4A4972;
+  }
+
+  .legende {
+    justify-content: center;
+  }
+.side-card-schedule{
+  margin-top: 63px;
+}
 
 
 
