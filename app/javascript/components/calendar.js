@@ -10,7 +10,12 @@ const clickableSchedule = () => {
       document.querySelector(`#${casi.dataset.schedule}`).classList.remove('d-none')
     });
   });
-  document.querySelector(window.location.hash).classList.remove('d-none')
+  if (window.location.hash) {
+    const anchor = document.querySelector(window.location.hash);
+    if (anchor) {
+      anchor.classList.remove('d-none')
+    }
+  }
 }
 
 export { clickableSchedule };
