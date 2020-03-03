@@ -16,6 +16,7 @@ const displayPreview = (input) => {
     reader.readAsDataURL(input.files[0])
     document.getElementById('photo-preview').classList.remove('hidden');
     document.querySelector(".hide-carousel").classList.remove('hide-carousel')
+    document.querySelector(".line-11").classList.remove('hide-carousel')
   }
   if (input.files && input.files[1]) {
     const reader2 = new FileReader();
