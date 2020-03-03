@@ -23,7 +23,7 @@ class VisitsController < ApplicationController
      deny_pending_visits
      redirect_to schedules_path(anchor: "scheduled#{@schedule.id}")
     # switch visit status to accepted
-    # Broadcast to locataire (recup l'id du locataire)
+    # Broadcast to locataire (recup l'id du locataire
   end
 
 
