@@ -16,7 +16,7 @@
             <span class="form-part">Je nomme mon appartement</span><span class="form-part"><%= f.input :name, label: false, placeholder: "Titre", input_html: { id: "my-name-input"} %></span><span class="form-part">.</span>
           </div>
           <div class="special-form line-2 hide-carousel">
-            <span class="form-part">Il est au</span><span class="form-part"><%= f.input :floor, label: false, placeholder: "N étage" %></span><span class="form-part"> er/ème étage de l'immeuble situé</span><div class="form-part"><%= f.input :address, label: false, id: "flat_address", placeholder: "Adresse", input_html: { class: "my-address-input"} %></div><span class="form-part">.</span>
+            <span class="form-part">Il est au</span><span class="form-part"><%= f.input :floor, label: false, placeholder: "N étage", id: "floor_number" %></span><span class="form-part" id="coucou"> étage de l'immeuble situé</span><div class="form-part"><%= f.input :address, label: false, id: "flat_address", placeholder: "Adresse", input_html: { class: "my-address-input"} %></div><span class="form-part">.</span>
           </div>
           <div class="special-form line-3 hide-carousel">
             <span class="form-part">Je souhaite le louer pour</span><span class="form-part"><%= f.input :monthly_price, label: false, placeholder: "Loyer mensuel", input_html: { id: "my-rent-input"} %></span><span class="form-part"> €/mois.</span>
@@ -25,7 +25,7 @@
             <span class="form-part">Il a une superficie de </span><span class="form-part"><%= f.input :surface, label: false, placeholder: "Superficie", input_html: { id: "my-size-input"} %></span><span class="form-part"> m².</span>
           </div>
           <div class="special-form line-5 hide-carousel">
-            <span class="form-part">Il est composé de </span><span class="form-part"><%= f.input :number_of_rooms, label: false, placeholder: "Nombre de pièces" %></span><span class="form-part"> pièce(s), dont </span><span class="form-part"><%= f.input :number_of_bedrooms, label: false, placeholder: "Nombre de chambres", input_html: { id: "my-bedroom-input"} %></span><span class="form-part">chambre(s).</span>
+            <span class="form-part">Il est composé de </span><span class="form-part"><%= f.input :number_of_rooms, label: false, placeholder: "Nombre de pièces" %></span><span class="form-part" id="hello">, dont </span><span class="form-part"><%= f.input :number_of_bedrooms, label: false, placeholder: "Nombre de chambres", input_html: { id: "my-bedroom-input"} %></span><span class="form-part" id="hi">.</span>
           </div>
           <div class="special-form line-6 hide-carousel">
             <span class="form-part" id="heating">Le chauffage est </span><span class="form-part"><%= f.input :heating_system, label: false, input_html: {class: "select2", multiple: "multiple", id: "my-heating-input"}, collection: Flat::HEATING %></span><span class="form-part">.</span>
