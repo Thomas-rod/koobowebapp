@@ -47,7 +47,7 @@ import { pluralizeOrNot } from '../components/pluriel_form';
 document.addEventListener('turbolinks:load', () => {
   checkboxesjs();
   clickElementDashboard();
- //  clickableSchedule();
+  clickableSchedule();
   initFlatpicker();
   initSelect2();
   initAutocomplete();
