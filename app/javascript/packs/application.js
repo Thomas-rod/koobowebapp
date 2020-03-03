@@ -52,6 +52,7 @@ document.addEventListener('turbolinks:load', () => {
   loaderFormNewFlat();
   previewImageOnFileSelect();
   makeFormAppear();
+  loadDynamicBannerText();
 });
 
 

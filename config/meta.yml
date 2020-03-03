@@ -1,5 +1,5 @@
 meta_product_name: "Koobo"
 meta_title: "Koobo - La location simplement"
 meta_description: "Ne passez plus par une agence immobilière pour louer votre bien. Faite le vous même en 2 minutes"
-meta_image: "Koobo_demo.png" # should exist in `app/assets/images/`
+meta_image: "kooboimg.png" # should exist in `app/assets/images/`
 # twitter_account: "@product_twitter_account"   # required for Twitter Cards
