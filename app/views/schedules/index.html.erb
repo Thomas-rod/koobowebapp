@@ -135,6 +135,8 @@
                         <div class="card-product-infos-pending ">
                           <div class= "info-user">
                             <p><%= visit.user.first_name %></p>
+                            <p class= "p-milieu"><i class="fas fa-phone-alt"></i><%= visit.user.phone_number.scan(/../).join(" ")%></p>
+                            <p><i class="far fa-envelope"></i><%= visit.user.email%></p>
                           </div>
                            <div class="status-change">
                             <%= link_to "accepter", schedule_visit_path(schedule, visit, visit: { status: "accepted"}), method: :patch, remote: :true, class: "btn koobo-button btn-accept",id: "btn-card-product"%>
