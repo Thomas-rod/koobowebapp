@@ -1,5 +1,5 @@
 class DocumentsController < ApplicationController
-before_action :notif_counter
+before_action :notif_visit, :notif_counter;
   def index
     @flats = current_user.flats
     @schedules = Schedule.all
@@ -39,5 +39,7 @@ before_action :notif_counter
        visit_pending_flat << visit
       end
     end
+    visit_pending_flat
   end
+
 end

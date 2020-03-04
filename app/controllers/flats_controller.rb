@@ -1,5 +1,5 @@
 class FlatsController < ApplicationController
-  before_action :notif_counter
+  before_action :notif_visit, :notif_counter;
 
   def index
     @flats = current_user.flats
@@ -61,16 +61,18 @@ class FlatsController < ApplicationController
     @counter_documents = 0
     @counter_profil = 0
     @counter = @counter_appartement + @counter_calendar + @counter_documents + @counter_profil
+
   end
 
   def notif_visit
     pending_visit_all = Visit.where('status LIKE ?', 'pending')
     visit_pending_flat = []
     pending_visit_all.each do |visit|
-      if visit.schedule.flat.user == current_user
+      if visit.schedule.flat.user.id == current_user.id
        visit_pending_flat << visit
       end
     end
+    visit_pending_flat
   end
 
   def find_flat
