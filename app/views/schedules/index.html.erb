@@ -112,7 +112,7 @@
                 </div>
                 <div class = "info-flat">
                   <h2><%= schedule.flat.name %></h2>
-                  <h2 class = "price-calendar my-3"><%= schedule.flat.monthly_price.round %> € / month</h2>
+                  <h2 class = "price-calendar my-3"><%= schedule.flat.monthly_price.round %> € / mois</h2>
                   <p class = "my-3"><%= link_to "Rajouter des crénaux pour #{schedule.flat.name}" , flat_path(schedule.flat), class: "link-schedule" %></p>
                   <% accepted_visit = schedule.visits.select {|visit| visit.status == "accepted"} %>
                   <% pending_visit = schedule.visits.select {|visit| visit.status == "pending"} %>
