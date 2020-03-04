@@ -1,5 +1,5 @@
 class SchedulesController < ApplicationController
-before_action :notif_counter
+before_action :notif_visit, :notif_counter;
 
   def index
   @flats = renting?
@@ -63,6 +63,7 @@ before_action :notif_counter
        visit_pending_flat << visit
       end
     end
+    visit_pending_flat
   end
 
   def params_schedule

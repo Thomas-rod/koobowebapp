@@ -9,9 +9,9 @@ const pluralizeOrNot = () => {
     étage.addEventListener('change', () => {
       console.log(étage)
       if (étage.value === "1") {
-        coucou.insertAdjacentHTML("afterbegin", "er");
+        coucou.innerHTML = "er";
       } else {
-        coucou.insertAdjacentHTML("afterbegin", "ème");
+        coucou.innerHTML = "ème";
       }
     })
   }
@@ -19,9 +19,9 @@ const pluralizeOrNot = () => {
     pièce.addEventListener('change', () => {
       console.log(pièce)
       if (pièce.value === "1") {
-        hello.insertAdjacentHTML("afterbegin", "pièce");
+        hello.innerHTML = "pièce";
       } else {
-        hello.insertAdjacentHTML("afterbegin", "pièces");
+        hello.innerHTML = "pièces";
       }
     })
   }
@@ -29,9 +29,9 @@ const pluralizeOrNot = () => {
     chambre.addEventListener('change', () => {
       console.log(chambre)
       if (chambre.value === "1") {
-        hi.insertAdjacentHTML("afterbegin", "chambre");
+        hi.innerHTML = "chambre";
       } else {
-        hi.insertAdjacentHTML("afterbegin", "chambres");
+        hi.innerHTML = "chambres";
       }
     })
   }
