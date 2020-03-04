@@ -5,22 +5,17 @@
       <%= render partial: 'shared/navbar_dashboard', locals: { page_title: 'Documents'}%>
       <div class="container container-document">
         <h2><strong>Vous trouverez ici tous vos documents</strong></h2>
-        <%# @flats_rented.each do |flat| %>
+        <% @flats_rented.each do |flat| %>
         <div class="card-documents">
           <div class="index-doc-left">
             <div class="card-trip card-trip-doc">
-              <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" id="card-doc-image"/>
-            <!--   <div class="card-trip-infos" id="card-info-doc">
-                <div>
-                  <h2>Title here</h2>
-                  <p>Short description here!</p>
-                </div>
-              </div> -->
+              <%= cl_image_tag flat.photos[0].key, class: "d-block w-100 image"%>
+<!--               <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" id="card-doc-image"/> -->
             </div>
           </div>
             <div class="index-doc-right">
               <div>
-                <h5>Flat.name</h5>
+                <h5><%= flat.name %></h5>
               </div>
               <div class="buttons-document">
                 <div class="buttons-doc-left">
@@ -35,7 +30,7 @@
             </div>
           </div>
         </div>
-        <%# end %>
+        <% end %>
       </div>
     </div>
   </div>
