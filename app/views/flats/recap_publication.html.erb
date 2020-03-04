@@ -71,16 +71,16 @@
              <ul>
           <% end %>
           <% if @flat.elevator %>
-            <li>Ascenseur</li>
+            <li class="info-display"><span class="iconify" data-icon="oi-elevator" data-inline="false"></span><span class="flat-column-category">Ascenseur</span></li>
           <% end %>
           <% if @flat.balcony %>
-            <li>Balcon</li>
+            <li class="info-display"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcToZ0zQLAhC3nanPlXxL40ToffY-oj9kpDWMCXr-h3R6Rk7bmIX" id="balcony-img"><span class="flat-column-category">Balcon</span></li>
           <% end %>
           <% if @flat.parking %>
-            <li>Parking</li>
+            <li class="info-display"><i class="fas fa-parking"></i><span class="flat-column-category">Parking</span></li>
           <% end %>
           <% if @flat.cellar %>
-            <li>Cave</li>
+            <li class="info-display"><img src="https://image.flaticon.com/icons/svg/1200/1200913.svg" id="cellar-img"><span class="flat-column-category">Cave</span></li>
           <% end %>
             </ul>
           <div class="container-new-form-platforms">
