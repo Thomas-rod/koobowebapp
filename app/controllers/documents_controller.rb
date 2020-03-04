@@ -9,6 +9,13 @@ before_action :notif_visit, :notif_counter;
     @rentings = Renting.all
   end
 
+  def show
+    @document = Document.find(params[:id])
+    sleep(2)
+    redirect_to documents_path
+  end
+
+
   private
 
   def flats_rented

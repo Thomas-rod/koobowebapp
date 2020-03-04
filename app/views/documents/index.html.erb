@@ -6,9 +6,17 @@
       <div class="container">
         <h2>Hello World</h2>
         <% @flats_rented.each do |flat| %>
-        <div class="card-documents">
-          <h4><%= flat.name %></h4>
-        </div>
+          <div class="card-documents">
+            <h4><%= flat.name %></h4>
+            <% flat.documents.each do |document| %>
+              <p><%= link_to 'Quittance - Février', document_path(document) %></p>
+            <% end %>
+            <%#= simple_form_for [@flat, @visit] do |f| %>
+            <%#= f.association :schedule, collection: @flat.schedules %>
+
+            <%#= f.submit %>
+            <%# end %>
+          </div>
         <% end %>
       </div>
     </div>

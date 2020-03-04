@@ -1,0 +1,41 @@
+<script>window.print()</script>
+<div class="container">
+  <h3 class="logo-document"><strong><span style='color: #EE8572'>k</span>oobo</strong></h3>
+  <div class="document-header">
+    <div class="landlord-container">
+      <h6><strong><span style='color: #EE8572'>B</span>ailleur</strong></h6>
+      <p><%= @document.renting.flat.user.first_name %> <%= @document.renting.flat.user.last_name %></p>
+      <p><%= @document.renting.flat.user.phone_number %></p>
+      <p><%= @document.renting.flat.user.email %></p>
+    </div>
+    <div class="landlord-container">
+      <h6><strong><span style='color: #EE8572'>L</span>ocataire</strong></h6>
+      <p><%= @document.renting.user.first_name %> <%= @document.renting.user.last_name %></p>
+      <p><%= @document.renting.user.phone_number %></p>
+      <p><%= @document.renting.user.email %></p>
+    </div>
+  </div>
+  <div class="tittle-document-container">
+    <h4><strong> Quittance de Loyer</strong></h4>
+    <p>Loyer <%= Time.now.strftime("%m/%Y") %></p>
+  </div>
+  <div class="document-body">
+    <h5 class="line-document"> Reçu le : <strong><%= (Time.now.strftime("%d/%m/%Y"))%></strong></h5>
+    <h5 class="line-document"> Montant : <strong><%= @document.renting.flat.monthly_price%>€</strong></h5>
+    <h5 class="line-document"> Correspond à la location du logement situé au : <strong><%= @document.renting.flat.address%></strong></h5>
+    <h5 class="line-document"> Pour la période du : <strong>01/02/2019</strong>au : <strong>29/02/2019</strong></h5>
+    <br>
+    <div class="footer-document">
+      <div class="footer-document-right">
+        <h5> Fait à : <strong>Paris</strong></h5>
+        <h5> Le : <strong><%= (Time.now.strftime("%d/%m/%Y"))%></strong></h5>
+      </div>
+      <div class="footer-document-left">
+        <p><%= @document.renting.flat.user.first_name %> <%= @document.renting.flat.user.last_name %></p>
+        <h5> Signature </h5>
+        <%= image_tag ("signature.png"), class: 'signature-document' %>
+      </div>
+    </div>
+  </div>
+</div>
+
