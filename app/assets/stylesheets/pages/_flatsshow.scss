@@ -61,6 +61,10 @@
   & h3, img {
     margin-top:10px;
   }
+  h3 {
+    margin: 10px 10%;
+    text-align: left;
+  }
   & ul {
     margin: 10px auto;
   }
@@ -82,8 +86,7 @@
 }
 
 .center-card-locataire {
-  margin: 0px auto;
-  width:70%;
+  margin: 0px 10%;
 }
 
 // ICON CARD SITE
