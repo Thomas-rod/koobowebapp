@@ -33,7 +33,7 @@
     <%= favicon_link_tag asset_path('logo.png') %>
   </head>
 
-  <body>
+  <body data-user-id="<%= current_user&.id %>">
     <%= render 'shared/flashes' %>
 
     <%= yield %>
