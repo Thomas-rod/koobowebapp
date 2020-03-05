@@ -11,7 +11,7 @@ const pluralizeOrNot = () => {
       if (étage.value === "1") {
         coucou.innerHTML = "er";
       } else {
-        coucou.innerHTML = "ème";
+        coucou.innerHTML = "e";
       }
     })
   }
