@@ -37,52 +37,54 @@
               </div>
             </div>
           <% end %>
-          <h5><%= @flat.name %> - <%= @flat.surface.round %> m² - <%= @flat.monthly_price.round %> €/mois</h5>
-          <h6><%= @flat.description %></h6>
-          <% if @flat.floor == 1  %>
-            <p>Charmant appartement situé au <%= @flat.floor %>er étage de l'immeuble situé <%= @flat.address %>.</p>
-          <% else %>
-            <p>Charmant appartement situé au <%= @flat.floor %>e étage de l'immeuble situé <%= @flat.address %>.</p>
-          <% end %>
-          <% if @flat.number_of_rooms == 1 %>
-            <p>L'appartement est un studio de <%= @flat.surface.round %></p>
-          <% elsif @flat.number_of_rooms != 1 && @flat.number_of_bedrooms != 1 %>
-            <p>L'appartement mesure <%= @flat.surface.round %> m² et est composé de <%= @flat.number_of_rooms %> pièces dont <%= @flat.number_of_bedrooms %> chambres.</p>
-          <% elsif @flat.number_of_rooms != 1 && @flat.number_of_bedrooms == 1 %>
-            <p>L'appartement mesure <%= @flat.surface.round %> m² et est composé de <%= @flat.number_of_rooms %> pièces dont <%= @flat.number_of_bedrooms %> chambre.</p>
-          <% end %>
-          <% if @flat.heating_system[1] == "individuel" %>
-            <p>Le chauffage est <%=  @flat.heating_system[1] %> et <%=  @flat.heating_system[2] %>.</p>
-          <% elsif @flat.heating_system[1] == "électrique" %>
-            <p>Le chauffage est <%=  @flat.heating_system[1] %> et <%=  @flat.heating_system[2] %>.</p>
-           <% elsif @flat.heating_system[1] == "central" %>
-            <p>Le chauffage est <%=  @flat.heating_system[1] %> et au <%=  @flat.heating_system[2] %>.</p>
-          <% elsif @flat.heating_system[1] == "gaz" %>
-            <p>Le chauffage est au <%=  @flat.heating_system[1] %> et <%=  @flat.heating_system[2] %>.</p>
-          <% end %>
-          <% if @flat.furnished %>
-             <p> Il est meublé
-           <% else %>
-             <p> Il est non-meublé
-          <% end %>
-          <% if @flat.elevator || @flat.balcony || @flat.parking || @flat.cellar %>
-             <span>et donne accès aux commodités suivantes :</span>
-             </p>
-             <ul>
-          <% end %>
-          <% if @flat.elevator %>
-            <li class="info-display"><span class="iconify" data-icon="oi-elevator" data-inline="false"></span><span class="flat-column-category">Ascenseur</span></li>
-          <% end %>
-          <% if @flat.balcony %>
-            <li class="info-display"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcToZ0zQLAhC3nanPlXxL40ToffY-oj9kpDWMCXr-h3R6Rk7bmIX" id="balcony-img"><span class="flat-column-category">Balcon</span></li>
-          <% end %>
-          <% if @flat.parking %>
-            <li class="info-display"><i class="fas fa-parking"></i><span class="flat-column-category">Parking</span></li>
-          <% end %>
-          <% if @flat.cellar %>
-            <li class="info-display"><img src="https://image.flaticon.com/icons/svg/1200/1200913.svg" id="cellar-img"><span class="flat-column-category">Cave</span></li>
-          <% end %>
-            </ul>
+          <div class="description-flat-annonce">
+            <h5><%= @flat.name %> - <%= @flat.surface.round %> m² - <%= @flat.monthly_price.round %> €/mois</h5>
+            <h6><%= @flat.description %></h6>
+            <% if @flat.floor == 1  %>
+              <p>Charmant appartement situé au <%= @flat.floor %>er étage de l'immeuble situé <%= @flat.address %>.</p>
+            <% else %>
+              <p>Charmant appartement situé au <%= @flat.floor %>ème étage de l'immeuble situé <%= @flat.address %>.</p>
+            <% end %>
+            <% if @flat.number_of_rooms == 1 %>
+              <p>L'appartement est un studio de <%= @flat.surface.round %></p>
+            <% elsif @flat.number_of_rooms != 1 && @flat.number_of_bedrooms != 1 %>
+              <p>L'appartement mesure <%= @flat.surface.round %> m² et est composé de <%= @flat.number_of_rooms %> pièces dont <%= @flat.number_of_bedrooms %> chambres.</p>
+            <% elsif @flat.number_of_rooms != 1 && @flat.number_of_bedrooms == 1 %>
+              <p>L'appartement mesure <%= @flat.surface.round %> m² et est composé de <%= @flat.number_of_rooms %> pièces dont <%= @flat.number_of_bedrooms %> chambre.</p>
+            <% end %>
+            <% if @flat.heating_system[1] == "individuel" %>
+              <p>Le chauffage est <%=  @flat.heating_system[1] %> et <%=  @flat.heating_system[2] %>.</p>
+            <% elsif @flat.heating_system[1] == "électrique" %>
+              <p>Le chauffage est <%=  @flat.heating_system[1] %> et <%=  @flat.heating_system[2] %>.</p>
+             <% elsif @flat.heating_system[1] == "central" %>
+              <p>Le chauffage est <%=  @flat.heating_system[1] %> et au <%=  @flat.heating_system[2] %>.</p>
+            <% elsif @flat.heating_system[1] == "gaz" %>
+              <p>Le chauffage est au <%=  @flat.heating_system[1] %> et <%=  @flat.heating_system[2] %>.</p>
+            <% end %>
+            <% if @flat.furnished %>
+               <p> Il est meublé
+             <% else %>
+               <p> Il est non-meublé
+            <% end %>
+            <% if @flat.elevator || @flat.balcony || @flat.parking || @flat.cellar %>
+               <span>et donne accès aux commodités suivantes :</span>
+               </p>
+               <ul>
+            <% end %>
+            <% if @flat.elevator %>
+              <li class="info-display"><span class="iconify" data-icon="oi-elevator" data-inline="false"></span><span class="flat-column-category">Ascenseur</span></li>
+            <% end %>
+            <% if @flat.balcony %>
+              <li class="info-display"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcToZ0zQLAhC3nanPlXxL40ToffY-oj9kpDWMCXr-h3R6Rk7bmIX" id="balcony-img"><span class="flat-column-category">Balcon</span></li>
+            <% end %>
+            <% if @flat.parking %>
+              <li class="info-display"><i class="fas fa-parking"></i><span class="flat-column-category">Parking</span></li>
+            <% end %>
+            <% if @flat.cellar %>
+              <li class="info-display"><img src="https://image.flaticon.com/icons/svg/1200/1200913.svg" id="cellar-img"><span class="flat-column-category">Cave</span></li>
+            <% end %>
+              </ul>
+          </div>
           <div class="container-new-form-platforms">
             <p class="mt-3"><strong>Votre annonce va être publiée sur les sites suivants :</strong></p>
             <div class="special-form" id="special-radio">
@@ -99,12 +101,13 @@
                 <%= image_tag ("logo_pap.png"), class: 'img-logo-recap' %>
               <% end %>
             </div>
-            <div class="my-form-buttons">
-              <%= link_to "Modifier l'annonce", edit_flat_path %>
-              <%= link_to "Valider l'annonce", flat_path(@flat), class: "button-edit third-step-form" %>
-            </div>
           </div>
         </div>
+        <div class="my-form-buttons">
+          <%= link_to "Modifier l'annonce", edit_flat_path %>
+          <%= link_to "Valider l'annonce", flat_path(@flat), class: "button-edit third-step-form" %>
+        </div>
+      </div>
     </div>
   </div>
 </div>
