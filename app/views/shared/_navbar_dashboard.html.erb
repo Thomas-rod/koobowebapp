@@ -3,7 +3,7 @@
     <div class="element-right">
       <div class="nav-item dropleft">
         <div id="notif-container" class="<%= "active" if @counter != 0 %>">
-          <%= link_to "#" , id: "navbarDropdownNotif", data: { toggle: "dropdown", "user-id" => current_user.id }, 'aria-haspopup': true, 'aria-expanded': false do %>
+          <%= link_to "#" , id: "navbarDropdownNotif", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false do %>
             <i class="far fa-bell fa-2x" id="bell-notification"></i>
             <span id="bell-counter"><%= @counter %></span>
           <% end %>

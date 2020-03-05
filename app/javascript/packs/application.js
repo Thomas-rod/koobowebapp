@@ -37,8 +37,8 @@ import { initAutocomplete } from '../plugins/init_autocomplete';
 import { initFlatpicker } from '../plugins/flatpickr';
 import { initSelect2 } from '../components/init_select2';
 import { initUpdateNavbarOnScroll } from '../components/navbar';
-import { previewImageOnFileSelect } from '../components/photo_preview';
 import { makeFormAppear } from '../components/multi_etaps_form';
+import { previewImageOnFileSelect } from '../components/photo_preview';
 import { pluralizeOrNot } from '../components/pluriel_form';
 
 

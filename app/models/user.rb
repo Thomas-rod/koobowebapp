@@ -10,6 +10,6 @@ class User < ApplicationRecord
   has_many :documents, through: :rentings
   has_one_attached :photo
   validates :email, uniqueness: true
-  validates :first_name, :last_name, :phone_number, :email, presence: true
+  validates :email, presence: true
 
 end
