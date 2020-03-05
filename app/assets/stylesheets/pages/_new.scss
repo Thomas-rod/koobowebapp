@@ -75,6 +75,7 @@
   height: 40px;
   padding: 7px 10px;
   align-items: center;
+  border: 1px solid white;
   & label {
     margin-right: 10px;
   }
@@ -83,14 +84,15 @@
     background-color: none;
     border-radius: 5px;
     font-size:15px;
-    font-weight: bold;
+    // font-weight: bold;
     border: 1px solid #EE8572;
   }
   &.active {
   color: #201E50;
   opacity: 1;
   font-size:15px;
-  font-weight: bold;
+  // font-weight: bold;
+  border: 1px solid #EE8572;
   }
 }
 .form-check input {
@@ -193,7 +195,11 @@ input#flat_address {
   font-size: 20px;
 }
 
-#flat_floor {
+#my-name-input {
+  width: 250px;
+}
+
+#my-floor-input {
   width: 120px;
 }
 
@@ -206,11 +212,11 @@ input#flat_address {
 }
 
 #flat_number_of_rooms {
-  width: 210px
+  width: 120px
 }
 
 #my-bedroom-input {
-  width: 250px
+  width: 150px
 }
 
 #my-heating-input {

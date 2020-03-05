@@ -8,3 +8,13 @@
   color:white;
  }
 
+#div-third-step {
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+  padding: 5px 5%;
+  margin-bottom: 2%;
+  border-radius:10px;
+  & #titre-recap {
+    text-align:center;
+    margin: 3% auto;
+  }
+}

@@ -7,7 +7,7 @@
 
 .schedules-container{
 overflow-y: scroll;
-height: 100vh;
+height: 120vh;
 width: 560px;
 }
 
@@ -32,6 +32,10 @@ opacity: 0.5;
 
 }
 
+.schedules-unselected{
+  background-color: rgba(237, 237, 237,0.4);
+}
+
 th.schedules-th{
     position: sticky;
     top: 0;
@@ -43,19 +47,21 @@ th.schedules-th{
 
 
 .table-schedules{
+   overflow: hidden;
+  border-collapse: collapse;
+  overflow: hidden;
   border: 1px solid rgba(232, 232, 232, 1);
   border-radius: 5px;
   th {
-  border: 1px solid rgba(232, 232, 232, 1);
-  border-radius: 5px;
   font-family: Poppins;
   font-weight: 300;
   text-align: center;
   color: #262626;
   opacity: 0.6;
+  background: #ddd;
+  border-bottom: 1px solid white;
   }
   td {
-  border: 1px solid rgba(232, 232, 232, 1);
   border-radius: 5px;
   font-family: Poppins;
   font-weight: 300;
@@ -76,10 +82,18 @@ a.link-schedule {
 }
 .selected-pending{
  background-color: $orange;
+ &:hover{
+  background-color: $orange;
+  opacity:0.7;
+ }
 }
 
 .selected-accepted{
 background-color: $green;
+ &:hover{
+  background-color: $green;
+  opacity:0.7;
+ }
 }
 
 .accepted-logo{
@@ -92,9 +106,10 @@ left: 137px;
 
 #btn-card-product{
   position: relative;
+  margin-top: 5px;
   visibility: hidden;
   opacity: 0;
-  transition: visibility 0s, opacity 1s linear;
+  transition: visibility 0s, opacity 0.5s linear;
 }
 
 .card-trip-schedules{
@@ -104,15 +119,17 @@ max-height: 730px;
 .card-product .card-product-infos-pending {
   padding: 16px;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(1, 1fr);
   grid-gap: 10px;
+  p {
+    margin-top: 1px;
+  }
 
 }
 
 .btn-refuse{
-    margin-top: 10px;
     background: $red;
-    padding: 6px 16px;
+    padding: 7px 16px;
     opacity: 0.8;
     &:hover {
      background: $red;
@@ -131,7 +148,6 @@ max-height: 730px;
 
 
  .info-user{
-  display: flex;
   align-items: center;
  }
 
@@ -163,16 +179,75 @@ max-height: 730px;
 .blue-v {
  background-color: #4A4972;
   }
-
-  .legende {
+.legende {
     justify-content: center;
   }
 .side-card-schedule{
   margin-top: 63px;
 }
 
+.fa-phone-alt{
+  margin-right: 6px;
+}
+
+.fa-envelope {
+  margin-right: 6px;
+}
+
+.p-milieu{
+margin-top: 5px;
+}
 
 
+td {
+  padding: 1em;
+  border: 1px solid white;
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+#btn-card-product {
+    position: relative;
+    margin-top: 5px;
+    font-size: 13px;
+    margin-left: 7px;
+  }
+  .btn-accept {
+      background: #57D073;
+      opacity: 0.8;
+      padding: 5px 5px;
+      margin-left: 3px;
+  }
+  .btn-refuse {
+      background: #e74c3c;
+      padding: 5px 12px;
+      opacity: 0.8;
+      margin-left: 14px;
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+#btn-card-product {
+      position: relative;
+      margin-top: 5px;
+      font-size: 13px;
+      margin-left: 7px;
+    }
+
+.btn-accept {
+    background: #57D073;
+    opacity: 0.8;
+    padding: 5px 5px;
+    margin-left: 3px;
+  }
+  .btn-refuse {
+      background: #e74c3c;
+      padding: 5px 12px;
+      opacity: 0.8;
+      margin-left: 14px;
+  }
+}
 
 
 

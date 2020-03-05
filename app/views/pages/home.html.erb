@@ -6,7 +6,7 @@
       <% end %>
     </div>
       <div class="d-flex bd-highlight">
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="collapse navbar-collapse navbar-element" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             <% if user_signed_in? %>
               <li class="nav-item">
@@ -29,7 +29,7 @@
                   <%= link_to "Créer un compte", new_user_registration_path, class: "nav-link" %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to "Connection", new_user_session_path, class: "nav-link" %>
+                  <%= link_to "Connexion", new_user_session_path, class: "nav-link" %>
                 </li>
               <% end %>
           </ul>
@@ -53,7 +53,7 @@
             <% end %>
           <!-- </div> -->
       </div>
-      <%= image_tag ('house.png') %>
+      <%= image_tag ('https://cdn.dribbble.com/users/259193/screenshots/5621834/roommates_2x.png') %>
     </div>
   </div>
 <div class="container container-title-top my-5">
