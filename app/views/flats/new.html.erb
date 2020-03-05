@@ -28,7 +28,7 @@
             <span class="form-part">Je souhaite le louer pour</span><span class="form-part"><%= f.input :monthly_price, label: false, placeholder: "Loyer mensuel", input_html: { id: "my-rent-input"} %></span><span class="form-part"> €/mois.</span>
           </div>
           <div class="special-form line-5 hide-carousel">
-            <span class="form-part">Il est composé de </span><span class="form-part"><%= f.input :number_of_rooms, label: false, placeholder: "Nombre de pièces" %></span><span class="form-part"> <span  id="hello">pièces</span>, dont </span><span class="form-part"><%= f.input :number_of_bedrooms, label: false, placeholder: "Nombre de chambres", input_html: { id: "my-bedroom-input"} %></span><span class="form-part"><span id="hi">chambres</span>.</span>
+            <span class="form-part">Il est composé de </span><span class="form-part"><%= f.input :number_of_rooms, label: false, placeholder: "N pièces" %></span><span class="form-part"> <span  id="hello">pièces</span>, dont </span><span class="form-part"><%= f.input :number_of_bedrooms, label: false, placeholder: "N chambres", input_html: { id: "my-bedroom-input"} %></span><span class="form-part"><span id="hi">chambres</span>.</span>
           </div>
           <div class="special-form line-6 hide-carousel">
             <span class="form-part" id="heating">Le chauffage est </span><span class="form-part"><%= f.input :heating_system, label: false, input_html: {class: "select2", multiple: "multiple", id: "my-heating-input"}, collection: Flat::HEATING %></span><span class="form-part">.</span>
