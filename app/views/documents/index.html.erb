@@ -3,20 +3,40 @@
     <%= render partial: 'shared/dashboard', locals: { flats: @flats, schedules: @schedules, documents: @documents} %>
     <div style=" width:100%;">
       <%= render partial: 'shared/navbar_dashboard', locals: { page_title: 'Documents'}%>
-      <div class="container">
-        <h2>Hello World</h2>
+      <div class="container container-document">
+        <h2><strong>Vous trouverez ici tous vos documents</strong></h2>
         <% @flats_rented.each do |flat| %>
           <div class="card-documents">
-            <h4><%= flat.name %></h4>
-            <% flat.documents.each do |document| %>
-              <p><%= link_to "#{document.label} - #{I18n.t("date.month_names")[document.created_at.month].capitalize}", document_path(document), target: '_blank' %></p>
-            <% end %>
-            <%= simple_form_for [flat, @document] do |f| %>
-            <%# raise %>
-            <%#= f.input :label, collection: Document::TYPE_DOCUMENTS %>
-            <%= f.input :label, as: :hidden, input_html: { value: 'quittance' } %>
-            <%= f.button :submit, 'Créer une quittance'%>
-            <% end %>
+            <div class="index-doc-left">
+              <div class="card-trip card-trip-doc">
+                <%= cl_image_tag flat.photos[0].key, class: "d-block w-100 image"%>
+              </div>
+            </div>
+            <div class="index-doc-right">
+              <div>
+                <h5><%= flat.name %></h5>
+              </div>
+              <div class="buttons-document">
+                <div class="buttons-doc-left">
+                  <%= link_to "Dossier locataire", flats_path, class: "button-doc"  %>
+                  <%= link_to "Etat des lieux", flats_path, class: "button-doc"  %>
+                </div>
+                <div class="buttons-doc-right">
+                  <%= link_to "Bail", flats_path, class: "button-doc"  %>
+                  <%= link_to "Quittances", flats_path, class: "button-doc"  %>
+                </div>
+              </div>
+            </div>
+            <div>
+              <% flat.documents.each do |document| %>
+                <p><%= link_to "#{document.label} - #{I18n.t("date.month_names")[document.created_at.month].capitalize}", document_path(document), target: '_blank' %></p>
+              <% end %>
+              <%= simple_form_for [flat, @document] do |f| %>
+                <%#= f.input :label, collection: Document::TYPE_DOCUMENTS %>
+                <%= f.input :label, as: :hidden, input_html: { value: 'quittance' } %>
+                <%= f.button :submit, 'Créer une quittance'%>
+              <% end %>
+            </div>
           </div>
         <% end %>
       </div>

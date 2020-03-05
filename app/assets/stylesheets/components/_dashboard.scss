@@ -96,3 +96,10 @@
   background-color: $blue-light;
   border-right: 7px solid $coral;
 }
+
+#calendar-counter {
+  visibility: hidden;
+  &.active {
+    visibility: visible;
+  }
+}

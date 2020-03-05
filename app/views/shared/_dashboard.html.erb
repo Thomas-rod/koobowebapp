@@ -17,10 +17,9 @@
         <%= link_to schedules_path do %>
           <i class="far fa-calendar-alt icon-dashboard fa-2x"></i>
           <p>Mes visites</p>
-          <% if @counter_calendar == 0 %>
-          <% else %>
-            <span class="notif-counter"><%= @counter_calendar %></span>
-          <% end %>
+            <span class="notif-counter <%= "active" if @counter_calendar != 0 %>" id="calendar-counter">
+              <%= @counter_calendar %>
+            </span>
         <% end %>
       </div>
       <div class="dashboard-line mb-3" id="documents">
