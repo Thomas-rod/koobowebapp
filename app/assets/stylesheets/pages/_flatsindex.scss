@@ -4,7 +4,7 @@
 
 .card-trip.card-trip-index {
   width: 450px;
-  max-width: 341px;
+  max-width: 300px;
 }
 
 .card-category {
@@ -15,11 +15,18 @@
   align-items: center;
 }
 
-.card-trip-empty {
+#text-card-trip {
+  font-weight:bold;
   position:absolute;
-  bottom: 10%;
+  bottom:10%;
   left:20%;
+}
+
+.card-trip-empty {
+  max-width: 300px;
   h6 {
+  position:absolute;
+  bottom:10%;
   font-weight:bold;
   }
 }
