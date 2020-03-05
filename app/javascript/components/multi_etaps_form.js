@@ -4,8 +4,8 @@ import 'select2';
 const makeFormAppear = () => {
   const input1 = document.getElementById("my-name-input");
   const input2 = document.querySelector(".my-address-input");
-  const input3 = document.getElementById("my-rent-input");
-  const input4 = document.getElementById("my-size-input");
+  const input4 = document.getElementById("my-rent-input");
+  const input3 = document.getElementById("my-size-input");
   const input5 = document.getElementById("my-bedroom-input");
   const input6 = document.getElementById("my-heating-input");
   const input7 = document.getElementById("my-description-input");
