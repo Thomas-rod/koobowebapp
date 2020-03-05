@@ -1,5 +1,5 @@
 class Document < ApplicationRecord
-  TYPE_DOCUMENTS = ['Quittances', 'Etat des lieux', 'Dossier Location', 'Bail']
+  TYPE_DOCUMENTS = ['quittance', 'etat_des_lieux', 'dossier_location', 'bail']
   belongs_to :renting
   validates :label, presence: true
   # validates :label, inclusion: { in: TYPE_DOCUMENTS }

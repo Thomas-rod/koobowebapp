@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :flats do
     resources :schedules, only: [:create, :new]
     resources :visits, only: [:new, :create]
+    resources :documents, only: :create
   end
 
   resources :schedules, only: [:index, :update] do

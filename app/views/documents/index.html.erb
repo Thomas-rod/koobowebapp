@@ -9,13 +9,14 @@
           <div class="card-documents">
             <h4><%= flat.name %></h4>
             <% flat.documents.each do |document| %>
-              <p><%= link_to 'Quittance - Février', document_path(document) %></p>
+              <p><%= link_to "#{document.label} - #{I18n.t("date.month_names")[document.created_at.month].capitalize}", document_path(document), target: '_blank' %></p>
             <% end %>
-            <%#= simple_form_for [@flat, @visit] do |f| %>
-            <%#= f.association :schedule, collection: @flat.schedules %>
-
-            <%#= f.submit %>
-            <%# end %>
+            <%= simple_form_for [flat, @document] do |f| %>
+            <%# raise %>
+            <%#= f.input :label, collection: Document::TYPE_DOCUMENTS %>
+            <%= f.input :label, as: :hidden, input_html: { value: 'quittance' } %>
+            <%= f.button :submit, 'Créer une quittance'%>
+            <% end %>
           </div>
         <% end %>
       </div>
