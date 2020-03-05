@@ -73,10 +73,10 @@ const displayNextLine = (input1, input2, input3, input4, input5, input6, input7,
     document.querySelector(".line-12").classList.remove('hide-carousel')
   }
   if (input3.value !== "") {
-    document.querySelector(".line-4").classList.remove('hide-carousel')
+    document.querySelector(".line-5").classList.remove('hide-carousel')
   }
   if (input4.value !== "") {
-    document.querySelector(".line-5").classList.remove('hide-carousel')
+    document.querySelector(".line-4").classList.remove('hide-carousel')
   }
   if (input5.value !== "") {
     document.querySelector(".line-6").classList.remove('hide-carousel')
@@ -86,7 +86,7 @@ const displayNextLine = (input1, input2, input3, input4, input5, input6, input7,
     document.querySelector(".line-8").classList.remove('hide-carousel')
   }
   if (input7.value !== "") {
-    document.querySelector(".line-9").classList.remove('hide-carousel')
+    document.querySelector(".line-10").classList.remove('hide-carousel')
   }
 
 }
