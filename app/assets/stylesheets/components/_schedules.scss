@@ -179,8 +179,7 @@ max-height: 730px;
 .blue-v {
  background-color: #4A4972;
   }
-
-  .legende {
+.legende {
     justify-content: center;
   }
 .side-card-schedule{
@@ -205,6 +204,50 @@ td {
   border: 1px solid white;
 }
 
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+#btn-card-product {
+    position: relative;
+    margin-top: 5px;
+    font-size: 13px;
+    margin-left: 7px;
+  }
+  .btn-accept {
+      background: #57D073;
+      opacity: 0.8;
+      padding: 5px 5px;
+      margin-left: 3px;
+  }
+  .btn-refuse {
+      background: #e74c3c;
+      padding: 5px 12px;
+      opacity: 0.8;
+      margin-left: 14px;
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+#btn-card-product {
+      position: relative;
+      margin-top: 5px;
+      font-size: 13px;
+      margin-left: 7px;
+    }
+
+.btn-accept {
+    background: #57D073;
+    opacity: 0.8;
+    padding: 5px 5px;
+    margin-left: 3px;
+  }
+  .btn-refuse {
+      background: #e74c3c;
+      padding: 5px 12px;
+      opacity: 0.8;
+      margin-left: 14px;
+  }
+}
 
 
 

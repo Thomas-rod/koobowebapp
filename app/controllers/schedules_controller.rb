@@ -41,7 +41,7 @@ before_action :notif_visit, :notif_counter;
 
   def renting?
     unrented_flat = current_user.flats.select do |flat|
-      flat.rentings == nil
+      flat.rentings == []
     end
     unrented_flat
   end

@@ -8,12 +8,15 @@ class VisitsController < ApplicationController
     @visit = Visit.new(params_visit)
     @visit.user = current_user
     @visit.status = 'pending'
-    @visit.save!
-    UserChannel.broadcast_to(
-      @visit.schedule.flat.user,
-      render_to_string(partial: "shared/notif", locals: { visit: @visit })
-    )
-    redirect_to new_flat_visit_path
+    if @visit.save
+      UserChannel.broadcast_to(
+        @visit.schedule.flat.user,
+        render_to_string(partial: "shared/notif", locals: { visit: @visit })
+      )
+      redirect_to new_flat_visit_path
+    else
+      redirect_to new_flat_visit_path
+    end
   end
 
   def update
