@@ -195,7 +195,11 @@ input#flat_address {
   font-size: 20px;
 }
 
-#flat_floor {
+#my-name-input {
+  width: 250px;
+}
+
+#my-floor-input {
   width: 120px;
 }
 
@@ -208,11 +212,11 @@ input#flat_address {
 }
 
 #flat_number_of_rooms {
-  width: 210px
+  width: 120px
 }
 
 #my-bedroom-input {
-  width: 250px
+  width: 150px
 }
 
 #my-heating-input {
