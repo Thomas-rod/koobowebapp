@@ -151,6 +151,17 @@
                 </div>
               </div>
               <% end %>
+              <div class="card-trip product-flat p-3 " id ="test">
+                <h2 class="p-3"> Choisissez l'appartement a booker </h2>
+              <% @flats.each do |flat| %>
+              <div class="card-product mt-3">
+                <%= cl_image_tag flat.photos[0].key%>
+                <div class="card-product-infos p-3">
+                  <h2><%= link_to flat.name, flat_path(flat) %></h2>
+                  <p><%=flat.monthly_price.round %>€</p>
+                </div>
+              </div>
+              <% end %>
           </div>
         </div>
       </div>
