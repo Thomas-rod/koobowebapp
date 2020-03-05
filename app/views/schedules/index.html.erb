@@ -13,7 +13,7 @@
       <div class="container">
         <div class="row">
         <div class="container schedules-container col-sm-8 .col-md-8">
-          <p class="mb-2">Semaine du 03/03 au 09/03</p>
+          <p class="mb-2">Semaine du 09/03 au 15/03</p>
           <div class="d-flex align-items-center my-2">
             <div class ="blue-v visite-schedule"><p>Libre</p></div>
             <div class ="orange-v visite-schedule"><p>En attente</p></div>
@@ -40,7 +40,7 @@
             <% pile = "00" %>
             <tr>
               <th class= "schedule-th"> <%= hour %></th>
-              <% day = 2 %>
+              <% day = 8 %>
               <% 7.times do %>
                 <% day += 1 %>
                 <% scheduled = current_user.schedules.select {|time| time.start == Time.zone.local(2020, 3, day, hour, 0, 0)} %>
@@ -59,7 +59,7 @@
             </tr>
             <tr>
               <th class= "schedule-th"> <%= hour %>: <%= demi %></th>
-              <% day = 2 %>
+              <% day = 8 %>
               <% 7.times do %>
                 <% day += 1 %>
                 <% scheduled = current_user.schedules.select {|time| time.start == Time.new(2020, 3, day,hour, 30, 0)} %>
@@ -148,6 +148,17 @@
                   <% else %>
                   <p class ="my-3">Cet appartement est libre pour une visite à ce crénau</p>
                   <% end %>
+                </div>
+              </div>
+              <% end %>
+              <div class="card-trip product-flat p-3 d-none" id ="test">
+                <h2 class="p-3"> Choisissez l'appartement a booker </h2>
+              <% @flats.each do |flat| %>
+              <div class="card-product mt-3">
+                <%= cl_image_tag flat.photos[0].key%>
+                <div class="card-product-infos p-3">
+                  <h2><%= link_to flat.name, flat_path(flat) %></h2>
+                  <p><%=flat.monthly_price.round %>€</p>
                 </div>
               </div>
               <% end %>

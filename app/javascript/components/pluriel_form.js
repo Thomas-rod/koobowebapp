@@ -1,5 +1,5 @@
 const pluralizeOrNot = () => {
-  const étage = document.getElementById("flat_floor");
+  const étage = document.getElementById("my-floor-input");
   const pièce = document.getElementById("flat_number_of_rooms");
   const chambre = document.getElementById("my-bedroom-input");
   const coucou = document.getElementById("coucou");
@@ -11,7 +11,7 @@ const pluralizeOrNot = () => {
       if (étage.value === "1") {
         coucou.innerHTML = "er";
       } else {
-        coucou.innerHTML = "ème";
+        coucou.innerHTML = "e";
       }
     })
   }

@@ -57,9 +57,9 @@ thomas_second_flat.save
 puts "#{Flat.count} flats created"
 
 puts "Creating schedules"
-first_schedule = Schedule.create!(start:Time.new(2020, 3, 3, 8, 30, 0),end:Time.new(2020, 3, 3, 9, 0, 0),flat: thomas_second_flat)
-second_schedule = Schedule.create!(start:Time.new(2020, 3, 3, 9, 0, 0),end:Time.new(2020, 3, 3, 9, 30, 0),flat: thomas_second_flat)
-third_schedule = Schedule.create!(start:Time.new(2020, 3, 4, 9, 30, 0),end:Time.new(2020, 3, 4, 10, 0, 0),flat: thomas_second_flat)
+first_schedule = Schedule.create!(start:Time.new(2020, 3, 9, 8, 30, 0),end:Time.new(2020, 3, 9, 9, 0, 0),flat: thomas_second_flat)
+second_schedule = Schedule.create!(start:Time.new(2020, 3, 9, 9, 0, 0),end:Time.new(2020, 3, 9, 9, 30, 0),flat: thomas_second_flat)
+third_schedule = Schedule.create!(start:Time.new(2020, 3, 10, 9, 30, 0),end:Time.new(2020, 3, 10, 10, 0, 0),flat: thomas_second_flat)
 puts "#{Schedule.count} created"
 
 puts "Creating renting"

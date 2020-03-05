@@ -44,11 +44,14 @@
 
 
 .card-trip .card-trip-infos {
-  padding: 16px;
+  padding: 10px;
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
   position: relative;
+  min-height: 75px;
+  & .card-trip-pricing {
+    padding-top: 36px;
+  }
 }
 
 .card-trip-infos .card-trip-user {
