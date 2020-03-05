@@ -24,11 +24,8 @@
 
 .card-trip-empty {
   max-width: 300px;
-  h6 {
-  position:absolute;
-  bottom:10%;
-  font-weight:bold;
-  }
+  min-height:288px;
+  position:relative;
 }
 
 .button-new-flat {
