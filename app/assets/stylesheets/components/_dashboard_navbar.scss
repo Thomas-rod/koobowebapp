@@ -58,8 +58,8 @@
 .drodropdown-menu-dashboard {
   border: none;
   background-color: white;
-  top: 48px !important;
-  left: 163px !important;
+  top: 25px !important;
+  left: -170px !important;
   box-shadow:  2px 2px 2px 2px #ededed !important;
   // a {
   //   border: none;
@@ -79,3 +79,13 @@
   top: 48px !important;
   left: 50px !important;
 }
+
+#notif-container {
+  visibility: hidden;
+  &.active {
+
+    visibility: visible;
+  }
+}
+
+
