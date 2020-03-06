@@ -94,3 +94,24 @@
 .center-form-update {
   margin:20px auto !important;
 }
+
+
+.schedules-already-selected {
+  background-color: $blue;
+  opacity: 0.4;
+  &:hover{
+  background-color: $blue;
+  opacity: 0.4;
+  }
+}
+
+.blue-v-already {
+  background-color:$blue;
+  opacity:0.4;
+}
+.selected-show {
+  &:hover{
+    background-color: $blue;
+    opacity:0.8;
+  }
+}

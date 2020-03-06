@@ -36,6 +36,10 @@ opacity: 0.5;
   background-color: rgba(237, 237, 237,0.4);
 }
 
+.unselected-index{
+  &:hover {background-color: rgba(237, 237, 237,0.4)}
+}
+
 th.schedules-th{
     position: sticky;
     top: 0;
