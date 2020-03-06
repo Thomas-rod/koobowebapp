@@ -12,6 +12,10 @@
           </ul>
           <p class="text-second-step">Je souhaite faire visiter mon appartement</p>
           <div class="schedules-container-show-edit">
+            <div class="d-flex align-items-center my-2">
+              <div class ="blue-v-already visite-schedule"><p>Occupé</p></div>
+              <div class ="blue-v visite-schedule"><p>Libre</p></div>
+            </div>
             <table class = "table-schedules">
             <thead class = "jour">
               <tr>
@@ -37,7 +41,9 @@
                 <% 7.times do %>
                   <% day += 1 %>
                   <% if @flat.schedules.select {|time| time.start == Time.new(2020, 3, day, hour, 0, 0)} != []%>
-                    <td class = "schedules-td schedules-selected"></td>
+                    <td class = "schedules-td schedules-selected selected-show"></td>
+                  <% elsif current_user.schedules.select {|time| time.start == Time.new(2020, 3, day, hour, 0, 0)} != []%>
+                      <td class = "schedules-td schedules-already-selected"></td>
                   <% else %>
                     <td class = "schedules-td schedules-unselected"><%=link_to "", flat_schedules_path(@flat, schedule: { start: Time.new(2020, 3, day, hour, 0, 0), end:Time.new(2020, 3, day, hour, 30, 0)}), method: :post, remote: true, class: "schedules-button" %></td>
                   <% end %>
@@ -49,7 +55,9 @@
                 <% 7.times do %>
                   <% day += 1 %>
                    <% if @flat.schedules.select {|time| time.start == Time.new(2020, 3, day,hour, 30, 0)} != []%>
-                      <td class = "schedules-td schedules-selected"></td>
+                      <td class = "schedules-td schedules-selected selected-show"></td>
+                    <% elsif current_user.schedules.select {|time| time.start == Time.new(2020, 3, day, hour, 30, 0)} != []%>
+                       <td class = "schedules-td schedules-already-selected"></td>
                    <% else %>
                       <td class = "schedules-td schedules-unselected"><%=link_to "", flat_schedules_path(@flat, schedule: { start: Time.new(2020, 3, day, hour, 30, 0), end:Time.new(2020, 3, day, (hour+1) , 0, 0)}), method: :post , class: "schedules-button" %></td>
                     <% end %>

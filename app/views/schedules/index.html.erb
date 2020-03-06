@@ -13,6 +13,7 @@
       <div class="container">
         <div class="row">
         <div class="container schedules-container col-sm-8 .col-md-8">
+          <!-- <h2> Mes visites batard</h2> -->
           <p class="mb-2">Semaine du 09/03 au 15/03</p>
           <div class="d-flex align-items-center my-2">
             <div class ="blue-v visite-schedule"><p>Libre</p></div>
@@ -53,7 +54,7 @@
                     <td class = "schedules-td schedules-selected" data-schedule = "scheduled<%= scheduled[0].id %> "></td>
                   <% end %>
                 <% else %>
-                  <td class = "schedules-td schedules-unselected"></td>
+                  <td class = "schedules-td schedules-unselected unselected-index"></td>
                 <% end %>
               <% end %>
             </tr>
@@ -72,7 +73,7 @@
                     <td class = "schedules-td schedules-selected" data-schedule = "scheduled<%= scheduled[0].id %> "></td>
                   <% end %>
                  <% else %>
-                    <td class = "schedules-td schedules-unselected"></td>
+                    <td class = "schedules-td schedules-unselected unselected-index"></td>
                   <% end %>
               <% end %>
             </tr>
@@ -113,7 +114,7 @@
                 <div class = "info-flat">
                   <h2><%= schedule.flat.name %></h2>
                   <h2 class = "price-calendar my-3"><%= schedule.flat.monthly_price.round %> € / mois</h2>
-                  <p class = "my-3"><%= link_to "Rajouter des crénaux pour #{schedule.flat.name}" , flat_path(schedule.flat), class: "link-schedule" %></p>
+                  <p class = "my-3"><%= link_to "Rajouter des créneaux pour #{schedule.flat.name}" , flat_path(schedule.flat), class: "link-schedule" %></p>
                   <% accepted_visit = schedule.visits.select {|visit| visit.status == "accepted"} %>
                   <% pending_visit = schedule.visits.select {|visit| visit.status == "pending"} %>
                   <% if accepted_visit != [] %>
@@ -146,7 +147,7 @@
                       </div>
                     <% end %>
                   <% else %>
-                  <p class ="my-3">Cet appartement est libre pour une visite à ce crénau</p>
+                  <p class ="my-3">Cet appartement est libre pour une visite à ce créneau</p>
                   <% end %>
                 </div>
               </div>
