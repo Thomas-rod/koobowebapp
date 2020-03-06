@@ -43,7 +43,7 @@
               <% day = 8 %>
               <% 7.times do %>
                 <% day += 1 %>
-                <% scheduled = current_user.schedules.select {|time| time.start == Time.zone.local(2020, 3, day, hour, 0, 0)} %>
+                <% scheduled = current_user.schedules.select {|time| time.start == Time.new(2020, 3, day, hour, 0, 0)} %>
                 <% if scheduled != []%>
                   <% if scheduled[0].visits.any?{|visit| visit.status == "accepted"} %>
                     <td class = "schedules-td schedules-selected selected-accepted" data-schedule = "scheduled<%= scheduled[0].id %> "></td>
