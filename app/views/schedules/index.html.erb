@@ -120,7 +120,7 @@
                     <div class="card-product mt-3">
                       <%= cl_image_tag accepted_visit[0].user.photo.key%>
                       <div class="card-product-infos p-3">
-                        <p><%= accepted_visit.first.user.first_name %> viendra visiter votre appartement le <%= schedule.start.strftime("%m/%d") %> de <%= schedule.start.strftime("%H:%M") %> à <%= schedule.end.strftime("%H:%M") %></p>
+                        <p><%= accepted_visit.first.user.first_name %> viendra visiter votre appartement le <%= schedule.start.strftime("%d/%m") %> de <%= schedule.start.strftime("%H:%M") %> à <%= schedule.end.strftime("%H:%M") %></p>
                     <!--     <div class="status-change d-flex">
                           <%# link_to "accepter",schedule_visit(visit, visit: { status: "accepted"}), method: :patch, remote: true %>
                         </div> -->
