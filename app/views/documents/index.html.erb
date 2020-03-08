@@ -6,13 +6,12 @@
       <div class="container container-document">
         <h2><strong>Vous trouverez ici tous vos documents</strong></h2>
         <% @flats_rented.each do |flat| %>
-        <div class="card-documents">
-          <div class="index-doc-left">
-            <div class="card-trip card-trip-doc">
-              <%= cl_image_tag flat.photos[0].key, class: "d-block w-100 image"%>
-<!--               <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" id="card-doc-image"/> -->
+          <div class="card-documents">
+            <div class="index-doc-left">
+              <div class="card-trip card-trip-doc">
+                <%= cl_image_tag flat.photos[0].key, class: "d-block w-100 image"%>
+              </div>
             </div>
-          </div>
             <div class="index-doc-right">
               <div>
                 <h5><%= flat.name %></h5>
@@ -28,8 +27,17 @@
                 </div>
               </div>
             </div>
+            <div>
+              <% flat.documents.each do |document| %>
+                <p><%= link_to "#{document.label} - #{I18n.t("date.month_names")[document.created_at.month].capitalize}", document_path(document), target: '_blank' %></p>
+              <% end %>
+              <%= simple_form_for [flat, @document] do |f| %>
+                <%#= f.input :label, collection: Document::TYPE_DOCUMENTS %>
+                <%= f.input :label, as: :hidden, input_html: { value: 'quittance' } %>
+                <%= f.button :submit, 'Créer une quittance'%>
+              <% end %>
+            </div>
           </div>
-        </div>
         <% end %>
       </div>
     </div>
