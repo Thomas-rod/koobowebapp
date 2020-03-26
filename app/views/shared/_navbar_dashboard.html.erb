@@ -16,13 +16,13 @@
         </div>
       </div>
       <div class="nav-item dropleft">
-        <%= link_to '#', id: "navbarDropdownProfil", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false do %>
           <% if current_user.photo.attached? %>
-            <%= cl_image_tag current_user.photo.key, class: "avatar-bordered mr-5" %>
+            <%= link_to '#', id: "navbarDropdownProfil", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false do %>
+              <%= cl_image_tag current_user.photo.key, class: "avatar-bordered mr-5" %>
+            <% end %>
           <% else %>
             <%= image_tag ("avatar.png"), class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
           <% end %>
-        <% end %>
         <div class="dropdown-menu drop-profil" aria-labelledby="navbarDropdownProfil">
           <%= link_to 'Profil', flats_path, class: 'dropdown-item' %>
           <%= link_to 'Se déconnecter', destroy_user_session_path, class: 'dropdown-item', method: 'delete' %>
