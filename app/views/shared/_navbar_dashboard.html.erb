@@ -20,7 +20,7 @@
           <% if current_user.photo.attached? %>
             <%= cl_image_tag current_user.photo.key, class: "avatar-bordered mr-5" %>
           <% else %>
-            <%= image_tag ("avatar.png") %>
+            <%= image_tag ("avatar.png"), class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
           <% end %>
         <% end %>
         <div class="dropdown-menu drop-profil" aria-labelledby="navbarDropdownProfil">
