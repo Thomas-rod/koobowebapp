@@ -230,6 +230,13 @@ td {
   }
 }
 
+.table-striped{
+display: none;
+}
+.calendar-title{
+  display: none;
+}
+
 // Large devices (desktops, 992px and up)
 @media (min-width: 992px) {
 #btn-card-product {
