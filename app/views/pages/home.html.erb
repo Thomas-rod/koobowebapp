@@ -1,160 +1,36 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-home navbar-lewagon space-between sticky-top">
-  <div class="container-nav-home">
-    <div class="d-flex">
-      <%= link_to root_path, class: "navbar-brand mt-1" do %>
-      <h2 class = "title mt-2"><strong><span style='color: #EE8572'>k</span>oobo</strong></h2>
-      <% end %>
-    </div>
-      <div class="d-flex bd-highlight">
-        <div class="collapse navbar-collapse navbar-element" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <% if user_signed_in? %>
-              <li class="nav-item">
-                  <%= link_to "Votre espace personnel", flats_path, class: "nav-link" %>
-                </li>
-                <li class="nav-item dropdown">
-
-                  <% if current_user.photo.attached? %>
-                    <%= cl_image_tag current_user.photo.key, height: 40, width: 40, crop: :fill, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-                  <% else %>
-                    <%= image_tag ("avatar.png"), class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-                  <% end %>
-
-                  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                    <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
-                  </div>
-                </li>
-              <% else %>
-                <li class="nav-item active">
-                  <%= link_to "Créer un compte", new_user_registration_path, class: "nav-link" %>
-                </li>
-                <li class="nav-item">
-                  <%= link_to "Connexion", new_user_session_path, class: "nav-link" %>
-                </li>
-              <% end %>
-          </ul>
-        </div>
+<div class="container-home">
+  <section class="container-header-home">
+    <%= render partial: 'shared/navbar_home' %>
+    <%= image_tag 'flat', id:'flat-banner' %>
+    <%= image_tag 'handshake', id:'people-handshake' %>
+    <%= image_tag 'square-circle', id:'half-circle' %>
+    <div class="inside-banner">
+      <h1>Gérer vos bien immobiliers </h1>
+      <h2><span id="banner-typed-text"></span></h2>
+      <div class="subscribe-mail">
       </div>
-  </div>
-</div>
-  <div class="container-banner">
-    <div class="banner banner-home">
-      <div class="banner-content typing-words">
-        <!-- <div class="typing-words"> -->
-          <h1>Votre gestion locative </h1>
-          <h2><span id="banner-typed-text"></span></h2>
-
-        <!-- </div> -->
-          <!-- <div> -->
-            <% if user_signed_in? %>
-              <%= link_to "Faciliter mes échanges", flats_path, class: "button-banner"  %>
-            <% else %>
-              <%= link_to "Faciliter mes échanges", new_user_registration_path, class: "button-banner"  %>
-            <% end %>
-          <!-- </div> -->
-      </div>
-      <%= image_tag ('https://cdn.dribbble.com/users/259193/screenshots/5621834/roommates_2x.png') %>
     </div>
-  </div>
-<div class="container container-title-top my-5">
-  <h2 class="title-top">Centralisez vos démarches</h2>
-</div>
-  <div class="container container-strong-point my-5">
-    <div class="card-koobo-strong-point">
-      <div class="card-strong-point">
-        <div class="container container-card-koobo">
+  </section>
+  <section id="section-two">
+    <div id="section-two-header">
+      <h2><span class="linecoral">Centralisez vos démarches</span></h2>
+      <div id="section-card-container">
+        <div class="card-section-two">
           <h4><b>Gestion</b></h4>
           <%= image_tag("gestion.png") %>
-           <ul>
-            <li>Avis d'échéances - Quittances - Charges - Archivage légal</li>
-          </ul>
+          <p>Avis d'échéances - Quittances - Charges - Archivage légal</p>
         </div>
-        <div class="container container-card-koobo">
+        <div class="card-section-two">
           <h4><b>Location</b></h4>
           <%= image_tag("location.png") %>
-           <ul>
-            <li>Multi-diffusion des annonces - Trouvez votre locataire rapidement - BAIL réglementaire</li>
-          </ul>
+          <p>Multi-diffusion des annonces - Trouvez votre locataire rapidement - BAIL réglementaire</p>
         </div>
-        <div class="container container-card-koobo">
-          <h4><b>Simplicité digitale</b></h4>
+        <div class="card-section-two">
+          <h4><b>Simplicité</b></h4>
           <%= image_tag("digit.png") %>
-           <ul>
-            <li>Réactivité - Traçabilité - Modernité - Signature électronique</li>
-          </ul>
+          <p>Réactivité - Traçabilité - Modernité - Signature électronique</p>
         </div>
       </div>
     </div>
-  </div>
+  </section>
 </div>
-  <div class="container container-two-element d-flex my-5">
-    <div class="two-element-left w-50">
-      <h3>Sélectionnez votre locataire rapidement</h3>
-      <p>
-        1 seul clic pour diffuser votre annonce sur les sites les plus populaires. Gagnez du temps dans la constitution des dossiers de location. De la candidature à la sélection du locataire, un service simplifié et automatisé.
-      <h3>Déjà en location ?</h3>
-      <p>
-        Pas de problème ! Nous nous chargeons de guider votre locataire dans l'inscription et les démarches.
-      </p>
-      <% if user_signed_in? %>
-        <%= link_to "C'est parti !", flats_path, class: "button-home"  %>
-      <% else %>
-        <%= link_to "C'est parti !", new_user_registration_path, class: "button-home"  %>
-      <% end %>
-    </div>
-    <div class="two-element-right w-50">
-      <%= image_tag("teamwork.png") %>
-    </div>
-  </div>
-  <div class="container container-saving my-5">
-    <div class="card card-saving">
-      <div class="card-body card-body-saving">
-        <h3>Gestion complète</h3>
-        <p>
-          À partir des informations enregistrées dans le dossier de location, <strong><span style='color: #EE8572'>k</span>oobo</strong> génère un bail électronique agréé par le Ministère du Logement incluant toutes les annexes obligatoires et les dernières règles en vigueur.
-          Sur toute la durée du bail, votre locataire est notifié(e) et relancé(e) automatiquement par mail suivant un échéancier régulier.
-          Vous êtes notifié(e) des démarches réalisées par <strong><span style='color: #EE8572'>k</span>oobo</strong> auprès de votre locataire.
-          Tous les documents transmis par mail restent accessibles en ligne dans votre espace personnel et celui de votre locataire.
-          Avec la signature électronique à valeur probante par l'ensemble des parties, <strong><span style='color: #EE8572'>k</span>oobo</strong> vous garantit une rapidité d’exécution exceptionnelle !
-      </div>
-    </div>
-  </div>
-  <div class="container container-peaceful d-flex my-5">
-    <div class="peaceful-left w-50">
-      <%= image_tag("tranquille.png") %>
-    </div>
-    <div class="peaceful-right w-50">
-      <h3>Tranquillité d'esprit</h3>
-      <p>
-        En quelques questions, nous créons l'annonce parfaitement adaptée à vos besoins. C'est simple et clair et sans engagement. Vous choisissez les plateformes sur lesquelles publier votre annonce et nous nous occupons du reste.
-      </p>
-      <% if user_signed_in? %>
-        <%= link_to "C'est parti !", flats_path, class: "button-home"  %>
-      <% else %>
-        <%= link_to "C'est parti !", new_user_registration_path, class: "button-home"  %>
-      <% end %>
-    </div>
-  </div>
-  <div class="container-data-protection my-5">
-    <div class="card card-data-protection">
-      <div class="card-body card-body-data-protection">
-        <h3>Comment <strong><span style='color: #EE8572'>k</span>oobo</strong> protège mes données ?</h3>
-      </div>
-    </div>
-  </div>
-    <div class="footer">
-      <div class="footer-links">
-        <p>Suivez-nous</p>
-        <span>
-        <a href="#"><i class="fab fa-instagram"></i></a>
-        <a href="#"><i class="fab fa-facebook"></i></a>
-        <a href="#"><i class="fab fa-twitter"></i></a>
-        <a href="#"><i class="fab fa-linkedin"></i></a>
-        </span>
-      </div>
-      <div class="footer-copyright">
-        <p><strong><span style='color: #EE8572'>k</span>oobo</strong> 2020</p>
-        <p>hello@koobo.co</p>
-      </div>
-    </div>
-

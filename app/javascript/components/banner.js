@@ -3,7 +3,7 @@ import Typed from 'typed.js';
 const loadDynamicBannerText = () => {
   if (document.querySelector('#banner-typed-text')){
     new Typed('#banner-typed-text', {
-      strings: ["facile", "simple", "rapide",""],
+      strings: ["Simplement", "Rapidement", "Sans-frais cachés",""],
       typeSpeed: 50,
       fadeOut: true,
       loop: true,

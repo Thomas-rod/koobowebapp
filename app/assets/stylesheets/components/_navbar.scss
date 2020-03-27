@@ -1,12 +1,18 @@
-.navbar-lewagon {
+.navbar-home {
+  height: 100px;
+  position: absolute;
+  top: 0;
+  z-index: 10;
+  width: 100%;
+  display:flex;
   justify-content: space-between;
-  background: white;
-}
-
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
-}
-
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
+  align-items:center;
+  > h1 {
+    color: white;
+    position:absolute;
+    top:0;
+    left:0;
+    margin-top: 21.5px;
+    margin-left: 21.5px;
+  }
 }

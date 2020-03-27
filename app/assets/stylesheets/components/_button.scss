@@ -1,4 +1,3 @@
-
 .koobo-button {
   padding: 7px 10px;
   background-color: $coral-light;
@@ -10,5 +9,24 @@
   &:hover {
     background-color: $coral;
     color:white;
+  }
+}
+
+
+.button-sign-in-home {
+  color: white;
+  background-color: $blue;
+  padding: 10px 15px;
+  border-radius: 10px;
+  border: 1px solid white;
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 21.5px;
+  &:hover {
+    transition: 0.2s;
+    background-color: $coral;
+    border: 1px solid $coral;
+    color: white;
   }
 }
