@@ -1,13 +1,18 @@
-<div class="container-home">
-  <section class="container-header-home">
+<div id="container-home">
+  <section id="container-header-home">
     <%= render partial: 'shared/navbar_home' %>
     <%= image_tag 'flat', id:'flat-banner' %>
     <%= image_tag 'handshake', id:'people-handshake' %>
     <%= image_tag 'square-circle', id:'half-circle' %>
-    <div class="inside-banner">
-      <h1>Gérer vos bien immobiliers </h1>
-      <h2><span id="banner-typed-text"></span></h2>
-      <div class="subscribe-mail">
+    <div id="inside-banner">
+      <div id="inside-banner-top">
+        <h1>Gérer vos biens immobiliers </h1>
+        <h2><span id="banner-typed-text"></span></h2>
+      </div>
+      <div id="subscribe-mail">
+        <!-- HERE WILL BE A FORM TO SUBSCRIBE TO OUR NEWSLETTER -->
+        <p id="simple-form-subscribe">Mon email...</p>
+        <button class="button-subscribe-home">S'inscrire</button>
       </div>
     </div>
   </section>
@@ -27,10 +32,71 @@
         </div>
         <div class="card-section-two">
           <h4><b>Simplicité</b></h4>
-          <%= image_tag("digit.png") %>
+          <%= image_tag 'digit' %>
           <p>Réactivité - Traçabilité - Modernité - Signature électronique</p>
         </div>
       </div>
     </div>
   </section>
-</div>
+  <section id="section-three">
+    <div class="two-element">
+      <div>
+        <h2>Sélectionnez votre locataire <span class="linecoral">rapidement</span></h2>
+        <p>
+          1 seul clic pour diffuser votre annonce sur les sites les plus populaires. Gagnez du temps dans la constitution des dossiers de location. De la candidature à la sélection du locataire, un service simplifié et automatisé.
+        </p>
+        <h2>Déjà en location ?</h2>
+        <p>
+          Pas de problème ! Nous nous chargeons de guider votre locataire dans l'inscription et les démarches.
+        </p>
+        <% if user_signed_in? %>
+          <%= link_to "C'est parti !", flats_path, class: 'button-subscribe-home' %>
+        <% else %>
+          <%= link_to "C'est parti !", new_user_registration_path, class: 'button-subscribe-home' %>
+        <% end %>
+      </div>
+      <div>
+        <%= image_tag 'teamwork' %>
+      </div>
+    </div>
+    <div id="one-element">
+      <h2>Gestion complète</h2>
+      <p>
+        À partir des informations enregistrées dans le dossier de location, <strong><span style='color: #EE8572'>k</span>oobo</strong> génère un bail électronique agréé par le Ministère du Logement incluant toutes les annexes obligatoires et les dernières règles en vigueur.
+        Sur toute la durée du bail, votre locataire est notifié(e) et relancé(e) automatiquement par mail suivant un échéancier régulier.
+        Vous êtes notifié(e) des démarches réalisées par <strong><span style='color: #EE8572'>k</span>oobo</strong> auprès de votre locataire.
+        Tous les documents transmis par mail restent accessibles en ligne dans votre espace personnel et celui de votre locataire.
+        Avec la signature électronique à valeur probante par l'ensemble des parties, <strong><span style='color: #EE8572'>k</span>oobo</strong> vous garantit une rapidité d’exécution exceptionnelle !
+      </div>
+      <div class="two-element">
+        <div>
+          <h2><span class="linecoral">Tranquillité d'esprit</span></h2>
+          <p>
+            1 seul clic pour diffuser votre annonce sur les sites les plus populaires. Gagnez du temps dans la constitution des dossiers de location. De la candidature à la sélection du locataire, un service simplifié et automatisé.
+          </p>
+          <% if user_signed_in? %>
+            <%= link_to "C'est parti !", flats_path, class: 'button-subscribe-home' %>
+          <% else %>
+            <%= link_to "C'est parti !", new_user_registration_path, class: 'button-subscribe-home' %>
+          <% end %>
+        </div>
+        <div>
+          <%= image_tag 'tranquille' %>
+        </div>
+      </div>
+    </section>
+    <div id="footer">
+      <div id="footer-links">
+        <p>Suivez-nous</p>
+        <span>
+          <a href="https://www.facebook.com/Kooboco-101419851442347/" target="_blank"><i class="fab fa-facebook"></i></a>
+          <a href="https://twitter.com/captain_koobo" target="_blank"><i class="fab fa-twitter"></i></a>
+          <a href="https://www.linkedin.com/company/42906448/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        </span>
+      </div>
+      <div id="footer-copyright">
+        <p><strong><span style='color: #EE8572'>k</span>oobo</strong> 2020</p>
+        <p>bokoo@koobo.co</p>
+      </div>
+    </div>
+  </div>

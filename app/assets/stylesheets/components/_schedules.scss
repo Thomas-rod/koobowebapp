@@ -1,14 +1,17 @@
 .schedules-th {
   width: 120px;
+  //
 }
+
 .schedules-tht {
   width: 120px;
+  //
 }
 
 .schedules-container{
-overflow-y: scroll;
-height: 120vh;
-width: 560px;
+  overflow-y: scroll;
+  height: 120vh;
+  width: 560px;
 }
 
 .schedules-container-show {
@@ -17,27 +20,30 @@ width: 560px;
   width: 560px;
 }
 
-
 .shedules-td {
   max-height: 30px;
+  //
 }
 
 .schedules-td:hover {
-background-color: $blue-lighter;
-opacity: 0.5;
+  background-color: $blue-lighter;
+  opacity: 0.5;
 }
 
 .schedules-selected {
   background-color: $blue-light;
-
+  //
 }
 
 .schedules-unselected{
   background-color: rgba(237, 237, 237,0.4);
+  //
 }
 
 .unselected-index{
-  &:hover {background-color: rgba(237, 237, 237,0.4)}
+  &:hover {
+    background-color: rgba(237, 237, 237,0.4);
+  }
 }
 
 th.schedules-th{
@@ -49,9 +55,8 @@ th.schedules-th{
     margin-top: 0px;
 }
 
-
 .table-schedules{
-   overflow: hidden;
+  overflow: hidden;
   border-collapse: collapse;
   overflow: hidden;
   border: 1px solid rgba(232, 232, 232, 1);
@@ -78,12 +83,13 @@ th.schedules-th{
       bottom: 0;
     }
   }
-
 }
 
 a.link-schedule {
-    text-decoration: underline;
+  text-decoration: underline;
+  //
 }
+
 .selected-pending{
  background-color: $orange;
  &:hover{
@@ -93,7 +99,7 @@ a.link-schedule {
 }
 
 .selected-accepted{
-background-color: $green;
+  background-color: $green;
  &:hover{
   background-color: $green;
   opacity:0.7;
@@ -101,11 +107,11 @@ background-color: $green;
 }
 
 .accepted-logo{
-color : green;
-height: 45px;
-position: relative;
-top: 14px;
-left: 95px;
+  color : green;
+  height: 45px;
+  position: relative;
+  top: 14px;
+  left: 95px;
 }
 
 #btn-card-product{
@@ -117,7 +123,8 @@ left: 95px;
 }
 
 .card-trip-schedules{
-max-height: 730px;
+  max-height: 730px;
+  //
 }
 
 .card-product .card-product-infos-pending {
@@ -128,32 +135,12 @@ max-height: 730px;
   p {
     margin-top: 1px;
   }
-
 }
 
-.btn-refuse{
-    background: $red;
-    padding: 7px 16px;
-    opacity: 0.8;
-    &:hover {
-     background: $red;
-     opacity:1;
-    }
-}
-
-.btn-accept{
-  background: $green;
-  opacity:0.8;
-    &:hover {
-    background: $green;
-    opacity:1;
-  }
-}
-
-
- .info-user{
+.info-user{
   align-items: center;
- }
+  //
+}
 
 #blabla:hover #btn-card-product {
   visibility: visible;
@@ -169,39 +156,47 @@ max-height: 730px;
   p {
     color: white;
   }
-
 }
 
 .green-v{
   background-color: $green;
+  //
 }
 
 .orange-v {
   background-color: $orange;
-
+  //
 }
+
 .blue-v {
- background-color: #4A4972;
-  }
+  background-color: #4A4972;
+  //
+}
+
 .legende {
-    justify-content: center;
-  }
+  justify-content: center;
+  //
+}
+
 .side-card-schedule{
   margin-top: 63px;
+  //
 }
 
 .fa-phone-alt{
   margin-right: 6px;
+  //
 }
 
 .fa-envelope {
   margin-right: 6px;
+  //
 }
 
 .p-milieu{
-margin-top: 5px;
+  margin-top: 5px;
+  //
 }
-
 
 td {
   padding: 1em;
@@ -215,8 +210,9 @@ td {
     margin-top: 5px;
     font-size: 13px;
     margin-left: 7px;
-  }
-  .btn-accept {
+}
+
+ .btn-accept {
       background: #57D073;
       opacity: 0.8;
       padding: 5px 5px;

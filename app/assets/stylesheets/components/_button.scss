@@ -30,3 +30,40 @@
     color: white;
   }
 }
+
+.button-subscribe-home {
+  color: white;
+  font-weight:bold;
+  background-color: $coral;
+  padding: 10px 15px;
+  border-radius: 10px;
+  border: 1px solid $coral;
+  width:130px;
+  &:hover {
+    transition: 0.2s;
+    font-weight:bold;
+    background-color: $coral-light;
+    border: 1px solid $coral-light;
+    color: $blue;
+  }
+}
+
+.btn-refuse{
+  background: $red;
+  padding: 7px 16px;
+  opacity: 0.8;
+  &:hover {
+    background: $red;
+    opacity:1;
+  }
+}
+
+.btn-accept{
+  background: $green;
+  opacity:0.8;
+    &:hover {
+    background: $green;
+    opacity:1;
+  }
+}
+

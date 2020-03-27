@@ -4,17 +4,24 @@
   background: rgba(0, 0, 0, 0);
   padding: 8px 16px;
   border: 1px solid rgb(235,235,235);
-  // :hover{
-  //   background-color: $coral-light;
-  // }
+}
+
+.notif-counter {
+  background-color: $coral;
+  padding: 5px 7px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: bold;
 }
 
 .notif-item:hover{
   background-color: $coral-light;
+  //
 }
 
 .notif-link{
  display: flex!important;
+  //
 }
 
 .notif-avatar {
@@ -52,6 +59,7 @@
 
 .notification:hover .notification-actions {
   opacity: 1;
+  //
 }
 
 .notification .notification-actions a {
@@ -62,4 +70,5 @@
 
 .notification .notification-actions a:hover {
   color: #555555;
+  //
 }
