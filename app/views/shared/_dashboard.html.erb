@@ -1,46 +1,48 @@
 <div id="dashboard-js">
   <div class="dashboard-wrapper">
     <div class="pt-3 pb-5">
-      <a href="/"><p class="logo-text"><span id="k-logo">K</span>oobo</p></a>
+      <a href="/">
+        <p class="logo-text"><span class="k-logo">K</span>oobo</p>
+      </a>
     </div>
-      <div class="dashboard-line" id="appartements">
-        <%= link_to flats_path do %>
-          <i class="fas fa-home icon-dashboard fa-2x"></i>
-          <p>Mes appartements</p>
-          <% if @counter_appartement == 0 %>
-          <% else %>
-            <span id="notif-counter"><%= @counter_appartement %></span>
-          <% end %>
+    <div class="dashboard-line" id="appartements">
+      <%= link_to flats_path do %>
+        <i class="fas fa-home icon-dashboard fa-2x"></i>
+        <p>Mes appartements</p>
+        <% if @counter_appartement == 0 %>
+        <% else %>
+          <span id="notif-counter"><%= @counter_appartement %></span>
         <% end %>
-      </div>
-      <div class="dashboard-line mb-3" id="calendrier">
-        <%= link_to schedules_path do %>
-          <i class="far fa-calendar-alt icon-dashboard fa-2x"></i>
-          <p>Mes visites</p>
-            <span class="notif-counter <%= "active" if @counter_calendar != 0 %>" id="calendar-counter">
-              <%= @counter_calendar %>
-            </span>
+      <% end %>
+    </div>
+    <div class="dashboard-line mb-3" id="calendrier">
+      <%= link_to schedules_path do %>
+        <i class="far fa-calendar-alt icon-dashboard fa-2x"></i>
+        <p>Mes visites</p>
+        <span class="notif-counter <%= "active" if @counter_calendar != 0 %>" id="calendar-counter">
+          <%= @counter_calendar %>
+        </span>
+      <% end %>
+    </div>
+    <div class="dashboard-line mb-3" id="documents">
+      <%= link_to documents_path do %>
+        <i class="far fa-file-alt icon-dashboard fa-2x"></i>
+        <p>Mes documents</p>
+        <% if @counter_documents == 0 %>
+        <% else %>
+          <span class="notif-counter"><%= @counter_documents %></span>
         <% end %>
-      </div>
-      <div class="dashboard-line mb-3" id="documents">
-        <%= link_to documents_path do %>
-          <i class="far fa-file-alt icon-dashboard fa-2x"></i>
-          <p>Mes documents</p>
-          <% if @counter_documents == 0 %>
-          <% else %>
-            <span class="notif-counter"><%= @counter_documents %></span>
-          <% end %>
+      <% end %>
+    </div>
+    <div class="dashboard-line mb-3" id="profil">
+      <a href="">
+        <i class="far fa-user icon-dashboard fa-2x"></i>
+        <p>Mon profil</p>
+        <% if @counter_profil == 0 %>
+        <% else %>
+          <span class="notif-counter"><%= @counter_profil %></span>
         <% end %>
-      </div>
-      <div class="dashboard-line mb-3" id="profil">
-        <a href="">
-          <i class="far fa-user icon-dashboard fa-2x"></i>
-          <p>Mon profil</p>
-          <% if @counter_profil == 0 %>
-          <% else %>
-            <span class="notif-counter"><%= @counter_profil %></span>
-          <% end %>
-        </a>
-      </div>
+      </a>
+    </div>
   </div>
 </div>

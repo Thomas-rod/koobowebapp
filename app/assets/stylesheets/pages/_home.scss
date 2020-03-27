@@ -1,200 +1,175 @@
 // Specific CSS for your home-page
+// BANNER
 
-.container-nav-home {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  margin-right: 25px;
-  margin-left: 25px;
+#container-home {
 }
 
-.navbar-home {
-  width: 100%;
-  box-shadow: 0 4px 2px -2px rgba(0,0,0,.2);
+#container-header-home {
+  position:relative;
+  background-color:$blue;
+  width:100%;
+  min-width:90%;
+  height: 70vh;
+  min-height: 70vh;
+  opacity:0.99;
+  h1 {
+    color: white;
+    font-weight: bold;
+    font-size: 40px;
+  }
+  h4 {
+    color:white;
+  }
 }
 
-.navbar-element {
-  margin-bottom: -1.5em;
+#inside-banner {
+  padding:10% 25%;
+  height:100%;
+  position:relative;
+  h1 {
+    font-size:48px;
+  }
+  //
 }
 
-.nav-item {
-    margin-bottom: 10px;
+#inside-banner-top{
+  height:50%;
+  //
 }
 
-.nav-link {
-    display: inline-block;
-    color: #000;
-    text-decoration: none;
-    margin-right: 15px;
+#banner-typed-text {
+  height:70px;
+  font-size:48px;
+  color:$coral;
+  font-weight:bold;
 }
 
-.nav-link::after {
-    content: '';
-    display: block;
-    width: 0;
-    height: 2px;
-    background: #000;
-    transition: width .3s;
+// SUBSCRIBE FORM HOME
+
+#subscribe-mail {
+  display:flex;
+  justify-content:space-around;
+  align-items:center;
+  margin:50px 30px;
 }
 
-.nav-link:hover::after {
-    width: 100%;
-    //transition: width .3s;
+#simple-form-subscribe {
+  color: rgba($gray, 0.5);
+  background-color: white;
+  padding: 10px 15px;
+  border-radius: 20px;
+  border: 1px solid $coral;
+  width:70%;
 }
 
-.title {
-  font-family: $logo-font;
-  color: $blue;
+// FROM CSS DISPLAY IN BANNER
+
+#flat-banner {
+    position:absolute;
+    bottom:0;
+    right:0;
+    width:350px;
+  }
+
+#people-handshake {
+  position:absolute;
+  bottom:0;
+  left:0;
+  width:350px;
 }
 
-.container-title-top {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+#half-circle {
+  width:120px;
+  position:absolute;
+  top: 14%;
+  left:19px;
 }
 
-.card-strong-point {
+// SECTION TWO
+
+#section-two {
+  position: relative;
+  background-color: $white;
+}
+
+#section-two-header {
+  background-color: white;
+  width:100%;
+  text-align:center;
+  padding: 50px 200px 0px 200px;
+}
+
+.linecoral {
+  display: inline;
+  white-space: pre-wrap;
+  box-shadow: $coral 0px -1rem 0px inset;
+  padding: 0px 0.2rem;
+}
+
+#section-card-container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 16px;
-}
-
-.container-card-koobo {
-  border-radius: 25px;
-  text-align: center;
-  align-items: center;
-  background: white;
-  padding: 2px 16px;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-  height: 300px;
-  & h4 {
-    height: 10%;
-    margin: 10px 0px;
-  }
-
-  & img {
-    height: 40%;
-    width: auto;
-    margin-bottom: 10px;
-  }
-  & ul {
-    padding-top: 10px;
-    height:50%;
-
-  }
-}
-
-.two-element-right img {
-  max-height: 320px;
-  width: auto;
-  margin-top: 60px;
+  margin-top: 30px;
 }
 
 
-.two-element-left {
-  text-align: center;
-  & h3 {
-    padding: 15px;
-  }
+// SECTION THREE
 
-  & p {
-    padding: 15px;
-  }
-}
 
-.button-home-home {
-  background-color: $coral;
-  border: none;
-  border-radius: 4px;
-  color: white;
-  padding: 15px 50px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  font-weight: lighter;
-  &:hover {
-    opacity: 0.9;
-    color: $blue;
-  }
-}
-
-.card-saving {
-  text-align: center;
-  border-radius: 25px;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-  border: none !important;
-  & h3{
-    padding: 15px;
-  }
-  & p {
-    padding: 15px;
-  }
-}
-
-.peaceful-left img {
-  max-height: 320px;
-  width: auto;
-}
-
-.peaceful-right {
-  text-align: center;
-  h3 {
-    padding: 15px;
+#section-three {
+  padding: 50px 210px;
+  text-align:center;
+  h2 {
+    margin-bottom:4%;
   }
   p {
-    padding: 15px;
+    margin-bottom:3%;
   }
 }
 
-.button-home {
-  background-color: $coral;
-  border: none;
-  border-radius: 4px;
-  color: white;
-  padding: 15px 50px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  font-weight: lighter;
-  &:hover {
-    opacity: 0.9;
-    color: $blue;
+.two-element {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+
+  img {
+    max-height: 320px;
+    width: auto;
+    margin-top: 60px;
   }
 }
 
-.container-data-protection {
-  margin: 40px;
-}
+#one-element{
+  margin-top: 3%;
+  padding: 3% 4%;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  border-radius:25px;
 
-.card-data-protection {
-  border-radius: 25px;
+}
+// FOOTER
+
+#footer {
+  background: $blue;
   display: flex;
-  justify-content: space-around;
   align-items: center;
-  background-color: $blue;
-  opacity: 0.9;
-  & h3 {
-    color: white;
-    font-weight: bold;
-  }
+  justify-content: space-between;
+  height: 100px;
+  padding: 0px 50px;
+  color: white
 }
 
-@include media-breakpoint-down(md) {
-  /* For a screen < 768px, this CSS will be read */
+#footer-links {
+text-align: center;
+}
 
-  .card-strong-point {
-    display: block;
-  }
-  .container-card-koobo {
-    margin: 25px;
-  }
-  .two-element-right img {
-    display: none;
-  }
-  .peaceful-left img {
-    display: none;
+#footer-links a {
+  color: $coral;
+  text-decoration: none;
+  font-size: 24px;
+  padding: 0px 10px;
+  &:hover {
+    opacity: 0.7;
   }
 }
 
