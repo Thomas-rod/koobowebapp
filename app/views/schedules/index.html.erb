@@ -14,7 +14,12 @@
         <div class="row">
         <div class="container schedules-container col-sm-8 .col-md-8">
           <!-- <h2> Mes visites batard</h2> -->
-          <p class="mb-2">Semaine du 09/03 au 15/03</p>
+          <% start_date = params.fetch(:start_date, Date.today).to_date %>
+          <div class = "simple">
+          <%= week_calendar number_of_weeks: 1 do %>
+            <% end %>
+          </div>
+          <p class="mb-2">Semaine du <%= check(start_date.beginning_of_week.day) %>/<%= check(start_date.beginning_of_week.month) %> au <%= check(start_date.end_of_week.day) %>/<%= check(start_date.end_of_week.month) %></p>
           <div class="d-flex align-items-center my-2">
             <div class ="blue-v visite-schedule"><p>Libre</p></div>
             <div class ="orange-v visite-schedule"><p>En attente</p></div>
@@ -41,10 +46,11 @@
             <% pile = "00" %>
             <tr>
               <th class= "schedule-th"> <%= hour %></th>
-              <% day = 8 %>
+              <% day = start_date.beginning_of_week.day - 1 %>
               <% 7.times do %>
+              <% day = 0 if day >= start_date.end_of_month.day %>
                 <% day += 1 %>
-                <% scheduled = current_user.schedules.select {|time| time.start == Time.new(2020, 3, day, hour, 0, 0)} %>
+                <% scheduled = current_user.schedules.select {|time| time.start == Time.new(start_date.year, start_date.month, day, hour, 0, 0)} %>
                 <% if scheduled != []%>
                   <% if scheduled[0].visits.any?{|visit| visit.status == "accepted"} %>
                     <td class = "schedules-td schedules-selected selected-accepted" data-schedule = "scheduled<%= scheduled[0].id %> "></td>
@@ -60,10 +66,11 @@
             </tr>
             <tr>
               <th class= "schedule-th"> <%= hour %>: <%= demi %></th>
-              <% day = 8 %>
+              <% day = start_date.beginning_of_week.day - 1 %>
               <% 7.times do %>
+              <% day = 0 if day >= start_date.end_of_month.day %>
                 <% day += 1 %>
-                <% scheduled = current_user.schedules.select {|time| time.start == Time.new(2020, 3, day,hour, 30, 0)} %>
+                <% scheduled = current_user.schedules.select {|time| time.start == Time.new(start_date.year, start_date.month, day,hour, 30, 0)} %>
                  <% if scheduled != []%>
                  <% if scheduled[0].visits.any?{|visit| visit.status == "accepted"} %>
                    <td class = "schedules-td schedules-selected selected-accepted" data-schedule = "scheduled<%= scheduled[0].id %> "></td>

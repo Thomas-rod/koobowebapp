@@ -35,6 +35,7 @@ gem 'autoprefixer-rails'
 gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'cloudinary', '~> 1.12.0'
+gem  'simple_calendar', '~> 2.0'
 
 gem 'dotenv-rails', groups: [:development, :test]
 # gem 'select2_simple_form', github: 'lndl/select2_simple_form', tag: '0.7.3'
