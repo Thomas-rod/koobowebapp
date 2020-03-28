@@ -46,14 +46,14 @@
 
 // SUBSCRIBE FORM HOME
 
-#subscribe-mail {
+.subscribe-mail {
   display:flex;
   justify-content:space-around;
   align-items:center;
   margin:50px 30px;
 }
 
-#simple-form-subscribe {
+.simple-form-subscribe {
   color: rgba($gray, 0.5);
   background-color: white;
   padding: 10px 15px;
