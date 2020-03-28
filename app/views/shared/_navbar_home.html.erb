@@ -2,5 +2,9 @@
   <%= link_to root_path do %>
     <h1><strong><span class="k-logo">K</span>oobo</strong></h1>
   <% end %>
-  <%= link_to 'Se connecter', new_user_session_path, class: 'button-sign-in-home' %>
+  <% if user_signed_in? %>
+    <%= link_to 'Dashboard', flats_path, class: 'button-sign-in-home' %>
+  <% else %>
+    <%= link_to 'Se connecter', new_user_session_path, class: 'button-sign-in-home' %>
+  <% end %>
 </div>
