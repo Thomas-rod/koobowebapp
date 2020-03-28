@@ -60,6 +60,10 @@
   border-radius: 20px;
   border: 1px solid $coral;
   width:70%;
+  // IN ORDER TO SWITCH OFF THE DATA-SET FROM MAILCHIMP WHICH APPLY A SQUARE ARROUND FORM
+  &:focus {
+      outline: -webkit-focus-ring-color auto 0px;
+    }
 }
 
 // FROM CSS DISPLAY IN BANNER
