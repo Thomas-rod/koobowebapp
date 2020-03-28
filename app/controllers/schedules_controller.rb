@@ -1,6 +1,6 @@
 class SchedulesController < ApplicationController
 before_action :notif_visit, :notif_counter;
-
+helper_method :check
   def index
   @flats = renting?
   @documents = Document.all
@@ -27,6 +27,13 @@ before_action :notif_visit, :notif_counter;
   #   @schedule.save!
   #   redirect_to schedules_path
   # end
+  def check(num)
+    if num < 10
+      0.to_s + num.to_s
+    else
+      num
+    end
+  end
   private
 
   def visits_user
