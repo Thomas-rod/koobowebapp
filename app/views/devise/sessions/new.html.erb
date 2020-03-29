@@ -1,63 +1,27 @@
-
-<div class="navbar navbar-expand-sm navbar-light navbar-home navbar-lewagon space-between sticky-top">
-  <div class="container-nav-home">
-    <div class="d-flex">
-      <%= link_to root_path, class: "navbar-brand mt-1" do %>
-      <h2 class = "title mt-2"><strong><span style='color: #EE8572'>k</span>oobo</strong></h2>
-      <% end %>
-    </div>
-      <div class="d-flex bd-highlight">
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <% if user_signed_in? %>
-              <li class="nav-item">
-                  <%= link_to "Votre espace personnel", flats_path, class: "nav-link" %>
-                </li>
-                <li class="nav-item dropdown">
-
-                  <% if current_user.photo.attached? %>
-                    <%= cl_image_tag current_user.photo.key, height: 40, width: 40, crop: :fill, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-                  <% else %>
-                    <%= image_tag ("avatar.png"), class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-                  <% end %>
-
-                  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                    <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
-                  </div>
-                </li>
-              <% else %>
-                <li class="nav-item active">
-                  <%= link_to "Créer un compte", new_user_registration_path, class: "nav-link" %>
-                </li>
-              <% end %>
-          </ul>
-        </div>
-      </div>
-  </div>
-</div>
- <div class="container login-container">
-        <!-- Insert form here -->
-        <div class="form-login">
-        <h2>Se connecter</h2>
-        <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-          <div class="form-inputs">
-            <%= f.input :email,
+<%= link_to root_path, class: 'navbar-devise' do %>
+  <h2><strong><span class="k-logo">k</span>oobo</strong></h2>
+<% end %>
+<div class="container login-container">
+  <!-- Insert form here -->
+  <div class="form-login">
+    <h2>Se connecter</h2>
+    <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="form-inputs">
+        <%= f.input :email,
                         required: false,
                         autofocus: true,
                         input_html: { autocomplete: "Email...." } %>
-            <%= f.input :password, label: "Mot de passe",
+        <%= f.input :password, label: "Mot de passe",
                         required: false,
                         input_html: { autocomplete: "Mot de passe...." } %>
-            <%= f.input :remember_me, label: "Se souvenir de moi", as: :boolean if devise_mapping.rememberable? %>
-          </div>
-          <div class="form-actions">
-            <%= f.button :submit, "Se connecter" , class: "btn koobo-button"%>
-          </div>
-        <% end %>
-        <%= render "devise/shared/links" %>
-        </div>
-      <img src="/login.png" alt="" class="image-login">
-   </div>
+        <%= f.input :remember_me, label: "Se souvenir de moi", as: :boolean if devise_mapping.rememberable? %>
+      </div>
+      <div class="form-actions">
+        <%= f.button :submit, "Se connecter" , class: "btn koobo-button"%>
+      </div>
+    <% end %>
+    <%= render "devise/shared/links" %>
+  </div>
+  <img src="/login.png" alt="" class="image-login">
 </div>
-
-
+</div>

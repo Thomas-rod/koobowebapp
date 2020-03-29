@@ -164,7 +164,8 @@
 }
 
 #footer-links {
-text-align: center;
+  text-align: center;
+  //
 }
 
 #footer-links a {
@@ -177,3 +178,17 @@ text-align: center;
   }
 }
 
+
+// RESPONSIVNESS
+
+@media (max-width: 1120px) {
+
+  #people-handshake {
+    width:250px;
+  }
+
+}
+
+@media (max-width: 550px) {
+
+}
