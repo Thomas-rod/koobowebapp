@@ -233,6 +233,18 @@ display: none;
   display: none;
 }
 
+.simple{
+  display: flex;
+  position: relative;
+}
+.semaine{
+margin: 0px 15px;
+}
+.right-max {
+position: absolute;
+top: 4px;
+right: 210px;
+}
 // Large devices (desktops, 992px and up)
 @media (min-width: 992px) {
 #btn-card-product {
