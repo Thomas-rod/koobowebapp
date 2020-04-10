@@ -6,6 +6,7 @@
   border-radius: 25px;
   text-align: center;
   align-items: center;
+  min-width: 280px;
   background: white;
   padding: 2px 16px;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
@@ -145,5 +146,11 @@ h2.price-calendar{
   //
 }
 
+.cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 16px;
+  margin-top: 30px;
+}
 
 
