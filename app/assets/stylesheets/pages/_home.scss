@@ -198,6 +198,11 @@
     flex-direction: column;
     margin-top: 48px;
   }
+  #inside-banner-top{
+      height:30%;
+      margin-top:180px;
+
+  }
 }
 
 // Small devices (landscape phones, 576px and up)
@@ -205,9 +210,14 @@
   .cards {
     grid-template-columns: 1fr;
   }
-    .two-element{
+  .two-element{
     flex-direction: column;
     margin-top: 48px;
+  }
+  #inside-banner-top{
+      height:30%;
+      margin-top:180px;
+
   }
 }
 
@@ -216,19 +226,30 @@
   .cards {
     grid-template-columns: 1fr;
   }
-      .two-element{
+  .two-element{
     flex-direction: column;
     margin-top: 48px;
+  }
+  #inside-banner-top{
+      height:30%;
+      margin-top:180px;
+
   }
 }
 
 // Large devices (desktops, 992px and up)
 @media (min-width: 992px) {
   .cards {
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr;
   }
-      .two-element{
-    flex-direction: inherit;
+  .two-element{
+    flex-direction: column;
+    margin-top: 48px;
+  }
+  #inside-banner-top{
+      height:40%;
+      margin-top:64px;
+
   }
 }
 
@@ -239,5 +260,10 @@
   }
   .two-element{
     flex-direction: inherit;
+  }
+  #inside-banner-top{
+      height:50%;
+      margin-top:0;
+
   }
 }
