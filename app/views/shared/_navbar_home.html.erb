@@ -3,8 +3,9 @@
     <h1><strong><span class="k-logo">K</span>oobo</strong></h1>
   <% end %>
   <% if user_signed_in? %>
-    <%= link_to 'Dashboard', flats_path, class: 'button-sign-in-home' %>
+    <%= link_to 'Dashboard', flats_path, class: 'button-sign-home', id: "button-dashboard-home" %>
   <% else %>
-    <%= link_to 'Se connecter', new_user_session_path, class: 'button-sign-in-home' %>
+    <%= link_to 'Se connecter', new_user_session_path, class: 'button-sign-home', id: "button-sign-in-home" %>
+    <%= link_to 'Créer un compte', new_user_registration_path, class: 'button-sign-home', id: "button-sign-up-home" %>
   <% end %>
 </div>

@@ -12,23 +12,39 @@
   }
 }
 
-
-.button-sign-in-home {
+.button-sign-home {
   color: white;
   background-color: $blue;
   padding: 10px 15px;
   border-radius: 10px;
   border: 1px solid white;
-  position: absolute;
-  top: 0;
-  right: 0;
-  margin: 21.5px;
   &:hover {
     transition: 0.2s;
     background-color: $coral;
     border: 1px solid $coral;
     color: white;
   }
+}
+
+#button-sign-in-home {
+  position: absolute;
+  top: 0;
+  right: 170px;
+  margin: 21.5px;
+}
+
+#button-sign-up-home {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 21.5px;
+}
+
+#button-dashboard-home {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 21.5px;
 }
 
 .button-subscribe-home {
