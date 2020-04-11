@@ -48,40 +48,10 @@
             <div class="line-10 hide-carousel">
               <%= f.input :photos, as: :file, id: "special-photo-btn", input_html: { multiple: true, class: 'hidden d-none', id: 'photo-input' }, label_html: { class: 'upload-photo'}, label: "📷 J'ajoute des photos à mon appartement" %>
             </div>
-            <% number = 0 %>
-              <% number += 1 %>
-              <div id="carouselExampleIndicators<%= number %>" class="hide-carousel carousel slide carousel-preview" data-ride="carousel">
-                <ol class="carousel-indicators">
-                  <li data-target="#carouselExampleIndicators<%= number %>" data-slide-to="0" class="active"></li>
-                  <li data-target="#carouselExampleIndicators<%= number %>" data-slide-to="1"></li>
-                  <li data-target="#carouselExampleIndicators<%= number %>" data-slide-to="2"></li>
-                </ol>
-                  <div class=" carousel-inner">
-                    <div class="carousel-item active">
-                      <%= image_tag "", class: "hidden d-block w-100 image image-preview", id: "photo-preview" %>
-                    </div>
-                      <div class="hidden carousel-item ">
-                        <%= image_tag "", class: "hidden d-block w-100 image", id: "photo-preview2" %>
-                      </div>
-                      <div class="hidden carousel-item ">
-                        <%= image_tag "", class: "hidden d-block w-100 image", id: "photo-preview3" %>
-                      </div>
-                    </div>
-                    <a class="carousel-control-prev" href="#carouselExampleIndicators<%= number %>" role="button" data-slide="prev">
-                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                      <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="carousel-control-next" href="#carouselExampleIndicators<%= number %>" role="button" data-slide="next">
-                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                      <span class="sr-only">Next</span>
-                    </a>
-              </div>
-
-
+            <%= render "shared/carousel_new" %>
             <div class="line-11 hide-carousel">
               <%= f.submit "Suivant", id: "special-form-btn" %>
             </div>
-
           <% end %>
         </div>
       </div>
