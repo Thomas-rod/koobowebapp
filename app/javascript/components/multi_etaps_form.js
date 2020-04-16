@@ -12,27 +12,27 @@ const makeFormAppear = () => {
   const input7 = document.getElementById("my-description-input");
 
   if (input1) {
-    input1.addEventListener('change', () => {
+    input1.addEventListener('input', () => {
       displayNextLine(input1, input2, input3, input4, input5, input6, input7, input8);
     })
   }
   if (input2) {
-    input2.addEventListener('change', () => {
+    input2.addEventListener('input', () => {
       displayNextLine(input1, input2, input3, input4, input5, input6, input7, input8);
     })
   }
   if (input3) {
-    input3.addEventListener('change', () => {
+    input3.addEventListener('input', () => {
       displayNextLine(input1, input2, input3, input4, input5, input6, input7, input8);
     })
   }
   if (input4) {
-    input4.addEventListener('change', () => {
+    input4.addEventListener('input', () => {
       displayNextLine(input1, input2, input3, input4, input5, input6, input7, input8);
     })
   }
   if (input5) {
-    input5.addEventListener('change', () => {
+    input5.addEventListener('input', () => {
       displayNextLine(input1, input2, input3, input4, input5, input6, input7, input8);
     })
   }
@@ -50,12 +50,12 @@ const makeFormAppear = () => {
   });
 
   if (input7) {
-    input7.addEventListener('change', () => {
+    input7.addEventListener('input', () => {
       displayNextLine(input1, input2, input3, input4, input5, input6, input7, input8);
     });
   }
   if (input8) {
-    input8.addEventListener('change', () => {
+    input8.addEventListener('input', () => {
       displayNextLine(input1, input2, input3, input4, input5, input6, input7, input8);
     })
   }
