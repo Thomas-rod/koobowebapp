@@ -1,11 +1,11 @@
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <%= cl_image_tag @flat.photos[0].key, class: "d-block w-100 image", style: "height: 300px"%>
+      <%= cl_image_tag @flat.photos[0].key, class: "d-block w-100 image"%>
     </div>
     <% @flat.photos[1..@flat.photos.count].each do |photo| %>
       <div class="carousel-item ">
-        <%= cl_image_tag photo.key, class: "d-block w-100 image", style: "height: 300px"%>
+        <%= cl_image_tag photo.key, class: "d-block w-100 image"%>
       </div>
     <% end %>
     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">

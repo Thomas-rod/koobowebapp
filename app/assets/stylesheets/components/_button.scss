@@ -83,3 +83,14 @@
   }
 }
 
+.delete-link {
+  color: $coral-light;
+  margin-top: 12px;
+  &:hover {
+    color: $coral-light;
+    text-decoration: underline;
+  }
+}
+.bouton-locataire{
+  margin-top: 17px;
+}
