@@ -3,7 +3,6 @@ before_action :notif_visit, :notif_counter;
 helper_method :check
   def index
   @flats = renting?
-  @documents = Document.all
   @visits_user = visits_user
   end
 
@@ -57,9 +56,8 @@ helper_method :check
     @visit_pending_flat = notif_visit
     @counter_calendar = @visit_pending_flat.length
     @counter_appartement = 0
-    @counter_documents = 0
     @counter_profil = 0
-    @counter = @counter_appartement + @counter_calendar + @counter_documents + @counter_profil
+    @counter = @counter_appartement + @counter_calendar + @counter_profil
   end
 
   def notif_visit

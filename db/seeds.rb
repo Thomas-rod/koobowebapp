@@ -63,8 +63,18 @@ third_schedule = Schedule.create!(start:Time.new(2020, 3, 10, 9, 30, 0),end:Time
 puts "#{Schedule.count} created"
 
 puts "Creating renting"
-roxane_thomas_renting = Renting.create!(flat: thomas_first_flat, user: roxane, created_at: 'Fri, 28 Dec 2019 14:27:32 UTC +00:00')
+roxane_thomas_renting = Renting.create!(flat: thomas_first_flat, user_id: roxane.id, created_at: 'Fri, 28 Dec 2019 14:27:32 UTC +00:00')
 puts "#{Renting.count} renting created"
+
+puts "Creating flows"
+Flow.create!(title: "Loyer", renting: roxane_thomas_renting, payment_date: Time.new(2020, 3, 9, 8, 30, 0), month_rent: Date.new(2001,2,3), amount: 700, category: "income")
+Flow.create!(title: "Réparations", renting: roxane_thomas_renting, payment_date: Time.new(2020, 3, 9, 8, 30, 0), month_rent: Date.new(2001,2,3), amount: 800, category: "spending")
+Flow.create!(title: "Loyer", renting: roxane_thomas_renting, payment_date: Time.new(2020, 3, 9, 8, 30, 0), month_rent: Date.new(2001,2,3), amount: 700, category: "income")
+Flow.create!(title: "Loyer", renting: roxane_thomas_renting, payment_date: Time.new(2020, 3, 9, 8, 30, 0), month_rent: Date.new(2001,2,3), amount: 700, category: "income")
+Flow.create!(title: "Loyer", renting: roxane_thomas_renting, payment_date: Time.new(2020, 3, 9, 8, 30, 0), month_rent: Date.new(2001,2,3), amount: 700, category: "income")
+Flow.create!(title: "Loyer", renting: roxane_thomas_renting, payment_date: Time.new(2020, 3, 9, 8, 30, 0), month_rent: Date.new(2001,2,3), amount: 700, category: "income")
+Flow.create!(title: "Réparations", renting: roxane_thomas_renting, payment_date: Time.new(2020, 3, 9, 8, 30, 0), month_rent: Date.new(2001,2,3), amount: 66.50, category: "spending")
+puts puts "#{Flow.count} flows created"
 
 puts "G O O D     L U C K      G U Y S"
 

@@ -1,4 +1,6 @@
 class Flow < ApplicationRecord
-  belongs_to :renting_id
-  validates :payment_date, :amount, :type, presence: true
+  CATEGORIES = ["income", "spending"]
+  belongs_to :renting
+  validates :payment_date, :amount, :category, presence: true
+  validates :category, inclusion: { in: CATEGORIES }
 end
