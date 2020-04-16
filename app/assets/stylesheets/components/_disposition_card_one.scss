@@ -1,0 +1,90 @@
+.container-disposition {
+  margin: 0 3%;
+}
+
+.disposition-card-one {
+  width:100%;
+  height:85vh;
+  display: grid;
+  grid-template-columns: 60% 35%;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-gap: 30px;
+}
+
+.disposition-one-left-top {
+  grid-column: 1;
+  grid-row: 1;
+  border: 1px solid black;
+  border-radius: 15px;
+}
+
+.disposition-one-left-bottom {
+  grid-column: 1;
+  grid-row: 2 / 4;
+  border: 1px solid black;
+  border-radius: 15px;
+}
+
+.disposition-one-right-top {
+  grid-column: 2;
+  grid-row: 1 / 3;
+  border: 1px solid black;
+  border-radius: 15px;
+}
+
+.disposition-one-right-bottom {
+  grid-column: 2;
+  grid-row: 3 / 4;
+  border: 1px solid black;
+  border-radius: 15px;
+}
+
+// RESPONSIVNESS
+
+@media (max-width: 1120px) {
+
+}
+
+// Smallest device
+@media (min-width: 100px) and (max-width: 575px) {
+
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  .disposition-card-one {
+  grid-template-columns: 100%;
+  grid-template-rows: repeat(4, 1fr);
+  }
+  .disposition-one-left-top {
+    grid-column:1;
+    grid-row: 1 / 2;
+  }
+  .disposition-one-left-bottom {
+    grid-column:1;
+    grid-row: 2 / 3;
+  }
+  .disposition-one-right-top {
+    grid-column:1;
+    grid-row: 3 / 4;
+  }
+  .disposition-one-right-bottom {
+    grid-column:1;
+    grid-row: 4;
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+
+}

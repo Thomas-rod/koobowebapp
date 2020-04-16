@@ -3,6 +3,28 @@
     <%= render partial: 'shared/dashboard', locals: { flats: @flats, schedules: @schedules, documents: @documents} %>
     <div style=" width:100%;">
       <%= render partial: 'shared/navbar_dashboard', locals: { page_title: 'Appartements', notif_counter: @counter} %>
+      <div class="container-disposition">
+        <div class="disposition-card-one">
+          <div class="disposition-one-left-top">
+            <% if @flat.photos.attached? %>
+              <div class="card-flat">
+                <div class="card-trip">
+                <%= render "shared/carousel_show" %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+          <div class="disposition-one-left-bottom">
+
+          </div>
+          <div class="disposition-one-right-top">
+
+          </div>
+          <div class="disposition-one-right-bottom">
+            <%= render "shared/card_locataire" %>
+          </div>
+        </div>
+      </div>
       <div class="d-flex justify-content-between px-4">
         <% if @flat.photos.attached? %>
           <div class="card-flat">
@@ -23,7 +45,6 @@
           <div class="calendar-placeholder">
             <% if @flat.rentings&.last&.user.nil? %>
               </div>
-
               <div class="container schedules-container-show">
               <div class="d-flex align-items-center my-2">
                 <div class ="blue-v visite-schedule"><p>Libre</p></div>
@@ -88,7 +109,6 @@
           </div>
           <%= render "shared/flat_equipment" %>
         </div>
-      </div>
     </div>
   </div>
 </div>
