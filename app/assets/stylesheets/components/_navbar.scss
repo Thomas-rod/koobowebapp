@@ -110,11 +110,12 @@
   grid-template-columns: 1fr 1fr 1fr 1fr;
   justify-items: center;
   background: white;
+  align-items: center;
   position: fixed;
-  bottom:0;
+  bottom: 0;
   width: 100%;
-  background-color: $blue;
-  height:60px
+  background-color: #201E50;
+  height: 120px;
 }
 
 .dashboard-smartphone {
@@ -130,8 +131,9 @@
   width: 40px;
 }
 .icon-bottom-navbar {
-  font-size: 25px;
+  font-size: 48px;
   color: #fff;
+  margin-top: 0px;
 }
 
 // Smallest device
