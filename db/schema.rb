@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_26_181822) do
+ActiveRecord::Schema.define(version: 2020_04_16_184723) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,14 +34,6 @@ ActiveRecord::Schema.define(version: 2020_03_26_181822) do
     t.string "checksum", null: false
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
-  end
-
-  create_table "documents", force: :cascade do |t|
-    t.bigint "renting_id", null: false
-    t.string "label"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["renting_id"], name: "index_documents_on_renting_id"
   end
 
   create_table "flats", force: :cascade do |t|
@@ -69,6 +61,42 @@ ActiveRecord::Schema.define(version: 2020_03_26_181822) do
     t.boolean "bienici", default: false
     t.string "heating_system", default: [], array: true
     t.index ["user_id"], name: "index_flats_on_user_id"
+  end
+
+  create_table "flows", force: :cascade do |t|
+    t.bigint "renting_id", null: false
+    t.datetime "payment_date"
+    t.date "month_rent"
+    t.float "amount"
+    t.string "category"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "title"
+    t.index ["renting_id"], name: "index_flows_on_renting_id"
+  end
+
+  create_table "folders", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_folders_on_user_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.bigint "renting_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["renting_id"], name: "index_messages_on_renting_id"
+  end
+
+  create_table "renting_folders", force: :cascade do |t|
+    t.bigint "visit_id", null: false
+    t.bigint "folder_id", null: false
+    t.string "status", default: "pending"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["folder_id"], name: "index_renting_folders_on_folder_id"
+    t.index ["visit_id"], name: "index_renting_folders_on_visit_id"
   end
 
   create_table "rentings", force: :cascade do |t|
@@ -117,8 +145,12 @@ ActiveRecord::Schema.define(version: 2020_03_26_181822) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "documents", "rentings"
   add_foreign_key "flats", "users"
+  add_foreign_key "flows", "rentings"
+  add_foreign_key "folders", "users"
+  add_foreign_key "messages", "rentings"
+  add_foreign_key "renting_folders", "folders"
+  add_foreign_key "renting_folders", "visits"
   add_foreign_key "rentings", "flats"
   add_foreign_key "rentings", "users"
   add_foreign_key "schedules", "flats"

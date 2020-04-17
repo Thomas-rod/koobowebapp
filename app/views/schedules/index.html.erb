@@ -7,7 +7,7 @@
 <% end %>
 <div class="dashboard-data-set" data-line="calendrier">
   <div class="d-flex">
-    <%= render partial: 'shared/dashboard', locals: { flats: @flats, schedules: @schedules, documents: @documents} %>
+    <%= render partial: 'shared/dashboard', locals: { flats: @flats, schedules: @schedules} %>
     <div style=" width:100%;">
       <%= render 'shared/navbar_dashboard', locals: { page_title: 'Calendrier', notif_counter: @counter} %>
       <div class="container">

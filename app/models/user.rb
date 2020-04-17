@@ -7,9 +7,8 @@ class User < ApplicationRecord
   has_many :rentings, dependent: :destroy
   has_many :visits, dependent: :destroy
   has_many :schedules, through: :flats
-  has_many :documents, through: :rentings
   has_one_attached :photo
   validates :email, uniqueness: true
   validates :email, presence: true
-
+  has_many :folders
 end

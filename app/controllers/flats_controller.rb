@@ -4,7 +4,6 @@ class FlatsController < ApplicationController
   def index
     @flats = current_user.flats
     @schedules = Schedule.all
-    @documents = Document.all
   end
 
   def show
@@ -58,9 +57,8 @@ class FlatsController < ApplicationController
     @visit_pending_flat = notif_visit
     @counter_calendar = @visit_pending_flat.length
     @counter_appartement = 0
-    @counter_documents = 0
     @counter_profil = 0
-    @counter = @counter_appartement + @counter_calendar + @counter_documents + @counter_profil
+    @counter = @counter_appartement + @counter_calendar + @counter_profil
 
   end
 
