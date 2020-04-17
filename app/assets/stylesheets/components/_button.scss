@@ -26,6 +26,12 @@
   }
 }
 
+.documents-button {
+  width:100%;
+  max-width: 272px;
+  min-width: 130px;
+}
+
 #button-sign-in-home {
   position: absolute;
   top: 0;
@@ -83,3 +89,14 @@
   }
 }
 
+.delete-link {
+  color: $coral-light;
+  margin-top: 12px;
+  &:hover {
+    color: $coral-light;
+    text-decoration: underline;
+  }
+}
+.bouton-locataire{
+  margin-top: 17px;
+}

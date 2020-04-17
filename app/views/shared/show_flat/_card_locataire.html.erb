@@ -1,0 +1,16 @@
+<div class="card-locataire">
+  <% if @flat.rentings&.last&.user&.photo&.attached?  %>
+    <%= cl_image_tag @flat.rentings.last.user.photo.key, class: 'avatar-extra-large' %>
+  <% else %>
+    <%= image_tag ("avatar.png"), class: "avatar-extra-large" %>
+  <% end %>
+  <div class="card-name-locataire">
+    <h4><%= @flat.rentings.last.user.first_name %> <%= @flat.rentings.last.user.last_name %></h4>
+    <p>Locataire depuis <%= ((Time.now - @flat.rentings.last.created_at) / 86400).to_i %> jours</p>
+  </div>
+  <div class="card-icon-uptodate-payments">
+    <p><i class="fas fa-phone-alt"></i><%= @flat.rentings.last.user.phone_number %></p>
+    <p> Ajouter si à jour des paiements </p>
+  </div>
+  </div>
+</div>

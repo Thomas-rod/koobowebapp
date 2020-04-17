@@ -1,0 +1,29 @@
+.fas.fa-check {
+  margin:0px !important;
+  color: $green;
+  font-size:20px;
+  // $green;
+}
+.fa-times:before {
+    content: "\f00d";
+    margin-right: 5px;
+}
+
+.fa-times{
+  margin:0px  !important;
+  color:$red;
+  font-size:20px;
+  margin-right: 6px;
+}
+
+.fas.fa-couch {
+  font-size: 17px;
+}
+
+.fas.fa-parking {
+  font-size: 20px;
+}
+
+.fa-phone-alt {
+  font-size: 24px;
+}
