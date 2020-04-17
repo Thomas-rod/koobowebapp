@@ -50,6 +50,86 @@
 .list-button-card {
   margin:30px auto;
 }
+// RESPONSIVNESS
+
+// Extra large devices (large desktops, 1200px and up)
+@media (max-width: 1200px) {
+  body {
+    background-color: $blue;
+  }
+  // .disposition-card-one {
+  // grid-template-columns: 100%;
+  // grid-template-rows: repeat(4, 1fr);
+  // }
+  // .disposition-one-left-top {
+  //   grid-column:1;
+  //   grid-row: 1 / 2;
+  // }
+  // .disposition-one-left-bottom {
+  //   grid-column:1;
+  //   grid-row: 2 / 3;
+  // }
+  // .disposition-one-right-top {
+  //   grid-column:1;
+  //   grid-row: 3 / 4;
+  // }
+  // .disposition-one-right-bottom {
+  //   grid-column:1;
+  //   grid-row: 4;
+  // }
+}
+
+// Large devices (desktops, 992px and up)
+@media (max-width: 992px) {
+  body {
+    background-color: orange;
+  }
+  #header-card-locataire {
+    h4 {
+      font-size: 16px;
+    }
+    p {
+      font-size: 12px;
+    }
+    .avatar-extra-large {
+      width: 65px;
+      height: 65px;
+    }
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (max-width: 768px) {
+  body {
+    background-color: yellow;
+  }
+  #header-card-locataire {
+    h4 {
+      font-size: 16px;
+    }
+    p {
+      font-size: 12px;
+    }
+    .avatar-extra-large {
+      width: 65px;
+      height: 65px;
+    }
+  }
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (max-width: 576px) {
+  body {
+    background-color: gray;
+  }
+}
+
+
+
+
+
+
+
 
 
 

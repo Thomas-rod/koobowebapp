@@ -166,11 +166,15 @@ h2.price-calendar{
 
 #header-card-locataire {
   display:flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items:center;
   .avatar-extra-large {
     flex-shrink: 1;
   }
+}
+
+#header-card-infos {
+
 }
 
 #body-card-locataire {

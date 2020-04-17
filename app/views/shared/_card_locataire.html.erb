@@ -56,9 +56,9 @@
       <% else %>
         <%= image_tag ("avatar.png"), class: "avatar-extra-large" %>
       <% end %>
-      <div>
+      <div id="header-card-infos">
         <h4><%= @flat.rentings.last.user.first_name %> <%= @flat.rentings.last.user.last_name %></h4>
-        <p> <strong>Locataire depuis <%= ((Time.now - @flat.rentings.last.created_at) / 86400).to_i %> jours</strong></p>
+        <p>Locataire depuis <%= ((Time.now - @flat.rentings.last.created_at) / 86400).to_i %> jours</p>
       </div>
       </div>
       <div id="body-card-locataire">
