@@ -1,5 +1,6 @@
 class FlatsController < ApplicationController
   before_action :notif_visit, :notif_counter;
+  helper_method :check;
 
   def index
     @flats = current_user.flats
@@ -49,6 +50,14 @@ class FlatsController < ApplicationController
     @flat = Flat.find(params[:id])
     @flat.update(flat_params)
     redirect_to flat_path(@flat)
+  end
+
+  def check(num)
+    if num < 10
+      0.to_s + num.to_s
+    else
+      num
+    end
   end
 
   private

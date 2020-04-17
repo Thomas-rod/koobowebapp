@@ -1,6 +1,6 @@
 class SchedulesController < ApplicationController
 before_action :notif_visit, :notif_counter;
-helper_method :check
+helper_method :check;
   def index
   @flats = renting?
   @visits_user = visits_user
@@ -18,14 +18,6 @@ helper_method :check
     end
   end
 
-  # WE WILL NEED AN OTHER ROUTES TO REDIRECT TO THE CALENDAR WHEN WE ARE ON CALENDAR
-  # def create_from_calendar
-  #   @schedule = Schedule.new(params_schedule)
-  #   @flat = Flat.find(params[:flat_id])
-  #   @schedule.flat = @flat
-  #   @schedule.save!
-  #   redirect_to schedules_path
-  # end
   def check(num)
     if num < 10
       0.to_s + num.to_s
