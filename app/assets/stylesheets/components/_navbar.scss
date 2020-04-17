@@ -104,4 +104,74 @@
   }
 }
 
+//Navbar Bottom
+.bottom-navbar {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  justify-items: center;
+  background: white;
+  position: fixed;
+  bottom:0;
+  width: 100%;
+  background-color: $blue;
+  height:60px
+}
+
+.dashboard-smartphone {
+  width:100%;
+  text-align: center;
+}
+
+.bottom-navbar .navbar-collapse-bottom {
+  flex-grow: 0;
+}
+
+.bottom-navbar .navbar-brand-bottom img {
+  width: 40px;
+}
+.icon-bottom-navbar {
+  font-size: 25px;
+  color: #fff;
+}
+
+// Smallest device
+@media (min-width: 100px) and (max-width: 575px) {
+  .dashboard-wrapper {
+    display: none;
+  }
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+  .dashboard-wrapper {
+  display: none;
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  .dashboard-wrapper {
+  display: none;
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  .dashboard-wrapper {
+  display: block;
+  }
+  .bottom-navbar {
+    display:none;
+  }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  .dashboard-wrapper {
+  display: block;
+  }
+  .bottom-navbar {
+    display:none;
+  }
+}
 

@@ -145,7 +145,7 @@ h2.price-calendar{
   //
 }
 
-.cards {
+.cards-home {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 16px;
@@ -180,7 +180,6 @@ h2.price-calendar{
   }
   .card-name-locataire {
     grid-area: two;
-
   }
   .card-icon-uptodate-payments {
     grid-area: three;

@@ -9,13 +9,13 @@
 }
 
 .schedules-container{
-  overflow-y: scroll;
+  overflow-y: auto;
   height: 120vh;
   width: 560px;
 }
 
 .schedules-container-show {
-  overflow-y: scroll;
+  overflow-y: auto;
   height:300px;
   width: 560px;
 }
