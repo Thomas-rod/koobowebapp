@@ -5,11 +5,11 @@
       <%= render partial: 'shared/navbar_dashboard', locals: { page_title: 'Appartements', notif_counter: @counter} %>
       <div class="container ">
         <div class="index-container mt-5 mb-5">
-          <div class="cards cards-index" id = "index-cards">
+          <div class="cards-index" id = "index-cards">
             <% number = 0 %>
             <% @flats.each do |flat| %>
               <% number += 1 %>
-              <div class="card-trip card-trip-index">
+              <div class="card-trip card-trip-index cards">
                 <div id="carouselExampleIndicators<%= number %>" class="carousel slide" data-ride="carousel">
                   <ol class="carousel-indicators">
                     <li data-target="#carouselExampleIndicators<%= number %>" data-slide-to="0" class="active"></li>
@@ -70,6 +70,6 @@
     </div>
   </div>
 </div>
-
+<%= render 'shared/bottom_nav'%>
 
 

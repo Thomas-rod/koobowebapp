@@ -1,0 +1,81 @@
+<div class="container schedules-container col-sm-8 .col-md-8">
+          <!-- <h2> Mes visites batard</h2> -->
+          <% start_date = params.fetch(:start_date, Date.today).to_date %>
+          <% date_range = (start_date.beginning_of_week..start_date.end_of_week).to_a %>
+          <div class = "simple">
+            <%= link_to start_date: date_range.first - 1.day do %>
+           <i class="fas fa-angle-double-left"></i>
+            <% end %>
+            <p class="semaine">Semaine du <%= check(start_date.beginning_of_week.day) %>/<%= check(start_date.beginning_of_week.month) %> au <%= check(start_date.end_of_week.day) %>/<%= check(start_date.end_of_week.month) %></p>
+            <%= link_to start_date: date_range.last + 1.day do %>
+            <i class="fas fa-angle-double-right right-max"></i>
+            <% end %>
+          </div>
+          <div class="d-flex align-items-center my-2">
+            <div class ="blue-v visite-schedule"><p>Libre</p></div>
+            <div class ="orange-v visite-schedule"><p>En attente</p></div>
+            <div class ="green-v visite-schedule"><p>Réservé</p></div>
+          </div>
+          <table class = "table-schedules">
+          <thead class = "jour">
+            <tr>
+              <th class="schedules-tht">h</th>
+              <th class="schedules-th">lun</th>
+              <th class="schedules-th">mar</th>
+              <th class="schedules-th">mer</th>
+              <th class="schedules-th">jeu</th>
+              <th class="schedules-th">ven</th>
+              <th class="schedules-th">sam</th>
+              <th class="schedules-th">dim</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% hour = 7 %>
+            <% 13.times do %>
+            <% hour += 1 %>
+            <% demi = "30" %>
+            <% pile = "00" %>
+            <tr>
+              <th class= "schedule-th"> <%= hour %></th>
+              <% day = start_date.beginning_of_week.day - 1 %>
+              <% 7.times do %>
+              <% day = 0 if day >= start_date.end_of_month.day %>
+                <% day += 1 %>
+                <% scheduled = current_user.schedules.select {|time| time.start == Time.new(start_date.year, start_date.month, day, hour, 0, 0)} %>
+                <% if scheduled != []%>
+                  <% if scheduled[0].visits.any?{|visit| visit.status == "accepted"} %>
+                    <td class = "schedules-td schedules-selected selected-accepted" data-schedule = "scheduled<%= scheduled[0].id %> "></td>
+                  <% elsif scheduled[0].visits.any?{|visit| visit.status == "pending"} %>
+                    <td class = "schedules-td schedules-selected selected-pending" data-schedule = "scheduled<%= scheduled[0].id %> "></td>
+                    <% else %>
+                    <td class = "schedules-td schedules-selected" data-schedule = "scheduled<%= scheduled[0].id %> "></td>
+                  <% end %>
+                <% else %>
+                  <td class = "schedules-td schedules-unselected unselected-index"></td>
+                <% end %>
+              <% end %>
+            </tr>
+            <tr>
+              <th class= "schedule-th"> <%= hour %>: <%= demi %></th>
+              <% day = start_date.beginning_of_week.day - 1 %>
+              <% 7.times do %>
+              <% day = 0 if day >= start_date.end_of_month.day %>
+                <% day += 1 %>
+                <% scheduled = current_user.schedules.select {|time| time.start == Time.new(start_date.year, start_date.month, day,hour, 30, 0)} %>
+                 <% if scheduled != []%>
+                 <% if scheduled[0].visits.any?{|visit| visit.status == "accepted"} %>
+                   <td class = "schedules-td schedules-selected selected-accepted" data-schedule = "scheduled<%= scheduled[0].id %> "></td>
+                 <% elsif scheduled[0].visits.any?{|visit| visit.status == "pending"} %>
+                   <td class = "schedules-td schedules-selected selected-pending" data-schedule = "scheduled<%= scheduled[0].id %> "></td>
+                   <% else %>
+                    <td class = "schedules-td schedules-selected" data-schedule = "scheduled<%= scheduled[0].id %> "></td>
+                  <% end %>
+                 <% else %>
+                    <td class = "schedules-td schedules-unselected unselected-index"></td>
+                  <% end %>
+              <% end %>
+            </tr>
+            <% end %>
+          </tbody>
+         </table>
+        </div>
