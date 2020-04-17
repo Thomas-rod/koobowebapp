@@ -2,3 +2,10 @@
 <p>Dépenses : <%= @spendings %> €</p>
 <p>Solde : <%= @incomes - @spendings %> €</p>
 
+<% @flows.each do |flow| %>
+  <p><%= flow.title %></p>
+  <p><%= flow.renting.flat.name %></p>
+  <p><%= flow.payment_date.strftime("%d/%m/%Y") %></p>
+  <p><%= flow.amount %> €</p>
+<% end %>
+<%= will_paginate(@flows, :previous_label => t("précédent"), :next_label => t("suivant"), :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer) %>
