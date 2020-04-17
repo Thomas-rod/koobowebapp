@@ -207,7 +207,7 @@
 
 // Small devices (landscape phones, 576px and up)
 @media (min-width: 576px) {
-  .cards {
+  .cards-home {
     grid-template-columns: 1fr;
   }
   .two-element{
@@ -223,7 +223,7 @@
 
 // Medium devices (tablets, 768px and up)
 @media (min-width: 768px) {
-  .cards {
+  .cards-home {
     grid-template-columns: 1fr;
   }
   .two-element{
@@ -239,7 +239,7 @@
 
 // Large devices (desktops, 992px and up)
 @media (min-width: 992px) {
-  .cards {
+  .cards-home {
     grid-template-columns: 1fr;
   }
   .two-element{
@@ -255,7 +255,7 @@
 
 // Extra large devices (large desktops, 1200px and up)
 @media (min-width: 1200px) {
-  .cards {
+  .cards-home {
     grid-template-columns: 1fr 1fr 1fr;
   }
   .two-element{

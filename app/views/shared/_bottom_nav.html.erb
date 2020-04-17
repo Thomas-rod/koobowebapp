@@ -1,0 +1,38 @@
+<div class="bottom-navbar">
+    <div class="dashboard-smartphone" id="appartements">
+      <%= link_to flats_path do %>
+        <i class="fas fa-home icon-bottom-navbar fa-2x"></i>
+        <% if @counter_appartement == 0 %>
+        <% else %>
+          <span id="notif-counter"><%= @counter_appartement %></span>
+        <% end %>
+      <% end %>
+      <p>hahahahah</p>
+    </div>
+    <div class="dashboard-smartphon" id="calendrier">
+      <%= link_to schedules_path do %>
+        <i class="far fa-calendar-alt icon-bottom-navbar fa-2x"></i>
+        <span class="notif-counter <%= "active" if @counter_calendar != 0 %>" id="calendar-counter">
+          <%= @counter_calendar %>
+        </span>
+      <% end %>
+    </div>
+    <div class="dashboard-smartphone" id="documents">
+      <%= link_to documents_path do %>
+        <i class="far fa-file-alt icon-bottom-navbar fa-2x"></i>
+        <% if @counter_documents == 0 %>
+        <% else %>
+          <span class="notif-counter"><%= @counter_documents %></span>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="dashboard-smartphone" id="profil">
+      <a href="">
+        <i class="far fa-user icon-bottom-navbar fa-2x"></i>
+        <% if @counter_profil == 0 %>
+        <% else %>
+          <span class="notif-counter"><%= @counter_profil %></span>
+        <% end %>
+      </a>
+    </div>
+</div>
