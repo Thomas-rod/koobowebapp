@@ -32,8 +32,6 @@
   text-align:center;
 }
 
-// MESSAGE BOARD
-
 #disposition-two-right-bottom {
   justify-self: stretch;
   grid-area: four;
@@ -46,6 +44,7 @@
   body {
     // background-color: red;
   }
+
   // #disposition-card-two {
   //   grid-template-areas:
   //           "one one"
@@ -59,7 +58,6 @@
   body {
     background-color: orange;
   }
-
   // #disposition-card-two {
   //   grid-template-columns: 1fr 1fr;
   //   grid-template-rows: 1fr 1fr 3fr 1fr;
@@ -69,6 +67,7 @@
   //         "three three"
   //         "four two";
   // }
+
 }
 
 // Medium devices (tablets, 768px and up)
@@ -83,5 +82,4 @@
   body {
     background-color: gray;
   }
-
 }
