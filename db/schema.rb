@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_16_112649) do
+ActiveRecord::Schema.define(version: 2020_04_16_184723) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,9 +68,10 @@ ActiveRecord::Schema.define(version: 2020_04_16_112649) do
     t.datetime "payment_date"
     t.date "month_rent"
     t.float "amount"
-    t.string "type"
+    t.string "category"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "title"
     t.index ["renting_id"], name: "index_flows_on_renting_id"
   end
 

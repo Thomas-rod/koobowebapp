@@ -5,7 +5,7 @@ class CreateFlows < ActiveRecord::Migration[6.0]
       t.datetime :payment_date
       t.date :month_rent
       t.float :amount
-      t.string :type
+      t.string :category
 
       t.timestamps
     end
