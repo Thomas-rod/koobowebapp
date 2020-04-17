@@ -162,23 +162,30 @@ h2.price-calendar{
   background-color: $blue;
   box-shadow: 0 0px 10px rgba(0,0,0,0.4);
   padding: 2% 5%;
-}
-
-#header-card-locataire {
-  display:flex;
-  justify-content: space-around;
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 1fr;
+  grid-template-areas:
+          "one two two"
+          "three three three";
+  justify-items:center;
   align-items:center;
   .avatar-extra-large {
-    flex-shrink: 1;
+    grid-area: one;
+    justify-items:center;
   }
-}
+  h4 {
+    grid-area: two;
 
-#header-card-infos {
+  }
+  .card-name-locataire {
+    grid-area: two;
 
-}
+  }
+  .card-icon-uptodate-payments {
+    grid-area: three;
 
-#body-card-locataire {
-  padding-top: 5%;
+  }
 }
 
 .img-logo-show {

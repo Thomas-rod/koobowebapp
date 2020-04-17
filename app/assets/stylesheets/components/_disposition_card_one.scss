@@ -7,22 +7,24 @@
   height:85vh;
   display: grid;
   grid-template-columns: minmax(60%, 60%) minmax(35%, 35%);
-  grid-template-rows: minmax(25vh, 200px) minmax(25vh, 300px) minmax(25vh, 300px);
+  grid-template-rows: repeat(4, minmax(25vh, 200px));
   grid-gap: 30px;
+  grid-template-areas:
+        "one two"
+        "three two"
+        "three four";
 }
 
 #disposition-one-left-top {
   justify-self: stretch;
-  grid-column: 1;
-  grid-row: 1 / 2;
+  grid-area: one;
   box-shadow: 0 1px 2px rgba(0,0,0,0.4);
   border-radius: 5px;
 }
 
 #disposition-one-left-bottom {
   justify-self: stretch;
-  grid-column: 1;
-  grid-row: 2 / 4;
+  grid-area: three;
   border: 1px solid black;
   border-radius: 15px;
 }
@@ -30,26 +32,22 @@
 // DOCUMENTS
 
 #disposition-one-right-top {
-  justify-self: stretch;
-  grid-column: 2;
-  grid-row: 1 / 3;
+  display:flex;
+  flex-flow: column;
+  justify-content:space-around;
+  align-items:center;
+  grid-area: two;
   box-shadow: 0 1px 2px rgba(0,0,0,0.4);
   border-radius: 15px;
   text-align:center;
-  padding: 4% 15%;
-  p {
-    width: 100%;
-  }
-  ul {
-    text-align:center;
-    // margin: auto 0%;
-  }
-  li {
-    margin: 10% auto;
-  }
+  padding: 4%;
   #documents-list {
-
-    margin-top: 10%;
+    flex-grow:2;
+    width:100%;
+    display:flex;
+    flex-flow: column;
+    justify-content:space-around;
+    align-items:center;
   }
 }
 
@@ -57,8 +55,7 @@
 
 #disposition-one-right-bottom {
   justify-self: stretch;
-  grid-column: 2;
-  grid-row: 3 / 4;
+  grid-area: four;
 }
 
 #message-board {
@@ -80,4 +77,75 @@
   background-color: $blue-light;
   color:white;
   font-weight: bold;
+}
+
+
+// RESPONSIVNESS
+
+// Extra large devices (large desktops, 1200px and up)
+@media (max-width: 1200px) {
+  body {
+    background-color: red;
+  }
+  #disposition-card-one {
+    grid-template-areas:
+            "one one"
+            "three two"
+            "three four";
+    }
+    .card-locataire {
+    grid-template-areas:
+            "one one one"
+            "two two two "
+            "three three three";
+    .avatar-extra-large {
+      grid-area: one;
+    }
+    h4 {
+      grid-area: two;
+    }
+    .card-name-locataire {
+      grid-area: two;
+    }
+    .card-icon-uptodate-payments {
+      grid-area: three;
+    }
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (max-width: 992px) {
+  body {
+    background-color: orange;
+  }
+
+  #disposition-card-one {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 3fr 1fr;
+    grid-template-areas:
+          "one one"
+          "three three"
+          "three three"
+          "four two";
+  }
+  #documents-list {
+
+    flex-flow: row wrap!important;
+    justify-content:space-between !important;
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (max-width: 768px) {
+  body {
+    background-color: yellow;
+  }
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (max-width: 576px) {
+  body {
+    background-color: gray;
+  }
+
 }

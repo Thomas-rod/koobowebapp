@@ -23,12 +23,10 @@
           <div id="disposition-one-right-top">
             <h4>Documents de mon appartement</h4>
             <div id="documents-list">
-              <ul>
-                <li><%= link_to'#' do %><p class="button-sign-home">Bail</p><% end %></li>
-                 <li><%= link_to'#' do %><p class="button-sign-home">Etat des lieux</p><% end %></li>
-                 <li><%= link_to'#' do %><p class="button-sign-home">Quittances</p><% end %></li>
-                 <li><%= link_to'#' do %><p class="button-sign-home">Autres</p><% end %></li>
-              </ul>
+              <%= link_to 'Bail', '#', class: 'button-sign-home documents-button' %>
+              <%= link_to'#', class: 'button-sign-home documents-button' do %><p >Etat des lieux</p><% end %>
+              <%= link_to'#', class: 'button-sign-home documents-button' do %><p >Quittances</p><% end %>
+              <%= link_to'#', class: 'button-sign-home documents-button' do %><p >Autres</p><% end %>
             </div>
           </div>
           <div id="disposition-one-right-bottom">
