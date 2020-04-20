@@ -54,3 +54,72 @@
 .container-disposition {
   margin: 0 3%;
 }
+
+// OVERWRITE BOOTSTRAP FOR LAYOUTS PENDING / ACCEPTED / DENIED
+
+.nav-tabs {
+border-bottom: 0;
+}
+
+#nav-pending-tab, #nav-accepted-tab, #nav-denied-tab {
+  color: $blue;
+  padding: 5px 10px;
+  width: 105px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+#nav-pending-tab.active {
+  width: 105px;
+  padding:0px;
+  color: white;
+  background-color: $orange;
+  border-radius: 5px;
+  border: 1px solid $orange;
+}
+
+#nav-pending-tab:hover {
+  opacity: 0.7;
+  width: 105px;
+  color: white;
+  padding:0px;
+  background-color: $orange;
+  border-radius: 5px;
+  border: 1px solid $orange;
+}
+
+#nav-accepted-tab.active {
+  width: 105px;
+  color: white;
+  background-color: $green;
+  border-radius: 5px;
+  border: 1px solid $green;
+}
+
+#nav-accepted-tab:hover {
+  opacity: 0.7;
+  width: 105px;
+  color: white;
+  background-color: $green;
+  border-radius: 5px;
+  border: 1px solid $green;
+}
+
+#nav-denied-tab.active {
+  width: 105px;
+  color: $blue;
+  background-color: $light-gray;
+  border-radius: 5px;
+  border: 1px solid $light-gray;
+}
+
+#nav-denied-tab:hover {
+  opacity: 0.7;
+  width: 105px;
+  color: $blue;
+  background-color: $light-gray;
+  border-radius: 5px;
+  border: 1px solid $light-gray;
+}
+
+

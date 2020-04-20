@@ -35,7 +35,7 @@
   grid-gap: 16px;
 }
 
-// CARD PRODUCT
+// CARD PRODUCT USED IN CARD PENDING SHARED
 
 .card-product {
   overflow: hidden;
@@ -46,6 +46,7 @@
   align-items: center;
   border-radius: 4px;
   position:relative;
+  margin-top: 4%;
 }
 
 .card-product img {
@@ -71,6 +72,26 @@
   height:100%;
   display:flex;
   flex-direction: column;
+  justify-content:space-around;
+  align-items:center;
+  position:relative;
+}
+
+.card-product-info-user{
+  align-items: center;
+
+}
+
+.card-product-infos-pending {
+  height:100%;
+  width:100%;
+  display:flex;
+  justify-content:space-around;
+  align-items:center;
+}
+
+.card-product-contact {
+  display:flex;
   justify-content:space-around;
   align-items:center;
 }
@@ -142,6 +163,11 @@ h2.price-calendar{
   right: 16px;
   top: -20px;
   width: 40px;
+}
+
+.card-trip-schedules{
+  max-height: 730px;
+  //
 }
 
 .card-flat {

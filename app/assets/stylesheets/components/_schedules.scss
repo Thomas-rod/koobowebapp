@@ -111,7 +111,7 @@ a.link-schedule {
   font-size: 32px;
 }
 
-#btn-card-product{
+.btn-card-product{
   position: relative;
   margin-top: 5px;
   visibility: hidden;
@@ -119,27 +119,7 @@ a.link-schedule {
   transition: visibility 0s, opacity 0.5s linear;
 }
 
-.card-trip-schedules{
-  max-height: 730px;
-  //
-}
-
-.card-product .card-product-infos-pending {
-  padding: 7px;
-  display: grid;
-  grid-template-columns: repeat(1, 1fr);
-  grid-gap: 10px;
-  p {
-    margin-top: 1px;
-  }
-}
-
-.info-user{
-  align-items: center;
-  //
-}
-
-#blabla:hover #btn-card-product {
+#blabla:hover .btn-card-product {
   visibility: visible;
   opacity: 1;
 }
@@ -180,16 +160,6 @@ a.link-schedule {
   //
 }
 
-.fa-phone-alt{
-  margin-right: 6px;
-  //
-}
-
-.fa-envelope {
-  margin-right: 6px;
-  //
-}
-
 .p-milieu{
   margin-top: 5px;
   //
@@ -202,7 +172,7 @@ td {
 
 // Medium devices (tablets, 768px and up)
 @media (min-width: 768px) {
-#btn-card-product {
+.btn-card-product {
     position: relative;
     margin-top: 5px;
     font-size: 13px;
@@ -244,7 +214,7 @@ left: 250px;
 }
 // Large devices (desktops, 992px and up)
 @media (min-width: 992px) {
-#btn-card-product {
+.btn-card-product {
       position: relative;
       margin-top: 5px;
       font-size: 13px;
