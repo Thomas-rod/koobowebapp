@@ -6,11 +6,11 @@
       <%= render partial: 'shared/navbar_dashboard', locals: { page_title: 'Appartements', notif_counter: @counter} %>
       <div class="container-disposition">
         <% if @flat.rentings.last.nil? %>
-          <%= render partial: 'shared/show_flat/show_not_rented_flat' %>
+          <%= render partial: 'shared/show_flat/show_not_rented_flat', locals: { flats: @flat, schedule: @schedule} %>
         <%# elsif %>
           <%#= render partial: 'shared/show_flat/show_ongoing_renting_flat' %>
         <% else %>
-          <%= render partial: 'shared/show_flat/show_rented_flat' %>
+          <%= render partial: 'shared/show_flat/show_rented_flat', locals: { flat: @flat, schedules: @schedule} %> %>
         <% end %>
       </div>
       <!-- HERE -->
