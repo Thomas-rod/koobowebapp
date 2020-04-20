@@ -2,6 +2,8 @@ class FlatsController < ApplicationController
   before_action :notif_visit, :notif_counter;
   helper_method :check;
 
+  # CRUD
+
   def index
     @flats = current_user.flats
     @schedules = Schedule.all
@@ -10,6 +12,7 @@ class FlatsController < ApplicationController
   def show
     find_flat
     @schedule = Schedule.new
+
   end
 
   def new
@@ -32,7 +35,7 @@ class FlatsController < ApplicationController
   end
 
    def update_publication
-    @flat = Flat.find(params[:id])
+    find_flat
     @flat.update(flat_params)
     redirect_to recap_publication_path(@flat)
   end
@@ -47,10 +50,12 @@ class FlatsController < ApplicationController
   end
 
   def update
-    @flat = Flat.find(params[:id])
+    find_flat
     @flat.update(flat_params)
     redirect_to flat_path(@flat)
   end
+
+  # HELPER OTHERS
 
   def check(num)
     if num < 10
@@ -58,6 +63,13 @@ class FlatsController < ApplicationController
     else
       num
     end
+  end
+
+  # WILL USE THIS ONE TO UPDATE WHERE FLAT IS PUBLISHED
+  def disable_publication
+    find_flat
+    @flat.update!(pap: false, bienici: false, leboncoin: false, seloger: false)
+    redirect_to flat_path(@flat)
   end
 
   private

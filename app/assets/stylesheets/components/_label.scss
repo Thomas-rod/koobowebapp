@@ -1,0 +1,35 @@
+.coral-visite-rented {
+  width:105px;
+  height:25px;
+  font-weight: bold;
+  background-color: $coral-light;
+  border-radius:5px;
+  margin:0.1px auto;
+  text-align:center;
+}
+
+
+.coral-visite-not-rented {
+  width:105px;
+  height:25px;
+  font-weight: bold;
+  background-color: $light-gray;
+  border-radius:5px;
+  margin:0.1px auto;
+  text-align:center;
+}
+
+.label-flats {
+  position: absolute;
+  top:3%;
+  left: 3%;
+}
+
+.label-visit {
+  border-radius:0px;
+  opacity:0.92;
+  color: white;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
