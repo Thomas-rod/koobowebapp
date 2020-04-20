@@ -191,6 +191,7 @@ h2.price-calendar{
   border-radius: 30%;
   &.inactive {
     opacity:0.3;
+  }
 }
 
 // USED IN CARD FLAT DETAILS SHARED
@@ -229,4 +230,4 @@ h2.price-calendar{
   grid-area:three;
   display: flex;
   flex-direction:column;
- }
+}
