@@ -14,9 +14,9 @@ puts "Cleaning DB"
 User.destroy_all
 Flat.destroy_all
 Schedule.destroy_all
-Renting.destroy_all
 Visit.destroy_all
 Flow.destroy_all
+Renting.destroy_all
 puts "All clean"
 
 def attach_photo_user(string, user)
