@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   resources :schedules, only: [:index, :update] do
     resources :visits, only: :update
   end
+  resources :rentings, only: [:create, :update, :new, :index]
+
   resources :flows, only: :index
   get "flats/:id/edit_publication", to: "flats#edit_publication", as: :edit_publication
   get "flats/:id/recap_publication", to: "flats#recap_publication", as: :recap_publication

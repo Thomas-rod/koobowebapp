@@ -33,12 +33,18 @@
   #index-cards {
     grid-template-columns: 1fr;
   }
+    .index-appart{
+    padding-bottom: 100px;
+  }
 }
 
 // Small devices (landscape phones, 576px and up)
 @media (min-width: 576px) {
   #index-cards {
     grid-template-columns: 1fr;
+  }
+  .index-appart{
+    padding-bottom: 100px;
   }
 }
 
@@ -53,6 +59,9 @@
 @media (min-width: 992px) {
   #index-cards {
     grid-template-columns: 1fr 1fr;
+  }
+    .index-appart{
+    padding-bottom: 0px;
   }
 }
 
