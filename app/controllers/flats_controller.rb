@@ -13,7 +13,6 @@ class FlatsController < ApplicationController
     find_flat
     @schedule = Schedule.new
     flat_requests
-
   end
 
   def new

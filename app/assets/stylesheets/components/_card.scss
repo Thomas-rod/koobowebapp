@@ -38,13 +38,13 @@
 // CARD PRODUCT USED IN CARD PENDING SHARED
 
 .card-product {
-  overflow: hidden;
+  width:95%;
   height: 100px;
   background: white;
   box-shadow: 0 0 4px rgba(0,0,0,0.2);
   display: flex;
   align-items: center;
-  border-radius: 4px;
+  border-radius: 5px;
   position:relative;
   margin-top: 4%;
 }
@@ -230,21 +230,21 @@ h2.price-calendar{
 // USED IN CARD FLAT DETAILS SHARED
 
 .card-locataire-details {
-  color:white;
+  color: $blue;
   width: 100%;
   height: 100%;
   position:relative;
   border-radius: 15px;
-  background-color: $blue;
-  box-shadow: 0 0px 10px rgba(0,0,0,0.4);
+  background-color: white;
+  box-shadow: 0 0px 2px rgba(0,0,0,0.2);
   padding: 2% 5%;
   display:grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   grid-template-rows: 20% 50% 20%;
   grid-template-areas:
-          "one one one"
-          "two two two"
-          "three three three";
+          "one one five five"
+          "two two three three"
+          "four four three three";
   justify-items:center;
   align-items:center;
   h3 {
@@ -252,7 +252,18 @@ h2.price-calendar{
     top:5%;
     left:25%;
   }
+  h6:first-child {
+    color: $blue;
+    grid-area: one;
+  }
+  h6:nth-child(2n) {
+    color: $blue;
+    grid-area: five;
+    text-align:center;
+  }
 }
+
+
 
 .cards-locataire-platforms {
   grid-area: two;
@@ -261,11 +272,15 @@ h2.price-calendar{
   justify-content:space-around;
 }
 
-.card-modify-flat-inside {
+.card-locataire-button {
   width:100%;
   height:100%;
-  grid-area:three;
+  grid-area:four;
   display: flex;
   flex-direction:line;
   justify-content:space-around;
+}
+
+.card-locataire-analytics {
+  grid-area:three;
 }

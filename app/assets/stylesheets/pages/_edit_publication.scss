@@ -75,10 +75,11 @@
 }
 
 .schedules-container-show-edit {
-  overflow-y: scroll;
-  height:500px;
+  overflow: scroll;
+  height:100%;
+  max-height:500px;
   width: 100%;
-  margin-bottom:2%
+  // margin-bottom:2%
 }
 #div-second-step {
   height:40%;
