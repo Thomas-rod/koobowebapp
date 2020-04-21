@@ -1,0 +1,69 @@
+$size-screen: 85vh;
+
+#disposition-card-three {
+  width:100%;
+  height:$size-screen;
+  box-shadow: 0 0 4px rgba(0,0,0,0.2);
+  display: grid;
+  grid-template-columns: minmax(60%, 60%) minmax(35%, 35%);
+  grid-template-rows: repeat(4, 19vh);
+  grid-gap: 20px;
+  grid-template-areas:
+        "one two"
+        "one two"
+        "one two"
+        "three two";
+}
+
+#disposition-three-left-top {
+  box-shadow: 0 0 4px rgba(0,0,0,0.2);
+  grid-area: one;
+  border-radius: 5px;
+}
+
+#disposition-three-left-bottom {
+  box-shadow: 0 0 4px rgba(0,0,0,0.2);
+  grid-area: three;
+
+}
+
+#disposition-three-right {
+  box-shadow: 0 0 4px rgba(0,0,0,0.2);
+  grid-area: two;
+  text-align:center;
+  justify-self: stretch;
+}
+
+
+// RESPONSIVNESS
+
+// Extra large devices (large desktops, 1200px and up)
+@media (max-width: 1200px) {
+  body {
+    // background-color: red;
+  }
+
+}
+
+// Large devices (desktops, 992px and up)
+@media (max-width: 992px) {
+  body {
+    background-color: orange;
+  }
+
+
+}
+
+// Medium devices (tablets, 768px and up)
+@media (max-width: 768px) {
+  body {
+    background-color: yellow;
+  }
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (max-width: 576px) {
+  body {
+    background-color: gray;
+  }
+}

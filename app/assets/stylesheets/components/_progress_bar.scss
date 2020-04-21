@@ -1,4 +1,178 @@
-// /*progressbar*/
+
+// PROGRESSBAR USED IN SHOW FLAT ONGOING INLINE
+$size-bar: 5px;
+$bubble-position: -37px;
+$brand-primary: $blue;
+$grey-light: #ededed;
+
+.StepProgress {
+  position: relative;
+  padding-left: 45px;
+  list-style: none;
+
+  &::before {
+    display: inline-block;
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 23px;
+    width: 30px;
+    height: 100%;
+    border-left: $size-bar solid rgba($brand-primary, 0.5);
+  }
+
+  &-item {
+    position: relative;
+    counter-increment: list;
+
+    &:not(:last-child) {
+      padding-bottom: 65px;
+    }
+
+    &::before {
+      display: inline-block;
+      content: '';
+      position: absolute;
+      left: -22px;
+      height: 100%;
+      width: 10px;
+    }
+
+    &::after {
+      content: '';
+      display: inline-block;
+      position: absolute;
+      top: 0;
+      left: $bubble-position;
+      width: 36px;
+      height: 36px;
+      border: $size-bar solid rgba($brand-primary, 0.5);
+      border-radius: 50%;
+      background-color: $white;
+    }
+
+    &.is-done {
+      &::before {
+        border-left: $size-bar solid $brand-primary;
+      }
+      &::after {
+        content: counter(stepNum);
+        font-size: 10px;
+        color: #FFF;
+        text-align: center;
+        border: $size-bar solid $brand-primary;
+        background-color: white;
+      }
+    }
+
+    &.current {
+      &::before {
+        border-left: $size-bar solid $brand-primary;
+      }
+
+      &::after {
+        content: counter(list);
+        padding-top: 1px;
+        width: 36px;
+        height: 36px;
+        top: -4px;
+        left: $bubble-position;
+        font-size: 14px;
+        font-weight: bold;
+        text-align: center;
+        color: $blue;
+        border: $size-bar solid $brand-primary;
+        background-color: white;
+      }
+    }
+  }
+
+  strong {
+    display: block;
+  }
+}
+
+// PROGRESSBAR USED IN SHOW FLAT ONGOING INLINE
+
+%remain-steps{
+  &:before {
+    content: counter(stepNum);
+    font-family: inherit;
+    font-weight: 700;
+  }
+  &:after{
+    background-color: $grey-light;
+  }
+}
+.multi-steps{
+  display: inline-block;
+  table-layout: fixed;
+  width: 100%;
+  > li{
+    counter-increment: stepNum;
+    text-align: center;
+    display: table-cell;
+    position: relative;
+    color: $brand-primary;
+
+    &:before{
+      content: '\f00c';
+      content: '\2713;';
+      content: '\10003';
+      content: '\10004';
+      content: '\2713';
+      display: inline-block;
+      margin: 0 auto 4px;
+      background-color: $white;
+      width: 36px;
+      height: 36px;
+      line-height: 32px;
+      text-align: center;
+      font-weight: bold;
+      border:{
+        width: 2px;
+        style: solid;
+        color: $brand-primary;
+        radius: 50%;
+      }
+    }
+    &:after{
+      content: '';
+      height: 2px;
+      width: 100%;
+      background-color: $brand-primary;
+      position: absolute;
+      top: 16px;
+      left: 50%;
+      z-index: -1;
+    }
+    &:last-child{
+      &:after{
+        display: none;
+      }
+    }
+
+    &.is-active{
+      @extend %remain-steps;
+      &:before{
+        background-color: $white;
+        border-color: $brand-primary;
+      }
+
+      ~ li{
+        color: #808080;
+        @extend %remain-steps;
+        &:before{
+          background-color: $grey-light;
+          border-color: $grey-light;
+        }
+      }
+    }
+  }
+}
+
+
+// PROGRESSBAR USED IN CREATION OF FLAT
 #progressbar {
     margin-bottom: 30px;
     overflow: hidden;
