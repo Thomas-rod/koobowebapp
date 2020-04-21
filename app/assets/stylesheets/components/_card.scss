@@ -74,23 +74,22 @@
   flex-direction: column;
   justify-content:space-around;
   align-items:center;
-  position:relative;
 }
 
-.card-product-info-user{
-  align-items: center;
-
-}
 
 .card-product-infos-pending {
-  height:100%;
+  height:80%;
   width:100%;
   display:flex;
   justify-content:space-around;
-  align-items:center;
+  align-items:flex-start;
+  position:relative;
 }
 
 .card-product-contact {
+  position:absolute;
+  width:100%;
+  bottom: 5%;
   display:flex;
   justify-content:space-around;
   align-items:center;

@@ -5,12 +5,10 @@
       Visite
     </div>
     <div class="card-product-infos-pending ">
-      <div class= "card-product-info-user">
-        <p><strong><%= request.user.first_name %></strong> souhaite visiter l'appartement le <strong><%= request.schedule.start.strftime("%d/%m") %> de <%= request.schedule.start.strftime("%H:%M") %> à <%= request.schedule.end.strftime("%H:%M") %></strong></p>
-        <div class="card-product-contact">
-          <p class= "p-milieu btn-card-product"><i class="fas fa-phone-alt"></i><%= request.user.phone_number.scan(/../).join(" ")%></p>
-          <button class="btn koobo-button btn-accept btn-card-product">Ouvre la modal</button>
-        </div>
+      <p><strong><%= request.user.first_name %></strong> souhaite visiter l'appartement le <br><strong><%= request.schedule.start.strftime("%d/%m") %> de <%= request.schedule.start.strftime("%H:%M") %> à <%= request.schedule.end.strftime("%H:%M") %></strong></p>
+      <div class="card-product-contact">
+        <p class= "btn-card-product"><i class="fas fa-phone-alt"></i><%= request.user.phone_number.scan(/../).join(" ")%></p>
+        <button class="btn-card btn-accept-border">Ouvre la modal</button>
       </div>
     </div>
     <% else %>
@@ -21,7 +19,7 @@
       </div>
       <div class="card-product-infos">
         <p><strong><%= request.visit.user.first_name %></strong> a finalisé son dossier. Prêt(e) à étudier son dossier ?</p>
-        <button class="koobo-button">Voir le dossier</button>
+        <button class="btn-card">Voir le dossier</button>
       </div>
   <% end %>
   <!--Will be in a modal -->
