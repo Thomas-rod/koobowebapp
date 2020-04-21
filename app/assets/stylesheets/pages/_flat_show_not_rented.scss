@@ -13,30 +13,24 @@
 
 #disposition-two-left-top {
   grid-area: one;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.4);
+  // box-shadow: 0 1px 2px rgba(0,0,0,0.4);
   border-radius: 5px;
 }
 
 #disposition-two-left-bottom {
   grid-area: three;
-  border: 1px solid black;
-  border-radius: 15px;
+  // border: 1px solid black;
+  // border-radius: 15px;
 }
 
 // DOCUMENTS
 
 #disposition-two-right {
   grid-area: two;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.4);
-  border-radius: 15px;
+  // border-radius: 15px;
   text-align:center;
-}
-
-#disposition-two-right-bottom {
   justify-self: stretch;
-  grid-area: four;
 }
-
 // RESPONSIVNESS
 
 // Extra large devices (large desktops, 1200px and up)

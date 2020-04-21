@@ -7,37 +7,37 @@
   </div>
   <div id="disposition-two-right">
     <h4>Mes demandes</h4>
-    <% current_user.schedules.each do |schedule| %>
-      <% accepted_visit = schedule.visits.select {|visit| visit.status == "accepted"} %>
-      <% pending_visit = schedule.visits.select {|visit| visit.status == "pending"} %>
-      <% if accepted_visit != [] %>
-        <div class="card-product mt-3">
-          <%= cl_image_tag accepted_visit[0].user.photo.key%>
-          <div class="card-product-infos p-3">
-            <p><%= accepted_visit.first.user.first_name %> viendra visiter votre appartement le <%= schedule.start.strftime("%d/%m") %> de <%= schedule.start.strftime("%H:%M") %> à <%= schedule.end.strftime("%H:%M") %></p>
-            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 24 30" style="enable-background:new 0 0 24 24;" xml:space="preserve" class= 'accepted-logo'><g><path fill="green" d="M10.125,17.544c0.061,0.054,0.139,0.083,0.22,0.083c0.007,0,0.014,0,0.021-0.001c0.088-0.006,0.17-0.046,0.228-0.112   l9.269-10.593c0.121-0.138,0.107-0.347-0.031-0.467c-0.137-0.12-0.347-0.107-0.467,0.031l-9.049,10.342l-5.709-5.075   c-0.136-0.121-0.347-0.11-0.467,0.028c-0.122,0.136-0.109,0.346,0.028,0.467L10.125,17.544z"/></g></svg>
-          </div>
+    <nav>
+      <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <a class="nav-item nav-link active" id="nav-pending-tab" data-toggle="tab" href="#nav-pending" role="tab" aria-controls="nav-pending" aria-selected="true">En attente</a>
+        <a class="nav-item nav-link" id="nav-accepted-tab" data-toggle="tab" href="#nav-accepted" role="tab" aria-controls="nav-accepted" aria-selected="false">Validées</a>
+        <a class="nav-item nav-link" id="nav-denied-tab" data-toggle="tab" href="#nav-denied" role="tab" aria-controls="nav-denied" aria-selected="false">Refusées</a>
+      </div>
+    </nav>
+    <div class="tab-content" id="nav-tabContent">
+      <% unless @flat_requests.empty? || @flat_requests.nil? %>
+        <div class="tab-pane fade show active" id="nav-pending" role="tabpanel" aria-labelledby="nav-pending-tab">
+          <% @flat_requests.select{ |r| r.status == 'pending'}.each do |request| %>
+            <%= render partial: "shared/card_pending", locals: { request: request}  %>
+          <% end %>
         </div>
-      <% elsif pending_visit != []%>
-        <% pending_visit.each do |visit| %>
-          <div class="card-product product-pending my-3" id = "blabla">
-            <%= cl_image_tag visit.user.photo.key%>
-            <div class="card-product-infos-pending ">
-              <div class= "info-user">
-                <p><%= visit.user.first_name %></p>
-                <p class= "p-milieu"><i class="fas fa-phone-alt"></i><%= visit.user.phone_number.scan(/../).join(" ")%></p>
-                <p><i class="far fa-envelope"></i><%= visit.user.email%></p>
-              </div>
-               <div class="status-change">
-                <%= link_to "accepter", schedule_visit_path(schedule, visit, visit: { status: "accepted"}), method: :patch, remote: :true, class: "btn koobo-button btn-accept",id: "btn-card-product"%>
-                <%= link_to "refuser", schedule_visit_path(schedule, visit, visit: { status: "denied"}), method: :patch, remote: :true, class: "btn koobo-button btn-refuse",id: "btn-card-product"%>
-              </div>
-            </div>
-          </div>
-        <% end %>
-      <% else %>
-      <p class ="my-3">Vous n'avez pas encore de demande</p>
+        <div class="tab-pane fade" id="nav-accepted" role="tabpanel" aria-labelledby="nav-accepted-tab">
+          <% @flat_requests.select{ |r| r.status == 'accepted'}.each do |request| %>
+            <%= render partial: 'shared/card_with_answer', locals: { request: request, label_text: 'Visite'} %>
+          <% end %>
+        </div>
+        <div class="tab-pane fade" id="nav-denied" role="tabpanel" aria-labelledby="nav-denied-tab">
+          <% @flat_requests.select{ |r| r.status == 'denied' }.each do |request| %>
+            <%= render partial: 'shared/card_with_answer', locals: { request: request, label_text: 'Visite'} %>
+          <% end %>
+        </div>
       <% end %>
-    <% end %>
+    </div>
   </div>
 </div>
+
+
+
+
+
+

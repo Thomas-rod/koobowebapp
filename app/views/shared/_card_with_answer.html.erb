@@ -1,0 +1,20 @@
+<div class="card-product">
+  <%= cl_image_tag request.user.photo.key%>
+  <% if request.is_a?(Visit) %>
+    <div>
+      <div class="coral-visite-rented label-visit">
+        Visite
+      </div>
+    </div>
+    <% if  request.status == 'accepted'%>
+      <div class="card-product-infos">
+        <p><strong><%= request.user.first_name %></strong> viendra visiter votre appartement le <strong><%= request.schedule.start.strftime("%d/%m") %> de <%= request.schedule.start.strftime("%H:%M") %> à <%= request.schedule.end.strftime("%H:%M") %></strong></p>
+        <i class="fas fa-check-circle accepted-logo"></i>
+      </div>
+    <% else %>
+      <div class="card-product-infos">
+        <p>Tu n'as pas donné suite à la demande de <strong><%= request.user.first_name %></strong> pour sa demande de visite du <strong><%= request.schedule.start.strftime("%d/%m") %></strong></p>
+      </div>
+    <% end %>
+  <% end %>
+</div>

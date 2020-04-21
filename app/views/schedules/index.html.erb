@@ -63,12 +63,12 @@
                       <div class="card-product product-pending my-3" id = "blabla">
                         <%= cl_image_tag visit.user.photo.key%>
                         <div class="card-product-infos-pending ">
-                          <div class= "info-user">
+                          <div class= "card-product-info-user">
                             <p><%= visit.user.first_name %></p>
                             <p class= "p-milieu"><i class="fas fa-phone-alt"></i><%= visit.user.phone_number.scan(/../).join(" ")%></p>
                             <p><i class="far fa-envelope"></i><%= visit.user.email%></p>
                           </div>
-                           <div class="status-change">
+                           <div class="card-product-contact">
                             <%= link_to "accepter", schedule_visit_path(schedule, visit, visit: { status: "accepted"}), method: :patch, remote: :true, class: "btn koobo-button btn-accept",id: "btn-card-product"%>
                             <%= link_to "refuser", schedule_visit_path(schedule, visit, visit: { status: "denied"}), method: :patch, remote: :true, class: "btn koobo-button btn-refuse",id: "btn-card-product"%>
                           </div>

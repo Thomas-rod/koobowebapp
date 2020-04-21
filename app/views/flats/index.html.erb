@@ -18,7 +18,6 @@
                   </ol>
                     <div class="carousel-inner">
                       <div class="carousel-item active">
-
                         <%= cl_image_tag flat.photos[0].key, class: "d-block w-100 image"%>
                       </div>
                       <% flat.photos[1..flat.photos.count].each do |photo| %>
@@ -35,18 +34,20 @@
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                         <span class="sr-only">Next</span>
                       </a>
+                      <div>
+                        <% if flat.rentings.last.nil? %>
+                          <div class="coral-visite-not-rented label-flats">
+                            Publié
+                          </div>
+                        <% else %>
+                          <div class="coral-visite-rented label-flats">
+                            Loué
+                          </div>
+                        <% end %>
+                      </div>
                 </div>
                 <div class="card-trip-infos">
                   <div>
-                    <% if flat.rentings.last.nil? %>
-                      <div id="coral-visite-not-rented">
-                        Publié
-                      </div>
-                    <% else %>
-                      <div id="coral-visite-rented">
-                        Loué
-                      </div>
-                    <% end %>
                     <h2><%= link_to flat.name, flat_path(flat) %></h2>
                     <p><%= flat.address %> </p>
                   </div>

@@ -107,44 +107,8 @@ a.link-schedule {
 }
 
 .accepted-logo{
-  color : green;
-  height: 45px;
-  position: relative;
-  top: 14px;
-  left: 95px;
-}
-
-#btn-card-product{
-  position: relative;
-  margin-top: 5px;
-  visibility: hidden;
-  opacity: 0;
-  transition: visibility 0s, opacity 0.5s linear;
-}
-
-.card-trip-schedules{
-  max-height: 730px;
-  //
-}
-
-.card-product .card-product-infos-pending {
-  padding: 7px;
-  display: grid;
-  grid-template-columns: repeat(1, 1fr);
-  grid-gap: 10px;
-  p {
-    margin-top: 1px;
-  }
-}
-
-.info-user{
-  align-items: center;
-  //
-}
-
-#blabla:hover #btn-card-product {
-  visibility: visible;
-  opacity: 1;
+  color : $green;
+  font-size: 32px;
 }
 
 .visite-schedule {
@@ -183,16 +147,6 @@ a.link-schedule {
   //
 }
 
-.fa-phone-alt{
-  margin-right: 6px;
-  //
-}
-
-.fa-envelope {
-  margin-right: 6px;
-  //
-}
-
 .p-milieu{
   margin-top: 5px;
   //
@@ -205,67 +159,54 @@ td {
 
 // Medium devices (tablets, 768px and up)
 @media (min-width: 768px) {
-#btn-card-product {
-    position: relative;
-    margin-top: 5px;
-    font-size: 13px;
-    margin-left: 7px;
-}
+ // .btn-accept {
+ //      background: $green;
+ //      opacity: 0.8;
+ //      padding: 5px 5px;
+ //      margin-left: 3px;
+ //  }
+ //  .btn-refuse {
+ //      background: $red;
+ //      padding: 5px 12px;
+ //      opacity: 0.8;
+ //      margin-left: 14px;
+ //  }
 
- .btn-accept {
-      background: #57D073;
-      opacity: 0.8;
-      padding: 5px 5px;
-      margin-left: 3px;
-  }
-  .btn-refuse {
-      background: #e74c3c;
-      padding: 5px 12px;
-      opacity: 0.8;
-      margin-left: 14px;
-  }
-}
-
-.table-striped{
-display: none;
-}
-.calendar-title{
+  .table-striped{
   display: none;
-}
+  }
+  .calendar-title{
+    display: none;
+  }
 
-.simple{
-  display: flex;
-  position: relative;
-}
-.semaine{
-margin: 0px 15px;
-}
-.right-max {
-position: absolute;
-top: 4px;
-left: 250px;
+  .simple{
+    display: flex;
+    position: relative;
+  }
+  .semaine{
+  margin: 0px 15px;
+  }
+  .right-max {
+  position: absolute;
+  top: 4px;
+  left: 250px;
+  }
 }
 // Large devices (desktops, 992px and up)
 @media (min-width: 992px) {
-#btn-card-product {
-      position: relative;
-      margin-top: 5px;
-      font-size: 13px;
-      margin-left: 7px;
-    }
 
-.btn-accept {
-    background: #57D073;
-    opacity: 0.8;
-    padding: 5px 5px;
-    margin-left: 3px;
-  }
-  .btn-refuse {
-      background: #e74c3c;
-      padding: 5px 12px;
-      opacity: 0.8;
-      margin-left: 14px;
-  }
+// .btn-accept {
+//     background: $green;
+//     opacity: 0.8;
+//     padding: 5px 5px;
+//     margin-left: 3px;
+//   }
+//   .btn-refuse {
+//       background: $red;
+//       padding: 5px 12px;
+//       opacity: 0.8;
+//       margin-left: 14px;
+//   }
 }
 
 

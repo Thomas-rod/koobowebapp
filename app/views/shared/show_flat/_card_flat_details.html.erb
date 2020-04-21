@@ -32,6 +32,6 @@
   </div>
   <div class="card-modify-flat-inside">
     <%= link_to "Modifier", edit_flat_path(@flat), class: 'delete-link' %>
-    <%= link_to "Désactiver l'annonce", '#',class: "delete-link" %>
+    <%= link_to "Désactiver l'annonce", disable_publication_path(@flat), method: :patch, remote: true, class: 'delete-link' %>
   </div>
 </div>

@@ -24,6 +24,28 @@
   font-size: 20px;
 }
 
+// USED IN SCHEDULE INDEX
+
 .fa-phone-alt {
-  font-size: 24px;
+  font-size: 16px;
+  margin-right: 6px;
+}
+
+.fa-envelope {
+  margin-right: 6px;
+  //
+}
+
+// USER IN FLAT INDEX
+
+.fa-flat {
+  color: $coral-light;
+  font-size: 70px;
+  &:hover {
+  color: #EE8572;
+ }
+}
+
+.fa-plus-circle{
+  margin-bottom: 22px;
 }
