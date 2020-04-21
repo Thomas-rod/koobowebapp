@@ -2,8 +2,9 @@
   <div class="d-flex">
     <%= render partial: 'shared/dashboard', locals: { flats: @flats, schedules: @schedules} %>
     <%= render 'shared/bottom_nav'%>
-    <div style=" width:100%;">
+    <div style=" width:100%; position:relative;">
       <%= render partial: 'shared/navbar_dashboard', locals: { page_title: 'Appartements', notif_counter: @counter} %>
+      <h3 id="flat-name-show"><%= @flat.name %></h3>
       <div class="container-disposition">
         <% if @flat.rentings.last.nil? %>
           <%= render partial: 'shared/show_flat/show_not_rented_flat', locals: { flats: @flat, schedule: @schedule} %>

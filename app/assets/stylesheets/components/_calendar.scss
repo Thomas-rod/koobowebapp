@@ -4,6 +4,43 @@
   margin: 5px 0px;
 }
 
+.table-schedules{
+  display: block;
+  height:100%;
+  overflow: auto;
+  border-collapse: collapse;
+  border: 1px solid rgba(232, 232, 232, 1);
+  border-radius: 5px;
+  th {
+  font-family: Poppins;
+  font-weight: 300;
+  text-align: center;
+  color: #262626;
+  opacity: 0.6;
+  background: #ddd;
+  border-bottom: 1px solid white;
+  }
+  td {
+  border-radius: 5px;
+  font-family: Poppins;
+  font-weight: 300;
+    position:relative;
+    a {
+      position: absolute;
+      top: 0;
+      left:0;
+      right: 0;
+      bottom: 0;
+    }
+  }
+}
+
+.schedules-container-show {
+  overflow: auto;
+  height:300px;
+  width: 560px;
+}
+
 .schedules-th {
   width: 120px;
   //
@@ -14,17 +51,6 @@
   //
 }
 
-.schedules-container{
-  overflow-y: auto;
-  height: 120vh;
-  width: 560px;
-}
-
-.schedules-container-show {
-  overflow-y: auto;
-  height:300px;
-  width: 560px;
-}
 
 .shedules-td {
   max-height: 30px;
@@ -61,35 +87,6 @@ th.schedules-th{
     margin-top: 0px;
 }
 
-.table-schedules{
-  overflow: hidden;
-  border-collapse: collapse;
-  overflow: hidden;
-  border: 1px solid rgba(232, 232, 232, 1);
-  border-radius: 5px;
-  th {
-  font-family: Poppins;
-  font-weight: 300;
-  text-align: center;
-  color: #262626;
-  opacity: 0.6;
-  background: #ddd;
-  border-bottom: 1px solid white;
-  }
-  td {
-  border-radius: 5px;
-  font-family: Poppins;
-  font-weight: 300;
-    position:relative;
-    a {
-      position: absolute;
-      top: 0;
-      left:0;
-      right: 0;
-      bottom: 0;
-    }
-  }
-}
 
 a.link-schedule {
   text-decoration: underline;
