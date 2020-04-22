@@ -1,5 +1,5 @@
 <div class="card-locataire-details">
-  <h3><%= flat.name %></h3>
+  <h6>Où est donc mon annonce ? </h6>
   <div class="cards-locataire-platforms">
     <div class="card-locataire-inside">
         <% if @flat.pap == true %>
@@ -30,8 +30,24 @@
         <% end %>
     </div>
   </div>
-  <div class="card-modify-flat-inside">
+  <div class="card-locataire-button">
     <%= link_to "Modifier", edit_flat_path(@flat), class: 'delete-link' %>
     <%= link_to "Désactiver l'annonce", disable_publication_path(@flat), method: :patch, remote: true, class: 'delete-link' %>
+  </div>
+  <h6>Et ça donne quoi ?</h6>
+  <div class="card-locataire-analytics">
+    <div class="data-analytics">
+      <% unless @flat_requests.empty? || @flat_requests.nil? %>
+        <p>Super, tu as reçu <strong><%= @flat_requests.count %> demandes</strong></p>
+        <p>Tu as eu <strong><%= helper_flat_accepted_flat_requests(@flat_requests).count%> visites</strong></p>
+        <% unless helper_flat_renting_folders_request(@flat_requests).empty? || helper_renting_folders_request(@flat_requests).nil? %>
+          <p><strong><%= helper_renting_folders_request(@flat_requests).count%> personnes ont déposé un dossier</strong></p>
+        <% else %>
+          <p>Tu n'as pas encore reçu de dossier</p>
+        <% end %>
+      <% else %>
+        <p>Tu n'as pas encore eu de visite</p>
+      <% end %>
+    </div>
   </div>
 </div>

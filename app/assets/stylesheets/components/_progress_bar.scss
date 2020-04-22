@@ -1,4 +1,105 @@
-// /*progressbar*/
+// PROGRESSBAR USED IN SHOW FLAT ONGOING INLINE
+$size-bar: 2px;
+$bubble-position: -37px;
+$brand-primary: $blue;
+$grey-light: #ededed;
+
+.StepProgress {
+  position: relative;
+  padding-left: 45px;
+  list-style: none;
+
+  &::before {
+    display: inline-block;
+    content:'';
+    position: absolute;
+    top: 0;
+    left: 25px;
+    width: 30px;
+    height: 100%;
+    border-left: $size-bar solid rgba($brand-primary, 0.1);
+  }
+
+  &-item {
+    position: relative;
+    counter-increment: list;
+    width:90%;
+
+    &:not(:last-child) {
+      padding-bottom: 30px;
+    }
+
+    &::before {
+      display: inline-block;
+      content: '';
+      position: absolute;
+      left: -20px;
+      height: 100%;
+      width: 10px;
+    }
+
+    &::after {
+      content: '';
+      display: inline-block;
+      position: absolute;
+      top: 0;
+      left: $bubble-position;
+      width: 36px;
+      height: 36px;
+      box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+      border-radius: 50%;
+      background-color: $white;
+    }
+
+    &.is-done {
+      &::before {
+        border-left: $size-bar solid $brand-primary;
+      }
+      &::after {
+        background:url('https://img.icons8.com/cute-clipart/64/000000/ok.png');
+        background-size: 25px 25px;
+        background-position: center;
+        background-repeat: no-repeat;
+        font-size: 10px;
+        color: #FFF;
+        text-align: center;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        background-color: white;
+      }
+    }
+
+    &.current {
+      &::before {
+        // border-left: $size-bar solid $brand-primary;
+      }
+
+      &::after {
+        content: '';
+        background:url('https://img.icons8.com/cute-clipart/64/000000/spinner-frame-1.png');
+        background-size: 25px 25px;
+        background-position: center;
+        background-repeat: no-repeat;
+        padding-top: 1px;
+        width: 36px;
+        height: 36px;
+        top: 0px;
+        left: $bubble-position;
+        font-size: 14px;
+        font-weight: bold;
+        text-align: center;
+        color: $blue;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        background-color: white;
+      }
+    }
+  }
+
+  strong {
+    display: block;
+  }
+}
+
+// PROGRESSBAR USED IN CREATION OF FLAT
 #progressbar {
     margin-bottom: 30px;
     overflow: hidden;

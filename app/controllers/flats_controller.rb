@@ -13,7 +13,6 @@ class FlatsController < ApplicationController
     find_flat
     @schedule = Schedule.new
     flat_requests
-
   end
 
   def new
@@ -47,13 +46,13 @@ class FlatsController < ApplicationController
 
   def edit
     find_flat
-    render :new
+    render :edit
   end
 
   def update
     find_flat
     @flat.update(flat_params)
-    redirect_to flat_path(@flat)
+    redirect_to edit_publication_path(@flat)
   end
 
   # HELPER OTHERS
