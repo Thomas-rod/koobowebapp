@@ -39,8 +39,8 @@
     <div class="data-analytics">
       <% unless @flat_requests.empty? || @flat_requests.nil? %>
         <p>Super, tu as reçu <strong><%= @flat_requests.count %> demandes</strong></p>
-        <p>Tu as eu <strong><%= helper_accepted_flat_requests(@flat_requests).count%> visites</strong></p>
-        <% unless helper_renting_folders_request(@flat_requests).empty? || helper_renting_folders_request(@flat_requests).nil? %>
+        <p>Tu as eu <strong><%= helper_flat_accepted_flat_requests(@flat_requests).count%> visites</strong></p>
+        <% unless helper_flat_renting_folders_request(@flat_requests).empty? || helper_renting_folders_request(@flat_requests).nil? %>
           <p><strong><%= helper_renting_folders_request(@flat_requests).count%> personnes ont déposé un dossier</strong></p>
         <% else %>
           <p>Tu n'as pas encore reçu de dossier</p>

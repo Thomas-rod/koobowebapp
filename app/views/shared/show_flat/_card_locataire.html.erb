@@ -1,15 +1,18 @@
+<% current_tenant = helper_flat_current_tenant(@flat) %>
 <div class="card-locataire">
   <% if @flat.rentings&.last&.user&.photo&.attached?  %>
     <%= image_tag @flat.rentings.last.user.photo, class: 'avatar-extra-large' %>
+  <% if current_tenant.user&.photo&.attached? %>
+    <%= cl_image_tag current_tenant.user.photo, class: 'avatar-extra-large' %>
   <% else %>
     <%= image_tag ("avatar.png"), class: "avatar-extra-large" %>
   <% end %>
   <div class="card-name-locataire">
-    <h4><%= @flat.rentings.last.user.first_name %> <%= @flat.rentings.last.user.last_name %></h4>
-    <p>Locataire depuis <%= ((Time.now - @flat.rentings.last.created_at) / 86400).to_i %> jours</p>
+    <h4><%= current_tenant.user.first_name %> <%= current_tenant.user.last_name %></h4>
+    <p>Locataire depuis <%= ((Time.now - current_tenant.created_at) / 86400).to_i %> jours</p>
   </div>
   <div class="card-icon-uptodate-payments">
-    <p><i class="fas fa-phone-alt"></i><%= @flat.rentings.last.user.phone_number %></p>
+    <p><i class="fas fa-phone-alt"></i><%= current_tenant.user.phone_number %></p>
     <p> Ajouter si à jour des paiements </p>
   </div>
   </div>

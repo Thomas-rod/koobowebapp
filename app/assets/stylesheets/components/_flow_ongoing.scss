@@ -1,0 +1,33 @@
+#step-ongoing-flat {
+  width:100%;
+  height:100%;
+  display:grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(7, 1fr);
+  align-content:center;
+  grid-template-areas:
+        "one"
+        "two"
+        "two"
+        "two"
+        "two"
+        "two"
+        "three"
+}
+
+#header-stage-flow {
+  grid-area:one;
+}
+
+#footer-stage-flow {
+  display:flex;
+  justify-content:space-around;
+  align-items:center;
+  grid-area:three;
+}
+
+#body-stage-flow {
+  grid-area:two;
+  height:100%;
+  width:100%;
+}

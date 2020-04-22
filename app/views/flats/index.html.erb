@@ -35,13 +35,13 @@
                         <span class="sr-only">Next</span>
                       </a>
                       <div>
-                        <% if flat.rentings.last.nil? %>
-                          <div class="coral-visite-not-rented label-flats">
-                            Publié
-                          </div>
-                        <% else %>
+                        <% if flat.rented %>
                           <div class="coral-visite-rented label-flats">
                             Loué
+                          </div>
+                        <% else %>
+                          <div class="coral-visite-not-rented label-flats">
+                            Publié
                           </div>
                         <% end %>
                       </div>
@@ -52,8 +52,12 @@
                     <p><%= flat.address %> </p>
                   </div>
                   <h2 class="card-trip-pricing"><%= flat.monthly_price.round  %>€/mois</h2>
-                  <% if flat.rentings.last&.user&.photo&.attached?  %>
-                  <%= image_tag flat.rentings.last.user.photo, class: "card-trip-user avatar-bordered" %>
+                  <% if helper_flat_tenant?(flat) %>
+                    <% if helper_flat_current_tenant(flat)&.user&.photo&.attached?  %>
+                      <%= cl_image_tag helper_flat_current_tenant(flat).user.photo, class: "card-trip-user avatar-bordered" %>
+                    <% else %>
+                      <%= image_tag ("avatar.png"), class: 'card-trip-user avatar-bordered' %>
+                    <% end %>
                   <% end %>
                 </div>
               </div>

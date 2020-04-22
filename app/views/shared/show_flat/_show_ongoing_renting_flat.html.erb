@@ -1,0 +1,17 @@
+<div id="disposition-card-two">
+  <div id="disposition-three-left-top">
+
+  </div>
+  <div id="disposition-three-left-bottom">
+    <%= @flat.rentings.select { |renting| renting.status == 'ongoing'} %>
+  </div>
+  <div id="disposition-three-right">
+    <%= render partial: 'shared/show_flat/flow_ongoing' %>
+  </div>
+</div>
+
+
+
+
+
+
