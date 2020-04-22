@@ -1,5 +1,4 @@
 class RentingFolder < ApplicationRecord
-  STATUS = ["accepted", "denied", "pending"]
   belongs_to :visit
   has_one :renting, dependent: :destroy
   has_many :folders, dependent: :destroy

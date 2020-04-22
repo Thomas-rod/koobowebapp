@@ -3,8 +3,8 @@
 
   </div>
   <div id="disposition-three-left-bottom">
-    <% @flat.rentings.select{ |renting| renting.status == 'ongoing'}.first.renting_folders.users.each do %>
-      <%= user.photo.attached.first %>
+    <% helper_flat_current_tenants(@flat).each do |tenant| %>
+      <%= image_tag tenant.photo, class: "avatar-extra-large" %>
     <% end %>
   </div>
   <div id="disposition-three-right">

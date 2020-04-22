@@ -43,6 +43,8 @@ ActiveRecord::Schema.define(version: 2020_04_22_175213) do
     t.bigint "user_id", null: false
     t.boolean "visible", default: true
     t.boolean "rented", default: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.string "name"
     t.integer "number_of_rooms"
     t.integer "number_of_bedrooms"
@@ -58,8 +60,6 @@ ActiveRecord::Schema.define(version: 2020_04_22_175213) do
     t.boolean "seloger", default: false
     t.boolean "bienici", default: false
     t.string "heating_system", default: [], array: true
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_flats_on_user_id"
   end
 
@@ -69,17 +69,17 @@ ActiveRecord::Schema.define(version: 2020_04_22_175213) do
     t.date "month_rent"
     t.float "amount"
     t.string "category"
-    t.string "title"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "title"
     t.index ["renting_id"], name: "index_flows_on_renting_id"
   end
 
   create_table "folders", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.bigint "renting_folder_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "renting_folder_id"
     t.index ["renting_folder_id"], name: "index_folders_on_renting_folder_id"
     t.index ["user_id"], name: "index_folders_on_user_id"
   end
@@ -101,12 +101,12 @@ ActiveRecord::Schema.define(version: 2020_04_22_175213) do
 
   create_table "rentings", force: :cascade do |t|
     t.bigint "flat_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.string "status", default: "current"
     t.date "end_date"
     t.date "start_date"
     t.bigint "renting_folder_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
     t.index ["flat_id"], name: "index_rentings_on_flat_id"
     t.index ["renting_folder_id"], name: "index_rentings_on_renting_folder_id"
   end

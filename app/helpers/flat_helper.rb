@@ -23,11 +23,15 @@ module FlatHelper
 
   # HELP ME TO KNOW IF THERE IS A TENANT INSIDE THE FLAT (it could be past rentings)
   def helper_flat_tenant?(flat)
-    return true unless flat.rentings.select{ |renting| renting.status == 'current' }.nil? || flat.rentings.select{ |renting| renting.status == 'current' }.empty?
+    return true unless flat.rentings.select{ |renting| renting.status == 'current' }.nil? || flat.rentings.select{ |renting| renting.status == 'current' }&.empty?
   end
 
   def helper_flat_current_tenants(flat)
-    return flat.rentings.select{ |renting| renting.status == 'current' }.first.renting_folder.users
+    unless flat.rentings.select{ |renting| renting.status == 'current' }.nil? || flat.rentings.select{ |renting| renting.status == 'current' }.empty?
+      return flat.rentings.select{ |renting| renting.status == 'current' }.first.renting_folder.users
+    else
+      return flat.rentings.select{ |renting| renting.status == 'ongoing' }.first.renting_folder.users
+    end
   end
 
 end
