@@ -26,8 +26,8 @@ module FlatHelper
     return true unless flat.rentings.select{ |renting| renting.status == 'current' }.nil? || flat.rentings.select{ |renting| renting.status == 'current' }.empty?
   end
 
-  def helper_flat_current_tenant(flat)
-    return flat.rentings.select{ |renting| renting.status == 'current' }.first
+  def helper_flat_current_tenants(flat)
+    return flat.rentings.select{ |renting| renting.status == 'current' }.first.renting_folder.users
   end
 
 end
