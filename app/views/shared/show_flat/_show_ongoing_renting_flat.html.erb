@@ -3,10 +3,9 @@
 
   </div>
   <div id="disposition-three-left-bottom">
-
+    <%= @flat.rentings.select { |renting| renting.status == 'ongoing'} %>
   </div>
   <div id="disposition-three-right">
-    <!-- <h4>Mes étapes</h4> -->
     <%= render partial: 'shared/show_flat/flow_ongoing' %>
   </div>
 </div>
