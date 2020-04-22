@@ -86,7 +86,7 @@ puts "#{Visit.count} created"
 
 puts "Creating renting"
 roxane_thomas_renting = Renting.create!(flat: thomas_first_flat, user_id: roxane.id, created_at: 'Fri, 28 Dec 2019 14:27:32 UTC +00:00', status: 'current')
-mao_thomas_renting = Renting.create!(flat: thomas_first_flat, user_id: mao.id, created_at: 'Fri, 28 Jan 2019 14:27:32 UTC +00:00', end_date: 'Fri, 23 Dec 2019 14:27:32 UTC +00:00', status: 'past')
+mao_thomas_renting = Renting.create!(flat: thomas_first_flat, user_id: mao.id, created_at: 'Fri, 28 Jan 2019 14:27:32 UTC +00:00', start_date: 'Fri, 23 Mar 2019 14:27:32 UTC +00:00', end_date: 'Fri, 23 Dec 2019 14:27:32 UTC +00:00', status: 'past')
 john_thomas_renting = Renting.create!(flat: thomas_second_flat, user_id: john.id, created_at: 'Fri, 28 Jan 2020 14:27:32 UTC +00:00', status: 'ongoing')
 puts "#{Renting.count} renting created"
 
