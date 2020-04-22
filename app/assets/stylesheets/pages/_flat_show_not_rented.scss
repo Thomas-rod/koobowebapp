@@ -49,23 +49,35 @@ $size-screen: 85vh;
 
 // Large devices (desktops, 992px and up)
 @media (max-width: 992px) {
-  body {
-    background-color: orange;
-  }
+  // body {
+  //   background-color: orange;
+  // }
+  // #disposition-card-two {
+  //   grid-template-columns: 1fr 1fr;
+  //   grid-template-rows: 1fr 1fr 3fr 1fr;
+  //   grid-template-areas:
+  //         "one one"
+  //         "three three"
+  //         "three three"
+  //         "four two";
+  // }
 
+  // body {
+  //   background-color: orange;
+  // }
 
 }
 
 // Medium devices (tablets, 768px and up)
 @media (max-width: 768px) {
-  body {
-    background-color: yellow;
-  }
-}
+//   body {
+//     background-color: yellow;
+//   }
+// }
 
 // Small devices (landscape phones, 576px and up)
-@media (max-width: 576px) {
-  body {
-    background-color: gray;
-  }
+// @media (max-width: 576px) {
+//   body {
+//     background-color: gray;
+//   }
 }
