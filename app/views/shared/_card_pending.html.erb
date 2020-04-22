@@ -1,5 +1,5 @@
 <div class="card-product product-pending" id = "blabla">
-  <%= cl_image_tag request.user.photo.key%>
+  <%= image_tag request.user.photo%>
   <% if request.is_a?(Visit) %>
     <div class="coral-visite-rented label-visit">
       Visite

@@ -1,11 +1,38 @@
-<p>Revenus : <%= @incomes %> €</p>
-<p>Dépenses : <%= @spendings %> €</p>
-<p>Solde : <%= @incomes - @spendings %> €</p>
-
-<% @flows.each do |flow| %>
-  <p><%= flow.title %></p>
-  <p><%= flow.renting.flat.name %></p>
-  <p><%= flow.payment_date.strftime("%d/%m/%Y") %></p>
-  <p><%= flow.amount %> €</p>
-<% end %>
-<%= will_paginate(@flows, :previous_label => t("précédent"), :next_label => t("suivant"), :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer) %>
+<div class="dashboard-data-set" data-line="appartements">
+  <div class="d-flex">
+    <%= render partial: 'shared/dashboard', locals: { flats: @flats, schedules: @schedules} %>
+    <%= render 'shared/bottom_nav'%>
+    <div style=" width:100%; position:relative;">
+      <%= render partial: 'shared/navbar_dashboard', locals: { page_title: 'Appartements', notif_counter: @counter} %>
+      <div class="flows">
+        <div class="info-flow">
+          <p>Infos paiements locataires</p>
+        </div>
+        <div class="add-flow">
+          <h3>Ajouter ou supprimer un élément</h3>
+          <%= link_to new_flat_path, class: "button-add-flow" do %>
+            <i class="fas fa-plus-circle fa-flat" title="Ajouter un flux"></i>
+          <% end %>
+          <%= link_to new_flat_path, class: "button-remove-flow" do %>
+            <i class="fas fa-minus-circle fa-flat" title="Supprimer un flux"></i>
+          <% end %>
+        </div>
+        <div class="all-flows">
+          <p>Revenus : <%= @incomes %> €</p>
+          <p>Dépenses : <%= @spendings %> €</p>
+          <p>Solde : <%= @incomes - @spendings %> €</p>
+          <% @flows.each do |flow| %>
+            <p><%= flow.title %></p>
+            <p><%= flow.renting.flat.name %></p>
+            <p><%= flow.payment_date.strftime("%d/%m/%Y") %></p>
+            <p><%= flow.amount %> €</p>
+          <% end %>
+          <%= will_paginate(@flows, :previous_label => t("précédent"), :next_label => t("suivant"), :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer) %>
+        </div>
+        <div class="flat-flows">
+          Flows appartements
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

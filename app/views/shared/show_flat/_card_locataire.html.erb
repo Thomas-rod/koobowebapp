@@ -1,7 +1,9 @@
 <% current_tenant = helper_flat_current_tenant(@flat) %>
 <div class="card-locataire">
+  <% if @flat.rentings&.last&.user&.photo&.attached?  %>
+    <%= image_tag @flat.rentings.last.user.photo, class: 'avatar-extra-large' %>
   <% if current_tenant.user&.photo&.attached? %>
-    <%= cl_image_tag current_tenant.user.photo.key, class: 'avatar-extra-large' %>
+    <%= cl_image_tag current_tenant.user.photo, class: 'avatar-extra-large' %>
   <% else %>
     <%= image_tag ("avatar.png"), class: "avatar-extra-large" %>
   <% end %>
