@@ -1,0 +1,28 @@
+<div class="card-product product-pending" id = "blabla">
+  <%= cl_image_tag request.user.photo.key%>
+  <% if request.is_a?(Visit) %>
+    <div class="coral-visite-rented label-visit">
+      Visite
+    </div>
+    <div class="card-product-infos-pending ">
+      <p><strong><%= request.user.first_name %></strong> souhaite visiter l'appartement le <br><strong><%= request.schedule.start.strftime("%d/%m") %> de <%= request.schedule.start.strftime("%H:%M") %> à <%= request.schedule.end.strftime("%H:%M") %></strong></p>
+      <div class="card-product-contact">
+        <p class= "btn-card-product"><i class="fas fa-phone-alt"></i><%= request.user.phone_number.scan(/../).join(" ")%></p>
+        <button class="btn-card btn-accept-border">Ouvre la modal</button>
+      </div>
+    </div>
+    <% else %>
+      <div>
+        <div class="coral-visite-rented label-folder">
+          Dossier
+        </div>
+      </div>
+      <div class="card-product-infos">
+        <p><strong><%= request.visit.user.first_name %></strong> a finalisé son dossier. Prêt(e) à étudier son dossier ?</p>
+        <button class="btn-card">Voir le dossier</button>
+      </div>
+  <% end %>
+  <!--Will be in a modal -->
+  <%#= link_to "accepter", schedule_visit_path(request.schedule, request, visit: { status: "accepted"}), method: :patch, remote: :true, class: "btn koobo-button btn-accept"%>
+  <%#= link_to "refuser", schedule_visit_path(request.schedule, request, visit: { status: "denied"}), method: :patch, remote: :true, class: "btn koobo-button btn-refuse"%>
+</div>

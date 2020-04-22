@@ -1,58 +1,41 @@
+$size-screen: 85vh;
+
 #disposition-card-two {
   width:100%;
-  height:85vh;
+  height:$size-screen;
   display: grid;
   grid-template-columns: minmax(60%, 60%) minmax(35%, 35%);
-  grid-template-rows: repeat(4, minmax(25vh, 200px));
-  grid-gap: 30px;
+  grid-template-rows: repeat(4, 19vh);
+  grid-gap: 20px;
   grid-template-areas:
         "one two"
-        "three two"
+        "one two"
+        "one two"
         "three two";
 }
 
 #disposition-two-left-top {
   grid-area: one;
-  justify-self: stretch;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.4);
   border-radius: 5px;
 }
 
-#disposition-one-left-bottom {
+#disposition-two-left-bottom {
   grid-area: three;
-  justify-self: stretch;
-  border: 1px solid black;
-  border-radius: 15px;
-}
 
-// DOCUMENTS
+}
 
 #disposition-two-right {
   grid-area: two;
-  display:flex;
-  flex-flow: column;
-  justify-content:space-around;
-  align-items:center;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.4);
-  border-radius: 15px;
   text-align:center;
-  padding: 4%;
-  #documents-list {
-    flex-grow:2;
-    width:100%;
-    display:flex;
-    flex-flow: column;
-    justify-content:space-around;
-    align-items:center;
-  }
-}
-
-// MESSAGE BOARD
-
-#disposition-two-right-bottom {
   justify-self: stretch;
-  grid-area: four;
 }
+
+#container-card-request {
+  overflow: scroll;
+  height:$size-screen - 10vh;
+}
+
+
 
 // RESPONSIVNESS
 
@@ -61,60 +44,28 @@
   body {
     // background-color: red;
   }
-  #disposition-card-two {
-    grid-template-areas:
-            "one one"
-            "three two"
-            "three four";
-    }
-    .card-locataire {
-    grid-template-areas:
-            "one one one"
-            "two two two "
-            "three three three";
-    .avatar-extra-large {
-      grid-area: one;
-    }
-    h4 {
-      grid-area: two;
-    }
-    .card-name-locataire {
-      grid-area: two;
-    }
-    .card-icon-uptodate-payments {
-      grid-area: three;
-    }
-  }
+
 }
 
 // Large devices (desktops, 992px and up)
 @media (max-width: 992px) {
   body {
-    // background-color: orange;
+    background-color: orange;
   }
 
-  #disposition-card-two {
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr 3fr 1fr;
-    grid-template-areas:
-          "one one"
-          "three three"
-          "three three"
-          "four two";
-  }
+
 }
 
 // Medium devices (tablets, 768px and up)
 @media (max-width: 768px) {
   body {
-    // background-color: yellow;
+    background-color: yellow;
   }
 }
 
 // Small devices (landscape phones, 576px and up)
 @media (max-width: 576px) {
   body {
-    // background-color: gray;
+    background-color: gray;
   }
-
 }

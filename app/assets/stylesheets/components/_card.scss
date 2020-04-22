@@ -35,17 +35,18 @@
   grid-gap: 16px;
 }
 
-// CARD PRODUCT
+// CARD PRODUCT USED IN CARD PENDING SHARED
 
 .card-product {
-  overflow: hidden;
-  height: 120px;
+  width:95%;
+  height: 100px;
   background: white;
   box-shadow: 0 0 4px rgba(0,0,0,0.2);
   display: flex;
   align-items: center;
-  border-radius: 4px;
-
+  border-radius: 5px;
+  position:relative;
+  margin-top: 4%;
 }
 
 .card-product img {
@@ -65,6 +66,33 @@
   line-height: 1.4;
   opacity: .7;
   margin-bottom: 0;
+}
+
+.card-product-infos {
+  height:100%;
+  display:flex;
+  flex-direction: column;
+  justify-content:space-around;
+  align-items:center;
+}
+
+
+.card-product-infos-pending {
+  height:80%;
+  width:100%;
+  display:flex;
+  justify-content:space-around;
+  align-items:flex-start;
+  position:relative;
+}
+
+.card-product-contact {
+  position:absolute;
+  width:100%;
+  bottom: 5%;
+  display:flex;
+  justify-content:space-around;
+  align-items:center;
 }
 
 h2.price-calendar{
@@ -136,6 +164,11 @@ h2.price-calendar{
   width: 40px;
 }
 
+.card-trip-schedules{
+  max-height: 730px;
+  //
+}
+
 .card-flat {
   width: 100%;
 }
@@ -176,27 +209,78 @@ h2.price-calendar{
   }
   h4 {
     grid-area: two;
-
   }
   .card-name-locataire {
     grid-area: two;
   }
   .card-icon-uptodate-payments {
     grid-area: three;
-
   }
-}
+ }
 
 .img-logo-show {
   width: 50px;
   height: 50px;
   border-radius: 30%;
+  &.inactive {
+    opacity:0.3;
+  }
 }
 
 // USED IN CARD FLAT DETAILS SHARED
 
-.card-locataire-inside {
+.card-locataire-details {
+  color: $blue;
+  width: 100%;
+  height: 100%;
+  position:relative;
+  border-radius: 15px;
+  background-color: white;
+  box-shadow: 0 0px 2px rgba(0,0,0,0.2);
+  padding: 2% 5%;
+  display:grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 20% 50% 20%;
+  grid-template-areas:
+          "one one five five"
+          "two two three three"
+          "four four three three";
+  justify-items:center;
+  align-items:center;
+  h3 {
+    position:absolute;
+    top:5%;
+    left:25%;
+  }
+  h6:first-child {
+    color: $blue;
+    grid-area: one;
+  }
+  h6:nth-child(2n) {
+    color: $blue;
+    grid-area: five;
+    text-align:center;
+  }
+}
+
+
+
+.cards-locataire-platforms {
+  grid-area: two;
+  width:100%;
   display:flex;
-  justify-content:space-between;
-  text-align:left;
+  justify-content:space-around;
+}
+
+.card-locataire-button {
+  width:100%;
+  height:100%;
+  grid-area:four;
+  display: flex;
+  flex-direction:line;
+  justify-content:space-around;
+}
+
+.card-locataire-analytics {
+  grid-area:three;
 }

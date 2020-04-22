@@ -15,6 +15,12 @@
   margin: 10px 30px 0px 0px;
 }
 
+#flat-name-show {
+  position:absolute;
+  top: 4%;
+  left: 3%;
+}
+
 #title-description {
   flex-grow:1;
   margin: 20px 20px;
@@ -53,4 +59,38 @@
 
 .container-disposition {
   margin: 0 3%;
+}
+
+
+
+
+// OVERWRITE BOOTSTRAP FOR LAYOUTS PENDING / ACCEPTED / DENIED
+
+#nav-tabContent {
+  overflow: auto;
+}
+
+.nav-tabs {
+border-bottom: 0;
+}
+
+#nav-pending-tab, #nav-accepted-tab, #nav-denied-tab {
+  color: $blue;
+  padding: 5px 10px;
+  width: 105px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background-color: white;
+  border-color: white;
+  &.active {
+    width: 105px;
+    padding:0px;
+    border-bottom: 2px solid $blue;
+  }
+  &:hover {
+    width: 105px;
+    padding:0px;
+    border-bottom: 2px solid rgba($blue,0.7);
+  }
 }

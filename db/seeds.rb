@@ -14,8 +14,9 @@ puts "Cleaning DB"
 User.destroy_all
 Flat.destroy_all
 Schedule.destroy_all
-Renting.destroy_all
 Visit.destroy_all
+Flow.destroy_all
+Renting.destroy_all
 puts "All clean"
 
 def attach_photo_user(string, user)
@@ -57,10 +58,26 @@ thomas_second_flat.save
 puts "#{Flat.count} flats created"
 
 puts "Creating schedules"
-first_schedule = Schedule.create!(start:Time.new(2020, 3, 9, 8, 30, 0),end:Time.new(2020, 3, 9, 9, 0, 0),flat: thomas_second_flat)
-second_schedule = Schedule.create!(start:Time.new(2020, 3, 9, 9, 0, 0),end:Time.new(2020, 3, 9, 9, 30, 0),flat: thomas_second_flat)
-third_schedule = Schedule.create!(start:Time.new(2020, 3, 10, 9, 30, 0),end:Time.new(2020, 3, 10, 10, 0, 0),flat: thomas_second_flat)
+first_schedule = Schedule.create!(start:Time.new(2020, 4, 20, 8, 30, 0),end:Time.new(2020, 4, 20, 9, 0, 0),flat: thomas_second_flat)
+second_schedule = Schedule.create!(start:Time.new(2020, 4, 20, 9, 0, 0),end:Time.new(2020, 4, 20, 9, 30, 0),flat: thomas_second_flat)
+third_schedule = Schedule.create!(start:Time.new(2020, 4, 21, 9, 30, 0),end:Time.new(2020, 4, 21, 10, 0, 0),flat: thomas_second_flat)
+fourth_schedule = Schedule.create!(start:Time.new(2020, 4, 22, 9, 30, 0),end:Time.new(2020, 4, 22, 10, 0, 0),flat: thomas_second_flat)
 puts "#{Schedule.count} created"
+
+puts "Creating visits"
+one_visit = Visit.create!(schedule: first_schedule, user:roxane)
+thow_visit = Visit.create!(schedule: first_schedule, user:mao)
+three_visit = Visit.create!(schedule: first_schedule, user:john )
+four_visit = Visit.create!(schedule: second_schedule, user:roxane)
+five_visit = Visit.create!(schedule: second_schedule, user:mao)
+six_visit = Visit.create!(schedule: second_schedule, user:john )
+seven_visit = Visit.create!(schedule: third_schedule, user:roxane)
+height_visit = Visit.create!(schedule: third_schedule, user:mao)
+nine_visit = Visit.create!(schedule: third_schedule, user:john )
+ten_visit = Visit.create!(schedule: fourth_schedule, user:roxane)
+eleven_visit = Visit.create!(schedule: fourth_schedule, user:mao)
+twelve_visit = Visit.create!(schedule: fourth_schedule, user:john )
+puts "#{Visit.count} created"
 
 puts "Creating renting"
 roxane_thomas_renting = Renting.create!(flat: thomas_first_flat, user_id: roxane.id, created_at: 'Fri, 28 Dec 2019 14:27:32 UTC +00:00')

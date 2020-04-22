@@ -70,30 +70,41 @@
   }
 }
 
-.btn-refuse{
-  background: $red;
-  padding: 7px 16px;
+.btn-card {
+  padding: 5px;
+  font-size:12px;
   opacity: 0.8;
+  background: white;
+  border-radius: 5px;
+  color:$blue;
   &:hover {
-    background: $red;
     opacity:1;
   }
 }
 
-.btn-accept{
-  background: $green;
-  opacity:0.8;
-    &:hover {
-    background: $green;
-    opacity:1;
-  }
+.btn-refuse-border{
+  border-color: $red;
+}
+
+.btn-refuse-full {
+  background-color: $red;
+  border-color: $red;
+}
+
+.btn-accept-border{
+  border-color: $blue;
+}
+
+.btn-accept-full {
+  background-color: $green;
+  border-color: $green;
 }
 
 .delete-link {
-  color: $coral-light;
+  color: $blue-light;
   margin-top: 12px;
   &:hover {
-    color: $coral-light;
+    color: $blue-light;
     text-decoration: underline;
   }
 }

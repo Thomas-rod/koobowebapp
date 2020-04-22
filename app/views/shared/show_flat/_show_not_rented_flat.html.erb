@@ -1,11 +1,45 @@
 <div id="disposition-card-two">
   <div id="disposition-two-left-top">
-      <h1>Helloworld</h1>
-  </div>
-  <div id="disposition-two-left-bottom">
     <%= render partial: 'shared/calendar' %>
   </div>
+  <div id="disposition-two-left-bottom">
+      <%= render partial: 'shared/show_flat/card_flat_details', locals: { flat: @flat, flat_requests: @flat_requests } %>
+  </div>
   <div id="disposition-two-right">
-      <h4>Documents de mon appartement</h4>
+    <h4>Mes demandes</h4>
+    <nav>
+      <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <a class="nav-item nav-link active" id="nav-pending-tab" data-toggle="tab" href="#nav-pending" role="tab" aria-controls="nav-pending" aria-selected="true">En attente</a>
+        <a class="nav-item nav-link" id="nav-accepted-tab" data-toggle="tab" href="#nav-accepted" role="tab" aria-controls="nav-accepted" aria-selected="false">Validées</a>
+        <a class="nav-item nav-link" id="nav-denied-tab" data-toggle="tab" href="#nav-denied" role="tab" aria-controls="nav-denied" aria-selected="false">Refusées</a>
+      </div>
+    </nav>
+    <div class="tab-content" id="nav-tabContent">
+      <div id="container-card-request">
+        <% unless @flat_requests.empty? || @flat_requests.nil? %>
+          <div class="tab-pane fade show active" id="nav-pending" role="tabpanel" aria-labelledby="nav-pending-tab">
+            <% @flat_requests.select{ |r| r.status == 'pending'}.each do |request| %>
+              <%= render partial: "shared/card_pending", locals: { request: request}  %>
+            <% end %>
+          </div>
+          <div class="tab-pane fade" id="nav-accepted" role="tabpanel" aria-labelledby="nav-accepted-tab">
+            <% @flat_requests.select{ |r| r.status == 'accepted'}.each do |request| %>
+              <%= render partial: 'shared/card_with_answer', locals: { request: request, label_text: 'Visite'} %>
+            <% end %>
+          </div>
+          <div class="tab-pane fade" id="nav-denied" role="tabpanel" aria-labelledby="nav-denied-tab">
+            <% @flat_requests.select{ |r| r.status == 'denied' }.each do |request| %>
+              <%= render partial: 'shared/card_with_answer', locals: { request: request, label_text: 'Visite'} %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>
+
+
+
+
+
+
