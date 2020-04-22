@@ -65,10 +65,10 @@ GEM
     bindex (0.8.1)
     bootsnap (1.4.5)
       msgpack (~> 1.0)
-    browser_sync_rails (0.1.1)
-      rails
     bootstrap-will_paginate (1.0.0)
       will_paginate
+    browser_sync_rails (0.1.1)
+      rails
     builder (3.2.4)
     byebug (11.1.1)
     capybara (3.31.0)
@@ -267,8 +267,8 @@ PLATFORMS
 DEPENDENCIES
   autoprefixer-rails
   bootsnap (>= 1.4.2)
-  browser_sync_rails
   bootstrap-will_paginate
+  browser_sync_rails
   byebug
   capybara (>= 2.15)
   cloudinary (~> 1.12.0)
