@@ -281,7 +281,7 @@ h2.price-calendar{
   justify-content:space-around;
 }
 
-<<<<<<< HEAD
+
 // CARD CATEGORY
 .card-positioning {
   background-size: cover;
@@ -331,8 +331,9 @@ h2.price-calendar{
 .card-product-original .card-product-original-infos{
   padding: 16px;
   h2 {
-    text-align: inherit;
+    text-align: center;
   }
+     width: 100%
 }
 
 
@@ -342,8 +343,9 @@ h2.price-calendar{
 .card-doc {
   margin: 16px 8px;
   border-radius: 4px;
-=======
+  align-item: center;
+}
+
 .card-locataire-analytics {
   grid-area:three;
->>>>>>> master
 }

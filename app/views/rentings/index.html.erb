@@ -26,7 +26,24 @@
                 <%= cl_image_tag renting.flat.photos.first.key%>
                 <div class="card-product-original-infos .info-card-doc">
                   <h2><%= renting.flat.name  %></h2>
-                  <p>Product description with <strong>relevant info</strong> only.</p>
+                  <div class="documents-rentings">
+                    <div class="documents-appart">
+                      <a href="#"><i class="far fa-file-pdf"></i></a>
+                      <p>Bails</p>
+                    </div>
+                    <div class="documents-appart">
+                      <a href="#"><i class="far fa-file-pdf"></i></a>
+                      <p>Etat des lieux</p>
+                    </div>
+                    <div class="documents-appart">
+                      <a href="#"><i class="far fa-file-pdf"></i></a>
+                      <p>Quitences</p>
+                    </div>
+                    <div class="documents-appart">
+                      <a href="#"><i class="far fa-file-pdf"></i></a>
+                      <p>Autres</p>
+                    </div>
+                  </div>
                 </div>
               </div>
               <% end %>
@@ -34,7 +51,7 @@
           </div>
           <div class="pending-doc">
             <div class="card-positioning">
-              <h2>Documents en attentes</h2>
+              <h2>Documents à traiter</h2>
             </div>
           </div>
         </div>
