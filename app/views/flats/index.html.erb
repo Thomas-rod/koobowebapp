@@ -18,11 +18,11 @@
                   </ol>
                     <div class="carousel-inner">
                       <div class="carousel-item active">
-                        <%= cl_image_tag flat.photos[0].key, class: "d-block w-100 image"%>
+                        <%= image_tag flat.photos[0], class: "d-block w-100 image"%>
                       </div>
                       <% flat.photos[1..flat.photos.count].each do |photo| %>
                         <div class="carousel-item ">
-                          <%= cl_image_tag photo.key, class: "d-block w-100 image" %>
+                          <%= image_tag photo, class: "d-block w-100 image" %>
                         </div>
                       <% end %>
                     </div>
@@ -54,7 +54,7 @@
                   <h2 class="card-trip-pricing"><%= flat.monthly_price.round  %>€/mois</h2>
                   <% if helper_flat_tenant?(flat) %>
                     <% if helper_flat_current_tenant(flat)&.user&.photo&.attached?  %>
-                      <%= cl_image_tag helper_flat_current_tenant(flat).user.photo.key, class: "card-trip-user avatar-bordered" %>
+                      <%= cl_image_tag helper_flat_current_tenant(flat).user.photo, class: "card-trip-user avatar-bordered" %>
                     <% else %>
                       <%= image_tag ("avatar.png"), class: 'card-trip-user avatar-bordered' %>
                     <% end %>
