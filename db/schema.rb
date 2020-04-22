@@ -106,6 +106,7 @@ ActiveRecord::Schema.define(version: 2020_04_22_103255) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "status", default: "current"
     t.date "end_date"
+    t.date "start_date"
     t.index ["flat_id"], name: "index_rentings_on_flat_id"
     t.index ["user_id"], name: "index_rentings_on_user_id"
   end
