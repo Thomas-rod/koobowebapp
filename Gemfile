@@ -34,7 +34,7 @@ gem 'devise'
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass'
 gem 'simple_form'
-gem 'cloudinary', '~> 1.12.0'
+gem "aws-sdk-s3", require: false
 gem  'simple_calendar', '~> 2.0'
 gem "will_paginate"
 gem "bootstrap-will_paginate"
