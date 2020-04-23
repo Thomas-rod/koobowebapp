@@ -25,6 +25,13 @@ helper_method :check;
       num
     end
   end
+  def day_selected(day, other_day)
+   if day == orher_day
+   return "selected"
+   else
+   return "unselected"
+   end
+  end
   private
 
   def visits_user

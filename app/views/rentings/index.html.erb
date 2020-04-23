@@ -1,0 +1,65 @@
+<div class="dashboard-data-set" data-line="documents">
+  <div class="d-flex index-appart">
+    <%= render partial: 'shared/dashboard', locals: { flats: @flats, schedules: @schedules} %>
+    <div style=" width:100%;">
+      <%= render partial: 'shared/navbar_dashboard', locals: { page_title: 'Documents', notif_counter: @counter} %>
+      <div class="container container-index-rentings">
+      <h1>Documents</h1>
+        <div class="grid-rentings">
+          <div class="search-doc">
+            <div class="search-rentings" >
+              <%= form_tag rentings_path, class: "form-doc", method: :get do %>
+                <%= text_field_tag :query,
+                  params[:query],
+                  class: "form-control",
+                  placeholder: "Cherchez un document..."
+                %>
+                <%= submit_tag "Search", class: "btn btn-primary" %>
+              <% end %>
+            </div>
+          </div>
+          <div class="valid-doc">
+            <div class="card-positioning">
+              <h2>Documents validés</h2>
+              <% @rentings.each do |renting| %>
+              <div class="card-product-original card-doc">
+                <%= cl_image_tag renting.flat.photos.first.key%>
+                <div class="card-product-original-infos .info-card-doc">
+                  <h2><%= renting.flat.name  %></h2>
+                  <div class="documents-rentings">
+                    <div class="documents-appart">
+                      <a href="#"><i class="far fa-file-pdf"></i></a>
+                      <p>Bails</p>
+                    </div>
+                    <div class="documents-appart">
+                      <a href="#"><i class="far fa-file-pdf"></i></a>
+                      <p>Etat des lieux</p>
+                    </div>
+                    <div class="documents-appart">
+                      <a href="#"><i class="far fa-file-pdf"></i></a>
+                      <p>Quitences</p>
+                    </div>
+                    <div class="documents-appart">
+                      <a href="#"><i class="far fa-file-pdf"></i></a>
+                      <p>Autres</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <% end %>
+            </div>
+          </div>
+          <div class="pending-doc">
+            <div class="card-positioning">
+              <h2>Documents à traiter</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<%= render 'shared/bottom_nav'%>
+
+
+
