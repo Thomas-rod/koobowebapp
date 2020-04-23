@@ -5,5 +5,5 @@ class RentingFolder < ApplicationRecord
   has_many :folders, dependent: :destroy
   has_many :users, through: :folders
   validates :status, presence: true
-  validates :status, inclusion: { in: STATUS_RENTING }
+  validates :status, inclusion: { in: STATUS_RENTINGFOLDER }
 end
