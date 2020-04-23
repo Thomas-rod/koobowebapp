@@ -1,20 +1,11 @@
 <% current_tenants = helper_flat_current_tenants(@flat) %>
 <div class="card-locataire">
-<<<<<<< HEAD
-  <% if @flat.rentings&.last&.user&.photo&.attached?  %>
-    <%= image_tag @flat.rentings.last.user.photo, class: 'avatar-extra-large' %>
-  <% if current_tenant.user&.photo&.attached? %>
-    <%= image_tag current_tenant.user.photo, class: 'avatar-extra-large' %>
-  <% else %>
-    <%= image_tag ("avatar.png"), class: "avatar-extra-large" %>
-=======
   <% helper_flat_current_tenants(@flat).each do |tenant| %>
     <% if tenant.photo&.attached?  %>
       <%= image_tag tenant.photo, class: "avatar-extra-large" %>
     <% else %>
       <%= image_tag ("avatar.png"), class: "avatar-extra-large" %>
     <% end %>
->>>>>>> master
   <% end %>
   <div class="card-name-locataire">
     <% helper_flat_current_tenants(@flat).each do |tenant| %>
