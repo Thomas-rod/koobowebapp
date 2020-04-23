@@ -53,10 +53,12 @@
                   </div>
                   <h2 class="card-trip-pricing"><%= flat.monthly_price.round  %>€/mois</h2>
                   <% if helper_flat_tenant?(flat) %>
-                    <% if helper_flat_current_tenant(flat)&.user&.photo&.attached?  %>
-                      <%= cl_image_tag helper_flat_current_tenant(flat).user.photo, class: "card-trip-user avatar-bordered" %>
-                    <% else %>
-                      <%= image_tag ("avatar.png"), class: 'card-trip-user avatar-bordered' %>
+                    <% helper_flat_current_tenants(flat).each do |tenant| %>
+                      <% if tenant.photo&.attached?  %>
+                        <%= image_tag tenant.photo, class: "card-trip-user avatar-bordered" %>
+                      <% else %>
+                        <%= image_tag ("avatar.png"), class: 'card-trip-user avatar-bordered' %>
+                      <% end %>
                     <% end %>
                   <% end %>
                 </div>

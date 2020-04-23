@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_22_103255) do
+ActiveRecord::Schema.define(version: 2020_04_22_175213) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -79,6 +79,8 @@ ActiveRecord::Schema.define(version: 2020_04_22_103255) do
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "renting_folder_id"
+    t.index ["renting_folder_id"], name: "index_folders_on_renting_folder_id"
     t.index ["user_id"], name: "index_folders_on_user_id"
   end
 
@@ -91,24 +93,22 @@ ActiveRecord::Schema.define(version: 2020_04_22_103255) do
 
   create_table "renting_folders", force: :cascade do |t|
     t.bigint "visit_id", null: false
-    t.bigint "folder_id", null: false
     t.string "status", default: "pending"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["folder_id"], name: "index_renting_folders_on_folder_id"
     t.index ["visit_id"], name: "index_renting_folders_on_visit_id"
   end
 
   create_table "rentings", force: :cascade do |t|
-    t.bigint "user_id", null: false
     t.bigint "flat_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "status", default: "current"
     t.date "end_date"
     t.date "start_date"
+    t.bigint "renting_folder_id"
     t.index ["flat_id"], name: "index_rentings_on_flat_id"
-    t.index ["user_id"], name: "index_rentings_on_user_id"
+    t.index ["renting_folder_id"], name: "index_rentings_on_renting_folder_id"
   end
 
   create_table "schedules", force: :cascade do |t|
@@ -150,12 +150,12 @@ ActiveRecord::Schema.define(version: 2020_04_22_103255) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "flats", "users"
   add_foreign_key "flows", "rentings"
+  add_foreign_key "folders", "renting_folders"
   add_foreign_key "folders", "users"
   add_foreign_key "messages", "rentings"
-  add_foreign_key "renting_folders", "folders"
   add_foreign_key "renting_folders", "visits"
   add_foreign_key "rentings", "flats"
-  add_foreign_key "rentings", "users"
+  add_foreign_key "rentings", "renting_folders"
   add_foreign_key "schedules", "flats"
   add_foreign_key "visits", "schedules"
   add_foreign_key "visits", "users"
