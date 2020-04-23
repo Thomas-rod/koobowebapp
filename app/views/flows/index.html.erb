@@ -20,17 +20,17 @@
         <div class="all-flows grey-box">
           <div class="flows-details">
             <div class="details">
+              <div class="total">
+                <h3>Solde</h3>
+                <h3 class="green-numbers"><%= @incomes - @spendings %> €</h3>
+              </div>
               <div class="incomes">
-                <p>Revenus</p>
-                <%= @incomes %> €
+                <h5>Revenus</h5>
+                <h5 class="green-numbers" id="income-number"><%= @incomes %> €</h5>
               </div>
               <div class="spendings">
-                <p>Dépenses</p>
-                <p><%= @spendings %> €</p>
-              </div>
-              <div class="total">
-                <p>Solde</p>
-                <p><%= @incomes - @spendings %> €</p>
+                <h5>Dépenses</h5>
+                <h5 id="spending-number"><%= @spendings %> €</h5>
               </div>
             </div>
           </div>

@@ -49,3 +49,23 @@
   margin: 10px;
 }
 
+.details {
+  align-items: center;
+  h3, h5 {
+    font-weight: bold;
+  }
+}
+
+
+
+.green-numbers {
+  color: #2C9E38;
+}
+
+#income-number {
+  opacity: 0.6;
+}
+
+#spending-number {
+  color: $coral;
+}
