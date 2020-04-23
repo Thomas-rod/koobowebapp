@@ -108,10 +108,7 @@ ActiveRecord::Schema.define(version: 2020_04_22_175213) do
     t.string "status", default: "current"
     t.date "end_date"
     t.date "start_date"
-<<<<<<< HEAD
-=======
     t.bigint "renting_folder_id"
->>>>>>> master
     t.index ["flat_id"], name: "index_rentings_on_flat_id"
     t.index ["renting_folder_id"], name: "index_rentings_on_renting_folder_id"
   end
