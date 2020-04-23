@@ -1,23 +1,31 @@
 class FlowsController < ApplicationController
   def index
     @flats = current_user.flats
-    @schedules = Schedule.all
-    @flows = Flow.all.paginate(page: params[:page], per_page: 5).order(payment_date: :desc)
+    @flows = current_user.flows.paginate(page: params[:page], per_page: 5).order(payment_date: :desc)
     @incomes = 0
-    Flow.where(category: "income").each do |f|
+    @flows.where(category: "income").each do |f|
       @incomes += f.amount
     end
     @spendings = 0
-    Flow.where(category: "spending").each do |f|
+    @flows.where(category: "spending").each do |f|
       @spendings += f.amount
     end
-    @flat_flows = Flow.find_by_sql("
-      SELECT * FROM flows
-      JOIN rentings ON rentings.id = flows.renting_id
-      JOIN flats ON flats.id = rentings.flat_id
-      JOIN users ON users.id = flats.user_id
-      ORDER BY flows.payment_date desc
-      ")
+    # @flat_incomes = 0
+    # @flat_spendings = 0
+    # @flats.each do |flat|
+    #   @flat = flat
+    #   @flat_rentings = flat.rentings
+    #   @flat_rentings.each do |renting|
+    #     @flat_flows = renting.flows
+    #     @flat_flows.each do |flow|
+    #       if flow.category == "income"
+    #         @flat_incomes += flow.amount
+    #       else
+    #         @flat_spendings += flow.amount
+    #       end
+    #     end
+    #   end
+    # end
   end
 
   private

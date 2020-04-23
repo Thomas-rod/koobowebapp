@@ -20,17 +20,17 @@
         <div class="all-flows grey-box">
           <div class="flows-details">
             <div class="details">
+              <div class="total">
+                <h3>Solde</h3>
+                <h3 class="green-numbers"><%= @incomes - @spendings %> €</h3>
+              </div>
               <div class="incomes">
-                <p>Revenus</p>
-                <%= @incomes %> €
+                <h5>Revenus</h5>
+                <h5 class="green-numbers" id="income-number"><%= @incomes %> €</h5>
               </div>
               <div class="spendings">
-                <p>Dépenses</p>
-                <p><%= @spendings %> €</p>
-              </div>
-              <div class="total">
-                <p>Solde</p>
-                <p><%= @incomes - @spendings %> €</p>
+                <h5>Dépenses</h5>
+                <h5 id="spending-number"><%= @spendings %> €</h5>
               </div>
             </div>
           </div>
@@ -47,7 +47,35 @@
           </div>
         </div>
         <div class="flat-flows grey-box">
-          Flows appartements
+          <div class="flows-details">
+            <% @flats.each do |flat| %>
+              <h5><%= flat.name %></h5>
+              <% @flat_flows = flat.flows %>
+              <% @flat_incomes = 0 %>
+              <% @flat_spendings = 0 %>
+              <% @flat_flows.each do |flow| %>
+                <% if flow.category == "income" %>
+                  <% @flat_incomes += flow.amount %>
+                <% else %>
+                  <% @flat_spendings += flow.amount %>
+                <% end %>
+              <% end %>
+              <div class="details">
+                <div class="total">
+                  <h3>Solde</h3>
+                  <h3 class="green-numbers"><%= @flat_incomes - @flat_spendings %> €</h3>
+                </div>
+                <div class="incomes">
+                  <h5>Revenus</h5>
+                  <h5 class="green-numbers" id="income-number"><%= @flat_incomes %> €</h5>
+                </div>
+                <div class="spendings">
+                  <h5>Dépenses</h5>
+                  <h5 id="spending-number"><%= @flat_spendings %> €</h5>
+                </div>
+              </div>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
