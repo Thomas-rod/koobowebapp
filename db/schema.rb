@@ -93,7 +93,7 @@ ActiveRecord::Schema.define(version: 2020_04_22_175213) do
 
   create_table "renting_folders", force: :cascade do |t|
     t.bigint "visit_id", null: false
-    t.bigint "folder_id", null: false
+    t.bigint "folder_id"
     t.string "status", default: "pending"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

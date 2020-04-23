@@ -46,7 +46,6 @@ mao.save
 puts "#{User.count} users created"
 
 puts "Creating flats"
-
 thomas_first_flat = Flat.new(user: thomas, address: "5 rue de Buci, Paris 6e Arrondissement, Île-de-France, France", description: "Quartier central et animé, appartement spacieux avec de nombreux commerces à proximité.", monthly_price: 1100, visible: true, rented: true, name: "Appartement central Paris 6", number_of_rooms: 2, number_of_bedrooms: 1, surface: 37, floor: 4, elevator: true, balcony: true, cellar: false, parking: true, heating_system: ["", "central", "gaz"], furnished: false)
 attach_photo_flat("https://images.unsplash.com/photo-1550581190-9c1c48d21d6c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60", thomas_first_flat)
 attach_photo_flat("https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60", thomas_first_flat)
@@ -74,26 +73,26 @@ sixth_schedule = Schedule.create!(start:Time.new(2019, 1, 19, 9, 30, 0),end:Time
 puts "#{Schedule.count} created"
 
 puts "Creating visits"
-first_visit = Visit.create!(schedule: first_schedule, user:roxane)
-second_visit = Visit.create!(schedule: first_schedule, user:mao)
-third_visit = Visit.create!(schedule: first_schedule, user:john )
-fourth_visit = Visit.create!(schedule: second_schedule, user:roxane)
-fifth_visit = Visit.create!(schedule: second_schedule, user:mao)
-sixth_visit = Visit.create!(schedule: second_schedule, user:john )
-seventh_visit = Visit.create!(schedule: third_schedule, user:roxane)
-height_visit = Visit.create!(schedule: third_schedule, user:mao)
-nine_visit = Visit.create!(schedule: third_schedule, user:john )
-ten_visit = Visit.create!(schedule: fourth_schedule, user:roxane)
-eleven_visit = Visit.create!(schedule: fourth_schedule, user:mao)
-twelve_visit = Visit.create!(schedule: fourth_schedule, user:john )
-thirteen_visit = Visit.create!(schedule: fifth_schedule, user:roxane )
-fourteen_visit = Visit.create!(schedule: sixth_schedule, user:mao )
+first_visit = Visit.create!(schedule: first_schedule, user: roxane)
+second_visit = Visit.create!(schedule: first_schedule, user: mao)
+third_visit = Visit.create!(schedule: first_schedule, user: john )
+fourth_visit = Visit.create!(schedule: second_schedule, user: roxane)
+fifth_visit = Visit.create!(schedule: second_schedule, user: mao)
+sixth_visit = Visit.create!(schedule: second_schedule, user: john )
+seventh_visit = Visit.create!(schedule: third_schedule, user: roxane)
+eighth_visit = Visit.create!(schedule: third_schedule, user: mao)
+ninth_visit = Visit.create!(schedule: third_schedule, user: john )
+tenth_visit = Visit.create!(schedule: fourth_schedule, user: roxane)
+eleventh_visit = Visit.create!(schedule: fourth_schedule, user: mao)
+twelfth_visit = Visit.create!(schedule: fourth_schedule, user: john )
+thirteenth_visit = Visit.create!(schedule: fifth_schedule, user: roxane)
+fourteenth_visit = Visit.create!(schedule: sixth_schedule, user: mao)
 puts "#{Visit.count} created"
 
 puts "Creating renting_folders"
 first_rentingfolder = RentingFolder.create!(visit: second_visit, status: 'pending')
-second_rentingfolder = RentingFolder.create!(visit: thirteen_visit, status: 'accepted')
-third_rentingfolder = RentingFolder.create!(visit: fourteen_visit, status: 'accepted')
+second_rentingfolder = RentingFolder.create!(visit: thirteenth_visit, status: 'accepted')
+third_rentingfolder = RentingFolder.create!(visit: fourteenth_visit, status: 'accepted')
 puts "#{RentingFolder.count} renting folders created"
 
 puts "Creating folders"
@@ -104,7 +103,7 @@ mao_two_folder = Folder.create!(user:mao, renting_folder: first_rentingfolder)
 puts "#{Folder.count} folders created"
 
 
-puts "Creating renting"
+puts "Creating rentings"
 roxane_thomas_renting = Renting.create!(flat: thomas_first_flat, renting_folder: second_rentingfolder, created_at: 'Fri, 28 Dec 2019 14:27:32 UTC +00:00', start_date: 'Fri, 12 Mar 2012 14:27:32 UTC +00:00', status: 'current')
 mao_thomas_renting = Renting.create!(flat: thomas_first_flat, renting_folder: third_rentingfolder, created_at: 'Fri, 28 Jan 2019 14:27:32 UTC +00:00', start_date: 'Fri, 23 Mar 2019 14:27:32 UTC +00:00', end_date: 'Fri, 23 Dec 2019 14:27:32 UTC +00:00', status: 'past')
 john_thomas_renting = Renting.create!(flat: thomas_second_flat, renting_folder: first_rentingfolder, created_at: 'Fri, 28 Jan 2020 14:27:32 UTC +00:00', status: 'ongoing')
@@ -112,9 +111,9 @@ puts "#{Renting.count} renting created"
 
 puts "Creating flows"
 Flow.create!(title: "Loyer", renting: roxane_thomas_renting, payment_date: Time.new(2020, 3, 9, 8, 30, 0), month_rent: Date.new(2001,2,3), amount: 700, category: "income")
-Flow.create!(title: "Réparations", renting: roxane_thomas_renting, payment_date: Time.new(2020, 3, 9, 8, 30, 0), month_rent: Date.new(2001,2,3), amount: 800, category: "spending")
-Flow.create!(title: "Loyer", renting: roxane_thomas_renting, payment_date: Time.new(2020, 3, 9, 8, 30, 0), month_rent: Date.new(2001,2,3), amount: 700, category: "income")
-Flow.create!(title: "Loyer", renting: roxane_thomas_renting, payment_date: Time.new(2020, 3, 9, 8, 30, 0), month_rent: Date.new(2001,2,3), amount: 700, category: "income")
+Flow.create!(title: "Réparations", renting: mao_thomas_renting, payment_date: Time.new(2020, 3, 9, 8, 30, 0), month_rent: Date.new(2001,2,3), amount: 800, category: "spending")
+Flow.create!(title: "Loyer", renting: john_thomas_renting, payment_date: Time.new(2020, 3, 9, 8, 30, 0), month_rent: Date.new(2001,2,3), amount: 800, category: "income")
+Flow.create!(title: "Loyer", renting: roxane_thomas_renting, payment_date: Time.new(2020, 3, 9, 8, 30, 0), month_rent: Date.new(2001,2,3), amount: 900, category: "income")
 Flow.create!(title: "Loyer", renting: roxane_thomas_renting, payment_date: Time.new(2020, 3, 9, 8, 30, 0), month_rent: Date.new(2001,2,3), amount: 700, category: "income")
 Flow.create!(title: "Loyer", renting: roxane_thomas_renting, payment_date: Time.new(2020, 3, 9, 8, 30, 0), month_rent: Date.new(2001,2,3), amount: 700, category: "income")
 Flow.create!(title: "Réparations", renting: roxane_thomas_renting, payment_date: Time.new(2020, 3, 9, 8, 30, 0), month_rent: Date.new(2001,2,3), amount: 66.50, category: "spending")
