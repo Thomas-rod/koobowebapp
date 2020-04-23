@@ -30,11 +30,7 @@
         </div>
       </div>
       <div class="card-product-infos">
-        <% if request.is_a?(Visit) %>
-          <p><strong><%= request.user.first_name %></strong> a finalisé son dossier. Prêt(e) à étudier son dossier ?</p>
-        <% else %>
-          <p><strong><%= request.users.first.first_name %></strong> a finalisé son dossier. Prêt(e) à étudier son dossier ?</p>
-        <% end %>
+        <p><strong><%= request.users.first.first_name %></strong> a finalisé son dossier. Prêt(e) à étudier son dossier ?</p>
         <button class="btn-card">Voir le dossier</button>
       </div>
   <% end %>
