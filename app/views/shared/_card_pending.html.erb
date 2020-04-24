@@ -10,9 +10,9 @@
     </div>
     <div class="card-product-infos-pending ">
       <% if request.is_a?(Visit) %>
-        <p><strong><%= request.user.first_name %></strong> souhaite visiter l'appartement le <br><strong><%= request.schedule.start.strftime("%d/%m") %> de <%= request.schedule.start.strftime("%H:%M") %> à <%= request.schedule.end.strftime("%H:%M") %></strong></p>
+        <p><strong><%= request.user.first_name %></strong> souhaite visiter le bien le <br><strong><%= request.schedule.start.strftime("%d/%m") %> de <%= request.schedule.start.strftime("%H:%M") %> à <%= request.schedule.end.strftime("%H:%M") %></strong></p>
       <% else %>
-        <p><strong><%= request.users.first.first_name %></strong> souhaite visiter l'appartement le <br><strong><%= request.visit.schedule.start.strftime("%d/%m") %> de <%= request.visit.schedule.start.strftime("%H:%M") %> à <%= request.visit.schedule.end.strftime("%H:%M") %></strong></p>
+        <p><strong><%= request.users.first.first_name %></strong> souhaite visiter le bien le <br><strong><%= request.visit.schedule.start.strftime("%d/%m") %> de <%= request.visit.schedule.start.strftime("%H:%M") %> à <%= request.visit.schedule.end.strftime("%H:%M") %></strong></p>
       <% end %>
       <div class="card-product-contact">
       <% if request.is_a?(Visit) %>

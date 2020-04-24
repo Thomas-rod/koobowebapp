@@ -30,16 +30,36 @@
     <h5><%= @flat.name %> - <%= @flat.surface.round %> m² - <%= @flat.monthly_price.round %> €/mois</h5>
     <h6><%= @flat.description %></h6>
     <% if @flat.floor == 1  %>
-      <p>Charmant appartement situé au <%= @flat.floor %>er étage de l'immeuble situé <%= @flat.address %>.</p>
+      <% if @flat.category == "appartement" %>
+        <p>Charmant appartement situé au <%= @flat.floor %>er étage de l'immeuble situé <%= @flat.address %>.</p>
+      <% else %>
+        <p>Charmante maison d'<%= @flat.floor %> étage située <%= @flat.address %>.</p>
+      <% end %>
     <% else %>
-      <p>Charmant appartement situé au <%= @flat.floor %>ème étage de l'immeuble situé <%= @flat.address %>.</p>
+      <% if @flat.category == "appartement" %>
+        <p>Charmant appartement situé au <%= @flat.floor %>e étage de l'immeuble situé <%= @flat.address %>.</p>
+      <% else %>
+        <p>Charmante maison de <%= @flat.floor %> étages située <%= @flat.address %>.</p>
+      <% end %>
     <% end %>
     <% if @flat.number_of_rooms == 1 %>
-      <p>L'appartement est un studio de <%= @flat.surface.round %></p>
+      <% if @flat.category == "appartement" %>
+        <p>L'appartement est un studio de <%= @flat.surface.round %> m²</p>
+      <% else %>
+        <p>La maison comporte une pièce et a une superficie de <%= @flat.surface.round %> m²</p>
+      <% end %>
     <% elsif @flat.number_of_rooms != 1 && @flat.number_of_bedrooms != 1 %>
-      <p>L'appartement mesure <%= @flat.surface.round %> m² et est composé de <%= @flat.number_of_rooms %> pièces dont <%= @flat.number_of_bedrooms %> chambres.</p>
+      <% if @flat.category == "appartement" %>
+        <p>L'appartement mesure <%= @flat.surface.round %> m² et est composé de <%= @flat.number_of_rooms %> pièces dont <%= @flat.number_of_bedrooms %> chambres.</p>
+      <% else %>
+        <p>La maison a une superficie de <%= @flat.surface.round %> m² et est composée de <%= @flat.number_of_rooms %> pièces dont <%= @flat.number_of_bedrooms %> chambres.</p>
+      <% end %>
     <% elsif @flat.number_of_rooms != 1 && @flat.number_of_bedrooms == 1 %>
-      <p>L'appartement mesure <%= @flat.surface.round %> m² et est composé de <%= @flat.number_of_rooms %> pièces dont <%= @flat.number_of_bedrooms %> chambre.</p>
+      <% if @flat.category == "appartement" %>
+        <p>L'appartement mesure <%= @flat.surface.round %> m² et est composé de <%= @flat.number_of_rooms %> pièces dont <%= @flat.number_of_bedrooms %> chambre.</p>
+      <% else %>
+        <p>La maison a une superficie de <%= @flat.surface.round %> m² et est composée de <%= @flat.number_of_rooms %> pièces dont <%= @flat.number_of_bedrooms %> chambre.</p>
+      <% end %>
     <% end %>
     <% if @flat.heating_system[1] == "individuel" %>
       <p>Le chauffage est <%=  @flat.heating_system[1] %> et <%=  @flat.heating_system[2] %>.</p>
@@ -51,9 +71,17 @@
       <p>Le chauffage est au <%=  @flat.heating_system[1] %> et <%=  @flat.heating_system[2] %>.</p>
     <% end %>
     <% if @flat.furnished %>
-       <p> Il est meublé
+      <% if @flat.category == "appartement" %>
+        <p> Il est meublé
+      <% else %>
+        <p> Elle est meublée
+      <% end %>
      <% else %>
-       <p> Il est non-meublé
+      <% if @flat.category == "appartement" %>
+        <p> Il est non-meublé
+      <% else %>
+        <p> Elle est non-meublée
+      <% end %>
     <% end %>
     <% if @flat.elevator || @flat.balcony || @flat.parking || @flat.cellar %>
        <span>et donne accès aux commodités suivantes :</span>

@@ -12,7 +12,7 @@
     </div>
     <% if request.status == 'accepted'%>
       <div class="card-product-infos">
-        <p><strong><%= request.user.first_name %></strong> viendra visiter votre appartement le <strong><%= request.schedule.start.strftime("%d/%m") %> de <%= request.schedule.start.strftime("%H:%M") %> à <%= request.schedule.end.strftime("%H:%M") %></strong></p>
+        <p><strong><%= request.user.first_name %></strong> viendra visiter votre bien le <strong><%= request.schedule.start.strftime("%d/%m") %> de <%= request.schedule.start.strftime("%H:%M") %> à <%= request.schedule.end.strftime("%H:%M") %></strong></p>
         <i class="fas fa-check-circle accepted-logo"></i>
       </div>
     <% else %>

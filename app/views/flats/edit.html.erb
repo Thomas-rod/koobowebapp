@@ -15,25 +15,71 @@
             <span class="form-part">Je nomme mon bien</span><span class="form-part"><%= f.input :name, label: false, placeholder: "Titre", input_html: { id: "my-name-input"} %></span><span class="form-part">.</span>
           </div>
           <div class="special-form line-13">
-            <span class="form-part" id="hola">C'est un </span><span class="form-part"><%= f.input :category, label: false, input_html: {class: "select2 category", id: "my-category-input"}, collection: Flat::CATEGORY %></span><span class="form-part">.</span>
+            <% if @flat.category == "appartement" %>
+              <span class="form-part" id="hola">C'est un </span><span class="form-part"><%= f.input :category, label: false, input_html: {class: "select2 category", id: "my-category-input"}, collection: Flat::CATEGORY %></span><span class="form-part">.</span>
+            <% else %>
+              <span class="form-part" id="hola">C'est une </span><span class="form-part"><%= f.input :category, label: false, input_html: {class: "select2 category", id: "my-category-input"}, collection: Flat::CATEGORY %></span><span class="form-part">.</span>
+            <% end %>
           </div>
           <div class="special-form line-2">
-            <span class="form-part">Il est au</span><span class="form-part"><%= f.input :floor, label: false, placeholder: "N étage", id: "floor_number", input_html: { id: "my-floor-input"} %></span><span class="form-part"> <span id="coucou"></span> étage de l'immeuble</span>
+            <% if @flat.floor == 1  %>
+              <% if @flat.category == "appartement" %>
+                <span class="form-part" id="ciao">Il est au </span><span class="form-part"><%= f.input :floor, label: false, placeholder: "N étage", id: "floor_number", input_html: { id: "my-floor-input"} %></span><span class="form-part" id="coucou">er étage de l'immeuble</span>
+              <% else %>
+                <span class="form-part" id="ciao">Elle est composée de </span><span class="form-part"><%= f.input :floor, label: false, placeholder: "N étage", id: "floor_number", input_html: { id: "my-floor-input"} %></span><span class="form-part" id="coucou"> étage et est située</span>
+              <% end %>
+            <% else %>
+              <% if @flat.category == "appartement" %>
+                <span class="form-part" id="ciao">Il est au </span><span class="form-part"><%= f.input :floor, label: false, placeholder: "N étage", id: "floor_number", input_html: { id: "my-floor-input"} %></span><span class="form-part" id="coucou">e étage de l'immeuble</span>
+              <% else %>
+                <span class="form-part" id="ciao">Elle est composée de </span><span class="form-part"><%= f.input :floor, label: false, placeholder: "N étage", id: "floor_number", input_html: { id: "my-floor-input"} %></span><span class="form-part" id="coucou"> étages et est située</span>
+              <% end %>
+            <% end %>
           </div>
           <div class="special-form line-12">
-            <span class="form-part"> <span></span>situé</span><div class="form-part"><%= f.input :address, label: false, id: "flat_address", placeholder: "Adresse", input_html: { class: "my-address-input"} %></div><span class="form-part">.</span>
+            <% if @flat.category == "appartement" %>
+              <span class="form-part"> <span id="situé">situé</span><div class="form-part"><%= f.input :address, label: false, id: "flat_address", placeholder: "Adresse", input_html: { class: "my-address-input"} %></div><span class="form-part"></span>
+            <% else %>
+              <span class="form-part"> <span id="situé"></span><div class="form-part"><%= f.input :address, label: false, id: "flat_address", placeholder: "Adresse", input_html: { class: "my-address-input"} %></div><span class="form-part"></span>
+            <% end %>
           </div>
           <div class="special-form line-3">
-            <span class="form-part">Il a une superficie de </span><span class="form-part"><%= f.input :surface, label: false, placeholder: "Superficie", input_html: { id: "my-size-input"} %></span><span class="form-part"> m².</span>
+            <% if @flat.category == "appartement" %>
+              <span class="form-part"><span id="genre">Il</span> a une superficie de </span><span class="form-part"><%= f.input :surface, label: false, placeholder: "Superficie", input_html: { id: "my-size-input"} %></span><span class="form-part"> m².</span>
+            <% else %>
+              <span class="form-part"><span id="genre">Elle</span> a une superficie de </span><span class="form-part"><%= f.input :surface, label: false, placeholder: "Superficie", input_html: { id: "my-size-input"} %></span><span class="form-part"> m².</span>
+            <% end %>
           </div>
           <div class="special-form line-4">
-            <span class="form-part">Je souhaite le louer pour</span><span class="form-part"><%= f.input :monthly_price, label: false, placeholder: "Loyer mensuel", input_html: { id: "my-rent-input"} %></span><span class="form-part"> €/mois.</span>
+            <% if @flat.category == "appartement" %>
+              <span class="form-part">Je souhaite <span id="lale">le</span> louer pour</span><span class="form-part"><%= f.input :monthly_price, label: false, placeholder: "Loyer mensuel", input_html: { id: "my-rent-input"} %></span><span class="form-part"> €/mois.</span>
+            <% else %>
+              <span class="form-part">Je souhaite <span id="lale">la</span> louer pour</span><span class="form-part"><%= f.input :monthly_price, label: false, placeholder: "Loyer mensuel", input_html: { id: "my-rent-input"} %></span><span class="form-part"> €/mois.</span>
+            <% end %>
           </div>
           <div class="special-form line-5">
-            <span class="form-part">Il est composé de </span><span class="form-part"><%= f.input :number_of_rooms, label: false, placeholder: "N pièces" %></span><span class="form-part"> <span  id="hello">pièces</span>, dont </span><span class="form-part"><%= f.input :number_of_bedrooms, label: false, placeholder: "N chambres", input_html: { id: "my-bedroom-input"} %></span><span class="form-part"><span id="hi">chambres</span>.</span>
+            <% if @flat.number_of_rooms == 1 %>
+              <% if @flat.category == "appartement" %>
+                <span class="form-part" id="compo">Il est composé de</span><span class="form-part"><%= f.input :number_of_rooms, label: false, placeholder: "N pièces" %></span><span class="form-part"> <span  id="hello">pièce</span>, dont </span><span class="form-part"><%= f.input :number_of_bedrooms, label: false, placeholder: "N chambres", input_html: { id: "my-bedroom-input"} %></span><span class="form-part"><span id="hi">chambre</span>.</span>
+              <% else %>
+                <span class="form-part" id="compo">Elle comporte </span><span class="form-part"><%= f.input :number_of_rooms, label: false, placeholder: "N pièces" %></span><span class="form-part"> <span  id="hello">pièce</span>, dont </span><span class="form-part"><%= f.input :number_of_bedrooms, label: false, placeholder: "N chambres", input_html: { id: "my-bedroom-input"} %></span><span class="form-part"><span id="hi">chambre</span>.</span>
+              <% end %>
+            <% elsif @flat.number_of_rooms != 1 && @flat.number_of_bedrooms != 1 %>
+              <% if @flat.category == "appartement" %>
+                <span class="form-part" id="compo">Il est composé de </span><span class="form-part"><%= f.input :number_of_rooms, label: false, placeholder: "N pièces" %></span><span class="form-part"> <span  id="hello">pièces</span>, dont </span><span class="form-part"><%= f.input :number_of_bedrooms, label: false, placeholder: "N chambres", input_html: { id: "my-bedroom-input"} %></span><span class="form-part"><span id="hi">chambres</span>.</span>
+              <% else %>
+                <span class="form-part" id="compo">Elle comporte </span><span class="form-part"><%= f.input :number_of_rooms, label: false, placeholder: "N pièces" %></span><span class="form-part"> <span  id="hello">pièces</span>, dont </span><span class="form-part"><%= f.input :number_of_bedrooms, label: false, placeholder: "N chambres", input_html: { id: "my-bedroom-input"} %></span><span class="form-part"><span id="hi">chambres</span>.</span>
+              <% end %>
+            <% elsif @flat.number_of_rooms != 1 && @flat.number_of_bedrooms == 1 %>
+              <% if @flat.category == "appartement" %>
+                <span class="form-part" id="compo">Il est composé de </span><span class="form-part"><%= f.input :number_of_rooms, label: false, placeholder: "N pièces" %></span><span class="form-part"> <span  id="hello">pièces</span>, dont </span><span class="form-part"><%= f.input :number_of_bedrooms, label: false, placeholder: "N chambres", input_html: { id: "my-bedroom-input"} %></span><span class="form-part"><span id="hi">chambre</span>.</span>
+              <% else %>
+                <span class="form-part" id="compo">Elle comporte </span><span class="form-part"><%= f.input :number_of_rooms, label: false, placeholder: "N pièces" %></span><span class="form-part"> <span  id="hello">pièces</span>, dont </span><span class="form-part"><%= f.input :number_of_bedrooms, label: false, placeholder: "N chambres", input_html: { id: "my-bedroom-input"} %></span><span class="form-part"><span id="hi">chambre</span>.</span>
+              <% end %>
+            <% end %>
           </div>
           <div class="special-form line-6">
-            <span class="form-part" id="heating">Le chauffage est </span><span class="form-part"><%= f.input :heating_system, label: false, input_html: {class: "select2", multiple: "multiple", id: "my-heating-input"}, collection: Flat::HEATING %></span><span class="form-part">.</span>
+            <span class="form-part" id="heating">Le chauffage est </span><span class="form-part"><%= f.input :heating_system, label: false, input_html: {class: "select2 heating", multiple: "multiple", id: "my-heating-input"}, collection: Flat::HEATING %></span><span class="form-part">.</span>
           </div>
             <span class="form-part line-7">Je donne quelques informations supplémentaires à mon futur locataire : </span>
           <div class="line-8">
@@ -49,7 +95,7 @@
           </div>
           <span class="form-part line-9"><%= f.input :description, label: false, placeholder: "J'ai encore quelques détails à préciser...", input_html: { id: "my-description-input"} %></span>
             <div class="line-10">
-              <%= f.input :photos, as: :file, id: "special-photo-btn", input_html: { multiple: true, class: 'hidden d-none', id: 'photo-input' }, label_html: { class: 'upload-photo'}, label: "📷 J'ajoute des photos à mon appartement" %>
+              <%= f.input :photos, as: :file, id: "special-photo-btn", input_html: { multiple: true, class: 'hidden d-none', id: 'photo-input' }, label_html: { class: 'upload-photo'}, label: "📷 J'ajoute des photos à mon bien" %>
             </div>
             <%= render "shared/carousel_new" %>
             <div class="line-11">

@@ -7,16 +7,11 @@ const pluralizeOrNot = () => {
   const hi = document.getElementById("hi");
   const category = document.getElementById("my-category-input");
   const hola = document.getElementById("hola");
+  const ciao = document.getElementById("ciao");
+  const situé = document.getElementById("situé");
+  const genre = document.getElementById("genre");
+  const lale = document.getElementById("lale");
 
-  if (étage) {
-    étage.addEventListener('input', () => {
-      if (étage.value === "1") {
-        coucou.innerHTML = "er";
-      } else {
-        coucou.innerHTML = "e";
-      }
-    })
-  }
   if (pièce) {
     pièce.addEventListener('input', () => {
       if (pièce.value === "1") {
@@ -40,8 +35,36 @@ const pluralizeOrNot = () => {
       const data = e.params.data;
       if (data["text"] === "appartement") {
         hola.innerHTML = "C'est un";
+        ciao.innerHTML = "Il est au ";
+        if (étage) {
+          étage.addEventListener('input', () => {
+            if (étage.value === "1") {
+              coucou.innerHTML = "er étage de l'immeuble";
+            } else {
+              coucou.innerHTML = "e étage de l'immeuble";
+            }
+          })
+        }
+      situé.innerHTML = "situé";
+      genre.innerHTML = "Il";
+      lale.innerHTML = "le";
+      compo.innerHTML = "Il est composé de ";
       } else {
         hola.innerHTML = "C'est une";
+        ciao.innerHTML = "Elle comporte "
+        if (étage) {
+          étage.addEventListener('input', () => {
+            if (étage.value === "1") {
+              coucou.innerHTML = "étage et est située";
+            } else {
+              coucou.innerHTML = "étages et est située";
+            }
+          })
+        }
+      situé.innerHTML = "";
+      genre.innerHTML = "Elle";
+      lale.innerHTML = "la";
+      compo.innerHTML = "Elle est composée de ";
       }
     });
   }
