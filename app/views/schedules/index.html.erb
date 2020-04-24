@@ -46,12 +46,12 @@
                     <div class="card-product mt-3">
                       <%= image_tag accepted_visit[0].user.photo%>
                       <div class="card-product-infos p-3">
-                        <p><%= accepted_visit.first.user.first_name %> viendra visiter votre appartement le <%= schedule.start.strftime("%d/%m") %> de <%= schedule.start.strftime("%H:%M") %> à <%= schedule.end.strftime("%H:%M") %></p>
+                        <p><%= accepted_visit.first.user.first_name %> viendra visiter votre bien le <%= schedule.start.strftime("%d/%m") %> de <%= schedule.start.strftime("%H:%M") %> à <%= schedule.end.strftime("%H:%M") %></p>
                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 24 30" style="enable-background:new 0 0 24 24;" xml:space="preserve" class= 'accepted-logo'><g><path fill="green" d="M10.125,17.544c0.061,0.054,0.139,0.083,0.22,0.083c0.007,0,0.014,0,0.021-0.001c0.088-0.006,0.17-0.046,0.228-0.112   l9.269-10.593c0.121-0.138,0.107-0.347-0.031-0.467c-0.137-0.12-0.347-0.107-0.467,0.031l-9.049,10.342l-5.709-5.075   c-0.136-0.121-0.347-0.11-0.467,0.028c-0.122,0.136-0.109,0.346,0.028,0.467L10.125,17.544z"/></g></svg>
                       </div>
                     </div>
                   <% elsif pending_visit != []%>
-                    <h2>Ils veulent visiter cet appartement</h2>
+                    <h2>Ils veulent visiter ce bien</h2>
                       <% pending_visit.each do |visit| %>
                       <div class="card-product product-pending my-3" id = "blabla">
                         <%= image_tag visit.user.photo%>
@@ -69,13 +69,13 @@
                       </div>
                     <% end %>
                   <% else %>
-                  <p class ="my-3">Cet appartement est libre pour une visite à ce créneau</p>
+                  <p class ="my-3">Ce bien est libre pour une visite à ce créneau</p>
                   <% end %>
                 </div>
               </div>
               <% end %>
               <div class="card-trip product-flat p-3 d-none" id ="test">
-                <h2 class="p-3"> Choisissez l'appartement a booker </h2>
+                <h2 class="p-3"> Choisissez le bien à booker </h2>
               <% @flats.each do |flat| %>
               <div class="card-product mt-3">
                 <%= image_tag flat.photos[0]%>

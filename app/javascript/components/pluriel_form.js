@@ -5,19 +5,15 @@ const pluralizeOrNot = () => {
   const coucou = document.getElementById("coucou");
   const hello = document.getElementById("hello");
   const hi = document.getElementById("hi");
-  if (étage) {
-    étage.addEventListener('change', () => {
-      console.log(étage)
-      if (étage.value === "1") {
-        coucou.innerHTML = "er";
-      } else {
-        coucou.innerHTML = "e";
-      }
-    })
-  }
+  const category = document.getElementById("my-category-input");
+  const hola = document.getElementById("hola");
+  const ciao = document.getElementById("ciao");
+  const situé = document.getElementById("situé");
+  const genre = document.getElementById("genre");
+  const lale = document.getElementById("lale");
+
   if (pièce) {
-    pièce.addEventListener('change', () => {
-      console.log(pièce)
+    pièce.addEventListener('input', () => {
       if (pièce.value === "1") {
         hello.innerHTML = "pièce";
       } else {
@@ -26,14 +22,51 @@ const pluralizeOrNot = () => {
     })
   }
   if (chambre) {
-    chambre.addEventListener('change', () => {
-      console.log(chambre)
+    chambre.addEventListener('input', () => {
       if (chambre.value === "1") {
         hi.innerHTML = "chambre";
       } else {
         hi.innerHTML = "chambres";
       }
     })
+  }
+  if (category) {
+    $('#my-category-input').on('select2:select', function (e) {
+      const data = e.params.data;
+      if (data["text"] === "appartement") {
+        hola.innerHTML = "C'est un";
+        ciao.innerHTML = "Il est au ";
+        if (étage) {
+          étage.addEventListener('input', () => {
+            if (étage.value === "1") {
+              coucou.innerHTML = "er étage de l'immeuble";
+            } else {
+              coucou.innerHTML = "e étage de l'immeuble";
+            }
+          })
+        }
+      situé.innerHTML = "situé";
+      genre.innerHTML = "Il";
+      lale.innerHTML = "le";
+      compo.innerHTML = "Il est composé de ";
+      } else {
+        hola.innerHTML = "C'est une";
+        ciao.innerHTML = "Elle comporte "
+        if (étage) {
+          étage.addEventListener('input', () => {
+            if (étage.value === "1") {
+              coucou.innerHTML = "étage et est située";
+            } else {
+              coucou.innerHTML = "étages et est située";
+            }
+          })
+        }
+      situé.innerHTML = "";
+      genre.innerHTML = "Elle";
+      lale.innerHTML = "la";
+      compo.innerHTML = "Elle est composée de ";
+      }
+    });
   }
 }
 
