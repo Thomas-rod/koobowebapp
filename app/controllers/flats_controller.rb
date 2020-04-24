@@ -80,7 +80,6 @@ class FlatsController < ApplicationController
     @counter_appartement = 0
     @counter_profil = 0
     @counter = @counter_appartement + @counter_calendar + @counter_profil
-
   end
 
   def notif_visit
