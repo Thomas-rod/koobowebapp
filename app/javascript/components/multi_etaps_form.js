@@ -18,9 +18,10 @@ const makeFormAppear = () => {
     })
   }
   if (input2) {
-    input2.addEventListener('input', () => {
+    $('#my-category-input').on('select2:select', function (e) {
+      const data = e.params.data;
       displayNextLine(input1, input2, input3, input4, input5, input6, input7, input8, input9);
-    })
+    });
   }
   if (input3) {
     input3.addEventListener('input', () => {
@@ -37,7 +38,7 @@ const makeFormAppear = () => {
       displayNextLine(input1, input2, input3, input4, input5, input6, input7, input8, input9);
     })
   }
-  if (input6) {
+  if (input7) {
     $('#my-heating-input').on('select2:select', function (e) {
       const data = e.params.data;
       displayNextLine(input1, input2, input3, input4, input5, input6, input7, input8, input9);
@@ -46,12 +47,12 @@ const makeFormAppear = () => {
 
   $(document).ready(function(){
     $(".form-part.radio-part").click(function(){
-      document.querySelector(".line-10").classList.remove('hide-carousel');
+      document.querySelector(".line-9").classList.remove('hide-carousel');
     });
   });
 
-  if (input7) {
-    input7.addEventListener('input', () => {
+  if (input6) {
+    input6.addEventListener('input', () => {
       displayNextLine(input1, input2, input3, input4, input5, input6, input7, input8, input9);
     });
   }
@@ -74,12 +75,10 @@ const displayNextLine = (input1, input2, input3, input4, input5, input6, input7,
   if (input2.value !== "") {
     document.querySelector(".line-2").classList.remove('hide-carousel')
   }
-  if (input8.value !== "") {
+  if (input3.value !== "") {
     document.querySelector(".line-3").classList.remove('hide-carousel')
   }
-  if (input3.value !== "") {
-    document.querySelector(".line-12").classList.remove('hide-carousel')
-  }
+
   if (input4.value !== "") {
     document.querySelector(".line-5").classList.remove('hide-carousel')
   }
@@ -95,6 +94,9 @@ const displayNextLine = (input1, input2, input3, input4, input5, input6, input7,
   }
   if (input8.value !== "") {
     document.querySelector(".line-10").classList.remove('hide-carousel')
+  }
+  if (input9.value !== "") {
+    document.querySelector(".line-12").classList.remove('hide-carousel')
   }
 }
 
