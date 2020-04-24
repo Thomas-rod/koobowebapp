@@ -69,31 +69,38 @@ first_schedule = Schedule.create!(start:Time.new(2020, 4, 20, 8, 30, 0),end:Time
 second_schedule = Schedule.create!(start:Time.new(2020, 4, 20, 9, 0, 0),end:Time.new(2020, 4, 20, 9, 30, 0),flat: thomas_third_flat)
 third_schedule = Schedule.create!(start:Time.new(2020, 4, 21, 9, 30, 0),end:Time.new(2020, 4, 21, 10, 0, 0),flat: thomas_third_flat)
 fourth_schedule = Schedule.create!(start:Time.new(2020, 4, 22, 9, 30, 0),end:Time.new(2020, 4, 22, 10, 0, 0),flat: thomas_third_flat)
-fifth_schedule = Schedule.create!(start:Time.new(2020, 4, 22, 9, 30, 0),end:Time.new(2020, 4, 22, 10, 0, 0),flat: thomas_first_flat)
+fifth_schedule = Schedule.create!(start:Time.new(2020, 1, 22, 9, 30, 0),end:Time.new(2020, 1, 22, 10, 0, 0),flat: thomas_first_flat)
 sixth_schedule = Schedule.create!(start:Time.new(2019, 1, 19, 9, 30, 0),end:Time.new(2019, 1, 19, 10, 00, 0),flat: thomas_first_flat)
+sixth_schedule.created_at = "2019-01-18 15:07:07"
+seventh_schedule = Schedule.create!(start:Time.new(2020, 4, 24, 9, 30, 0),end:Time.new(2020, 4, 24, 10, 00, 0),flat: thomas_third_flat)
 puts "#{Schedule.count} created"
 
 puts "Creating visits"
-first_visit = Visit.create!(schedule: first_schedule, user:roxane)
-second_visit = Visit.create!(schedule: first_schedule, user:mao)
-third_visit = Visit.create!(schedule: first_schedule, user:john )
+first_visit = Visit.create!(schedule: first_schedule, user:roxane, status: 'denied')
+second_visit = Visit.create!(schedule: first_schedule, user:mao, status: 'accepted')
+third_visit = Visit.create!(schedule: first_schedule, user:john, status: 'denied')
 fourth_visit = Visit.create!(schedule: second_schedule, user:roxane)
 fifth_visit = Visit.create!(schedule: second_schedule, user:mao)
-sixth_visit = Visit.create!(schedule: second_schedule, user:john )
+sixth_visit = Visit.create!(schedule: second_schedule, user:john)
 seventh_visit = Visit.create!(schedule: third_schedule, user:roxane)
 height_visit = Visit.create!(schedule: third_schedule, user:mao)
-nine_visit = Visit.create!(schedule: third_schedule, user:john )
+nine_visit = Visit.create!(schedule: third_schedule, user:john)
 ten_visit = Visit.create!(schedule: fourth_schedule, user:roxane)
 eleven_visit = Visit.create!(schedule: fourth_schedule, user:mao)
-twelve_visit = Visit.create!(schedule: fourth_schedule, user:john )
-thirteen_visit = Visit.create!(schedule: fifth_schedule, user:roxane )
-fourteen_visit = Visit.create!(schedule: sixth_schedule, user:mao )
+twelve_visit = Visit.create!(schedule: fourth_schedule, user:john)
+thirteen_visit = Visit.create!(schedule: fifth_schedule, user:roxane, status: 'accepted')
+fourteen_visit = Visit.create!(schedule: sixth_schedule, user:mao, status: 'accepted')
+fourteen_visit.created_at = "2019-01-20 15:07:07"
+fifteen_visit = Visit.create!(schedule: seventh_schedule, user:thomas, status:'accepted')
 puts "#{Visit.count} created"
 
 puts "Creating renting_folders"
-first_rentingfolder = RentingFolder.create!(visit: second_visit, status: 'pending')
+
+first_rentingfolder = RentingFolder.create!(visit: second_visit, status: 'accepted')
 second_rentingfolder = RentingFolder.create!(visit: thirteen_visit, status: 'accepted')
 third_rentingfolder = RentingFolder.create!(visit: fourteen_visit, status: 'accepted')
+third_rentingfolder.created_at = "2019-01-21 15:07:07"
+fourth_rentingfolder = RentingFolder.create!(visit: fifteen_visit, status: 'pending')
 puts "#{RentingFolder.count} renting folders created"
 
 puts "Creating folders"
@@ -101,13 +108,20 @@ roxane_folder = Folder.create!(user:roxane, renting_folder: second_rentingfolder
 mao_one_folder = Folder.create!(user:mao, renting_folder: third_rentingfolder)
 john_folder = Folder.create!(user:john, renting_folder: first_rentingfolder)
 mao_two_folder = Folder.create!(user:mao, renting_folder: first_rentingfolder)
+thomas_fodler = Folder.create!(user: thomas, renting_folder: fourth_rentingfolder)
 puts "#{Folder.count} folders created"
 
+puts "Assign folders to renting_folders"
+first_rentingfolder.folders = [john_folder, mao_two_folder]
+second_rentingfolder.folders = [roxane_folder]
+third_rentingfolder.folders = [mao_one_folder]
+fourth_rentingfolder.folders = [thomas_fodler]
+puts "This taks is done"
 
 puts "Creating renting"
-roxane_thomas_renting = Renting.create!(flat: thomas_first_flat, renting_folder: second_rentingfolder, created_at: 'Fri, 28 Dec 2019 14:27:32 UTC +00:00', start_date: 'Fri, 12 Mar 2012 14:27:32 UTC +00:00', status: 'current')
-mao_thomas_renting = Renting.create!(flat: thomas_first_flat, renting_folder: third_rentingfolder, created_at: 'Fri, 28 Jan 2019 14:27:32 UTC +00:00', start_date: 'Fri, 23 Mar 2019 14:27:32 UTC +00:00', end_date: 'Fri, 23 Dec 2019 14:27:32 UTC +00:00', status: 'past')
-john_thomas_renting = Renting.create!(flat: thomas_second_flat, renting_folder: first_rentingfolder, created_at: 'Fri, 28 Jan 2020 14:27:32 UTC +00:00', status: 'ongoing')
+roxane_thomas_renting = Renting.create!(flat: thomas_first_flat, renting_folder: second_rentingfolder, start_date: 'Fri, 28 Jan 2020 14:27:32 UTC +00:00', status: 'current')
+mao_thomas_renting = Renting.create!(flat: thomas_first_flat, renting_folder: third_rentingfolder, start_date: 'Fri, 22 Jan 2019 14:27:32 UTC +00:00', end_date: 'Fri, 23 Dec 2019 14:27:32 UTC +00:00', status: 'past')
+john_thomas_renting = Renting.create!(flat: thomas_second_flat, renting_folder: first_rentingfolder, status: 'ongoing')
 puts "#{Renting.count} renting created"
 
 puts "Creating flows"

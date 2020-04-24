@@ -6,7 +6,7 @@
       <%= render partial: 'shared/navbar_dashboard', locals: { page_title: 'Appartements', notif_counter: @counter} %>
       <h3 id="flat-name-show"><%= @flat.name %></h3>
       <div class="container-disposition">
-        <% if helper_flat_tenant?(@flat) %>
+        <% if tenant?(@flat) %>
           <%= render partial: 'shared/show_flat/show_rented_flat', locals: { flat: @flat, schedules: @schedule} %>
         <% elsif @flat.rentings.select{|renting| renting.status == 'ongoing'}.empty?  || @flat.rentings.select{|renting| renting.status == 'ongoing'}.nil? %>
           <%= render partial: 'shared/show_flat/show_not_rented_flat', locals: { flats: @flat, schedule: @schedule} %>

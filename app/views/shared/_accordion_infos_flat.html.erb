@@ -1,0 +1,92 @@
+<div class="accordion" id="accordionExample">
+  <div class="card">
+    <div class="card-header" id="headingOne">
+      <h2>
+        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          Mes informations
+        </button>
+      </h2>
+      <p>0/4 champs remplis</p>
+    </div>
+    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+      <div class="card-body">
+        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header" id="headingTwo">
+      <h2 class="mb-0">
+        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Mon appartement
+        </button>
+      </h2>
+      <p>0/4 champs remplis</p>
+    </div>
+    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+      <div class="card-body">
+        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header" id="headingThree">
+      <h2 class="mb-0">
+        <button class="btn btn-link " type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          Annexes à joindres
+        </button>
+      </h2>
+      <p>0/2 documents joins</p>
+    </div>
+    <div id="collapseThree" class="collapse show" aria-labelledby="headingThree" data-parent="#accordionExample">
+      <div class="card-body">
+        <div class="row" id="pills-container">
+          <div class="col-5" id="pills-header">
+            <div class="nav nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+              <a class="nav-link active <%= @flat.technical_diagnostic.attached? ? good : "" %>" id="v-pills-technical-diagnostic-tab" data-toggle="pill" href="#v-pills-technical-diagnostic" role="tab" aria-controls="v-pills-technical-diagnostic" aria-selected="true">Diagnostic Technique</a>
+              <a class="nav-link" id="v-pills-information-leaflet-tab" data-toggle="pill" href="#v-pills-information-leaflet" role="tab" aria-controls="v-pills-information-leaflet" aria-selected="false">Notice d'information</a>
+              <a class="nav-link" id="v-pills-co-owner-document-tab" data-toggle="pill" href="#v-pills-co-owner-document" role="tab" aria-controls="v-pills-co-owner-document" aria-selected="false">Règlement co-propriété</a>
+            </div>
+          </div>
+          <div class="col-7">
+            <div class="tab-content" id="v-pills-tabContent">
+              <div class="tab-pane fade show active" id="v-pills-technical-diagnostic" role="tabpanel" aria-labelledby="v-pills-technical-diagnostic-tab">
+                <%= simple_form_for @flat do |f| %>
+                  <div class="container-input-files-accordion">
+                    <div class="text-input-files-accordion">
+                      <p><i>Le dossier doit être fourni lors de la signature du bail, on compte sur toi !</i></p>
+                    </div>
+                    <div class="file-upload full">
+                      <%= f.input :technical_diagnostic, as: :file,required: true, error: "Un fichier doit être ajouté", input_html: { class: 'hidden d-none' }, label: ('<i class="far fa-file-alt"></i>').html_safe, label_html: { class: 'add-file-clickable'} %>
+                        <%= f.submit "Sauvegarder", class: "koobo-button" %>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
+              <div class="tab-pane fade " id="v-pills-information-leaflet" role="tabpanel" aria-labelledby="v-pills-information-leaflet-tab">
+                <%= simple_form_for @flat do |f| %>
+                  <div class="container-input-files-accordion">
+                    <div class="input-files-accordion">
+                      <%= f.input :information_leaflet, as: :file, input_html: { class: 'hidden d-none' }, label: ('<i class="far fa-file-alt"></i>').html_safe, label_html: { class: 'add-file-clickable'} %>
+                    </div>
+                    <%= f.submit "Sauvegarder", class:"koobo-button" %>
+                  </div>
+                <% end %>
+              </div>
+              <div class="tab-pane fade" id="v-pills-co-owner-document" role="tabpanel" aria-labelledby="v-pills-co-owner-document-tab">
+                <%= simple_form_for @flat do |f| %>
+                  <div class="container-input-files-accordion">
+                    <div class="input-files-accordion">
+                      <%= f.input :co_owner_document, as: :file, input_html: { class: 'hidden d-none' }, label: ('<i class="far fa-file-alt"></i>').html_safe, label_html: { class: 'add-file-clickable'} %>
+                    </div>
+                    <%= f.submit "Sauvegarder", class:"koobo-button" %>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

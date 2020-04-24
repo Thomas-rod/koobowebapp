@@ -22,7 +22,7 @@ module FlatHelper
   end
 
   # HELP ME TO KNOW IF THERE IS A TENANT INSIDE THE FLAT (it could be past rentings)
-  def helper_flat_tenant?(flat)
+  def tenant?(flat)
     return true unless flat.rentings.select{ |renting| renting.status == 'current' }.nil? || flat.rentings.select{ |renting| renting.status == 'current' }&.empty?
   end
 

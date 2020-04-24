@@ -9,30 +9,23 @@
       Visite
     </div>
     <div class="card-product-infos-pending ">
-      <% if request.is_a?(Visit) %>
-        <p><strong><%= request.user.first_name %></strong> souhaite visiter l'appartement le <br><strong><%= request.schedule.start.strftime("%d/%m") %> de <%= request.schedule.start.strftime("%H:%M") %> à <%= request.schedule.end.strftime("%H:%M") %></strong></p>
-      <% else %>
-        <p><strong><%= request.users.first.first_name %></strong> souhaite visiter l'appartement le <br><strong><%= request.visit.schedule.start.strftime("%d/%m") %> de <%= request.visit.schedule.start.strftime("%H:%M") %> à <%= request.visit.schedule.end.strftime("%H:%M") %></strong></p>
-      <% end %>
+      <p><strong><%= request.user.first_name %></strong> souhaite visiter l'appartement le <br><strong><%= request.schedule.start.strftime("%d/%m") %> de <%= request.schedule.start.strftime("%H:%M") %> à <%= request.schedule.end.strftime("%H:%M") %></strong></p>
       <div class="card-product-contact">
-      <% if request.is_a?(Visit) %>
         <p class= "btn-card-product"><i class="fas fa-phone-alt"></i><%= request.user.phone_number.scan(/../).join(" ")%></p>
-      <% else %>
-        <p class= "btn-card-product"><i class="fas fa-phone-alt"></i><%= request.users.first.phone_number.scan(/../).join(" ")%></p>
-      <% end %>
         <button class="btn-card btn-accept-border">Ouvre la modal</button>
       </div>
     </div>
-    <% else %>
-      <div>
-        <div class="coral-visite-rented label-folder">
-          Dossier
-        </div>
-      </div>
-      <div class="card-product-infos">
-        <p><strong><%= request.users.first.first_name %></strong> a finalisé son dossier. Prêt(e) à étudier son dossier ?</p>
+  <% else %>
+    <div class="coral-visite-rented label-folder">
+      Dossier
+    </div>
+    <div class="card-product-infos-pending">
+      <p><strong><%= request.visit.user.first_name %></strong> a finalisé son dossier. Prêt(e) à étudier son dossier ?</p>
+      <div class="card-product-contact">
+        <p class= "btn-card-product"><i class="fas fa-phone-alt"></i><%= request.visit.user.phone_number.scan(/../).join(" ")%></p>
         <button class="btn-card">Voir le dossier</button>
       </div>
+    </div>
   <% end %>
   <!--Will be in a modal -->
   <%#= link_to "accepter", schedule_visit_path(request.schedule, request, visit: { status: "accepted"}), method: :patch, remote: :true, class: "btn koobo-button btn-accept"%>
