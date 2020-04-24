@@ -52,7 +52,7 @@
                     <p><%= flat.address %> </p>
                   </div>
                   <h2 class="card-trip-pricing"><%= flat.monthly_price.round  %>€/mois</h2>
-                  <% if helper_flat_tenant?(flat) %>
+                  <% if tenant?(flat) %>
                     <% helper_flat_current_tenants(flat).each do |tenant| %>
                       <% if tenant.photo&.attached?  %>
                         <%= image_tag tenant.photo, class: "card-trip-user avatar-bordered" %>

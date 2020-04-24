@@ -66,6 +66,10 @@
 
 // OVERWRITE BOOTSTRAP FOR LAYOUTS PENDING / ACCEPTED / DENIED
 
+.fade:not(.show) {
+  display:none;
+}
+
 #nav-tabContent {
   overflow: auto;
 }

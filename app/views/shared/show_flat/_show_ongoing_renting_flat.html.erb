@@ -1,14 +1,33 @@
 <div id="disposition-card-two">
   <div id="disposition-three-left-top">
-
+    <div class="disposition-size">
+      <h5>Nous avons besoins de quelques informations</h5>
+      <p>(Ps: Ne t'en fait pas, cela durera moins de 3 minutes)</p>
+      <%= render partial: 'shared/accordion_infos_flat' %>
+    </div>
   </div>
   <div id="disposition-three-left-bottom">
-    <% helper_flat_current_tenants(@flat).each do |tenant| %>
-      <%= image_tag tenant.photo, class: "avatar-extra-large" %>
-    <% end %>
+    <div class="disposition-size">
+      <div id="container-card-tenant-ongoing-flat">
+        <% helper_flat_current_tenants(@flat).each do |tenant| %>
+          <div class="card-tenant_ongoing_flat">
+            <%= image_tag tenant.photo, class: "avatar-extra-large borded" %>
+            <p><%= tenant.first_name %></p>
+          </div>
+        <% end %>
+        <div id="container-infos-card-tenant">
+          <h6>Voilà vos prochains locataires !</h6>
+          <% helper_flat_current_tenants(@flat).each do |tenant| %>
+            <p><%= tenant.first_name %> - <%= tenant.phone_number.scan(/../).join(" ") %></p>
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
   <div id="disposition-three-right">
-    <%= render partial: 'shared/show_flat/flow_ongoing' %>
+    <div class="disposition-size">
+      <%= render partial: 'shared/show_flat/flow_ongoing' %>
+    </div>
   </div>
 </div>
 

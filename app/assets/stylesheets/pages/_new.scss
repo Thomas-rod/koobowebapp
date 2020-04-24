@@ -76,6 +76,7 @@
   padding: 7px 10px;
   align-items: center;
   border: 1px solid white;
+  border-radius: 5px;
   & label {
     margin-right: 10px;
   }
@@ -84,14 +85,12 @@
     background-color: none;
     border-radius: 5px;
     font-size:15px;
-    // font-weight: bold;
     border: 1px solid #EE8572;
   }
   &.active {
   color: #201E50;
   opacity: 1;
   font-size:15px;
-  // font-weight: bold;
   border: 1px solid #EE8572;
   }
 }
@@ -145,7 +144,7 @@
   padding: 16px 24px;
   cursor: pointer;
   font-weight: 500;
-  background: white;
+  // background: white;
   border-radius: 2px;
   &:hover {
     color: #EE8572;
