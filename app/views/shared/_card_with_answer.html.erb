@@ -2,7 +2,7 @@
   <% if request.is_a?(Visit) %>
     <%= image_tag request.user.photo %>
   <% else %>
-    <%= image_tag request.users.first.photo %>
+    <%= image_tag request.visit.user.photo %>
   <% end %>
   <% if request.is_a?(Visit) %>
     <div>
@@ -17,18 +17,18 @@
       </div>
     <% else %>
       <div class="card-product-infos">
-        <p>Tu n'as pas donné suite à la demande de <strong><%= request.users.first.first_name %></strong> pour sa demande de visite du <strong><%= request.visit.schedule.start.strftime("%d/%m") %></strong></p>
+        <p>Tu n'as pas donné suite à la demande de <strong><%= request.user.first_name %></strong> pour sa demande de visite du <strong><%= request.schedule.start.strftime("%d/%m") %></strong></p>
       </div>
     <% end %>
   <% else %>
     <div>
-      <div class="coral-visite-rented label-visit">
+      <div class="coral-visite-rented label-folder">
         Dossier
       </div>
     </div>
     <% if  request.status == 'accepted'%>
       <div class="card-product-infos">
-        <p><strong><%= request.users.first.first_name %></strong> est votre locataire ! <strong></p>
+        <p><strong><%= request.visit.user.first_name %></strong> est votre locataire !</p>
         <i class="fas fa-check-circle accepted-logo"></i>
       </div>
     <% else %>

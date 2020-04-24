@@ -28,6 +28,11 @@
         <% else %>
           <%= image_tag ("logo_bienici.png"), class: 'img-logo-show inactive' %>
         <% end %>
+        <% if @flat.facebook == true %>
+          <%= image_tag ("logo_facebook.png"), class: 'img-logo-show' %>
+        <% else %>
+          <%= image_tag ("logo_facebook.png"), class: 'img-logo-show inactive' %>
+        <% end %>
     </div>
   </div>
   <div class="card-locataire-button">

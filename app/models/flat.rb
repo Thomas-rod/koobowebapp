@@ -6,6 +6,9 @@ class Flat < ApplicationRecord
   has_many :visits, through: :schedules, dependent: :destroy
   has_many :rentings, dependent: :destroy
   has_many :renting_folders, through: :rentings
+  has_one_attached :technical_diagnostic
+  has_one_attached :information_leaflet
+  has_one_attached :co_owner_document
   has_many_attached :photos
   validates :name, :address, :monthly_price, :number_of_rooms, :number_of_bedrooms, :surface, :floor, :heating_system, :category, presence: true
   has_many :flows, through: :rentings

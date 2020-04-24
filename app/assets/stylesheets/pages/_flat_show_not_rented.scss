@@ -17,22 +17,27 @@ $size-screen: 85vh;
 #disposition-two-left-top {
   grid-area: one;
   border-radius: 5px;
+  box-shadow: 0 0 4px rgba(0,0,0,0.2);
+  border-radius: 5px;
 }
 
 #disposition-two-left-bottom {
   grid-area: three;
-
+  box-shadow: 0 0 4px rgba(0,0,0,0.2);
+  border-radius: 5px;
 }
 
 #disposition-two-right {
   grid-area: two;
   text-align:center;
   justify-self: stretch;
+  box-shadow: 0 0 4px rgba(0,0,0,0.2);
+  border-radius: 5px;
 }
 
 #container-card-request {
   overflow: scroll;
-  height:$size-screen - 10vh;
+  height:$size-screen - 13vh;
 }
 
 

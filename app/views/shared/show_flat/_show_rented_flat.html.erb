@@ -5,15 +5,18 @@
     </div>
   </div>
   <div id="disposition-one-left-bottom">
-    <div id="message-board">
-      <div id="feed-message-board">
-        <span class="placeholder-message-board"><p>Champ où va apparaître les messages </p></span>
-      </div>
-      <div id="create-message-board">
-        <p>Ecrire un message ou répondre</p>
+    <div class="disposition-size">
+      <div id="message-board">
+        <div id="feed-message-board">
+          <span class="placeholder-message-board"><p>Champ où va apparaître les messages </p></span>
+        </div>
+        <div id="create-message-board">
+          <p>Ecrire un message ou répondre</p>
+        </div>
       </div>
     </div>
   </div>
+
   <div id="disposition-one-right-top">
       <h4>Documents concernant mon bien</h4>
       <div id="documents-list">
@@ -22,8 +25,11 @@
         <%= link_to'#', class: 'button-sign-home documents-button' do %><p >Quittances</p><% end %>
         <%= link_to'#', class: 'button-sign-home documents-button' do %><p >Autres</p><% end %>
       </div>
+    </div>
   </div>
   <div id="disposition-one-right-bottom">
-    <%= render "shared/show_flat/card_locataire", locals: { flat: @flat } %>
+    <div class="disposition-size">
+      <%= render "shared/show_flat/card_locataire", locals: { flat: @flat } %>
+    </div>
   </div>
 </div>
