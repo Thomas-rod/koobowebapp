@@ -5,9 +5,11 @@ const pluralizeOrNot = () => {
   const coucou = document.getElementById("coucou");
   const hello = document.getElementById("hello");
   const hi = document.getElementById("hi");
+  const category = document.getElementById("my-category-input");
+  const hola = document.getElementById("hola");
+
   if (étage) {
-    étage.addEventListener('change', () => {
-      console.log(étage)
+    étage.addEventListener('input', () => {
       if (étage.value === "1") {
         coucou.innerHTML = "er";
       } else {
@@ -16,8 +18,7 @@ const pluralizeOrNot = () => {
     })
   }
   if (pièce) {
-    pièce.addEventListener('change', () => {
-      console.log(pièce)
+    pièce.addEventListener('input', () => {
       if (pièce.value === "1") {
         hello.innerHTML = "pièce";
       } else {
@@ -26,14 +27,23 @@ const pluralizeOrNot = () => {
     })
   }
   if (chambre) {
-    chambre.addEventListener('change', () => {
-      console.log(chambre)
+    chambre.addEventListener('input', () => {
       if (chambre.value === "1") {
         hi.innerHTML = "chambre";
       } else {
         hi.innerHTML = "chambres";
       }
     })
+  }
+  if (category) {
+    $('#my-category-input').on('select2:select', function (e) {
+      const data = e.params.data;
+      if (data["text"] === "appartement") {
+        hola.innerHTML = "C'est un";
+      } else {
+        hola.innerHTML = "C'est une";
+      }
+    });
   }
 }
 

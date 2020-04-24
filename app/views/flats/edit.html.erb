@@ -14,6 +14,9 @@
           <div class="special-form">
             <span class="form-part">Je nomme mon bien</span><span class="form-part"><%= f.input :name, label: false, placeholder: "Titre", input_html: { id: "my-name-input"} %></span><span class="form-part">.</span>
           </div>
+          <div class="special-form line-13">
+            <span class="form-part" id="hola">C'est un </span><span class="form-part"><%= f.input :category, label: false, input_html: {class: "select2 category", id: "my-category-input"}, collection: Flat::CATEGORY %></span><span class="form-part">.</span>
+          </div>
           <div class="special-form line-2">
             <span class="form-part">Il est au</span><span class="form-part"><%= f.input :floor, label: false, placeholder: "N étage", id: "floor_number", input_html: { id: "my-floor-input"} %></span><span class="form-part"> <span id="coucou"></span> étage de l'immeuble</span>
           </div>
