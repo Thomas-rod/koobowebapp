@@ -1,45 +1,33 @@
 $size-screen: 85vh;
 
-#disposition-card-two {
+#disposition-card-four {
   width:100%;
   height:$size-screen;
   display: grid;
   grid-template-columns: minmax(60%, 60%) minmax(35%, 35%);
-  grid-template-rows: repeat(4, 19vh);
+  grid-template-rows: $size-screen - 3;
   grid-gap: 20px;
   grid-template-areas:
         "one two"
-        "one two"
-        "one two"
-        "three two";
 }
 
-#disposition-two-left-top {
+#disposition-four-left {
   grid-area: one;
   border-radius: 5px;
   box-shadow: 0 0 4px rgba(0,0,0,0.2);
   border-radius: 5px;
+  & .schedules-container-show-edit {
+    max-width:100% !important;
+  }
 }
 
-#disposition-two-left-bottom {
-  grid-area: three;
-  box-shadow: 0 0 4px rgba(0,0,0,0.2);
-  border-radius: 5px;
-}
-
-#disposition-two-right {
+#disposition-four-right {
   grid-area: two;
   text-align:center;
   justify-self: stretch;
   box-shadow: 0 0 4px rgba(0,0,0,0.2);
   border-radius: 5px;
 }
-
-.container-card-request {
-  overflow: scroll;
-  height:$size-screen - 4;
-}
-
 
 
 // RESPONSIVNESS

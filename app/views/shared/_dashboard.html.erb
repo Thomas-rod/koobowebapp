@@ -1,10 +1,8 @@
 <div id="dashboard-js">
   <div class="dashboard-wrapper">
-    <div class="pt-3 pb-5">
-      <a href="/">
-        <p class="logo-text"><span class="k-logo">K</span>oobo</p>
-      </a>
-    </div>
+    <a href="/">
+      <p class="logo-text"><span class="k-logo">K</span>oobo</p>
+    </a>
     <div class="dashboard-line" id="appartements">
       <%= link_to flats_path do %>
         <i class="fas fa-home icon-dashboard fa-2x"></i>
@@ -15,7 +13,7 @@
         <% end %>
       <% end %>
     </div>
-    <div class="dashboard-line mb-3" id="calendrier">
+    <div class="dashboard-line" id="calendrier">
       <%= link_to schedules_path do %>
         <i class="far fa-calendar-alt icon-dashboard fa-2x"></i>
         <p>Mes visites</p>
@@ -24,13 +22,13 @@
         </span>
       <% end %>
     </div>
-    <div class="dashboard-line mb-3" id="documents">
+    <div class="dashboard-line" id="documents">
       <%= link_to rentings_path do %>
         <i class="far fa-file-alt icon-dashboard fa-2x"></i>
         <p>Mes documents</p>
       <% end %>
     </div>
-    <div class="dashboard-line mb-3" id="profil">
+    <div class="dashboard-line" id="profil">
       <a href="">
         <i class="far fa-user icon-dashboard fa-2x"></i>
         <p>Mon profil</p>
