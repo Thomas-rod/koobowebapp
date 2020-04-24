@@ -5,10 +5,10 @@
     <div style=" width:100%; position:relative;">
       <%= render partial: 'shared/navbar_dashboard', locals: { page_title: 'Appartements', notif_counter: @counter} %>
       <div class="flows">
-        <div class="info-flow">
+        <div class="info-flow grey-box">
           <p>Infos paiements locataires</p>
         </div>
-        <div class="add-flow">
+        <div class="add-flow grey-box">
           <h3>Ajouter ou supprimer un élément</h3>
           <%= link_to new_flat_path, class: "button-add-flow" do %>
             <i class="fas fa-plus-circle fa-flat" title="Ajouter un flux"></i>
@@ -17,20 +17,65 @@
             <i class="fas fa-minus-circle fa-flat" title="Supprimer un flux"></i>
           <% end %>
         </div>
-        <div class="all-flows">
-          <p>Revenus : <%= @incomes %> €</p>
-          <p>Dépenses : <%= @spendings %> €</p>
-          <p>Solde : <%= @incomes - @spendings %> €</p>
-          <% @flows.each do |flow| %>
-            <p><%= flow.title %></p>
-            <p><%= flow.renting.flat.name %></p>
-            <p><%= flow.payment_date.strftime("%d/%m/%Y") %></p>
-            <p><%= flow.amount %> €</p>
-          <% end %>
-          <%= will_paginate(@flows, :previous_label => t("précédent"), :next_label => t("suivant"), :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer) %>
+        <div class="all-flows grey-box">
+          <div class="flows-details">
+            <div class="details">
+              <div class="total">
+                <h3>Solde</h3>
+                <h3 class="green-numbers"><%= @incomes - @spendings %> €</h3>
+              </div>
+              <div class="incomes">
+                <h5>Revenus</h5>
+                <h5 class="green-numbers" id="income-number"><%= @incomes %> €</h5>
+              </div>
+              <div class="spendings">
+                <h5>Dépenses</h5>
+                <h5 id="spending-number"><%= @spendings %> €</h5>
+              </div>
+            </div>
+          </div>
+          <div class="flows-details">
+            <% @flows.each do |flow| %>
+              <div class="details dark-grey-boxes">
+                <p><%= flow.title %></p>
+                <p><%= flow.renting.flat.name %></p>
+                <p><%= flow.payment_date.strftime("%d/%m/%Y") %></p>
+                <p><%= flow.amount %> €</p>
+              </div>
+            <% end %>
+            <%= will_paginate(@flows, :previous_label => t("précédent"), :next_label => t("suivant"), :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer) %>
+          </div>
         </div>
-        <div class="flat-flows">
-          Flows appartements
+        <div class="flat-flows grey-box">
+          <div class="flows-details">
+            <% @flats.each do |flat| %>
+              <h5><%= flat.name %></h5>
+              <% @flat_flows = flat.flows %>
+              <% @flat_incomes = 0 %>
+              <% @flat_spendings = 0 %>
+              <% @flat_flows.each do |flow| %>
+                <% if flow.category == "income" %>
+                  <% @flat_incomes += flow.amount %>
+                <% else %>
+                  <% @flat_spendings += flow.amount %>
+                <% end %>
+              <% end %>
+              <div class="details">
+                <div class="total">
+                  <h3>Solde</h3>
+                  <h3 class="green-numbers"><%= @flat_incomes - @flat_spendings %> €</h3>
+                </div>
+                <div class="incomes">
+                  <h5>Revenus</h5>
+                  <h5 class="green-numbers" id="income-number"><%= @flat_incomes %> €</h5>
+                </div>
+                <div class="spendings">
+                  <h5>Dépenses</h5>
+                  <h5 id="spending-number"><%= @flat_spendings %> €</h5>
+                </div>
+              </div>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>

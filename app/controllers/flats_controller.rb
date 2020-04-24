@@ -68,7 +68,7 @@ class FlatsController < ApplicationController
   # WILL USE THIS ONE TO UPDATE WHERE FLAT IS PUBLISHED
   def disable_publication
     find_flat
-    @flat.update!(pap: false, bienici: false, leboncoin: false, seloger: false)
+    @flat.update!(pap: false, bienici: false, leboncoin: false, seloger: false, facebook: false)
     redirect_to flat_path(@flat)
   end
 
@@ -80,7 +80,6 @@ class FlatsController < ApplicationController
     @counter_appartement = 0
     @counter_profil = 0
     @counter = @counter_appartement + @counter_calendar + @counter_profil
-
   end
 
   def notif_visit
@@ -99,7 +98,7 @@ class FlatsController < ApplicationController
   end
 
   def flat_params
-    params.require(:flat).permit(:name, :address, :description, :monthly_price, :visible, :rented, :number_of_rooms, :number_of_bedrooms, :surface, :floor, :elevator, :balcony, :cellar, :parking, :furnished, :pap, :leboncoin, :bienici, :seloger, heating_system: [], photos: [], technical_diagnostic: [], information_leaflet: [], co_owner_document: [])
+    params.require(:flat).permit(:name, :address, :description, :monthly_price, :visible, :rented, :number_of_rooms, :number_of_bedrooms, :surface, :floor, :elevator, :balcony, :cellar, :parking, :furnished, :pap, :leboncoin, :bienici, :seloger, :facebook, heating_system: [], photos: [], technical_diagnostic: [], information_leaflet: [], co_owner_document: [])
   end
 
   def flat_requests
