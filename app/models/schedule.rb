@@ -8,7 +8,7 @@ class Schedule < ApplicationRecord
 
   # DO NOT REMOVE
   def to_s
-    "Appartement #{flat.id} #{start} #{self.end}"
+    "Bien #{flat.id} #{start} #{self.end}"
   end
 end
 
