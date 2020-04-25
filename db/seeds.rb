@@ -61,6 +61,11 @@ attach_photo_flat("https://images.unsplash.com/photo-1505691938895-1758d7feb511?
 attach_photo_flat("https://images.unsplash.com/photo-1451153378752-16ef2b36ad05?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60", thomas_third_flat)
 attach_photo_flat("https://images.unsplash.com/photo-1552454799-ca5cfdc612c8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=967&q=80", thomas_third_flat)
 thomas_third_flat.save
+mao_first_flat = Flat.new(user: mao, address: "92 rue Sadi Carnot, Puteaux, Île de France", description: "Voisins très bruyants, mais superbe appartement avec vue Tour Eiffel dans la rue.", monthly_price: 900, visible: true, rented: false, seloger: true, bienici: false, pap: true, leboncoin: true, name: "Puteaux appartement sympa", number_of_rooms: 1, number_of_bedrooms: 1, surface: 25, floor: 5, elevator: false, balcony: false, cellar: true, parking: false, heating_system: ["", "individuel", "électrique"], furnished: true)
+attach_photo_flat("https://images.unsplash.com/photo-1505691938895-1758d7feb511?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80", mao_first_flat)
+attach_photo_flat("https://images.unsplash.com/photo-1451153378752-16ef2b36ad05?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60", mao_first_flat)
+attach_photo_flat("https://images.unsplash.com/photo-1552454799-ca5cfdc612c8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=967&q=80", mao_first_flat)
+mao_first_flat.save
 puts "#{Flat.count} flats created"
 
 puts "Creating schedules"

@@ -75,11 +75,13 @@ class FlatsController < ApplicationController
   private
 
   def notif_counter
-    @visit_pending_flat = notif_visit
-    @counter_calendar = @visit_pending_flat.length
     @counter_appartement = 0
+    @counter_calendar = notif_visit.length
+    @counter_document = 0
+    @counter_accounting = 0
     @counter_profil = 0
-    @counter = @counter_appartement + @counter_calendar + @counter_profil
+    @counter = @counter_appartement + @counter_calendar + @counter_document + @counter_accounting + @counter_profil
+    return @counter
   end
 
   def notif_visit
@@ -90,7 +92,7 @@ class FlatsController < ApplicationController
        visit_pending_flat << visit
       end
     end
-    visit_pending_flat
+    return visit_pending_flat
   end
 
   def find_flat

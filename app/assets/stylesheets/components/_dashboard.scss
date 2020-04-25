@@ -1,102 +1,147 @@
-// WRAPPER AND SPACE
-// DASHBOARD
-
-.dashboard-wrapper {
-  background-color: $blue;
-  position: sticky;
-  top: 0;
-  height:100vh;
-  width: 275px;
-  text-align: center;
-  & > a > p {
-    padding: 5% 0 15% 0;
-  }
-  & a {
-    text-decoration:none;
-  }
-}
-
-.dashboard-line {
-  display:flex;
-  color: $white;
-  padding: 0px 0px 0px 10px;
-  margin-bottom:15px;
-  height:60px;
-  border-radius: 5px;
-  &:hover {
-    background-color: $blue-light;
-  }
-  & a {
-    display:grid;
-    grid-template-columns: repeat(12, 1fr);
-    align-items: center;
-    text-decoration:none;
-    color: $white;
-    width:100%;
-  }
-}
-
-.dashboard-line a {
-  font-size: 15px;
-  & i {
-    grid-column: 1/2;
-  }
-  & p {
-   grid-column: 3/10;
-   text-align:left;
-  }
-  & .notif-counter {
-    grid-column: 10/12;
-  }
-}
-
-// FONT
+// FONT LOGO KOOBO
 .logo-text {
   color: $white;
   font-family: $logo-font;
   font-size: 40px;
 }
 
-// ICON
-.icon-dashboard {
-  font-size: 25px;
-  width: 50px;
-  height: 50px;
-  color: $white;
-  margin-top: 0;
+// DASHBOARD WRAPPER
+.dashboard-wrapper {
+  background-color: $blue;
+  position: sticky;
+  top: 0;
+  height:100vh;
+  width: 275px;
+  display:grid;
+  grid-gap: 20px;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(8, 60px);
+  grid-template-areas:
+        "one"
+        "one"
+        "two"
+        "three"
+        "four"
+        "five"
+        "six"
+        "seven"
+  ;
+  & > a > p {
+    padding: 5% 0 15% 0;
+    text-align:center;
+  }
 }
 
+// DISPOSITION DASHBOARD
 
-.fa-home{
-  margin-top:20px;
-  //
+#dashboard {
+  grid-area: two;
 }
 
-.fa-calendar-alt{
-  margin-top:20px;
-  //
+#appartements {
+  grid-area: three;
 }
 
-.fa-file-alt{
-  margin-top:20px;
-  //
+#calendar {
+  grid-area:four;
 }
 
-.fa-user{
-  margin-top:20px;
-  //
+#documents {
+  grid-area:five;
 }
 
-// HOVER WRAPPER
+#accounting {
+  grid-area:six;
+}
+
+#profil {
+  grid-area:seven;
+}
+
+// CONTAINER_CLICKABLE_ELEMENT FOR DASHBOARD
+
+.dashboard-line {
+  border-radius: 5px;
+  padding-left: 20px;
+  border-right: 7px solid $blue;
+  &:hover:not(.active-dashboard) {
+    background-color: $blue-light;
+    border-right: 7px solid $blue-light;
+  }
+  & a {
+    align-items: center;
+    color: $white;
+    width:100%;
+    display:grid;
+    grid-template-columns: 20% 60% 13%;
+    grid-template-rows: 60px;
+    grid-template-areas:
+      "one two three"
+    ;
+  }
+}
+
+// DISPOSITION CONTAINER_CLICKABLE_ELEMENT
+
+.dashboard-line a {
+  .icon-dashboard {
+    grid-area: one;
+  }
+  .icon-dashboard {
+    grid-area: one;
+  }
+  .notif-counter {
+    grid-area: three;
+  }
+}
+
+// ACTIVE DASHBOARD
 
 .active-dashboard {
   background-color: $blue-light;
   border-right: 7px solid $coral;
 }
 
+// COUNTER
+
 #calendar-counter {
   visibility: hidden;
+  text-align:center;
   &.active {
     visibility: visible;
   }
 }
+
+// RESPONSIVNESS
+
+// Extra large devices (large desktops, 1200px and up)
+@media (max-width: 1200px) {
+  body {
+    background-color: red;
+  }
+
+}
+
+// Large devices (desktops, 992px and up)
+@media (max-width: 992px) {
+  body {
+    background-color: orange;
+  }
+
+}
+
+// Medium devices (tablets, 768px and up)
+@media (max-width: 768px) {
+  body {
+    background-color: yellow;
+  }
+
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (max-width: 576px) {
+  body {
+    background-color: gray;
+  }
+}
+
