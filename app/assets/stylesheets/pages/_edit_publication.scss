@@ -1,3 +1,9 @@
+.container-label {
+  display:flex;
+  align-items:center;
+  margin: 1% 0px;
+}
+
 .edit-pub-btn {
   padding: 15px 30px;
   background-color: #EE8572;
@@ -46,7 +52,7 @@
 }
 
 .step-form {
-  margin: 5% 9%;
+  margin: 2% 9% 0px 9%;
 }
 
 // .advance-barre {

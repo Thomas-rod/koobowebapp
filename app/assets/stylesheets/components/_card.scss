@@ -98,11 +98,6 @@
   align-items:center;
 }
 
-h2.price-calendar{
-  font-weight: initial;
-  margin: 3px 0px;
-}
-
 // CARD TRIP
 
 .card-trip {
@@ -178,7 +173,12 @@ h2.price-calendar{
 
 .info-flat {
   padding : 16px;
-  //
+  & h2, p {
+    margin:5% 0;
+  }
+  & h2:first-child {
+    margin:0;
+  }
 }
 
 .cards-home {

@@ -1,7 +1,7 @@
 <div class="dashboard-data-set" data-line="appartements">
-  <div class="d-flex">
+  <div class="container-flex">
     <%= render partial: 'shared/dashboard', locals: { flats: @flats, schedules: @schedules } %>
-    <div style=" width:100%;">
+    <div class="full">
       <div class="step-form">
         <div class="" id="calendar-publication">
           <ul id="progressbar">
@@ -12,7 +12,7 @@
           </ul>
           <p class="text-second-step">Je souhaite faire visiter mon bien</p>
           <div class="schedules-container-show-edit">
-                      <% start_date = params.fetch(:start_date, Date.today).to_date %>
+          <% start_date = params.fetch(:start_date, Date.today).to_date %>
           <% date_range = (start_date.beginning_of_week..start_date.end_of_week).to_a %>
           <div class = "simple">
             <%= link_to start_date: date_range.first - 1.day do %>
@@ -23,11 +23,11 @@
             <i class="fas fa-angle-double-right right-max"></i>
             <% end %>
           </div>
-            <div class="d-flex align-items-center my-2">
-              <div class ="blue-v-already visite-schedule"><p>Occupé</p></div>
-              <div class ="blue-v visite-schedule"><p>Libre</p></div>
-            </div>
-            <table class = "table-schedules">
+          <div class="container-label">
+            <div class ="blue-v-already visite-schedule"><p>Occupé</p></div>
+            <div class ="blue-v visite-schedule"><p>Libre</p></div>
+          </div>
+          <table class = "table-schedules">
             <thead class = "jour">
               <tr>
                 <th class="schedules-tht">h</th>
