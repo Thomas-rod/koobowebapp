@@ -23,21 +23,116 @@
               <h2>Documents validés</h2>
               <% @rentings.each do |renting| %>
               <div class="card-product-original card-doc">
-                <%= cl_image_tag renting.flat.photos.first.key%>
+                <%= image_tag renting.flat.photos.first%>
                 <div class="card-product-original-infos .info-card-doc">
                   <h2><%= renting.flat.name  %></h2>
                   <div class="documents-rentings">
                     <div class="documents-appart">
-                      <a href="#"><i class="far fa-file-pdf"></i></a>
-                      <p>Bails</p>
+                      <a href="#" data-toggle="modal" data-target="#exampleModal"><i class="far fa-file-pdf"></i></a>
+                      <!-- Modal -->
+                      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLabel"> Vos bails </h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                              <p>Bienvenue dans votre espce pour gerer vos bails</p>
+                              <hr>
+                              <% i = 0 %>
+                              <% renting.bails.each do |bail| %>
+                              <% i += 1 %>
+                                <a href="#"><i class="far fa-file-pdf"></i></a>
+                                <p>bail<%= i %></p>
+                              <% end %>
+                              <hr>
+                              <%= simple_form_for renting do |f| %>
+                              <%= f.input :bails, as: :file, input_html: { multiple: true, class: 'hidden d-none' }, label: "ajouter un bail", class: 'ajouter-doc' %>
+                              <%= f.button :submit, "Enregistrer" ,class: 'btn btn-primary' %>
+                              <% end %>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <p> bails </p>
                     </div>
                     <div class="documents-appart">
-                      <a href="#"><i class="far fa-file-pdf"></i></a>
+                      <a href="#" data-toggle="modal" data-target="#etats_des_lieux_Modal"><i class="far fa-file-pdf"></i></a>
+                       <div class="modal fade" id="etats_des_lieux_Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLabel"> Vos bails </h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                              <p>Bienvenue dans votre espce pour gerer vos Etats des Lieux</p>
+                              <hr>
+                              <% i = 0 %>
+                              <ul>
+
+                                  <li>
+
+                                  </li>
+                              </ul>
+                              <% i += 1 %>
+                                <p>Etats des lieux<%= i %></p>
+
+                              <hr>
+                              <%= simple_form_for renting do |f| %>
+                              <%= f.input :etats_des_lieux, as: :file, input_html: { multiple: true, class: 'hidden d-none' }, label: "ajouter un etats des lieux"%>
+                              <%= f.button :submit, "Enregistrer" ,class: 'btn btn-primary' %>
+                              <% end %>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                       <p>Etat des lieux</p>
                     </div>
                     <div class="documents-appart">
-                      <a href="#"><i class="far fa-file-pdf"></i></a>
-                      <p>Quitences</p>
+                      <a href="#" data-toggle="modal" data-target="#quittances_Modal"><i class="far fa-file-pdf"></i></a>
+                      <div class="modal fade" id="quittances_Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLabel"> Vos bails </h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                              <p>Bienvenue dans votre espce pour gerer vos Quittences</p>
+                              <hr>
+                              <% i = 0 %>
+                              <% renting.quittances.each do |quitance| %>
+                              <% i += 1 %>
+                                <a href="#"><i class="far fa-file-pdf"></i></a>
+                                <p>Quittance <%= i %></p>
+                              <% end %>
+                              <hr>
+                              <%= simple_form_for renting do |f| %>
+                              <%= f.input :quittances, as: :file, input_html: { multiple: true, class: 'hidden d-none' }, label: "ajouter une quittance" %>
+                              <%= f.button :submit, "Enregistrer" ,class: 'btn btn-primary' %>
+                              <% end %>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <p>Quittances</p>
                     </div>
                     <div class="documents-appart">
                       <a href="#"><i class="far fa-file-pdf"></i></a>
