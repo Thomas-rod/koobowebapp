@@ -40,18 +40,29 @@ body {
 .screen-container {
   display:grid;
   grid-template-columns: 275px calc(100% - 295px);
-  grid-template-rows: 80px calc(100% - 100px);
+  grid-template-rows: 80px calc(100vh - 100px);
   grid-gap: 20px;
   grid-template-areas:
           "one two"
           "one three";
+  .dashboard-container, .nav-container, .content-container {
+    width:97.5%;
+    height:100%;
+  }
   .dashboard-container {
     grid-area: one;
   }
   .nav-container {
     grid-area: two;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    h3 {
+      flex-grow:1;
+    }
   }
   .content-container {
+    overflow:auto;
     grid-area: three
   }
 

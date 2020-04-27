@@ -1,9 +1,12 @@
 <div class="dashboard-data-set" data-line="accounting">
-  <div class="container-flex">
-    <%= render partial: 'shared/dashboard', locals: { flats: @flats, schedules: @schedules} %>
-    <%= render 'shared/bottom_nav'%>
-    <div style=" width:100%; position:relative;">
-      <%= render partial: 'shared/navbar_dashboard', locals: { page_title: 'Biens', notif_counter: @counter} %>
+  <div class="screen-container">
+    <div class="dashboard-container full">
+      <%= render partial: 'shared/dashboard', locals: { flats: @flats, schedules: @schedules} %>
+    </div>
+    <div class="nav-container full">
+      <%= render partial: 'shared/navbar_dashboard', locals: { page_title: 'Documents', notif_counter: @counter} %>
+    </div>
+    <div class="content-container full">
       <div class="flows">
         <div class="info-flow grey-box">
           <p>Infos paiements locataires</p>
