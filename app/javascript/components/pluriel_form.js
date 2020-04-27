@@ -68,6 +68,23 @@ const pluralizeOrNot = () => {
       }
     });
   }
+
+  if (étage) {
+    étage.addEventListener('input', () => {
+      $('#my-category-input').on('select2:select', function (e) {
+        const data2 = e.params.data;
+        if (étage.value === "1" && data2["text"] === "appartement") {
+          coucou.innerHTML = "er étage de l'immeuble";
+        } else if (étage.value > "1" && data2["text"] === "appartement") {
+          coucou.innerHTML = "e étage de l'immeuble";
+        } else if (étage.value === "1" && data2["text"] === "maison") {
+          coucou.innerHTML = "étage et est située";
+        } else if (étage.value > "1" && data2["text"] === "maison") {
+          coucou.innerHTML = "étages et est située";
+        }
+      })
+    })
+  }
 }
 
 export { pluralizeOrNot };
