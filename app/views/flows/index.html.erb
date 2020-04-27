@@ -10,6 +10,9 @@
       <div class="flows">
         <div class="info-flow grey-box">
           <h3>Informations</h3>
+          <% if @flats_rented == [] %>
+            <p>Vous n'avez pas encore de bien en location</p>
+          <% end %>
           <div class="renting-part">
             <% @flats_rented = [] %>
             <% @all_rents_payed = [] %>
@@ -18,18 +21,17 @@
                 <% @renting = flat.rentings.find_by(status: "current") %>
                 <% @flats_rented << flat if @renting %>
                 <% if @renting && rent_payed?(flat) %>
-                  <div class="dark-grey-boxes">
+                  <div class="dark-grey-boxes tenant-details">
                     <p><%= @renting.renting_folder.users.first.first_name %> de votre bien <%= flat.name %> a bien payé son loyer</p>
+                    <%= link_to "Remercier", "#", class: "koobo-button" %>
                   </div>
                 <% end %>
                 <% if @renting && !rent_payed?(flat) %>
-                  <div class="dark-grey-boxes">
+                  <div class="dark-grey-boxes tenant-details">
                     <p><%= @renting.renting_folder.users.first.first_name %> de votre bien <%= flat.name %> n'a pas encore payé son loyer</p>
+                    <%= link_to "Relancer", "#", class: "koobo-button" %>
                   </div>
                 <% end %>
-              <% end %>
-              <% if @flats_rented == [] %>
-                <p>Vous n'avez pas encore de bien en location</p>
               <% end %>
             </div>
             <div class="rents-total">

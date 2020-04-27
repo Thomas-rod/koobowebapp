@@ -47,6 +47,7 @@
   background-color: #A5A4AE;
   border-radius: 5px;
   margin: 10px;
+  padding: 5px;
 }
 
 .details {
@@ -70,16 +71,17 @@
 
 .renting-part {
   display: flex;
-  align-content: center;
-  justify-content: space-between;
+  align-items: center;
 }
 
 .rents-details {
-  width: 50%;
+  width: 55%;
+  margin: 5px;
 }
 
 .rents-total {
-  width: 30%;
+  width: 25%;
+  margin: 5px;
   h5 {
     font-weight: bold;
   }
@@ -90,7 +92,13 @@
   border: 25px solid $coral;
   padding: 25px 0;
   border-radius: 50%;
+  margin: 5px;
   h3 {
     font-weight: bold;
   }
+}
+
+.tenant-details {
+  display: flex;
+  align-items: center;
 }
