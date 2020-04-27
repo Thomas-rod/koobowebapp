@@ -3,11 +3,11 @@
     <div class="dashboard-container full">
       <%= render partial: 'shared/dashboard', locals: { flats: @flats, schedules: @schedules} %>
     </div>
-    <div class="nav-container">
+    <div class="nav-container full">
       <h3><%= @flat.name %></h3>
       <%= render partial: 'shared/navbar_dashboard', locals: { page_title: 'Documents', notif_counter: @counter} %>
     </div>
-    <div class="container-disposition">
+    <div class="content-container full">
       <% if tenant?(@flat) %>
         <%= render partial: 'shared/show_flat/show_rented_flat', locals: { flat: @flat, schedules: @schedule} %>
       <% elsif @flat.rentings.select{|renting| renting.status == 'ongoing'}.empty?  || @flat.rentings.select{|renting| renting.status == 'ongoing'}.nil? %>

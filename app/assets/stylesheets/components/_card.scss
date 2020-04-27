@@ -38,7 +38,7 @@
 // CARD PRODUCT USED IN CARD PENDING SHARED
 
 .card-product {
-  width:95%;
+  width:99%;
   height: 100px;
   background: white;
   box-shadow: 0 0 4px rgba(0,0,0,0.2);
@@ -162,23 +162,8 @@
   width: 40px;
 }
 
-.card-trip-schedules{
-  max-height: 730px;
-  //
-}
-
 .card-flat {
   width: 100%;
-}
-
-.info-flat {
-  padding : 16px;
-  & h2, p {
-    margin:5% 0;
-  }
-  & h2:first-child {
-    margin:0;
-  }
 }
 
 .cards-home {
