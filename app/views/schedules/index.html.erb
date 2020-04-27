@@ -1,8 +1,12 @@
 <div class="dashboard-data-set" data-line=calendar></div>
-  <div class="container-flex">
-    <%= render partial: 'shared/dashboard', locals: { flats: @flats, schedules: @schedules} %>
-    <div style=" width:100%;">
-      <%= render 'shared/navbar_dashboard', locals: { page_title: 'Calendrier', notif_counter: @counter} %>
+  <div class="screen-container">
+    <div class="dashboard-container full">
+      <%= render partial: 'shared/dashboard', locals: { flats: @flats, schedules: @schedules} %>
+    </div>
+    <div class="nav-container full">
+      <%= render partial: 'shared/navbar_dashboard', locals: { page_title: 'Documents', notif_counter: @counter} %>
+    </div>
+    <div class="content-container full">
       <div class="container-disposition">
         <div id="disposition-card-four">
           <div id="disposition-four-left">
@@ -16,7 +20,6 @@
                 <%= image_tag schedule.flat.photos.first, class: "image" %>
                 <div class = "info-flat">
                   <h5><%= schedule.flat.name %></h5>
-                  <!-- <h6><%= schedule.flat.monthly_price.round %> € / mois</h6> -->
                   <p><%= link_to "Rajouter des créneaux" , flat_path(schedule.flat), class: "link-schedule" %></p>
                   <% accepted_visit = schedule.visits.select {|visit| visit.status == "accepted"} %>
                   <% pending_visit = schedule.visits.select {|visit| visit.status == "pending"} %>
@@ -54,13 +57,13 @@
               <% end %>
               <div class="card-trip product-flat p-3 d-none" id ="test">
                 <h2 class="p-3"> Choisissez le bien à booker </h2>
-              <% @flats.each do |flat| %>
-              <div class="card-product mt-3">
-                <%= image_tag flat.photos[0]%>
-                <div class="card-product-infos p-3">
-                  <h2><%= link_to flat.name, flat_path(flat) %></h2>
-                  <p><%=flat.monthly_price.round %>€</p>
-                </div>
+                <% @flats.each do |flat| %>
+                  <div class="card-product mt-3">
+                    <%= image_tag flat.photos[0]%>
+                    <div class="card-product-infos p-3">
+                      <h2><%= link_to flat.name, flat_path(flat) %></h2>
+                      <p><%=flat.monthly_price.round %>€</p>
+                    </div>
                 <% end %>
                 <div class="card-trip product-flat d-none" id ="test">
                   <h2> Choisissez l'appartement a booker </h2>

@@ -1,12 +1,12 @@
 <div class="dashboard-data-set" data-line="dashboard">
   <div class="screen-container">
-    <div class="dashboard-container">
+    <div class="dashboard-container full">
       <%= render partial: 'shared/dashboard', locals: { flats: @flats, schedules: @schedules} %>
     </div>
-    <div class="nav-container">
+    <div class="nav-container full">
       <%= render partial: 'shared/navbar_dashboard', locals: { page_title: 'Documents', notif_counter: @counter} %>
     </div>
-    <div class="content-container">
+    <div class="content-container full">
       <h1>Hello world</h1>
     </div>
   </div>

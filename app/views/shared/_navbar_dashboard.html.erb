@@ -1,32 +1,31 @@
-<div class="container">
-  <div class="navbar-dashboard">
-    <div class="element-right">
-      <div class="nav-item dropleft">
-        <div id="notif-container" class="<%= "active" if @counter != 0 %>">
-          <%= link_to "#" , id: "navbarDropdownNotif", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false do %>
-            <i class="far fa-bell fa-2x" id="bell-notification"></i>
-            <span id="bell-counter"><%= @counter %></span>
-          <% end %>
-          <div class="dropdown-menu drodropdown-menu-dashboard" aria-labelledby="navbarDropdownNotif">
-            <div class="dropdown-item">
-              <%= render(:partial => 'shared/notifications') %>
-            </div>
-          </div>
+<div class="navbar-dashboard">
+  <div class="nav-item dropleft">
+    <div id="notif-container" class="<%= "active" if @counter != 0 %>">
+      <%= link_to "#" , id: "navbarDropdownNotif", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false do %>
+        <i class="far fa-bell fa-2x" id="bell-notification"></i>
+        <div id="bell-counter">
+          <%= @counter %>
         </div>
-      </div>
-      <div class="nav-item dropleft">
-          <% if current_user.photo.attached? %>
-            <%= link_to '#', id: "navbarDropdownProfil", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false do %>
-              <%= image_tag current_user.photo, class: "avatar-bordered" %>
-            <% end %>
-          <% else %>
-            <%= image_tag ("avatar.png"), class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-          <% end %>
-        <div class="dropdown-menu drop-profil" aria-labelledby="navbarDropdownProfil">
-          <%= link_to 'Profil', flats_path, class: 'dropdown-item' %>
-          <%= link_to 'Se déconnecter', destroy_user_session_path, class: 'dropdown-item', method: 'delete' %>
+      <% end %>
+      <div class="dropdown-menu drodropdown-menu-dashboard" aria-labelledby="navbarDropdownNotif">
+        <div class="dropdown-item">
+          <%= render(:partial => 'shared/notifications') %>
         </div>
       </div>
     </div>
   </div>
+  <div class="nav-item dropleft" id="user">
+    <% if current_user.photo.attached? %>
+      <%= link_to '#', id: "navbarDropdownProfil", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false do %>
+        <%= image_tag current_user.photo, class: "avatar-large bordered-gray" %>
+      <% end %>
+    <% else %>
+      <%= image_tag ("avatar.png"), class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+    <% end %>
+    <div class="dropdown-menu drop-profil" aria-labelledby="navbarDropdownProfil">
+      <%= link_to 'Profil', flats_path, class: 'dropdown-item' %>
+      <%= link_to 'Se déconnecter', destroy_user_session_path, class: 'dropdown-item', method: 'delete' %>
+    </div>
+  </div>
 </div>
+
