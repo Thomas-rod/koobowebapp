@@ -81,20 +81,20 @@ puts "#{Schedule.count} created"
 
 puts "Creating visits"
 
-first_visit = Visit.create!(schedule: first_schedule, user:roxane, status: 'denied')
-second_visit = Visit.create!(schedule: first_schedule, user:mao, status: 'accepted')
-third_visit = Visit.create!(schedule: first_schedule, user:john, status: 'denied')
-fourth_visit = Visit.create!(schedule: second_schedule, user:roxane)
-fifth_visit = Visit.create!(schedule: second_schedule, user:mao)
-sixth_visit = Visit.create!(schedule: second_schedule, user:john)
-seventh_visit = Visit.create!(schedule: third_schedule, user:roxane)
-height_visit = Visit.create!(schedule: third_schedule, user:mao)
-nine_visit = Visit.create!(schedule: third_schedule, user:john)
-ten_visit = Visit.create!(schedule: fourth_schedule, user:roxane)
-eleven_visit = Visit.create!(schedule: fourth_schedule, user:mao)
-twelve_visit = Visit.create!(schedule: fourth_schedule, user:john)
-thirteen_visit = Visit.create!(schedule: fifth_schedule, user:roxane, status: 'accepted')
-fourteen_visit = Visit.create!(schedule: sixth_schedule, user:mao, status: 'accepted')
+first_visit = Visit.create!(schedule: first_schedule, user: roxane, status: 'denied')
+second_visit = Visit.create!(schedule: first_schedule, user: mao, status: 'accepted')
+third_visit = Visit.create!(schedule: first_schedule, user: john, status: 'denied')
+fourth_visit = Visit.create!(schedule: second_schedule, user: roxane)
+fifth_visit = Visit.create!(schedule: second_schedule, user: mao)
+sixth_visit = Visit.create!(schedule: second_schedule, user: john)
+seventh_visit = Visit.create!(schedule: third_schedule, user: roxane)
+height_visit = Visit.create!(schedule: third_schedule, user: mao)
+nine_visit = Visit.create!(schedule: third_schedule, user: john)
+ten_visit = Visit.create!(schedule: fourth_schedule, user: roxane)
+eleven_visit = Visit.create!(schedule: fourth_schedule, user: mao)
+twelve_visit = Visit.create!(schedule: fourth_schedule, user: john)
+thirteen_visit = Visit.create!(schedule: fifth_schedule, user: roxane, status: 'accepted')
+fourteen_visit = Visit.create!(schedule: sixth_schedule, user: mao, status: 'accepted')
 fourteen_visit.created_at = "2019-01-20 15:07:07"
 fifteen_visit = Visit.create!(schedule: seventh_schedule, user:thomas, status:'accepted')
 puts "#{Visit.count} created"
@@ -129,13 +129,13 @@ john_thomas_renting = Renting.create!(flat: thomas_second_flat, renting_folder: 
 puts "#{Renting.count} renting created"
 
 puts "Creating flows"
-Flow.create!(title: "Loyer", renting: roxane_thomas_renting, payment_date: Time.new(2020, 3, 9, 8, 30, 0), month_rent: Date.new(2001,2,3), amount: 700, category: "income")
-Flow.create!(title: "Réparations", renting: mao_thomas_renting, payment_date: Time.new(2020, 3, 9, 8, 30, 0), month_rent: Date.new(2001,2,3), amount: 800, category: "spending")
-Flow.create!(title: "Loyer", renting: john_thomas_renting, payment_date: Time.new(2020, 3, 9, 8, 30, 0), month_rent: Date.new(2001,2,3), amount: 800, category: "income")
-Flow.create!(title: "Loyer", renting: roxane_thomas_renting, payment_date: Time.new(2020, 3, 9, 8, 30, 0), month_rent: Date.new(2001,2,3), amount: 900, category: "income")
-Flow.create!(title: "Loyer", renting: roxane_thomas_renting, payment_date: Time.new(2020, 3, 9, 8, 30, 0), month_rent: Date.new(2001,2,3), amount: 700, category: "income")
-Flow.create!(title: "Loyer", renting: roxane_thomas_renting, payment_date: Time.new(2020, 3, 9, 8, 30, 0), month_rent: Date.new(2001,2,3), amount: 700, category: "income")
-Flow.create!(title: "Réparations", renting: roxane_thomas_renting, payment_date: Time.new(2020, 3, 9, 8, 30, 0), month_rent: Date.new(2001,2,3), amount: 66.50, category: "spending")
+Flow.create!(title: "Loyer", renting: roxane_thomas_renting, payment_date: Time.new(2020, 3, 9, 8, 30, 0), month_rent: Date.new(2020,4,3).mon, amount: 1100, category: "income")
+Flow.create!(title: "Réparations", renting: mao_thomas_renting, payment_date: Time.new(2020, 3, 9, 8, 30, 0), month_rent: Date.new(2001,2,3).mon, amount: 800, category: "spending")
+Flow.create!(title: "Loyer", renting: john_thomas_renting, payment_date: Time.new(2020, 3, 9, 8, 30, 0), month_rent: Date.new(2001,2,3).mon, amount: 800, category: "income")
+Flow.create!(title: "Loyer", renting: roxane_thomas_renting, payment_date: Time.new(2020, 3, 9, 8, 30, 0), month_rent: Date.new(2001,2,3).mon, amount: 900, category: "income")
+Flow.create!(title: "Loyer", renting: roxane_thomas_renting, payment_date: Time.new(2020, 3, 9, 8, 30, 0), month_rent: Date.new(2001,2,3).mon, amount: 700, category: "income")
+Flow.create!(title: "Loyer", renting: roxane_thomas_renting, payment_date: Time.new(2020, 3, 9, 8, 30, 0), month_rent: Date.new(2001,2,3).mon, amount: 700, category: "income")
+Flow.create!(title: "Réparations", renting: roxane_thomas_renting, payment_date: Time.new(2020, 3, 9, 8, 30, 0), month_rent: Date.new(2001,2,3).mon, amount: 66.50, category: "spending")
 puts puts "#{Flow.count} flows created"
 
 puts "G O O D     L U C K      G U Y S"

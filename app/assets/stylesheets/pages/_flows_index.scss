@@ -67,3 +67,30 @@
 #spending-number {
   color: $coral;
 }
+
+.renting-part {
+  display: flex;
+  align-content: center;
+  justify-content: space-between;
+}
+
+.rents-details {
+  width: 50%;
+}
+
+.rents-total {
+  width: 30%;
+  h5 {
+    font-weight: bold;
+  }
+}
+
+.rents-stats {
+  width: 20%;
+  border: 25px solid $coral;
+  padding: 25px 0;
+  border-radius: 50%;
+  h3 {
+    font-weight: bold;
+  }
+}
