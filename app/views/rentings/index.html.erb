@@ -23,7 +23,7 @@
               <h2>Documents validés</h2>
               <% @rentings.each do |renting| %>
               <div class="card-product-original card-doc">
-                <%= cl_image_tag renting.flat.photos.first.key%>
+                <%= image_tag renting.flat.photos.first%>
                 <div class="card-product-original-infos .info-card-doc">
                   <h2><%= renting.flat.name  %></h2>
                   <div class="documents-rentings">

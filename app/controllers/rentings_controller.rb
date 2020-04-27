@@ -1,15 +1,8 @@
-class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [ :home ]
-  before_action :notif_visit, :notif_counter, only: [:dashboard]
+class RentingsController < ApplicationController
+  before_action :notif_visit, :notif_counter;
 
-  def home
-  end
-
-  def dashboard
-
-  end
-
-  def pricing
+  def index
+    @rentings = current_user.rentings
   end
 
   private

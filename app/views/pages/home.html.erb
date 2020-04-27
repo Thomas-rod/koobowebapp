@@ -54,7 +54,7 @@
           Pas de problème ! Nous nous chargeons de guider votre locataire dans l'inscription et les démarches.
         </p>
         <% if user_signed_in? %>
-          <%= link_to "C'est parti !", flats_path, class: 'button-subscribe-home' %>
+          <%= link_to "C'est parti !", dashboard_path, class: 'button-subscribe-home' %>
         <% else %>
           <%= link_to "C'est parti !", new_user_registration_path, class: 'button-subscribe-home' %>
         <% end %>
@@ -79,7 +79,7 @@
             1 seul clic pour diffuser votre annonce sur les sites les plus populaires. Gagnez du temps dans la constitution des dossiers de location. De la candidature à la sélection du locataire, un service simplifié et automatisé.
           </p>
           <% if user_signed_in? %>
-            <%= link_to "C'est parti !", flats_path, class: 'button-subscribe-home' %>
+            <%= link_to "C'est parti !", dashboard_path, class: 'button-subscribe-home' %>
           <% else %>
             <%= link_to "C'est parti !", new_user_registration_path, class: 'button-subscribe-home' %>
           <% end %>

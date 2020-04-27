@@ -35,3 +35,24 @@ body {
   width:100%;
   height:100%;
 }
+// TEST DASHBOARD VIEW CONTAINER GRID
+
+.screen-container {
+  display:grid;
+  grid-template-columns: 275px calc(100% - 295px);
+  grid-template-rows: 80px calc(100% - 100px);
+  grid-gap: 20px;
+  grid-template-areas:
+          "one two"
+          "one three";
+  .dashboard-container {
+    grid-area: one;
+  }
+  .nav-container {
+    grid-area: two;
+  }
+  .content-container {
+    grid-area: three
+  }
+
+}

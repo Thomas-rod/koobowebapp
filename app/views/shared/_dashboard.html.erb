@@ -3,20 +3,25 @@
     <a href="/">
       <p class="logo-text"><span class="k-logo">K</span>oobo</p>
     </a>
+    <div class="dashboard-line" id="dashboard">
+      <%= link_to dashboard_path do %>
+        <i class="fas fa-columns icon-dashboard fa-2x"></i>
+        <p>Dashboard</p>
+      <% end %>
+    </div>
     <div class="dashboard-line" id="appartements">
       <%= link_to flats_path do %>
         <i class="fas fa-home icon-dashboard fa-2x"></i>
-        <p>Mes biens</p>
-        <% if @counter_appartement == 0 %>
-        <% else %>
-          <span id="notif-counter"><%= @counter_appartement %></span>
-        <% end %>
+        <p>Biens</p>
+        <span class="notif-counter <%= "active" if @counter_appartement != 0 %>" id="calendar-counter">
+          <%= @counter_appartement %>
+        </span>
       <% end %>
     </div>
-    <div class="dashboard-line" id="calendrier">
+    <div class="dashboard-line" id="calendar">
       <%= link_to schedules_path do %>
         <i class="far fa-calendar-alt icon-dashboard fa-2x"></i>
-        <p>Mes visites</p>
+        <p>Calendrier</p>
         <span class="notif-counter <%= "active" if @counter_calendar != 0 %>" id="calendar-counter">
           <%= @counter_calendar %>
         </span>
@@ -25,17 +30,29 @@
     <div class="dashboard-line" id="documents">
       <%= link_to rentings_path do %>
         <i class="far fa-file-alt icon-dashboard fa-2x"></i>
-        <p>Mes documents</p>
+        <p>Documents</p>
+        <span class="notif-counter <%= "active" if @counter_document != 0 %>" id="calendar-counter">
+          <%= @counter_document %>
+        </span>
       <% end %>
+    </div>
+    <div class="dashboard-line" id="accounting">
+      <%= link_to flows_path do %>
+        <i class="fas fa-calculator icon-dashboard fa-2x"></i>
+        <p>Comptabilité</p>
+        <span class="notif-counter <%= "active" if @counter_accounting != 0 %>" id="calendar-counter">
+          <%= @counter_accounting %>
+        </span>
+      <% end %>
+      </a>
     </div>
     <div class="dashboard-line" id="profil">
       <a href="">
         <i class="far fa-user icon-dashboard fa-2x"></i>
-        <p>Mon profil</p>
-        <% if @counter_profil == 0 %>
-        <% else %>
-          <span class="notif-counter"><%= @counter_profil %></span>
-        <% end %>
+        <p>Profil</p>
+        <span class="notif-counter <%= "active" if @counter_profil != 0 %>" id="calendar-counter">
+          <%= @counter_profil %>
+        </span>
       </a>
     </div>
   </div>
