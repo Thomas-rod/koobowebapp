@@ -129,6 +129,7 @@ john_thomas_renting = Renting.create!(flat: thomas_second_flat, renting_folder: 
 puts "#{Renting.count} renting created"
 
 puts "Creating flows"
+Flow.create!(title: "Réparations", renting: roxane_thomas_renting, payment_date: Time.new(2020, 3, 9, 8, 30, 0), month_rent: Date.new(2020,4,3).mon, amount: 1100, category: "spending")
 Flow.create!(title: "Loyer", renting: roxane_thomas_renting, payment_date: Time.new(2020, 3, 9, 8, 30, 0), month_rent: Date.new(2020,4,3).mon, amount: 1100, category: "income")
 Flow.create!(title: "Réparations", renting: mao_thomas_renting, payment_date: Time.new(2020, 3, 9, 8, 30, 0), month_rent: Date.new(2001,2,3).mon, amount: 800, category: "spending")
 Flow.create!(title: "Loyer", renting: john_thomas_renting, payment_date: Time.new(2020, 3, 9, 8, 30, 0), month_rent: Date.new(2001,2,3).mon, amount: 800, category: "income")
