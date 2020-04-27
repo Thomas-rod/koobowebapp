@@ -1,8 +1,12 @@
 <div class="dashboard-data-set" data-line="documents">
-  <div class="container-flex index-appart">
-    <%= render partial: 'shared/dashboard', locals: { flats: @flats, schedules: @schedules} %>
-    <div class="container-site" style=" width:100%;">
+  <div class="screen-container">
+    <div class="dashboard-container full">
+      <%= render partial: 'shared/dashboard', locals: { flats: @flats, schedules: @schedules} %>
+    </div>
+    <div class="nav-container full">
       <%= render partial: 'shared/navbar_dashboard', locals: { page_title: 'Documents', notif_counter: @counter} %>
+    </div>
+    <div class="content-container full">
       <div class="container-index-rentings">
       <h1>Documents</h1>
         <div class="grid-rentings">
