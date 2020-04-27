@@ -19,12 +19,25 @@ $size-screen: 85vh;
   box-shadow: 0 0 4px rgba(0,0,0,0.2);
   grid-area: one;
   border-radius: 5px;
+  > .disposition-size h5, p {
+    text-align:center;
+  }
+  > .disposition-size p {
+    margin-bottom: 6px;
+  }
 }
 
 #disposition-three-left-bottom {
   box-shadow: 0 0 4px rgba(0,0,0,0.2);
   grid-area: three;
+  border-radius: 5px;
+}
 
+#container-card-tenant-ongoing-flat {
+  display:flex;
+  justify-content:space-around;
+  align-items:center;
+  flex-grow:1;
 }
 
 #disposition-three-right {
@@ -32,6 +45,7 @@ $size-screen: 85vh;
   grid-area: two;
   text-align:center;
   justify-self: stretch;
+  border-radius: 5px;
 }
 
 

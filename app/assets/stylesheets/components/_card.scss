@@ -69,7 +69,9 @@
 }
 
 .card-product-infos {
-  height:100%;
+  height:80%;
+  width:65%;
+  margin: auto 2.5%;
   display:flex;
   flex-direction: column;
   justify-content:space-around;
@@ -79,7 +81,8 @@
 
 .card-product-infos-pending {
   height:80%;
-  width:100%;
+  width:65%;
+  margin: auto 2.5%;
   display:flex;
   justify-content:space-around;
   align-items:flex-start;
@@ -93,11 +96,6 @@
   display:flex;
   justify-content:space-around;
   align-items:center;
-}
-
-h2.price-calendar{
-  font-weight: initial;
-  margin: 3px 0px;
 }
 
 // CARD TRIP
@@ -175,7 +173,12 @@ h2.price-calendar{
 
 .info-flat {
   padding : 16px;
-  //
+  & h2, p {
+    margin:5% 0;
+  }
+  & h2:first-child {
+    margin:0;
+  }
 }
 
 .cards-home {
@@ -185,16 +188,23 @@ h2.price-calendar{
   margin-top: 30px;
 }
 
+// USED IN FLAT_SHOW_ONGOING_RENTED
+
+.card-tenant_ongoing_flat{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:space-around;
+}
+
 // USED IN CARD LOCATAIRE SHARED
 
 .card-locataire {
-  color:white;
+  color:$blue;
   width: 100%;
   height: 100%;
   border-radius: 15px;
-  background-color: $blue;
-  box-shadow: 0 0px 10px rgba(0,0,0,0.4);
-  padding: 2% 5%;
+  background-color: white;
   display:grid;
   grid-template-columns: repeat(3, 1fr);
   grid-auto-rows: 1fr;
@@ -223,7 +233,7 @@ h2.price-calendar{
   height: 50px;
   border-radius: 30%;
   &.inactive {
-    opacity:0.3;
+    opacity: 0.15;
   }
 }
 
@@ -234,10 +244,7 @@ h2.price-calendar{
   width: 100%;
   height: 100%;
   position:relative;
-  border-radius: 15px;
   background-color: white;
-  box-shadow: 0 0px 2px rgba(0,0,0,0.2);
-  padding: 2% 5%;
   display:grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: 20% 50% 20%;
@@ -262,8 +269,6 @@ h2.price-calendar{
     text-align:center;
   }
 }
-
-
 
 .cards-locataire-platforms {
   grid-area: two;
@@ -298,6 +303,7 @@ h2.price-calendar{
   border-radius: 5px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
+
 // CARD FOR RENTINGS
 .card-product-original {
   overflow: hidden;

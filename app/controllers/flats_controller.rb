@@ -68,19 +68,20 @@ class FlatsController < ApplicationController
   # WILL USE THIS ONE TO UPDATE WHERE FLAT IS PUBLISHED
   def disable_publication
     find_flat
-    @flat.update!(pap: false, bienici: false, leboncoin: false, seloger: false)
+    @flat.update!(pap: false, bienici: false, leboncoin: false, seloger: false, facebook: false)
     redirect_to flat_path(@flat)
   end
 
   private
 
   def notif_counter
-    @visit_pending_flat = notif_visit
-    @counter_calendar = @visit_pending_flat.length
     @counter_appartement = 0
+    @counter_calendar = notif_visit.length
+    @counter_document = 0
+    @counter_accounting = 0
     @counter_profil = 0
-    @counter = @counter_appartement + @counter_calendar + @counter_profil
-
+    @counter = @counter_appartement + @counter_calendar + @counter_document + @counter_accounting + @counter_profil
+    return @counter
   end
 
   def notif_visit
@@ -91,7 +92,7 @@ class FlatsController < ApplicationController
        visit_pending_flat << visit
       end
     end
-    visit_pending_flat
+    return visit_pending_flat
   end
 
   def find_flat
@@ -99,25 +100,55 @@ class FlatsController < ApplicationController
   end
 
   def flat_params
-    params.require(:flat).permit(:name, :address, :description, :monthly_price, :visible, :rented, :number_of_rooms, :number_of_bedrooms, :surface, :floor, :elevator, :balcony, :cellar, :parking, :furnished, :pap, :leboncoin, :bienici, :seloger, heating_system: [], photos: [])
+    params.require(:flat).permit(:name, :address, :description, :monthly_price, :visible, :rented, :number_of_rooms, :number_of_bedrooms, :surface, :floor, :elevator, :balcony, :cellar, :parking, :furnished, :pap, :leboncoin, :bienici, :seloger, :facebook, :category, heating_system: [], photos: [], technical_diagnostic: [], information_leaflet: [], co_owner_document: [])
   end
 
   def flat_requests
     @flat_requests = []
-    unless current_user.schedules.nil?
-      current_user.schedules.each do |schedule|
-        unless schedule.visits.nil?
-          schedule.visits.order(:status, :created_at).each do |visit|
-            @flat_requests << visit
-            unless visit.renting_folders.nil?
-              visit.renting_folders.each do |renting_folder|
-                @flat_requests << renting_folder
+
+    # FIND THE LAST RENTING FROM THIS FLAT (IF THERE IS ONE)
+    if !@flat.rentings.select{ |renting| !renting.end_date.nil? }.empty?
+      last_renting_date = @flat.rentings.select{ |renting| !renting.end_date.nil? }.last.end_date
+      # CHECK IF THERE IS SCHEDULE FOR THIS FLAT
+      unless @flat.schedules.nil? || @flat.schedules.empty?
+        @flat.schedules.select{ |schedule| schedule.start > last_renting_date}.each do |schedule|
+          # CHECK IF THERE IS VISIT FOR THIS SCHEDULE
+          unless schedule.visits.order(:status, :created_at).nil? || schedule.visits.order(:status, :created_at).empty?
+            schedule.visits.order(:status, :created_at).each do |visit|
+              # ADD ALL VISITS TO FLAT_REQUEST
+              @flat_requests << visit
+              # CHECK IF THERE IS RENTING_FOLDER FOR VISITS
+              unless visit.renting_folders.nil?
+                visit.renting_folders.each do |renting_folder|
+                  # ADD ALL RENTING_FOLDER TO FLAT_REQUEST
+                  @flat_requests << renting_folder
+                end
+              end
+            end
+          end
+        end
+      end
+    else
+      unless @flat.schedules.nil? || @flat.schedules.empty?
+        @flat.schedules.each do |schedule|
+          # CHECK IF THERE IS VISIT FOR THIS SCHEDULE
+          unless schedule.visits.order(:status, :created_at).nil? || schedule.visits.order(:status, :created_at).empty?
+            schedule.visits.order(:status, :created_at).each do |visit|
+              # ADD ALL VISITS TO FLAT_REQUEST
+              @flat_requests << visit
+              # CHECK IF THERE IS RENTING_FOLDER FOR VISITS
+              unless visit.renting_folders.nil?
+                visit.renting_folders.each do |renting_folder|
+                  # ADD ALL RENTING_FOLDER TO FLAT_REQUEST
+                  @flat_requests << renting_folder
+                end
               end
             end
           end
         end
       end
     end
+
     return @flat_requests
   end
 

@@ -36,7 +36,7 @@
   //
 }
 
-// USER IN FLAT INDEX
+// USED IN FLAT INDEX
 
 .fa-flat {
   color: $coral-light;
@@ -48,4 +48,18 @@
 
 .fa-plus-circle{
   margin-bottom: 22px;
+}
+
+
+// ICON DASHBOARD
+.icon-dashboard {
+  font-size: 25px;
+  width: 50px;
+  height: 50px;
+  color: $white;
+  margin-top: 0;
+}
+
+.fa-home, .fa-calendar-alt, .fa-file-alt, .fa-user, .fa-columns, .fa-calculator {
+  margin-top:20px;
 }
