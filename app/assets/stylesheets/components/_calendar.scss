@@ -5,10 +5,10 @@
 }
 
 .table-schedules{
-  display: block;
-  height:100%;
+  // display: block;
+  // height:100%;
   max-height:500px;
-  overflow: auto;
+  overflow-y: auto;
   border-collapse: collapse;
   border: 1px solid rgba(232, 232, 232, 1);
   border-radius: 5px;
