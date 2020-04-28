@@ -23,25 +23,11 @@ class FlatsController < ApplicationController
   def create
     @flat = Flat.new(flat_params)
     @flat.user = current_user
-      if @flat.save
+      if @flat.save!
         redirect_to edit_publication_path(@flat)
       else
         render :new
       end
-  end
-
-  def edit_publication
-    find_flat
-  end
-
-   def update_publication
-    find_flat
-    @flat.update(flat_params)
-    redirect_to recap_publication_path(@flat)
-  end
-
-  def recap_publication
-    find_flat
   end
 
   def edit
@@ -49,10 +35,39 @@ class FlatsController < ApplicationController
     render :edit
   end
 
+  def edit_publication
+    find_flat
+  end
+
+  def recap_publication
+    find_flat
+  end
+
   def update
     find_flat
-    @flat.update(flat_params)
+    @flat.update!(flat_params)
     redirect_to edit_publication_path(@flat)
+  end
+
+  def update_publication
+    find_flat
+    @flat.update!(flat_params)
+    redirect_to recap_publication_path(@flat)
+  end
+
+  def upload_document
+    find_flat
+    which_document = which_document_upload
+    type_document = params[:flat][which_document.to_sym].content_type
+    file_name = params[:flat][which_document.to_sym].original_filename
+    path_to_file = params[:flat][which_document.to_sym].tempfile
+    @flat.send(which_document).attach(
+      io: File.open(path_to_file),
+      filename: file_name,
+      content_type: 'application/pdf',
+      identify: false
+      )
+    redirect_to flat_path(@flat)
   end
 
   # HELPER OTHERS
@@ -74,6 +89,27 @@ class FlatsController < ApplicationController
 
   private
 
+  def find_flat
+    @flat = Flat.find(params[:id])
+  end
+
+  def flat_params
+    params.require(:flat).permit(:name, :address, :description, :monthly_price, :visible, :rented, :number_of_rooms, :number_of_bedrooms, :surface, :floor, :elevator, :balcony, :cellar, :parking, :furnished, :pap, :leboncoin, :bienici, :seloger, :facebook, :category, heating_system: [], photos: [], technical_diagnostic: [], information_leaflet: [], co_owner_document: [])
+  end
+
+  def which_document_upload
+    document = ""
+    if !params[:flat][:technical_diagnostic].nil?
+      return "technical_diagnostic"
+    elsif !params[:flat][:information_leaflet].nil?
+      return "information_leaflet"
+    elsif !params[:flat][:co_owner_document].nil?
+      return "co_owner_document"
+    else
+      raise
+    end
+  end
+
   def notif_counter
     @counter_appartement = 0
     @counter_calendar = notif_visit.length
@@ -93,14 +129,6 @@ class FlatsController < ApplicationController
       end
     end
     return visit_pending_flat
-  end
-
-  def find_flat
-    @flat = Flat.find(params[:id])
-  end
-
-  def flat_params
-    params.require(:flat).permit(:name, :address, :description, :monthly_price, :visible, :rented, :number_of_rooms, :number_of_bedrooms, :surface, :floor, :elevator, :balcony, :cellar, :parking, :furnished, :pap, :leboncoin, :bienici, :seloger, :facebook, :category, heating_system: [], photos: [], technical_diagnostic: [], information_leaflet: [], co_owner_document: [])
   end
 
   def flat_requests
