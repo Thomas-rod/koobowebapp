@@ -5,15 +5,30 @@
 }
 
 .container-input-files-accordion {
+  margin: 2.5%;
   height:95%;
-  // width:95%;
-  display:flex;
-  // flex-direction:column;
-  justify-content:space-around;
+  display:grid;
+  grid-gap: 0px 20px;
+  grid-template-columns: 35% 65%;
+  grid-template-rows: 20% 80%;
+  grid-template-areas:
+    "one one"
+    "two three"
+  ;
   align-items:center;
-  &.koobo-button {
-    // flex-shrink:1;
+  p {
+    grid-area: one;
+    width:95%;
   }
+  .file-upload {
+    grid-area: two;
+   }
+   .text-input-files-accordion {
+    grid-area: three;
+    p {
+      text-align:start !important;
+    }
+   }
 }
 
 .input-files-accordion {
@@ -26,10 +41,12 @@
 }
 
 .file-upload {
-  display:flex;
-  justify-content:space-around;
-  align-items:center;
-
+  .form-group {
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+    margin-bottom: 0rem;
+  }
 }
 
 .add-file-clickable {
@@ -54,20 +71,17 @@
     height:100%;
     width:100%;
   }
-  &.good {
-    background-color: rgba($green, 0.2)
-  }
 }
 
-.not-activate {
-  display:none;
+.uploaded-document {
+  // background-color: rgba($green, 0.3);
+  color:$green;
+  font-size:32px;
 }
 
-.activate {
-  display:block;
-}
 
 // INSIDE OTHER DOCUMENTS
+
 #pills-container {
   height:85%;
 }
@@ -107,6 +121,9 @@
 .tab-pane {
   form {
     width:100%;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
   }
 }
 
@@ -129,18 +146,6 @@
     color:inherit;
     background-color:inherit;
     opacity:1
-  }
-  &:hover:not(.good) {
-    color: $blue;
-    background-color: $white;
-  }
-  &:hover:not(:not(.good)) {
-    color: $blue;
-    background-color:rgba($green, 0.4);
-  }
-  &.active.good {
-    color: green;
-    background-color:rgba($green, 0.4) !important;
   }
 }
 

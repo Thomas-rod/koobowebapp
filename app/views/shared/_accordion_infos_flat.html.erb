@@ -63,37 +63,67 @@
           <div class="col-7">
             <div class="tab-content" id="v-pills-tabContent">
               <div class="tab-pane fade show active" id="v-pills-technical-diagnostic" role="tabpanel" aria-labelledby="v-pills-technical-diagnostic-tab">
-                  <div class="container-input-files-accordion">
-                    <div class="file-upload">
-                      <%= simple_form_for @flat, url: upload_document_path, method: 'post' do |f| %>
+                <div class="container-input-files-accordion">
+                  <p>Le diagnistic technique</p>
+                  <%= link_to "https://www.anil.org/fileadmin/ANIL/Editions_grand_public/serie_rapports_locatifs/quels_diagnostics_louer.pdf", target: '_blank' do %>
+                    <i class="fas fa-question-circle question-icon"></i>
+                  <% end %>
+                  <div class="file-upload">
+                    <%= simple_form_for @flat, url: upload_document_path, method: 'post' do |f| %>
+                      <% if @flat.technical_diagnostic.attached? %>
+                        <%= f.input :technical_diagnostic, as: :file, input_html: { class: 'hidden d-none' }, label: ('<i class="fas fa-check-circle"></i>').html_safe, label_html: { class: "add-file-clickable uploaded-document"} %>
+                      <% else %>
                         <%= f.input :technical_diagnostic, as: :file, input_html: { class: 'hidden d-none' }, label: ('<i class="far fa-file-alt"></i>').html_safe, label_html: { class: "add-file-clickable"} %>
-                        <%= f.submit "Ajouter", class: "koobo-button" %>
                       <% end %>
-                    </div>
-                    <div class="text-input-files-accordion">
-                      <p><i>Le dossier doit être fourni lors de la signature du bail, on compte sur toi !</i></p>
-                    </div>
+                      <%= f.submit "Ajouter", class: "koobo-button" %>
+                    <% end %>
                   </div>
+                  <div class="text-input-files-accordion">
+                    <p><i>Le dossier doit être fourni lors de la signature du bail, on compte sur toi !</i></p>
+                  </div>
+                </div>
               </div>
               <div class="tab-pane fade " id="v-pills-information-leaflet" role="tabpanel" aria-labelledby="v-pills-information-leaflet-tab">
-                <%= simple_form_for @flat, url: upload_document_path, method: 'post' do |f| %>
-                  <div class="container-input-files-accordion">
-                    <div class="input-files-accordion">
-                      <%= f.input :information_leaflet, as: :file, input_html: { class: 'hidden d-none' }, label: ('<i class="far fa-file-alt"></i>').html_safe, label_html: { class: 'add-file-clickable'} %>
-                    </div>
-                    <%= f.submit "Ajouter", class:"koobo-button" %>
+                <div class="container-input-files-accordion">
+                  <p> La notice d'information</p>
+                  <%= link_to "https://droit-finances.commentcamarche.com/download/telecharger-334-location-notice-d-information-type", target: '_blank' do %>
+                    <i class="fas fa-question-circle question-icon"></i>
+                  <% end %>
+                  <div class="file-upload">
+                    <%= simple_form_for @flat, url: upload_document_path, method: 'post' do |f| %>
+                      <% if @flat.information_leaflet.attached? %>
+                        <%= f.input :information_leaflet, as: :file, input_html: { class: 'hidden d-none' }, label: ('<i class="fas fa-check-circle"></i>').html_safe, label_html: { class: "add-file-clickable uploaded-document"} %>
+                      <% else %>
+                        <%= f.input :information_leaflet, as: :file, input_html: { class: 'hidden d-none' }, label: ('<i class="far fa-file-alt"></i>').html_safe, label_html: { class: "add-file-clickable"} %>
+                      <% end %>
+                      <%= f.submit "Ajouter", class: "koobo-button" %>
+                    <% end %>
                   </div>
-                <% end %>
+                  <div class="text-input-files-accordion">
+                    <p><i>Le dossier doit être fourni lors de la signature du bail, on compte sur toi !</i></p>
+                  </div>
+                </div>
               </div>
               <div class="tab-pane fade" id="v-pills-co-owner-document" role="tabpanel" aria-labelledby="v-pills-co-owner-document-tab">
-                <%= simple_form_for @flat, url: upload_document_path, method: 'post' do |f| %>
-                  <div class="container-input-files-accordion">
-                    <div class="input-files-accordion">
-                      <%= f.input :co_owner_document, as: :file, input_html: { class: 'hidden d-none' }, label: ('<i class="far fa-file-alt"></i>').html_safe, label_html: { class: 'add-file-clickable'} %>
-                    </div>
-                    <%= f.submit "Ajouter", class:"koobo-button" %>
+                <div class="container-input-files-accordion">
+                  <p> Le réglement de co-propriété</p>
+                  <%= link_to "https://www.service-public.fr/particuliers/vosdroits/F2589", target: '_blank' do %>
+                    <i class="fas fa-question-circle question-icon"></i>
+                  <% end %>
+                  <div class="file-upload">
+                    <%= simple_form_for @flat, url: upload_document_path, method: 'post' do |f| %>
+                      <% if @flat.co_owner_document.attached? %>
+                        <%= f.input :co_owner_document, as: :file, input_html: { class: 'hidden d-none' }, label: ('<i class="fas fa-check-circle"></i>').html_safe, label_html: { class: "add-file-clickable uploaded-document"} %>
+                      <% else %>
+                        <%= f.input :co_owner_document, as: :file, input_html: { class: 'hidden d-none' }, label: ('<i class="far fa-file-alt"></i>').html_safe, label_html: { class: "add-file-clickable"} %>
+                      <% end %>
+                      <%= f.submit "Ajouter", class: "koobo-button" %>
+                    <% end %>
                   </div>
-                <% end %>
+                  <div class="text-input-files-accordion">
+                    <p><i>Le dossier doit être fourni lors de la signature du bail, on compte sur toi !</i></p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
