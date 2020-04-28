@@ -27,13 +27,12 @@ module FlatHelper
   end
 
   def helper_flat_current_tenants(flat)
-    if !flat.rentings.nil?
-      unless flat.rentings.select{ |renting| renting.status == 'current' }.nil? || flat.rentings.select{ |renting| renting.status == 'current' }.empty?
-        return flat.rentings.select{ |renting| renting.status == 'current' }.first.renting_folder.users
-      else
-        return flat.rentings.select{ |renting| renting.status == 'ongoing' }.first.renting_folder.users
-      end
+    unless (flat.rentings.select{ |renting| renting.status == 'current' }.nil? || flat.rentings.select{ |renting| renting.status == 'current' }.empty?)
+      return flat.rentings.select{ |renting| renting.status == 'current' }.first.renting_folder.users
+    else
+      return flat.rentings.select{ |renting| renting.status == 'ongoing' }.first.renting_folder.users
     end
+
   end
 
 end
