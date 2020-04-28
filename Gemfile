@@ -39,7 +39,7 @@ gem 'simple_form'
 # Storage on AWS S3
 gem "aws-sdk-s3", require: false
 
-gem  'simple_calendar', '~> 2.0'
+gem 'simple_calendar', '~> 2.0'
 
 # Paginate for ou flows_index view
 gem "will_paginate"
