@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_27_133912) do
+ActiveRecord::Schema.define(version: 2020_04_28_135154) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -95,11 +95,9 @@ ActiveRecord::Schema.define(version: 2020_04_27_133912) do
 
   create_table "renting_folders", force: :cascade do |t|
     t.bigint "visit_id", null: false
-    t.bigint "folder_id"
     t.string "status", default: "pending"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["folder_id"], name: "index_renting_folders_on_folder_id"
     t.index ["visit_id"], name: "index_renting_folders_on_visit_id"
   end
 
@@ -157,7 +155,6 @@ ActiveRecord::Schema.define(version: 2020_04_27_133912) do
   add_foreign_key "folders", "renting_folders"
   add_foreign_key "folders", "users"
   add_foreign_key "messages", "rentings"
-  add_foreign_key "renting_folders", "folders"
   add_foreign_key "renting_folders", "visits"
   add_foreign_key "rentings", "flats"
   add_foreign_key "rentings", "renting_folders"

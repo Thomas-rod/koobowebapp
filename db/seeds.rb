@@ -80,7 +80,6 @@ seventh_schedule = Schedule.create!(start:Time.new(2020, 4, 24, 9, 30, 0),end:Ti
 puts "#{Schedule.count} created"
 
 puts "Creating visits"
-
 first_visit = Visit.create!(schedule: first_schedule, user: roxane, status: 'denied')
 second_visit = Visit.create!(schedule: first_schedule, user: mao, status: 'accepted')
 third_visit = Visit.create!(schedule: first_schedule, user: john, status: 'denied')
@@ -100,11 +99,11 @@ fifteen_visit = Visit.create!(schedule: seventh_schedule, user:thomas, status:'a
 puts "#{Visit.count} created"
 
 puts "Creating renting_folders"
-first_rentingfolder = RentingFolder.create!(visit: second_visit, status: 'accepted')
-second_rentingfolder = RentingFolder.create!(visit: thirteen_visit, status: 'accepted')
-third_rentingfolder = RentingFolder.create!(visit: fourteen_visit, status: 'accepted')
+first_rentingfolder = RentingFolder.new(visit: second_visit, status: 'accepted')
+second_rentingfolder = RentingFolder.new(visit: thirteen_visit, status: 'accepted')
+third_rentingfolder = RentingFolder.new(visit: fourteen_visit, status: 'accepted')
 third_rentingfolder.created_at = "2019-01-21 15:07:07"
-fourth_rentingfolder = RentingFolder.create!(visit: fifteen_visit, status: 'pending')
+fourth_rentingfolder = RentingFolder.new(visit: fifteen_visit, status: 'pending')
 puts "#{RentingFolder.count} renting folders created"
 
 puts "Creating folders"
@@ -114,13 +113,6 @@ john_folder = Folder.create!(user:john, renting_folder: first_rentingfolder)
 mao_two_folder = Folder.create!(user:mao, renting_folder: first_rentingfolder)
 thomas_fodler = Folder.create!(user: thomas, renting_folder: fourth_rentingfolder)
 puts "#{Folder.count} folders created"
-
-puts "Assign folders to renting_folders"
-first_rentingfolder.folders = [john_folder, mao_two_folder]
-second_rentingfolder.folders = [roxane_folder]
-third_rentingfolder.folders = [mao_one_folder]
-fourth_rentingfolder.folders = [thomas_fodler]
-puts "This taks is done"
 
 puts "Creating rentings"
 roxane_thomas_renting = Renting.create!(flat: thomas_first_flat, renting_folder: second_rentingfolder, created_at: 'Fri, 28 Dec 2019 14:27:32 UTC +00:00', start_date: 'Fri, 12 Mar 2012 14:27:32 UTC +00:00', status: 'current')
