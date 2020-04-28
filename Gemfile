@@ -35,7 +35,7 @@ gem 'autoprefixer-rails'
 gem 'font-awesome-sass'
 gem 'simple_form'
 gem "aws-sdk-s3", require: false
-gem  'simple_calendar', '~> 2.0'
+gem 'simple_calendar', '~> 2.0'
 gem "will_paginate"
 gem "bootstrap-will_paginate"
 

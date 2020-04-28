@@ -11,7 +11,7 @@ require 'json'
 require 'faker'
 
 puts "Cleaning DB"
-# User.destroy_all
+User.destroy_all
 Flat.destroy_all
 Schedule.destroy_all
 Visit.destroy_all
@@ -30,20 +30,20 @@ def attach_photo_flat(string, flat)
   flat.photos.attach(io: file, filename: 'nes.png', content_type: 'image/png')
 end
 
-# puts "Creating users"
-# roxane = User.new(first_name: "Roxane", last_name: "Haddad", phone_number: "0664784489", email: "roxane.haddad@gmail.com", password: "roxane.haddad@gmail.com", description: "26 ans, en CDI confirmé depuis 3 ans, célibataire, sans animaux.")
-# attach_photo_user("https://avatars0.githubusercontent.com/u/54777799?v=4", roxane)
-# roxane.save
-# john = User.new(first_name: "Jonathan", last_name: "Courdavault", phone_number: "0778381974", email: "jo.courdavault@gmail.com", password: "jo.courdavault@gmail.com")
-# attach_photo_user("https://avatars2.githubusercontent.com/u/58211236?v=4", john)
-# john.save
-# thomas = User.new(first_name: "Thomas", last_name: "Rodier", phone_number: "0668489169", email: "rodiert17@gmail.com", password: "rodiert17@gmail.com")
-# attach_photo_user("https://avatars1.githubusercontent.com/u/57214511?v=4", thomas)
-# thomas.save
-# mao = User.new(first_name: "Maodo", last_name: "Diop", phone_number: "0663906049", email: "maodod1@gmail.com", password: "maodod1@gmail.com")
-# attach_photo_user("https://avatars1.githubusercontent.com/u/56120487?v=4", mao)
-# mao.save
-# puts "#{User.count} users created"
+puts "Creating users"
+roxane = User.new(first_name: "Roxane", last_name: "Haddad", phone_number: "0664784489", email: "roxane.haddad@gmail.com", password: "roxane.haddad@gmail.com", description: "26 ans, en CDI confirmé depuis 3 ans, célibataire, sans animaux.")
+attach_photo_user("https://avatars0.githubusercontent.com/u/54777799?v=4", roxane)
+roxane.save
+john = User.new(first_name: "Jonathan", last_name: "Courdavault", phone_number: "0778381974", email: "jo.courdavault@gmail.com", password: "jo.courdavault@gmail.com")
+attach_photo_user("https://avatars2.githubusercontent.com/u/58211236?v=4", john)
+john.save
+thomas = User.new(first_name: "Thomas", last_name: "Rodier", phone_number: "0668489169", email: "rodiert17@gmail.com", password: "rodiert17@gmail.com")
+attach_photo_user("https://avatars1.githubusercontent.com/u/57214511?v=4", thomas)
+thomas.save
+mao = User.new(first_name: "Maodo", last_name: "Diop", phone_number: "0663906049", email: "maodod1@gmail.com", password: "maodod1@gmail.com")
+attach_photo_user("https://avatars1.githubusercontent.com/u/56120487?v=4", mao)
+mao.save
+puts "#{User.count} users created"
 
 puts "Creating flats"
 thomas_first_flat = Flat.new(user: thomas, address: "5 rue de Buci, Paris 6e Arrondissement, Île-de-France, France", description: "Quartier central et animé, appartement spacieux avec de nombreux commerces à proximité.", category: "appartement", monthly_price: 1100, visible: true, rented: true, name: "Appartement central Paris 6", number_of_rooms: 2, number_of_bedrooms: 1, surface: 37, floor: 4, elevator: true, balcony: true, cellar: false, parking: true, heating_system: ["", "central", "gaz"], furnished: false)
@@ -80,7 +80,6 @@ seventh_schedule = Schedule.create!(start:Time.new(2020, 4, 24, 9, 30, 0),end:Ti
 puts "#{Schedule.count} created"
 
 puts "Creating visits"
-
 first_visit = Visit.create!(schedule: first_schedule, user: roxane, status: 'denied')
 second_visit = Visit.create!(schedule: first_schedule, user: mao, status: 'accepted')
 third_visit = Visit.create!(schedule: first_schedule, user: john, status: 'denied')
