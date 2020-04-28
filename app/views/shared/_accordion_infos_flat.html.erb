@@ -36,32 +36,44 @@
           Annexes à joindres
         </button>
       </h2>
-      <p>0/3 documents joins</p>
+      <p class="<%= @flat.number_file_attached == 3 ? "text-green" : "text-orange" %>"><%= @flat.number_file_attached %>/3 documents joins</p>
     </div>
     <div id="collapseThree" class="collapse show" aria-labelledby="headingThree" data-parent="#accordionExample">
       <div class="card-body">
         <div class="row" id="pills-container">
           <div class="col-5" id="pills-header">
             <div class="nav nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-              <a class="nav-link active <%= @flat.technical_diagnostic.attached? ? "good" : "" %>" id="v-pills-technical-diagnostic-tab" data-toggle="pill" href="#v-pills-technical-diagnostic" role="tab" aria-controls="v-pills-technical-diagnostic" aria-selected="true">Diagnostic Technique</a>
-              <a class="nav-link <%= @flat.information_leaflet.attached? ? "good" : "" %>" id="v-pills-information-leaflet-tab" data-toggle="pill" href="#v-pills-information-leaflet" role="tab" aria-controls="v-pills-information-leaflet" aria-selected="false">Notice d'information</a>
-              <a class="nav-link <%= @flat.co_owner_document.attached? ? "good" : "" %>" id="v-pills-co-owner-document-tab" data-toggle="pill" href="#v-pills-co-owner-document" role="tab" aria-controls="v-pills-co-owner-document" aria-selected="false">Règlement co-propriété</a>
+              <a class="nav-link <%= @flat.technical_diagnostic.attached? ? "good" : "" %> active" id="v-pills-technical-diagnostic-tab" data-toggle="pill" href="#v-pills-technical-diagnostic" role="tab" aria-controls="v-pills-technical-diagnostic" aria-selected="true">Diagnostic Technique
+                <% if @flat.technical_diagnostic.attached? %>
+                  <i class="fas fa-check-circle text-green"></i>
+                <% end %>
+              </a>
+              <a class="nav-link <%= @flat.information_leaflet.attached? ? "good" : "" %>" id="v-pills-information-leaflet-tab" data-toggle="pill" href="#v-pills-information-leaflet" role="tab" aria-controls="v-pills-information-leaflet" aria-selected="false">Notice d'information
+                <% if @flat.information_leaflet.attached? %>
+                  <i class="fas fa-check-circle text-green"></i>
+                <% end %>
+              </a>
+              <a class="nav-link <%= @flat.co_owner_document.attached? ? "good" : "" %>" id="v-pills-co-owner-document-tab" data-toggle="pill" href="#v-pills-co-owner-document" role="tab" aria-controls="v-pills-co-owner-document" aria-selected="false">Règlement co-propriété
+                <% if @flat.co_owner_document.attached? %>
+                  <i class="fas fa-check-circle text-green"></i>
+                <% end %>
+              </a>
             </div>
           </div>
           <div class="col-7">
             <div class="tab-content" id="v-pills-tabContent">
               <div class="tab-pane fade show active" id="v-pills-technical-diagnostic" role="tabpanel" aria-labelledby="v-pills-technical-diagnostic-tab">
-                <%= simple_form_for @flat, url: upload_document_path, method: 'post' do |f| %>
                   <div class="container-input-files-accordion">
+                    <div class="file-upload">
+                      <%= simple_form_for @flat, url: upload_document_path, method: 'post' do |f| %>
+                        <%= f.input :technical_diagnostic, as: :file, input_html: { class: 'hidden d-none' }, label: ('<i class="far fa-file-alt"></i>').html_safe, label_html: { class: "add-file-clickable"} %>
+                        <%= f.submit "Ajouter", class: "koobo-button" %>
+                      <% end %>
+                    </div>
                     <div class="text-input-files-accordion">
                       <p><i>Le dossier doit être fourni lors de la signature du bail, on compte sur toi !</i></p>
                     </div>
-                    <div class="file-upload full">
-                      <%= f.input :technical_diagnostic, as: :file, input_html: { class: 'hidden d-none' }, label: ('<i class="far fa-file-alt"></i>').html_safe, label_html: { class: 'add-file-clickable'} %>
-                        <%= f.submit "Sauvegarder", class: "koobo-button" %>
-                    </div>
                   </div>
-                <% end %>
               </div>
               <div class="tab-pane fade " id="v-pills-information-leaflet" role="tabpanel" aria-labelledby="v-pills-information-leaflet-tab">
                 <%= simple_form_for @flat, url: upload_document_path, method: 'post' do |f| %>
@@ -69,7 +81,7 @@
                     <div class="input-files-accordion">
                       <%= f.input :information_leaflet, as: :file, input_html: { class: 'hidden d-none' }, label: ('<i class="far fa-file-alt"></i>').html_safe, label_html: { class: 'add-file-clickable'} %>
                     </div>
-                    <%= f.submit "Sauvegarder", class:"koobo-button" %>
+                    <%= f.submit "Ajouter", class:"koobo-button" %>
                   </div>
                 <% end %>
               </div>
@@ -79,7 +91,7 @@
                     <div class="input-files-accordion">
                       <%= f.input :co_owner_document, as: :file, input_html: { class: 'hidden d-none' }, label: ('<i class="far fa-file-alt"></i>').html_safe, label_html: { class: 'add-file-clickable'} %>
                     </div>
-                    <%= f.submit "Sauvegarder", class:"koobo-button" %>
+                    <%= f.submit "Ajouter", class:"koobo-button" %>
                   </div>
                 <% end %>
               </div>

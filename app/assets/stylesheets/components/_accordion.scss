@@ -5,14 +5,14 @@
 }
 
 .container-input-files-accordion {
-  height:100%;
-  width:100%;
+  height:95%;
+  // width:95%;
   display:flex;
-  flex-direction:column;
+  // flex-direction:column;
   justify-content:space-around;
   align-items:center;
   &.koobo-button {
-    flex-shrink:1;
+    // flex-shrink:1;
   }
 }
 
@@ -25,21 +25,12 @@
   flex-grow:1;
 }
 
-.text-input-files-accordion {
-
-}
-
 .file-upload {
   display:flex;
   justify-content:space-around;
   align-items:center;
 
 }
-
-.good {
-  background-color: green;
-}
-
 
 .add-file-clickable {
   width:70px;
@@ -63,6 +54,9 @@
     height:100%;
     width:100%;
   }
+  &.good {
+    background-color: rgba($green, 0.2)
+  }
 }
 
 .not-activate {
@@ -72,7 +66,6 @@
 .activate {
   display:block;
 }
-
 
 // INSIDE OTHER DOCUMENTS
 #pills-container {
@@ -95,6 +88,7 @@
 
 .accordion {
   height:85%;
+  max-height:100%;
   display:flex;
   flex-direction: column;
   justify-content:center;
@@ -107,19 +101,13 @@
 }
 
 .tab-content, .tab-pane {
-  height:90%;
+  height:100%;
 }
 
 .tab-pane {
   form {
     width:100%;
-    height:100%;
   }
-}
-
-
-#flat_technical_diagnostic, #flat_information_leaflet {
-
 }
 
 .nav-pills {
@@ -135,8 +123,25 @@
 }
 
 .nav-link {
-  height:30%;
+  height:33.33%;
   padding: 1.2rem 1rem;
+  &:hover {
+    color:inherit;
+    background-color:inherit;
+    opacity:1
+  }
+  &:hover:not(.good) {
+    color: $blue;
+    background-color: $white;
+  }
+  &:hover:not(:not(.good)) {
+    color: $blue;
+    background-color:rgba($green, 0.4);
+  }
+  &.active.good {
+    color: green;
+    background-color:rgba($green, 0.4) !important;
+  }
 }
 
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
@@ -144,3 +149,11 @@
   color:$blue;
 }
 
+#pills-container {
+  .col-7, .col-5 {
+    padding-right: 0px;
+    padding-left: 0px;
+  }
+  margin-right: 0px;
+  margin-left: 0px;
+}

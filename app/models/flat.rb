@@ -17,6 +17,13 @@ class Flat < ApplicationRecord
   validates :name, :address, :monthly_price, :number_of_rooms, :number_of_bedrooms, :surface, :floor, :heating_system, :category, presence: true
   validates_presence_of :technical_diagnostic, :information_leaflet, :co_owner_document, on: :upload_document
 
+  def number_file_attached
+    counter = 0
+    counter += 1 if self.technical_diagnostic.attached?
+    counter += 1 if self.information_leaflet.attached?
+    counter += 1 if self.co_owner_document.attached?
+    return counter
+  end
 
   private
 
