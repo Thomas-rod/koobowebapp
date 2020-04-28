@@ -115,17 +115,6 @@ mao_two_folder = Folder.create!(user:mao, renting_folder: first_rentingfolder)
 thomas_fodler = Folder.create!(user: thomas, renting_folder: fourth_rentingfolder)
 puts "#{Folder.count} folders created"
 
-puts "Assign folders to renting_folders"
-first_rentingfolder.folders = [john_folder, mao_two_folder]
-second_rentingfolder.folders = [roxane_folder]
-third_rentingfolder.folders = [mao_one_folder]
-fourth_rentingfolder.folders = [thomas_fodler]
-first_rentingfolder.save!
-second_rentingfolder.save!
-third_rentingfolder.save!
-fourth_rentingfolder.save!
-puts "This task is done"
-
 puts "Creating rentings"
 roxane_thomas_renting = Renting.create!(flat: thomas_first_flat, renting_folder: second_rentingfolder, created_at: 'Fri, 28 Dec 2019 14:27:32 UTC +00:00', start_date: 'Fri, 12 Mar 2012 14:27:32 UTC +00:00', status: 'current')
 mao_thomas_renting = Renting.create!(flat: thomas_first_flat, renting_folder: third_rentingfolder, created_at: 'Fri, 28 Jan 2019 14:27:32 UTC +00:00', start_date: 'Fri, 23 Mar 2019 14:27:32 UTC +00:00', end_date: 'Fri, 23 Dec 2019 14:27:32 UTC +00:00', status: 'past')
