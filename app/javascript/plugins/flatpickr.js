@@ -4,7 +4,13 @@ import "flatpickr/dist/flatpickr.min.css" // Note this is important!
 const initFlatpicker = () => {
   flatpickr(".datepicker", {
     enableTime: true,
-    dateFormat: "Y-m-d H:i",
+    dateFormat: "d-m-Y H:i",
+  })
+  flatpickr("#payment_date", {
+    dateFormat: "d-m-Y"
+  })
+  flatpickr("#month_rent", {
+    dateFormat: "m-Y"
   })
 }
 

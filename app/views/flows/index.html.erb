@@ -39,6 +39,39 @@
                     </div>
                   <% end %>
                 <% end %>
+
+              <% end %>
+            </div>
+            <div class="rents-total">
+              <% @flats_rented.each do |flat| %>
+                <% @all_rents_payed << flat if rent_payed?(flat) %>
+              <% end %>
+              <% if @flats_rented.length == @all_rents_payed.length %>
+                <h5>Tous vos locataires ont payé leur loyer pour le mois en cours</h5>
+              <% else %>
+                <h5>Vos locataires n'ont pas encore tous payé leur loyer pour le mois en cours</h5>
+              <% end %>
+            </div>
+            <div class="rents-stats">
+              <h3><%= @all_rents_payed.length / @flats_rented.length * 100 %> %</h3>
+            </div>
+          </div>
+        </div>
+        <div class="add-flow grey-box">
+          <h3>Ajouter ou supprimer un élément</h3>
+          <%= link_to new_flow_path, class: "button-flow" do %>
+            <i class="fas fa-plus-circle fa-flat button-flow" title="Ajouter un flux"></i>
+          <% end %>
+          <%= link_to "#" do %>
+            <i class="fas fa-minus-circle fa-flat button-flow" title="Supprimer un flux"></i>
+          <% end %>
+        </div>
+        <div class="all-flows grey-box">
+          <div class="flows-details">
+            <div class="details">
+              <div class="total">
+                <h3>Solde</h3>
+                <h3 class="green-numbers"><%= @incomes - @spendings %> €</h3>
               </div>
               <div class="rents-total">
                 <% @flats_rented.each do |flat| %>
