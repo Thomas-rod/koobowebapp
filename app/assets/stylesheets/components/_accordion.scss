@@ -5,15 +5,30 @@
 }
 
 .container-input-files-accordion {
-  height:100%;
-  width:100%;
-  display:flex;
-  flex-direction:column;
-  justify-content:space-around;
+  margin: 2.5%;
+  height:95%;
+  display:grid;
+  grid-gap: 0px 20px;
+  grid-template-columns: 35% 65%;
+  grid-template-rows: 20% 80%;
+  grid-template-areas:
+    "one one"
+    "two three"
+  ;
   align-items:center;
-  &.koobo-button {
-    flex-shrink:1;
+  p {
+    grid-area: one;
+    width:95%;
   }
+  .file-upload {
+    grid-area: two;
+   }
+   .text-input-files-accordion {
+    grid-area: three;
+    p {
+      text-align:start !important;
+    }
+   }
 }
 
 .input-files-accordion {
@@ -25,21 +40,14 @@
   flex-grow:1;
 }
 
-.text-input-files-accordion {
-
-}
-
 .file-upload {
-  display:flex;
-  justify-content:space-around;
-  align-items:center;
-
+  .form-group {
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+    margin-bottom: 0rem;
+  }
 }
-
-.good {
-  background-color: green;
-}
-
 
 .add-file-clickable {
   width:70px;
@@ -65,16 +73,15 @@
   }
 }
 
-.not-activate {
-  display:none;
-}
-
-.activate {
-  display:block;
+.uploaded-document {
+  // background-color: rgba($green, 0.3);
+  color:$green;
+  font-size:32px;
 }
 
 
 // INSIDE OTHER DOCUMENTS
+
 #pills-container {
   height:85%;
 }
@@ -95,6 +102,7 @@
 
 .accordion {
   height:85%;
+  max-height:100%;
   display:flex;
   flex-direction: column;
   justify-content:center;
@@ -107,19 +115,16 @@
 }
 
 .tab-content, .tab-pane {
-  height:90%;
+  height:100%;
 }
 
 .tab-pane {
   form {
     width:100%;
-    height:100%;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
   }
-}
-
-
-#flat_technical_diagnostic, #flat_information_leaflet {
-
 }
 
 .nav-pills {
@@ -135,8 +140,13 @@
 }
 
 .nav-link {
-  height:30%;
+  height:33.33%;
   padding: 1.2rem 1rem;
+  &:hover {
+    color:inherit;
+    background-color:inherit;
+    opacity:1
+  }
 }
 
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
@@ -144,3 +154,11 @@
   color:$blue;
 }
 
+#pills-container {
+  .col-7, .col-5 {
+    padding-right: 0px;
+    padding-left: 0px;
+  }
+  margin-right: 0px;
+  margin-left: 0px;
+}

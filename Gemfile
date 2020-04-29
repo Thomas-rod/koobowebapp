@@ -27,15 +27,21 @@ gem 'redis', '~> 4.0'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
-gem 'faker'
 
+# Generate randome arguments for our seeds
+gem 'faker'
+# Protection for user
 gem 'devise'
 
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass'
 gem 'simple_form'
+# Storage on AWS S3
 gem "aws-sdk-s3", require: false
-gem 'simple_calendar', '~> 2.0'
+
+gem  'simple_calendar', '~> 2.0'
+
+# Paginate for ou flows_index view
 gem "will_paginate"
 gem "bootstrap-will_paginate"
 
