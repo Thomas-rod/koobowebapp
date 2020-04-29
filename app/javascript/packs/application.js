@@ -41,7 +41,6 @@ import { makeFormAppear } from '../components/multi_etaps_form';
 import { previewImageOnFileSelect } from '../components/photo_preview';
 import { pluralizeOrNot } from '../components/pluriel_form';
 
-
 // import { chooseSchedule }from '../components/calendar';
 
 document.addEventListener('turbolinks:load', () => {
