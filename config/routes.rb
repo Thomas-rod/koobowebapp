@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   end
   resources :rentings, only: [:create, :edit, :update, :new, :index]
 
-  resources :flows, only: :index
+  resources :flows, only: [:index, :new, :create]
   get "flats/:id/edit_publication", to: "flats#edit_publication", as: :edit_publication
   get "flats/:id/recap_publication", to: "flats#recap_publication", as: :recap_publication
   patch "flats/:id/update_publication", to: "flats#update_publication", as: :update_publication

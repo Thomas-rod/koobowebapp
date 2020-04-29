@@ -1,0 +1,21 @@
+<div class="dashboard-data-set" data-line="appartements">
+  <div class="screen-container">
+    <div class="dashboard-container full">
+      <%= render partial: 'shared/dashboard', locals: { flats: @flats, schedules: @schedules} %>
+    </div>
+    <div class="nav-container full">
+      <%= render partial: 'shared/navbar_dashboard', locals: { page_title: 'Documents', notif_counter: @counter} %>
+    </div>
+    <div class="content-container full">
+      <h3>Ajouter un flux financier</h3>
+      <%= simple_form_for @flow do |f| %>
+        <%= f.input :title, label: "Titre" %>
+        <%= f.input :payment_date, label: "Date de paiement" %>
+        <%= f.input :amount, label: "Montant en €" %>
+        <%= f.input :category, label: "Catégorie" %>
+        <%= f.input :month_rent, label: "Mois concerné (à remplir si le flux concerne le paiement d'un loyer)" %>
+        <%= f.button :submit, "Créer le flux" %>
+      <% end %>
+    </div>
+  </div>
+</div>

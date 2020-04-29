@@ -14,7 +14,24 @@ class FlowsController < ApplicationController
     end
   end
 
+  def new
+    @flow = Flow.new
+  end
+
+  def create
+    @flow = Flow.new(flow_params)
+      if @flow.save!
+        redirect_to flows_path
+      else
+        render :new
+      end
+  end
+
   private
+
+  def flow_params
+    params.require(:flow).permit(:name, :address, :description, :monthly_price, :visible, :rented, :number_of_rooms, :number_of_bedrooms, :surface, :floor, :elevator, :balcony, :cellar, :parking, :furnished, :pap, :leboncoin, :bienici, :seloger, :facebook, :category, heating_system: [], photos: [], technical_diagnostic: [], information_leaflet: [], co_owner_document: [])
+  end
 
   def notif_counter
     @counter_appartement = 0
