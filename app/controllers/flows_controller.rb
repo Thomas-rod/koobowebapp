@@ -12,22 +12,6 @@ class FlowsController < ApplicationController
     @flows.where(category: "spending").each do |f|
       @spendings += f.amount
     end
-    # @flat_incomes = 0
-    # @flat_spendings = 0
-    # @flats.each do |flat|
-    #   @flat = flat
-    #   @flat_rentings = flat.rentings
-    #   @flat_rentings.each do |renting|
-    #     @flat_flows = renting.flows
-    #     @flat_flows.each do |flow|
-    #       if flow.category == "income"
-    #         @flat_incomes += flow.amount
-    #       else
-    #         @flat_spendings += flow.amount
-    #       end
-    #     end
-    #   end
-    # end
   end
 
   private

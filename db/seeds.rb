@@ -46,26 +46,26 @@ mao.save
 puts "#{User.count} users created"
 
 puts "Creating flats"
-thomas_first_flat = Flat.new(user: thomas, address: "5 rue de Buci, Paris 6e Arrondissement, Île-de-France, France", description: "Quartier central et animé, appartement spacieux avec de nombreux commerces à proximité.", monthly_price: 1100, visible: true, rented: true, name: "Appartement central Paris 6", number_of_rooms: 2, number_of_bedrooms: 1, surface: 37, floor: 4, elevator: true, balcony: true, cellar: false, parking: true, heating_system: ["", "central", "gaz"], furnished: false)
+thomas_first_flat = Flat.new(user: thomas, address: "5 rue de Buci, Paris 6e Arrondissement, Île-de-France, France", description: "Quartier central et animé, appartement spacieux avec de nombreux commerces à proximité.", category: "appartement", monthly_price: 1100, visible: true, rented: true, name: "Appartement central Paris 6", number_of_rooms: 2, number_of_bedrooms: 1, surface: 37, floor: 4, elevator: true, balcony: true, cellar: false, parking: true, heating_system: ["", "central", "gaz"], furnished: false)
 attach_photo_flat("https://images.unsplash.com/photo-1550581190-9c1c48d21d6c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60", thomas_first_flat)
 attach_photo_flat("https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60", thomas_first_flat)
 attach_photo_flat("https://images.unsplash.com/flagged/photo-1573168710465-7f7da9a23a15?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60", thomas_first_flat)
-thomas_first_flat.save
-thomas_second_flat = Flat.new(user: thomas, address: "30 rue Broca, Paris 5e Arrondissement, Île-de-France, France", description: "Superbe studio très bien aménagé dans un quartier animé de la Rive Gauche.", monthly_price: 750, visible: true, rented: false, seloger: true, bienici: false, pap: true, leboncoin: true, name: "Studio meublé Paris 5", number_of_rooms: 1, number_of_bedrooms: 1, surface: 25, floor: 5, elevator: false, balcony: false, cellar: true, parking: false, heating_system: ["", "individuel", "électrique"], furnished: true)
+thomas_first_flat.save!
+thomas_second_flat = Flat.new(user: thomas, address: "30 rue Broca, Paris 5e Arrondissement, Île-de-France, France", description: "Superbe studio très bien aménagé dans un quartier animé de la Rive Gauche.", category: "appartement", monthly_price: 750, visible: true, rented: false, seloger: true, bienici: false, pap: true, leboncoin: true, name: "Studio meublé Paris 5", number_of_rooms: 1, number_of_bedrooms: 1, surface: 25, floor: 5, elevator: false, balcony: false, cellar: true, parking: false, heating_system: ["", "individuel", "électrique"], furnished: true)
 attach_photo_flat("https://images.unsplash.com/photo-1505691938895-1758d7feb511?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80", thomas_second_flat)
 attach_photo_flat("https://images.unsplash.com/photo-1451153378752-16ef2b36ad05?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60", thomas_second_flat)
 attach_photo_flat("https://images.unsplash.com/photo-1552454799-ca5cfdc612c8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=967&q=80", thomas_second_flat)
-thomas_second_flat.save
-thomas_third_flat = Flat.new(user: thomas, address: "92 rue Sadi Carnot, Puteaux, Île de France", description: "Voisins très bruyants, mais superbe appartement avec vue Tour Eiffel dans la rue.", monthly_price: 900, visible: true, rented: false, seloger: true, bienici: false, pap: true, leboncoin: true, name: "Puteaux appartement sympa", number_of_rooms: 1, number_of_bedrooms: 1, surface: 25, floor: 5, elevator: false, balcony: false, cellar: true, parking: false, heating_system: ["", "individuel", "électrique"], furnished: true)
+thomas_second_flat.save!
+thomas_third_flat = Flat.new(user: thomas, address: "92 rue Sadi Carnot, Puteaux, Île de France", description: "Voisins très bruyants, mais superbe appartement avec vue Tour Eiffel dans la rue.", category: "appartement", monthly_price: 900, visible: true, rented: false, seloger: true, bienici: false, pap: true, leboncoin: true, name: "Puteaux appartement sympa", number_of_rooms: 1, number_of_bedrooms: 1, surface: 25, floor: 5, elevator: false, balcony: false, cellar: true, parking: false, heating_system: ["", "individuel", "électrique"], furnished: true)
 attach_photo_flat("https://images.unsplash.com/photo-1505691938895-1758d7feb511?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80", thomas_third_flat)
 attach_photo_flat("https://images.unsplash.com/photo-1451153378752-16ef2b36ad05?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60", thomas_third_flat)
 attach_photo_flat("https://images.unsplash.com/photo-1552454799-ca5cfdc612c8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=967&q=80", thomas_third_flat)
-thomas_third_flat.save
-mao_first_flat = Flat.new(user: mao, address: "92 rue Sadi Carnot, Puteaux, Île de France", description: "Voisins très bruyants, mais superbe appartement avec vue Tour Eiffel dans la rue.", monthly_price: 900, visible: true, rented: false, seloger: true, bienici: false, pap: true, leboncoin: true, name: "Puteaux appartement sympa", number_of_rooms: 1, number_of_bedrooms: 1, surface: 25, floor: 5, elevator: false, balcony: false, cellar: true, parking: false, heating_system: ["", "individuel", "électrique"], furnished: true)
+thomas_third_flat.save!
+mao_first_flat = Flat.new(user: mao, address: "92 rue Sadi Carnot, Puteaux, Île de France", description: "Voisins très bruyants, mais superbe appartement avec vue Tour Eiffel dans la rue.", category: "appartement", monthly_price: 900, visible: true, rented: false, seloger: true, bienici: false, pap: true, leboncoin: true, name: "Puteaux appartement sympa", number_of_rooms: 1, number_of_bedrooms: 1, surface: 25, floor: 5, elevator: false, balcony: false, cellar: true, parking: false, heating_system: ["", "individuel", "électrique"], furnished: true)
 attach_photo_flat("https://images.unsplash.com/photo-1505691938895-1758d7feb511?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80", mao_first_flat)
 attach_photo_flat("https://images.unsplash.com/photo-1451153378752-16ef2b36ad05?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60", mao_first_flat)
 attach_photo_flat("https://images.unsplash.com/photo-1552454799-ca5cfdc612c8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=967&q=80", mao_first_flat)
-mao_first_flat.save
+mao_first_flat.save!
 puts "#{Flat.count} flats created"
 
 puts "Creating schedules"
@@ -80,31 +80,30 @@ seventh_schedule = Schedule.create!(start:Time.new(2020, 4, 24, 9, 30, 0),end:Ti
 puts "#{Schedule.count} created"
 
 puts "Creating visits"
-
-first_visit = Visit.create!(schedule: first_schedule, user:roxane, status: 'denied')
-second_visit = Visit.create!(schedule: first_schedule, user:mao, status: 'accepted')
-third_visit = Visit.create!(schedule: first_schedule, user:john, status: 'denied')
-fourth_visit = Visit.create!(schedule: second_schedule, user:roxane)
-fifth_visit = Visit.create!(schedule: second_schedule, user:mao)
-sixth_visit = Visit.create!(schedule: second_schedule, user:john)
-seventh_visit = Visit.create!(schedule: third_schedule, user:roxane)
-height_visit = Visit.create!(schedule: third_schedule, user:mao)
-nine_visit = Visit.create!(schedule: third_schedule, user:john)
-ten_visit = Visit.create!(schedule: fourth_schedule, user:roxane)
-eleven_visit = Visit.create!(schedule: fourth_schedule, user:mao)
-twelve_visit = Visit.create!(schedule: fourth_schedule, user:john)
-thirteen_visit = Visit.create!(schedule: fifth_schedule, user:roxane, status: 'accepted')
-fourteen_visit = Visit.create!(schedule: sixth_schedule, user:mao, status: 'accepted')
+first_visit = Visit.create!(schedule: first_schedule, user: roxane, status: 'denied')
+second_visit = Visit.create!(schedule: first_schedule, user: mao, status: 'accepted')
+third_visit = Visit.create!(schedule: first_schedule, user: john, status: 'denied')
+fourth_visit = Visit.create!(schedule: second_schedule, user: roxane)
+fifth_visit = Visit.create!(schedule: second_schedule, user: mao)
+sixth_visit = Visit.create!(schedule: second_schedule, user: john)
+seventh_visit = Visit.create!(schedule: third_schedule, user: roxane)
+height_visit = Visit.create!(schedule: third_schedule, user: mao)
+nine_visit = Visit.create!(schedule: third_schedule, user: john)
+ten_visit = Visit.create!(schedule: fourth_schedule, user: roxane)
+eleven_visit = Visit.create!(schedule: fourth_schedule, user: mao)
+twelve_visit = Visit.create!(schedule: fourth_schedule, user: john)
+thirteen_visit = Visit.create!(schedule: fifth_schedule, user: roxane, status: 'accepted')
+fourteen_visit = Visit.create!(schedule: sixth_schedule, user: mao, status: 'accepted')
 fourteen_visit.created_at = "2019-01-20 15:07:07"
 fifteen_visit = Visit.create!(schedule: seventh_schedule, user:thomas, status:'accepted')
 puts "#{Visit.count} created"
 
 puts "Creating renting_folders"
-first_rentingfolder = RentingFolder.create!(visit: second_visit, status: 'accepted')
-second_rentingfolder = RentingFolder.create!(visit: thirteen_visit, status: 'accepted')
-third_rentingfolder = RentingFolder.create!(visit: fourteen_visit, status: 'accepted')
+first_rentingfolder = RentingFolder.new(visit: second_visit, status: 'accepted')
+second_rentingfolder = RentingFolder.new(visit: thirteen_visit, status: 'accepted')
+third_rentingfolder = RentingFolder.new(visit: fourteen_visit, status: 'accepted')
 third_rentingfolder.created_at = "2019-01-21 15:07:07"
-fourth_rentingfolder = RentingFolder.create!(visit: fifteen_visit, status: 'pending')
+fourth_rentingfolder = RentingFolder.new(visit: fifteen_visit, status: 'pending')
 puts "#{RentingFolder.count} renting folders created"
 
 puts "Creating folders"
@@ -115,13 +114,6 @@ mao_two_folder = Folder.create!(user:mao, renting_folder: first_rentingfolder)
 thomas_fodler = Folder.create!(user: thomas, renting_folder: fourth_rentingfolder)
 puts "#{Folder.count} folders created"
 
-puts "Assign folders to renting_folders"
-first_rentingfolder.folders = [john_folder, mao_two_folder]
-second_rentingfolder.folders = [roxane_folder]
-third_rentingfolder.folders = [mao_one_folder]
-fourth_rentingfolder.folders = [thomas_fodler]
-puts "This taks is done"
-
 puts "Creating rentings"
 roxane_thomas_renting = Renting.create!(flat: thomas_first_flat, renting_folder: second_rentingfolder, created_at: 'Fri, 28 Dec 2019 14:27:32 UTC +00:00', start_date: 'Fri, 12 Mar 2012 14:27:32 UTC +00:00', status: 'current')
 mao_thomas_renting = Renting.create!(flat: thomas_first_flat, renting_folder: third_rentingfolder, created_at: 'Fri, 28 Jan 2019 14:27:32 UTC +00:00', start_date: 'Fri, 23 Mar 2019 14:27:32 UTC +00:00', end_date: 'Fri, 23 Dec 2019 14:27:32 UTC +00:00', status: 'past')
@@ -129,13 +121,15 @@ john_thomas_renting = Renting.create!(flat: thomas_second_flat, renting_folder: 
 puts "#{Renting.count} renting created"
 
 puts "Creating flows"
-Flow.create!(title: "Loyer", renting: roxane_thomas_renting, payment_date: Time.new(2020, 3, 9, 8, 30, 0), month_rent: Date.new(2001,2,3), amount: 700, category: "income")
-Flow.create!(title: "Réparations", renting: mao_thomas_renting, payment_date: Time.new(2020, 3, 9, 8, 30, 0), month_rent: Date.new(2001,2,3), amount: 800, category: "spending")
-Flow.create!(title: "Loyer", renting: john_thomas_renting, payment_date: Time.new(2020, 3, 9, 8, 30, 0), month_rent: Date.new(2001,2,3), amount: 800, category: "income")
-Flow.create!(title: "Loyer", renting: roxane_thomas_renting, payment_date: Time.new(2020, 3, 9, 8, 30, 0), month_rent: Date.new(2001,2,3), amount: 900, category: "income")
-Flow.create!(title: "Loyer", renting: roxane_thomas_renting, payment_date: Time.new(2020, 3, 9, 8, 30, 0), month_rent: Date.new(2001,2,3), amount: 700, category: "income")
-Flow.create!(title: "Loyer", renting: roxane_thomas_renting, payment_date: Time.new(2020, 3, 9, 8, 30, 0), month_rent: Date.new(2001,2,3), amount: 700, category: "income")
-Flow.create!(title: "Réparations", renting: roxane_thomas_renting, payment_date: Time.new(2020, 3, 9, 8, 30, 0), month_rent: Date.new(2001,2,3), amount: 66.50, category: "spending")
+Flow.create!(title: "Réparations eau", renting: roxane_thomas_renting, payment_date: Time.new(2020, 3, 9, 8, 30, 0), month_rent: Date.new(2020,4,1).mon, amount: 400, category: "spending")
+Flow.create!(title: "Réparations", renting: roxane_thomas_renting, payment_date: Time.new(2020, 3, 9, 8, 30, 0), month_rent: Date.new(2020,4,3).mon, amount: 1100, category: "spending")
+Flow.create!(title: "Loyer", renting: roxane_thomas_renting, payment_date: Time.new(2020, 3, 9, 8, 30, 0), month_rent: Date.new(2020,4,3).mon, amount: 1100, category: "income")
+Flow.create!(title: "Réparations", renting: mao_thomas_renting, payment_date: Time.new(2020, 3, 9, 8, 30, 0), month_rent: Date.new(2001,2,3).mon, amount: 800, category: "spending")
+Flow.create!(title: "Loyer", renting: john_thomas_renting, payment_date: Time.new(2020, 3, 9, 8, 30, 0), month_rent: Date.new(2001,2,3).mon, amount: 800, category: "income")
+Flow.create!(title: "Loyer", renting: roxane_thomas_renting, payment_date: Time.new(2020, 3, 9, 8, 30, 0), month_rent: Date.new(2001,2,3).mon, amount: 900, category: "income")
+Flow.create!(title: "Loyer", renting: roxane_thomas_renting, payment_date: Time.new(2020, 3, 9, 8, 30, 0), month_rent: Date.new(2001,2,3).mon, amount: 700, category: "income")
+Flow.create!(title: "Loyer", renting: roxane_thomas_renting, payment_date: Time.new(2020, 3, 9, 8, 30, 0), month_rent: Date.new(2001,2,3).mon, amount: 700, category: "income")
+Flow.create!(title: "Réparations", renting: roxane_thomas_renting, payment_date: Time.new(2020, 3, 9, 8, 30, 0), month_rent: Date.new(2001,2,3).mon, amount: 66.50, category: "spending")
 puts puts "#{Flow.count} flows created"
 
 puts "G O O D     L U C K      G U Y S"

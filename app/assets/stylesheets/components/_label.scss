@@ -8,7 +8,6 @@
   text-align:center;
 }
 
-
 .coral-visite-not-rented {
   width:105px;
   height:25px;
@@ -42,4 +41,12 @@
   position: absolute;
   left: 0;
   bottom: 0;
+}
+
+.text-orange {
+  color: $orange;
+}
+
+.text-green {
+  color: $green;
 }

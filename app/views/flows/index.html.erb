@@ -4,12 +4,51 @@
       <%= render partial: 'shared/dashboard', locals: { flats: @flats, schedules: @schedules} %>
     </div>
     <div class="nav-container full">
+      <h3>Ma comptabilité</h3>
       <%= render partial: 'shared/navbar_dashboard', locals: { page_title: 'Documents', notif_counter: @counter} %>
     </div>
     <div class="content-container full">
       <div class="flows">
         <div class="info-flow grey-box">
-          <p>Infos paiements locataires</p>
+          <h3>Informations</h3>
+          <% if @flats_rented == [] %>
+            <p>Vous n'avez pas encore de bien en location</p>
+          <% end %>
+          <div class="renting-part">
+            <% @flats_rented = [] %>
+            <% @all_rents_payed = [] %>
+            <div class="rents-details flows-details">
+              <% @flats.each do |flat| %>
+                <% @renting = flat.rentings.find_by(status: "current") %>
+                <% @flats_rented << flat if @renting %>
+                <% if @renting && rent_payed?(flat) %>
+                  <div class="dark-grey-boxes tenant-details">
+                    <p><%= @renting.renting_folder.users.first.first_name %> de votre bien <%= flat.name %> a bien payé son loyer</p>
+                    <%= link_to "Remercier", "#", class: "koobo-button" %>
+                  </div>
+                <% end %>
+                <% if @renting && !rent_payed?(flat) %>
+                  <div class="dark-grey-boxes tenant-details">
+                    <p><%= @renting.renting_folder.users.first.first_name %> de votre bien <%= flat.name %> n'a pas encore payé son loyer</p>
+                    <%= link_to "Relancer", "#", class: "koobo-button" %>
+                  </div>
+                <% end %>
+              <% end %>
+            </div>
+            <div class="rents-total">
+              <% @flats_rented.each do |flat| %>
+                <% @all_rents_payed << flat if rent_payed?(flat) %>
+              <% end %>
+              <% if @flats_rented.length == @all_rents_payed.length %>
+                <h5>Tous vos locataires ont payé leur loyer pour le mois en cours</h5>
+              <% else %>
+                <h5>Vos locataires n'ont pas encore tous payé leur loyer pour le mois en cours</h5>
+              <% end %>
+            </div>
+            <div class="rents-stats">
+              <h3><%= @all_rents_payed.length / @flats_rented.length * 100 %> %</h3>
+            </div>
+          </div>
         </div>
         <div class="add-flow grey-box">
           <h3>Ajouter ou supprimer un élément</h3>
