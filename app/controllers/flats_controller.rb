@@ -78,6 +78,17 @@ class FlatsController < ApplicationController
     end
   end
 
+  def purge_document
+    find_flat
+    unless params[:file].nil?
+      # raise
+      file = params[:file]
+      @flat.send(file).purge
+      redirect_to flat_path(@flat), notice: "C'est bon, le document a été supprimé !"
+    else
+      redirect_to flat_path(@flat), alert: "Jeff, on a un soucis. Contacte nous par mail bokoo@koobo.co"
+    end
+  end
   # HELPER OTHERS
 
   def check(num)
@@ -106,7 +117,6 @@ class FlatsController < ApplicationController
   end
 
   def which_document_upload
-    document = ""
     if !params[:flat][:technical_diagnostic].nil?
       return "technical_diagnostic"
     elsif !params[:flat][:information_leaflet].nil?
