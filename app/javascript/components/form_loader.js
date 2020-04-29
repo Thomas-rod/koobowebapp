@@ -4,8 +4,6 @@ const loaderFormNewFlat = () => {
   const secondStep = document.querySelector('.second-step-form')
   const lastStep = document.querySelector('.thrid-step-form')
 
-  console.log(secondStep);
-  console.log(lastStep);
   if (firstStep || secondStep || lastStep) {
     if (firstStep) {
       firstStep.addEventListener('click', () => {

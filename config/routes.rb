@@ -18,4 +18,5 @@ Rails.application.routes.draw do
   patch "flats/:id/update_publication", to: "flats#update_publication", as: :update_publication
   patch "flats/:id/disable_publication", to: "flats#disable_publication", as: :disable_publication
   post "flats/:id/upload_document", to: "flats#upload_document", as: :upload_document
+  delete "flats/:id/purge_document", to: "flats#purge_document", as: :purge_document
 end

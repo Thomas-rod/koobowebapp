@@ -1,0 +1,31 @@
+<div class="container-input-files-accordion">
+  <div class="header-file-uplaod">
+    <p><%= title %></p>
+    <%= link_to link, target: '_blank' do %>
+      <i class="fas fa-question-circle question-icon"></i>
+    <% end %>
+  </div>
+  <div class="body-file">
+    <div class="file-upload-form">
+      <%= simple_form_for flat, url: upload_document_path, method: 'post' do |f| %>
+        <% if flat.send(file).attached? %>
+          <%= f.input file.to_sym, as: :file, input_html: { class: 'hidden d-none' }, label: ('<i class="fas fa-check-circle"></i>').html_safe, label_html: { class: "add-file-clickable uploaded-document", id: "js-#{file}"}%>
+        <% else %>
+          <%= f.input file.to_sym, as: :file, input_html: { class: 'hidden d-none' }, label: ('<i class="fas fa-cloud-download-alt"></i>').html_safe, label_html: { class: "add-file-clickable", id: "js-#{file}"}%>
+        <% end %>
+        <%= f.submit "Ajouter", class: "koobo-button hide-file", id: "submit-file-upload-#{file}" %>
+      <% end %>
+    </div>
+    <div class="file-delete-form">
+      <% if flat.send(file).attached? %>
+        <p id="file-name"><i><%= flat.send(file).filename %></i>
+          <%= link_to purge_document_path(:file => file), method: 'delete' do %>
+            <i class="fas fa-times" style="margin-left: 15px !important;"></i>
+          <% end %>
+        </p>
+      <% else %>
+        <p><i>Le document doit être fourni lors de la signature du bail, on compte sur toi !</i></p>
+      <% end %>
+    </div>
+  </div>
+</div>
