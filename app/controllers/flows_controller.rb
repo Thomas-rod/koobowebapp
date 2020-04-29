@@ -3,7 +3,7 @@ class FlowsController < ApplicationController
 
   def index
     @flats = current_user.flats
-    @flows = current_user.flows.paginate(page: params[:page], per_page: 5).order(payment_date: :desc)
+    @flows = current_user.flows.paginate(page: params[:page], per_page: 4).order(payment_date: :desc)
     @incomes = 0
     @flows.where(category: "income").each do |f|
       @incomes += f.amount

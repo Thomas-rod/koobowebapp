@@ -10,7 +10,7 @@
     <div class="content-container full">
       <div class="flows">
         <div class="info-flow grey-box">
-          <h3>Informations</h3>
+          <h3>Paiement des loyers</h3>
           <% if @flats_rented == [] %>
             <p>Vous n'avez pas encore de bien en location</p>
           <% end %>
@@ -52,11 +52,11 @@
         </div>
         <div class="add-flow grey-box">
           <h3>Ajouter ou supprimer un élément</h3>
-          <%= link_to new_flat_path, class: "button-add-flow" do %>
-            <i class="fas fa-plus-circle fa-flat" title="Ajouter un flux"></i>
+          <%= link_to "#", class: "button-flow" do %>
+            <i class="fas fa-plus-circle fa-flat button-flow" title="Ajouter un flux"></i>
           <% end %>
-          <%= link_to new_flat_path, class: "button-remove-flow" do %>
-            <i class="fas fa-minus-circle fa-flat" title="Supprimer un flux"></i>
+          <%= link_to "#" do %>
+            <i class="fas fa-minus-circle fa-flat button-flow" title="Supprimer un flux"></i>
           <% end %>
         </div>
         <div class="all-flows grey-box">
