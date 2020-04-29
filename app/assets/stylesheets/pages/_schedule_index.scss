@@ -1,6 +1,6 @@
 $size-screen: 85vh;
 
-#disposition-card-four {
+.disposition-card-four {
   width:100%;
   height:$size-screen;
   display: grid;
@@ -11,17 +11,19 @@ $size-screen: 85vh;
         "one two"
 }
 
-#disposition-four-left {
+.disposition-four-left {
   grid-area: one;
   border-radius: 5px;
   box-shadow: 0 0 4px rgba(0,0,0,0.2);
   border-radius: 5px;
   & .schedules-container-show-edit {
-    max-width:100% !important;
+    max-height:100% !important;
   }
+
 }
 
-#disposition-four-right {
+.disposition-four-right {
+  overflow: auto;
   grid-area: two;
   text-align:center;
   justify-self: stretch;

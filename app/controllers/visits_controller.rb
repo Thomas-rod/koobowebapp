@@ -49,6 +49,7 @@ class VisitsController < ApplicationController
     pending_visits.each do |visit|
      visit.status = "denied"
      visit.save
+    end
   end
 
   def notif_counter

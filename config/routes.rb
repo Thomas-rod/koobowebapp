@@ -17,4 +17,5 @@ Rails.application.routes.draw do
   get "flats/:id/recap_publication", to: "flats#recap_publication", as: :recap_publication
   patch "flats/:id/update_publication", to: "flats#update_publication", as: :update_publication
   patch "flats/:id/disable_publication", to: "flats#disable_publication", as: :disable_publication
+  post "flats/:id/upload_document", to: "flats#upload_document", as: :upload_document
 end

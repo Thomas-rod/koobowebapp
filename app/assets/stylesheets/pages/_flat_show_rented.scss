@@ -4,7 +4,7 @@
   display: grid;
   grid-template-columns: minmax(60%, 60%) minmax(35%, 35%);
   grid-template-rows: repeat(4, minmax(25vh, 200px));
-  grid-gap: 30px;
+  grid-gap: 20px;
   grid-template-areas:
         "one two"
         "three two"
