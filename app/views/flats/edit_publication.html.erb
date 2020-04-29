@@ -1,121 +1,140 @@
-<div class="dashboard-data-set" data-line="appartements">
-  <div class="screen-container">
-    <div class="dashboard-container full">
-      <%= render partial: 'shared/dashboard', locals: { flats: @flats, schedules: @schedules } %>
-    </div>
-    <div class="nav-container full">
-      <%= render partial: 'shared/navbar_dashboard', locals: { page_title: 'Documents', notif_counter: @counter} %>
-    </div>
-    <div class="content-container full">
-      <div class="step-form">
-        <div class="" id="calendar-publication">
-          <ul id="progressbar">
-            <li class="active"></li>
-            <li class="active"></li>
-            <li></li>
-            <li></li>
-          </ul>
-          <p class="text-second-step">Je souhaite faire visiter mon bien</p>
-          <div class="schedules-container-show-edit">
-            <% start_date = params.fetch(:start_date, Date.today).to_date %>
-            <% date_range = (start_date.beginning_of_week..start_date.end_of_week).to_a %>
-            <div class = "simple">
-              <%= link_to start_date: date_range.first - 1.day do %>
-             <i class="fas fa-angle-double-left"></i>
-              <% end %>
-              <p class="semaine">Semaine du <%= check(start_date.beginning_of_week.day) %>/<%= check(start_date.beginning_of_week.month) %> au <%= check(start_date.end_of_week.day) %>/<%= check(start_date.end_of_week.month) %></p>
-              <%= link_to start_date: date_range.last + 1.day do %>
-              <i class="fas fa-angle-double-right right-max"></i>
-              <% end %>
-            </div>
-            <div class="container-label">
-              <div class ="blue-v-already visite-schedule"><p>Occupé</p></div>
-              <div class ="blue-v visite-schedule"><p>Libre</p></div>
-            </div>
-            <table class = "table-schedules">
-              <thead class = "jour">
-                <tr>
-                  <th class="schedules-tht">h</th>
-                  <th class="schedules-th">lun</th>
-                  <th class="schedules-th">mar</th>
-                  <th class="schedules-th">mer</th>
-                  <th class="schedules-th">jeu</th>
-                  <th class="schedules-th">ven</th>
-                  <th class="schedules-th">sam</th>
-                  <th class="schedules-th">dim</th >
-                </tr>
-              </thead>
-              <tbody>
-                <% hour = 7 %>
-                <% 13.times do %>
-                  <% hour += 1 %>
-                  <% demi = "30" %>
-                  <% pile = "00" %>
-                  <tr>
-                    <th class= "schedule-th"> <%= hour %></th>
-                    <% day = start_date.beginning_of_week.day - 1 %>
-                    <% 7.times do %>
-                      <% day = 0 if day >= start_date.end_of_month.day %>
-                      <% day += 1 %>
-                      <% if @flat.schedules.select {|time| time.start == Time.new(start_date.year, start_date.month, day, hour, 0, 0)} != []%>
-                        <td class = "schedules-td schedules-selected selected-show"></td>
-                      <% elsif current_user.schedules.select {|time| time.start == Time.new(start_date.year, start_date.month, day, hour, 0, 0)} != []%>
-                          <td class = "schedules-td schedules-already-selected"></td>
-                      <% else %>
-                        <td class = "schedules-td schedules-unselected"><%=link_to "", flat_schedules_path(@flat, schedule: { start: Time.new(start_date.year, start_date.month, day, hour, 0, 0), end:Time.new(start_date.year, start_date.month, day, hour, 30, 0)}), method: :post, remote: true, class: "schedules-button" %></td>
-                      <% end %>
-                    <% end %>
-                  </tr>
-                  <tr>
-                    <th class= "schedule-th"> <%= hour %>: <%= demi %></th>
-                    <% day = start_date.beginning_of_week.day - 1 %>
-                    <% 7.times do %>
-                      <% day = 0 if day >= start_date.end_of_month.day %>
-                      <% day += 1 %>
-                       <% if @flat.schedules.select {|time| time.start == Time.new(start_date.year, start_date.month, day,hour, 30, 0)} != []%>
-                          <td class = "schedules-td schedules-selected selected-show"></td>
-                        <% elsif current_user.schedules.select {|time| time.start == Time.new(start_date.year, start_date.month, day,hour, 30, 0)} != []%>
-                           <td class = "schedules-td schedules-already-selected"></td>
-                       <% else %>
-                          <td class = "schedules-td schedules-unselected"><%=link_to "", flat_schedules_path(@flat, schedule: { start: Time.new(start_date.year, start_date.month, day,hour, 30, 0), end:Time.new(start_date.year, start_date.month, day, (hour+1), 0, 0)}), method: :post , class: "schedules-button" %></td>
-                        <% end %>
-                    <% end %>
-                  </tr>
-                <% end %>
-              </tbody>
-            </table>
-          </div>
-          <div class="button-second-step-form">
-            <%= link_to 'Revenir en arrière', id: 'back-form-one'%>
-            <button id="first-step-form" class="edit-pub-btn">Suivant</button>
-          </div>
-        </div>
-        <div id="div-second-step" class="d-none">
-          <div class="advance-barre">
+<% if current_user.renter == true %>
+  <div class="dashboard-data-set" data-line="appartements">
+    <div class="screen-container">
+      <div class="dashboard-container full">
+        <% if current_user.renter == true %>
+          <%= render partial: 'shared/dashboard', locals: { flats: @flats, schedules: @schedules} %>
+        <% else %>
+          <%= render partial: 'shared/dashboard_tenant' %>
+        <% end %>
+      </div>
+      <div class="nav-container full">
+        <%= render partial: 'shared/navbar_dashboard', locals: { notif_counter: @counter} %>
+      </div>
+      <div class="content-container full">
+        <div class="step-form">
+          <div class="" id="calendar-publication">
             <ul id="progressbar">
               <li class="active"></li>
               <li class="active"></li>
-              <li class="active"></li>
+              <li></li>
               <li></li>
             </ul>
+            <p class="text-second-step">Je souhaite faire visiter mon bien</p>
+            <div class="schedules-container-show-edit">
+              <% start_date = params.fetch(:start_date, Date.today).to_date %>
+              <% date_range = (start_date.beginning_of_week..start_date.end_of_week).to_a %>
+              <div class = "simple">
+                <%= link_to start_date: date_range.first - 1.day do %>
+               <i class="fas fa-angle-double-left"></i>
+                <% end %>
+                <p class="semaine">Semaine du <%= check(start_date.beginning_of_week.day) %>/<%= check(start_date.beginning_of_week.month) %> au <%= check(start_date.end_of_week.day) %>/<%= check(start_date.end_of_week.month) %></p>
+                <%= link_to start_date: date_range.last + 1.day do %>
+                <i class="fas fa-angle-double-right right-max"></i>
+                <% end %>
+              </div>
+              <div class="container-label">
+                <div class ="blue-v-already visite-schedule"><p>Occupé</p></div>
+                <div class ="blue-v visite-schedule"><p>Libre</p></div>
+              </div>
+              <table class = "table-schedules">
+                <thead class = "jour">
+                  <tr>
+                    <th class="schedules-tht">h</th>
+                    <th class="schedules-th">lun</th>
+                    <th class="schedules-th">mar</th>
+                    <th class="schedules-th">mer</th>
+                    <th class="schedules-th">jeu</th>
+                    <th class="schedules-th">ven</th>
+                    <th class="schedules-th">sam</th>
+                    <th class="schedules-th">dim</th >
+                  </tr>
+                </thead>
+                <tbody>
+                  <% hour = 7 %>
+                  <% 13.times do %>
+                    <% hour += 1 %>
+                    <% demi = "30" %>
+                    <% pile = "00" %>
+                    <tr>
+                      <th class= "schedule-th"> <%= hour %></th>
+                      <% day = start_date.beginning_of_week.day - 1 %>
+                      <% 7.times do %>
+                        <% day = 0 if day >= start_date.end_of_month.day %>
+                        <% day += 1 %>
+                        <% if @flat.schedules.select {|time| time.start == Time.new(start_date.year, start_date.month, day, hour, 0, 0)} != []%>
+                          <td class = "schedules-td schedules-selected selected-show"></td>
+                        <% elsif current_user.schedules.select {|time| time.start == Time.new(start_date.year, start_date.month, day, hour, 0, 0)} != []%>
+                            <td class = "schedules-td schedules-already-selected"></td>
+                        <% else %>
+                          <td class = "schedules-td schedules-unselected"><%=link_to "", flat_schedules_path(@flat, schedule: { start: Time.new(start_date.year, start_date.month, day, hour, 0, 0), end:Time.new(start_date.year, start_date.month, day, hour, 30, 0)}), method: :post, remote: true, class: "schedules-button" %></td>
+                        <% end %>
+                      <% end %>
+                    </tr>
+                    <tr>
+                      <th class= "schedule-th"> <%= hour %>: <%= demi %></th>
+                      <% day = start_date.beginning_of_week.day - 1 %>
+                      <% 7.times do %>
+                        <% day = 0 if day >= start_date.end_of_month.day %>
+                        <% day += 1 %>
+                         <% if @flat.schedules.select {|time| time.start == Time.new(start_date.year, start_date.month, day,hour, 30, 0)} != []%>
+                            <td class = "schedules-td schedules-selected selected-show"></td>
+                          <% elsif current_user.schedules.select {|time| time.start == Time.new(start_date.year, start_date.month, day,hour, 30, 0)} != []%>
+                             <td class = "schedules-td schedules-already-selected"></td>
+                         <% else %>
+                            <td class = "schedules-td schedules-unselected"><%=link_to "", flat_schedules_path(@flat, schedule: { start: Time.new(start_date.year, start_date.month, day,hour, 30, 0), end:Time.new(start_date.year, start_date.month, day, (hour+1), 0, 0)}), method: :post , class: "schedules-button" %></td>
+                          <% end %>
+                      <% end %>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+            </div>
+            <div class="button-second-step-form">
+              <%= link_to 'Revenir en arrière', id: 'back-form-one'%>
+              <button id="first-step-form" class="edit-pub-btn">Suivant</button>
+            </div>
           </div>
-          <p class="text-second-step">Je souhaite que mon annonce soit publiée sur les sites suivants</p>
-          <%= simple_form_for @flat, url: update_publication_path(@flat), method: :patch do |f| %>
-            <div class="special-form center-form-update" id="special-radio">
-              <div class="form-part radio-part form-image-site <%= @flat.leboncoin ? "active" : "" %> "><%= f.input :leboncoin, label: " ", as: :hidden, input_html: {class: "my-checkbox-input"}, label_html: {class: "my-label-check"} %><%= image_tag ("data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5OjcBCgoKDQwNGg8PGjclHyU3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3N//AABEIALoAugMBEQACEQEDEQH/xAAbAAEAAwEBAQEAAAAAAAAAAAAAAgUGBAEDB//EAEAQAAEDAwIDAwgJAgQHAAAAAAEAAgMEBREGMRIhQRNRcRQiMmFzgbHBByMzNTZCcpHRUqEVQ4OyFjRTYnTh8P/EABoBAQADAQEBAAAAAAAAAAAAAAADBAUCAQb/xAAvEQACAgIBAwEIAQQDAQAAAAAAAQIDBBEhBRIxEyIyMzRBUWFxkRQVQoEjJKHB/9oADAMBAAIRAxEAPwD9B1TqOSlkdR0JAkHpyY29Q9azsrLcH2xNfAwPVXqT8GLmnlneXzSvkcd+IkrJlOUntm9CuNa1EhlcnQygGUAygGUAygGUAygGUAygGUAygGUAygGUAygGUAygGUB6HOacsc5pHUHC9Ta8Hklxpo0Ng1PUUk7Iq6R0tO7ll3NzPXnuV7GzJRl2yMvL6bCUXOvhn6C17XNDmuBBGQVs7TPnWmno/H6iV888kshJc9xdn3r5mb7pbZ9pXWoR7UQXh2F4AgCAIAgCAIAgCAIAgCAIAgCAIAgCAIAgHjsvfyPoy5gv9XFBHGHnzGhv7BTrJkvqUXhVt7KYquXggCAIAgCAIAgCAIAgCAIAgCAIAgCAIAgCAIAgJDZe8DSIleAIAgCAIAgCAIAgCbAQHRFQ1c8Dp4aeR8Td3tbkKSNU5LaRDPIqhLtk+TnUZMuQgCAIAgCAIAgCAIAgJDZARKAIAgCAIAgCAIAgPvRUVTXS9lRxOkd1xsPE9FJXXOx6iQ25FdK3M2Np0lTUrRPdHiV4GSzOGN8e9alOFGHtWGJkdTst9mrhf+nTU6rtdHOynha6SNvJzoh5rfDvUk8yqD7CKHTsiyPcKyy2q/w+VUb2skd/mRnl7wvJUU3rcBVlX4ku2fgx91stba3fXx5jz5srObff3LMtx51Pk28fNqvXHDK5Vy2EAQBAEAQBAEAQEhsgIlAEAQBAEAQBD3R6xj5XtjiY573Hk1oySulGUvBxOcYLcnwauz6OklxLc3mNmc9iw8z4notGjB+szGyOq63Gn+S2rL1arDD5PSNY6QbRQ/MqzO+qhaj5KVWLflS7pPj8mPut8rro49tLwRZ5RM5DHr71l3ZVlj/BuY+FVSuFz9yswMYwB3YVcuHRRVlRQS9rSyvjf/27HxHVSV2zre4kV1Fd0dTNhadW09U0U91Y2Nzhgv8AyO8e5adObGfszMPI6ZZU+6sXXSVNWMM9pkbE9wyG5yx3h3JdhQsXdA8x+pzqfZatr/0yFdR1NDN2VXC6N3TI5O8D1WZZVKt6aNyi+F0dwZzqMmCAIAgCAIAgJDZARKAIAgCAIAgO2z0BudxipQ/gD85djOAFNRV6k1HZXy7/AEau8/QqO3Udko5H0tM572tyS0Ze9bcaa6Y7SPmLL7MmepMx951PW1xfDG11LEDgtB88+JWZkZlknpcI28Tp1UNSb7mUCpPzs1F9vAQ9C8PAgCLQZY2q91tqePJ5OKIc3RP9E/wrFOTOt8FPJw6r1trTN1bqul1HQOFTRuDdnNkGQfArXhOORD2kfP3VzxbPZkZHVNljtMsT4HkxSkgNO7VmZeOq3wbXT8yV6al5RRKmaQQBAEAQBASGyAiUAQBAEAQBAXejeeoIB6nfBW8L4qM/qfy7NNfdQSWi6QwuiEkD4+Jw2cOfRaN+V6M0n4MjGwv6ittPlCWks2pou1heBOB6bRwvb4heOFGTHcfIjZkYctPwZS76frrWS97O1g6Ss5/uOizrsSdXP0NnGz67+HwyoyqvJePUA64QHTQUFVcJezo4XSHPM7Ae9S10zm9JEF2RXTHc3o19t0tRW+Lym7yMkLOZDj9WP5WnViQrXdMxL+o23vsqJv1VA6up6K2xB0bpQwyFuAOfQLp5ce5Qijn+3z9N2Wvwc/0ifZ0X6nfJRdR8Il6R70jGLKRvhAEAQBAEBIbICJQBAEAQBAEBd6M/EMH6XfBXMH4qM/qfy7OzX33rB7D5qTqHvog6R8OT/Jm4JpKeQSQSOjeNnNOCqUZyi9xNWyuNkdSWzWWjWBwILtHxA8u1YP8AcFo05692wxMnpTXtVM7LjpqgusXldrlZE5wz5hyx3iOiltxa7l3QZBRn3Y77JraMjV2mupKptNLTvMrvR4BkO8Cs2WPZGXbo268ymcHNM0No0c4/WXV/C3fsoz8SrtOD/lYZeR1Vv2ajtuGordaYvJbZEySRvIBnoA+s9VNblV0rUCCrBvyH32GRuV0rLnLx1cpIO0bfRb4BZdt8rXyblGLXQtQXJGz/AHtRe2b8Ux/iRGZ8GX6NT9In2dF4u+Sv9R92JkdI96Rizuso3wgCAIAgCAkNkBEoAgCAIAgCAu9GfiGD9LvgrmD8VGf1P5dnZr771g9j81J1D4i/RB0j4cv2ZhZ5ro8wgOy33Grt0vaUUpYerfyu8QpqrpVvcX/or34tdy9pf7P0Oy3V9wtBrZIgxzOIFrTyOFtU3+pX6jR81k43pXemmYe76hrroCHO7KA7RM6+J6rKuy52PX0N7GwK6kpPllSqhf2EPfqddo+9aP2zfip8f4qKuX8vI1P0ifZ0fi75K91H3YmT0j3pGLO6yjfCAIAgCAICQ2QESgCAIAgCAIC70Z+IYP0u+CuYPxTP6n8uzr1/97Qew+al6h8REHSPcl+zMrONcIAgN/pH8KyeMq2cX5dnzfUPm/4Pz9vojwWOz6ReD1eAIeo67R960ftm/FT4/wAWJVy/l5Gp+kT7Oj8XfJXuo+7Eyuke9IxZWUbwQBAEAQBASGyAiUAQBAEAQBAXejPxBB+l3wVzC+KjP6n8uzr1/n/FYDg47HHvypeoL20QdI12S/ZmVnGuEAQG/wBI/hST/VWzifLs+b6h83/B+ft9EeAWMfSLweoAgOuz/e1H7ZvxU1HxYsrZm1jy2aj6Qz5lF4v+Sv8AUfdRldH96RjFlG8EAQBAEAQEhsgIlAEAQBAEAQHTbK2S3V0VVEA5zD6J2IUlVvpyUiHIpV1bgzd0V2tWoIPJ6hjBI4c4pN/cVsQvqvWmfOWY1+LLuRTXnR0sXFLbHdozcxPPnDwPVVbsB+ay/jdWT9m3+TLSMfE8xyNLXt3aRghZ0k4vTRsQkprcfBFeHX0N/pL8Kyf6q2cT5dnzfUPm/wCD8/b6I8AsY+kXg9yOuyefAbLaz6frbpwva0QwH/Nf8h1VqnEnb+EUcnPqo48v7Grio7PpmISzuBmOzn83uPqC0lXVjLbMaVmRmS1HwZXUN7deJmfViOKLPANyc9Ss3KyPWejZwsP+n235ZUKqXggCAIAgCAkNkBEoAgCAIAgCAIAORyOR7xuvdteA0nwzQ2fVdXRFsdUDUQjlk+kPA9VepzZR4lyZWT0uE+a3pmkfFZ9TU+Wua6QD0gOGRvirzVOQvyZSlkYctPwZW86ZrLcXPjHbwDnxt3HiFn34U4cx5Rs43Uq7VqfDNHpLlpaXnyzKruKv+uzMz3vLWvwYy2WyruTgykhc/kMvPJo96zK8edr0kbl2VVRH2mbGg05b7TCKm5yMke3nl5wxp9Q6rSqxKqVubMO7PuyH21+DivGsCQ6G1MLW7ds4fAfyor87/GssY3S2/atZk5pZJ5TJNI573bucclZs5Ob22bNcI1rtiuCC5O3yEAQBAEAQBASGyAiUAQBAEAQBAEAQBATgmlglEsEhjkb6Lm8iuoTlB7jwczrjYtSWzWWjWJAEF1ZxDGO2Z8wtKnO3xYYuT0tr2qn/AKNTTOoZqRz6d0Jp5MlxY4YOd8rQjKuUdrwZE42KWpLkoblqiht0fk1pjjlc3llv2Y/n3KpblwqWocs0KOn2Xvus4Rj6+4VdxlMlVMXno3YDwCy7Lp2P2mblOPXStRRyqN/gnC8AQBAEAQBAEAQEhsgIlAAC5wa0Ek7ADOV6k29I8bSW5MEFpIcCCNwUaaemFLa2F4ehAetaXPDWjLjyAHVepNvSPHJLlhwLTwuBae4jCNNcMKSkto8Xh6EAQBASa94aWiRwad2gnBXSnJLWzlwjvbRH1rk6CAIAgCAIPwetY52eBrncIyeEZwulGT5Rz3Rjw2edMrn9nf5CHgQBASGyAiUBo9Bta69PLgCRCSPUcq/gRTsezK6txUv2fDWbGsv0vCAMsaTgblcZqSu0SdLf/ByyjVNGjo8yEH6NDohjXXscTQcRuIz02V3BW7DM6pJqla+5HWzGsvriAG5jaeXVM5JW8DpUt0clD0KpGp9NhOPqORy70A6oefsc+7n3Jv6Dn7AJ+z3S+g38U4R4E5HIAyg215H7fvhNp+AeZ5Ie/Q1+krxbaG2yRVT2wy8ZJJbnjHu+C0sS+qEHGXkwuoYl87U4LaMvWyxzVs8sLeCJ7y5je4Z5clStac+DXqjKutQl5R8VCuSUfyvdgICQ2QESgNJoH76k9gfiFodP+IzJ6v8ACX7Pjrflf5DnA7Nuf2XGd8Uk6X8tv8lna7Fb7fa/8SvTC8lodwHZoOwx1Ks048K4d8ylkZlt1vp1Pg+9HFp6/tkgp6bsJmDIw3gdjvHeuoLHyFqK5I7Hl4klKT2cWmqGS3aplpZTksiOHDqDsVHjVOrIcWWM29X4sZJfUtr1FZaW4+WXYiSSRoa2Mt4gAOuFZuVMZ90yljSyZw9Orwc15sFvr7a6ttTI2PDeJpj5NcN8EKO/GrnDvgS42ZbXaq7Cu0rp2GvgNbX57EOwyMHAdjcn1fwq+LiprumWuoZ8oT9OvyW0A0xcJjQwww8fPBa0tz4FW0safsopN5tcfUeygulhFBe6anyXUtRI0NJ3xkAhUbcZQuS+jNKjOduPJ/5Iv7hYLHRyNrKvENOxuDFxcnFXLMamL75fQzas3JsThDk+r7TZrvbDJQxRgEEskjHCQR3rt1VWw3FHEb8imxKbM5pSwsujnTVWfJmHGAccbv4VDExVPbl4NTPznUlGvyy9L9LduaExU4cOWeHAz+pXX/S77DOX9a49/Jna210c95ipLPVCVkx5jOey9/UKlZRCdqUGaVOXbXQ5Wx0aOWh09YYmNrWMe93WRvG53rx3K86seniSM31svJk+zej4XXT1BXW411nDWvDeJrWHzX46Ed6iuxq7Id1ZLj5ttNnZcc2jbRRXGgqJauESO4+BpzsMdP3XGJRCcG5Lkl6llWQsSg+D5aTtNHXVNwbVwiRsJ4GcR2GT/fkucSiE5yTXg76hk2whDtetljDQ6dtVSykqXMmq3nl2nPhzsPUp1Xj1vX1Kkrcy+PdHwjg1raKahjhqqOIRhzuF7Rt6vmoc6iMYqUS10rJnZPsmzK9Vms2iQ2XgIlAaLQr2x3pwcQC+FwHrIIV/Aa9RmV1ZP0kzo1faq+pvPbU9M+WN7WgOYM8x0Kky6LJW90Vsh6flVQocJPRq7g98Vrc5tIKlzWt+pPVaE9qtcbMivUrfOtlHbrvWTvc6k0+2NzRzcTwe7ZV6rpvxAu3Y1cNd9uz5WiukrtXOknp+wlZTljmB3Fsf/ajqs779tEmTTGrEST2mzn1laq6e5sqaendMxzA3zOeCO9cZtE52dyXBN0zJqhBxm9F1ZoH2jThFbhhY1z3D+nPRWaU6cf2ihkTV+TuH3IabkZXaX7GJwa8MfGeex54+IXlL9SlqJ7lxdORuX4M3ZLFcWXmAy0742wvDnPdty7lSox7Fcm0auXnVTpaT5ZeaqnYbxZ6cYL21AcfUMjCuZMl6kEZ+FCSqsl9NHy+kI4pqP2jvgo+o+6iTpHNjZ16I/D7vavXWF8FkfU/mT56GnjktU1OCBIyR2R47Fe4b7oSijnqMHGyMn9kZmTTlzdXvgFK4guOJCfMI78qjLFsdvg1q+o0RrT2dtipaizagpo7jHwdsHNYeLlld0Vum1KZBmXRycZ+n9PJ3a1tdZVVkNTTQvlYGcDg3mQc5U2dROck14IOmZNUIuEnotNPU77Rp4muHARxyPaT6I7lYog6aX3FTLsWRk+wc2gDxW2pcBjNQTju5Bc4PMG/yS9U36kU/sfDQ/wDzl29r83LjB9+Z31NexX+v/iM9d/xPUf8AlD/cFRu5yOfuaWMv+mtfY1GvvuuD24+BV/P36OzL6Sv+dmCWMfRkhsgIlASjkfFI2SJ5Y9py1w3BXUZOL2jmUIzXbI0UGsrhHGGSxwyuAxxkEfvhXY9QmvJlz6RVKXD0j5M1ddBUGRzonM/6fDyC5WfYntnb6Vj9ukSrNYXGeEshbHCT1aCT/ddTzpvg8h0qmL23srLTc5bZWmqY0SSEEHjJ67lVqb5Vy7i1kYqurVfhItRrG4CoMnBH2bgB2ZHIeBVr+4T2+Cp/aau3WzhvF/rbo3s5i2OAHPZszh3j3qG7KnatPwT42BVS9+Wc1tudVbJu0pJOHi9Np5td4qOq+dT3EnyMau9ami5l1pXOj4WQQsd/VzP9lalnza4KEekV75kUfls5r2Vsz+1ma8PJd1wc+5VPVk5qTL8sePpenHhHbe77NeGRMmiZGI3E5afcpb8n1kiDFwI47bTPrZ9R1Fqo/JooI3NLy4knnzXtWU64dqOMjp8brO/ZWUVbU0E7Z6WUsk2ONj4qGFs4T74lu3Hrth2SL7/jWvMXD2EAdtxc1b/uE9Gf/aK9+8UFbW1NdP29TK50nT1eHcqll05y7pGhVRXVDsii6odX3CmiEUjY5w3kHP5HHj1VmvPsjHUijb0uqb7k9HHdr/W3NvZyuDIf6GbHx71Fdl2Wrtfgnx8Cqrnyzyz32qtMMsMDWObIeLzvylKch0xcUe5WFHIkpP6Htmvs9qfUSRRMkdM4FxeSP/t17Tkurb+5zk4Mb0ufBxVFW6or31rmtEjpe0x0znOFBKxyn3liNEYV+lvgsb1qGe70zIJoWRhr+LLSrF2U7Y9rK2N0+FE3JMplUL5IbICJQBAEAQBAEAQBAEAQBAEAQBAEAQBAEAQBAEAQBASGyA8cC1zmnkWnBC9a09BNNJo8XgCAIAgCAIAgCAIAgCAIAgCAIAgCAIAgCAIAgOqOjnexrmsOHAELvsf2IXdHfkuNW2WSkq31kTCaaV3EeH8juvuVzMxpRl3rwZ/TsyMq1XJ8ozqo6f1NZNNBeAIAgCAIAgCAIAgCAIAgCAIAgCAIAgCAIFyd1ntdRdKpsMLTwfnk6NCnponbNaRVysmFEG2+T9LioYIomRtjGGNDR7luKmCWj5aWRNts6ZWhzC1wBB3BCkn7pwm000fm2pIYoq9/ZxsZz/K0BYOSv+Rn1OC26+SowFXLowvAMIBhAMIBhAMIBhAMIBhAMIBhAMIBhAMIBhAMIBhAMBAfejY19QxrmggnYhdw8kN7fYfqNuijipWCKNjBjZrcLfoSUD5O+Tc+TqXJwf/Z"), class: 'img-logo-recap'%></div>
-              <div class="form-part radio-part form-image-site <%= @flat.bienici ? "active" : "" %>"><%= f.input :bienici, label: " ", as: :hidden, input_html: {class: "my-checkbox-input"}, label_html: {class: "my-label-check"} %><%= image_tag ("logo_bienici.png"), class: 'img-logo-recap' %></div>
-              <div class="form-part radio-part form-image-site <%= @flat.seloger ? "active" : "" %>"><%= f.input :seloger, label: " ", as: :hidden, input_html: {class: "my-checkbox-input"}, label_html: {class: "my-label-check"} %><%= image_tag ("logo_seloger.png"), class: 'img-logo-recap' %></div>
-              <div class="form-part radio-part form-image-site <%= @flat.pap ? "active" : "" %>"><%= f.input :pap, label: " ", as: :hidden, input_html: {class: "my-checkbox-input"}, label_html: {class: "my-label-check"} %><%= image_tag ("logo_pap.png"), class: 'img-logo-recap' %></div>
-              <div class="form-part radio-part form-image-site <%= @flat.pap ? "active" : "" %>"><%= f.input :facebook, label: " ", as: :hidden, input_html: {class: "my-checkbox-input"}, label_html: {class: "my-label-check"} %><%= image_tag ("logo_facebook.png"), class: 'img-logo-recap' %></div>
+          <div id="div-second-step" class="d-none">
+            <div class="advance-barre">
+              <ul id="progressbar">
+                <li class="active"></li>
+                <li class="active"></li>
+                <li class="active"></li>
+                <li></li>
+              </ul>
             </div>
-            <div class="my-form-buttons">
-              <%= link_to 'Revenir en arrière', id: 'back-form-two'%>
-              <%= f.submit "Suivant", class: "second-step-form edit-pub-btn" %>
-            </div>
-          <% end %>
+            <p class="text-second-step">Je souhaite que mon annonce soit publiée sur les sites suivants</p>
+            <%= simple_form_for @flat, url: update_publication_path(@flat), method: :patch do |f| %>
+              <div class="special-form center-form-update" id="special-radio">
+                <div class="form-part radio-part form-image-site <%= @flat.leboncoin ? "active" : "" %> "><%= f.input :leboncoin, label: " ", as: :hidden, input_html: {class: "my-checkbox-input"}, label_html: {class: "my-label-check"} %><%= image_tag ("data:image/jpeg;base64,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"), class: 'img-logo-recap'%></div>
+                <div class="form-part radio-part form-image-site <%= @flat.bienici ? "active" : "" %>"><%= f.input :bienici, label: " ", as: :hidden, input_html: {class: "my-checkbox-input"}, label_html: {class: "my-label-check"} %><%= image_tag ("logo_bienici.png"), class: 'img-logo-recap' %></div>
+                <div class="form-part radio-part form-image-site <%= @flat.seloger ? "active" : "" %>"><%= f.input :seloger, label: " ", as: :hidden, input_html: {class: "my-checkbox-input"}, label_html: {class: "my-label-check"} %><%= image_tag ("logo_seloger.png"), class: 'img-logo-recap' %></div>
+                <div class="form-part radio-part form-image-site <%= @flat.pap ? "active" : "" %>"><%= f.input :pap, label: " ", as: :hidden, input_html: {class: "my-checkbox-input"}, label_html: {class: "my-label-check"} %><%= image_tag ("logo_pap.png"), class: 'img-logo-recap' %></div>
+                <div class="form-part radio-part form-image-site <%= @flat.pap ? "active" : "" %>"><%= f.input :facebook, label: " ", as: :hidden, input_html: {class: "my-checkbox-input"}, label_html: {class: "my-label-check"} %><%= image_tag ("logo_facebook.png"), class: 'img-logo-recap' %></div>
+              </div>
+              <div class="my-form-buttons">
+                <%= link_to 'Revenir en arrière', id: 'back-form-two'%>
+                <%= f.submit "Suivant", class: "second-step-form edit-pub-btn" %>
+              </div>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
-<%= render 'shared/bottom_nav'%>
+  <%= render 'shared/bottom_nav'%>
+<% else %>
+  <div class="dashboard-data-set" data-line="appartements">
+    <div class="screen-container">
+      <div class="dashboard-container full">
+          <%= render partial: 'shared/dashboard_tenant' %>
+      </div>
+      <div class="nav-container full">
+        <%= render partial: 'shared/navbar_dashboard', locals: { notif_counter: @counter} %>
+      </div>
+      <div class="content-container full">
+      </div>
+    </div>
+  </div>
+<% end %>

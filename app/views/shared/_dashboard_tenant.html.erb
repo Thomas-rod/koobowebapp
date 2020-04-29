@@ -1,0 +1,50 @@
+<div id="dashboard-js">
+  <div class="dashboard-wrapper">
+    <a href="/">
+      <p class="logo-text"><span class="k-logo">K</span>oobo</p>
+    </a>
+    <div class="dashboard-line" id="dashboard">
+      <%= link_to dashboard_path do %>
+        <i class="fas fa-columns icon-dashboard fa-2x"></i>
+        <p>Dashboard</p>
+      <% end %>
+    </div>
+
+    <div class="dashboard-line" id="documents">
+      <%= link_to rentings_path do %>
+        <i class="far fa-file-alt icon-dashboard fa-2x"></i>
+        <p>Ma location</p>
+        <span class="notif-counter" id="calendar-counter">
+          <!-- Here will be notifications -->
+        </span>
+      <% end %>
+    </div>
+    <div class="dashboard-line" id="calendar">
+      <%= link_to schedules_path do %>
+        <i class="far fa-calendar-alt icon-dashboard fa-2x"></i>
+        <p>Mon dossier</p>
+        <span class="notif-counter" id="calendar-counter">
+          <!-- Here will be notifications -->
+        </span>
+      <% end %>
+    </div>
+    <div class="dashboard-line" id="appartements">
+      <%= link_to flats_path do %>
+        <i class="fas fa-home icon-dashboard fa-2x"></i>
+        <p>Recherche</p>
+        <span class="notif-counter" id="calendar-counter">
+          <!-- Here will be notifications -->
+        </span>
+      <% end %>
+    </div>
+    <div class="dashboard-line" id="accounting">
+      <%= link_to '#' do %>
+        <i class="fas fa-calculator icon-dashboard fa-2x"></i>
+        <p>Mes visites</p>
+        <span class="notif-counter " id="calendar-counter">
+          <!-- Here will be notifications -->
+        </span>
+      <% end %>
+    </div>
+  </div>
+</div>

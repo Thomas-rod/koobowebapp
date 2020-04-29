@@ -1,83 +1,100 @@
-<div class="dashboard-data-set" data-line="appartements">
-  <div class="screen-container">
-    <div class="dashboard-container full">
-      <%= render partial: 'shared/dashboard', locals: { flats: @flats, schedules: @schedules} %>
-    </div>
-    <div class="nav-container full">
-      <h3>Mes biens</h3>
-      <%= render partial: 'shared/navbar_dashboard', locals: { page_title: 'Documents', notif_counter: @counter} %>
-    </div>
-    <div class="content-container full">
-    <div class="index-container ">
-      <div class="cards-index" id = "index-cards">
-        <% number = 0 %>
-        <% @flats.each do |flat| %>
-          <% number += 1 %>
-          <div class="card-trip card-trip-index cards">
-            <div id="carouselExampleIndicators<%= number %>" class="carousel slide" data-ride="carousel">
-              <ol class="carousel-indicators">
-                <li data-target="#carouselExampleIndicators<%= number %>" data-slide-to="0" class="active"></li>
-                <li data-target="#carouselExampleIndicators<%= number %>" data-slide-to="1"></li>
-                <li data-target="#carouselExampleIndicators<%= number %>" data-slide-to="2"></li>
-              </ol>
-              <div class="carousel-inner">
-                <div class="carousel-item active">
-                  <%= image_tag flat.photos[0], class: "d-block w-100 image"%>
+<% if current_user.renter == true %>
+  <div class="dashboard-data-set" data-line="appartements">
+    <div class="screen-container">
+      <div class="dashboard-container full">
+        <% if current_user.renter == true %>
+          <%= render partial: 'shared/dashboard', locals: { flats: @flats, schedules: @schedules} %>
+        <% else %>
+          <%= render partial: 'shared/dashboard_tenant' %>
+        <% end %>
+      </div>
+      <div class="nav-container full">
+        <h3>Mes biens</h3>
+        <%= render partial: 'shared/navbar_dashboard', locals: { notif_counter: @counter} %>
+      </div>
+      <div class="content-container full">
+      <div class="index-container ">
+        <div class="cards-index" id = "index-cards">
+          <% number = 0 %>
+          <% @flats.each do |flat| %>
+            <% number += 1 %>
+            <div class="card-trip card-trip-index cards">
+              <div id="carouselExampleIndicators<%= number %>" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                  <li data-target="#carouselExampleIndicators<%= number %>" data-slide-to="0" class="active"></li>
+                  <li data-target="#carouselExampleIndicators<%= number %>" data-slide-to="1"></li>
+                  <li data-target="#carouselExampleIndicators<%= number %>" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <%= image_tag flat.photos[0], class: "d-block w-100 image"%>
+                  </div>
+                  <% flat.photos[1..flat.photos.count].each do |photo| %>
+                    <div class="carousel-item ">
+                      <%= image_tag photo, class: "d-block w-100 image" %>
+                    </div>
+                  <% end %>
                 </div>
-                <% flat.photos[1..flat.photos.count].each do |photo| %>
-                  <div class="carousel-item ">
-                    <%= image_tag photo, class: "d-block w-100 image" %>
-                  </div>
-                <% end %>
-              </div>
-              <a class="carousel-control-prev" href="#carouselExampleIndicators<%= number %>" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-              </a>
-              <a class="carousel-control-next" href="#carouselExampleIndicators<%= number %>" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-              </a>
-              <div>
-                <% if flat.rented %>
-                  <div class="coral-visite-rented label-flats">
-                    Loué
-                  </div>
-                <% else %>
-                  <div class="coral-visite-not-rented label-flats">
-                    Publié
-                  </div>
-                <% end %>
-              </div>
-            </div>
-            <div class="card-trip-infos">
-              <div>
-                <h2><%= link_to flat.name, flat_path(flat) %></h2>
-                <p><%= flat.address %> </p>
-              </div>
-              <h2 class="card-trip-pricing"><%= flat.monthly_price.round  %>€/mois</h2>
-              <% if tenant?(flat) %>
-                <% helper_flat_current_tenants(flat).each do |tenant| %>
-                  <% if tenant.photo&.attached?  %>
-                    <%= image_tag tenant.photo, class: "card-trip-user avatar-bordered" %>
+                <a class="carousel-control-prev" href="#carouselExampleIndicators<%= number %>" role="button" data-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleIndicators<%= number %>" role="button" data-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Next</span>
+                </a>
+                <div>
+                  <% if flat.rented %>
+                    <div class="coral-visite-rented label-flats">
+                      Loué
+                    </div>
                   <% else %>
-                    <%= image_tag ("avatar.png"), class: 'card-trip-user avatar-bordered' %>
+                    <div class="coral-visite-not-rented label-flats">
+                      Publié
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+              <div class="card-trip-infos">
+                <div>
+                  <h2><%= link_to flat.name, flat_path(flat) %></h2>
+                  <p><%= flat.address %> </p>
+                </div>
+                <h2 class="card-trip-pricing"><%= flat.monthly_price.round  %>€/mois</h2>
+                <% if tenant?(flat) %>
+                  <% helper_flat_current_tenants(flat).each do |tenant| %>
+                    <% if tenant.photo&.attached?  %>
+                      <%= image_tag tenant.photo, class: "card-trip-user avatar-bordered" %>
+                    <% else %>
+                      <%= image_tag ("avatar.png"), class: 'card-trip-user avatar-bordered' %>
+                    <% end %>
                   <% end %>
                 <% end %>
-              <% end %>
+              </div>
             </div>
-          </div>
-        <% end %>
-        <div class="card-trip card-trip-empty">
-          <%= link_to new_flat_path, class: 'button-new-flat' do %>
-            <i class="fas fa-plus-circle fa-flat" title="Ajouter un bien"></i>
-            <h6 id="text-card-trip">Créer mon bien</h6>
           <% end %>
+          <div class="card-trip card-trip-empty">
+            <%= link_to new_flat_path, class: 'button-new-flat' do %>
+              <i class="fas fa-plus-circle fa-flat" title="Ajouter un bien"></i>
+              <h6 id="text-card-trip">Créer mon bien</h6>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
-<%= render 'shared/bottom_nav'%>
-
-
+  <%= render 'shared/bottom_nav'%>
+<% else %>
+  <div class="dashboard-data-set" data-line="appartements">
+    <div class="screen-container">
+      <div class="dashboard-container full">
+          <%= render partial: 'shared/dashboard_tenant' %>
+      </div>
+      <div class="nav-container full">
+        <%= render partial: 'shared/navbar_dashboard', locals: { notif_counter: @counter} %>
+      </div>
+      <div class="content-container full">
+      </div>
+    </div>
+  </div>
+<% end %>
