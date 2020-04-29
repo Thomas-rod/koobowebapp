@@ -25,6 +25,7 @@
   box-shadow: 0 0 4px rgba(0,0,0,0.2);
   background-color: #C4C4C4;
   border-radius: 5px;
+  padding: 5px;
 }
 .info-flow {
   grid-area: one;
@@ -112,4 +113,8 @@
 .tenant-details {
   display: flex;
   align-items: center;
+}
+
+.button-flow {
+  margin-top: 10px;
 }
