@@ -7,15 +7,20 @@
       <%= render partial: 'shared/navbar_dashboard', locals: { page_title: 'Documents', notif_counter: @counter} %>
     </div>
     <div class="content-container full">
-      <h3>Ajouter un flux financier</h3>
-      <%= simple_form_for @flow do |f| %>
-        <%= f.input :title, label: "Titre" %>
-        <%= f.input :payment_date, label: "Date de paiement" %>
-        <%= f.input :amount, label: "Montant en €" %>
-        <%= f.input :category, label: "Catégorie" %>
-        <%= f.input :month_rent, label: "Mois concerné (à remplir si le flux concerne le paiement d'un loyer)" %>
-        <%= f.button :submit, "Créer le flux" %>
-      <% end %>
+      <div class="new-flow">
+        <h3>Ajouter un flux financier</h3>
+        <%= simple_form_for @flow do |f| %>
+          <span class="form-part form-inline element form-input"><%= f.input :title, label: "Titre" %></span>
+          <span class="form-part form-inline element form-input"><%= f.input :payment_date, as: :date, html5: true, label: "Date de paiement" %></span>
+          <span class="form-part form-inline element form-input"><%= f.input :amount, label: "Montant en €" %></span>
+          <span class="form-part form-inline element form-input"><%= f.input :category, label: "Catégorie", input_html: {class: "select2 flow-category"}, collection: Flow::CATEGORIES %></span>
+          <div class="form-input">
+            <span class="form-part form-inline element"><%= f.input :month_rent, label: "Mois concerné", as: :date, html5: true, order: [:month, :year] %></span>
+            <small id="monthHelpBlock" class="form-text text-muted">Si le flux correspond à un paiement de loyer</small>
+          </div>
+          <%= f.button :submit, "Créer le flux", id: "flow-form-btn" %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
