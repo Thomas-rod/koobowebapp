@@ -279,12 +279,12 @@
   h2{
     text-align:center;
   }
-  padding-top: 32px;
-  height:80vh;
+  text-align:center;
+  border: solid white 24px;
+  height:100%;
+  overflow-y: auto;
+  max-height:100%;
   justify-content: center;
-  font-size: 24px;
-  font-weight: bold;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
   border-radius: 5px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
@@ -293,6 +293,8 @@
 .card-product-original {
   overflow: hidden;
   height:10vh;
+  min-height:117px;
+  margin-top: 12px;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   display: flex;
@@ -321,10 +323,7 @@
 
 .card-product-original .card-product-original-infos{
   padding: 16px;
-  h2 {
-    text-align: center;
-  }
-     width: 100%
+  width: 100%
 }
 
 

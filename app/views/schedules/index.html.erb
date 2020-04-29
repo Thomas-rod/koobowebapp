@@ -1,50 +1,69 @@
-<div class="dashboard-data-set" data-line=calendar>
-  <div class="screen-container">
-    <div class="dashboard-container full">
-      <%= render partial: 'shared/dashboard', locals: { flats: @flats, schedules: @schedules} %>
-    </div>
-    <div class="nav-container full">
-      <h3>Mon calendrier</h3>
-      <%= render partial: 'shared/navbar_dashboard', locals: { page_title: 'Documents', notif_counter: @counter} %>
-    </div>
-    <div class="content-container full">
-      <div class="container-disposition">
-        <div class="disposition-card-four">
-          <div class="disposition-four-left">
-            <div class="disposition-size">
-              <%= render 'shared/calendar'%>
+<% if current_user.renter == true %>
+  <div class="dashboard-data-set" data-line=calendar>
+    <div class="screen-container">
+      <div class="dashboard-container full">
+        <% if current_user.renter == true %>
+          <%= render partial: 'shared/dashboard', locals: { flats: @flats, schedules: @schedules} %>
+        <% else %>
+          <%= render partial: 'shared/dashboard_tenant' %>
+        <% end %>
+      </div>
+      <div class="nav-container full">
+        <h3>Mon calendrier</h3>
+        <%= render partial: 'shared/navbar_dashboard', locals: { page_title: 'Documents', notif_counter: @counter} %>
+      </div>
+      <div class="content-container full">
+        <div class="container-disposition">
+          <div class="disposition-card-four">
+            <div class="disposition-four-left">
+              <div class="disposition-size">
+                <%= render 'shared/calendar'%>
+              </div>
             </div>
-          </div>
-          <div class="disposition-four-right">
-            <div class="disposition-size">
-              <% number = 2 %>
-              <% current_user.schedules.each do |schedule| %>
-                <% number += 1 %>
-                <div class="card-trip-schedules d-none" id="scheduled<%= schedule.id %>">
-                  <%= image_tag schedule.flat.photos.first, class: "image" %>
-                  <div class = "info-flat">
-                    <h5><%= schedule.flat.name %></h5>
-                    <p><%= link_to "Rajouter des créneaux" , flat_path(schedule.flat), class: "link-schedule" %></p>
-                    <% accepted_visit = schedule.visits.select {|visit| visit.status == "accepted"} %>
-                    <% pending_visit = schedule.visits.select {|visit| visit.status == "pending"} %>
-                    <% if accepted_visit != [] %>
-                      <%= render partial: 'shared/card_with_answer', locals: { request: accepted_visit.first, label_text: 'Visite'} %>
-                    <% elsif pending_visit != []%>
-                      <h6>Ils veulent visiter ce bien</h6>
-                      <% pending_visit.each do |visit| %>
-                        <%= render partial: "shared/card_pending", locals: { request: visit}  %>
+            <div class="disposition-four-right">
+              <div class="disposition-size">
+                <% number = 2 %>
+                <% current_user.schedules.each do |schedule| %>
+                  <% number += 1 %>
+                  <div class="card-trip-schedules d-none" id="scheduled<%= schedule.id %>">
+                    <%= image_tag schedule.flat.photos.first, class: "image" %>
+                    <div class = "info-flat">
+                      <h5><%= schedule.flat.name %></h5>
+                      <p><%= link_to "Rajouter des créneaux" , flat_path(schedule.flat), class: "link-schedule" %></p>
+                      <% accepted_visit = schedule.visits.select {|visit| visit.status == "accepted"} %>
+                      <% pending_visit = schedule.visits.select {|visit| visit.status == "pending"} %>
+                      <% if accepted_visit != [] %>
+                        <%= render partial: 'shared/card_with_answer', locals: { request: accepted_visit.first, label_text: 'Visite'} %>
+                      <% elsif pending_visit != []%>
+                        <h6>Ils veulent visiter ce bien</h6>
+                        <% pending_visit.each do |visit| %>
+                          <%= render partial: "shared/card_pending", locals: { request: visit}  %>
+                        <% end %>
+                      <% else %>
+                        <p>Sois patient ! 100% des locataires ont visité leur appartement...</p>
                       <% end %>
-                    <% else %>
-                      <p>Sois patient ! 100% des locataires ont visité leur appartement...</p>
-                    <% end %>
+                    </div>
                   </div>
-                </div>
-              <% end %>
+                <% end %>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
-<%= render 'shared/bottom_nav'%>
+  <%= render 'shared/bottom_nav'%>
+<% else %>
+  <div class="dashboard-data-set" data-line=calendar>
+    <div class="screen-container">
+      <div class="dashboard-container full">
+          <%= render partial: 'shared/dashboard_tenant' %>
+      </div>
+      <div class="nav-container full">
+        <%= render partial: 'shared/navbar_dashboard', locals: { notif_counter: @counter} %>
+      </div>
+      <div class="content-container full">
+      </div>
+    </div>
+  </div>
+<% end %>
