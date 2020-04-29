@@ -9,6 +9,12 @@ const initSelect2 = () => {
     placeholder: "Type de bien",
     minimumResultsForSearch: -1
   });
+  $('.select2.flow-category').select2({
+    minimumResultsForSearch: -1
+  });
+  $('.select2.flow-renting').select2({
+    minimumResultsForSearch: -1
+  });
 };
 
 export { initSelect2 };

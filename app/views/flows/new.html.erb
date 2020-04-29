@@ -1,0 +1,27 @@
+<div class="dashboard-data-set" data-line="appartements">
+  <div class="screen-container">
+    <div class="dashboard-container full">
+      <%= render partial: 'shared/dashboard', locals: { flats: @flats, schedules: @schedules} %>
+    </div>
+    <div class="nav-container full">
+      <%= render partial: 'shared/navbar_dashboard', locals: { page_title: 'Documents', notif_counter: @counter} %>
+    </div>
+    <div class="content-container full">
+      <div class="new-flow">
+        <h3>Ajouter un flux financier</h3>
+        <%= simple_form_for @flow do |f| %>
+          <span class="form-part form-inline element form-input"><%= f.input :title, label: "Titre" %></span>
+          <span class="form-part form-inline element form-input"><%= f.input :payment_date, as: :date, html5: true, input_html: {id: "payment_date"}, label: "Date de paiement" %></span>
+          <span class="form-part form-inline element form-input"><%= f.input :amount, label: "Montant en €" %></span>
+          <span class="form-part form-inline element form-input"><%= f.input :category, label: "Catégorie", input_html: {class: "select2 flow-category"}, collection: Flow::CATEGORIES %></span>
+          <span class="form-part form-inline element form-input"><%=f.association :renting, collection: @flats.order(:name), input_html: {class: "select2 flow-renting"} %></span>
+          <div class="form-input">
+            <span class="form-part form-inline element"><%= f.input :month_rent, label: "Mois concerné", as: :date, html5: true, input_html: {id: "month_rent"} %></span>
+            <small id="monthHelpBlock" class="form-text text-muted">Si le flux correspond à un paiement de loyer</small>
+          </div>
+          <%= f.button :submit, "Créer le flux", id: "flow-form-btn" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
