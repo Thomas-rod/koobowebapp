@@ -102,7 +102,7 @@ class FlatsController < ApplicationController
   end
 
   def flat_params
-    params.require(:flat).permit(:renting_id, :payment_date, :amount, :category, :title, :month_rent)
+    params.require(:flat).permit(:name, :address, :description, :monthly_price, , :rented, :number_of_rooms, :number_of_bedrooms, :surface, :floor, :elevator, :balcony, :cellar, :parking, :furnished, :pap, :leboncoin, :bienici, :seloger, :facebook, :category, heating_system: [], photos: [], technical_diagnostic: [], information_leaflet: [], co_owner_document: [])
   end
 
   def which_document_upload
