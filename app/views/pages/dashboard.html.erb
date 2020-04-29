@@ -2,11 +2,7 @@
   <div class="dashboard-data-set" data-line="dashboard">
     <div class="screen-container">
       <div class="dashboard-container full">
-        <% if current_user.renter == true %>
-          <%= render partial: 'shared/dashboard', locals: { flats: @flats, schedules: @schedules} %>
-        <% else %>
-          <%= render partial: 'shared/dashboard_tenant' %>
-        <% end %>
+        <%= render partial: 'shared/dashboard', locals: { flats: @flats, schedules: @schedules} %>
       </div>
       <div class="nav-container full">
         <h3> Mon dashboard</h3>
@@ -139,6 +135,37 @@
         <%= render partial: 'shared/navbar_dashboard', locals: { notif_counter: @counter} %>
       </div>
       <div class="content-container full">
+        <div class="grid-dashboard">
+          <div class="dash-flat">
+            <div class="card-positioning">
+              <div id="card-renting-tenant" class="full">
+                <h3 id="card-renting-tenant-header">Ma location</h3>
+                <div id="card-renting-tenant-body">
+                  <% if user_current_renting?(current_user) %>
+                      <%= image_tag user_current_renting(current_user).flat.user.photo, class: 'avatar-extra-large' %>
+                  <% else %>
+                    <p>Tu n'as pas encore loué d'appartement !</p>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="dash-schedule">
+            <div class="card-positioning">
+              <h3>Vos Rendez vous</h3>
+            </div>
+          </div>
+          <div class="dash-notif">
+            <div class="card-positioning">
+              <h3>Notifications</h3>
+            </div>
+          </div>
+          <div class="dash-flux">
+            <div class="card-positioning">
+              <h3>Gestion</h3>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

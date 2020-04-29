@@ -1,4 +1,6 @@
 // Import page-specific CSS files here.
+@import "dashboard_menu";
+@import "dashboard_tenant";
 @import "edit_publication";
 @import "flat_index";
 @import "flat_show";
@@ -12,4 +14,3 @@
 @import "rentings_index";
 @import "schedule_index";
 @import "show";
-@import "dashboard_menu";

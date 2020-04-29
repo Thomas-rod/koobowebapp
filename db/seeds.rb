@@ -33,16 +33,16 @@ end
 puts "Creating users"
 roxane = User.new(first_name: "Roxane", last_name: "Haddad", phone_number: "0664784489", email: "roxane.haddad@gmail.com", password: "roxane.haddad@gmail.com", description: "26 ans, en CDI confirmé depuis 3 ans, célibataire, sans animaux.")
 attach_photo_user("https://avatars0.githubusercontent.com/u/54777799?v=4", roxane)
-roxane.save
+roxane.save!
 john = User.new(first_name: "Jonathan", last_name: "Courdavault", phone_number: "0778381974", email: "jo.courdavault@gmail.com", password: "jo.courdavault@gmail.com")
 attach_photo_user("https://avatars2.githubusercontent.com/u/58211236?v=4", john)
-john.save
+john.save!
 thomas = User.new(first_name: "Thomas", last_name: "Rodier", phone_number: "0668489169", email: "rodiert17@gmail.com", password: "rodiert17@gmail.com")
 attach_photo_user("https://avatars1.githubusercontent.com/u/57214511?v=4", thomas)
-thomas.save
+thomas.save!
 mao = User.new(first_name: "Maodo", last_name: "Diop", phone_number: "0663906049", email: "maodod1@gmail.com", password: "maodod1@gmail.com")
 attach_photo_user("https://avatars1.githubusercontent.com/u/56120487?v=4", mao)
-mao.save
+mao.save!
 puts "#{User.count} users created"
 
 puts "Creating flats"
