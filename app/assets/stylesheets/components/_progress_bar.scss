@@ -46,7 +46,7 @@ $grey-light: #ededed;
       left: $bubble-position;
       width: 36px;
       height: 36px;
-      box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+      box-shadow: $box-shadow;
       border-radius: 50%;
       background-color: $white;
     }
@@ -63,7 +63,7 @@ $grey-light: #ededed;
         font-size: 10px;
         color: #FFF;
         text-align: center;
-        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        box-shadow: $box-shadow;
         background-color: white;
       }
     }
@@ -88,7 +88,7 @@ $grey-light: #ededed;
         font-weight: bold;
         text-align: center;
         color: $blue;
-        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        box-shadow: $box-shadow;
         background-color: white;
       }
     }

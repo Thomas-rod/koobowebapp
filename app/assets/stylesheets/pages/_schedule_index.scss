@@ -14,7 +14,7 @@ $size-screen: 85vh;
 .disposition-four-left {
   grid-area: one;
   border-radius: 5px;
-  box-shadow: 0 0 4px rgba(0,0,0,0.2);
+  box-shadow: $box-shadow;
   border-radius: 5px;
   & .schedules-container-show-edit {
     max-height:100% !important;
@@ -27,7 +27,7 @@ $size-screen: 85vh;
   grid-area: two;
   text-align:center;
   justify-self: stretch;
-  box-shadow: 0 0 4px rgba(0,0,0,0.2);
+  box-shadow: $box-shadow;
   border-radius: 5px;
 }
 
