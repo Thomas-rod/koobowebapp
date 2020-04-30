@@ -2,11 +2,7 @@
   <div class="dashboard-data-set" data-line="accounting">
     <div class="screen-container">
       <div class="dashboard-container full">
-        <% if current_user.renter == true %>
-          <%= render partial: 'shared/dashboard', locals: { flats: @flats, schedules: @schedules} %>
-        <% else %>
-          <%= render partial: 'shared/dashboard_tenant' %>
-        <% end %>
+        <%= render partial: 'shared/dashboard', locals: { flats: @flats, schedules: @schedules} %>
       </div>
       <div class="nav-container full">
         <h3>Ma comptabilité</h3>
@@ -40,20 +36,19 @@
                   <% end %>
                 <% end %>
               </div>
-            </div>
-            <div class="rents-total">
-              <% @flats_rented.each do |flat| %>
-                <% @all_rents_payed << flat if rent_payed?(flat) %>
-              <% end %>
-              <% if @flats_rented.length == @all_rents_payed.length %>
-                <h5>Tous vos locataires ont payé leur loyer pour le mois en cours</h5>
-              <% else %>
-                <h5>Vos locataires n'ont pas encore tous payé leur loyer pour le mois en cours</h5>
-              <% end %>
-            </div>
-            <div class="rents-stats">
-              <h3><%= @all_rents_payed.length / @flats_rented.length * 100 %> %</h3>
-              <!--  -->
+              <div class="rents-total">
+                <% @flats_rented.each do |flat| %>
+                  <% @all_rents_payed << flat if rent_payed?(flat) %>
+                <% end %>
+                <% if @flats_rented.length == @all_rents_payed.length %>
+                  <h5>Tous vos locataires ont payé leur loyer pour le mois en cours</h5>
+                <% else %>
+                  <h5>Vos locataires n'ont pas encore tous payé leur loyer pour le mois en cours</h5>
+                <% end %>
+              </div>
+              <div class="rents-stats">
+                <h3><%= @all_rents_payed.length / @flats_rented.length * 100 %> %</h3>
+              </div>
             </div>
           </div>
           <div class="add-flow grey-box">
