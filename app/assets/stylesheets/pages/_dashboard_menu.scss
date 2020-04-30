@@ -104,3 +104,16 @@ div#notifications {
     max-height: 221px;
     overflow-y: scroll;
     }
+
+
+.product-empty{
+  text-align: center;
+  padding: 15;
+  justify-content: center;
+  .fa-plus-circle {
+    margin-bottom: 8px;
+  }
+  .fa-flat {
+    font-size: 50px;
+}
+}
