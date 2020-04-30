@@ -1,6 +1,10 @@
 class VisitsController < ApplicationController
   before_action :notif_visit, :notif_counter;
 
+  def index
+    @visits = Visit.select {|v| v.user == current_user}
+  end
+
   def new
     @flat = Flat.find(params[:flat_id])
     @visit = Visit.new
