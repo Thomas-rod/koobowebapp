@@ -7,7 +7,6 @@
 }
 
 .element {
-  justify-content: center;
   label {
     margin-right: 20px;
   }
@@ -16,18 +15,39 @@
   }
 }
 
-.new-flow {
-  text-align: center;
-}
-
 #flow-form-btn {
   padding: 15px 30px;
   background-color: #EE8572;
   border-radius: 4px;
   border: none;
   color: white;
+  text-align: center;
 }
 
 #yearHelp {
   margin-bottom: 30px;
+}
+
+.flow-modal {
+  background-color: white;
+}
+
+#flow-body {
+  text-align: justify;
+}
+
+.validation-button {
+  text-align: center;
+}
+
+.help-text {
+  margin-left: 30px;
+}
+
+.form-control {
+  background-color: white;
+}
+
+.form-control:disabled, .form-control[readonly] {
+  background-color: white;
 }

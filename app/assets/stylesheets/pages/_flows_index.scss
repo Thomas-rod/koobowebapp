@@ -117,4 +117,9 @@
 
 .button-flow {
   margin-top: 10px;
+  background-color: #C4C4C4;
+  border: none;
+  &:focus {
+     outline: none;
+  }
 }
