@@ -1,39 +1,45 @@
-<div class="dashboard-data-set" data-line="accounting">
-  <div class="screen-container">
-    <div class="dashboard-container full">
-      <%= render partial: 'shared/dashboard', locals: { flats: @flats, schedules: @schedules} %>
-    </div>
-    <div class="nav-container full">
-      <h3>Ma comptabilité</h3>
-      <%= render partial: 'shared/navbar_dashboard', locals: { page_title: 'Documents', notif_counter: @counter} %>
-    </div>
-    <div class="content-container full">
-      <div class="flows">
-        <div class="info-flow grey-box">
-          <h3>Informations</h3>
-          <% if @flats_rented == [] %>
-            <p>Vous n'avez pas encore de bien en location</p>
-          <% end %>
-          <div class="renting-part">
-            <% @flats_rented = [] %>
-            <% @all_rents_payed = [] %>
-            <div class="rents-details flows-details">
-              <% @flats.each do |flat| %>
-                <% @renting = flat.rentings.find_by(status: "current") %>
-                <% @flats_rented << flat if @renting %>
-                <% if @renting && rent_payed?(flat) %>
-                  <div class="dark-grey-boxes tenant-details">
-                    <p><%= @renting.renting_folder.users.first.first_name %> de votre bien <%= flat.name %> a bien payé son loyer</p>
-                    <%= link_to "Remercier", "#", class: "koobo-button" %>
-                  </div>
+<% if current_user.renter == true %>
+  <div class="dashboard-data-set" data-line="accounting">
+    <div class="screen-container">
+      <div class="dashboard-container full">
+        <% if current_user.renter == true %>
+          <%= render partial: 'shared/dashboard', locals: { flats: @flats, schedules: @schedules} %>
+        <% else %>
+          <%= render partial: 'shared/dashboard_tenant' %>
+        <% end %>
+      </div>
+      <div class="nav-container full">
+        <h3>Ma comptabilité</h3>
+        <%= render partial: 'shared/navbar_dashboard', locals: { page_title: 'Documents', notif_counter: @counter} %>
+      </div>
+      <div class="content-container full">
+        <div class="flows">
+          <div class="info-flow grey-box">
+            <h3>Paiement des loyers</h3>
+            <% if @flats_rented == [] %>
+              <p>Vous n'avez pas encore de bien en location</p>
+            <% end %>
+            <div class="renting-part">
+              <% @flats_rented = [] %>
+              <% @all_rents_payed = [] %>
+              <div class="rents-details flows-details">
+                <% @flats.each do |flat| %>
+                  <% @renting = flat.rentings.find_by(status: "current") %>
+                  <% @flats_rented << flat if @renting %>
+                  <% if @renting && rent_payed?(flat) %>
+                    <div class="dark-grey-boxes tenant-details">
+                      <p><%= @renting.renting_folder.users.first.first_name %> de votre bien <%= flat.name %> a bien payé son loyer</p>
+                      <%= link_to "Remercier", "#", class: "koobo-button" %>
+                    </div>
+                  <% end %>
+                  <% if @renting && !rent_payed?(flat) %>
+                    <div class="dark-grey-boxes tenant-details">
+                      <p><%= @renting.renting_folder.users.first.first_name %> de votre bien <%= flat.name %> n'a pas encore payé son loyer</p>
+                      <%= link_to "Relancer", "#", class: "koobo-button" %>
+                    </div>
+                  <% end %>
                 <% end %>
-                <% if @renting && !rent_payed?(flat) %>
-                  <div class="dark-grey-boxes tenant-details">
-                    <p><%= @renting.renting_folder.users.first.first_name %> de votre bien <%= flat.name %> n'a pas encore payé son loyer</p>
-                    <%= link_to "Relancer", "#", class: "koobo-button" %>
-                  </div>
-                <% end %>
-              <% end %>
+              </div>
             </div>
             <div class="rents-total">
               <% @flats_rented.each do |flat| %>
@@ -47,79 +53,93 @@
             </div>
             <div class="rents-stats">
               <h3><%= @all_rents_payed.length / @flats_rented.length * 100 %> %</h3>
+              <!--  -->
             </div>
           </div>
-        </div>
-        <div class="add-flow grey-box">
-          <h3>Ajouter ou supprimer un élément</h3>
-          <%= link_to new_flat_path, class: "button-add-flow" do %>
-            <i class="fas fa-plus-circle fa-flat" title="Ajouter un flux"></i>
-          <% end %>
-          <%= link_to new_flat_path, class: "button-remove-flow" do %>
-            <i class="fas fa-minus-circle fa-flat" title="Supprimer un flux"></i>
-          <% end %>
-        </div>
-        <div class="all-flows grey-box">
-          <div class="flows-details">
-            <div class="details">
-              <div class="total">
-                <h3>Solde</h3>
-                <h3 class="green-numbers"><%= @incomes - @spendings %> €</h3>
-              </div>
-              <div class="incomes">
-                <h5>Revenus</h5>
-                <h5 class="green-numbers" id="income-number"><%= @incomes %> €</h5>
-              </div>
-              <div class="spendings">
-                <h5>Dépenses</h5>
-                <h5 id="spending-number"><%= @spendings %> €</h5>
-              </div>
-            </div>
-          </div>
-          <div class="flows-details">
-            <% @flows.each do |flow| %>
-              <div class="details dark-grey-boxes">
-                <p><%= flow.title %></p>
-                <p><%= flow.renting.flat.name %></p>
-                <p><%= flow.payment_date.strftime("%d/%m/%Y") %></p>
-                <p><%= flow.amount %> €</p>
-              </div>
+          <div class="add-flow grey-box">
+            <h3>Ajouter ou supprimer un élément</h3>
+            <%= link_to new_flow_path, class: "button-flow" do %>
+              <i class="fas fa-plus-circle fa-flat button-flow" title="Ajouter un flux"></i>
             <% end %>
-            <%= will_paginate(@flows, :previous_label => t("précédent"), :next_label => t("suivant"), :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer) %>
+            <%= link_to "#" do %>
+              <i class="fas fa-minus-circle fa-flat button-flow" title="Supprimer un flux"></i>
+            <% end %>
           </div>
-        </div>
-        <div class="flat-flows grey-box">
-          <div class="flows-details">
-            <% @flats.each do |flat| %>
-              <h5><%= flat.name %></h5>
-              <% @flat_flows = flat.flows %>
-              <% @flat_incomes = 0 %>
-              <% @flat_spendings = 0 %>
-              <% @flat_flows.each do |flow| %>
-                <% if flow.category == "income" %>
-                  <% @flat_incomes += flow.amount %>
-                <% else %>
-                  <% @flat_spendings += flow.amount %>
-                <% end %>
-              <% end %>
+          <div class="all-flows grey-box">
+            <div class="flows-details">
               <div class="details">
                 <div class="total">
                   <h3>Solde</h3>
-                  <h3 class="green-numbers"><%= @flat_incomes - @flat_spendings %> €</h3>
+                  <h3 class="green-numbers"><%= @incomes - @spendings %> €</h3>
                 </div>
                 <div class="incomes">
                   <h5>Revenus</h5>
-                  <h5 class="green-numbers" id="income-number"><%= @flat_incomes %> €</h5>
+                  <h5 class="green-numbers" id="income-number"><%= @incomes %> €</h5>
                 </div>
                 <div class="spendings">
                   <h5>Dépenses</h5>
-                  <h5 id="spending-number"><%= @flat_spendings %> €</h5>
+                  <h5 id="spending-number"><%= @spendings %> €</h5>
                 </div>
               </div>
-            <% end %>
+            </div>
+            <div class="flows-details">
+              <% @flows.each do |flow| %>
+                <div class="details dark-grey-boxes">
+                  <p><%= flow.title %></p>
+                  <p><%= flow.renting.flat.name %></p>
+                  <p><%= flow.payment_date.strftime("%d/%m/%Y") %></p>
+                  <p><%= flow.amount %> €</p>
+                </div>
+              <% end %>
+              <%= will_paginate(@flows, :previous_label => t("précédent"), :next_label => t("suivant"), :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer) %>
+            </div>
+          </div>
+          <div class="flat-flows grey-box">
+            <div class="flows-details">
+              <% @flats.each do |flat| %>
+                <h5><%= flat.name %></h5>
+                <% @flat_flows = flat.flows %>
+                <% @flat_incomes = 0 %>
+                <% @flat_spendings = 0 %>
+                <% @flat_flows.each do |flow| %>
+                  <% if flow.category == "income" %>
+                    <% @flat_incomes += flow.amount %>
+                  <% else %>
+                    <% @flat_spendings += flow.amount %>
+                  <% end %>
+                <% end %>
+                <div class="details">
+                  <div class="total">
+                    <h3>Solde</h3>
+                    <h3 class="green-numbers"><%= @flat_incomes - @flat_spendings %> €</h3>
+                  </div>
+                  <div class="incomes">
+                    <h5>Revenus</h5>
+                    <h5 class="green-numbers" id="income-number"><%= @flat_incomes %> €</h5>
+                  </div>
+                  <div class="spendings">
+                    <h5>Dépenses</h5>
+                    <h5 id="spending-number"><%= @flat_spendings %> €</h5>
+                  </div>
+                </div>
+              <% end %>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
+<% else %>
+  <div class="dashboard-data-set" data-line="accounting">
+    <div class="screen-container">
+      <div class="dashboard-container full">
+          <%= render partial: 'shared/dashboard_tenant' %>
+      </div>
+      <div class="nav-container full">
+        <%= render partial: 'shared/navbar_dashboard', locals: { notif_counter: @counter} %>
+      </div>
+      <div class="content-container full">
+      </div>
+    </div>
+  </div>
+<% end %>

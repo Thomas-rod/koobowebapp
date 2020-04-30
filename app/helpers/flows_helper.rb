@@ -1,11 +1,11 @@
 module FlowsHelper
   def rent_payed?(flat)
-    @rent = flat.flows.select{|f| f.month_rent == DateTime.now.mon && f.category == "income" }
-    amount_global = 0
+    @rent = flat.flows.select{|f| f.month_rent.mon == DateTime.now.mon && f.category == "revenu" }
+    global_amount = 0
     @rent.each do |flow|
-      amount_global += flow.amount
+      global_amount += flow.amount
     end
-    if @rent && amount_global == flat.monthly_price
+    if @rent && global_amount == flat.monthly_price
       return true
     else
       return false

@@ -11,11 +11,16 @@ Rails.application.routes.draw do
     resources :visits, only: :update
   end
   resources :rentings, only: [:create, :edit, :update, :new, :index]
+  resources :flows, only: [:index, :new, :create]
 
-  resources :flows, only: :index
+  # FLATS MODIFICATION
   get "flats/:id/edit_publication", to: "flats#edit_publication", as: :edit_publication
   get "flats/:id/recap_publication", to: "flats#recap_publication", as: :recap_publication
   patch "flats/:id/update_publication", to: "flats#update_publication", as: :update_publication
   patch "flats/:id/disable_publication", to: "flats#disable_publication", as: :disable_publication
   post "flats/:id/upload_document", to: "flats#upload_document", as: :upload_document
+  delete "flats/:id/purge_document", to: "flats#purge_document", as: :purge_document
+
+  # USERS MODIFICATION
+  patch "users/:id", to: "application#update_user_renter", as: :update_user_renter
 end

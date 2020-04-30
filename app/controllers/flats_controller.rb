@@ -78,6 +78,17 @@ class FlatsController < ApplicationController
     end
   end
 
+  def purge_document
+    find_flat
+    unless params[:file].nil?
+      # raise
+      file = params[:file]
+      @flat.send(file).purge
+      redirect_to flat_path(@flat), notice: "C'est bon, le document a été supprimé !"
+    else
+      redirect_to flat_path(@flat), alert: "Jeff, on a un soucis. Contacte nous par mail bokoo@koobo.co"
+    end
+  end
   # HELPER OTHERS
 
   def check(num)
@@ -91,7 +102,12 @@ class FlatsController < ApplicationController
   # WILL USE THIS ONE TO UPDATE WHERE FLAT IS PUBLISHED
   def disable_publication
     find_flat
-    @flat.update!(pap: false, bienici: false, leboncoin: false, seloger: false, facebook: false)
+    @flat.pap = false
+    @flat.bienici = false
+    @flat.leboncoin = false
+    @flat.seloger = false
+    @flat.facebook = false
+    @flat.update!(flat_params)
     redirect_to flat_path(@flat)
   end
 
@@ -102,11 +118,10 @@ class FlatsController < ApplicationController
   end
 
   def flat_params
-    params.require(:flat).permit(:name, :address, :description, :monthly_price, :visible, :rented, :number_of_rooms, :number_of_bedrooms, :surface, :floor, :elevator, :balcony, :cellar, :parking, :furnished, :pap, :leboncoin, :bienici, :seloger, :facebook, :category, heating_system: [], photos: [], technical_diagnostic: [], information_leaflet: [], co_owner_document: [])
+    params.require(:flat).permit(:name, :address, :description, :monthly_price, :rented, :number_of_rooms, :number_of_bedrooms, :surface, :floor, :elevator, :balcony, :cellar, :parking, :furnished, :pap, :leboncoin, :bienici, :seloger, :facebook, :category, heating_system: [], photos: [], technical_diagnostic: [], information_leaflet: [], co_owner_document: [])
   end
 
   def which_document_upload
-    document = ""
     if !params[:flat][:technical_diagnostic].nil?
       return "technical_diagnostic"
     elsif !params[:flat][:information_leaflet].nil?

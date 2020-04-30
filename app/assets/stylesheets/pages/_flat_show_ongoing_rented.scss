@@ -3,7 +3,7 @@ $size-screen: 85vh;
 #disposition-card-three {
   width:100%;
   height:$size-screen;
-  box-shadow: 0 0 4px rgba(0,0,0,0.2);
+  box-shadow: $box-shadow;
   display: grid;
   grid-template-columns: minmax(60%, 60%) minmax(35%, 35%);
   grid-template-rows: repeat(4, 19vh);
@@ -16,7 +16,7 @@ $size-screen: 85vh;
 }
 
 #disposition-three-left-top {
-  box-shadow: 0 0 4px rgba(0,0,0,0.2);
+  box-shadow: $box-shadow;
   grid-area: one;
   border-radius: 5px;
   > .disposition-size h5, p {
@@ -28,7 +28,7 @@ $size-screen: 85vh;
 }
 
 #disposition-three-left-bottom {
-  box-shadow: 0 0 4px rgba(0,0,0,0.2);
+  box-shadow: $box-shadow;
   grid-area: three;
   border-radius: 5px;
 }
@@ -41,7 +41,7 @@ $size-screen: 85vh;
 }
 
 #disposition-three-right {
-  box-shadow: 0 0 4px rgba(0,0,0,0.2);
+  box-shadow: $box-shadow;
   grid-area: two;
   text-align:center;
   justify-self: stretch;

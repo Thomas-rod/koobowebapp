@@ -24,6 +24,11 @@
     <% end %>
     <div class="dropdown-menu drop-profil" aria-labelledby="navbarDropdownProfil">
       <%= link_to 'Profil', flats_path, class: 'dropdown-item' %>
+      <% if current_user.renter %>
+        <%= link_to "Locataire", update_user_renter_path(current_user),class: 'dropdown-item', method: 'patch' %>
+      <% else %>
+        <%= link_to "Propriétaire", update_user_renter_path(current_user),class: 'dropdown-item', method: 'patch' %>
+      <% end %>
       <%= link_to 'Se déconnecter', destroy_user_session_path, class: 'dropdown-item', method: 'delete' %>
     </div>
   </div>

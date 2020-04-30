@@ -14,14 +14,14 @@
 #disposition-one-left-top {
   justify-self: stretch;
   grid-area: one;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.4);
+  box-shadow: $box-shadow;
   border-radius: 5px;
 }
 
 #disposition-one-left-bottom {
   justify-self: stretch;
   grid-area: three;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.4);
+  box-shadow: $box-shadow;
   border-radius: 5px;
 }
 
@@ -33,7 +33,7 @@
   justify-content:space-around;
   align-items:center;
   grid-area: two;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.4);
+  box-shadow: $box-shadow;
   border-radius: 5px;
   text-align:center;
   #documents-list {
@@ -52,7 +52,7 @@
 #disposition-one-right-bottom {
   justify-self: stretch;
   grid-area: four;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.4);
+  box-shadow: $box-shadow;
   border-radius: 5px;
 }
 
