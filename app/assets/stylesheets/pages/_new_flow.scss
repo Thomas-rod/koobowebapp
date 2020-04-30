@@ -1,5 +1,9 @@
 .form-input {
-  margin: 40px !important;
+  margin: 30px;
+}
+
+.form-input_year_month {
+  margin: 30px 30px 0;
 }
 
 .element {
@@ -24,3 +28,6 @@
   color: white;
 }
 
+#yearHelp {
+  margin-bottom: 30px;
+}

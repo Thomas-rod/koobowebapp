@@ -10,10 +10,16 @@ const initSelect2 = () => {
     minimumResultsForSearch: -1
   });
   $('.select2.flow-category').select2({
-    minimumResultsForSearch: -1
+    minimumResultsForSearch: -1,
+    placeholder: "Sélectionner"
   });
   $('.select2.flow-renting').select2({
-    minimumResultsForSearch: -1
+    minimumResultsForSearch: -1,
+    placeholder: "Sélectionner"
+  });
+  $('.select2.month_rent').select2({
+    minimumResultsForSearch: -1,
+    placeholder: "Sélectionner"
   });
 };
 

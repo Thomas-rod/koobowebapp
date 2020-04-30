@@ -53,9 +53,9 @@
           </div>
           <div class="add-flow grey-box">
             <h3>Ajouter ou supprimer un élément</h3>
-            <%= link_to new_flow_path, class: "button-flow" do %>
-              <i class="fas fa-plus-circle fa-flat button-flow" title="Ajouter un flux"></i>
-            <% end %>
+              <button type="button" class="button-flow" data-toggle="modal" data-target="#exampleModal">
+                <i class="fas fa-plus-circle fa-flat button-flow" title="Ajouter un flux"></i>
+              </button>
             <%= link_to "#" do %>
               <i class="fas fa-minus-circle fa-flat button-flow" title="Supprimer un flux"></i>
             <% end %>
@@ -138,3 +138,4 @@
     </div>
   </div>
 <% end %>
+<%= render partial: "shared/new_flow_form" %>

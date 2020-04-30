@@ -16,10 +16,6 @@ class FlowsController < ApplicationController
         @spendings += f.amount if f
       end
     end
-  end
-
-  def new
-    @flats = current_user.flats
     @flow = Flow.new
   end
 

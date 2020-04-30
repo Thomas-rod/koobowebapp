@@ -1,0 +1,32 @@
+<div class="modal" tabindex="-1" role="dialog" id="exampleModal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="new-flow">
+          <h3 class="modal-title">Ajouter un flux financier</h3>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+      </div>
+      <div class="modal-body">
+        <%= simple_form_for @flow do |f| %>
+          <span class="form-part form-inline element form-input"><%= f.input :title, label: "Titre" %></span>
+          <span class="form-part form-inline element form-input"><%= f.input :payment_date, as: :date, html5: true, input_html: {id: "payment_date"}, label: "Date de paiement" %></span>
+          <span class="form-part form-inline element form-input"><%= f.input :amount, label: "Montant en €" %></span>
+          <span class="form-part form-inline element form-input"><%= f.input :category, label: "Catégorie", input_html: {class: "select2 flow-category"}, collection: Flow::CATEGORIES %></span>
+          <span class="form-part form-inline element form-input"><%=f.association :renting, label: "Appartement concerné", collection: @flats.order(:name), input_html: {class: "select2 flow-renting"} %></span>
+          <span class="form-part form-inline element form-input_year_month"><%=f.input :month_rent, label: "Mois concerné", collection: [["Janvier", "1"], ["Février", "2"], ["Mars", "3"], ["Avril", "4"], ["Mai", "5"], ["Juin", "6"], ["Juillet", "7"], ["Août", "8"], ["Septembre", "9"], ["Octobre", "10"], ["Novembre", "11"], ["Décembre", "12"]], label_method: :first, value_method: :second, input_html: {class: "select2 month_rent"} %></span>
+          <small id="monthHelp" class="form-text text-muted">Merci d'indiquer le mois payé dans le cas d'un loyer</small>
+          <span class="form-part form-inline element form-input_year_month"><%=f.input :year_rent, label: "Année concernée", placeholder: "2020" %></span>
+          <small id="yearHelp" class="form-text text-muted">Merci d'indiquer l'année correspondante dans le cas d'un loyer</small>
+          <%= f.button :submit, "Créer le flux", id: "flow-form-btn" %>
+        <% end %>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
