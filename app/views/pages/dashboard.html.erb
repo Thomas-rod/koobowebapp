@@ -160,7 +160,7 @@
   <div class="dashboard-data-set" data-line="dashboard">
     <div class="screen-container">
       <div class="dashboard-container full">
-          <%= render partial: 'shared/dashboard_tenant' %>
+          <%= render partial: 'shared/dashboard_tenant', locals: { renting: user_current_renting(current_user)} %>
       </div>
       <div class="nav-container full">
         <%= render partial: 'shared/navbar_dashboard', locals: { notif_counter: @counter} %>
@@ -170,14 +170,21 @@
           <div class="dash-flat">
             <div class="card-positioning">
               <div id="card-renting-tenant" class="full">
-                <h3 id="card-renting-tenant-header">Ma location</h3>
-                <div id="card-renting-tenant-body">
-                  <% if user_current_renting?(current_user) %>
-                      <%= image_tag user_current_renting(current_user).flat.user.photo, class: 'avatar-extra-large' %>
-                  <% else %>
-                    <p>Tu n'as pas encore loué d'appartement !</p>
+                <% if user_current_renting?(current_user) == true %>
+                  <%= link_to renting_path(user_current_renting(current_user)) do %>
+                    <h3 id="card-renting-tenant-header">Ma location</h3>
+                    <div id="card-renting-tenant-body">
+                    <%= image_tag user_current_renting(current_user).flat.user.photo, class: 'avatar-extra-large' %>
+                    <p><%= user_current_renting(current_user).flat.user.first_name %></p>
+                    <p><%= user_current_renting(current_user).flat.user.last_name %></p>
+                    </div>
                   <% end %>
-                </div>
+                <% else %>
+                  <h3 id="card-renting-tenant-header">Ma location</h3>
+                  <div id="card-renting-tenant-body">
+                    <p>Tu n'as pas encore loué d'appartement !</p>
+                  </div>
+                <% end %>
               </div>
             </div>
           </div>

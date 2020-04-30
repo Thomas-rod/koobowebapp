@@ -7,40 +7,52 @@
       <%= link_to dashboard_path do %>
         <i class="fas fa-columns icon-dashboard fa-2x"></i>
         <p>Dashboard</p>
-      <% end %>
-    </div>
-
-    <div class="dashboard-line" id="documents">
-      <%= link_to rentings_path do %>
-        <i class="far fa-file-alt icon-dashboard fa-2x"></i>
-        <p>Ma location</p>
         <span class="notif-counter" id="calendar-counter">
           <!-- Here will be notifications -->
-        </span>
       <% end %>
     </div>
-    <div class="dashboard-line" id="calendar">
-      <%= link_to schedules_path do %>
-        <i class="far fa-calendar-alt icon-dashboard fa-2x"></i>
+    <% unless renting %>
+      <div class="dashboard-line" id="current-renting">
+        <%= link_to renting_path(renting) do %>
+          <i class="far fa-file-alt icon-dashboard fa-2x"></i>
+          <p>Ma location</p>
+          <span class="notif-counter" id="calendar-counter">
+            <!-- Here will be notifications -->
+          </span>
+        <% end %>
+      </div>
+    <% end %>
+    <div class="dashboard-line" id="my-file">
+      <%= link_to "#" do %>
+        <i class="fas fa-folder-open icon-dashboard fa-2x"></i>
         <p>Mon dossier</p>
         <span class="notif-counter" id="calendar-counter">
           <!-- Here will be notifications -->
         </span>
       <% end %>
     </div>
-    <div class="dashboard-line" id="appartements">
+    <div class="dashboard-line" id="search">
       <%= link_to flats_path do %>
-        <i class="fas fa-home icon-dashboard fa-2x"></i>
+        <i class="fas fa-search-location icon-dashboard fa-2x"></i>
         <p>Recherche</p>
         <span class="notif-counter" id="calendar-counter">
           <!-- Here will be notifications -->
         </span>
       <% end %>
     </div>
-    <div class="dashboard-line" id="accounting">
-      <%= link_to '#' do %>
-        <i class="fas fa-calculator icon-dashboard fa-2x"></i>
-        <p>Mes visites</p>
+    <div class="dashboard-line" id="my-askings">
+      <%= link_to visits_path do %>
+        <i class="fas fa-tags icon-dashboard fa-2x"></i>
+        <p>Mes demandes</p>
+        <span class="notif-counter " id="calendar-counter">
+          <!-- Here will be notifications -->
+        </span>
+      <% end %>
+    </div>
+    <div class="dashboard-line" id="profil">
+      <%= link_to "#" do %>
+        <i class="far fa-user icon-dashboard fa-2x"></i>
+        <p>Mon profil</p>
         <span class="notif-counter " id="calendar-counter">
           <!-- Here will be notifications -->
         </span>

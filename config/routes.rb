@@ -10,7 +10,8 @@ Rails.application.routes.draw do
   resources :schedules, only: [:index, :update] do
     resources :visits, only: :update
   end
-  resources :rentings, only: [:create, :edit, :update, :new, :index]
+  resources :visits, only: [:index]
+  resources :rentings, only: [:create, :edit, :update, :new, :index, :show]
   resources :flows, only: [:index, :new, :create]
 
   # FLATS MODIFICATION

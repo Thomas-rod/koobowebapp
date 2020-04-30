@@ -16,16 +16,9 @@
   grid-gap: 20px;
   grid-template-columns: 1fr;
   grid-template-rows: repeat(8, 60px);
-  grid-template-areas:
-        "one"
-        "one"
-        "two"
-        "three"
-        "four"
-        "five"
-        "six"
-        "seven"
-  ;
+  > a:first-child {
+    grid-row: 1 / 3 ;
+  }
   & > a > p {
     padding: 5% 0 15% 0;
     text-align:center;
@@ -34,29 +27,30 @@
 
 // DISPOSITION DASHBOARD
 
-#dashboard {
-  grid-area: two;
-}
+// #dashboard {
+//   grid-area: two;
+// }
 
-#appartements {
-  grid-area: three;
-}
+// #appartements, #current-renting {
+//   grid-area: three;
+// }
 
-#calendar {
-  grid-area:four;
-}
+// #calendar, #my-file {
+//   grid-area:four;
+// }
 
-#documents {
-  grid-area:five;
-}
 
-#accounting {
-  grid-area:six;
-}
+// #documents, #search {
+//   grid-area:five;
+// }
 
-#profil {
-  grid-area:seven;
-}
+// #accounting, #my-askings {
+//   grid-area:six;
+// }
+
+// #profil {
+//   grid-area:seven;
+// }
 
 // CONTAINER_CLICKABLE_ELEMENT FOR DASHBOARD
 

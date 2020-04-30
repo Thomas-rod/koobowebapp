@@ -166,10 +166,10 @@
   </div>
   <%= render 'shared/bottom_nav'%>
 <% else %>
-  <div class="dashboard-data-set" data-line="documents">
+  <div class="dashboard-data-set" data-line="current-renting">
     <div class="screen-container">
       <div class="dashboard-container full">
-          <%= render partial: 'shared/dashboard_tenant' %>
+          <%= render partial: 'shared/dashboard_tenant', locals: { renting: user_current_renting(current_user)} %>
       </div>
       <div class="nav-container full">
         <%= render partial: 'shared/navbar_dashboard', locals: { notif_counter: @counter} %>
