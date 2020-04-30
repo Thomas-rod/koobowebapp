@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     resources :visits, only: :update
   end
   resources :rentings, only: [:create, :edit, :update, :new, :index]
-  resources :flows, only: [:index, :new, :create]
+  resources :flows, only: [:index :create]
 
   # FLATS MODIFICATION
   get "flats/:id/edit_publication", to: "flats#edit_publication", as: :edit_publication
