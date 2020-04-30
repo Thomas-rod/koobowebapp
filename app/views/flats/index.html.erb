@@ -88,7 +88,11 @@
   <div class="dashboard-data-set" data-line="search">
     <div class="screen-container">
       <div class="dashboard-container full">
+        <% if user_current_renting?(current_user) %>
           <%= render partial: 'shared/dashboard_tenant', locals: { renting: user_current_renting(current_user)} %>
+        <% else %>
+          <%= render partial: 'shared/dashboard_tenant', locals: { renting: "empty" }%>
+        <% end %>
       </div>
       <div class="nav-container full">
         <%= render partial: 'shared/navbar_dashboard', locals: { notif_counter: @counter} %>

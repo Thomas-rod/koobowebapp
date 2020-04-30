@@ -51,6 +51,7 @@ module FlatHelper
         end
       end
     end
+    return false
   end
 
   def user_current_renting(user)
