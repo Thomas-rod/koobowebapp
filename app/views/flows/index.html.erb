@@ -53,9 +53,9 @@
           </div>
           <div class="add-flow grey-box">
             <h3>Ajouter ou supprimer un élément</h3>
-            <%= link_to new_flow_path, class: "button-flow" do %>
-              <i class="fas fa-plus-circle fa-flat button-flow" title="Ajouter un flux"></i>
-            <% end %>
+              <button type="button" class="button-flow" data-toggle="modal" data-target="#exampleModal">
+                <i class="fas fa-plus-circle fa-flat button-flow" title="Ajouter un flux"></i>
+              </button>
             <%= link_to "#" do %>
               <i class="fas fa-minus-circle fa-flat button-flow" title="Supprimer un flux"></i>
             <% end %>
@@ -83,7 +83,11 @@
                   <p><%= flow.title %></p>
                   <p><%= flow.renting.flat.name %></p>
                   <p><%= flow.payment_date.strftime("%d/%m/%Y") %></p>
-                  <p><%= flow.amount %> €</p>
+                  <% if flow.category == "revenu" %>
+                    <p><%= flow.amount %> €</p>
+                  <% else %>
+                    <p><%= - flow.amount %> €</p>
+                  <% end %>
                 </div>
               <% end %>
               <%= will_paginate(@flows, :previous_label => t("précédent"), :next_label => t("suivant"), :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer) %>
@@ -138,3 +142,4 @@
     </div>
   </div>
 <% end %>
+<%= render partial: "shared/new_flow_form" %>

@@ -16,10 +16,6 @@ class FlowsController < ApplicationController
         @spendings += f.amount if f
       end
     end
-  end
-
-  def new
-    @flats = current_user.flats
     @flow = Flow.new
   end
 
@@ -36,7 +32,7 @@ class FlowsController < ApplicationController
   private
 
   def flow_params
-    params.require(:flow).permit(:renting_id, :payment_date, :amount, :category, :title, :month_rent)
+    params.require(:flow).permit(:renting_id, :payment_date, :amount, :category, :title, :month_rent, :year_rent)
   end
 
   def notif_counter

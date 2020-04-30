@@ -9,9 +9,6 @@ const initFlatpicker = () => {
   flatpickr("#payment_date", {
     dateFormat: "d-m-Y"
   })
-  flatpickr("#month_rent", {
-    dateFormat: "m-Y"
-  })
 }
 
 export { initFlatpicker };
