@@ -5,12 +5,16 @@ class FlowsController < ApplicationController
     @flats = current_user.flats
     @flows = current_user.flows.paginate(page: params[:page], per_page: 4).order(payment_date: :desc)
     @incomes = 0
-    @flows.where(category: "revenu").each do |f|
-      @incomes += f.amount
+    if @flows.where(category: "revenu") do
+      @flows.where(category: "revenu").each do |f|
+        @incomes += f.amount
+      end
     end
     @spendings = 0
-    @flows.where(category: "dépense").each do |f|
-      @spendings += f.amount
+    if @flows.where(category: "dépense")
+      @flows.where(category: "dépense").each do |f|
+        @spendings += f.amount if f
+      end
     end
   end
 
