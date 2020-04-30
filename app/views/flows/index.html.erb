@@ -83,7 +83,11 @@
                   <p><%= flow.title %></p>
                   <p><%= flow.renting.flat.name %></p>
                   <p><%= flow.payment_date.strftime("%d/%m/%Y") %></p>
-                  <p><%= flow.amount %> €</p>
+                  <% if flow.category == "revenu" %>
+                    <p><%= flow.amount %> €</p>
+                  <% else %>
+                    <p><%= - flow.amount %> €</p>
+                  <% end %>
                 </div>
               <% end %>
               <%= will_paginate(@flows, :previous_label => t("précédent"), :next_label => t("suivant"), :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer) %>
