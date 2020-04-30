@@ -1,12 +1,16 @@
 class RentingsController < ApplicationController
   before_action :notif_visit, :notif_counter;
+  before_action :find_renting, only: [:show]
 
   def index
     @rentings = current_user.rentings
   end
 
+  def show
+  end
+
   def edit
-  @renting = Renting.find(params[:id])
+
   end
 
   def update
@@ -19,6 +23,10 @@ class RentingsController < ApplicationController
 
   def renting_params
     params.require(:renting).permit( bails: [], etats_des_lieux: [], quittances: [])
+  end
+
+  def find_renting
+    @renting = Renting.find(params[:id])
   end
 
   def notif_counter
