@@ -22,32 +22,48 @@
             <div class="tab-content dashboard-content-flat" id="nav-tabContent">
               <div class="positioning-dashboard">
                 <div class="tab-pane fade show active" id="nav-pending" role="tabpanel" aria-labelledby="nav-pending-tab">
-                  <% current_user.flats.each do |flat| %>
-                  <% if flat.rented? == true %>
-                    <div class="card-product-original">
-                      <%= image_tag flat.photos.first%>
-                      <div class="card-product-original-infos product-info-flat-dashboard">
-                        <div>
-                        <h2><%= link_to flat.name, flat_path(flat) %></h2>
-                        <p>Loué <strong><%= flat.monthly_price %>€</strong> par mois depuis le <strong> <%=flat.rentings.find_by(status: "current").start_date.strftime("%d/%m/%Y") %></strong>.</p>
-                        </div>
-                        <div class="tenant-info">
-                          <p><strong>Locataire</strong></p>
-                        <% helper_flat_current_tenants(flat).each do |tenant| %>
-                          <% if tenant.photo&.attached?  %>
-                            <%= image_tag tenant.photo, class: "card-trip-user avatar-bordered" %>
-                            <p><%= tenant.first_name %> <%= tenant.last_name %></p>
-                          <% else %>
-                            <%= image_tag ("avatar.png"), class: 'card-trip-user avatar-bordered' %>
+                  <% if current_user.flats.any?%>
+                    <% current_user.flats.each do |flat| %>
+                    <% if flat.rented? == true %>
+                      <div class="card-product-original">
+                        <%= image_tag flat.photos.first%>
+                        <div class="card-product-original-infos product-info-flat-dashboard">
+                          <div>
+                          <h2><%= link_to flat.name, flat_path(flat) %></h2>
+                          <p>Loué <strong><%= flat.monthly_price %>€</strong> par mois depuis le <strong> <%=flat.rentings.find_by(status: "current").start_date.strftime("%d/%m/%Y") %></strong>.</p>
+                          </div>
+                          <div class="tenant-info">
+                            <p><strong>Locataire</strong></p>
+                          <% helper_flat_current_tenants(flat).each do |tenant| %>
+                            <% if tenant.photo&.attached?  %>
+                              <%= image_tag tenant.photo, class: "card-trip-user avatar-bordered" %>
+                              <p><%= tenant.first_name %> <%= tenant.last_name %></p>
+                            <% else %>
+                              <%= image_tag ("avatar.png"), class: 'card-trip-user avatar-bordered' %>
+                            <% end %>
                           <% end %>
-                        <% end %>
+                          </div>
                         </div>
                       </div>
-                    </div>
+                      <% end %>
                     <% end %>
+                      <div class="card-product-original product-empty">
+                        <%= link_to new_flat_path, class: 'button-new-flat' do %>
+                          <i class="fas fa-plus-circle fa-flat" title="Ajouter un bien"></i>
+                          <h6 id="text-card-trip">Créer un bien déjà en location</h6>
+                        <% end %>
+                      </div>
+                    <% else %>
+                    <div class="card-product-original product-empty">
+                      <%= link_to new_flat_path, class: 'button-new-flat' do %>
+                        <i class="fas fa-plus-circle fa-flat" title="Ajouter un bien"></i>
+                        <h6 id="text-card-trip">Créer un bien déjà en location</h6>
+                      <% end %>
+                    </div>
                   <% end %>
                 </div>
                 <div class="tab-pane fade" id="nav-accepted" role="tabpanel" aria-labelledby="nav-accepted-tab">
+                  <% if current_user.flats.any?%>
                     <% current_user.flats.each do |flat| %>
                     <% if flat.rented? == false %>
                       <div class="card-product-original">
@@ -97,6 +113,20 @@
                         </div>
                       </div>
                       <% end %>
+                    <% end %>
+                        <div class="card-product-original product-empty">
+                          <%= link_to new_flat_path, class: 'button-new-flat' do %>
+                            <i class="fas fa-plus-circle fa-flat" title="Ajouter un bien"></i>
+                            <h6 id="text-card-trip">Créer un bien à Louer</h6>
+                          <% end %>
+                        </div>
+                      <% else %>
+                      <div class="card-product-original product-empty">
+                        <%= link_to new_flat_path, class: 'button-new-flat' do %>
+                          <i class="fas fa-plus-circle fa-flat" title="Ajouter un bien"></i>
+                          <h6 id="text-card-trip">Créer un bien à Louer</h6>
+                        <% end %>
+                      </div>
                     <% end %>
                   </div>
                 </div>
