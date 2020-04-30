@@ -11,7 +11,7 @@
           <!-- Here will be notifications -->
       <% end %>
     </div>
-    <% unless renting %>
+    <% unless renting == "empty" %>
       <div class="dashboard-line" id="current-renting">
         <%= link_to renting_path(renting) do %>
           <i class="far fa-file-alt icon-dashboard fa-2x"></i>
