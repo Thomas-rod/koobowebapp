@@ -17,13 +17,13 @@ $size-screen: 85vh;
 #disposition-two-left-top {
   grid-area: one;
   border-radius: 5px;
-  box-shadow: 0 0 4px rgba(0,0,0,0.2);
+  box-shadow: $box-shadow;
   border-radius: 5px;
 }
 
 #disposition-two-left-bottom {
   grid-area: three;
-  box-shadow: 0 0 4px rgba(0,0,0,0.2);
+  box-shadow: $box-shadow;
   border-radius: 5px;
 }
 
@@ -31,7 +31,7 @@ $size-screen: 85vh;
   grid-area: two;
   text-align:center;
   justify-self: stretch;
-  box-shadow: 0 0 4px rgba(0,0,0,0.2);
+  box-shadow: $box-shadow;
   border-radius: 5px;
 }
 

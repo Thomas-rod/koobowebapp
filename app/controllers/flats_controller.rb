@@ -102,7 +102,12 @@ class FlatsController < ApplicationController
   # WILL USE THIS ONE TO UPDATE WHERE FLAT IS PUBLISHED
   def disable_publication
     find_flat
-    @flat.update!(pap: false, bienici: false, leboncoin: false, seloger: false, facebook: false)
+    @flat.pap = false
+    @flat.bienici = false
+    @flat.leboncoin = false
+    @flat.seloger = false
+    @flat.facebook = false
+    @flat.update!(flat_params)
     redirect_to flat_path(@flat)
   end
 

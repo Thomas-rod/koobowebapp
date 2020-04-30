@@ -1,0 +1,23 @@
+#card-renting-tenant {
+  display:grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 10% 87%;
+  grid-gap: 3%;
+  grid-template-areas:
+        "one"
+        "two";
+  #card-renting-tenant-header {
+    grid-area: one;
+  }
+  #card-renting-tenant-body {
+    grid-area: two;
+  }
+}
+
+#card-renting-tenant-infos {
+  display:flex;
+  flex-direction:column;
+  justify-content:space-around;
+  align-items:center;
+  border: 1px solid black;
+}

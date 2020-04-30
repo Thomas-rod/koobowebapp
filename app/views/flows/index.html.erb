@@ -2,11 +2,7 @@
   <div class="dashboard-data-set" data-line="accounting">
     <div class="screen-container">
       <div class="dashboard-container full">
-        <% if current_user.renter == true %>
-          <%= render partial: 'shared/dashboard', locals: { flats: @flats, schedules: @schedules} %>
-        <% else %>
-          <%= render partial: 'shared/dashboard_tenant' %>
-        <% end %>
+        <%= render partial: 'shared/dashboard', locals: { flats: @flats, schedules: @schedules} %>
       </div>
       <div class="nav-container full">
         <h3>Ma comptabilité</h3>
@@ -39,38 +35,6 @@
                     </div>
                   <% end %>
                 <% end %>
-              <% end %>
-            </div>
-            <div class="rents-total">
-              <% @flats_rented.each do |flat| %>
-                <% @all_rents_payed << flat if rent_payed?(flat) %>
-              <% end %>
-              <% if @flats_rented.length == @all_rents_payed.length %>
-                <h5>Tous vos locataires ont payé leur loyer pour le mois en cours</h5>
-              <% else %>
-                <h5>Vos locataires n'ont pas encore tous payé leur loyer pour le mois en cours</h5>
-              <% end %>
-            </div>
-            <div class="rents-stats">
-              <h3><%= @all_rents_payed.length / @flats_rented.length * 100 %> %</h3>
-            </div>
-          </div>
-        </div>
-        <div class="add-flow grey-box">
-          <h3>Ajouter ou supprimer un élément</h3>
-          <%= link_to new_flow_path, class: "button-flow" do %>
-            <i class="fas fa-plus-circle fa-flat button-flow" title="Ajouter un flux"></i>
-          <% end %>
-          <%= link_to "#" do %>
-            <i class="fas fa-minus-circle fa-flat button-flow" title="Supprimer un flux"></i>
-          <% end %>
-        </div>
-        <div class="all-flows grey-box">
-          <div class="flows-details">
-            <div class="details">
-              <div class="total">
-                <h3>Solde</h3>
-                <h3 class="green-numbers"><%= @incomes - @spendings %> €</h3>
               </div>
               <div class="rents-total">
                 <% @flats_rented.each do |flat| %>
@@ -89,9 +53,9 @@
           </div>
           <div class="add-flow grey-box">
             <h3>Ajouter ou supprimer un élément</h3>
-            <%= link_to "#", class: "button-flow" do %>
-              <i class="fas fa-plus-circle fa-flat button-flow" title="Ajouter un flux"></i>
-            <% end %>
+              <button type="button" class="button-flow" data-toggle="modal" data-target="#exampleModal">
+                <i class="fas fa-plus-circle fa-flat button-flow" title="Ajouter un flux"></i>
+              </button>
             <%= link_to "#" do %>
               <i class="fas fa-minus-circle fa-flat button-flow" title="Supprimer un flux"></i>
             <% end %>
@@ -119,7 +83,11 @@
                   <p><%= flow.title %></p>
                   <p><%= flow.renting.flat.name %></p>
                   <p><%= flow.payment_date.strftime("%d/%m/%Y") %></p>
-                  <p><%= flow.amount %> €</p>
+                  <% if flow.category == "revenu" %>
+                    <p><%= flow.amount %> €</p>
+                  <% else %>
+                    <p><%= - flow.amount %> €</p>
+                  <% end %>
                 </div>
               <% end %>
               <%= will_paginate(@flows, :previous_label => t("précédent"), :next_label => t("suivant"), :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer) %>
@@ -164,7 +132,7 @@
   <div class="dashboard-data-set" data-line="accounting">
     <div class="screen-container">
       <div class="dashboard-container full">
-          <%= render partial: 'shared/dashboard_tenant' %>
+          <%= render partial: 'shared/dashboard_tenant', locals: { renting: user_current_renting(current_user)}  %>
       </div>
       <div class="nav-container full">
         <%= render partial: 'shared/navbar_dashboard', locals: { notif_counter: @counter} %>
@@ -174,3 +142,4 @@
     </div>
   </div>
 <% end %>
+<%= render partial: "shared/new_flow_form" %>

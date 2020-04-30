@@ -5,7 +5,7 @@ class FlowsController < ApplicationController
     @flats = current_user.flats
     @flows = current_user.flows.paginate(page: params[:page], per_page: 4).order(payment_date: :desc)
     @incomes = 0
-    if @flows.where(category: "revenu") do
+    if @flows.where(category: "revenu")
       @flows.where(category: "revenu").each do |f|
         @incomes += f.amount
       end
@@ -16,27 +16,23 @@ class FlowsController < ApplicationController
         @spendings += f.amount if f
       end
     end
-  end
-
-  def new
-    @flats = current_user.flats
     @flow = Flow.new
   end
 
   def create
     @flow = Flow.new(flow_params)
     @flow.renting = Flat.find(params["flow"]["renting_id"]).rentings.find_by(status: "current")
-      if @flow.save!
-        redirect_to flows_path
-      else
-        render :new
-      end
+    if @flow.save!
+      redirect_to flows_path
+    else
+      render :new
+    end
   end
 
   private
 
   def flow_params
-    params.require(:flow).permit(:renting_id, :payment_date, :amount, :category, :title, :month_rent)
+    params.require(:flow).permit(:renting_id, :payment_date, :amount, :category, :title, :month_rent, :year_rent)
   end
 
   def notif_counter

@@ -42,6 +42,7 @@ import { previewImageOnFileSelect } from '../components/photo_preview';
 import { pluralizeOrNot } from '../components/pluriel_form';
 import { makeButtonLoaderAppear } from '../components/upload_button';
 
+
 // import { chooseSchedule }from '../components/calendar';
 
 document.addEventListener('turbolinks:load', () => {

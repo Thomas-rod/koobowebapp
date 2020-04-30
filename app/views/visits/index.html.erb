@@ -1,0 +1,14 @@
+<% unless current_user.renter == true %>
+  <div class="dashboard-data-set" data-line="my-askings">
+    <div class="screen-container">
+      <div class="dashboard-container full">
+          <%= render partial: 'shared/dashboard_tenant', locals: { renting: user_current_renting(current_user)} %>
+      </div>
+      <div class="nav-container full">
+        <%= render partial: 'shared/navbar_dashboard', locals: { notif_counter: @counter} %>
+      </div>
+      <div class="content-container full">
+      </div>
+    </div>
+  </div>
+<% end %>

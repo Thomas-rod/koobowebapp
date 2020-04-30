@@ -22,7 +22,7 @@
 
 .grey-box {
   text-align: center;
-  box-shadow: 0 0 4px rgba(0,0,0,0.2);
+  box-shadow: $box-shadow;
   background-color: #C4C4C4;
   border-radius: 5px;
   padding: 5px;
@@ -117,4 +117,9 @@
 
 .button-flow {
   margin-top: 10px;
+  background-color: #C4C4C4;
+  border: none;
+  &:focus {
+     outline: none;
+  }
 }

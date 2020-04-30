@@ -33,16 +33,16 @@ end
 puts "Creating users"
 roxane = User.new(first_name: "Roxane", last_name: "Haddad", phone_number: "0664784489", email: "roxane.haddad@gmail.com", password: "roxane.haddad@gmail.com", description: "26 ans, en CDI confirmé depuis 3 ans, célibataire, sans animaux.")
 attach_photo_user("https://avatars0.githubusercontent.com/u/54777799?v=4", roxane)
-roxane.save
+roxane.save!
 john = User.new(first_name: "Jonathan", last_name: "Courdavault", phone_number: "0778381974", email: "jo.courdavault@gmail.com", password: "jo.courdavault@gmail.com")
 attach_photo_user("https://avatars2.githubusercontent.com/u/58211236?v=4", john)
-john.save
+john.save!
 thomas = User.new(first_name: "Thomas", last_name: "Rodier", phone_number: "0668489169", email: "rodiert17@gmail.com", password: "rodiert17@gmail.com")
 attach_photo_user("https://avatars1.githubusercontent.com/u/57214511?v=4", thomas)
-thomas.save
+thomas.save!
 mao = User.new(first_name: "Maodo", last_name: "Diop", phone_number: "0663906049", email: "maodod1@gmail.com", password: "maodod1@gmail.com")
 attach_photo_user("https://avatars1.githubusercontent.com/u/56120487?v=4", mao)
-mao.save
+mao.save!
 puts "#{User.count} users created"
 
 puts "Creating flats"
@@ -121,15 +121,15 @@ john_thomas_renting = Renting.create!(flat: thomas_second_flat, renting_folder: 
 puts "#{Renting.count} renting created"
 
 puts "Creating flows"
-Flow.create!(title: "Réparations eau", renting: roxane_thomas_renting, payment_date: Time.new(2020, 3, 9, 8, 30, 0), month_rent: Date.new(2020,4,1), amount: 400, category: "dépense")
-Flow.create!(title: "Réparations", renting: roxane_thomas_renting, payment_date: Time.new(2020, 3, 9, 8, 30, 0), month_rent: Date.new(2020,4,3), amount: 1100, category: "dépense")
-Flow.create!(title: "Loyer", renting: roxane_thomas_renting, payment_date: Time.new(2020, 3, 9, 8, 30, 0), month_rent: Date.new(2020,4,3), amount: 1100, category: "revenu")
-Flow.create!(title: "Réparations", renting: mao_thomas_renting, payment_date: Time.new(2020, 3, 9, 8, 30, 0), month_rent: Date.new(2001,2,3), amount: 800, category: "dépense")
-Flow.create!(title: "Loyer", renting: john_thomas_renting, payment_date: Time.new(2020, 3, 9, 8, 30, 0), month_rent: Date.new(2001,2,3), amount: 800, category: "revenu")
-Flow.create!(title: "Loyer", renting: roxane_thomas_renting, payment_date: Time.new(2020, 3, 9, 8, 30, 0), month_rent: Date.new(2001,2,3), amount: 900, category: "revenu")
-Flow.create!(title: "Loyer", renting: roxane_thomas_renting, payment_date: Time.new(2020, 3, 9, 8, 30, 0), month_rent: Date.new(2001,2,3), amount: 700, category: "revenu")
-Flow.create!(title: "Loyer", renting: roxane_thomas_renting, payment_date: Time.new(2020, 3, 9, 8, 30, 0), month_rent: Date.new(2001,2,3), amount: 700, category: "revenu")
-Flow.create!(title: "Réparations", renting: roxane_thomas_renting, payment_date: Time.new(2020, 3, 9, 8, 30, 0), month_rent: Date.new(2001,2,3), amount: 66.50, category: "dépense")
+Flow.create!(title: "Réparations eau", renting: roxane_thomas_renting, payment_date: Time.new(2020, 3, 9, 8, 30, 0), month_rent: Date.new(2020,4,1).mon, year_rent: Date.new(2020,4,1).year, amount: 400, category: "dépense")
+Flow.create!(title: "Réparations", renting: roxane_thomas_renting, payment_date: Time.new(2020, 3, 9, 8, 30, 0), month_rent: Date.new(2020,4,3).mon, year_rent: Date.new(2020,4,3).year, amount: 1100, category: "dépense")
+Flow.create!(title: "Loyer", renting: roxane_thomas_renting, payment_date: Time.new(2020, 3, 9, 8, 30, 0), month_rent: Date.new(2020,4,3).mon, year_rent: Date.new(2020,4,3).year, amount: 1100, category: "revenu")
+Flow.create!(title: "Réparations", renting: mao_thomas_renting, payment_date: Time.new(2020, 3, 9, 8, 30, 0), month_rent: Date.new(2001,2,3).mon, year_rent: Date.new(2020,2,3).year, amount: 800, category: "dépense")
+Flow.create!(title: "Loyer", renting: john_thomas_renting, payment_date: Time.new(2020, 3, 9, 8, 30, 0), month_rent: Date.new(2001,2,3).mon, year_rent: Date.new(2020,2,3).year, amount: 800, category: "revenu")
+Flow.create!(title: "Loyer", renting: roxane_thomas_renting, payment_date: Time.new(2020, 3, 9, 8, 30, 0), month_rent: Date.new(2001,2,3).mon, year_rent: Date.new(2020,2,3).year, amount: 900, category: "revenu")
+Flow.create!(title: "Loyer", renting: roxane_thomas_renting, payment_date: Time.new(2020, 3, 9, 8, 30, 0), month_rent: Date.new(2001,2,3).mon, year_rent: Date.new(2020,2,3).year, amount: 700, category: "revenu")
+Flow.create!(title: "Loyer", renting: roxane_thomas_renting, payment_date: Time.new(2020, 3, 9, 8, 30, 0), month_rent: Date.new(2001,2,3).mon, year_rent: Date.new(2020,2,3).year, amount: 700, category: "revenu")
+Flow.create!(title: "Réparations", renting: roxane_thomas_renting, payment_date: Time.new(2020, 3, 9, 8, 30, 0), month_rent: Date.new(2001,2,3).mon, year_rent: Date.new(2020,2,3).year, amount: 66.50, category: "dépense")
 puts puts "#{Flow.count} flows created"
 
 puts "G O O D     L U C K      G U Y S"
