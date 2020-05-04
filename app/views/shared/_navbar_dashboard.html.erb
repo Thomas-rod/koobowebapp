@@ -17,7 +17,7 @@
   <div class="nav-item dropleft" id="user">
     <% if current_user.photo.attached? %>
       <%= link_to '#', id: "navbarDropdownProfil", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false do %>
-        <%= image_tag current_user.photo, class: "avatar-large bordered-gray" %>
+        <%= image_tag current_user.photo, class: "avatar-middle bordered white" %>
       <% end %>
     <% else %>
       <%= image_tag ("avatar.png"), class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>

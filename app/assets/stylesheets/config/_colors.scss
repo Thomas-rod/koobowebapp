@@ -16,3 +16,17 @@ $gray: #0E0000;
 $light-gray: #F4F4F4;
 
 $box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+$border-radius: 5px;
+
+.image-resize-small{
+  object-fit: cover;
+  width: 120px;
+  height:100px;
+}
+
+
+.image-resize-large{
+  object-fit: cover;
+  width: 100%;
+  height:200px;
+}

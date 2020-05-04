@@ -16,15 +16,14 @@ $size-screen: 85vh;
 
 #disposition-two-left-top {
   grid-area: one;
-  border-radius: 5px;
+  border-radius: $border-radius;
   box-shadow: $box-shadow;
-  border-radius: 5px;
 }
 
 #disposition-two-left-bottom {
   grid-area: three;
   box-shadow: $box-shadow;
-  border-radius: 5px;
+  border-radius: $border-radius;
 }
 
 #disposition-two-right {
@@ -32,7 +31,7 @@ $size-screen: 85vh;
   text-align:center;
   justify-self: stretch;
   box-shadow: $box-shadow;
-  border-radius: 5px;
+  border-radius: $border-radius;
 }
 
 // RESPONSIVNESS

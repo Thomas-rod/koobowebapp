@@ -1,7 +1,7 @@
 <% if current_user.renter == true %>
   <div class="dashboard-data-set" data-line="appartements">
     <div class="screen-container">
-      <div class="dashboard-container full">
+      <div class="dashboard-container">
         <% if current_user.renter == true %>
           <%= render partial: 'shared/dashboard', locals: { flats: @flats, schedules: @schedules} %>
         <% else %>

@@ -18,7 +18,7 @@ $size-screen: 85vh;
 #disposition-three-left-top {
   box-shadow: $box-shadow;
   grid-area: one;
-  border-radius: 5px;
+  border-radius: $border-radius;
   > .disposition-size h5, p {
     text-align:center;
   }
@@ -30,7 +30,7 @@ $size-screen: 85vh;
 #disposition-three-left-bottom {
   box-shadow: $box-shadow;
   grid-area: three;
-  border-radius: 5px;
+  border-radius: $border-radius;
 }
 
 #container-card-tenant-ongoing-flat {
@@ -45,7 +45,7 @@ $size-screen: 85vh;
   grid-area: two;
   text-align:center;
   justify-self: stretch;
-  border-radius: 5px;
+  border-radius: $border-radius;
 }
 
 

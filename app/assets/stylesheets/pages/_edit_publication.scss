@@ -7,7 +7,7 @@
 .edit-pub-btn {
   padding: 15px 30px;
   background-color: #EE8572;
-  border-radius: 4px;
+  border-radius: $border-radius;
   border: none;
   margin-top: 10px;
   color: white;
@@ -15,7 +15,7 @@
 .button-edit  {
   padding: 15px 30px;
   background-color: $coral;
-  border-radius: 4px;
+  border-radius: $border-radius;
   border: none;
   margin-top: 10px;
   color: white;
@@ -80,13 +80,13 @@
   }
 }
 
-// .schedules-container-show-edit {
-//   overflow: scroll;
-//   height:100%;
-//   max-height:500px;
-//   width: 100%;
-//   margin-bottom:2%
-// }
+.schedules-container-show-edit {
+  overflow: scroll;
+  height:100%;
+  max-height:500px;
+  width: 100%;
+  margin-bottom:2%
+}
 
 #div-second-step {
   height:40%;

@@ -1,11 +1,9 @@
 <div id="disposition-card-one">
   <div id="disposition-one-left-top">
-    <div class="card-trip">
-      <%= render "shared/carousel_show" %>
-    </div>
+    <%= render "shared/carousel_show" %>
   </div>
   <div id="disposition-one-left-bottom">
-    <div class="disposition-size">
+    <div class="card-positioning">
       <div id="message-board">
         <div id="feed-message-board">
           <span class="placeholder-message-board"><p>Champ où va apparaître les messages </p></span>
@@ -17,16 +15,18 @@
     </div>
   </div>
   <div id="disposition-one-right-top">
-    <h4>Documents concernant mon bien</h4>
-    <div id="documents-list">
-      <%= link_to 'Bail', '#', class: 'button-sign-home documents-button' %>
-      <%= link_to'#', class: 'button-sign-home documents-button' do %><p >Etat des lieux</p><% end %>
-      <%= link_to'#', class: 'button-sign-home documents-button' do %><p >Quittances</p><% end %>
-      <%= link_to'#', class: 'button-sign-home documents-button' do %><p >Autres</p><% end %>
+    <div class="card-positioning">
+      <h4>Documents concernant mon bien</h4>
+      <div id="documents-list">
+        <%= link_to 'Bail', '#', class: 'button-sign-home documents-button' %>
+        <%= link_to'#', class: 'button-sign-home documents-button' do %><p >Etat des lieux</p><% end %>
+        <%= link_to'#', class: 'button-sign-home documents-button' do %><p >Quittances</p><% end %>
+        <%= link_to'#', class: 'button-sign-home documents-button' do %><p >Autres</p><% end %>
+      </div>
     </div>
   </div>
   <div id="disposition-one-right-bottom">
-    <div class="disposition-size">
+    <div class="card-positioning">
       <%= render "shared/show_flat/card_locataire", locals: { flat: @flat } %>
     </div>
   </div>

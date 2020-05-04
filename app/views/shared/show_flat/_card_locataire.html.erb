@@ -2,9 +2,9 @@
 <div class="card-locataire">
   <% current_tenants.each do |tenant| %>
     <% if tenant.photo&.attached?  %>
-      <%= image_tag tenant.photo, class: "avatar-extra-large" %>
+      <%= image_tag tenant.photo, class: "avatar-large" %>
     <% else %>
-      <%= image_tag ("avatar.png"), class: "avatar-extra-large" %>
+      <%= image_tag ("avatar.png"), class: "avatar-large" %>
     <% end %>
   <% end %>
   <div class="card-name-locataire">
