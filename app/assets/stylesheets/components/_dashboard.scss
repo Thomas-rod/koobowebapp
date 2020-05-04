@@ -55,7 +55,7 @@
 // CONTAINER_CLICKABLE_ELEMENT FOR DASHBOARD
 
 .dashboard-line {
-  border-radius: 5px;
+  border-radius: $border-radius;
   padding-left: 20px;
   border-right: 7px solid $blue;
   &:hover:not(.active-dashboard) {

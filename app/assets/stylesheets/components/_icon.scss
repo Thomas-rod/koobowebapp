@@ -1,3 +1,45 @@
+
+/*------------------------------------*\
+  #ICON PROPERTIES FOR DASHBOARD NAV
+\*------------------------------------*/
+
+.fa-home, .fa-calendar-alt, .fa-file-alt, .fa-user, .fa-columns, .fa-calculator, .fa-search-location, .fa-folder-open, .fa-tags {
+  margin-top:20px;
+}
+
+.icon-dashboard {
+  font-size: 25px;
+  width: 50px;
+  height: 50px;
+  color: $white;
+}
+
+
+/*------------------------------------*\
+  #ICON PROPERTIES FOR DASHBOARD VIEW
+\*------------------------------------*/
+
+.icon-new-dashboard {
+  color: $coral-light;
+  font-size: 50px;
+ .position-absolute-button-create {
+  position:absolute;
+  top:5px;
+  right:10px;
+ }
+  &:hover {
+  color: #EE8572;
+  }
+}
+
+
+
+
+
+/*------------------------------------*\
+  #ICON PROPERTIES FOR DASHBOARD VIEW
+\*------------------------------------*/
+
 .fas.fa-check {
   margin:0px !important;
   color: $green;
@@ -34,34 +76,6 @@
 .fa-envelope {
   margin-right: 6px;
   //
-}
-
-// USED IN FLAT INDEX
-
-.fa-flat {
-  color: $coral-light;
-  font-size: 70px;
-  &:hover {
-  color: #EE8572;
- }
-}
-
-.fa-plus-circle{
-  margin-bottom: 22px;
-}
-
-
-// ICON DASHBOARD
-.icon-dashboard {
-  font-size: 25px;
-  width: 50px;
-  height: 50px;
-  color: $white;
-  margin-top: 0;
-}
-
-.fa-home, .fa-calendar-alt, .fa-file-alt, .fa-user, .fa-columns, .fa-calculator, .fa-search-location, .fa-folder-open, .fa-tags {
-  margin-top:20px;
 }
 
 // ICON USED IN ON_GOING_SHOW

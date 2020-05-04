@@ -1,9 +1,9 @@
+/*------------------------------------*\
+  #CARD-USED-IN-HOME-PAGE
+\*------------------------------------*/
 
-
-
-// CARD HOME
 .card-section-two{
-  border-radius: 25px;
+  border-radius: $border-radius;
   text-align: center;
   align-items: center;
   min-width: 280px;
@@ -27,6 +27,236 @@
   }
 }
 
+/*------------------------------------*\
+  #CARD USED TO SET MARGIN DISPOSITION
+\*------------------------------------*/
+
+.card-positioning {
+  padding: 2% 4%;
+  text-align:center;
+  height:100%;
+  max-height:100%;
+  justify-content: center;
+  border-radius: $border-radius;
+  box-shadow: $box-shadow;
+  h2{
+    text-align:center;
+  }
+  h3 {
+    margin: 0px;
+  }
+}
+
+
+/*------------------------------------*\
+  #CARD SMALL(100PX) THREE BLOCKS
+\*------------------------------------*/
+
+.card-small-three-blocks {
+  margin-bottom: 10px;
+  border-radius:$border-radius;
+  max-height:100px;
+  width:100%;
+  text-align:start;
+  border: 1px solid rgba($gray, 0.1);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  ;
+  &:hover {
+    background-color: rgba($coral-light, 0.3);
+    color:$blue;
+  }
+  .card-small-three-blocks--first {
+    object-fit: cover;
+    width: 120px;
+    height:100px;
+    border-radius: $border-radius 0px 0px $border-radius;
+  }
+}
+
+  .card-small-three-blocks--second {
+    margin-left: 10px;
+    flex-grow:1;
+  }
+  .card-small-three-blocks--third {
+    min-width:20%;
+  }
+
+
+/*------------------------------------*\
+  #CARD SMALL(100PX) TWO BLOCKS
+\*------------------------------------*/
+
+.card-small-two-blocks {
+  text-align:start;
+  margin-bottom: 10px;
+  border-radius: $border-radius;
+  max-height:100px;
+  width:100%;
+  border: 1px solid rgba($gray, 0.1);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  ;
+  &:hover {
+    background-color: rgba($coral-light, 0.3);
+    color:$blue;
+  }
+  .card-small-two-blocks--first {
+    object-fit: cover;
+    width: 120px;
+    height:100px;
+    border-radius: $border-radius 0px 0px $border-radius;
+  }
+}
+
+    .card-small-two-blocks--second {
+      margin-left: 10px;
+      flex-grow:1;
+    }
+
+    .img-logo-show {
+      width: 40px;
+      height: 40px;
+      border-radius: 30%;
+      &.inactive {
+        opacity: 0.15;
+      }
+    }
+
+
+/*------------------------------------*\
+  #MEDIUM CARD (200px) TWO BLOCKS FLAT - INDEX
+\*------------------------------------*/
+
+.card-medium-two-blocks {
+  width:100%;
+  height:200px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  position:relative;
+  box-shadow: $box-shadow;
+  border-radius: $border-radius;
+  margin-bottom: 20px;
+}
+
+    .card-medium-two-blocks--photo {
+      object-fit: cover;
+      width: 35%;
+      height:200px;
+      border-radius: $border-radius 0px 0px $border-radius;
+    }
+
+    .card-medium-two-blocks--footer {
+      flex-grow:1;
+      display:grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: 50px 150px;
+      grid-template-areas:
+          "one one one one"
+          "two three four five"
+      ;
+      h4 {
+        grid-area: one;
+        align-content:center;
+        margin: auto;
+      }
+      .first-section {
+        margin:auto;
+        grid-area: two;
+      }
+      .second-section {
+        margin:auto;
+        grid-area: three;
+      }
+      .third-section {
+        margin:auto;
+        grid-area: four;
+      }
+      .fourth-section {
+        margin:auto;
+        grid-area:five;
+      }
+    }
+
+
+
+/*------------------------------------*\
+  #LARGE CARD INLINE SQUARE (350px) FLAT - INDEX
+\*------------------------------------*/
+
+
+
+.card-large-inline:hover {
+  &.empty {
+    transition: all 0.3s ease-out 0s;
+    background-color: rgba($coral-light, 0.3);
+    .icon-new-dashboard {
+      transition: 0.3s ease;
+      padding-bottom: 10px;
+      color: $coral;
+      font-size: 60px;
+    }
+  }
+}
+
+.card-large-inline {
+  position: relative;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  border-radius: $border-radius;
+  max-height:300px;
+  max-width:350px;
+  box-shadow: $box-shadow;
+  &.empty a {
+    min-height: 300px ;
+    min-width:350px;
+    display: flex;
+    align-items: center;
+    flex-direction:column;
+    justify-content: center;
+    text-align: center;
+  }
+  .card-large-inline--photo  {
+    height:220px;
+    width:350px;
+    border-radius: $border-radius $border-radius 0 0 ;
+    object-fit: cover;
+  }
+  p {
+    font-size: 0.7em;
+  }
+}
+
+    .card-large-inline--footer {
+      padding: 10px;
+      display: flex;
+      justify-content: space-between;
+      position: relative;
+      align-items:center;
+      font-weight:bolder;
+      h6 {
+        font-weight:bolder;
+        color:$blue;
+        a:hover {
+          color:$blue;
+        }
+      }
+    }
+
+          .avatar-card-large {
+            position: absolute;
+            right: 16px;
+            top: -40px;
+          }
+
+
+
+// DON'T KNOW WHERE IT'S USED
+
+
+
 // CARD GRID
 
 #index-cards {
@@ -34,6 +264,10 @@
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 16px;
 }
+
+
+
+
 
 // CARD PRODUCT USED IN CARD PENDING SHARED
 
@@ -44,7 +278,7 @@
   box-shadow: $box-shadow;
   display: flex;
   align-items: center;
-  border-radius: 5px;
+  border-radius: $border-radius;
   position:relative;
   margin-top: 4%;
 }
@@ -98,69 +332,14 @@
   align-items:center;
 }
 
+
+
+
+
+
 // CARD TRIP
 
-.card-trip {
-  position: relative;
-  overflow: hidden;
-  background: white;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  border-radius: 5px;
-  font-family: 'Quicksand';
-  font-size: 16px;
-  font-weight: bold;
-}
 
-.image {
-  height: 200px;
-  width: 100%;
-  object-fit: cover;
-}
-
-.card-trip > img {
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
-}
-
-.card-trip h2 {
-  font-family: 'Quicksand';
-  font-size: 16px;
-  font-weight: bold;
-  margin: 0;
-  & a {
-    text-decoration: none;
-    color: #201E50;
-  }
-  & a:hover {
-    color: #EE8572
-  }
-}
-
-.card-trip p {
-  font-family: 'Quicksand';
-  font-size: 12px;
-  opacity: .7;
-  margin: 0;
-}
-
-.card-trip .card-trip-infos {
-  padding: 10px;
-  display: flex;
-  justify-content: space-between;
-  position: relative;
-  min-height: 75px;
-  & .card-trip-pricing {
-    padding-top: 36px;
-  }
-}
-
-.card-trip-infos .card-trip-user {
-  position: absolute;
-  right: 16px;
-  top: -20px;
-  width: 40px;
-}
 
 .card-flat {
   width: 100%;
@@ -188,7 +367,7 @@
   color:$blue;
   width: 100%;
   height: 100%;
-  border-radius: 15px;
+  border-radius: $border-radius;
   background-color: white;
   display:grid;
   grid-template-columns: repeat(3, 1fr);
@@ -212,15 +391,6 @@
     grid-area: three;
   }
  }
-
-.img-logo-show {
-  width: 50px;
-  height: 50px;
-  border-radius: 30%;
-  &.inactive {
-    opacity: 0.15;
-  }
-}
 
 // USED IN CARD FLAT DETAILS SHARED
 
@@ -272,59 +442,10 @@
 }
 
 
-// CARD CATEGORY
-.card-positioning {
-  background-size: cover;
-  background-position: center;
-  h2{
-    text-align:center;
-  }
-  text-align:center;
-  border: solid white 24px;
-  height:100%;
-  overflow-y: auto;
-  max-height:100%;
-  justify-content: center;
-  border-radius: 5px;
-  box-shadow: $box-shadow;
-}
+
 
 // CARD FOR RENTINGS
-.card-product-original {
-  overflow: hidden;
-  height:10vh;
-  min-height:117px;
-  margin-top: 12px;
-  background: white;
-  box-shadow: $box-shadow;
-  display: flex;
-  align-items: center;
-}
 
-.card-product-original img {
-  height: 100%;
-  width: 120px;
-  object-fit: cover;
-}
-
-.card-product-original h2 {
-  font-size: 16px;
-  font-weight: bold;
-  margin: 0;
-}
-
-.card-product-original p {
-  font-size: 12px;
-  line-height: 1.4;
-  opacity: .7;
-  margin-bottom: 0;
-  margin-top: 8px;
-}
-
-.card-product-original .card-product-original-infos{
-  padding: 16px;
-  width: 100%
-}
 
 
 .info-card-doc{
@@ -332,7 +453,7 @@
 }
 .card-doc {
   margin: 16px 8px;
-  border-radius: 4px;
+  border-radius: $border-radius;
   align-item: center;
 }
 

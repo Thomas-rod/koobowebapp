@@ -98,14 +98,14 @@
   padding: 7px 10px;
   align-items: center;
   border: 1px solid white;
-  border-radius: 5px;
+  border-radius: $border-radius;
   & label {
     margin-right: 10px;
   }
   &:hover {
     padding: 7px 10px;
     background-color: none;
-    border-radius: 5px;
+    border-radius: $border-radius;
     font-size:15px;
     border: 1px solid #EE8572;
   }
@@ -131,7 +131,7 @@
 #special-form-btn {
   padding: 15px 30px;
   background-color: #EE8572;
-  border-radius: 4px;
+  border-radius: $border-radius;
   border: none;
   margin-top: 10px;
   margin-left: 250px;
@@ -167,7 +167,7 @@
   cursor: pointer;
   font-weight: 500;
   // background: white;
-  border-radius: 2px;
+  border-radius: $border-radius;
   &:hover {
     color: #EE8572;
   }

@@ -1,5 +1,6 @@
 <div id="notifications">
   <% current_user.flats.each do |flat| %>
+  <!-- DO SOME CHANGES ON WHERE THE DATA CAME FROM -->
     <% flat.visits.where(status: "pending").each do |visit| %>
       <%= render "shared/notif", visit: visit %>
     <% end %>

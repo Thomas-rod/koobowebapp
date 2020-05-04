@@ -16,26 +16,27 @@
         <div class="container-disposition">
           <div class="disposition-card-four">
             <div class="disposition-four-left">
-              <div class="disposition-size">
-                <%= render 'shared/calendar'%>
+              <div class="card-positioning">
+                <div class="schedules-container-schedule-index">
+                  <%= render 'shared/calendar'%>
+                </div>
               </div>
             </div>
             <div class="disposition-four-right">
-              <div class="disposition-size">
+              <div class="card-positioning">
                 <% number = 2 %>
                 <% current_user.schedules.each do |schedule| %>
                   <% number += 1 %>
-                  <div class="card-trip-schedules d-none" id="scheduled<%= schedule.id %>">
-                    <%= image_tag schedule.flat.photos.first, class: "image" %>
+                  <div class="clickable-schedule d-none" id="scheduled<%= schedule.id %>">
+                    <%= image_tag schedule.flat.photos.first, class: "image-resize-large" %>
                     <div class = "info-flat">
-                      <h5><%= schedule.flat.name %></h5>
+                      <h6><%= schedule.flat.name %></h6>
                       <p><%= link_to "Rajouter des créneaux" , flat_path(schedule.flat), class: "link-schedule" %></p>
                       <% accepted_visit = schedule.visits.select {|visit| visit.status == "accepted"} %>
                       <% pending_visit = schedule.visits.select {|visit| visit.status == "pending"} %>
                       <% if accepted_visit != [] %>
                         <%= render partial: 'shared/card_with_answer', locals: { request: accepted_visit.first, label_text: 'Visite'} %>
                       <% elsif pending_visit != []%>
-                        <h6>Ils veulent visiter ce bien</h6>
                         <% pending_visit.each do |visit| %>
                           <%= render partial: "shared/card_pending", locals: { request: visit}  %>
                         <% end %>
@@ -45,7 +46,6 @@
                     </div>
                   </div>
                 <% end %>
-              </div>
             </div>
           </div>
         </div>

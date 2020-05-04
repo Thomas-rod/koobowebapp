@@ -3,7 +3,7 @@ const clickableSchedule = () => {
 
   cases.forEach((casi) => {
     casi.addEventListener('click', (event) => {
-      const cards = document.querySelectorAll('.card-trip-schedules')
+      const cards = document.querySelectorAll('.clickable-schedule')
       cards.forEach((card) => {
         card.classList.add('d-none')
       })

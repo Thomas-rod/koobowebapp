@@ -1,7 +1,7 @@
 .koobo-button {
   padding: 7px 10px;
   background-color: $coral-light;
-  border-radius: 5px;
+  border-radius: $border-radius;
   color:white;
   font-size:15px;
   font-weight: bold;
@@ -75,7 +75,7 @@
   font-size:12px;
   opacity: 0.8;
   background: white;
-  border-radius: 5px;
+  border-radius: $border-radius;
   color:$blue;
   &:hover {
     opacity:1;

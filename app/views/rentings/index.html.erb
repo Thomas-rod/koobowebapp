@@ -14,33 +14,28 @@
       </div>
       <div class="content-container full">
         <div class="container-index-rentings">
-        <h1>Documents</h1>
           <div class="grid-rentings">
             <div class="search-doc">
-              <div class="search-rentings" >
-                <%= form_tag rentings_path, class: "form-doc", method: :get do %>
-                  <%= text_field_tag :query,
-                    params[:query],
-                    class: "form-control",
-                    placeholder: "Cherchez un document..."
-                  %>
-                  <%= submit_tag "Search", class: "btn btn-primary" %>
-                <% end %>
-              </div>
+              <%= form_tag rentings_path, id: "search-documents", method: :get do %>
+                <%= text_field_tag :query,
+                  params[:query],
+                  class: "form-control",
+                  placeholder: "Que cherches-tu ? ... "
+                %>
+                <%= submit_tag "Chercher", class: "koobo-button" %>
+              <% end %>
             </div>
             <div class="valid-doc">
               <div class="card-positioning">
-                <h2>Documents validés</h2>
+                <h3>Documents validés</h3>
                 <% @rentings.each do |renting| %>
-                <div class="card-product-original card-doc">
-                  <%= image_tag renting.flat.photos.first%>
-                  <div class="card-product-original-infos .info-card-doc">
-                    <h2><%= renting.flat.name  %></h2>
-                    <div class="documents-rentings">
-                      <div class="documents-appart">
-                        <a href="#" data-toggle="modal" data-target="#exampleModal"><i class="far fa-file-pdf"></i></a>
-                        <!-- Modal -->
-                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="card-medium-two-blocks">
+                  <%= image_tag renting.flat.photos.first, class:"card-medium-two-blocks--photo"%>
+                  <div class="card-medium-two-blocks--footer">
+                    <h4><%= renting.flat.name  %></h4>
+                    <div class="first-section">
+                      <a href="#" data-toggle="modal" data-target="#exampleModal"><i class="far fa-file-pdf"></i></a>
+                      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                           <div class="modal-dialog" role="document">
                             <div class="modal-content">
                               <div class="modal-header">
@@ -69,10 +64,10 @@
                               </div>
                             </div>
                           </div>
-                        </div>
-                        <p> bails </p>
                       </div>
-                      <div class="documents-appart">
+                      <p> baux </p>
+                    </div>
+                    <div class="second-section">
                         <a href="#" data-toggle="modal" data-target="#etats_des_lieux_Modal"><i class="far fa-file-pdf"></i></a>
                          <div class="modal fade" id="etats_des_lieux_Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                           <div class="modal-dialog" role="document">
@@ -109,8 +104,8 @@
                           </div>
                         </div>
                         <p>Etat des lieux</p>
-                      </div>
-                      <div class="documents-appart">
+                    </div>
+                    <div class="third-section">
                         <a href="#" data-toggle="modal" data-target="#quittances_Modal"><i class="far fa-file-pdf"></i></a>
                         <div class="modal fade" id="quittances_Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                           <div class="modal-dialog" role="document">
@@ -143,11 +138,10 @@
                           </div>
                         </div>
                         <p>Quittances</p>
-                      </div>
-                      <div class="documents-appart">
+                    </div>
+                    <div class="fourth-section">
                         <a href="#"><i class="far fa-file-pdf"></i></a>
                         <p>Autres</p>
-                      </div>
                     </div>
                   </div>
                 </div>
@@ -156,7 +150,7 @@
             </div>
             <div class="pending-doc">
               <div class="card-positioning">
-                <h2>Documents à traiter</h2>
+                <h3>Documents à traiter</h3>
               </div>
             </div>
           </div>

@@ -5,13 +5,11 @@
 }
 
 .table-schedules{
-  // display: block;
-  // height:100%;
   max-height:500px;
   overflow-y: auto;
   border-collapse: collapse;
   border: 1px solid rgba(232, 232, 232, 1);
-  border-radius: 5px;
+  border-radius: $border-radius;
   th {
   font-family: Poppins;
   font-weight: 300;
@@ -22,7 +20,7 @@
   border-bottom: 1px solid white;
   }
   td {
-  border-radius: 5px;
+  border-radius: $border-radius;
   font-family: Poppins;
   font-weight: 300;
     position:relative;
@@ -119,7 +117,7 @@ a.link-schedule {
   padding: 0px;
   width: 156px;
   text-align: center;
-  border-radius: 3px;
+  border-radius: $border-radius;
   margin-right: 15px;
   p {
     color: white;

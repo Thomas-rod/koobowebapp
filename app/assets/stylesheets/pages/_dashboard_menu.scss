@@ -1,39 +1,52 @@
+/*------------------------------------*\
+  #GRID-DISPOSITION USED DASHBOARD-VIEW
+\*------------------------------------*/
+
 .grid-dashboard {
+  padding: 20px;
   display: grid;
   grid-template-columns: 1fr 1fr;
+  grid-auto-rows: 1fr;
   grid-gap: 20px;
-  height:85vh;
-  padding: 20px;
   grid-template-areas:
   "one two"
   "one two"
-  "one four"
+  "one two"
   "three four"
   "three four"
   "three four";
-  grid-auto-rows: 1fr;
+  .dash-flat{
+    grid-area: one;
+    height:315px;
+    position:relative;
+    text-align: start ;
+  }
+  .dash-notif{
+    grid-area: two;
+    height:315px;
+  }
+  .dash-flux{
+    grid-area: three;
+    height:315px;
+  }
+  .dash-schedule{
+    grid-area: four;
+    height:315px;
+  }
 }
 
-.dash-flat{
-grid-area: one;
 
-}
 
-.dash-notif{
-grid-area: two;
-}
 
-.dash-flux{
-grid-area: three;
-}
+/*------------------------------------*\
+  #GRID DASH FLAT (OVERWRITTING BOOTSTRAP)
+\*------------------------------------*/
 
-.dash-schedule{
-grid-area: four;
-}
 #nav-rented, #nav-free {
   color: $blue;
   padding: 5px 10px;
   width: 105px;
+  margin-bottom: 10px;
   display:flex;
   justify-content:center;
   align-items:center;
@@ -49,71 +62,35 @@ grid-area: four;
   }
 }
 
-#nav-rented.active, #nav-free.active {
-    border-bottom: 2px solid #201E50;
-  }
-
-.dashboard-content-flat{
-  padding: 16px;
-  max-height: 75%;
-}
-
-.positioning-dashboard{
-  text-align: initial ;
-  h2 {
-    text-align:initial;
-  }
-}
-.product-info-flat-dashboard {
-  display: flex;
-  align-items: center;
-  padding: 16px;
-  width: 100%;
-  justify-content: space-between;
+#tab-pane {
+  overflow-y: scroll;
 }
 
 
 
-.tenant-info{
-    text-align: center;
-    padding-bottom: 11px;
-    padding-right: 30px;
-  img{
-      width: 50px !important;
-  }
-}
-.logo-dashboard-card-info {
-  display:flex;
-  img {
-    width: 32px;
-    height:32px;
-    border-radius: 50%;
-    margin-top: 14px;
-    margin: 12px 12px 0px 0px;
-  }
-}
 
-.info-not-rented{
-  p{
-    font-size:15px;
-    opacity:0.95;
-  }
-}
+
+/*------------------------------------*\
+  #GRID DASH NOTIF
+\*------------------------------------*/
 
 div#notifications {
-    max-height: 221px;
-    overflow-y: scroll;
-    }
+  max-height: 221px;
+  overflow-y: scroll;
+}
 
 
-.product-empty{
-  text-align: center;
-  padding: 15;
-  justify-content: center;
-  .fa-plus-circle {
-    margin-bottom: 8px;
-  }
-  .fa-flat {
-    font-size: 50px;
-}
-}
+
+
+/*------------------------------------*\
+  #GRID DASH FLUX
+\*------------------------------------*/
+
+
+
+
+
+/*------------------------------------*\
+  #GRID DASH SCHEDULE
+\*------------------------------------*/
+

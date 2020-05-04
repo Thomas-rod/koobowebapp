@@ -24,7 +24,7 @@
   text-align: center;
   box-shadow: $box-shadow;
   background-color: #C4C4C4;
-  border-radius: 5px;
+  border-radius: $border-radius;
   padding: 5px;
 }
 .info-flow {
@@ -47,7 +47,7 @@
   margin: 10px;
   padding: 8px;
   background-color: white;
-  border-radius: 5px;
+  border-radius: $border-radius;
 }
 
 .details {
@@ -57,7 +57,7 @@
 
 .dark-grey-boxes {
   background-color: #A5A4AE;
-  border-radius: 5px;
+  border-radius: $border-radius;
   margin: 10px;
   padding: 5px;
 }
