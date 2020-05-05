@@ -6,7 +6,7 @@
       <%= image_tag ("avatar.png") %>
     <% end %>
   <% else %>
-    <% if visit.user&.photo&.attached? %>
+    <% if request.visit.user&.photo&.attached? %>
       <%= image_tag request.visit.user.photo %>
     <% else %>
       <%= image_tag ("avatar.png") %>
