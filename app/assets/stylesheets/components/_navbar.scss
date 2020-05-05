@@ -1,4 +1,6 @@
-// NAVBAR HOME
+/*------------------------------------*\
+  #NAVBAR HOME
+\*------------------------------------*/
 
 .navbar-home {
   height: 100px;
@@ -19,7 +21,10 @@
   }
 }
 
-// NAVBAR DASHBOARD
+
+/*------------------------------------*\
+  #NAVBAR DASHBOARD
+\*------------------------------------*/
 
 .navbar-dashboard {
   position:absolute !important;
@@ -75,7 +80,12 @@
 }
 
 
-//Navbar Bottom
+
+/*------------------------------------*\
+  #NAVBAR BOTTOM
+\*------------------------------------*/
+
+
 .bottom-navbar {
   display:none !important;
   display: grid;
@@ -107,6 +117,14 @@
   color: #fff;
   margin-top: 0px;
 }
+
+
+
+/*------------------------------------*\
+  #RESPONSIVENESS
+\*------------------------------------*/
+
+
 
 // Smallest device
 @media (min-width: 100px) and (max-width: 575px) {

@@ -8,31 +8,11 @@
 }
 
 .icon-dashboard {
-  font-size: 25px;
+  font-size: 1.7em;
   width: 50px;
   height: 50px;
   color: $white;
 }
-
-
-/*------------------------------------*\
-  #ICON PROPERTIES FOR DASHBOARD VIEW
-\*------------------------------------*/
-
-.icon-new-dashboard {
-  color: $coral-light;
-  font-size: 50px;
- .position-absolute-button-create {
-  position:absolute;
-  top:5px;
-  right:10px;
- }
-  &:hover {
-  color: #EE8572;
-  }
-}
-
-
 
 
 
@@ -43,9 +23,9 @@
 .fas.fa-check {
   margin:0px !important;
   color: $green;
-  font-size:20px;
-  // $green;
+  font-size:1.3em;
 }
+
 .fa-times:before {
     content: "\f00d";
     margin-right: 5px;
@@ -66,7 +46,10 @@
   font-size: 20px;
 }
 
-// USED IN SCHEDULE INDEX
+
+/*------------------------------------*\
+  #USED IN SCHEDULE INDEX
+\*------------------------------------*/
 
 .fa-phone-alt {
   font-size: 16px;
@@ -78,7 +61,10 @@
   //
 }
 
-// ICON USED IN ON_GOING_SHOW
+
+/*------------------------------------*\
+  #USED IN ONGOING SHOW
+\*------------------------------------*/
 .question-icon {
   color: $blue;
   font-size: 20px;

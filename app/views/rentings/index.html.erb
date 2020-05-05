@@ -31,8 +31,8 @@
                 <% @rentings.each do |renting| %>
                 <div class="card-medium-two-blocks">
                   <%= image_tag renting.flat.photos.first, class:"card-medium-two-blocks--photo"%>
-                  <div class="card-medium-two-blocks--footer">
-                    <h4><%= renting.flat.name  %></h4>
+                  <div class="card-medium-two-blocks--footer__four">
+                    <h4 class="card-medium-two-blocks--footer__title"><%= renting.flat.name  %></h4>
                     <div class="first-section">
                       <a href="#" data-toggle="modal" data-target="#exampleModal"><i class="far fa-file-pdf"></i></a>
                       <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

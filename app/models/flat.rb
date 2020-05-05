@@ -25,6 +25,31 @@ class Flat < ApplicationRecord
     return counter
   end
 
+  def flat_earnings
+    earnings = 0
+
+    unless self.rentings.nil? || self.rentings.empty?
+      self.rentings.each do |renting|
+        renting.flows.each do |flow|
+          flow.category == "revenu" ? earnings += flow.amount : ""
+        end
+      end
+    end
+    return earnings
+  end
+
+  def flat_spendings
+    spendings = 0
+    unless self.rentings.nil? || self.rentings.empty?
+      self.rentings.each do |renting|
+        renting.flows.each do |flow|
+          flow.category == "dépense" ? spendings -= flow.amount : ""
+        end
+      end
+    end
+    return spendings
+  end
+
   private
 
   def technical_diagnostic_validation
@@ -44,4 +69,6 @@ class Flat < ApplicationRecord
       errors.add(:co_owner_document_format, "Youston, le format n'est pas le bon !")
     end
   end
+
 end
+

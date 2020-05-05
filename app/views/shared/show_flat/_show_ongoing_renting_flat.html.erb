@@ -1,17 +1,17 @@
-<div id="disposition-card-two">
+<div id="disposition-card-three">
   <div id="disposition-three-left-top">
-    <div class="disposition-size">
+    <div class="card-positioning">
       <h5>Nous avons besoins de quelques informations</h5>
       <p>(Ps: Ne t'en fait pas, cela durera moins de 3 minutes)</p>
       <%= render partial: 'shared/accordion_infos_flat' %>
     </div>
   </div>
   <div id="disposition-three-left-bottom">
-    <div class="disposition-size">
+    <div class="card-positioning">
       <div id="container-card-tenant-ongoing-flat">
         <% helper_flat_current_tenants(@flat).each do |tenant| %>
           <div class="card-tenant_ongoing_flat">
-            <%= image_tag tenant.photo, class: "avatar-extra-large bordered white" %>
+            <%= image_tag tenant.photo, class: "avatar-large bordered white" %>
             <p><%= tenant.first_name %></p>
           </div>
         <% end %>
@@ -25,14 +25,8 @@
     </div>
   </div>
   <div id="disposition-three-right">
-    <div class="disposition-size">
+    <div class="card-positioning">
       <%= render partial: 'shared/show_flat/flow_ongoing' %>
     </div>
   </div>
 </div>
-
-<h1>hello</h1>
-
-
-
-

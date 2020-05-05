@@ -1,35 +1,55 @@
-$size-screen: 85vh;
+/*------------------------------------*\
+  #DISPOSITION SHOW ONGOING
+\*------------------------------------*/
 
 #disposition-card-three {
-  width:100%;
-  height:$size-screen;
-  box-shadow: $box-shadow;
   display: grid;
-  grid-template-columns: minmax(60%, 60%) minmax(35%, 35%);
-  grid-template-rows: repeat(4, 19vh);
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: repeat(4, 1fr);
+  position:relative;
   grid-gap: 20px;
+  padding: 20px;
   grid-template-areas:
         "one two"
         "one two"
         "one two"
         "three two";
+  #disposition-three-left-top {
+    grid-area:one;
+  }
+  #disposition-three-right {
+    grid-area:two;
+  }
+  #disposition-three-left-bottom {
+    grid-area:three;
+  }
 }
 
+/*------------------------------------*\
+  # DISPOSITION STEP BY STEP
+\*------------------------------------*/
+
 #disposition-three-left-top {
-  box-shadow: $box-shadow;
-  grid-area: one;
+
   border-radius: $border-radius;
-  > .disposition-size h5, p {
+  > .card-positioning h5, p {
     text-align:center;
   }
-  > .disposition-size p {
+  > .card-positioning p {
     margin-bottom: 6px;
   }
 }
 
 #disposition-three-left-bottom {
-  box-shadow: $box-shadow;
+
   grid-area: three;
+  border-radius: $border-radius;
+}
+
+
+#disposition-three-right {
+  grid-area: two;
+  text-align:center;
   border-radius: $border-radius;
 }
 
@@ -40,16 +60,9 @@ $size-screen: 85vh;
   flex-grow:1;
 }
 
-#disposition-three-right {
-  box-shadow: $box-shadow;
-  grid-area: two;
-  text-align:center;
-  justify-self: stretch;
-  border-radius: $border-radius;
-}
-
-
-// RESPONSIVNESS
+/*------------------------------------*\
+  # RESPONSIVENESS
+\*------------------------------------*/
 
 // Extra large devices (large desktops, 1200px and up)
 @media (max-width: 1200px) {

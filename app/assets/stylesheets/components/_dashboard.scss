@@ -1,11 +1,17 @@
-// FONT LOGO KOOBO
+/*------------------------------------*\
+  #FONT LOGO
+\*------------------------------------*/
 .logo-text {
   color: $white;
   font-family: $logo-font;
-  font-size: 40px;
+  font-size: 3em;
 }
 
-// DASHBOARD WRAPPER
+/*------------------------------------*\
+  #DASHBOARD POSITIONNING
+\*------------------------------------*/
+
+
 .dashboard-wrapper {
   background-color: $blue;
   position: sticky;
@@ -25,34 +31,11 @@
   }
 }
 
-// DISPOSITION DASHBOARD
 
-// #dashboard {
-//   grid-area: two;
-// }
+/*------------------------------------*\
+  #CONTAINER ITEM DASHBOARD
+\*------------------------------------*/
 
-// #appartements, #current-renting {
-//   grid-area: three;
-// }
-
-// #calendar, #my-file {
-//   grid-area:four;
-// }
-
-
-// #documents, #search {
-//   grid-area:five;
-// }
-
-// #accounting, #my-askings {
-//   grid-area:six;
-// }
-
-// #profil {
-//   grid-area:seven;
-// }
-
-// CONTAINER_CLICKABLE_ELEMENT FOR DASHBOARD
 
 .dashboard-line {
   border-radius: $border-radius;
@@ -75,7 +58,10 @@
   }
 }
 
-// DISPOSITION CONTAINER_CLICKABLE_ELEMENT
+
+/*------------------------------------*\
+  #DISPOSITION CLICKABLE ELEMENT
+\*------------------------------------*/
 
 .dashboard-line a {
   .icon-dashboard {
@@ -89,14 +75,17 @@
   }
 }
 
-// ACTIVE DASHBOARD
+
+/*------------------------------------*\
+  #OTHER SPECIFIC ELEMENTS
+\*------------------------------------*/
 
 .active-dashboard {
   background-color: $blue-light;
   border-right: 7px solid $coral;
 }
 
-// COUNTER
+
 
 #calendar-counter {
   visibility: hidden;
@@ -106,7 +95,10 @@
   }
 }
 
-// RESPONSIVNESS
+
+/*------------------------------------*\
+  #RESPONSIVENESS
+\*------------------------------------*/
 
 // Extra large devices (large desktops, 1200px and up)
 @media (max-width: 1200px) {

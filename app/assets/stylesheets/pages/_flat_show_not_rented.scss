@@ -1,40 +1,55 @@
-$size-screen: 85vh;
+/*------------------------------------*\
+  #DISPOSITION
+\*------------------------------------*/
 
 #disposition-card-two {
-  width:100%;
-  height:$size-screen;
   display: grid;
-  grid-template-columns: minmax(60%, 60%) minmax(35%, 35%);
-  grid-template-rows: repeat(4, 19vh);
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: repeat(3, 1fr);
+  padding:20px;
   grid-gap: 20px;
   grid-template-areas:
         "one two"
         "one two"
         "one two"
         "three two";
+  #disposition-two-left-top {
+    grid-area: one;
+  }
+  #disposition-two-right {
+    grid-area:two;
+  }
+  #disposition-two-left-bottom {
+    grid-area:three;
+  }
 }
 
+
+/*------------------------------------*\
+  #SPECIFIC ELEMENT GRID
+\*------------------------------------*/
+
+
 #disposition-two-left-top {
-  grid-area: one;
-  border-radius: $border-radius;
-  box-shadow: $box-shadow;
+  max-height:500px;
 }
 
 #disposition-two-left-bottom {
-  grid-area: three;
-  box-shadow: $box-shadow;
-  border-radius: $border-radius;
 }
 
 #disposition-two-right {
-  grid-area: two;
+  max-height:650px;
   text-align:center;
-  justify-self: stretch;
-  box-shadow: $box-shadow;
-  border-radius: $border-radius;
+
+  .tab-pane {
+    max-height:566px;
+  }
 }
 
-// RESPONSIVNESS
+
+/*------------------------------------*\
+  #SPECIFIC ELEMENT GRID
+\*------------------------------------*/
 
 // Extra large devices (large desktops, 1200px and up)
 @media (max-width: 1200px) {

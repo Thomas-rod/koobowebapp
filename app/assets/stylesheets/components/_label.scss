@@ -1,3 +1,17 @@
+/*------------------------------------*\
+  #LABEL REQUEST CARD
+\*------------------------------------*/
+.label-small {
+  padding: 2px;
+  border-radius: 5px;
+  text-align:center;
+}
+
+
+/*------------------------------------*\
+  #LABEL REQUEST CARD
+\*------------------------------------*/
+
 .label-coral {
   width:105px;
   height:25px;
@@ -16,12 +30,6 @@
   border-radius: $border-radius;
   margin:0.1px auto;
   text-align:center;
-}
-
-.position-absolute-label {
-  position: absolute;
-  top:3%;
-  left: 3%;
 }
 
 .label-visit {
@@ -43,6 +51,25 @@
   bottom: 0;
 }
 
+
+
+
+/*------------------------------------*\
+  #LABEL INDEX FLAT
+\*------------------------------------*/
+
+.position-absolute-label {
+  position: absolute;
+  top:3%;
+  left: 3%;
+}
+
+
+
+/*------------------------------------*\
+  #LABEL TEXT ACCORDIONS
+\*------------------------------------*/
+
 .text-orange {
   color: $orange;
 }
@@ -50,3 +77,22 @@
 .text-green {
   color: $green;
 }
+
+
+/*------------------------------------*\
+  #LABEL INDEX FLOWS INCOME SPENDING
+\*------------------------------------*/
+
+.label-income {
+  color: $green-dark;
+  background-color: rgba($green-dark, 0.1);
+
+}
+
+.label-spending {
+  color: $coral;
+  background-color: rgba($coral, 0.1);
+}
+
+
+

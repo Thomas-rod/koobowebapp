@@ -1,9 +1,14 @@
+/*------------------------------------*\
+  #BUTTON SPECIFIC
+\*------------------------------------*/
+
+
 .koobo-button {
   padding: 7px 10px;
   background-color: $coral-light;
   border-radius: $border-radius;
   color:white;
-  font-size:15px;
+  font-size:1em;
   font-weight: bold;
   border: none;
   &:hover {
@@ -70,9 +75,23 @@
   }
 }
 
+
+.button-flow {
+  color: $coral;
+  font-size: 2.2em;
+  border: none;
+  &:focus {
+     outline: none;
+  }
+}
+
+/*------------------------------------*\
+  #BUTTON GENERIC SIZE
+\*------------------------------------*/
+
 .btn-card {
   padding: 5px;
-  font-size:12px;
+  font-size: 0.7em;
   opacity: 0.8;
   background: white;
   border-radius: $border-radius;
@@ -82,6 +101,13 @@
   }
 }
 
+
+/*------------------------------------*\
+  #BUTTON ASPECT
+\*------------------------------------*/
+.border {
+  border: 1px solid;
+}
 .btn-refuse-border{
   border-color: $red;
 }
@@ -100,6 +126,16 @@
   border-color: $green;
 }
 
+.btn-pending-full {
+  background-color: $coral-light;
+  color: $white;
+  border-color: $coral-light;
+  &a:hover {
+    background-color: $coral;
+  }
+
+}
+
 .delete-link {
   color: $blue-light;
   margin-top: 12px;
@@ -112,7 +148,11 @@
   margin-top: 17px;
 }
 .modal-body .file.optional{
-    font-size: 16px;
+    font-size:1em;
     text-shadow: none;
     cursor: copy;
 }
+
+
+
+

@@ -1,4 +1,8 @@
-// PROGRESSBAR USED IN SHOW FLAT ONGOING INLINE
+/*------------------------------------*\
+  #PROGRESSBAR USED IN SHOW FLAT ONGOING
+\*------------------------------------*/
+
+
 $size-bar: 2px;
 $bubble-position: -37px;
 $brand-primary: $blue;
@@ -70,7 +74,7 @@ $grey-light: #ededed;
 
     &.current {
       &::before {
-        // border-left: $size-bar solid $brand-primary;
+
       }
 
       &::after {
@@ -99,7 +103,10 @@ $grey-light: #ededed;
   }
 }
 
-// PROGRESSBAR USED IN CREATION OF FLAT
+
+/*------------------------------------*\
+  #PROGRESSBAR USED IN FLAT CREATION
+\*------------------------------------*/
 #progressbar {
     margin-bottom: 30px;
     overflow: hidden;

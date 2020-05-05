@@ -1,14 +1,33 @@
+/*------------------------------------*\
+  #ACCORDION CSS ON BOOTSTRAP DROPDOWN
+\*------------------------------------*/
+
 #collapseThree {
   .card-body {
     padding: 0;
   }
 }
 
+/*------------------------------------*\
+  #INPUT FILE
+\*------------------------------------*/
+
+
 .container-input-files-accordion {
   margin: 2.5%;
   height:95%;
   align-items:center;
 }
+
+.input-files-accordion {
+  height:100%;
+  width:100%;
+  display:flex;
+  justify-content:space-around;
+  align-items:center;
+  flex-grow:1;
+}
+
 
 .body-file {
   border-radius: $border-radius;
@@ -26,14 +45,6 @@
   }
 }
 
-.input-files-accordion {
-  height:100%;
-  width:100%;
-  display:flex;
-  justify-content:space-around;
-  align-items:center;
-  flex-grow:1;
-}
 
 .file-upload-form {
   .form-group {
@@ -43,6 +54,10 @@
     margin-bottom: 0rem;
   }
 }
+
+/*------------------------------------*\
+  #ICON TO UPLOAD A DOC
+\*------------------------------------*/
 
 .add-file-clickable {
   width:70px;
@@ -58,7 +73,7 @@
   align-items:center;
   cursor: pointer !important;
   & .fa-cloud-download-alt {
-    font-size:32px;
+    font-size:2.5em;
     margin:0px auto;
     color:rgba($blue, 0.8);
   }
@@ -71,11 +86,13 @@
 
 .uploaded-document {
   color:$green;
-  font-size:32px;
+  font-size:2.5em;
 }
 
 
-// INSIDE OTHER DOCUMENTS
+/*------------------------------------*\
+  #OTHER DOCUMENTS
+\*------------------------------------*/
 
 #pills-container {
   height:85%;
@@ -91,7 +108,9 @@
   opacity: 0;
 }
 
-// OVERWRITTE BOOTSTRAP
+/*------------------------------------*\
+  #OVERWRITTING BOOTSTRAP
+\*------------------------------------*/
 
 .card-header {
   display :flex;
@@ -100,7 +119,6 @@
 }
 
 .accordion {
-  height:85%;
   max-height:100%;
   display:flex;
   flex-direction: column;
@@ -113,7 +131,7 @@
 }
 
 .tab-content, .tab-pane {
-  // height:100%;
+  overflow:auto;
 }
 
 .tab-pane {

@@ -149,7 +149,7 @@
       border-radius: $border-radius 0px 0px $border-radius;
     }
 
-    .card-medium-two-blocks--footer {
+    .card-medium-two-blocks--footer__four {
       flex-grow:1;
       display:grid;
       grid-template-columns: repeat(4, 1fr);
@@ -158,7 +158,7 @@
           "one one one one"
           "two three four five"
       ;
-      h4 {
+      .card-medium-two-blocks--footer__title {
         grid-area: one;
         align-content:center;
         margin: auto;
@@ -182,12 +182,38 @@
     }
 
 
+    .card-medium-two-blocks--footer__three {
+      flex-grow:1;
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: 50px 100px;
+      grid-template-areas:
+          "one one one one"
+          "two three four five"
+      ;
+      .card-medium-two-blocks--footer__title {
+        grid-area: one;
+        align-content:center;
+        margin: auto;
+      }
+      .first-section {
+        margin:auto;
+        grid-area: two;
+      }
+      .second-section {
+        margin:auto;
+        grid-area: three;
+      }
+      .third-section {
+        margin:auto;
+        grid-area: four;
+      }
+    }
+
 
 /*------------------------------------*\
   #LARGE CARD INLINE SQUARE (350px) FLAT - INDEX
 \*------------------------------------*/
-
-
 
 .card-large-inline:hover {
   &.empty {
@@ -197,7 +223,7 @@
       transition: 0.3s ease;
       padding-bottom: 10px;
       color: $coral;
-      font-size: 60px;
+      font-size: 5em;
     }
   }
 }
@@ -207,11 +233,9 @@
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   border-radius: $border-radius;
   max-height:300px;
-  max-width:350px;
   box-shadow: $box-shadow;
   &.empty a {
     min-height: 300px ;
-    min-width:350px;
     display: flex;
     align-items: center;
     flex-direction:column;
@@ -253,6 +277,124 @@
 
 
 
+
+
+/*------------------------------------*\
+  #CARD REQUEST FOR NOTIFICATION VISITS RENTING FOLDER
+\*------------------------------------*/
+
+
+.card-request {
+  width:100%;
+  height: 100px;
+  background: white;
+  border: 1px solid rgba($gray, 0.3);
+  display: flex;
+  align-items: center;
+  border-radius: $border-radius;
+  position:relative;
+  margin-top: 4%;
+  img {
+    height: 100%;
+    width: 105px;
+    object-fit: cover;
+  }
+  p {
+  font-size: 0.7em;
+  line-height: 1.4;
+  opacity: .7;
+  margin-bottom: 0;
+  }
+}
+
+      .card-request-infos {
+        height:80%;
+        width:65%;
+        margin: auto 2.5%;
+        display:flex;
+        flex-direction: column;
+        justify-content:space-around;
+        align-items:center;
+      }
+
+
+      .card-request-infos-pending {
+        height:80%;
+        width:65%;
+        margin: auto 2.5%;
+        display:flex;
+        justify-content:space-around;
+        align-items:flex-start;
+        position:relative;
+      }
+
+      .card-request-contact {
+        position:absolute;
+        width:100%;
+        bottom: 5%;
+        display:flex;
+        justify-content:space-around;
+        align-items:center;
+      }
+
+
+
+
+
+/*------------------------------------*\
+  #CARD SMALL ONE LINE
+\*------------------------------------*/
+
+.card-small-one-line {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border: 1px solid rgba($gray, 0.1);
+  width:100%;
+  height:40px;
+  border-radius: 5px;
+  padding: 0px 10px;
+
+}
+
+    .card-small-one-line--left {
+      flex-grow:1;
+    }
+
+    .card-small-one-line--right {
+      width: 20%;
+    }
+
+
+
+
+/*------------------------------------*\
+  #CARD SPECIFIC ACCOUNTING
+\*------------------------------------*/
+
+
+.card-accounting {
+
+  display: grid;
+  grid-gap:10px;
+  grid-template-columns: 20% 45% 15% 15%;
+  grid-template-rows: 100%;
+  align-items: start;
+  border-top: 1px solid rgba(14, 0, 0, 0.1);
+  padding-top: 10px;
+  text-align:start;
+
+}
+
+    .card-accounting--description {
+      display:inline-block;
+      p:last-child {
+        color: rgba($gray, 0.3);
+      }
+    }
+
+
+
 // DON'T KNOW WHERE IT'S USED
 
 
@@ -269,68 +411,12 @@
 
 
 
+
+
+
 // CARD PRODUCT USED IN CARD PENDING SHARED
 
-.card-product {
-  width:99%;
-  height: 100px;
-  background: white;
-  box-shadow: $box-shadow;
-  display: flex;
-  align-items: center;
-  border-radius: $border-radius;
-  position:relative;
-  margin-top: 4%;
-}
 
-.card-product img {
-  height: 100%;
-  width: 105px;
-  object-fit: cover;
-}
-
-.card-product h2 {
-  font-size: 16px;
-  font-weight: bold;
-  margin: 0;
-}
-
-.card-product p {
-  font-size: 12px;
-  line-height: 1.4;
-  opacity: .7;
-  margin-bottom: 0;
-}
-
-.card-product-infos {
-  height:80%;
-  width:65%;
-  margin: auto 2.5%;
-  display:flex;
-  flex-direction: column;
-  justify-content:space-around;
-  align-items:center;
-}
-
-
-.card-product-infos-pending {
-  height:80%;
-  width:65%;
-  margin: auto 2.5%;
-  display:flex;
-  justify-content:space-around;
-  align-items:flex-start;
-  position:relative;
-}
-
-.card-product-contact {
-  position:absolute;
-  width:100%;
-  bottom: 5%;
-  display:flex;
-  justify-content:space-around;
-  align-items:center;
-}
 
 
 
