@@ -30,7 +30,7 @@
                   <% if helper_flat_current_tenants(flat).first&.photo&.attached?  %>
                     <%= image_tag helper_flat_current_tenants(flat).first.photo, class: "avatar-middle bordered avatar-card-large" %>
                   <% else %>
-                    <%= image_tag ("avatar.png"), class: 'avatar-middle bordered' %>
+                    <%= image_tag ("avatar.png"), class: 'avatar-middle bordered avatar-card-large' %>
                   <% end %>
                 <% end %>
               </div>

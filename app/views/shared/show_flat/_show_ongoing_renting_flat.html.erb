@@ -11,7 +11,11 @@
       <div id="container-card-tenant-ongoing-flat">
         <% helper_flat_current_tenants(@flat).each do |tenant| %>
           <div class="card-tenant_ongoing_flat">
-            <%= image_tag tenant.photo, class: "avatar-large bordered white" %>
+            <% if tenant&.photo&.attached?  %>
+              <%= image_tag tenant.photo, class: "avatar-large bordered white" %>
+            <% else %>
+              <%= image_tag ("avatar.png"), class: "avatar-large bordered white" %>
+            <% end %>
             <p><%= tenant.first_name %></p>
           </div>
         <% end %>

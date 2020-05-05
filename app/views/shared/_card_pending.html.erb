@@ -1,9 +1,17 @@
 <div class="card-request product-pending" id = "blabla">
   <% if request.is_a?(Visit) %>
-    <%= image_tag request.user.photo %>
-  <% else %>
-    <%= image_tag request.users.first.photo %>
-  <% end %>
+      <% if request.user&.photo&.attached? %>
+        <%= image_tag request.user.photo %>
+      <% else %>
+        <%= image_tag ("avatar.png") %>
+      <% end %>
+    <% else %>
+      <% if visit.user&.photo&.attached? %>
+        <%= image_tag request.visit.user.photo %>
+      <% else %>
+        <%= image_tag ("avatar.png") %>
+      <% end %>
+    <% end %>
   <% if request.is_a?(Visit) %>
     <div class="label-coral label-visit">
       Visite

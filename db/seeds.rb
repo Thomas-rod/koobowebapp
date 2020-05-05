@@ -31,18 +31,16 @@ def attach_photo_flat(string, flat)
 end
 
 puts "Creating users"
-roxane = User.new(first_name: "Roxane", last_name: "Haddad", phone_number: "0664784489", email: "roxane.haddad@gmail.com", password: "roxane.haddad@gmail.com", description: "26 ans, en CDI confirmé depuis 3 ans, célibataire, sans animaux.")
-attach_photo_user("https://avatars0.githubusercontent.com/u/54777799?v=4", roxane)
-roxane.save!
-john = User.new(first_name: "Jonathan", last_name: "Courdavault", phone_number: "0778381974", email: "jo.courdavault@gmail.com", password: "jo.courdavault@gmail.com")
+joker = User.new(first_name: "joker", last_name: "Jok'air", phone_number: "0664784489", email: "joker@gmail.com", password: "joker@gmail.com", description: "26 ans, en CDI confirmé depuis 3 ans, célibataire, sans animaux.")
+joker.save!
+john = User.new(first_name: "Jonathan", last_name: "Courdavault", phone_number: "0778381974", email: "jo@gmail.com", password: "jo@gmail.com")
 attach_photo_user("https://avatars2.githubusercontent.com/u/58211236?v=4", john)
 john.save!
-thomas = User.new(first_name: "Thomas", last_name: "Rodier", phone_number: "0668489169", email: "rodiert17@gmail.com", password: "rodiert17@gmail.com")
+thomas = User.new(first_name: "Thomas", last_name: "Rodier", phone_number: "0668489169", email: "thom@gmail.com", password: "thom@gmail.com")
 attach_photo_user("https://avatars1.githubusercontent.com/u/57214511?v=4", thomas)
 thomas.save!
-mao = User.new(first_name: "Maodo", last_name: "Diop", phone_number: "0663906049", email: "maodod1@gmail.com", password: "maodod1@gmail.com")
-attach_photo_user("https://avatars1.githubusercontent.com/u/56120487?v=4", mao)
-mao.save!
+stefan = User.new(first_name: "Stefan", last_name: "Diop", phone_number: "0663906049", email: "stefan@gmail.com", password: "stefan@gmail.com")
+stefan.save!
 puts "#{User.count} users created"
 
 puts "Creating flats"
@@ -61,11 +59,11 @@ attach_photo_flat("https://images.unsplash.com/photo-1505691938895-1758d7feb511?
 attach_photo_flat("https://images.unsplash.com/photo-1451153378752-16ef2b36ad05?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60", thomas_third_flat)
 attach_photo_flat("https://images.unsplash.com/photo-1552454799-ca5cfdc612c8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=967&q=80", thomas_third_flat)
 thomas_third_flat.save!
-mao_first_flat = Flat.new(user: mao, address: "92 rue Sadi Carnot, Puteaux, Île de France", description: "Voisins très bruyants, mais superbe appartement avec vue Tour Eiffel dans la rue.", category: "appartement", monthly_price: 900, visible: true, rented: false, seloger: true, bienici: false, pap: true, leboncoin: true, name: "Puteaux appartement sympa", number_of_rooms: 1, number_of_bedrooms: 1, surface: 25, floor: 5, elevator: false, balcony: false, cellar: true, parking: false, heating_system: ["", "individuel", "électrique"], furnished: true)
-attach_photo_flat("https://images.unsplash.com/photo-1505691938895-1758d7feb511?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80", mao_first_flat)
-attach_photo_flat("https://images.unsplash.com/photo-1451153378752-16ef2b36ad05?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60", mao_first_flat)
-attach_photo_flat("https://images.unsplash.com/photo-1552454799-ca5cfdc612c8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=967&q=80", mao_first_flat)
-mao_first_flat.save!
+stefan_first_flat = Flat.new(user: stefan, address: "92 rue Sadi Carnot, Puteaux, Île de France", description: "Voisins très bruyants, mais superbe appartement avec vue Tour Eiffel dans la rue.", category: "appartement", monthly_price: 900, visible: true, rented: false, seloger: true, bienici: false, pap: true, leboncoin: true, name: "Puteaux appartement sympa", number_of_rooms: 1, number_of_bedrooms: 1, surface: 25, floor: 5, elevator: false, balcony: false, cellar: true, parking: false, heating_system: ["", "individuel", "électrique"], furnished: true)
+attach_photo_flat("https://images.unsplash.com/photo-1505691938895-1758d7feb511?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80", stefan_first_flat)
+attach_photo_flat("https://images.unsplash.com/photo-1451153378752-16ef2b36ad05?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60", stefan_first_flat)
+attach_photo_flat("https://images.unsplash.com/photo-1552454799-ca5cfdc612c8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=967&q=80", stefan_first_flat)
+stefan_first_flat.save!
 puts "#{Flat.count} flats created"
 
 puts "Creating schedules"
@@ -80,20 +78,20 @@ seventh_schedule = Schedule.create!(start:Time.new(2020, 4, 24, 9, 30, 0),end:Ti
 puts "#{Schedule.count} created"
 
 puts "Creating visits"
-first_visit = Visit.create!(schedule: first_schedule, user: roxane, status: 'denied')
-second_visit = Visit.create!(schedule: first_schedule, user: mao, status: 'accepted')
+first_visit = Visit.create!(schedule: first_schedule, user: joker, status: 'denied')
+second_visit = Visit.create!(schedule: first_schedule, user: stefan, status: 'accepted')
 third_visit = Visit.create!(schedule: first_schedule, user: john, status: 'denied')
-fourth_visit = Visit.create!(schedule: second_schedule, user: roxane)
-fifth_visit = Visit.create!(schedule: second_schedule, user: mao)
+fourth_visit = Visit.create!(schedule: second_schedule, user: joker)
+fifth_visit = Visit.create!(schedule: second_schedule, user: stefan)
 sixth_visit = Visit.create!(schedule: second_schedule, user: john)
-seventh_visit = Visit.create!(schedule: third_schedule, user: roxane)
-height_visit = Visit.create!(schedule: third_schedule, user: mao)
+seventh_visit = Visit.create!(schedule: third_schedule, user: joker)
+height_visit = Visit.create!(schedule: third_schedule, user: stefan)
 nine_visit = Visit.create!(schedule: third_schedule, user: john)
-ten_visit = Visit.create!(schedule: fourth_schedule, user: roxane)
-eleven_visit = Visit.create!(schedule: fourth_schedule, user: mao)
+ten_visit = Visit.create!(schedule: fourth_schedule, user: joker)
+eleven_visit = Visit.create!(schedule: fourth_schedule, user: stefan)
 twelve_visit = Visit.create!(schedule: fourth_schedule, user: john)
-thirteen_visit = Visit.create!(schedule: fifth_schedule, user: roxane, status: 'accepted')
-fourteen_visit = Visit.create!(schedule: sixth_schedule, user: mao, status: 'accepted')
+thirteen_visit = Visit.create!(schedule: fifth_schedule, user: joker, status: 'accepted')
+fourteen_visit = Visit.create!(schedule: sixth_schedule, user: stefan, status: 'accepted')
 fourteen_visit.created_at = "2019-01-20 15:07:07"
 fifteen_visit = Visit.create!(schedule: seventh_schedule, user:thomas, status:'accepted')
 puts "#{Visit.count} created"
@@ -107,29 +105,29 @@ fourth_rentingfolder = RentingFolder.new(visit: fifteen_visit, status: 'pending'
 puts "#{RentingFolder.count} renting folders created"
 
 puts "Creating folders"
-roxane_folder = Folder.create!(user:roxane, renting_folder: second_rentingfolder)
-mao_one_folder = Folder.create!(user:mao, renting_folder: third_rentingfolder)
+joker_folder = Folder.create!(user:joker, renting_folder: second_rentingfolder)
+stefan_one_folder = Folder.create!(user:stefan, renting_folder: third_rentingfolder)
 john_folder = Folder.create!(user:john, renting_folder: first_rentingfolder)
-mao_two_folder = Folder.create!(user:mao, renting_folder: first_rentingfolder)
+stefan_two_folder = Folder.create!(user:stefan, renting_folder: first_rentingfolder)
 thomas_fodler = Folder.create!(user: thomas, renting_folder: fourth_rentingfolder)
 puts "#{Folder.count} folders created"
 
 puts "Creating rentings"
-roxane_thomas_renting = Renting.create!(flat: thomas_first_flat, renting_folder: second_rentingfolder, created_at: 'Fri, 28 Dec 2019 14:27:32 UTC +00:00', start_date: 'Fri, 12 Mar 2012 14:27:32 UTC +00:00', status: 'current')
-mao_thomas_renting = Renting.create!(flat: thomas_first_flat, renting_folder: third_rentingfolder, created_at: 'Fri, 28 Jan 2019 14:27:32 UTC +00:00', start_date: 'Fri, 23 Mar 2019 14:27:32 UTC +00:00', end_date: 'Fri, 23 Dec 2019 14:27:32 UTC +00:00', status: 'past')
+joker_thomas_renting = Renting.create!(flat: thomas_first_flat, renting_folder: second_rentingfolder, created_at: 'Fri, 28 Dec 2019 14:27:32 UTC +00:00', start_date: 'Fri, 12 Mar 2012 14:27:32 UTC +00:00', status: 'current')
+stefan_thomas_renting = Renting.create!(flat: thomas_first_flat, renting_folder: third_rentingfolder, created_at: 'Fri, 28 Jan 2019 14:27:32 UTC +00:00', start_date: 'Fri, 23 Mar 2019 14:27:32 UTC +00:00', end_date: 'Fri, 23 Dec 2019 14:27:32 UTC +00:00', status: 'past')
 john_thomas_renting = Renting.create!(flat: thomas_second_flat, renting_folder: first_rentingfolder, created_at: 'Fri, 28 Jan 2020 14:27:32 UTC +00:00', status: 'ongoing')
 puts "#{Renting.count} renting created"
 
 puts "Creating flows"
-Flow.create!(title: "Réparations eau", renting: roxane_thomas_renting, payment_date: Time.new(2020, 3, 9, 8, 30, 0), month_rent: Date.new(2020,4,1).mon, year_rent: Date.new(2020,4,1).year, amount: 400, category: "dépense")
-Flow.create!(title: "Réparations", renting: roxane_thomas_renting, payment_date: Time.new(2020, 3, 9, 8, 30, 0), month_rent: Date.new(2020,4,3).mon, year_rent: Date.new(2020,4,3).year, amount: 1100, category: "dépense")
-Flow.create!(title: "Loyer", renting: roxane_thomas_renting, payment_date: Time.new(2020, 3, 9, 8, 30, 0), month_rent: Date.new(2020,4,3).mon, year_rent: Date.new(2020,4,3).year, amount: 1100, category: "revenu")
-Flow.create!(title: "Réparations", renting: mao_thomas_renting, payment_date: Time.new(2020, 3, 9, 8, 30, 0), month_rent: Date.new(2001,2,3).mon, year_rent: Date.new(2020,2,3).year, amount: 800, category: "dépense")
+Flow.create!(title: "Réparations eau", renting: joker_thomas_renting, payment_date: Time.new(2020, 3, 9, 8, 30, 0), month_rent: Date.new(2020,4,1).mon, year_rent: Date.new(2020,4,1).year, amount: 400, category: "dépense")
+Flow.create!(title: "Réparations", renting: joker_thomas_renting, payment_date: Time.new(2020, 3, 9, 8, 30, 0), month_rent: Date.new(2020,4,3).mon, year_rent: Date.new(2020,4,3).year, amount: 1100, category: "dépense")
+Flow.create!(title: "Loyer", renting: joker_thomas_renting, payment_date: Time.new(2020, 3, 9, 8, 30, 0), month_rent: Date.new(2020,4,3).mon, year_rent: Date.new(2020,4,3).year, amount: 1100, category: "revenu")
+Flow.create!(title: "Réparations", renting: stefan_thomas_renting, payment_date: Time.new(2020, 3, 9, 8, 30, 0), month_rent: Date.new(2001,2,3).mon, year_rent: Date.new(2020,2,3).year, amount: 800, category: "dépense")
 Flow.create!(title: "Loyer", renting: john_thomas_renting, payment_date: Time.new(2020, 3, 9, 8, 30, 0), month_rent: Date.new(2001,2,3).mon, year_rent: Date.new(2020,2,3).year, amount: 800, category: "revenu")
-Flow.create!(title: "Loyer", renting: roxane_thomas_renting, payment_date: Time.new(2020, 3, 9, 8, 30, 0), month_rent: Date.new(2001,2,3).mon, year_rent: Date.new(2020,2,3).year, amount: 900, category: "revenu")
-Flow.create!(title: "Loyer", renting: roxane_thomas_renting, payment_date: Time.new(2020, 3, 9, 8, 30, 0), month_rent: Date.new(2001,2,3).mon, year_rent: Date.new(2020,2,3).year, amount: 700, category: "revenu")
-Flow.create!(title: "Loyer", renting: roxane_thomas_renting, payment_date: Time.new(2020, 3, 9, 8, 30, 0), month_rent: Date.new(2001,2,3).mon, year_rent: Date.new(2020,2,3).year, amount: 700, category: "revenu")
-Flow.create!(title: "Réparations", renting: roxane_thomas_renting, payment_date: Time.new(2020, 3, 9, 8, 30, 0), month_rent: Date.new(2001,2,3).mon, year_rent: Date.new(2020,2,3).year, amount: 66.50, category: "dépense")
+Flow.create!(title: "Loyer", renting: joker_thomas_renting, payment_date: Time.new(2020, 3, 9, 8, 30, 0), month_rent: Date.new(2001,2,3).mon, year_rent: Date.new(2020,2,3).year, amount: 900, category: "revenu")
+Flow.create!(title: "Loyer", renting: joker_thomas_renting, payment_date: Time.new(2020, 3, 9, 8, 30, 0), month_rent: Date.new(2001,2,3).mon, year_rent: Date.new(2020,2,3).year, amount: 700, category: "revenu")
+Flow.create!(title: "Loyer", renting: joker_thomas_renting, payment_date: Time.new(2020, 3, 9, 8, 30, 0), month_rent: Date.new(2001,2,3).mon, year_rent: Date.new(2020,2,3).year, amount: 700, category: "revenu")
+Flow.create!(title: "Réparations", renting: joker_thomas_renting, payment_date: Time.new(2020, 3, 9, 8, 30, 0), month_rent: Date.new(2001,2,3).mon, year_rent: Date.new(2020,2,3).year, amount: 66.50, category: "dépense")
 puts puts "#{Flow.count} flows created"
 
 puts "G O O D     L U C K      G U Y S"

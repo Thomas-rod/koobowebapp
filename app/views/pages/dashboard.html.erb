@@ -36,7 +36,7 @@
                             <% if helper_flat_current_tenants(flat).first.photo&.attached?  %>
                               <%= image_tag helper_flat_current_tenants(flat).first.photo, class: "avatar-middle bordered white" %>
                             <% else %>
-                              <%= image_tag ("avatar.png"), class: 'avatar-extra-large' %>
+                              <%= image_tag ("avatar.png"), class: 'avatar-middle bordered white' %>
                             <% end %>
                           </div>
                         </div>
@@ -145,6 +145,7 @@
           <div class="dash-notif">
             <div class="card-positioning">
               <h3>Notifications</h3>
+              <%= render(:partial => 'shared/notifications') %>
             </div>
           </div>
           <div class="dash-flux">

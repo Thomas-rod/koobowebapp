@@ -1,8 +1,16 @@
 <div class="card-request">
   <% if request.is_a?(Visit) %>
-    <%= image_tag request.user.photo %>
+    <% if request.user&.photo&.attached? %>
+      <%= image_tag request.user.photo %>
+    <% else %>
+      <%= image_tag ("avatar.png") %>
+    <% end %>
   <% else %>
-    <%= image_tag request.visit.user.photo %>
+    <% if visit.user&.photo&.attached? %>
+      <%= image_tag request.visit.user.photo %>
+    <% else %>
+      <%= image_tag ("avatar.png") %>
+    <% end %>
   <% end %>
   <% if request.is_a?(Visit) %>
     <div>
