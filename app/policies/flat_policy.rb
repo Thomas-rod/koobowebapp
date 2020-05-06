@@ -5,7 +5,9 @@ class FlatPolicy < ApplicationPolicy
       scope.where(user: user)
     end
   end
-
+  #*------------------------------------*#
+    #CRUD
+  #*------------------------------------*#
   def index?
     true
   end
@@ -22,10 +24,35 @@ class FlatPolicy < ApplicationPolicy
     return true if user.present? && user == flat.user
   end
 
+
   def destroy?
     return true if user.present? && user == flat.user
   end
 
+  #*------------------------------------*#
+    #OTHER
+  #*------------------------------------*#
+
+  def edit_publication?
+    return true if user.present? && user == flat.user
+  end
+
+  def recap_publication?
+    return true if user.present? && user == flat.user
+  end
+
+  def update_publication?
+    return true if user.present? && user == flat.user
+  end
+
+
+  def upload_document?
+    return true if user.present? && user == flat.user
+  end
+
+  def purge_document?
+    return true if user.present? && user == flat.user
+  end
   private
 
     def flat
