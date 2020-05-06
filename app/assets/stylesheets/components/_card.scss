@@ -390,6 +390,7 @@
       display:inline-block;
       p:last-child {
         color: rgba($gray, 0.3);
+        text-overflow: ellipsis;
       }
     }
 

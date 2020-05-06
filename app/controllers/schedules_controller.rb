@@ -2,6 +2,9 @@ class SchedulesController < ApplicationController
   before_action :notif_visit, :notif_counter;
   helper_method :check;
 
+  #-----------------------------------#
+                #CRUD
+  #------------------------------------#
   def index
   @flats = renting?
   @visits_user = visits_user
@@ -33,7 +36,10 @@ class SchedulesController < ApplicationController
    return "unselected"
    end
   end
-  private
+
+  #-----------------------------------#
+            private
+  #------------------------------------#
 
   def visits_user
     visit_user =[]

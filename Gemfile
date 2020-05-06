@@ -25,11 +25,17 @@ gem 'redis', '~> 4.0'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
+# Used for zapier integrations and HTTP Requests
+gem 'httparty', '~> 0.18.0'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
 # Generate randome arguments for our seeds
 gem 'faker'
+
+# Minimal Authorization
+gem "pundit"
 # Protection for user
 gem 'devise'
 

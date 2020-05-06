@@ -16,6 +16,11 @@ class Flat < ApplicationRecord
   validate :co_owner_document_validation
   validates :name, :address, :monthly_price, :number_of_rooms, :number_of_bedrooms, :surface, :floor, :heating_system, :category, presence: true
   validates_presence_of :technical_diagnostic, :information_leaflet, :co_owner_document, on: :upload_document
+  after_save :flat_to_zapier if Rails.env.production?
+
+  def flat_to_zapier
+    Zapier::FlatCreation.new(self).post_to_zapier
+  end
 
   def number_file_attached
     counter = 0

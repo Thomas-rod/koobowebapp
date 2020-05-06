@@ -12,7 +12,9 @@ class PagesController < ApplicationController
   def pricing
   end
 
-  private
+  #-----------------------------------#
+            private
+  #------------------------------------#
 
   def notif_counter
     @counter_appartement = 0

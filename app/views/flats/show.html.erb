@@ -21,9 +21,9 @@
           <%= render partial: 'shared/show_flat/show_ongoing_renting_flat' %>
         <% end %>
       </div>
-        <!-- HERE -->
     </div>
   </div>
+  <% raise %>
   <%= render 'shared/bottom_nav'%>
 <% else %>
   <div class="dashboard-data-set" data-line="appartements">
@@ -39,6 +39,9 @@
         <%= render partial: 'shared/navbar_dashboard', locals: { notif_counter: @counter} %>
       </div>
       <div class="content-container full">
+        <div class="query-search--flat">
+
+        </div>
       </div>
     </div>
   </div>

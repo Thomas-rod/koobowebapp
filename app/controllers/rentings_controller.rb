@@ -2,6 +2,9 @@ class RentingsController < ApplicationController
   before_action :notif_visit, :notif_counter;
   before_action :find_renting, only: [:show]
 
+  #-----------------------------------#
+                #CRUD
+  #------------------------------------#
   def index
     @rentings = current_user.rentings
   end
@@ -19,7 +22,9 @@ class RentingsController < ApplicationController
     redirect_to rentings_path
   end
 
-  private
+  #-----------------------------------#
+            private
+  #------------------------------------#
 
   def renting_params
     params.require(:renting).permit( bails: [], etats_des_lieux: [], quittances: [])

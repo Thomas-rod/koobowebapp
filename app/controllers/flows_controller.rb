@@ -1,6 +1,9 @@
 class FlowsController < ApplicationController
   before_action :notif_visit, :notif_counter;
 
+  #-----------------------------------#
+                #CRUD
+  #------------------------------------#
   def index
     @flats = current_user.flats
     @flows = current_user.flows.paginate(page: params[:page], per_page: 4).order(payment_date: :desc)
@@ -29,7 +32,9 @@ class FlowsController < ApplicationController
     end
   end
 
-  private
+  #-----------------------------------#
+            private
+  #------------------------------------#
 
   def flow_params
     params.require(:flow).permit(:renting_id, :payment_date, :amount, :category, :title, :month_rent, :year_rent)

@@ -2,10 +2,13 @@ class FlatsController < ApplicationController
   before_action :notif_visit, :notif_counter;
   helper_method :check;
 
-  # CRUD
+  #-----------------------------------#
+                    #CRUD
+  #------------------------------------#
 
   def index
-    @flats = current_user.flats
+    @flats = policy_scope(Flat)
+    authorize @flats
     @schedules = Schedule.all
   end
 
@@ -18,11 +21,13 @@ class FlatsController < ApplicationController
   def new
     @flat = Flat.new
     @user = current_user
+    authorize @flat
   end
 
   def create
     @flat = Flat.new(flat_params)
     @flat.user = current_user
+    authorize @flat
       if @flat.save!
         redirect_to edit_publication_path(@flat)
       else
@@ -35,18 +40,24 @@ class FlatsController < ApplicationController
     render :edit
   end
 
+  def update
+    find_flat
+    @flat.update!(flat_params)
+    redirect_to edit_publication_path(@flat)
+  end
+
+
+
+  #-----------------------------------#
+            #OTHER
+  #------------------------------------#
+
   def edit_publication
     find_flat
   end
 
   def recap_publication
     find_flat
-  end
-
-  def update
-    find_flat
-    @flat.update!(flat_params)
-    redirect_to edit_publication_path(@flat)
   end
 
   def update_publication
@@ -89,7 +100,7 @@ class FlatsController < ApplicationController
       redirect_to flat_path(@flat), alert: "Jeff, on a un soucis. Contacte nous par mail bokoo@koobo.co"
     end
   end
-  # HELPER OTHERS
+
 
   def check(num)
     if num < 10
@@ -111,10 +122,14 @@ class FlatsController < ApplicationController
     redirect_to flat_path(@flat)
   end
 
-  private
+  #-----------------------------------#
+            private
+  #------------------------------------#
+
 
   def find_flat
     @flat = Flat.find(params[:id])
+    authorize @flat
   end
 
   def flat_params

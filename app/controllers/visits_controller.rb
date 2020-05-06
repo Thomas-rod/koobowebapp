@@ -1,9 +1,14 @@
 class VisitsController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:index];
   before_action :notif_visit, :notif_counter;
 
+  #-----------------------------------#
+                #CRUD
+  #------------------------------------#
   def index
     @visits = Visit.select {|v| v.user == current_user}
   end
+
 
   def new
     @flat = Flat.find(params[:flat_id])
@@ -40,7 +45,9 @@ class VisitsController < ApplicationController
   end
 
 
-  private
+  #-----------------------------------#
+            private
+  #------------------------------------#
 
   def params_visit
     params.require(:visit).permit(:schedule_id, :status)
