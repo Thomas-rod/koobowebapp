@@ -1,12 +1,28 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [ :home ]
-  before_action :notif_visit, :notif_counter, only: [:dashboard]
+  skip_before_action :authenticate_user!, only: [ :home, :pricing ]
+  before_action :notif_visit, :notif_counter, only: [:dashboard, :search]
 
   def home
   end
 
   def dashboard
 
+  end
+
+  def search
+    @search = params["search"]
+    flats = Flat.geocoded
+    if @search.present?
+      @property_advertisement = params[:search][:property_advertisement]
+      @flats = flats.where("property_advertisement ILIKE ?", "%#{@property_advertisement}%")
+      @markers = @flats.map do |flat| {
+          lat: flat.latitude,
+          lng: flat.longitude
+        }
+      end
+    else
+       # notice: 'Es-tu sûr de la référence du bien ? Nous n\'avons rien trouvé dans notre bessasse...'
+    end
   end
 
   def pricing

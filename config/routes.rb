@@ -1,8 +1,18 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+  #*------------------------------------*#
+          #ROUTES USED FOR SPECIFIC
+  #*------------------------------------*#
   get 'dashboard/', to: 'pages#dashboard'
+  get 'search/', to: 'pages#search'
+  get 'pricing/', to: 'pages#pricing'
+
+
+  #*------------------------------------*#
+          #ROUTES USED FOR MODEL
+  #*------------------------------------*#
   resources :flats do
     resources :schedules, only: [:create, :new]
     resources :visits, only: [:new, :create]
@@ -10,13 +20,15 @@ Rails.application.routes.draw do
   resources :schedules, only: [:index, :update] do
     resources :visits, only: :update
   end
-  
+
   resources :visits, only: [:index]
   resources :rentings, only: [:create, :edit, :update, :new, :index, :show]
   resources :flows, only: [:index, :create]
 
+  #*------------------------------------*#
+          #ROUTES USED FLAT MODIFICATIONS
+  #*------------------------------------*#
 
-  # FLATS MODIFICATION
   get "flats/:id/edit_publication", to: "flats#edit_publication", as: :edit_publication
   get "flats/:id/recap_publication", to: "flats#recap_publication", as: :recap_publication
   patch "flats/:id/update_publication", to: "flats#update_publication", as: :update_publication
@@ -24,6 +36,8 @@ Rails.application.routes.draw do
   post "flats/:id/upload_document", to: "flats#upload_document", as: :upload_document
   delete "flats/:id/purge_document", to: "flats#purge_document", as: :purge_document
 
-  # USERS MODIFICATION
+  #*------------------------------------*#
+          #ROUTES USED FOR USERS MODIFICATIONS
+  #*------------------------------------*#
   patch "users/:id", to: "application#update_user_renter", as: :update_user_renter
 end

@@ -33,14 +33,16 @@ import { clickElementDashboard } from '../components/dashboard';
 import { clickableSchedule } from '../components/calendar';
 import { loadDynamicBannerText } from '../components/banner';
 import { loaderFormNewFlat } from '../components/form_loader';
-import { initAutocomplete } from '../plugins/init_autocomplete';
-import { initFlatpicker } from '../plugins/flatpickr';
 import { initSelect2 } from '../components/init_select2';
 import { initUpdateNavbarOnScroll } from '../components/navbar';
 import { makeFormAppear } from '../components/multi_etaps_form';
 import { previewImageOnFileSelect } from '../components/photo_preview';
 import { pluralizeOrNot } from '../components/pluriel_form';
 import { makeButtonLoaderAppear } from '../components/upload_button';
+
+import { initAutocomplete } from '../plugins/init_autocomplete';
+import { initFlatpicker } from '../plugins/flatpickr';
+import { initMapbox } from '../plugins/init_mapbox';
 
 
 // import { chooseSchedule }from '../components/calendar';
@@ -58,6 +60,7 @@ document.addEventListener('turbolinks:load', () => {
   previewImageOnFileSelect();
   pluralizeOrNot();
   makeButtonLoaderAppear();
+  initMapbox();
 });
 
 

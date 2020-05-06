@@ -51,6 +51,9 @@ gem  'simple_calendar', '~> 2.0'
 gem "will_paginate"
 gem "bootstrap-will_paginate"
 
+# Allow user to know where is the flat
+gem 'geocoder'
+
 gem 'dotenv-rails', groups: [:development, :test]
 # gem 'select2_simple_form', github: 'lndl/select2_simple_form', tag: '0.7.3'
 

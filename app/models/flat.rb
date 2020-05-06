@@ -17,6 +17,12 @@ class Flat < ApplicationRecord
   validates :name, :address, :monthly_price, :number_of_rooms, :number_of_bedrooms, :surface, :floor, :heating_system, :category, presence: true
   validates_presence_of :technical_diagnostic, :information_leaflet, :co_owner_document, on: :upload_document
   after_create :flat_to_zapier if Rails.env.production?
+  geocoded_by :address
+  after_validation :geocode, if: :will_save_change_to_address?
+
+
+
+
 
   def flat_to_zapier
     Zapier::FlatCreation.new(self).post_to_zapier

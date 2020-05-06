@@ -1,0 +1,70 @@
+<div class="dashboard-data-set" data-line="search">
+  <div class="screen-container">
+    <div class="dashboard-container full">
+      <% if user_current_renting?(current_user) %>
+        <%= render partial: 'shared/dashboard_tenant', locals: { renting: user_current_renting(current_user)} %>
+      <% else %>
+        <%= render partial: 'shared/dashboard_tenant', locals: { renting: "empty" }%>
+      <% end %>
+    </div>
+    <div class="nav-container full">
+      <%= render partial: 'shared/navbar_dashboard', locals: { notif_counter: @counter} %>
+    </div>
+    <div class="content-container full">
+      <div class="disposition-search-query">
+        <div class="search-query">
+          <%= simple_form_for :search, url: search_path, method: "get", defer: true, html: { class: '' } do |f| %>
+            <%= f.input :property_advertisement, input_html: {value: ""}, label: "Tu as flashé sur un bien ? Donne nous sa référence", placeholder: "Koobo-12-xs.." %>
+            <%= f.submit "Visiter", class: "koobo-button", value: "Chercher" %>
+          <% end %>
+        </div>
+        <% if params[:search].present? == false || params[:search].nil? %>
+          <div class="pending-search-query">
+            <%= image_tag ('celebration'), id: 'pending-image-small' %>
+            <%= image_tag ('homeundraw'), id: 'pending-image-big' %>
+            <div id="bubble-text">
+              <h4><i>100% des locataires Koobo ont cherché leur appartement...</i></h4>
+            </div>
+          </div>
+        <% else %>
+          <div class="active-search-query">
+            <div class="active-search-query--cards">
+              <%= @flats.each do |flat| %>
+                <%= link_to '#' do %>
+                  <div class="card-specific-search">
+                    <%= image_tag flat.photos.first, class:"card-specific-search--photo"%>
+                    <div class="card-specific-search--header">
+                      <strong><h5><%= flat.name %></h5></strong>
+                      <p><%= flat.address %> </p>
+                    </div>
+                    <div class="card-specific-search--footer">
+                      <div class="first-section">
+                        Description
+                      </div>
+                      <div class="second-section">
+                        Commodités
+                      </div>
+                      <div class="third-section">
+                        3 créneaux disponibles
+                      </div>
+                      <div class="fourth-section">
+                        <h8><%= flat.monthly_price.round  %>€/mois</h8>
+                        <h8> prix charges</h8>
+                      </div>
+                    </div>
+                  </div>
+                <% end %>
+              <% end %>
+            </div>
+            <div class="active-search-query--map">
+              <div id="map"
+                data-markers="<%= @markers.to_json %>"
+                data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
