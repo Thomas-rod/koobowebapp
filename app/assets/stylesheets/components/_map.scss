@@ -1,0 +1,50 @@
+/*------------------------------------*\
+  #MAP DISPOSITION AND SIZING
+\*------------------------------------*/
+
+.mapboxgl-popup {
+  max-width: 70vh;
+}
+
+.mapboxgl-popup-content {
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.mapboxgl-map {
+  min-height: inherit;
+}
+
+/*------------------------------------*\
+  #MARKER AND INFO WINDOW
+\*------------------------------------*/
+
+.marker {
+  width: 40px;
+  height: 40px;
+  color: #201E50;
+}
+.mapboxgl-popup-content {
+  border-radius: 5px;
+  box-shadow: $box-shadow;
+}
+
+    .mapboxgl-popup-close-button {
+      color:$blue;
+      font-size: 16px;
+    }
+
+    .info-window {
+
+    }
+      .address {
+        font-size: 1em;
+        color: rgba( $gray, 0.3);
+      }
+
+        .info-window-bubble {
+          display:flex;
+          justify-content:space-around;
+          align-items:center;
+        }
+

@@ -2,22 +2,7 @@
   #DISPOSITION
 \*------------------------------------*/
 .disposition-search-query {
-  display:grid;
-  padding-bottom: 20px;
-  grid-gap: 20px;
-  grid-template-rows: 20% 80%;
-  grid-template-areas:
-      "one"
-      "two"
-  ;
-  height:95%;
-  width:100%;
-  .search-query {
-    grid-area:one;
-  }
-  .pending-search-query {
-    grid-area:two;
-  }
+
 }
 
 
@@ -26,19 +11,22 @@
 \*------------------------------------*/
 
 .disposition-search-query {
+  height:100%;
 
 }
       .search-query {
+        width:100%;
+        height:20%;
         display:flex;
         justify-content:center;
         align-items:center;
         label {
-          font-size: 1.4em;
+          font-size: 1.7em;
           color: $blue;
           font-weight:bold;
         }
         input {
-          font-size: 1em;
+          font-size: 1.2em;
           margin-right:10px;
         }
         .simple_form {
@@ -57,21 +45,23 @@
 
       .pending-search-query {
         display:flex;
-        justify-content:space-between;
+        justify-content:end;
         align-items:flex-end;
         position:relative;
         border-bottom:3px solid $blue;
         grid-area: two;
         opacity:0.6;
+        width:100%;
+        height:77%;
       }
             #pending-image-big {
-              width:75%;
+              width:65%;
               margin-bottom: -3px;
               z-index:-1;
             }
 
             #pending-image-small {
-              width:25%;
+              width:20%;
             }
 
             #bubble-text {
@@ -92,35 +82,36 @@
             }
 
       .active-search-query {
-        padding: 0px 0px 30px 30px;
-        display:grid;
-        grid-gap:0px 20px;
-        grid-template-columns: 50% 47%;
-        grid-template-areas:
-            "one two"
-        ;
-        .active-search-query--cards {
-          grid-area:one;
-        }
-        .active-search-query--map {
-          grid-area:two;
-          position:relative;
-
-        }
+        display:flex;
+        justify-content:space-between;
+        align-items:start;
+        position:relative;
+        overflow:none;
+        max-height:75vh;
+        overflow:hidden;
       }
 
             .active-search-query--cards {
-
+              max-height: 75vh;
+              overflow-y: scroll;
+              width:50%;
+              padding: 10px;
             }
 
             .active-search-query--map {
-              height:70vh;
+              width:48%;
+              height:100%;
               border-radius: $border-radius;
-              box-shadow: $box-shadow;
               #map {
+                position: absolute;
+                top:0%;
+                right:0%;
+                box-shadow: $box-shadow;
                 border-radius: $border-radius;
-                width: 100%;
-                height: 70vh;
+                width: 48%;
+                min-height: 70vh !important;
+
+
               }
             }
 

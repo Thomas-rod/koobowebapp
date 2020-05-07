@@ -10,18 +10,25 @@ class PagesController < ApplicationController
   end
 
   def search
-    @search = params["search"]
-    flats = Flat.geocoded
-    if @search.present?
-      @property_advertisement = params[:search][:property_advertisement]
-      @flats = flats.where("property_advertisement ILIKE ?", "%#{@property_advertisement}%")
-      @markers = @flats.map do |flat| {
-          lat: flat.latitude,
-          lng: flat.longitude
-        }
+    unless current_user.renter?
+      @search = params["search"]
+      flats = Flat.geocoded
+      if @search.present?
+        @property_advertisement = params[:search][:property_advertisement]
+        @flats = flats.where("property_advertisement ILIKE ?", "%#{@property_advertisement}%")
+        @markers = @flats.map do |flat| {
+            lat: flat.latitude,
+            lng: flat.longitude,
+            infoWindow: render_to_string(partial: "shared/info_window_map", locals: { flat: flat, flat_name: flat.name, flat_price: flat.monthly_price, flat_address: flat.address }),
+            image_url: helpers.asset_url('pin_map')
+
+          }
+        end
+      else
+         # notice: 'Es-tu sûr de la référence du bien ? Nous n\'avons rien trouvé dans notre bessasse...'
       end
     else
-       # notice: 'Es-tu sûr de la référence du bien ? Nous n\'avons rien trouvé dans notre bessasse...'
+      redirect_to dashboard_path()
     end
   end
 

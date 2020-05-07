@@ -94,5 +94,33 @@
   background-color: rgba($coral, 0.1);
 }
 
+/*------------------------------------*\
+  #LABEL USED IN SEARCH
+\*------------------------------------*/
 
+
+.bubble {
+    padding: 2px 5px;
+    border-radius: 5px;
+  }
+  .price {
+    border: 1px solid rgba($blue-light, 0.1);
+    background-color: rgba($blue-light, 0.2);
+    color: rgba($blue, 0.9);
+  }
+  .visits-available {
+    border: 1px solid rgba($green, 0.1);
+    background-color: rgba($green, 0.2);
+    color: rgba($green, 0.9);
+  }
+  .visits-not-available {
+    border: 1px solid rgba($coral, 0.1);
+    background-color: rgba($coral, 0.2);
+    color: rgba($coral, 0.9);
+  }
+  .supplies {
+    border: 1px solid rgba($blue-light, 0.1);
+    background-color: rgba($light-gray, 0.3);
+    color: $blue;
+  }
 

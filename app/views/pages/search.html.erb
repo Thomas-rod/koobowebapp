@@ -15,41 +15,40 @@
         <div class="search-query">
           <%= simple_form_for :search, url: search_path, method: "get", defer: true, html: { class: '' } do |f| %>
             <%= f.input :property_advertisement, input_html: {value: ""}, label: "Tu as flashé sur un bien ? Donne nous sa référence", placeholder: "Koobo-12-xs.." %>
-            <%= f.submit "Visiter", class: "koobo-button", value: "Chercher" %>
+            <%= f.submit "Visiter", class: "koobo-button", value: 'Visiter' %>
           <% end %>
         </div>
         <% if params[:search].present? == false || params[:search].nil? %>
           <div class="pending-search-query">
             <%= image_tag ('celebration'), id: 'pending-image-small' %>
             <%= image_tag ('homeundraw'), id: 'pending-image-big' %>
-            <div id="bubble-text">
-              <h4><i>100% des locataires Koobo ont cherché leur appartement...</i></h4>
-            </div>
           </div>
         <% else %>
           <div class="active-search-query">
             <div class="active-search-query--cards">
-              <%= @flats.each do |flat| %>
+              <% @flats.each do |flat| %>
                 <%= link_to '#' do %>
                   <div class="card-specific-search">
                     <%= image_tag flat.photos.first, class:"card-specific-search--photo"%>
                     <div class="card-specific-search--header">
-                      <strong><h5><%= flat.name %></h5></strong>
-                      <p><%= flat.address %> </p>
+                      <strong><h7><%= flat.name %></h7></strong>
                     </div>
                     <div class="card-specific-search--footer">
                       <div class="first-section">
-                        Description
+                        <p class="address"><%= flat.address %> </p>
                       </div>
                       <div class="second-section">
-                        Commodités
+                        <%= render partial: '/shared/flat_supplies', locals: {flat: flat} %>
                       </div>
-                      <div class="third-section">
-                        3 créneaux disponibles
+                      <div class="third-section bubble <%= available_schedule(flat) == 0 ? 'visits-not-available' : 'visits-available' %>">
+                        <% unless available_schedule(flat) == 0 %>
+                          <p><%= available_schedule(flat)%> visites</p>
+                        <% else %>
+                          <p>Indisponible</p>
+                        <% end %>
                       </div>
-                      <div class="fourth-section">
-                        <h8><%= flat.monthly_price.round  %>€/mois</h8>
-                        <h8> prix charges</h8>
+                      <div class="fourth-section bubble price">
+                        <h8><%= flat.monthly_price.round  %>€</h8>
                       </div>
                     </div>
                   </div>

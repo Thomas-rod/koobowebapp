@@ -404,12 +404,13 @@
   margin-bottom: 30px;
   color:$blue;
   width:100%;
-  height:300px;
+  height:180px;
   box-shadow: $box-shadow;
   border-radius: 5px;
   display:grid;
-  grid-template-columns: 35% 65% ;
-  grid-template-rows: 20% 80%;
+  grid-gap:5px 10px;
+  grid-template-columns: 35% 63% ;
+  grid-template-rows: 20% 78%;
   grid-template-areas:
       "one two "
       "one three"
@@ -427,9 +428,9 @@
 }
 
     .card-specific-search--photo {
-      height:300px;
-      width:350px;
-      border-radius: $border-radius $border-radius 0 0 ;
+      width:100%;
+      height:100%;
+      border-radius: $border-radius 0 0 $border-radius;
       object-fit: cover;
 
     }
@@ -446,12 +447,13 @@
 
     .card-specific-search--footer {
       display:grid;
-      grid-gap: 5px;
-      grid-template-columns: repeat(3, 1fr);
-      grid-template-rows: 60% 40%;
+      grid-gap: 0px 10px;
+      grid-template-columns: 35% 23% 33%;
+      grid-template-rows: 30% 40% 30%;
       grid-template-areas:
         "one one one"
-        "two three four"
+        "two two two"
+        "three blank four"
       ;
       .first-section {
         grid-area:one;
@@ -461,9 +463,16 @@
       }
       .third-section {
         grid-area:three;
+        text-align:center;
+        margin-bottom:10px;
       }
       .fourth-section {
         grid-area: four;
+        text-align:center;
+        margin-bottom:10px;
+        .h8 {
+          width:100%;
+        }
       }
 
     }

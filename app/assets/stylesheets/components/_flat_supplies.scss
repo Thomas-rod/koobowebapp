@@ -1,0 +1,33 @@
+/*------------------------------------*\
+  #DISPOSITION
+\*------------------------------------*/
+
+.flat-supplies {
+  display:flex;
+  justify-content:space-around;
+  align-items:center;
+  height:100%;
+  width:100%;
+}
+
+/*------------------------------------*\
+  #SPECIFIC CSS ELEMENTS
+\*------------------------------------*/
+
+.flat-column-category {
+  margin-left: 10px;
+  margin-bottom: 4px;
+}
+
+.flat-informations-right {
+  margin: 10px 10px 0px 0px;
+}
+
+.pink-to-be {
+  color: #EE8572;
+  font-weight: bold;
+}
+
+svg {
+fill: $blue;
+}

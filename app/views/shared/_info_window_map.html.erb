@@ -1,0 +1,12 @@
+<div class="info-window">
+  <strong><h7><%= flat.name %></h7></strong>
+  <p class="address"><%= flat.address %></p>
+  <div class="info-window-bubble">
+    <p class="bubble price"><%= flat.monthly_price %>€</p>
+    <% unless available_schedule(flat) == 0 %>
+      <p class="bubble visits-available"><%= available_schedule(flat)%> visites</p>
+    <% else %>
+      <p class="bubble visits-not-available">Indisponible</p>
+    <% end %>
+  </div>
+</div>
