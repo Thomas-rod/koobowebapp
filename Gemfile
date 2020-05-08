@@ -39,7 +39,7 @@ gem "pundit"
 # Protection for user
 gem 'devise'
 # Authentification for facebook with devise
-gem 'omniauth-facebook'
+gem 'omniauth-facebook', '~> 6.0'
 
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass'
