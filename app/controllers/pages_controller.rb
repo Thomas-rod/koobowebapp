@@ -12,29 +12,27 @@ class PagesController < ApplicationController
   def search
     unless current_user.renter?
       @search = params["search"]
-      flats = Flat.geocoded
+      @flats = Flat.geocoded
       if @search.present?
-        @property_advertisement = params[:search][:property_advertisement]
-        @flats = flats.where("property_advertisement ILIKE ?", "%#{@property_advertisement}%")
+        @flats = @flats.where("property_advertisement ILIKE ?", "#{params[:search][:property_advertisement].downcase}")
         @markers = @flats.map do |flat| {
             lat: flat.latitude,
             lng: flat.longitude,
             infoWindow: render_to_string(partial: "shared/info_window_map", locals: { flat: flat, flat_name: flat.name, flat_price: flat.monthly_price, flat_address: flat.address }),
             image_url: helpers.asset_url('pin_map')
-
           }
         end
-      else
-         # notice: 'Es-tu sûr de la référence du bien ? Nous n\'avons rien trouvé dans notre bessasse...'
       end
     else
-      redirect_to dashboard_path()
+      redirect_to dashboard_path(), notice: "Je t'ai vu venir... Tu ne peux pas accèder à cette page !"
     end
   end
 
   def pricing
   end
 
+  def politique_confidentialite
+  end
   #-----------------------------------#
             private
   #------------------------------------#

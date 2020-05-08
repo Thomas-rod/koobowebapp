@@ -14,16 +14,17 @@
       <div class="disposition-search-query">
         <div class="search-query">
           <%= simple_form_for :search, url: search_path, method: "get", defer: true, html: { class: '' } do |f| %>
-            <%= f.input :property_advertisement, input_html: {value: ""}, label: "Tu as flashé sur un bien ? Donne nous sa référence", placeholder: "Koobo-12-xs.." %>
+            <%= f.input :property_advertisement, input_html: {value: ""}, label: "Tu as flashé sur un bien ? Donne nous sa référence", placeholder: "Référence..." %>
             <%= f.submit "Visiter", class: "koobo-button", value: 'Visiter' %>
           <% end %>
         </div>
-        <% if params[:search].present? == false || params[:search].nil? %>
+        <% if params[:search].present? == false || params[:search][:property_advertisement].empty? || !search_found_flat?(params[:search][:property_advertisement].downcase) %>
           <div class="pending-search-query">
             <%= image_tag ('celebration'), id: 'pending-image-small' %>
             <%= image_tag ('homeundraw'), id: 'pending-image-big' %>
           </div>
         <% else %>
+
           <div class="active-search-query">
             <div class="active-search-query--cards">
               <% @flats.each do |flat| %>

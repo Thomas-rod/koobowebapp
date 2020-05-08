@@ -1,3 +1,35 @@
+/*------------------------------------*\
+  #FORM DISPOSITION
+\*------------------------------------*/
+.navbar-devise {
+  position:absolute;
+  left:30px;
+  top: 30px;
+  font-size: 40px;
+}
+
+.login-container{
+display: flex;
+margin-top: 60px;
+justify-content: space-between;
+align-items: flex-end;
+}
+
+      .form-actions {
+        margin-bottom:1.5rem;
+        .facebook-omniauth {
+          width:100%;
+          padding: 0.5rem;
+          background-color: #4267B2;
+          border-radius: 5px;
+          text-align:center;
+          a {
+            color:white;
+          }
+        }
+      }
+
+
 .form-login {
   background: white;
   padding: 10px 20px;
@@ -18,12 +50,7 @@
     background-color: $coral;
   }
 }
-.login-container{
-display: flex;
-margin-top: 60px;
-justify-content: space-between;
-align-items: flex-end;
-}
+
 
 .banner-sign {
   height: 92vh;
@@ -35,9 +62,3 @@ align-items: flex-end;
   object-fit: cover;
 }
 
-.navbar-devise {
-  position:absolute;
-  left:30px;
-  top: 30px;
-  font-size: 40px;
-}

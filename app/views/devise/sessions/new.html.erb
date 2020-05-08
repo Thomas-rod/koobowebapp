@@ -2,7 +2,6 @@
   <h2><strong><span class="k-logo">k</span>oobo</strong></h2>
 <% end %>
 <div class="container login-container">
-  <!-- Insert form here -->
   <div class="form-login">
     <h2>Se connecter</h2>
     <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -18,10 +17,17 @@
       </div>
       <div class="form-actions">
         <%= f.button :submit, "Se connecter" , class: "btn koobo-button"%>
+          <%- if devise_mapping.omniauthable? %>
+            <%- resource_class.omniauth_providers.each do |provider| %>
+              <div class="facebook-omniauth">
+                <strong> <%= link_to "Se connecter avec #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider) %></strong>
+              </div>
+            <% end %>
+          <% end %>
       </div>
     <% end %>
     <%= render "devise/shared/links" %>
   </div>
   <img src="/login.png" alt="" class="image-login">
 </div>
-</div>
+<!-- Hello -->
