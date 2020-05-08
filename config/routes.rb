@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   get 'dashboard/', to: 'pages#dashboard'
   get 'search/', to: 'pages#search'
   get 'pricing/', to: 'pages#pricing'
-  get 'politique-confidentialite', to: 'pages#politique-confidentialite'
+  get 'politique-confidentialite', to: 'pages#confidentialite'
 
   #*------------------------------------*#
           #ROUTES USED FOR MODEL

@@ -31,7 +31,7 @@ class PagesController < ApplicationController
   def pricing
   end
 
-  def politique_confidentialite
+  def confidentialite
   end
   #-----------------------------------#
             private
