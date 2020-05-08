@@ -20,7 +20,7 @@
         <%= image_tag current_user.photo, class: "avatar-middle bordered white" %>
       <% end %>
     <% else %>
-      <%= image_tag ("avatar.png"), class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+      <%= image_tag ("avatar.png"), class: "avatar-middle bordered white dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
     <% end %>
     <div class="dropdown-menu drop-profil" aria-labelledby="navbarDropdownProfil">
       <%= link_to 'Profil', flats_path, class: 'dropdown-item' %>

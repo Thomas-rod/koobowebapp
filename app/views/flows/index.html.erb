@@ -39,7 +39,9 @@
                 </div>
                 <div class="rents-stats">
                   <div class="circle-progression">
-                    <h3><%= @all_rents_payed.length / @flats_rented.length * 100 %> %</h3>
+                    <% unless (@flats_rented.length * 100) == 0 %>
+                      <h3><%= @all_rents_payed.length / @flats_rented.length * 100 %> %</h3>
+                    <% end %>
                   </div>
                 </div>
               </div>

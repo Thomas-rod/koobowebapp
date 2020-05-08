@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  devise_for :users
+
+  devise_for :users,
+    controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   root to: 'pages#home'
 
   #*------------------------------------*#
@@ -8,7 +10,7 @@ Rails.application.routes.draw do
   get 'dashboard/', to: 'pages#dashboard'
   get 'search/', to: 'pages#search'
   get 'pricing/', to: 'pages#pricing'
-
+  get 'politique-confidentialite', to: 'pages#politique-confidentialite'
 
   #*------------------------------------*#
           #ROUTES USED FOR MODEL

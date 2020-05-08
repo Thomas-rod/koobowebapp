@@ -9,7 +9,14 @@ module SearchHelper
         counter += 1
       end
     end
-    # raise
     return (schedule_number - counter)
+  end
+
+  def search_found_flat?(property_advertisement)
+    unless Flat.all.find_by(property_advertisement: property_advertisement).nil?
+      return true
+    else
+      return false
+    end
   end
 end

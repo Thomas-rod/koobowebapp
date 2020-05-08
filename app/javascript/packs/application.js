@@ -39,10 +39,12 @@ import { makeFormAppear } from '../components/multi_etaps_form';
 import { previewImageOnFileSelect } from '../components/photo_preview';
 import { pluralizeOrNot } from '../components/pluriel_form';
 import { makeButtonLoaderAppear } from '../components/upload_button';
+// import { addcl, remcl } from '../components/login';
 
 import { initAutocomplete } from '../plugins/init_autocomplete';
 import { initFlatpicker } from '../plugins/flatpickr';
 import { initMapbox } from '../plugins/init_mapbox';
+
 
 
 // import { chooseSchedule }from '../components/calendar';
@@ -61,6 +63,8 @@ document.addEventListener('turbolinks:load', () => {
   pluralizeOrNot();
   makeButtonLoaderAppear();
   initMapbox();
+  // addcl();
+  // remcl();
 });
 
 
