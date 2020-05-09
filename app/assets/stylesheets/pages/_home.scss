@@ -1,269 +1,154 @@
-// Specific CSS for your home-page
-// BANNER
+/*------------------------------------*\
+  #HOME DISPOSITION
+\*------------------------------------*/
+#banner-container {
+  height:80vh;
+  min-height:660px;
+  padding:0px 7rem;
+  }
+    #navbar-home {
+      padding:1.5rem 0px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+
+        #navbar-home--left {
+          width:50%;
+          display:grid;
+          grid-template-columns: 30% 10% 10% 15% 15%;
+          grid-gap: 0px 2rem;
+          text-align:center;
+          align-content:center;
+
+        }
+        #navbar-home--right {
+          width:50%;
+          display:flex;
+          align-items:center;
+          justify-content:flex-end;
+        }
+
+
+    #banner-home {
+      margin-top: 6rem;
+      width:100%;
+
+      display:flex;
+      justify-content:space-between;
+
+    }
+
+        #banner-home--left {
+          width:40%;
+
+        }
+        #banner-home--right {
+
+        }
 
 #container-home {
+  padding: 0px 70px;
 }
 
-#container-header-home {
-  position:relative;
-  background-color:$blue;
-  width:100%;
-  min-width:90%;
-  height: 70vh;
-  min-height: 70vh;
-  opacity:0.99;
-  h1 {
-    color: white;
-    font-weight: bold;
-    font-size: 40px;
+/*------------------------------------*\
+  #HOME CSS BANNER CONTAINER
+\*------------------------------------*/
+
+#banner-container {
+  background: rgb(246,182,171);
+  background: linear-gradient(280deg, rgba(246,182,171,1) 50%, rgba(32,30,80,1) 50%);
   }
-  h4 {
-    color:white;
-  }
-}
 
-#inside-banner {
-  padding:10% 25%;
-  height:100%;
-  position:relative;
-  h1 {
-    font-size:48px;
-  }
-  //
-}
-
-#inside-banner-top{
-  height:50%;
-  //
-}
-
-#banner-typed-text {
-  height:70px;
-  font-size:48px;
-  color:$coral;
-  font-weight:bold;
-}
-
-// SUBSCRIBE FORM HOME
-
-.subscribe-mail {
-  display:flex;
-  justify-content:space-around;
-  align-items:center;
-  margin:50px 30px;
-}
-
-.simple-form-subscribe {
-  color: rgba($gray, 0.5);
-  background-color: white;
-  padding: 10px 15px;
-  border-radius: 20px;
-  border: 1px solid $coral;
-  width:70%;
-  // IN ORDER TO SWITCH OFF THE DATA-SET FROM MAILCHIMP WHICH APPLY A SQUARE ARROUND FORM
-  &:focus {
-      outline: -webkit-focus-ring-color auto 0px;
+    #navbar-home {
+      color:$white;
     }
-}
 
-// FROM CSS DISPLAY IN BANNER
+        #navbar-home--left {
+          h2 {
+            font-size: 4.4rem;
+          }
+          a {
+            color:$white;
+            margin: auto 0px;
+            padding-bottom: 0.5rem;
+            font-size: 2rem;
+            font-weight: lighter;
+            &:hover {
+              font-weight:bolder;
+              border-bottom: 1px solid white;
+            }
+          }
+          #koobo-logo:hover {
+            border-bottom: none;
+          }
+          .active {
+            font-weight:bolder;
+            border-bottom: 1px solid white;
+          }
+        }
 
-#flat-banner {
-    position:absolute;
-    bottom:0;
-    right:0;
-    width:350px;
+        #navbar-home--right {
+          a:first-child {
+            font-size: 1.6rem;
+            margin-right: 20px;
+            color:white;
+            &:hover {
+              color:$blue;
+            }
+          }
+          a:last-child {
+            font-size: 2rem;
+          }
+        }
+
+
+  #banner-home {
+
   }
 
-#people-handshake {
-  position:absolute;
-  bottom:0;
-  left:0;
-  width:350px;
-}
+        #banner-home--left {
+          // text-align:center;
+          h1 {
+            font-size: 5rem;
+            color:white;
+            width:100%;
+            margin-bottom: 100px;
+          }
+          a {
+            margin-left:40%;
+            font-size: 20px;
+          }
+          span {
+            font-size: 4.5rem;
+            font-weight:bold;
+          }
+        }
 
-#half-circle {
-  width:120px;
-  position:absolute;
-  top: 14%;
-  left:19px;
-}
-
-// SECTION TWO
-
-#section-two {
-  position: relative;
-  background-color: $white;
-}
-
-#section-two-header {
-  background-color: white;
-  width:100%;
-  text-align:center;
-  padding: 50px 200px 0px 200px;
-}
-
-.linecoral {
-  display: inline;
-  white-space: pre-wrap;
-  box-shadow: $coral 0px -1rem 0px inset;
-  padding: 0px 0.2rem;
-}
-
-#section-card-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 16px;
-  margin-top: 30px;
-}
+        .simple-form-subscribe {
+          color: rgba($gray, 0.5);
+          background-color: white;
+          padding: 10px 15px;
+          border-radius: 20px;
+          border: 1px solid $coral;
+          width:70%;
+          // IN ORDER TO SWITCH OFF THE DATA-SET FROM MAILCHIMP WHICH APPLY A SQUARE ARROUND FORM
+          &:focus {
+              outline: -webkit-focus-ring-color auto 0px;
+            }
+        }
+        .subscribe-mail {
+          display:flex;
+          justify-content:space-around;
+          align-items:center;
+          margin:50px 30px;
+        }
 
 
-// SECTION THREE
 
 
-#section-three {
-  padding: 50px 210px;
-  text-align:center;
-  h2 {
-    margin-bottom:4%;
-  }
-  p {
-    margin-bottom:3%;
-  }
-}
 
-.two-element {
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
 
-  img {
-    max-height: 320px;
-    width: auto;
-    margin-top: 60px;
-  }
-}
-
-#one-element{
-  margin-top: 3%;
-  padding: 3% 4%;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-  border-radius:25px;
-
-}
-// FOOTER
-
-#footer {
-  background: $blue;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 100px;
-  padding: 0px 50px;
-  color: white
-}
-
-#footer-links {
-  text-align: center;
-  //
-}
-
-#footer-links a {
+.font-coral {
   color: $coral;
-  text-decoration: none;
-  font-size: 24px;
-  padding: 0px 10px;
-  &:hover {
-    opacity: 0.7;
-  }
-}
-
-
-// RESPONSIVNESS
-
-@media (max-width: 1120px) {
-
-  #people-handshake {
-    width:250px;
-  }
-
-}
-
-// Smallest device
-@media (min-width: 100px) and (max-width: 575px) {
-  .cards {
-    grid-template-columns: 1fr;
-  }
-  .two-element{
-    flex-direction: column;
-    margin-top: 48px;
-  }
-  #inside-banner-top{
-      height:30%;
-      margin-top:180px;
-
-  }
-}
-
-// Small devices (landscape phones, 576px and up)
-@media (min-width: 576px) {
-  .cards-home {
-    grid-template-columns: 1fr;
-  }
-  .two-element{
-    flex-direction: column;
-    margin-top: 48px;
-  }
-  #inside-banner-top{
-      height:30%;
-      margin-top:180px;
-
-  }
-}
-
-// Medium devices (tablets, 768px and up)
-@media (min-width: 768px) {
-  .cards-home {
-    grid-template-columns: 1fr;
-  }
-  .two-element{
-    flex-direction: column;
-    margin-top: 48px;
-  }
-  #inside-banner-top{
-      height:30%;
-      margin-top:180px;
-
-  }
-}
-
-// Large devices (desktops, 992px and up)
-@media (min-width: 992px) {
-  .cards-home {
-    grid-template-columns: 1fr;
-  }
-  .two-element{
-    flex-direction: column;
-    margin-top: 48px;
-  }
-  #inside-banner-top{
-      height:40%;
-      margin-top:64px;
-
-  }
-}
-
-// Extra large devices (large desktops, 1200px and up)
-@media (min-width: 1200px) {
-  .cards-home {
-    grid-template-columns: 1fr 1fr 1fr;
-  }
-  .two-element{
-    flex-direction: inherit;
-  }
-  #inside-banner-top{
-      height:50%;
-      margin-top:0;
-
-  }
 }

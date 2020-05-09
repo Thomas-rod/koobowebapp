@@ -1,107 +1,141 @@
+<div id="banner-container">
+  <div id="navbar-home">
+    <div id="navbar-home--left">
+      <%= link_to root_path, id:"koobo-logo" do %>
+        <h2 ><strong><span class="k-logo">K</span><span class="oobo-logo">oobo</span></strong></h1>
+      <% end %>
+      <%= link_to '#' do %>
+        <p>Tarifs</p>
+      <% end %>
+      <%= link_to '#' do %>
+        <p>Blog</p>
+      <% end %>
+      <%= link_to '#' do %>
+        <p>À propos</p>
+      <% end %>
+      <%= link_to '#', class:"active" do %>
+        <p>Contact</p>
+      <% end %>
+    </div>
+    <div id="navbar-home--right">
+      <% if user_signed_in? %>
+        <%= link_to "Dashboard", dashboard_path, class:"button-sign-home blue" %>
+      <% else %>
+        <%= link_to 'Se connecter', new_user_registration_path, class:"" %>
+        <%= link_to "S'inscrire", new_user_session_path, class:"button-sign-home blue" %>
+      <% end %>
+    </div>
+  </div>
+  <div id="banner-home">
+    <div id="banner-home--left">
+      <h1>Arrêtez de perdre du <br> temps dans votre <br>gestion locative</h1>
+      <%= link_to "S'inscrire", new_user_session_path, class:"button-sign-home coral" %>
+    </div>
+    <div id="banner-home--right">
+      <img src="http://placehold.it/550x343" alt="">
+      <ul>
+        <li class="bullet-grey">bullet</li>
+        <li class="bullet-grey">bullet</li>
+        <li class="bullet-grey">bullet</li>
+      </ul>
+    </div>
+  </div>
+</div>
 <div id="container-home">
-  <section id="container-header-home">
-    <%= render partial: 'shared/navbar_home' %>
-    <%= image_tag 'flat', id:'flat-banner' %>
-    <%= image_tag 'handshake', id:'people-handshake' %>
-    <%= image_tag 'square-circle', id:'half-circle' %>
-    <div id="inside-banner">
-      <div id="inside-banner-top">
-        <h1>Gérez vos biens immobiliers </h1>
-        <h2><span id="banner-typed-text"></span></h2>
+  <div id="valueprop-home">
+    <h2 id="valueprop-home--header">Koobo, votre assistant de gestion locative</h2>
+    <div id="value-prop-home--cards">
+      <div class="home-card">
+        <h6><span class="font-coral">Automatiser</span> l’élaboration des documents administratifs</h6>
+        <img src="http://placehold.it/400x275" alt="">
       </div>
-      <div id="mc_embed_signup">
-        <form action="https://koobo.us19.list-manage.com/subscribe/post?u=d13e88aca98fcba329f1499e2&amp;id=35c8f45173" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
-          <div class="subscribe-mail" id="mc_embed_signup_scroll">
-            <input type="email" value="" name="EMAIL" class="simple-form-subscribe" id="mce-EMAIL" placeholder="Mon email..." required>
-            <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_d13e88aca98fcba329f1499e2_35c8f45173" tabindex="-1" value=""></div>
-            <div class="clear"><input type="submit" value="S'inscrire" name="subscribe" id="mc-embedded-subscribe" class="button-subscribe-home"></div>
-          </div>
-        </form>
+      <div class="home-card active">
+        <h6><span class="font-coral">Diviser par 5</span> le temps consacré à la recherche d’un locataire</h6>
+        <img src="http://placehold.it/400x275" alt="">
+      </div>
+      <div class="home-card">
+        <h6><span class="font-coral">Améliorer</span> la relation avec son locataire</h6>
+        <img src="http://placehold.it/400x275" alt="">
       </div>
     </div>
-  </section>
-  <section id="section-two">
-    <div id="section-two-header">
-      <h2><span class="linecoral">Centralisez vos démarches</span></h2>
-      <div class ="cards-home">
-        <div class="card-section-two">
-          <h4><b>Gestion</b></h4>
-          <%= image_tag("gestion.png") %>
-          <p>Avis d'échéances - Quittances - Charges - Archivage légal</p>
-        </div>
-        <div class="card-section-two">
-          <h4><b>Location</b></h4>
-          <%= image_tag("location.png") %>
-          <p>Multi-diffusion des annonces - Trouvez votre locataire rapidement - BAIL réglementaire</p>
-        </div>
-        <div class="card-section-two">
-          <h4><b>Simplicité</b></h4>
-          <%= image_tag 'digit' %>
-          <p>Réactivité - Traçabilité - Modernité - Signature électronique</p>
-        </div>
+  </div>
+  <div class="details-valueprop-home-left">
+    <div class="details-valueprop-home-left--header">
+      <p class="font-number font-coral">1</p>
+      <div class="details-valueprop-home-left--header--subheader">
+        <h6>Publications et visites</h6>
+        <p>Publications automatisées, visites, dossiers</p>
       </div>
     </div>
-  </section>
-  <section id="section-three">
-    <div class="two-element">
-      <div>
-        <h2>Sélectionnez votre locataire <span class="linecoral">rapidement</span></h2>
-        <p>
-          1 seul clic pour diffuser votre annonce sur les sites les plus populaires. Gagnez du temps dans la constitution des dossiers de location. De la candidature à la sélection du locataire, un service simplifié et automatisé.
-        </p>
-        <h2>Déjà en location ?</h2>
-        <p>
-          Pas de problème ! Nous nous chargeons de guider votre locataire dans l'inscription et les démarches.
-        </p>
-        <% if user_signed_in? %>
-          <%= link_to "C'est parti !", dashboard_path, class: 'button-subscribe-home' %>
-        <% else %>
-          <%= link_to "C'est parti !", new_user_registration_path, class: 'button-subscribe-home' %>
-        <% end %>
-      </div>
-      <div>
-        <%= image_tag 'teamwork', class: "middle-image" %>
+    <div class="details-valueprop-home-left--body">
+      <img src="http://placehold.it/650x520" alt="">
+      <div class="details-valueprop-home-left--body--details"></div>
+      <h6>Seloger, PAP, Leboncoin, Facebook.... Avec Koobo, tout est au même endroit</h6>
+      <ul>
+        <li>Vous choissiez les plateformes où vous souhaitez publier vos annonces</li>
+        <li>Vous êtes libre de choisir les créneaux que vous souhaitez pour faire visiter votre bien</li>
+        <li>Les candidats postulent directement sur Koobo et vous recevez leurs demandes</li>
+      </ul>
+    </div>
+  </div>
+  <div class="details-valueprop-home-right">
+    <div class="details-valueprop-home-right--header">
+      <p class="font-number font-coral">2</p>
+      <div class="details-valueprop-home-right--header--subheader">
+        <h6>Automatisation des documents</h6>
+        <p>Transparence, réactivité, humains</p>
       </div>
     </div>
-    <div id="one-element">
-      <h2>Gestion complète</h2>
-      <p>
-        À partir des informations enregistrées dans le dossier de location, <strong><span style='color: #EE8572'>k</span>oobo</strong> génère un bail électronique agréé par le Ministère du Logement incluant toutes les annexes obligatoires et les dernières règles en vigueur.
-        Sur toute la durée du bail, votre locataire est notifié(e) et relancé(e) automatiquement par mail suivant un échéancier régulier.
-        Vous êtes notifié(e) des démarches réalisées par <strong><span style='color: #EE8572'>k</span>oobo</strong> auprès de votre locataire.
-        Tous les documents transmis par mail restent accessibles en ligne dans votre espace personnel et celui de votre locataire.
-        Avec la signature électronique à valeur probante par l'ensemble des parties, <strong><span style='color: #EE8572'>k</span>oobo</strong> vous garantit une rapidité d’exécution exceptionnelle !
-      </div>
-      <div class="two-element">
-        <div>
-          <h2><span class="linecoral">Tranquillité d'esprit</span></h2>
-          <p>
-            1 seul clic pour diffuser votre annonce sur les sites les plus populaires. Gagnez du temps dans la constitution des dossiers de location. De la candidature à la sélection du locataire, un service simplifié et automatisé.
-          </p>
-          <% if user_signed_in? %>
-            <%= link_to "C'est parti !", dashboard_path, class: 'button-subscribe-home' %>
-          <% else %>
-            <%= link_to "C'est parti !", new_user_registration_path, class: 'button-subscribe-home' %>
-          <% end %>
-        </div>
-        <div>
-          <%= image_tag 'tranquille' %>
-        </div>
+    <div class="details-valueprop-home-right--body">
+      <img src="http://placehold.it/650x520" alt="">
+      <div class="details-valueprop-home-right--body--details"></div>
+      <h6>Vous n’êtes pas une imprimante, sauvez des arbres</h6>
+      <ul>
+        <li>Les quittances sont envoyées automatiquement après votre validation</li>
+        <li>Après avoir renseigné l’ensemble des documents, le bail est généré avec demande de signature électronique</li>
+        <li>Accès à divers modèle de document </li>
+      </ul>
+    </div>
+  </div>
+  <div class="details-valueprop-home-left">
+    <div class="details-valueprop-home-left--header">
+      <p class="font-number font-coral">3</p>
+      <div class="details-valueprop-home-left--header--subheader">
+        <h6>Améliorer les échanges</h6>
+        <p>Transparence, réactivité, humains</p>
       </div>
     </div>
-  </section>
-  <div id="footer">
-    <div id="footer-links">
-      <p>Suivez-nous</p>
-      <span>
-        <a href="https://www.facebook.com/Kooboco-101419851442347/" target="_blank"><i class="fab fa-facebook"></i></a>
-        <a href="https://twitter.com/captain_koobo" target="_blank"><i class="fab fa-twitter"></i></a>
-        <a href="https://www.linkedin.com/company/42906448/" target="_blank"><i class="fab fa-linkedin"></i></a>
-      </span>
+    <div class="details-valueprop-home-left--body">
+      <img src="http://placehold.it/650x520" alt="">
+      <div class="details-valueprop-home-left--body--details"></div>
+      <h6>Une bonne location, c’est une bonne relation humaine.</h6>
+      <ul>
+        <li>Une messagerie pour être en contact direct avec votre locataire</li>
+        <li>Un locataire à un soucis, il peut vous contacter en quelques secondes</li>
+        <li>Vous garder une traçe de vos échanges</li>
+        <li> Cadrer l’état des lieux d’entrée et de sortie. Nous offrons un guide des bonne pratiques pour un état des lieux réussi</li>
+      </ul>
     </div>
-    <div id="footer-copyright">
-      <p><strong><span style='color: #EE8572'>k</span>oobo</strong> 2020</p>
-      <p>bokoo@koobo.co</p>
+  </div>
+  <div id="save-money-koobo">
+    <h6>Économisez <span class="font-coral">790€ par an</span> 🍀 </h6>
+    <p>En passant par Koobo, prix fixe mensuel de 5€ / mois pour un bien</p>
+    <br>
+    <p>930€ (will change)</p>
+    <p>Montant du loyer hors charges par mois</p>
+    <span>PROGRESSBAR</span>
+    <button>S'inscrire</button>
+    <p>Il y a le gain financier, où vous allez économiser par rapport aux frais d’agences, mais il y a également le gain de temps. <br>Avec koobo, vous allez également réduire se temps par deux (au minimum), pour vraiment vous recentrez l’essentiel </p>
+  </div>
+  <div id="tenant-present">
+    <h2>Vous avez déjà un locataire ? </h2>
+    <div id="tenant-present--details">
+      <img src="http://placehold.it/550x470" alt="">
+      <h6>Nous vous aidons étape par étape ainsi que votre locataire par téléphone !</h6>
     </div>
+  </div>
+  <div id="footer-home">
+    <h2><strong><span class="k-logo">K</span>oobo</strong></h1>
+      <p>hello world</p>
   </div>
 </div>
