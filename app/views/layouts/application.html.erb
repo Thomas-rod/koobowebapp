@@ -6,14 +6,18 @@
     <%= render 'layouts/header' %>
   <% end %>
   <body data-user-id="<%= current_user&.id %>">
+
     <script>
       window.fbAsyncInit = function() {
         FB.init({
-          appId      : '273644784038454',
+          appId      : ENV['FB_ID'],
+          cookie     : true,
           xfbml      : true,
           version    : 'v7.0'
         });
+
         FB.AppEvents.logPageView();
+
       };
 
       (function(d, s, id){

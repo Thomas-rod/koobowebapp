@@ -38,6 +38,8 @@ gem 'faker'
 gem "pundit"
 # Protection for user
 gem 'devise'
+
+gem 'omniauth', '~> 1.9', '>= 1.9.1'
 # Authentification for facebook with devise
 gem 'omniauth-facebook', '~> 6.0'
 
