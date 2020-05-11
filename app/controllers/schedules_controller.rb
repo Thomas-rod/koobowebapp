@@ -80,6 +80,6 @@ class SchedulesController < ApplicationController
   end
 
   def params_schedule
-    params.require(:schedule).permit(:start, :end)
+    params.require(:schedule).permit(:start, :end, :booked)
   end
 end

@@ -47,15 +47,11 @@ class Flat < ApplicationRecord
 
   def property_advertisement_generation
     self.property_advertisement = "koobo-#{self.id}"
-    self.save
+    self.save!
   end
 
-
-
-
-
   #*------------------------------------*#
-          #METHODS
+    #METHOD - DOCUMENT ATTACHED
   #*------------------------------------*#
 
   def number_file_attached
@@ -66,6 +62,9 @@ class Flat < ApplicationRecord
     return counter
   end
 
+#*------------------------------------*#
+  #METHOD - FLOWS
+#*------------------------------------*#
   def flat_earnings
     earnings = 0
 
@@ -91,7 +90,17 @@ class Flat < ApplicationRecord
     return spendings
   end
 
-  private
+#*------------------------------------*#
+  #METHOD RENTING
+#*------------------------------------*#
+  def is_there_renting?
+    rentings = self.rentings.select{ |r| r.status == 'past' || r.status == 'current'}
+    return rentings.sort_by{ |r| r[:status]}
+  end
+
+#*------------------------------------*#
+            private
+#*------------------------------------*#
 
   def technical_diagnostic_validation
     if technical_diagnostic.attached? && !technical_diagnostic.content_type.in?(%w(image/jpeg image/jpg image/png application/pdf application/msword application/vnd.openxmlformats-officedocument.wordprocessingml.document))

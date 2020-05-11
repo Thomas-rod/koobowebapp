@@ -46,8 +46,6 @@ class FlatsController < ApplicationController
     redirect_to edit_publication_path(@flat)
   end
 
-
-
   #-----------------------------------#
             #OTHER
   #------------------------------------#
@@ -109,6 +107,8 @@ class FlatsController < ApplicationController
       num
     end
   end
+
+
 
   # WILL USE THIS ONE TO UPDATE WHERE FLAT IS PUBLISHED
   def disable_publication

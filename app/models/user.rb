@@ -19,6 +19,9 @@ class User < ApplicationRecord
   validates :email, presence: true
   has_many :flows, through: :rentings
 
+
+  before_save { self.email = email.downcase }
+
   def self.find_for_facebook_oauth(auth)
       user_params = auth.slice("provider", "uid")
       user_params.merge! auth.info.slice("email", "first_name", "last_name")

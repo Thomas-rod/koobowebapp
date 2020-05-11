@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   #*------------------------------------*#
   get 'dashboard/', to: 'pages#dashboard'
   get 'search/', to: 'pages#search'
+  post 'visits/', to: 'visits#create', as: :create_visit
   get 'pricing/', to: 'pages#pricing'
   get 'politique-confidentialite', to: 'pages#confidentialite'
 
@@ -17,7 +18,6 @@ Rails.application.routes.draw do
   #*------------------------------------*#
   resources :flats do
     resources :schedules, only: [:create, :new]
-    resources :visits, only: [:new, :create]
   end
   resources :schedules, only: [:index, :update] do
     resources :visits, only: :update

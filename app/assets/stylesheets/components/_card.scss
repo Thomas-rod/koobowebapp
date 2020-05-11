@@ -453,7 +453,7 @@
       grid-template-areas:
         "one one one"
         "two two two"
-        "three blank four"
+        "three four five"
       ;
       .first-section {
         grid-area:one;
@@ -473,6 +473,11 @@
         .h8 {
           width:100%;
         }
+      }
+      .fifth-section {
+        grid-area: five;
+        text-align:center;
+        margin-bottom:10px;
       }
 
     }

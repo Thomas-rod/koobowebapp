@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_07_132232) do
+ActiveRecord::Schema.define(version: 2020_05_11_085643) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -123,6 +123,7 @@ ActiveRecord::Schema.define(version: 2020_05_07_132232) do
     t.bigint "flat_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "booked", default: false
     t.index ["flat_id"], name: "index_schedules_on_flat_id"
   end
 
@@ -155,6 +156,10 @@ ActiveRecord::Schema.define(version: 2020_05_07_132232) do
     t.string "status", default: "pending"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "people"
+    t.float "income"
+    t.string "contract"
+    t.string "phone"
     t.index ["schedule_id"], name: "index_visits_on_schedule_id"
     t.index ["user_id"], name: "index_visits_on_user_id"
   end
