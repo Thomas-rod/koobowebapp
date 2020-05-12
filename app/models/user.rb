@@ -51,6 +51,6 @@ class User < ApplicationRecord
   private
 
   def send_welcome_email
-    UserNotifierMailer.send_signup_email(@user).deliver
+    UserMailer.send_signup_email(@user).deliver_later
   end
 end
