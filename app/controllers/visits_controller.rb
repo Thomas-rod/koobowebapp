@@ -80,7 +80,7 @@ class VisitsController < ApplicationController
       @flats << visit.schedule.flat
     end
     renting_folders.each do |renting_folder|
-      unless renting_folder.visit.schedule.flat.include?(flat_visits)
+      unless renting_folder.visit.schedule.flat.include?(@flats)
         @flats << renting_folder.visit.schedule.flat
       end
     end
