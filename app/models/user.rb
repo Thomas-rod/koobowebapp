@@ -20,7 +20,7 @@ class User < ApplicationRecord
   has_many :flows, through: :rentings
 
   before_save { self.email = email.downcase }
-  after_create :send_welcome_email
+
 
   def self.find_for_facebook_oauth(auth)
       user_params = auth.slice("provider", "uid")

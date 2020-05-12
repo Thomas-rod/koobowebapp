@@ -6,7 +6,7 @@
           Mes informations
         </button>
       </h5>
-      <p class="text-orange">0/4 champs remplis</p>
+      <p class="font-orange">0/4 champs remplis</p>
     </div>
     <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
       <div class="card-body">
@@ -21,7 +21,7 @@
           Mon bien
         </button>
       </h2>
-      <p class="text-orange">0/4 champs remplis</p>
+      <p class="font-orange">0/4 champs remplis</p>
     </div>
     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
       <div class="card-body">
@@ -36,7 +36,7 @@
           Annexes à joindres
         </button>
       </h2>
-      <p class="<%= @flat.number_file_attached == 3 ? "text-green" : "text-orange" %>"><%= @flat.number_file_attached %>/3 documents joins</p>
+      <p class="<%= @flat.number_file_attached == 3 ? "font-green" : "font-orange" %>"><%= @flat.number_file_attached %>/3 documents joins</p>
     </div>
     <div id="collapseThree" class="collapse show" aria-labelledby="headingThree" data-parent="#accordion">
       <div class="card-body">
@@ -45,17 +45,17 @@
             <div class="nav nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
               <a class="nav-link <%= @flat.technical_diagnostic.attached? ? "good" : "" %> active" id="v-pills-technical-diagnostic-tab" data-toggle="pill" href="#v-pills-technical-diagnostic" role="tab" aria-controls="v-pills-technical-diagnostic" aria-selected="true">Diagnostic Technique
                 <% if @flat.technical_diagnostic.attached? %>
-                  <i class="fas fa-check-circle text-green"></i>
+                  <i class="fas fa-check-circle font-green"></i>
                 <% end %>
               </a>
               <a class="nav-link <%= @flat.information_leaflet.attached? ? "good" : "" %>" id="v-pills-information-leaflet-tab" data-toggle="pill" href="#v-pills-information-leaflet" role="tab" aria-controls="v-pills-information-leaflet" aria-selected="false">Notice d'information
                 <% if @flat.information_leaflet.attached? %>
-                  <i class="fas fa-check-circle text-green"></i>
+                  <i class="fas fa-check-circle font-green"></i>
                 <% end %>
               </a>
               <a class="nav-link <%= @flat.co_owner_document.attached? ? "good" : "" %>" id="v-pills-co-owner-document-tab" data-toggle="pill" href="#v-pills-co-owner-document" role="tab" aria-controls="v-pills-co-owner-document" aria-selected="false">Règlement co-propriété
                 <% if @flat.co_owner_document.attached? %>
-                  <i class="fas fa-check-circle text-green"></i>
+                  <i class="fas fa-check-circle font-green"></i>
                 <% end %>
               </a>
             </div>

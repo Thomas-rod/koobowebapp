@@ -6,6 +6,7 @@ class VisitsController < ApplicationController
   #------------------------------------#
   def index
     @visits = Visit.select {|v| v.user == current_user}
+    @renting_folders = RentingFolder.select { |r| r.users.first == current_user}
   end
 
 

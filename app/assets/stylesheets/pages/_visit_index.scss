@@ -1,0 +1,34 @@
+/*------------------------------------*\
+  #DISPOSITION VISIT INDEX
+\*------------------------------------*/
+.disposition-index-visit {
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  grid-gap:20px;
+  padding:15px 20px;
+  grid-template-areas:
+      "one two"
+  ;
+  .disposition-index-visit--left {
+    grid-area: one;
+  }
+  .disposition-index-visit--right {
+    grid-area: two;
+  }
+
+}
+
+    .disposition-index-visit--left {
+      height:650px;
+      max-height: 650px;
+      h2 {
+        margin-bottom: 10px;
+      }
+
+    }
+    .disposition-index-visit--right{
+      height:650px;
+      max-height: 650px;
+    }
+

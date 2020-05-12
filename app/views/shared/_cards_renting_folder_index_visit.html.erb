@@ -1,0 +1,46 @@
+<% counter_renting = 0 %>
+<% renting_folders.select{|r| r.status == status}.each do |renting_folder| %>
+  <% counter_renting += 1 %>
+  <%= link_to '#', class:'card-small-three-blocks', type:'button', data: { toggle: 'modal', target: "#exampleModalRentingFolder#{counter_renting}" } do %>
+    <%= image_tag renting_folder.visit.schedule.flat.photos.first, class:'card-small-three-blocks--first' %>
+    <div class="card-small-three-blocks--second">
+      <h6><strong><%= renting_folder.visit.schedule.flat.name %></strong></h6>
+      <p>Votre demande de <strong><span class="font-blue">dossier</span></strong>
+        <% if renting_folder.status == status%>
+          est <br><span class="bubble price">en attente</span>
+        <% elsif renting_folder.status == 'accepted' %>
+          a été <br><span class=" bubble visits-available">acceptée</span>
+        <% else %>
+          a été <br><span class="bubble visits-not-available">refusée</span>
+        <% end %></p>
+    </div>
+    <div class="card-small-three-blocks--third">
+      <% if renting_folder.visit.schedule.flat.user.photo&.attached?  %>
+        <%= image_tag renting_folder.visit.schedule.flat.user.photo, class: "avatar-middle bordered white" %>
+      <% else %>
+        <%= image_tag ("avatar.png"), class: 'avatar-middle bordered white' %>
+      <% end %>
+    </div>
+  <% end %>
+<% end %>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalRentingFolder<%= counter_renting %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalRentingFolderTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
