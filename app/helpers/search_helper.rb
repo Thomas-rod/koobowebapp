@@ -43,9 +43,10 @@ module SearchHelper
   end
 
   def rewrite_schedule_available(array_schedules)
-    # raise
-    array_schedules.map do |schedule|
-      "Visite #{l(schedule.start, format: "%d %B")} de #{l(schedule.start, format: "%kh%M")} à #{l(schedule.end, format: "%kh%M")}"
+    array_schedules_with_style = []
+    array_schedules.each do |schedule|
+      array_schedules_with_style << ["#{schedule.id}", "Visite #{l(schedule.start, format: "%d %B")} de #{l(schedule.start, format: "%kh%M")} à #{l(schedule.end, format: "%kh%M")}"]
     end
+    return array_schedules_with_style
   end
 end
