@@ -19,8 +19,8 @@ class User < ApplicationRecord
   validates :email, presence: true
   has_many :flows, through: :rentings
 
-
   before_save { self.email = email.downcase }
+  after_create :send_welcome_email
 
   def self.find_for_facebook_oauth(auth)
       user_params = auth.slice("provider", "uid")
@@ -29,7 +29,6 @@ class User < ApplicationRecord
       user_params[:token] = auth.credentials.token
       user_params[:token_expiry] = Time.at(auth.credentials.expires_at)
       user_params = user_params.to_h
-
       user = User.find_by(provider: auth.provider, uid: auth.uid)
       user ||= User.find_by(email: auth.info.email) # User did a regular sign up in the past.
       if user
@@ -39,12 +38,17 @@ class User < ApplicationRecord
         user.password = Devise.friendly_token[0,20]  # Fake password for validation
         user.save
       end
-
       return user
     end
 
   def attach_facebook_pp(profile_picture)
     file = URI.open(profile_picture)
     self.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
+  end
+
+  private
+
+  def send_welcome_email
+    UserMailer.with(user: self).welcome.deliver_now
   end
 end

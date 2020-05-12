@@ -1,5 +1,4 @@
 class VisitsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index];
   before_action :notif_visit, :notif_counter;
 
   #-----------------------------------#
