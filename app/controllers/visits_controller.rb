@@ -50,6 +50,7 @@ class VisitsController < ApplicationController
        deny_pending_visits
        redirect_to schedules_path(anchor: "scheduled#{@schedule.id}")
      end
+     VisitAnswerTenant.send_answer_visit_mail(@visit.user, @visit).deliver_now
     # switch visit status to accepted
     # Broadcast to locataire (recup l'id du locataire
   end
