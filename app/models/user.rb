@@ -20,6 +20,7 @@ class User < ApplicationRecord
   has_many :flows, through: :rentings
 
   before_save { self.email = email.downcase }
+  after_create :send_welcome_email
 
 
   def self.find_for_facebook_oauth(auth)
@@ -41,6 +42,7 @@ class User < ApplicationRecord
       return user
     end
 
+
   def attach_facebook_pp(profile_picture)
     file = URI.open(profile_picture)
     self.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
@@ -49,6 +51,6 @@ class User < ApplicationRecord
   private
 
   def send_welcome_email
-    UserMailer.with(user: self).welcome.deliver_now
+    UserNotifierMailer.send_signup_email(@user).deliver
   end
 end
