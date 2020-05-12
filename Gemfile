@@ -30,6 +30,9 @@ gem 'httparty', '~> 0.18.0'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
+# Jobqueuing
+gem 'sidekiq', '~> 6.0', '>= 6.0.7'
+gem 'sidekiq-failures', '~> 1.0'
 
 # Generate randome arguments for our seeds
 gem 'faker'
@@ -78,6 +81,7 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   # Syncrhonize my css with my localhost:3000
   gem 'browser_sync_rails'
+  gem 'letter_opener'
 end
 
 group :test do

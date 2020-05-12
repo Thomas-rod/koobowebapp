@@ -72,9 +72,9 @@
                       </div>
                       <div class="modal-body">
                         <%= simple_form_for @visit do |f| %>
-                          <%= f.input :schedule_id, required: true, label: 'Choisi le créneau de ta visite', placeholder: 'Tu as le choix...', collection: rewrite_schedule_available(schedule_available_for_visit(flat))%>
+                          <%= f.input :schedule_id, required: true, label: 'Choisi le créneau de ta visite', placeholder: 'Tu as le choix...', collection: rewrite_schedule_available(schedule_available_for_visit(flat)), label_method: :second, value_method: :first%>
                           <%= f.input :people, required: true, label: 'Seul, en couple, en famille ?' ,placeholder: '1...', collection: Visit::NUMBER_PEOPLE %>
-                          <%= f.input :income, required: true, label: 'Vos revenus mensuelle ? (cumulés)' %>
+                          <%= f.input :income, required: true, label: 'Vos revenus mensuels ? (cumulés si vous êtes plusieurs)' %>
                           <%= f.input :contract, required: true, label: 'Quelle est votre situation professionnelle ?' ,placeholder: 'CDI..', collection: Visit::TYPE_CONTRACTS %>
                           <%= f.input :phone,required: true, label: 'Votre numéro de téléphone'%>
                       </div>

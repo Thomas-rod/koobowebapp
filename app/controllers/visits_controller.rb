@@ -20,6 +20,7 @@ class VisitsController < ApplicationController
     @visit.user = current_user
     @visit.status = 'pending'
     if @visit.save
+      # VisitMailer.new_visit(@visit).deliver_now
       UserChannel.broadcast_to(
         @visit.schedule.flat.user,
         render_to_string(partial: "shared/notif", locals: { visit: @visit })
