@@ -337,6 +337,47 @@
         align-items:center;
       }
 
+.icon-card-pending {
+  display:flex;
+  justify-content:space-around;
+  align-items:center;
+  padding:10px;
+  width:100%;
+  .icon-pending__size {
+    font-size: 24px;
+    color:$blue;
+  }
+}
+.modal-body {
+  text-align:start;
+}
+    .icon-pending--bubble {
+      padding: 5px 10px;
+      border-radius: 5px;
+    }
+        .blue-bubble{
+          border: 1px solid rgba($blue-light, 0.1);
+          background-color: rgba($blue-light, 0.2);
+          color: rgba($blue, 0.9);
+        }
+        .coral-bubble {
+          border: 1px solid rgba($coral, 0.1);
+          background-color: rgba($coral, 0.2);
+          color: rgba($coral, 0.9);
+          i:before {
+            color:rgba($coral, 0.9);
+          }
+        }
+        .green-bubble {
+          border: 1px solid rgba($green, 0.1);
+          background-color: rgba($green, 0.2);
+          color: rgba($green, 0.9);
+        }
+        .gray-bubble {
+          border: 1px dashed rgba($blue-light, 0.1);
+          background-color: rgba($light-gray, 0.9);
+          color: $blue;
+        }
 
 
 

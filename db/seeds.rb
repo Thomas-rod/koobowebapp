@@ -123,6 +123,16 @@ third_schedule = Schedule.create!(start:Time.new(2020, 5, 21, 9, 30, 0),end:Time
 fourth_schedule = Schedule.create!(start:Time.new(2020, 5, 22, 9, 30, 0),end:Time.new(2020, 5, 22, 10, 0, 0),flat: thomas_third_flat)
 seventh_schedule = Schedule.create!(start:Time.new(2020, 5, 24, 9, 30, 0),end:Time.new(2020, 5, 24, 10, 00, 0),flat: thomas_third_flat, booked: true)
 
+#*------------------------------------*#
+  # FOURTH FLAT SCHEDULES
+#*------------------------------------*#
+first_schedule_fourth_flat = Schedule.create!(start:Time.new(2020, 5, 20, 9, 0, 0),end:Time.new(2020, 5, 20, 9, 30, 0),flat: stefan_first_flat)
+second_schedule_fourth_flat = Schedule.create!(start:Time.new(2020, 5, 20, 9, 30, 0),end:Time.new(2020, 5, 20, 10, 0, 0),flat: stefan_first_flat)
+third_schedule_fourth_flat = Schedule.create!(start:Time.new(2020, 5, 20, 10, 0, 0),end:Time.new(2020, 5, 20, 10, 30, 0),flat: stefan_first_flat)
+fourth_schedule_fourth_flat = Schedule.create!(start:Time.new(2020, 5, 20, 10, 30, 0),end:Time.new(2020, 5, 20, 11, 0, 0),flat: stefan_first_flat)
+fifth_schedule_fourth_flat = Schedule.create!(start:Time.new(2020, 5, 20, 11, 0, 0),end:Time.new(2020, 5, 20, 11, 30, 0),flat: stefan_first_flat)
+sixth_schedule_fourth_flat = Schedule.create!(start:Time.new(2020, 5, 20, 11, 30, 0),end:Time.new(2020, 5, 20, 12, 0, 0),flat: stefan_first_flat)
+seventh_schedule_fourth_flat = Schedule.create!(start:Time.new(2020, 5, 20, 12, 0, 0),end:Time.new(2020, 5, 20, 12, 30, 0),flat: stefan_first_flat)
 puts "#{Schedule.count} schedules created"
 
 

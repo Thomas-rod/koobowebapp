@@ -1,18 +1,17 @@
 <% counter_visit = 0 %>
 <% visits.select{|v| v.status == status}.each do |visit| %>
   <% counter_visit += 1 %>
-  <%= link_to '#', class:'card-small-three-blocks', type:'button', data: { toggle: 'modal', target: "#exampleModalVisit#{counter_visit}" } do %>
+  <%= link_to '#', class:'card-small-three-blocks', type:'button', data: { toggle: 'modal', target: "#exampleModalVisit#{status}#{counter_visit}" } do %>
     <%= image_tag visit.schedule.flat.photos.first, class:'card-small-three-blocks--first' %>
     <div class="card-small-three-blocks--second">
       <h6><strong><%= visit.schedule.flat.name %></strong></h6>
-      <p>Votre demande de <strong><span class="font-coral">visite</span></strong>
-        <% if visit.status == status %>
-          est <br><span class="bubble price">en attente</span>
-        <% elsif visit.status == 'accepted' %>
-          a été <br><span class=" bubble visits-available">acceptée</span>
-        <% else %>
-          a été <br><span class="bubble visits-not-available">refusée</span>
-        <% end %></p>
+      <% if visit.status == 'pending' %>
+        <p>Votre demande de <strong><span class="font-coral">visite</span></strong> est <br><span class="bubble price">en attente</span></p>
+      <% elsif visit.status == 'accepted' %>
+        <p>Votre demande de <strong><span class="font-coral"> visite</span></strong> a été <br><span class="bubble visits-available">acceptée</span></p>
+      <% else %>
+        <p>Votre demande de <strong><span class="font-coral"> visite</span></strong> a été <br><span class="bubble visits-not-available">refusée</span></p>
+      <% end %>
     </div>
     <div class="card-small-three-blocks--third">
       <% if visit.schedule.flat.user.photo&.attached?  %>
@@ -23,8 +22,7 @@
     </div>
   <% end %>
 <% end %>
-<!-- Modal -->
-<div class="modal fade" id="exampleModalVisit<%= counter_visit %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalVisitTitle" aria-hidden="true">
+<div class="modal fade" id="exampleModalVisit<%= status %><%= counter_visit %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalVisitTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">

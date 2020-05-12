@@ -129,6 +129,11 @@
     background-color: rgba($light-gray, 0.3);
     color: $blue;
   }
+  .nothing {
+    border: 1px dashed rgba($blue-light, 0.1);
+    background-color: rgba($light-gray, 0.9);
+    color: $blue;
+  }
   .surface {
    border: 1px solid rgba($coral, 0.1);
     background-color: rgba($coral-light, 0.3);

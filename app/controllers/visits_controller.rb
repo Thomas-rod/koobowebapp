@@ -7,6 +7,15 @@ class VisitsController < ApplicationController
   def index
     @visits = Visit.select {|v| v.user == current_user}
     @renting_folders = RentingFolder.select { |r| r.users.first == current_user}
+    find_flat(@visits, @renting_folders)
+    @markers = @flats.map do |flat| {
+            lat: flat.latitude,
+            lng: flat.longitude,
+            infoWindow: render_to_string(partial: "shared/info_window_map_visit", locals: { flat: flat, flat_name: flat.name, flat_price: flat.monthly_price, flat_address: flat.address }),
+            image_url: helpers.asset_url('pin_map')
+          }
+    end
+
   end
 
 
@@ -62,6 +71,19 @@ class VisitsController < ApplicationController
      visit.status = "denied"
      visit.save
     end
+  end
+
+  def find_flat(visits, renting_folders)
+    @flats = []
+    visits.each do |visit|
+      @flats << visit.schedule.flat
+    end
+    renting_folders.each do |renting_folder|
+      unless renting_folder.visit.schedule.flat.include?(flat_visits)
+        @flats << renting_folder.visit.schedule.flat
+      end
+    end
+    return @flats
   end
 
   def notif_counter

@@ -5,7 +5,7 @@ class Visit < ApplicationRecord
 
 
   # We can use Enum (rails)
-  has_many :renting_folders, dependent: :destroy
+  has_one :renting_folder, dependent: :destroy
   belongs_to :schedule
   belongs_to :user
   validates :status, presence: true

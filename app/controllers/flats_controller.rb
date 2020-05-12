@@ -184,11 +184,8 @@ class FlatsController < ApplicationController
               # ADD ALL VISITS TO FLAT_REQUEST
               @flat_requests << visit
               # CHECK IF THERE IS RENTING_FOLDER FOR VISITS
-              unless visit.renting_folders.nil?
-                visit.renting_folders.each do |renting_folder|
-                  # ADD ALL RENTING_FOLDER TO FLAT_REQUEST
-                  @flat_requests << renting_folder
-                end
+              unless visit.renting_folder.nil?
+                @flat_requests << visit.renting_folder
               end
             end
           end
@@ -197,17 +194,11 @@ class FlatsController < ApplicationController
     else
       unless @flat.schedules.nil? || @flat.schedules.empty?
         @flat.schedules.each do |schedule|
-          # CHECK IF THERE IS VISIT FOR THIS SCHEDULE
           unless schedule.visits.order(:status, :created_at).nil? || schedule.visits.order(:status, :created_at).empty?
             schedule.visits.order(:status, :created_at).each do |visit|
-              # ADD ALL VISITS TO FLAT_REQUEST
               @flat_requests << visit
-              # CHECK IF THERE IS RENTING_FOLDER FOR VISITS
-              unless visit.renting_folders.nil?
-                visit.renting_folders.each do |renting_folder|
-                  # ADD ALL RENTING_FOLDER TO FLAT_REQUEST
-                  @flat_requests << renting_folder
-                end
+              unless visit.renting_folder.nil?
+                @flat_requests << visit.renting_folder
               end
             end
           end
