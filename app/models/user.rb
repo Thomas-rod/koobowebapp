@@ -51,6 +51,6 @@ class User < ApplicationRecord
   private
 
   def send_welcome_email
-    UserMailer.send_signup_email(self).deliver_later!(wait_until: 1.minutes.from_now)
+    UserMailer.with(user: self).welcome.deliver_later!(wait: 1.minute)
   end
 end

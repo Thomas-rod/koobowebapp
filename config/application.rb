@@ -14,7 +14,7 @@ module Koobowebapp
       generate.test_framework :test_unit, fixture: false
 
     # Initialize Sidekiq as my jobqueuing
-    # config.active_job.queue_adapter = :sidekiq
+    config.active_job.queue_adapter = :sidekiq
     end
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
