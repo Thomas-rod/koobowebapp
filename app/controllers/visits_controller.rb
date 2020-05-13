@@ -50,7 +50,7 @@ class VisitsController < ApplicationController
        deny_pending_visits
        redirect_to schedules_path(anchor: "scheduled#{@schedule.id}")
      end
-     VisitAnswerTenant.send_answer_visit_mail(@visit.user, @visit).deliver_now
+     VisitMailer.with(tenant: @visit.user, visit: @visit).send_answer_visit_mail.deliver_now
     # switch visit status to accepted
     # Broadcast to locataire (recup l'id du locataire
   end
@@ -80,7 +80,7 @@ class VisitsController < ApplicationController
       @flats << visit.schedule.flat
     end
     renting_folders.each do |renting_folder|
-      unless renting_folder.visit.schedule.flat.include?(@flats)
+      unless !@flats.select{|f| f == renting_folder.visit.schedule.flat}.empty?
         @flats << renting_folder.visit.schedule.flat
       end
     end

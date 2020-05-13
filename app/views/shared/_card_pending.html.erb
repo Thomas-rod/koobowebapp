@@ -60,8 +60,8 @@
         <% end %>
       </div>
       <div class="modal-footer">
-        <%= link_to "accepter", schedule_visit_path(request.schedule, request, visit: { status: "accepted"}), method: :patch, remote: :true, class: "btn btn-accept-full"%>
-        <%= link_to "refuser", schedule_visit_path(request.schedule, request, visit: { status: "denied"}), method: :patch, remote: :true, class: "btn btn-refuse-full"%>
+        <%= link_to "accepter", schedule_visit_path(request.schedule, request, visit: { status: "accepted"}), method: :patch, class: "btn btn-accept-full"%>
+        <%= link_to "refuser", schedule_visit_path(request.schedule, request, visit: { status: "denied"}), method: :patch, class: "btn btn-refuse-full"%>
       </div>
     </div>
   </div>

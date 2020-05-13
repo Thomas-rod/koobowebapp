@@ -13,10 +13,31 @@ class Visit < ApplicationRecord
   validates :status, inclusion: { in: STATUS_VISIT }
   validates :people, inclusion: { in: NUMBER_PEOPLE }
   validates :contract, inclusion: { in: TYPE_CONTRACTS}
+  after_create :send_email_renter_after_visit_creation
 
+
+#*------------------------------------*#
+                #CALLBACK
+#*------------------------------------*#
 
   def change_booked_status_schedule
     schedule_to_update = self.schedule
     schedule.update!(booked: true)
   end
+
+  private
+
+#*------------------------------------*#
+                  #MAIL
+#*------------------------------------*#
+
+  def send_email_renter_after_visit_creation
+    VisitMailer.with(renter: self.schedule.flat.user, tenant: self.user).visit_notification_renter.deliver_now
+  end
+
+  def send_email_tenant_after_visit
+    VisitMailer.with(tenant: self.user).send_answer_visit_mail.deliver_now
+  end
+
+
 end

@@ -23,6 +23,10 @@ class User < ApplicationRecord
   after_create :send_welcome_email
 
 
+#*------------------------------------*#
+          # FACEBOOK AUTHENTIFICATION
+#*------------------------------------*#
+
   def self.find_for_facebook_oauth(auth)
       user_params = auth.slice("provider", "uid")
       user_params.merge! auth.info.slice("email", "first_name", "last_name")
@@ -50,7 +54,11 @@ class User < ApplicationRecord
 
   private
 
+  #*------------------------------------*#
+                    #MAIL
+  #*------------------------------------*#
+
   def send_welcome_email
-    UserMailer.with(user: self).welcome.deliver_later!(wait: 1.minute)
+    UserMailer.with(user: self).welcome.deliver_now
   end
 end

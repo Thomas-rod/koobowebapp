@@ -42,7 +42,7 @@ joker.save!
 john = User.new(first_name: "Jonathan", last_name: "Courdavault", phone_number: "0778381974", email: "jo@gmail.com", password: "jo@gmail.com")
 attach_photo_user("https://avatars2.githubusercontent.com/u/58211236?v=4", john)
 john.save!
-thomas = User.new(first_name: "Thomas", last_name: "Rodier", phone_number: "0668489169", email: "thom@gmail.com", password: "thom@gmail.com")
+thomas = User.new(first_name: "Thomas", last_name: "Rodier", phone_number: "0668489169", email: "thomas@koobo.co", password: "thomas@koobo.co")
 attach_photo_user("https://avatars1.githubusercontent.com/u/57214511?v=4", thomas)
 thomas.save!
 stefan = User.new(first_name: "Stefan", last_name: "Diop", phone_number: "0663906049", email: "stefan@gmail.com", password: "stefan@gmail.com")
@@ -144,33 +144,33 @@ puts "Creating visits"
 #*------------------------------------*#
   #VISITS FOR FIRST FLAT FIRST RENTING
 #*------------------------------------*#
-first_visit_first_schedule_first_flat = Visit.create!(schedule: first_schedule_first_flat, user: joker, status: 'denied', contract: 'CDI', income: 2230, people: 1)
-second_visit_first_schedule_first_flat = Visit.create!(schedule: first_schedule_first_flat, user: stefan, status: 'accepted', contract: 'CDI', income: 5030, people: 1)
-first_visit_second_schedule_first_flat = Visit.create!(schedule: second_schedule_first_flat, user: john, status: 'accepted', contract: 'CDI', income: 3030, people: 1)
+first_visit_first_schedule_first_flat = Visit.create!(schedule: first_schedule_first_flat, user: joker, status: 'denied', contract: 'CDI', income: 2230, people: 1, phone: Faker::PhoneNumber.phone_number)
+second_visit_first_schedule_first_flat = Visit.create!(schedule: first_schedule_first_flat, user: stefan, status: 'accepted', contract: 'CDI', income: 5030, people: 1, phone: Faker::PhoneNumber.phone_number)
+first_visit_second_schedule_first_flat = Visit.create!(schedule: second_schedule_first_flat, user: john, status: 'accepted', contract: 'CDI', income: 3030, people: 1, phone: Faker::PhoneNumber.phone_number)
 #*------------------------------------*#
   # VISITS FOR FIRST FLAT SECOND RENTINGS
 #*------------------------------------*#
-first_visit_third_schedule_first_flat = Visit.create!(schedule: third_schedule_first_flat, user: john, status: 'denied', contract: 'CDI', income: 2230, people: 1)
-second_visit_third_schedule_first_flat = Visit.create!(schedule: fourth_schedule_first_flat, user: joker, status: 'accepted', contract: 'CDI', income: 2230, people: 1)
+first_visit_third_schedule_first_flat = Visit.create!(schedule: third_schedule_first_flat, user: john, status: 'denied', contract: 'CDI', income: 2230, people: 1, phone: Faker::PhoneNumber.phone_number)
+second_visit_third_schedule_first_flat = Visit.create!(schedule: fourth_schedule_first_flat, user: joker, status: 'accepted', contract: 'CDI', income: 2230, people: 1, phone: Faker::PhoneNumber.phone_number)
 
 #*------------------------------------*#
   #VISITS FOR SECOND FLAT
 #*------------------------------------*#
-first_visit_first_schedule_second_flat = Visit.create!(schedule: first_schedule_second_flat, user: john, status: 'accepted', contract: 'CDI', income: 4000, people: 2)
-second_visit_first_schedule_second_flat = Visit.create!(schedule: first_schedule_second_flat, user: stefan, status: 'denied', contract: 'CDI', income: 1800, people: 1)
+first_visit_first_schedule_second_flat = Visit.create!(schedule: first_schedule_second_flat, user: john, status: 'accepted', contract: 'CDI', income: 4000, people: 2, phone: Faker::PhoneNumber.phone_number)
+second_visit_first_schedule_second_flat = Visit.create!(schedule: first_schedule_second_flat, user: stefan, status: 'denied', contract: 'CDI', income: 1800, people: 1, phone: Faker::PhoneNumber.phone_number)
 
 #*------------------------------------*#
   #VISITS FOR THIRD FLAT
 #*------------------------------------*#
-fourth_visit = Visit.create!(schedule: second_schedule, user: joker, contract: 'Intermittent', income: 2230, people: 1)
-fifth_visit = Visit.create!(schedule: second_schedule, user: stefan, contract: 'CDI', income: 2000, people: 1)
-sixth_visit = Visit.create!(schedule: second_schedule, user: john, contract: 'CDI', income: 1920, people: 1)
-seventh_visit = Visit.create!(schedule: third_schedule, user: joker, contract: 'Interime', income: 1230, people: 1)
-height_visit = Visit.create!(schedule: third_schedule, user: stefan, contract: "Chef d'entreprise", income: 2230, people: 1)
-nine_visit = Visit.create!(schedule: third_schedule, user: john, contract: 'CDI', income: 2230, people: 1)
-ten_visit = Visit.create!(schedule: fourth_schedule, user: joker, contract: 'CDI', income: 2230, people: 1)
-eleven_visit = Visit.create!(schedule: fourth_schedule, user: stefan, contract: 'CDI', income: 2230, people: 1)
-twelve_visit = Visit.create!(schedule: fourth_schedule, user: john, contract: 'CDD', income: 2230, people: 1)
+fourth_visit = Visit.create!(schedule: second_schedule, user: joker, contract: 'Intermittent', income: 2230, people: 1, phone: Faker::PhoneNumber.phone_number)
+fifth_visit = Visit.create!(schedule: second_schedule, user: stefan, contract: 'CDI', income: 2000, people: 1, phone: Faker::PhoneNumber.phone_number)
+sixth_visit = Visit.create!(schedule: second_schedule, user: john, contract: 'CDI', income: 1920, people: 1, phone: Faker::PhoneNumber.phone_number)
+seventh_visit = Visit.create!(schedule: third_schedule, user: joker, contract: 'Interime', income: 1230, people: 1, phone: Faker::PhoneNumber.phone_number)
+height_visit = Visit.create!(schedule: third_schedule, user: stefan, contract: "Chef d'entreprise", income: 2230, people: 1, phone: Faker::PhoneNumber.phone_number)
+nine_visit = Visit.create!(schedule: third_schedule, user: john, contract: 'CDI', income: 2230, people: 1, phone: Faker::PhoneNumber.phone_number)
+ten_visit = Visit.create!(schedule: fourth_schedule, user: joker, contract: 'CDI', income: 2230, people: 1, phone: Faker::PhoneNumber.phone_number)
+eleven_visit = Visit.create!(schedule: fourth_schedule, user: stefan, contract: 'CDI', income: 2230, people: 1, phone: Faker::PhoneNumber.phone_number)
+twelve_visit = Visit.create!(schedule: fourth_schedule, user: john, contract: 'CDD', income: 2230, people: 1, phone: Faker::PhoneNumber.phone_number)
 puts "#{Visit.count} visits created"
 
 
