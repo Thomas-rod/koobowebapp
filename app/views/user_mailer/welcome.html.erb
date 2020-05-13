@@ -1,4 +1,4 @@
-<h3>Hello <%= @user.first_name.capitalize %> !</h6>
+<h3>Hello <%= @user.first_name.nil? ? @user.first_name.capitalize : "" %> !</h6>
 <p>Bienvenue sur Koobo ! 🏡</p>
 
 <p>Nous tenions à te souhaiter la bienvenue sur notre application. On espère qu'elle te sera utile et t'aidera dans ton quotidien 🏡</p>
