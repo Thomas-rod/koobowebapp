@@ -1,0 +1,3 @@
+<h3>Hello <%= @tenant.first_name.nil? ? "" : @tenant.first_name.capitalize %> !</h3>
+<p>Alors ? Comment a tu trouver l'appartement <%= @renter.first_name.nil? ? "?" : "de #{@renter.first_name.capitalize} ?" %></p>
+<p>Si tu as eu un coup de coeur et que tu souhaites déposer un dossier, on se retrouve sur <a href="https://wwww.koobo.co/visits">Koobo</a> !</p>

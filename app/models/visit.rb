@@ -14,6 +14,7 @@ class Visit < ApplicationRecord
   validates :people, inclusion: { in: NUMBER_PEOPLE }
   validates :contract, inclusion: { in: TYPE_CONTRACTS}
   after_create :send_email_renter_after_visit_creation
+  after_create :send_after_visit_mail
 
 
 #*------------------------------------*#
@@ -39,5 +40,8 @@ class Visit < ApplicationRecord
     VisitMailer.with(tenant: self.user).send_answer_visit_mail.deliver_now
   end
 
+  def send_after_visit_mail
+    VisitMailer.with(tenant: self.user, visit: self, renter: self.schedule.flat.user).after_visit_mail.deliver_later!(wait_until: self.schedule.end)
+  end
 
 end
