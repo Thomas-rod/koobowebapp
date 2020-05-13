@@ -20,7 +20,7 @@ class User < ApplicationRecord
   has_many :flows, through: :rentings
 
   before_save { self.email = email.downcase }
-  after_create :send_welcome_email
+  # after_create :send_welcome_email
 
 
   def self.find_for_facebook_oauth(auth)
@@ -51,6 +51,6 @@ class User < ApplicationRecord
   private
 
   def send_welcome_email
-    UserMailer.send_signup_email(@user).deliver_later!(wait_until: 2.minutes.from_now)
+    UserMailer.send_signup_email(self).deliver_later!(wait_until: 2.minutes.from_now)
   end
 end
