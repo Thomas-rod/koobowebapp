@@ -45,10 +45,10 @@ class VisitsController < ApplicationController
      @visit.update(params_visit)
      @schedule = Schedule.find(params[:schedule_id])
      if @visit.status == "denied"
-      redirect_to schedules_path(anchor: "scheduled#{@schedule.id}")
+      redirect_to request.referrer, notice: "Vous venez de refuser la demande de #{@visit.user.first_name} !"
      else
        deny_pending_visits
-       redirect_to schedules_path(anchor: "scheduled#{@schedule.id}")
+       redirect_to request.referrer, notice: "Vous venez d'accepter la demande de #{@visit.user.first_name} ! Les autres demandes ont été annulées"
      end
      VisitMailer.with(tenant: @visit.user, visit: @visit).send_answer_visit_mail.deliver_now
     # switch visit status to accepted
@@ -71,6 +71,7 @@ class VisitsController < ApplicationController
     pending_visits.each do |visit|
      visit.status = "denied"
      visit.save
+     VisitMailer.with(tenant: visit.user, visit: visit).send_answer_visit_mail.deliver_now
     end
   end
 

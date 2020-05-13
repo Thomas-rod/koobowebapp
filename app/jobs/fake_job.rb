@@ -7,4 +7,3 @@ class FakeJob < ApplicationJob
     puts "OK I'm done now"
   end
 end
-end
