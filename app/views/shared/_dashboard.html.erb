@@ -47,13 +47,13 @@
       </a>
     </div>
     <div class="dashboard-line" id="profil">
-      <a href="">
+      <%= link_to '#' do %>
         <i class="far fa-user icon-dashboard fa-2x"></i>
         <p>Profil</p>
         <span class="notif-counter <%= "active" if @counter_profil != 0 %>" id="calendar-counter">
           <%= @counter_profil %>
         </span>
-      </a>
+      <% end %>
     </div>
   </div>
 </div>

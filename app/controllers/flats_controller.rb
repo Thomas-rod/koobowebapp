@@ -69,16 +69,7 @@ class FlatsController < ApplicationController
     if params[:flat].nil?
       redirect_to flat_path(@flat), alert: "Attention, tu dois sélectionner un fichier Youston"
     else
-      which_document = which_document_upload
-      type_document = params[:flat][which_document.to_sym].content_type
-      file_name = params[:flat][which_document.to_sym].original_filename
-      path_to_file = params[:flat][which_document.to_sym].tempfile
-      @flat.send(which_document).attach(
-        io: File.open(path_to_file),
-        filename: file_name,
-        content_type: type_document,
-        identify: false
-        )
+      @flat.send(which_document_upload).attach(params[:flat][which_document_upload.to_sym])
       if @flat.update(flat_params)
         redirect_to flat_path(@flat), notice: "Super, ton fichier a bien été téléchargé Youston"
       else
@@ -90,7 +81,6 @@ class FlatsController < ApplicationController
   def purge_document
     find_flat
     unless params[:file].nil?
-      # raise
       file = params[:file]
       @flat.send(file).purge
       redirect_to flat_path(@flat), notice: "C'est bon, le document a été supprimé !"
@@ -133,7 +123,7 @@ class FlatsController < ApplicationController
   end
 
   def flat_params
-    params.require(:flat).permit(:name, :address, :description, :monthly_price, :rented, :number_of_rooms, :number_of_bedrooms, :surface, :floor, :elevator, :balcony, :cellar, :parking, :furnished, :pap, :leboncoin, :bienici, :seloger, :facebook, :category, :property_advertisement, heating_system: [], photos: [], technical_diagnostic: [], information_leaflet: [], co_owner_document: [],)
+    params.require(:flat).permit(:name, :address, :description, :monthly_price, :rented, :number_of_rooms, :number_of_bedrooms, :surface, :floor, :elevator, :balcony, :cellar, :parking, :furnished, :pap, :leboncoin, :bienici, :seloger, :facebook, :category, :property_advertisement, heating_system: [], photos: [], technical_diagnostic: [], information_leaflet: [], co_owner_document: [])
   end
 
   def which_document_upload

@@ -23,7 +23,7 @@
       </div>
     <% end %>
     <div class="dashboard-line" id="my-file">
-      <%= link_to "#" do %>
+      <%= link_to record_path(current_user.record) do %>
         <i class="fas fa-folder-open icon-dashboard fa-2x"></i>
         <p>Mon dossier</p>
         <span class="notif-counter" id="calendar-counter">
@@ -50,7 +50,7 @@
       <% end %>
     </div>
     <div class="dashboard-line" id="profil">
-      <%= link_to "#" do %>
+      <%= link_to '#' do %>
         <i class="far fa-user icon-dashboard fa-2x"></i>
         <p>Mon profil</p>
         <span class="notif-counter " id="calendar-counter">

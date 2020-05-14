@@ -18,7 +18,7 @@ class VisitMailer < ApplicationMailer
     @tenant = params[:tenant]
     @renter = params[:renter]
     @visit = params[:visit]
-    mail( :to => tenant.email,
+    mail( :to => @tenant.email,
       :subject => "Alors ? Qu'as tu pensé de ta visite ?")
   end
 end

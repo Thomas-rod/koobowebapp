@@ -2,5 +2,7 @@
 :timeout: 60
 :verbose: true
 :queues:  # Queue priority: https://github.com/mperham/sidekiq/wiki/Advanced-Options
-  - default
+  - [default, 2]
   - mailers
+  - active_storage_analysis
+  - active_storage_purge

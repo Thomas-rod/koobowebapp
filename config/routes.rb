@@ -28,6 +28,8 @@ require "sidekiq/web"
     resources :visits, only: :update
   end
 
+  resources :records, only: [:update, :show]
+
   resources :visits, only: [:index]
   resources :rentings, only: [:create, :edit, :update, :new, :index, :show]
   resources :flows, only: [:index, :create]
@@ -47,4 +49,9 @@ require "sidekiq/web"
           #ROUTES USED FOR USERS MODIFICATIONS
   #*------------------------------------*#
   patch "users/:id", to: "application#update_user_renter", as: :update_user_renter
+
+  #*------------------------------------*#
+          #ROUTES USED RECORD MODIFICATIONS
+  #*------------------------------------*#
+  delete "record/:id/purge_document_record", to: "records#purge_document_record", as: :purge_document_record
 end

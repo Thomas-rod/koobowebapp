@@ -14,6 +14,7 @@ class User < ApplicationRecord
   has_many :schedules, through: :flats
   has_many :folders, dependent: :destroy
   has_many :renting_folders, through: :folders
+  has_one :record
   has_one_attached :photo
   validates :email, uniqueness: true
   validates :email, presence: true
@@ -21,7 +22,7 @@ class User < ApplicationRecord
 
   before_save { self.email = email.downcase }
   after_create :send_welcome_email
-
+  after_create :record_creation
 
 #*------------------------------------*#
           # FACEBOOK AUTHENTIFICATION
@@ -53,6 +54,11 @@ class User < ApplicationRecord
   end
 
   private
+
+  def record_creation
+    @record = Record.new(user: self)
+    @record.save!
+  end
 
   #*------------------------------------*#
                     #MAIL

@@ -8,6 +8,7 @@
       <% end %>
     </div>
     <div class="nav-container full">
+      <h3>Mes recherches</h3>
       <%= render partial: 'shared/navbar_dashboard', locals: { notif_counter: @counter} %>
     </div>
     <div class="content-container full">
@@ -76,7 +77,8 @@
                           <%= f.input :people, required: true, label: 'Seul, en couple, en famille ?' ,placeholder: '1...', collection: Visit::NUMBER_PEOPLE %>
                           <%= f.input :income, required: true, label: 'Vos revenus mensuels ? (cumulés si vous êtes plusieurs)' %>
                           <%= f.input :contract, required: true, label: 'Quelle est votre situation professionnelle ?' ,placeholder: 'CDI..', collection: Visit::TYPE_CONTRACTS %>
-                          <%= f.input :phone,required: true, label: 'Votre numéro de téléphone'%>
+                          <%= f.input :phone, required: true, label: 'Votre numéro de téléphone'%>
+                          <%= f.input :message, label: 'Dîtes en plus sur vous à votre futur propriétaire !', placeholder: "Bonjour, Je suis John et je souhaite visiter votre appartement. Ma compagne et moi sommes en CDI et nous cherchons à nous installer dans la région. Dans l'attente de votre retour, John."%>
                       </div>
                       <div class="modal-footer">
                         <button type="button" class="btn delete-link" data-dismiss="modal">Retour</button>

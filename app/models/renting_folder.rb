@@ -18,6 +18,6 @@ class RentingFolder < ApplicationRecord
   #*------------------------------------*#
 
   def send_mail_creation_renting_folder
-    RentingFolderMailer.with(renter: self.visit.schedule.flat.user, tenant: self.users.first, flat: self.visit.schedule.flat).reting_folder_notification_renter.deliver_now
+    RentingFolderMailer.with(renter: self.visit.schedule.flat.user, tenant: self.users.first, flat: self.visit.schedule.flat).renting_folder_notification_renter.deliver_now
   end
 end

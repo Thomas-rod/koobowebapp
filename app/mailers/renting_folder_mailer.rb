@@ -1,6 +1,6 @@
 class RentingFolderMailer < ApplicationMailer
 
-  def reting_folder_notification_renter
+  def renting_folder_notification_renter
     @renter = params[:renter]
     @tenant = params[:tenant]
     @flat = params[:flat]
