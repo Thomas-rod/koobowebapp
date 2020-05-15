@@ -3,8 +3,8 @@
   <p class="address"><%= flat.address %></p>
   <div class="info-window-bubble">
     <p class="bubble price"><%= flat.monthly_price %>€</p>
-    <% unless available_schedule(flat) == 0 %>
-      <p class="bubble visits-available"><%= available_schedule(flat)%> visites</p>
+    <% unless schedule_available_for_visit(flat).count == 0 %>
+      <p class="bubble visits-available"><%= schedule_available_for_visit(flat).count%>/<%= total_schedule_available_for_visit(flat).count%> visites</p>
     <% else %>
       <p class="bubble visits-not-available">Indisponible</p>
     <% end %>

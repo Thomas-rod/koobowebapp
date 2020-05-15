@@ -1,5 +1,7 @@
 Rails.application.configure do
-  config.action_mailer.default_url_options = { host: "http://TODO_PUT_YOUR_DOMAIN_HERE" }
+
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.default_url_options = { host: "https://www.koobo.co" }
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
@@ -38,6 +40,7 @@ Rails.application.configure do
 
   # Store uploaded files on the local file system (see config/storage.yml for options).
   config.active_storage.service = :amazon
+  config.active_job.queue_adapter = :sidekiq
 
   # Mount Action Cable outside main process or domain.
   # config.action_cable.mount_path = nil
@@ -58,7 +61,7 @@ Rails.application.configure do
   # config.cache_store = :mem_cache_store
 
   # Use a real queuing backend for Active Job (and separate queues per environment).
-  # config.active_job.queue_adapter     = :resque
+  # config.active_job.queue_adapter = :sidekiq
   # config.active_job.queue_name_prefix = "koobowebapp_production"
 
   config.action_mailer.perform_caching = false

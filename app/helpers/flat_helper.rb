@@ -1,6 +1,8 @@
 module FlatHelper
 
-# RENTER HELPER
+#*------------------------------------*#
+  #RENTER HELPER
+#*------------------------------------*#
 
   # RETURN ALL VISITS ACCEPTED
   def helper_flat_accepted_flat_requests(array)
@@ -40,7 +42,9 @@ module FlatHelper
     end
   end
 
-# TENANT HELPER
+#*------------------------------------*#
+  #TENANT HELPER
+#*------------------------------------*#
 
   def user_current_renting?(user)
     unless user.renting_folders.nil?

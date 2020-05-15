@@ -1,5 +1,4 @@
 class VisitsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index];
   before_action :notif_visit, :notif_counter;
 
   #-----------------------------------#
@@ -7,6 +6,16 @@ class VisitsController < ApplicationController
   #------------------------------------#
   def index
     @visits = Visit.select {|v| v.user == current_user}
+    @renting_folders = RentingFolder.select { |r| r.users.first == current_user}
+    find_flat(@visits, @renting_folders)
+    @markers = @flats.map do |flat| {
+            lat: flat.latitude,
+            lng: flat.longitude,
+            infoWindow: render_to_string(partial: "shared/info_window_map_visit", locals: { flat: flat, flat_name: flat.name, flat_price: flat.monthly_price, flat_address: flat.address }),
+            image_url: helpers.asset_url('pin_map')
+          }
+    end
+
   end
 
 
@@ -20,13 +29,14 @@ class VisitsController < ApplicationController
     @visit.user = current_user
     @visit.status = 'pending'
     if @visit.save
+      # VisitMailer.new_visit(@visit).deliver_now
       UserChannel.broadcast_to(
         @visit.schedule.flat.user,
         render_to_string(partial: "shared/notif", locals: { visit: @visit })
       )
-      redirect_to new_flat_visit_path
+      redirect_to request.referrer, notice: 'Votre demande de visite a bien été envoyé !'
     else
-      redirect_to new_flat_visit_path
+      redirect_to request.referrer, notice: 'Aïe ! Il y a eu un soucis.'
     end
   end
 
@@ -35,11 +45,12 @@ class VisitsController < ApplicationController
      @visit.update(params_visit)
      @schedule = Schedule.find(params[:schedule_id])
      if @visit.status == "denied"
-      redirect_to schedules_path(anchor: "scheduled#{@schedule.id}")
+      redirect_to request.referrer, notice: "Vous venez de refuser la demande de #{@visit.user.first_name} !"
      else
        deny_pending_visits
-       redirect_to schedules_path(anchor: "scheduled#{@schedule.id}")
+       redirect_to request.referrer, notice: "Vous venez d'accepter la demande de #{@visit.user.first_name} ! Les autres demandes ont été annulées"
      end
+     VisitMailer.with(tenant: @visit.user, visit: @visit).send_answer_visit_mail.deliver_now
     # switch visit status to accepted
     # Broadcast to locataire (recup l'id du locataire
   end
@@ -50,7 +61,7 @@ class VisitsController < ApplicationController
   #------------------------------------#
 
   def params_visit
-    params.require(:visit).permit(:schedule_id, :status)
+    params.require(:visit).permit(:schedule_id, :status, :people, :income, :contract, :phone)
   end
 
   def deny_pending_visits
@@ -60,7 +71,21 @@ class VisitsController < ApplicationController
     pending_visits.each do |visit|
      visit.status = "denied"
      visit.save
+     VisitMailer.with(tenant: visit.user, visit: visit).send_answer_visit_mail.deliver_now
     end
+  end
+
+  def find_flat(visits, renting_folders)
+    @flats = []
+    visits.each do |visit|
+      @flats << visit.schedule.flat
+    end
+    renting_folders.each do |renting_folder|
+      unless !@flats.select{|f| f == renting_folder.visit.schedule.flat}.empty?
+        @flats << renting_folder.visit.schedule.flat
+      end
+    end
+    return @flats
   end
 
   def notif_counter

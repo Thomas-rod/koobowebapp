@@ -1,17 +1,18 @@
+
 <div class="card-request product-pending" id = "blabla">
   <% if request.is_a?(Visit) %>
-      <% if request.user&.photo&.attached? %>
-        <%= image_tag request.user.photo %>
-      <% else %>
-        <%= image_tag ("avatar.png") %>
-      <% end %>
+    <% if request.user&.photo&.attached? %>
+      <%= image_tag request.user.photo %>
     <% else %>
-      <% if request.visit.user&.photo&.attached? %>
-        <%= image_tag request.visit.user.photo %>
-      <% else %>
-        <%= image_tag ("avatar.png") %>
-      <% end %>
+      <%= image_tag ("avatar.png") %>
     <% end %>
+  <% else %>
+    <% if request.visit.user&.photo&.attached? %>
+      <%= image_tag request.visit.user.photo %>
+    <% else %>
+      <%= image_tag ("avatar.png") %>
+    <% end %>
+  <% end %>
   <% if request.is_a?(Visit) %>
     <div class="label-coral label-visit">
       Visite
@@ -19,8 +20,8 @@
     <div class="card-request-infos-pending ">
       <p><strong><%= request.user.first_name %></strong> souhaite visiter le bien le <br><strong><%= request.schedule.start.strftime("%d/%m") %> de <%= request.schedule.start.strftime("%H:%M") %> à <%= request.schedule.end.strftime("%H:%M") %></strong></p>
       <div class="card-request-contact">
-        <p class= "btn-card-request"><i class="fas fa-phone-alt"></i><%= request.user.phone_number.scan(/../).join(" ")%></p>
-        <button class="btn-card btn-accept-border">Dossier</button>
+        <p class= "btn-card-request"><i class="fas fa-phone-alt"></i><%= request.phone.scan(/../).join(" ")%></p>
+        <button type="button" class="btn-card btn-accept-border" data-toggle="modal" data-target="#exampleModalCenter<%= counter %>">Informations</button>
       </div>
     </div>
   <% else %>
@@ -31,11 +32,37 @@
       <p><strong><%= request.visit.user.first_name %></strong> a finalisé son dossier. Prêt(e) à étudier son dossier ?</p>
       <div class="card-request-contact">
         <p class= "btn-card-request"><i class="fas fa-phone-alt"></i><%= request.visit.user.phone_number.scan(/../).join(" ")%></p>
-        <button class="btn-card">Voir le dossier</button>
+        <button type="button" class="btn-card btn-accept-border">Dossier</button>
       </div>
     </div>
   <% end %>
-  <!--Will be in a modal -->
-  <%#= link_to "accepter", schedule_visit_path(request.schedule, request, visit: { status: "accepted"}), method: :patch, remote: :true, class: "btn koobo-button btn-accept"%>
-  <%#= link_to "refuser", schedule_visit_path(request.schedule, request, visit: { status: "denied"}), method: :patch, remote: :true, class: "btn koobo-button btn-refuse"%>
+</div>
+<div class="modal fade" id="exampleModalCenter<%= counter %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Voici la demande <%= request.is_a?(Visit) ? "de visite de #{request.user.first_name}" : "de dossier de #{request.visit.user.first_name}" %></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <% if request.is_a?(Visit) %>
+          <h6><%= request.user.first_name %> a flashé sur ton bien !</h6>
+          <p>Il souhaite le visiter le <strong><%= request.schedule.start.strftime("%d/%m/%Y") %> à <%= request.schedule.start.strftime("%H:%M")%></strong></p>
+          <p>Voici quelques informations :</p>
+          <div class="icon-card-pending">
+            <p class="icon-pending--bubble coral-bubble"><i class="fas fa-user-alt icon-pending__size"></i> x <%= request.people %></p>
+            <p class="icon-pending--bubble green-bubble"><i class="fas fa-coins icon-pending"></i><%= request.income.round %>€</p>
+            <p class="icon-pending--bubble gray-bubble"><i class="fas fa-phone-alt icon-pending"></i><%= request.phone %></p>
+            <p class="icon-pending--bubble coral-bubble"><i class="fas fa-file-signature icon-pending"></i><%= request.contract %></p>
+          </div>
+        <% end %>
+      </div>
+      <div class="modal-footer">
+        <%= link_to "accepter", schedule_visit_path(request.schedule, request, visit: { status: "accepted"}), method: :patch, class: "btn btn-accept-full"%>
+        <%= link_to "refuser", schedule_visit_path(request.schedule, request, visit: { status: "denied"}), method: :patch, class: "btn btn-refuse-full"%>
+      </div>
+    </div>
+  </div>
 </div>

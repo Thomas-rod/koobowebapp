@@ -1,0 +1,73 @@
+/*------------------------------------*\
+  #CARD-USED-IN-HOME-PAGE
+\*------------------------------------*/
+
+.record-show-grid {
+  height:90%;
+  padding: 15px 20px;
+  display:grid;
+  grid-gap: 20px;
+  grid-template-columns: 3fr 1fr;
+  grid-template-rows: 1fr;
+  grid-template-areas:
+    "one two"
+    "one two"
+  ;
+  .record-show-grid--documents {
+    grid-area: one;
+  }
+  .record-show-grid--stats {
+    grid-area: two;
+  }
+}
+
+/*------------------------------------*\
+            #SPECIFIC CSS
+\*------------------------------------*/
+.record-show-grid {
+
+}
+    .record-show-grid--importants {
+      text-align:start !important;
+    }
+
+
+
+
+
+
+
+
+
+
+.record-show-grid--documents__disposition {
+  display:flex;
+  justify-content: space-between;
+  align-items:center;
+  height:93%;
+  .nav {
+    width:30%;
+  }
+  .tab-content {
+    width:70%;
+    height:100%;
+    border: 1px solid rgba($blue-light, 0.1);
+    border-radius:5px;
+  }
+}
+
+
+/*------------------------------------*\
+          #UPLOAD DOCS
+\*------------------------------------*/
+
+
+.document-button {
+  padding: 3em 4em;
+  border-radius: 5px;
+  border: 1px solid rgba($blue-light, 0.1);
+  background-color: rgba($blue-light, 0.2);
+  color: rgba($blue, 0.9);
+
+}
+

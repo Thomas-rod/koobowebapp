@@ -19,7 +19,7 @@
     <div class="file-delete-form">
       <% if flat.send(file).attached? %>
         <p id="file-name"><i><%= flat.send(file).filename %></i>
-          <%= link_to purge_document_path(:file => file), method: 'delete' do %>
+          <%= link_to purge_document_path(:file => file), method: 'delete', data: { confirm: "Tu veux supprimer le document ?" } do %>
             <i class="fas fa-times" style="margin-left: 15px !important;"></i>
           <% end %>
         </p>

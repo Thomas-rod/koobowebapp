@@ -32,7 +32,7 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_up_path_for(resource_or_scope)
-    stored_location_for(resource_or_scope) || dashboard_path
+    stored_location_for(resource_or_scope) || onboarding_path
   end
 
   def after_sign_out_path_for(resource)

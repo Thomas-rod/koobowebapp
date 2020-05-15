@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_07_132232) do
+ActiveRecord::Schema.define(version: 2020_05_14_085033) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -97,6 +97,13 @@ ActiveRecord::Schema.define(version: 2020_05_07_132232) do
     t.index ["renting_id"], name: "index_messages_on_renting_id"
   end
 
+  create_table "records", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_records_on_user_id"
+  end
+
   create_table "renting_folders", force: :cascade do |t|
     t.bigint "visit_id", null: false
     t.string "status", default: "pending"
@@ -123,6 +130,7 @@ ActiveRecord::Schema.define(version: 2020_05_07_132232) do
     t.bigint "flat_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "booked", default: false
     t.index ["flat_id"], name: "index_schedules_on_flat_id"
   end
 
@@ -155,6 +163,11 @@ ActiveRecord::Schema.define(version: 2020_05_07_132232) do
     t.string "status", default: "pending"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "people"
+    t.float "income"
+    t.string "contract"
+    t.string "phone"
+    t.text "message", default: ""
     t.index ["schedule_id"], name: "index_visits_on_schedule_id"
     t.index ["user_id"], name: "index_visits_on_user_id"
   end
@@ -165,6 +178,7 @@ ActiveRecord::Schema.define(version: 2020_05_07_132232) do
   add_foreign_key "folders", "renting_folders"
   add_foreign_key "folders", "users"
   add_foreign_key "messages", "rentings"
+  add_foreign_key "records", "users"
   add_foreign_key "renting_folders", "visits"
   add_foreign_key "rentings", "flats"
   add_foreign_key "rentings", "renting_folders"

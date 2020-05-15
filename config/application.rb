@@ -12,6 +12,9 @@ module Koobowebapp
       generate.assets false
       generate.helper false
       generate.test_framework :test_unit, fixture: false
+
+    # Initialize Sidekiq as my jobqueuing
+    config.active_job.queue_adapter = :sidekiq
     end
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
@@ -21,6 +24,7 @@ module Koobowebapp
     config.time_zone = "Paris"
 
     config.assets.initialize_on_precompile = false
+
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers

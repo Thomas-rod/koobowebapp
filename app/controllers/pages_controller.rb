@@ -10,6 +10,7 @@ class PagesController < ApplicationController
   end
 
   def search
+    @visit = Visit.new
     unless current_user.renter?
       @search = params["search"]
       @flats = Flat.geocoded
@@ -31,7 +32,7 @@ class PagesController < ApplicationController
   def pricing
   end
 
-  def politique_confidentialite
+  def confidentialite
   end
   #-----------------------------------#
             private

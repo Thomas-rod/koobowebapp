@@ -8,6 +8,7 @@
       <% end %>
     </div>
     <div class="nav-container full">
+      <h3>Mes recherches</h3>
       <%= render partial: 'shared/navbar_dashboard', locals: { notif_counter: @counter} %>
     </div>
     <div class="content-container full">
@@ -24,11 +25,12 @@
             <%= image_tag ('homeundraw'), id: 'pending-image-big' %>
           </div>
         <% else %>
-
           <div class="active-search-query">
             <div class="active-search-query--cards">
+              <% counter = 1  %>
               <% @flats.each do |flat| %>
-                <%= link_to '#' do %>
+              <% counter += 1 %>
+                <%= link_to '#', data: { toggle: 'modal', target: ".bd-example-modal-lg-#{counter}"}  do %>
                   <div class="card-specific-search">
                     <%= image_tag flat.photos.first, class:"card-specific-search--photo"%>
                     <div class="card-specific-search--header">
@@ -41,19 +43,51 @@
                       <div class="second-section">
                         <%= render partial: '/shared/flat_supplies', locals: {flat: flat} %>
                       </div>
-                      <div class="third-section bubble <%= available_schedule(flat) == 0 ? 'visits-not-available' : 'visits-available' %>">
-                        <% unless available_schedule(flat) == 0 %>
-                          <p><%= available_schedule(flat)%> visites</p>
+                      <div class="third-section bubble <%= schedule_available_for_visit(flat).count == 0 ? 'visits-not-available' : 'visits-available' %>">
+                        <% unless schedule_available_for_visit(flat).count == 0 %>
+                          <p><%= schedule_available_for_visit(flat).count%>/<%= total_schedule_available_for_visit(flat).count%> visites</p>
                         <% else %>
                           <p>Indisponible</p>
                         <% end %>
                       </div>
-                      <div class="fourth-section bubble price">
+                      <div class="fourth-section bubble surface">
+                        <h8><%= flat.surface.round%>m2</h8>
+                      </div>
+                      <div class="fifth-section bubble price">
                         <h8><%= flat.monthly_price.round  %>€</h8>
                       </div>
                     </div>
                   </div>
                 <% end %>
+                <div class="modal fade bd-example-modal-lg-<%=counter%>" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <span>
+                          <h5 class="modal-title" id="exampleModalLongTitle">Réserve un créneau pour <strong><%= flat.name %></strong></h5>
+                          <p>Ces informations vont être transmises au propriétaire, nous ne les utilisons pas !</p>
+                        </span>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <%= simple_form_for @visit do |f| %>
+                          <%= f.input :schedule_id, required: true, label: 'Choisi le créneau de ta visite', placeholder: 'Tu as le choix...', collection: rewrite_schedule_available(schedule_available_for_visit(flat)), label_method: :second, value_method: :first%>
+                          <%= f.input :people, required: true, label: 'Seul, en couple, en famille ?' ,placeholder: '1...', collection: Visit::NUMBER_PEOPLE %>
+                          <%= f.input :income, required: true, label: 'Vos revenus mensuels ? (cumulés si vous êtes plusieurs)' %>
+                          <%= f.input :contract, required: true, label: 'Quelle est votre situation professionnelle ?' ,placeholder: 'CDI..', collection: Visit::TYPE_CONTRACTS %>
+                          <%= f.input :phone, required: true, label: 'Votre numéro de téléphone'%>
+                          <%= f.input :message, label: 'Dîtes en plus sur vous à votre futur propriétaire !', placeholder: "Bonjour, Je suis John et je souhaite visiter votre appartement. Ma compagne et moi sommes en CDI et nous cherchons à nous installer dans la région. Dans l'attente de votre retour, John."%>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn delete-link" data-dismiss="modal">Retour</button>
+                          <%= f.button :submit, 'Réservez ma visite', class:'koobo-button' %>
+                        <% end %>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               <% end %>
             </div>
             <div class="active-search-query--map">

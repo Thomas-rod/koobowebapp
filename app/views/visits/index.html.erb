@@ -9,9 +9,44 @@
         <% end %>
       </div>
       <div class="nav-container full">
+        <h3>Mes demandes</h3>
         <%= render partial: 'shared/navbar_dashboard', locals: { notif_counter: @counter} %>
       </div>
       <div class="content-container full">
+        <div class="disposition-index-visit">
+          <div class="disposition-index-visit--left">
+            <div class="card-positioning">
+              <h4>Tes demandes se trouvent içi</h4>
+              <nav>
+                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                  <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">En Attente</a>
+                  <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Acceptée(s)</a>
+                  <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Refusée(s)</a>
+                </div>
+              </nav>
+              <div class="tab-content" id="nav-tabContent">
+                <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                  <%= render partial: 'shared/cards_visit_index_visit', locals: {status: 'pending', visits: @visits} %>
+                  <%= render partial: 'shared/cards_renting_folder_index_visit', locals: {status: 'pending', renting_folders: @renting_folders} %>
+                </div>
+                <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                  <%= render partial: 'shared/cards_visit_index_visit', locals: {status: 'accepted', visits: @visits} %>
+                  <%= render partial: 'shared/cards_renting_folder_index_visit', locals: {status: 'accepted', renting_folders: @renting_folders} %>
+                </div>
+                <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+                  <%= render partial: 'shared/cards_visit_index_visit', locals: {status: 'denied', visits: @visits} %>
+                  <%= render partial: 'shared/cards_renting_folder_index_visit', locals: {status: 'denied', renting_folders: @renting_folders} %>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="disposition-index-visit--right">
+            <div id="map"
+              data-markers="<%= @markers.to_json %>"
+              data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

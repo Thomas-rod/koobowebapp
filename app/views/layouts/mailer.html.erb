@@ -3,11 +3,67 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <style>
-      /* Email styles need to be inline */
+      @import url("https://fonts.googleapis.com/css?family=Poppins:200,300,400,700|Quicksand:200,300,400,700|Righteous&display=swap");
+      body {
+        background-color: rgb(230 230 230);
+        font-family: "Poppins", "sans-serif", "serif";
+        color: #201E50;
+      }
+      .mailer-container {
+        width:640px;
+        background-color:white;
+        margin: 10% auto;
+        padding: 5% 10%;
+      }
+      #logo {
+        margin: 20px auto;
+      }
+      .blue-font {
+        color: #201E50;
+      }
+      .coral-font{
+        color: #EE8572;
+      }
+      .icon {
+        width:40px;
+        height:40px;
+      }
+      .fa-linkedin {
+        color: #0077B5;
+      }
+      .fa-facebook {
+        color: #4267B2;
+      }
+      .fa-twitter-square {
+        color: #1CA1F2;
+      }
+      ul {
+        list-style:none;
+        display:inline;
+      }
+      a {
+        text-decoration:none;
+      }
     </style>
   </head>
 
   <body>
-    <%= yield %>
+    <div class="mailer-container">
+      <h1 id="logo"><span class="blue-font">K</span><span class="coral-font">oobo</span></h1>
+      <%= yield %>
+      <p>Bonne journée,</p>
+      <strong><p>Thomas</p></strong>
+      <i><p>PS: Tu peux nous suivre sur les réseaux si tu as envie d'être tenu au courant des nouveautés qui vont arriver prochainement</p></i>
+      <a href="https://www.facebook.com/captainkoobo/">
+        Facebook
+      </a>
+      <a href="https://www.linkedin.com/company/42906448/">
+        Linkedin
+      </a>
+      <a href="https://twitter.com/captain_koobo">
+        Twitter
+      </a>
+
+    </div>
   </body>
 </html>

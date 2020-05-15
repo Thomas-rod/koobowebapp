@@ -17,11 +17,15 @@ gem 'webpacker', '~> 4.0'
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.7'
+
 # Use Redis adapter to run Action Cable in production
 gem 'redis', '~> 4.0'
+
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
+# SEND EMAIL
+# gem 'sendgrid-ruby'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
@@ -30,6 +34,9 @@ gem 'httparty', '~> 0.18.0'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
+# Jobqueuing
+gem 'sidekiq', '~> 6.0', '>= 6.0.7'
+gem 'sidekiq-failures', '~> 1.0'
 
 # Generate randome arguments for our seeds
 gem 'faker'
@@ -38,8 +45,10 @@ gem 'faker'
 gem "pundit"
 # Protection for user
 gem 'devise'
+
+gem 'omniauth', '~> 1.9', '>= 1.9.1'
 # Authentification for facebook with devise
-gem 'omniauth-facebook'
+gem 'omniauth-facebook', '~> 6.0'
 
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass'
@@ -76,6 +85,7 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   # Syncrhonize my css with my localhost:3000
   gem 'browser_sync_rails'
+  gem 'letter_opener'
 end
 
 group :test do

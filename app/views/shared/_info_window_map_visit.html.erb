@@ -1,0 +1,22 @@
+<div class="info-window">
+  <strong><h7><%= flat.name %></h7></strong>
+  <p class="address"><%= flat.address %></p>
+  <div class="info-window-bubble">
+    <% if flat_visit_current_cuser(flat, current_user).first.status == 'pending' %>
+      <p class="bubble price">Visite en attente</p>
+    <% elsif flat_visit_current_cuser(flat, current_user).first.status == 'accepted' %>
+      <p class="bubble visits-available">Visite acceptée</p>
+    <% else %>
+      <p class="bubble visits-not-available">Visite refusée</p>
+    <% end %>
+    <% if flat_renting_folder_current_user(flat, current_user)&.first&.status == 'pending' %>
+      <p class="bubble price">Visite en attente</p>
+    <% elsif flat_renting_folder_current_user(flat, current_user)&.first&.status == 'accepted' %>
+      <p class="bubble visits-available">Dossier acceptée</p>
+    <% elsif flat_renting_folder_current_user(flat, current_user)&.first&.empty? || flat_renting_folder_current_user(flat, current_user).first.nil? %>
+      <p class="bubble nothing">Aucun dossier</p>
+    <% else %>
+      <p class="bubble visits-not-available">Dossierrefusée</p>
+    <% end %>
+  </div>
+</div>

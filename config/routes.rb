@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
 
+require "sidekiq/web"
+  authenticate :user, lambda { |u| u.email == 'thomas@koobo.co' } do
+    mount Sidekiq::Web => '/sidekiq'
+  end
+
   devise_for :users,
     controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   root to: 'pages#home'
@@ -9,19 +14,21 @@ Rails.application.routes.draw do
   #*------------------------------------*#
   get 'dashboard/', to: 'pages#dashboard'
   get 'search/', to: 'pages#search'
+  post 'visits/', to: 'visits#create', as: :create_visit
   get 'pricing/', to: 'pages#pricing'
-  get 'politique-confidentialite', to: 'pages#politique-confidentialite'
+  get 'politique-confidentialite', to: 'pages#confidentialite'
 
   #*------------------------------------*#
           #ROUTES USED FOR MODEL
   #*------------------------------------*#
   resources :flats do
     resources :schedules, only: [:create, :new]
-    resources :visits, only: [:new, :create]
   end
   resources :schedules, only: [:index, :update] do
     resources :visits, only: :update
   end
+
+  resources :records, only: [:update, :show]
 
   resources :visits, only: [:index]
   resources :rentings, only: [:create, :edit, :update, :new, :index, :show]
@@ -42,4 +49,9 @@ Rails.application.routes.draw do
           #ROUTES USED FOR USERS MODIFICATIONS
   #*------------------------------------*#
   patch "users/:id", to: "application#update_user_renter", as: :update_user_renter
+
+  #*------------------------------------*#
+          #ROUTES USED RECORD MODIFICATIONS
+  #*------------------------------------*#
+  delete "record/:id/purge_document_record", to: "records#purge_document_record", as: :purge_document_record
 end
