@@ -2,6 +2,7 @@ class RecordsController < ApplicationController
   before_action :notif_visit, :notif_counter, :set_record
 
   def show
+
   end
 
   def update
