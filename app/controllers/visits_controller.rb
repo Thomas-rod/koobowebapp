@@ -61,7 +61,7 @@ class VisitsController < ApplicationController
   #------------------------------------#
 
   def params_visit
-    params.require(:visit).permit(:schedule_id, :status, :people, :income, :contract, :phone)
+    params.require(:visit).permit(:schedule_id, :status, :people, :income, :contract, :phone, :message)
   end
 
   def deny_pending_visits

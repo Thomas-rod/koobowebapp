@@ -1,129 +1,296 @@
 /*------------------------------------*\
-  #HOME DISPOSITION
+  #NAVBAR CSS
 \*------------------------------------*/
-#banner-container {
-  height:80vh;
-  min-height:660px;
-  padding:0px 7rem;
-  }
-    #navbar-home {
-      padding:1.5rem 0px;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-    }
-
-        #navbar-home--left {
-          width:50%;
-          display:grid;
-          grid-template-columns: 30% 10% 10% 15% 15%;
-          grid-gap: 0px 2rem;
-          text-align:center;
-          align-content:center;
-
-        }
-        #navbar-home--right {
-          width:50%;
-          display:flex;
-          align-items:center;
-          justify-content:flex-end;
-        }
-
-
-    #banner-home {
-      margin-top: 6rem;
-      width:100%;
-
-      display:flex;
-      justify-content:space-between;
-
-    }
-
-        #banner-home--left {
-          width:40%;
-
-        }
-        #banner-home--right {
-
-        }
 
 #container-home {
+  width:100%;
+}
+#navbar-home, #banner-home, #valueprop-home, .details-valueprop-home-left, .details-valueprop-home-right, #save-money-koobo, #tenant-present, #footer-home {
   padding: 0px 70px;
+  width:100%;
 }
 
-/*------------------------------------*\
-  #HOME CSS BANNER CONTAINER
-\*------------------------------------*/
 
-#banner-container {
-  background: rgb(246,182,171);
-  background: linear-gradient(280deg, rgba(246,182,171,1) 50%, rgba(32,30,80,1) 50%);
-  }
+#navbar-home {
+  color:$white;
+  position:absolute;
+  top:0px;
+  left:0px;
+  width:100%;
+  margin-top: 2em;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
 
-    #navbar-home {
-      color:$white;
-    }
-
-        #navbar-home--left {
-          h2 {
-            font-size: 4.4rem;
-          }
-          a {
-            color:$white;
-            margin: auto 0px;
-            padding-bottom: 0.5rem;
-            font-size: 2rem;
-            font-weight: lighter;
-            &:hover {
-              font-weight:bolder;
-              border-bottom: 1px solid white;
-            }
-          }
-          #koobo-logo:hover {
+    #navbar-home--left {
+      width:50%;
+      display:grid;
+      grid-template-columns: 30% 10% 10% 15% 15%;
+      grid-gap: 0px 20px;
+      text-align:center;
+      align-content:center;
+      h2 {
+        font-size: 40px;
+      }
+      a {
+        color:$white;
+        margin: auto 0px;
+        padding-bottom: 5px;
+        font-size: 20px;
+        font-weight: lighter;
+        text-align: start;
+        &:hover {
+          font-weight:bolder;
+          border-bottom: 1px solid white;
+        }
+        #koobo-logo:hover {
             border-bottom: none;
           }
           .active {
             font-weight:bolder;
             border-bottom: 1px solid white;
           }
+      }
+    }
+
+    #navbar-home--right {
+      width:50%;
+      display:flex;
+      align-items:center;
+      justify-content:flex-end;
+      .button-no-style {
+        font-size: 16px;
+        margin-right: 20px;
+        color:white;
+        &:hover {
+          color:$blue;
+        }
+      }
+      a:last-child {
+        font-size: 20px;
+      }
+    }
+
+/*------------------------------------*\
+  #BANNER CSS
+\*------------------------------------*/
+
+
+#banner-home {
+  padding-top: 60px;
+  min-height:85vh;
+  width:100%;
+  display:grid;
+  grid-gap: 0 5%;
+  grid-template-columns: 55% 45%;
+  grid-template-rows: 100%;
+  background: rgb(246,182,171);
+  background: linear-gradient(280deg, rgba(246,182,171,1) 50%, rgba(32,30,80,1) 50%);
+
+}
+
+    #banner-home--left {
+      margin: auto 0;
+      h1 {
+        font-size: 50px;
+        color:white;
+        width:100%;
+        margin-bottom: 100px;
+      }
+      a {
+        margin: 0 auto;
+        font-size: 20px;
+      }
+      span {
+        font-size: 45px;
+        font-weight:bold;
+      }
+
+    }
+    #banner-home--right {
+      margin: auto 0;
+      list-direction:column;
+      ul {
+        margin-top: 1.5em;
+        text-align:center;
+      }
+      li {
+        padding-right: 1.5em;
+        display: inline-block;
+        i {
+          color: $blue;
+          &:hover {
+            color: rgba($blue, 0.8);
+          }
         }
 
-        #navbar-home--right {
-          a:first-child {
-            font-size: 1.6rem;
-            margin-right: 20px;
-            color:white;
-            &:hover {
-              color:$blue;
-            }
-          }
-          a:last-child {
-            font-size: 2rem;
-          }
+      }
+    }
+        .mockup-images {
+          width:90%;
+          border-radius: 15px;
+          box-shadow: $box-shadow;
         }
 
+/*------------------------------------*\
+  #VALUEPROPR-HOME CSS
+\*------------------------------------*/
 
-  #banner-home {
-
+#valueprop-home {
+  padding-top: 2em;
+  height:65vh;
+  h2 {
+    font-size: 2.25em;
+    text-align:center;
+    font-weight:bold;
+    line-height:2.30em;
+  }
+}
+  .linecoral {
+    display: inline;
+    white-space: pre-wrap;
+    box-shadow: $coral-light 0px -0.8rem 0px inset;;
+    padding:0;
   }
 
-        #banner-home--left {
-          // text-align:center;
-          h1 {
-            font-size: 5rem;
-            color:white;
-            width:100%;
-            margin-bottom: 100px;
+    #value-prop-home--cards {
+      margin-top:2em;
+      display:grid;
+      grid-gap: 0 5em;
+      grid-template-columns: repeat(3,1fr);
+    }
+
+        .home-card {
+          padding:0 0.2em;
+          display:grid;
+          grid-template-columns: 100%;
+          grid-template-rows: 2fr 8fr;
+          box-shadow: $box-shadow;
+          cursor:pointer;
+          border-radius: 5px;
+          transition: all 0.2s;
+          &:hover {
+            transform: translate(0px, -2px)
           }
-          a {
-            margin-left:40%;
-            font-size: 20px;
+          h6 {
+            padding-top: 0.5em;
+            text-align:center;
           }
-          span {
-            font-size: 4.5rem;
+          img.image-home-value-prop {
+            margin: 0 auto;
+            padding: 1em;
+            max-width:280px;
+            max-height:210px;
+
+          }
+        }
+
+
+/*------------------------------------*\
+  #DETAILS-VALUEPROPR-HOME-LEFT CSS
+\*------------------------------------*/
+
+.details-valueprop-home-left {
+  height: 80vh;
+}
+
+    .details-valueprop-home-left--header {
+      display:flex;
+      justify-content:flex-start;
+      align-items:center;
+      margin-bottom:2.6em;
+      border-bottom: 1px solid rgba($blue-light,0.1);
+      p:first-child {
+        font-size: 60px;
+        font-weight:bold;
+        margin-right:0.3em;
+      }
+    }
+
+        .details-valueprop-home-left--header--subheader {
+          h5 {
             font-weight:bold;
           }
         }
+
+              img.image-home-value-prop-details {
+                max-width: 550px;
+
+              }
+
+        .details-valueprop-home-left--body {
+          display:grid;
+          grid-template-columns: 1fr 1fr;
+          grid-gap: 0 5%;
+        }
+
+              .details-valueprop-home-left--body--details {
+                h5 {
+                  font-weight:bold;
+                }
+                li {
+                  margin: 3em 0;
+                }
+                i {
+                  color: $coral;
+                  padding-right: 1em;
+                }
+              }
+
+/*------------------------------------*\
+  #DETAILS-VALUEPROPR-HOME-RIGHT CSS
+\*------------------------------------*/
+.details-valueprop-home-right {
+  height:80vh;
+}
+
+    .details-valueprop-home-right--header {
+      display:flex;
+      justify-content:flex-end;
+      align-items:center;
+      margin-bottom:2.6em;
+      border-bottom: 1px solid rgba($blue-light,0.1);
+      p:first-child {
+        font-size: 60px;
+        font-weight:bold;
+        margin-right:0.3em;
+      }
+    }
+
+        .details-valueprop-home-right--header--subheader {
+          h5 {
+            font-weight:bold;
+          }
+        }
+
+              img.image-home-value-prop-details {
+                max-width: 550px;
+
+              }
+
+        .details-valueprop-home-right--body {
+          display:grid;
+          grid-template-columns: 1fr 1fr;
+          grid-gap: 0 5%;
+        }
+
+              .details-valueprop-home-right--body--details {
+                h5 {
+                  font-weight:bold;
+                }
+                li {
+                  margin: 3em 0;
+                }
+                i {
+                  color: $coral;
+                  padding-right: 1em;
+                }
+              }
+
+/*------------------------------------*\
+  #HOME CSS SUBSCRIBE MAILCHIMP
+\*------------------------------------*/
 
         .simple-form-subscribe {
           color: rgba($gray, 0.5);
@@ -144,11 +311,3 @@
           margin:50px 30px;
         }
 
-
-
-
-
-
-.font-coral {
-  color: $coral;
-}

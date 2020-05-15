@@ -1,4 +1,4 @@
-<div id="banner-container">
+<div id="container-home">
   <div id="navbar-home">
     <div id="navbar-home--left">
       <%= link_to root_path, id:"koobo-logo" do %>
@@ -21,8 +21,8 @@
       <% if user_signed_in? %>
         <%= link_to "Dashboard", dashboard_path, class:"button-sign-home blue" %>
       <% else %>
-        <%= link_to 'Se connecter', new_user_registration_path, class:"" %>
-        <%= link_to "S'inscrire", new_user_session_path, class:"button-sign-home blue" %>
+        <%= link_to 'Se connecter', new_user_session_path, class:"button-no-style" %>
+        <%= link_to "S'inscrire", new_user_registration_path, class:"button-sign-home blue" %>
       <% end %>
     </div>
   </div>
@@ -32,30 +32,30 @@
       <%= link_to "S'inscrire", new_user_session_path, class:"button-sign-home coral" %>
     </div>
     <div id="banner-home--right">
-      <img src="http://placehold.it/550x343" alt="">
+      <%= image_tag ('mockup-1'), class:'mockup-images' %>
       <ul>
-        <li class="bullet-grey">bullet</li>
-        <li class="bullet-grey">bullet</li>
-        <li class="bullet-grey">bullet</li>
+        <li class="bullet-grey"><a href="#"><i class="fas fa-circle"></i></a></li>
+        <li class="bullet-grey"><a href="#"><i class="fas fa-circle"></i></a></li>
+        <li class="bullet-grey"><a href="#"><i class="fas fa-circle"></i></a></li>
       </ul>
     </div>
   </div>
-</div>
-<div id="container-home">
   <div id="valueprop-home">
-    <h2 id="valueprop-home--header">Koobo, votre assistant de gestion locative</h2>
+    <h2 id="valueprop-home--header">
+      <span class="linecoral">Koobo, votre assistant de gestion locative</span>
+    </h2>
     <div id="value-prop-home--cards">
-      <div class="home-card">
-        <h6><span class="font-coral">Automatiser</span> l’élaboration des documents administratifs</h6>
-        <img src="http://placehold.it/400x275" alt="">
+      <div class="home-card active" id="booked_time">
+        <h6><span class="font-coral"><strong>Diviser par 5</strong></span> le temps consacré à la recherche d’un locataire</h6>
+        <%= image_tag ('booked_time'), class:"image-home-value-prop" %>
       </div>
-      <div class="home-card active">
-        <h6><span class="font-coral">Diviser par 5</span> le temps consacré à la recherche d’un locataire</h6>
-        <img src="http://placehold.it/400x275" alt="">
+      <div class="home-card" id="automation_admin">
+        <h6><span class="font-coral"><strong>Automatiser</strong></span> l’élaboration des documents administratifs</h6>
+        <%= image_tag ('automation_admin'), class:"image-home-value-prop" %>
       </div>
-      <div class="home-card">
-        <h6><span class="font-coral">Améliorer</span> la relation avec son locataire</h6>
-        <img src="http://placehold.it/400x275" alt="">
+      <div class="home-card" id="healthy_relation">
+        <h6><span class="font-coral"><strong>Améliorer</strong></span> la relation avec son locataire</h6>
+        <%= image_tag ('healthy_relation'), class:"image-home-value-prop" %>
       </div>
     </div>
   </div>
@@ -63,58 +63,61 @@
     <div class="details-valueprop-home-left--header">
       <p class="font-number font-coral">1</p>
       <div class="details-valueprop-home-left--header--subheader">
-        <h6>Publications et visites</h6>
+        <h5>Publications et visites</h5>
         <p>Publications automatisées, visites, dossiers</p>
       </div>
     </div>
     <div class="details-valueprop-home-left--body">
-      <img src="http://placehold.it/650x520" alt="">
-      <div class="details-valueprop-home-left--body--details"></div>
-      <h6>Seloger, PAP, Leboncoin, Facebook.... Avec Koobo, tout est au même endroit</h6>
-      <ul>
-        <li>Vous choissiez les plateformes où vous souhaitez publier vos annonces</li>
-        <li>Vous êtes libre de choisir les créneaux que vous souhaitez pour faire visiter votre bien</li>
-        <li>Les candidats postulent directement sur Koobo et vous recevez leurs demandes</li>
-      </ul>
+      <%= image_tag ('publications_visits'), class:"image-home-value-prop-details" %>
+      <div class="details-valueprop-home-left--body--details">
+        <h5>Seloger, PAP, Leboncoin, Facebook.... <br>Avec Koobo, tout est au même endroit</h5>
+        <ul>
+          <li><h6><i class="fas fa-circle "></i>Vous choissiez les plateformes où vous souhaitez publier vos annonces</h6></li>
+          <li><h6><i class="fas fa-circle"></i>Vous êtes libre de choisir les créneaux que vous souhaitez pour faire visiter votre bien</h6></li>
+          <li><h6><i class="fas fa-circle"></i>Les candidats postulent directement sur Koobo et vous recevez leurs demandes</h6></li>
+        </ul>
+      </div>
     </div>
   </div>
   <div class="details-valueprop-home-right">
     <div class="details-valueprop-home-right--header">
       <p class="font-number font-coral">2</p>
       <div class="details-valueprop-home-right--header--subheader">
-        <h6>Automatisation des documents</h6>
+        <h5>Automatisation des documents</h5>
         <p>Transparence, réactivité, humains</p>
       </div>
     </div>
     <div class="details-valueprop-home-right--body">
+      <div class="details-valueprop-home-right--body--details">
+        <h5>Vous n’êtes pas une imprimante,<br>Sauvez des arbres</h5>
+        <ul>
+          <li><h6><i class="fas fa-circle "></i>Les quittances sont envoyées automatiquement après votre validation</h6></li>
+          <li><h6><i class="fas fa-circle "></i>Après avoir renseigné l’ensemble des documents, le bail est généré avec demande de signature électronique</h6></li>
+          <li><h6><i class="fas fa-circle "></i>Accès à divers modèle de document</h6></li>
+        </ul>
+      </div>
       <img src="http://placehold.it/650x520" alt="">
-      <div class="details-valueprop-home-right--body--details"></div>
-      <h6>Vous n’êtes pas une imprimante, sauvez des arbres</h6>
-      <ul>
-        <li>Les quittances sont envoyées automatiquement après votre validation</li>
-        <li>Après avoir renseigné l’ensemble des documents, le bail est généré avec demande de signature électronique</li>
-        <li>Accès à divers modèle de document </li>
-      </ul>
     </div>
   </div>
   <div class="details-valueprop-home-left">
     <div class="details-valueprop-home-left--header">
       <p class="font-number font-coral">3</p>
       <div class="details-valueprop-home-left--header--subheader">
-        <h6>Améliorer les échanges</h6>
+        <h5>Améliorer les échanges</h5>
         <p>Transparence, réactivité, humains</p>
       </div>
     </div>
     <div class="details-valueprop-home-left--body">
-      <img src="http://placehold.it/650x520" alt="">
-      <div class="details-valueprop-home-left--body--details"></div>
-      <h6>Une bonne location, c’est une bonne relation humaine.</h6>
-      <ul>
-        <li>Une messagerie pour être en contact direct avec votre locataire</li>
-        <li>Un locataire à un soucis, il peut vous contacter en quelques secondes</li>
-        <li>Vous garder une traçe de vos échanges</li>
-        <li> Cadrer l’état des lieux d’entrée et de sortie. Nous offrons un guide des bonne pratiques pour un état des lieux réussi</li>
-      </ul>
+      <%= image_tag ('good_location'), class:"image-home-value-prop-details" %>
+      <div class="details-valueprop-home-left--body--details">
+        <h5>Une bonne location, <br> c’est une bonne relation humaine.</h5>
+        <ul>
+          <li><h6><i class="fas fa-circle "></i>Une messagerie pour être en contact direct avec votre locataire</h6></li>
+          <li><h6><i class="fas fa-circle "></i>Un locataire à un soucis, il peut vous contacter en quelques secondes</h6></li>
+          <li><h6><i class="fas fa-circle "></i>Vous garder une traçe de vos échanges</h6></li>
+          <li><h6><i class="fas fa-circle "></i>Cadrer l’état des lieux d’entrée et de sortie. Nous offrons un guide des bonne pratiques pour un état des lieux réussi</h6></li>
+        </ul>
+      </div>
     </div>
   </div>
   <div id="save-money-koobo">
