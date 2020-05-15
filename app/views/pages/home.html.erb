@@ -13,7 +13,7 @@
       <%= link_to '#' do %>
         <p>À propos</p>
       <% end %>
-      <%= link_to '#', class:"active" do %>
+      <%= link_to '#' do %>
         <p>Contact</p>
       <% end %>
     </div>
@@ -28,20 +28,22 @@
   </div>
   <div id="banner-home">
     <div id="banner-home--left">
-      <h1>Arrêtez de perdre du <br> temps dans votre <br>gestion locative</h1>
+      <h1>Ne perdez plus de temps<br>dans votre <br>gestion locative</h1>
       <%= link_to "S'inscrire", new_user_session_path, class:"button-sign-home coral" %>
     </div>
     <div id="banner-home--right">
-      <%= image_tag ('mockup-1'), class:'mockup-images' %>
-      <ul>
-        <li class="bullet-grey"><a href="#"><i class="fas fa-circle"></i></a></li>
-        <li class="bullet-grey"><a href="#"><i class="fas fa-circle"></i></a></li>
-        <li class="bullet-grey"><a href="#"><i class="fas fa-circle"></i></a></li>
-      </ul>
+      <%= image_tag ('mockup_1'), class:'mockup-images'%>
+      <%#= image_tag ('mockup_2'), class:'mockup-images d-none'%>
+      <%#= image_tag ('mockup_3'), class:'mockup-images d-none'%>
+      <!-- <ul>
+        <li class="bullet-grey" id="mockup-one-set" data-toggle="mockup-one"><a href="#"><i class="fas fa-circle"></i></a></li>
+        <li class="bullet-grey image-active" id="mockup-two-set" data-toggle="mockup-two"><a href="#"><i class="fas fa-circle"></i></a></li>
+        <li class="bullet-grey" id="mockup-three-set" data-toggle="mockup-three"><a href="#"><i class="fas fa-circle"></i></a></li>
+      </ul> -->
     </div>
   </div>
   <div id="valueprop-home">
-    <h2 id="valueprop-home--header">
+    <h2 class="valueprop-home--header">
       <span class="linecoral">Koobo, votre assistant de gestion locative</span>
     </h2>
     <div id="value-prop-home--cards">
@@ -63,7 +65,7 @@
     <div class="details-valueprop-home-left--header">
       <p class="font-number font-coral">1</p>
       <div class="details-valueprop-home-left--header--subheader">
-        <h5>Publications et visites</h5>
+        <h4>Publications et visites</h4>
         <p>Publications automatisées, visites, dossiers</p>
       </div>
     </div>
@@ -83,7 +85,7 @@
     <div class="details-valueprop-home-right--header">
       <p class="font-number font-coral">2</p>
       <div class="details-valueprop-home-right--header--subheader">
-        <h5>Automatisation des documents</h5>
+        <h4>Automatisation des documents</h4>
         <p>Transparence, réactivité, humains</p>
       </div>
     </div>
@@ -96,14 +98,14 @@
           <li><h6><i class="fas fa-circle "></i>Accès à divers modèle de document</h6></li>
         </ul>
       </div>
-      <img src="http://placehold.it/650x520" alt="">
+      <%= image_tag ('save_time_looking_tenant'), class:"image-home-value-prop-details" %>
     </div>
   </div>
   <div class="details-valueprop-home-left">
     <div class="details-valueprop-home-left--header">
       <p class="font-number font-coral">3</p>
       <div class="details-valueprop-home-left--header--subheader">
-        <h5>Améliorer les échanges</h5>
+        <h4>Améliorer les échanges</h4>
         <p>Transparence, réactivité, humains</p>
       </div>
     </div>
@@ -121,24 +123,93 @@
     </div>
   </div>
   <div id="save-money-koobo">
-    <h6>Économisez <span class="font-coral">790€ par an</span> 🍀 </h6>
-    <p>En passant par Koobo, prix fixe mensuel de 5€ / mois pour un bien</p>
-    <br>
-    <p>930€ (will change)</p>
-    <p>Montant du loyer hors charges par mois</p>
-    <span>PROGRESSBAR</span>
-    <button>S'inscrire</button>
-    <p>Il y a le gain financier, où vous allez économiser par rapport aux frais d’agences, mais il y a également le gain de temps. <br>Avec koobo, vous allez également réduire se temps par deux (au minimum), pour vraiment vous recentrez l’essentiel </p>
+    <div id="save-money-koobo-container">
+      <div id="save-money-koobo--header">
+        <h2>Économisez <span class="font-coral"><span id="savings">84</span>€ par an</span> 🏡 </h2>
+        <h5>En passant par Koobo, <span class="font-coral">prix fixe mensuel de 5€</span> pour un bien</h5>
+      </div>
+      <div id="save-money-koobo--input">
+        <h6>Montant de mon loyer : <span id="value_rent">200</span>€ par mois</h6>
+        <p><input type="range" min="200" max="2500" value="200" id="sliderRent"></p>
+        <p><%= link_to "S'inscrire", new_user_registration_path, class:"button-sign-home coral" %></p>
+        <p>Commission d'une agence immobilière traditionnelle (6% / an), soit <span id="agency-price">144</span> €</p>
+      </div>
+      <div id="save-money-koobo--footer">
+        <h6>L'économie n'est pas que financière !</h6>
+        <h6>Avec koobo, vous allez également réduire le temps alloué à votre gestion locative par deux !</h6>
+      </div>
+    </div>
   </div>
   <div id="tenant-present">
-    <h2>Vous avez déjà un locataire ? </h2>
+    <h2 class="valueprop-home--header">
+      <span class="linecoral">Vous avez déjà un locataire ? </span>
+    </h2>
     <div id="tenant-present--details">
-      <img src="http://placehold.it/550x470" alt="">
+      <%= image_tag ('tenant_present'), class:"image-home-value-prop-details" %>
       <h6>Nous vous aidons étape par étape ainsi que votre locataire par téléphone !</h6>
     </div>
   </div>
   <div id="footer-home">
-    <h2><strong><span class="k-logo">K</span>oobo</strong></h1>
-      <p>hello world</p>
+    <div id="list-footer">
+      <h2 class="list-footer--column"><strong><span class="k-logo">K</span>oobo</strong></h1>
+      <div class="list-footer--column">
+        <h5>Découvrir</h5>
+        <ul>
+          <li>
+            <h6>
+              <%= link_to '#', class:"mail-link" do %>
+                Tarifs
+              <% end %>
+            </h6>
+          </li>
+          <li>
+            <h6>
+              <%= link_to '#', class:"mail-link" do %>
+                Blog
+              <% end %>
+            </h6>
+          </li>
+          <li>
+            <h6>
+              <%= link_to '#', class:"mail-link" do %>
+                A propos
+              <% end %>
+            </h6>
+          </li>
+        </ul>
+      </div>
+      <div class="list-footer--column">
+        <h5>Nous contacter</h5>
+        <ul>
+          <li><h6><i class="fas fa-envelope"></i> <%= mail_to 'booko@koobo.co', subject: "Koobo, j'ai une question pour vous !" do %>
+            <span class="mail-link">bokoo@koobo.co</span>
+            <% end %>
+          </h6></li>
+          <li><h6><i class="fas fa-mobile "></i> 06.68.48.91.69</h6></li>
+          <li><h6><a href="https://fr.wikipedia.org/wiki/Pigeon_voyageur" class="mail-link" target="_blank"><i class="fas fa-dove "></i> Pigeon voyageur</a></h6></li>
+        </ul>
+      </div>
+      <div class="list-footer--column">
+        <h5>Nous suivre</h5>
+        <ul id="social-network">
+          <li>
+            <a href="https://www.facebook.com/captainkoobo/">
+              <i class="fab fa-facebook-square icon-home"></i>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.linkedin.com/company/42906448/">
+              <i class="fab fa-linkedin icon-home"></i>
+            </a>
+          </li>
+          <li>
+            <a href="https://twitter.com/captain_koobo">
+              <i class="fab fa-twitter-square icon-home"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <p>Fait avec <i class="fas fa-heart font-coral"></i> à Paris - © 2020 - 2020 tous droits réservés Koobo.co</p>
   </div>
 </div>
