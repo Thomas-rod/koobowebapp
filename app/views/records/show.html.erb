@@ -76,6 +76,48 @@
                   </div>
                   <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
                     <div class="card-body">
+                      <div class="row" id="pills-container">
+                        <div class="col-5" id="pills-header">
+                          <div class="nav nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                            <a class="nav-link <%= @record.notice_assessment.attached? ? "good" : "" %> active" id="v-pills-notice-assessment-tab" data-toggle="pill" href="#v-pills-notice-assessment" role="tab" aria-controls="v-pills-notice-assessment" aria-selected="true">Avis d'imposition
+                              <% if @record.notice_assessment.attached? %>
+                                <i class="fas fa-check-circle font-green"></i>
+                              <% end %>
+                            </a>
+                            <a class="nav-link <%= @record.rent_receipts.count == 3 ? "good" : "" %>" id="v-pills-rent-receipts-tab" data-toggle="pill" href="#v-pills-rent-receipts" role="tab" aria-controls="v-pills-rent-receipts" aria-selected="false">Quittances de loyer (<%= @record.rent_receipts.attached? ? @record.rent_receipts.count : "0" %>/3)
+                              <% if @record.rent_receipts.count == 3 %>
+                                <i class="fas fa-check-circle font-green"></i>
+                              <% end %>
+                            </a>
+                            <a class="nav-link <%= @record.student_card.attached? ? "good" : "" %>" id="v-pills-student-card-tab" data-toggle="pill" href="#v-pills-student-card" role="tab" aria-controls="v-pills-student-card" aria-selected="false">Justificatif d'étude (si étudiant)
+                              <% if @record.student_card.attached? %>
+                                <i class="fas fa-check-circle font-green"></i>
+                              <% end %>
+                            </a>
+                            <a class="nav-link <%= @record.bank_identity.attached? ? "good" : "" %>" id="v-pills-bank-identity-tab" data-toggle="pill" href="#v-pills-bank-identity" role="tab" aria-controls="v-pills-bank-identity" aria-selected="false">Relevé d'identité bancaire
+                              <% if @record.bank_identity.attached? %>
+                                <i class="fas fa-check-circle font-green"></i>
+                              <% end %>
+                            </a>
+                          </div>
+                        </div>
+                        <div class="col-7">
+                          <div class="tab-content" id="v-pills-tabContent">
+                            <div class="tab-pane fade show active" id="v-pills-notice-assessment" role="tabpanel" aria-labelledby="v-pills-notice-assessment-tab">
+                              <%= render partial: 'shared/form_upload_fil_record', locals: { title: "Avis d'imposition", link: "https://www.service-public.fr/particuliers/vosdroits/F1169", file: "notice_assessment", record: @record, multiple: false} %>
+                            </div>
+                            <div class="tab-pane fade " id="v-pills-rent-receipts" role="tabpanel" aria-labelledby="v-pills-rent-receipts-tab">
+                              <%= render partial: 'shared/form_upload_fil_record', locals: { title: "Quittances de loyer", link: "https://www.service-public.fr/particuliers/vosdroits/F1169", file: "rent_receipts", record: @record, multiple: true} %>
+                            </div>
+                            <div class="tab-pane fade" id="v-pills-student-card" role="tabpanel" aria-labelledby="v-pills-student-card-tab">
+                              <%= render partial: 'shared/form_upload_fil_record', locals: { title: "Justificatif d'étude'", link: "https://www.service-public.fr/particuliers/vosdroits/F1169", file: "student_card", record: @record, multiple: false} %>
+                            </div>
+                            <div class="tab-pane fade" id="v-pills-bank-identity" role="tabpanel" aria-labelledby="v-pills-bank-identity-tab">
+                              <%= render partial: 'shared/form_upload_fil_record', locals: { title: "Relevé d'identité bancaire", link: "https://www.service-public.fr/particuliers/vosdroits/F1169", file: "bank_identity", record: @record, multiple: false} %>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>

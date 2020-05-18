@@ -30,6 +30,8 @@
         <% else %>
           <% if file == 'payslips' %>
             <p>Les bulletins de salaire sont indispensables à un bon dossier !</p>
+          <% elsif file == 'rent_receipts' %>
+            <p>Les quittances de loyer permettent au propriétaire de s'assurer que vous êtes un bon payeur !</p>
           <% end %>
         <% end %>
       </div>
@@ -62,9 +64,15 @@
           </p>
         <% else %>
           <% if file == 'identity_card' %>
-          <p>La carte d'identité fait parti des éléments indispensables à un bon dossier !</p>
+            <p>La carte d'identité fait parti des éléments indispensables à un bon dossier !</p>
           <% elsif file == 'proof_residence' %>
             <p>Facture edf, Facture téléphone, taxe d'habitation...</p>
+          <% elsif file == 'notice_assessment' %>
+            <p>Ton dernier avis d'imposition </p>
+          <% elsif file == 'student_card' %>
+            <p>Un document attestant votre statut d'étudiant. Une carte étudiante, un certificat de scolarité ...</p>
+          <% elsif file == 'bank_identity' %>
+            <p>RIB</p>
           <% else %>
             <p>Ce document fait parti des éléments indispensables à un bon dossier !</p>
           <% end %>

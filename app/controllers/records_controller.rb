@@ -45,7 +45,7 @@ class RecordsController < ApplicationController
   end
 
   def record_params
-    params.require(:record).permit(:user, :identity_card, :proof_residence, :notice_assessment, :student_card, :residency_permit, :bank_identity, payslips: [])
+    params.require(:record).permit(:user, :identity_card, :proof_residence, :notice_assessment, :student_card, :rent_receipts, :bank_identity, payslips: [])
   end
 
   def which_document_upload
@@ -57,10 +57,10 @@ class RecordsController < ApplicationController
       return "proof_residence"
     elsif !params[:record][:notice_assessment].nil?
       return "notice_assessment"
+    elsif !params[:record][:rent_receipts].nil?
+      return "rent_receipts"
     elsif !params[:record][:student_card].nil?
       return "student_card"
-    elsif !params[:record][:residency_permit].nil?
-      return "residency_permit"
     elsif !params[:record][:bank_identity].nil?
       return "bank_identity"
     else

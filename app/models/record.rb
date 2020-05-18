@@ -5,8 +5,8 @@ class Record < ApplicationRecord
   has_many_attached :payslips
   has_one_attached :proof_residence
   has_one_attached :notice_assessment
+  has_many_attached :rent_receipts
   has_one_attached :student_card
-  has_one_attached :residency_permit
   has_one_attached :bank_identity
 
 
@@ -14,8 +14,8 @@ class Record < ApplicationRecord
   validate :payslips_validation
   validate :proof_residence_validation
   validate :notice_assessment_validation
+  validate :rent_receipts_validation
   validate :student_card_validation
-  validate :residency_permit_validation
   validate :bank_identity_validation
 
   #*------------------------------------*#
@@ -51,15 +51,21 @@ class Record < ApplicationRecord
     end
   end
 
-  def student_card_validation
-    if student_card.attached? && !student_card.content_type.in?(%w(image/jpeg image/jpg image/png application/pdf application/msword application/vnd.openxmlformats-officedocument.wordprocessingml.document))
-      errors.add(:student_card_format, "Youston, le format n'est pas le bon !")
+  def rent_receipts_validation
+    if rent_receipts.count > 3
+      errors.add(:rent_receipts_format, 'Ah ! Malheureusement, seul 3 documents sont autorisés')
+    end
+    rent_receipts.each do |receipt|
+      unless receipt.content_type.in?(%w(image/jpeg image/jpg image/png application/pdf application/msword application/vnd.openxmlformats-officedocument.wordprocessingml.document))
+        errors.add(:rent_receipts_format, "Le format n'est pas le bon ! Essaye à nouveau")
+        raise
+      end
     end
   end
 
-  def residency_permit_validation
-    if residency_permit.attached? && !residency_permit.content_type.in?(%w(image/jpeg image/jpg image/png application/pdf application/msword application/vnd.openxmlformats-officedocument.wordprocessingml.document))
-      errors.add(:residency_permit_format, "Youston, le format n'est pas le bon !")
+  def student_card_validation
+    if student_card.attached? && !student_card.content_type.in?(%w(image/jpeg image/jpg image/png application/pdf application/msword application/vnd.openxmlformats-officedocument.wordprocessingml.document))
+      errors.add(:student_card_format, "Youston, le format n'est pas le bon !")
     end
   end
 
