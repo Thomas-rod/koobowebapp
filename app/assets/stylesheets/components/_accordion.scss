@@ -14,7 +14,7 @@
 
 
 .container-input-files-accordion {
-  margin: 2.5%;
+  margin: 8% 2.5%;
   height:95%;
   align-items:center;
 }
@@ -33,7 +33,7 @@
   border-radius: $border-radius;
   display:grid;
   grid-gap: 20px;
-  grid-template-columns: 35% 50%;
+  grid-template-columns: 35% 55%;
   height:80%;
   align-items:center;
   padding-left:15px;
@@ -118,7 +118,7 @@
   align-items:center;
 }
 
-.accordion {
+#accordion {
   max-height:100%;
   display:flex;
   flex-direction: column;

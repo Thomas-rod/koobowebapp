@@ -126,12 +126,74 @@
           </div>
           <div class="record-show-grid--stats">
             <div class="card-positioning">
-              <% if current_user.photo.attached? %>
-                <%= image_tag current_user.photo, class: "avatar-large bordered white" %>
-              <% else %>
-                <%= image_tag ("avatar.png"), class: "avatar-large bordered"%>
-              <% end %>
-              <p><%= current_user.first_name.capitalize %> <%= current_user.last_name.capitalize %></p>
+              <div class="record-show-grid--stats--header">
+                <% if current_user.photo.attached? %>
+                  <%= image_tag current_user.photo, class: "avatar-large bordered white" %>
+                <% else %>
+                  <%= image_tag ("avatar.png"), class: "avatar-large bordered"%>
+                <% end %>
+                <p><%= current_user.first_name.capitalize %> <%= current_user.last_name.capitalize %></p>
+                <%= render partial: 'shared/progression', locals: { number: (number_document_mandatory_attached(@record) + number_document_optional_attached(@record)), max_number: 7} %>
+              </div>
+              <div class="record-show-grid--stats--body">
+                <h6>Documents obligatoires</h6>
+                <%= render partial: 'shared/progression', locals: { number: number_document_mandatory_attached(@record), max_number: 3} %>
+                <ul>
+                  <li>
+                    <p>
+                      <%= render partial: 'shared/icon_status', locals: { file: 'identity_card', record: @record, multiple: false} %>
+                      Carte d'identité
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      <%= render partial: 'shared/icon_status', locals: { file: 'payslips', record: @record, multiple: true} %>
+                      Bulletins de salaire
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      <%= render partial: 'shared/icon_status', locals: { file: 'proof_residence', record: @record, multiple: false} %>
+                      Justificatif de domicile
+                    </p>
+                  </li>
+                </ul>
+                <h6>Documents optionnels</h6>
+                <%= render partial: 'shared/progression', locals: { number: number_document_optional_attached(@record), max_number: 4} %>
+                <ul>
+                  <li>
+                    <p>
+                      <%= render partial: 'shared/icon_status', locals: { file: 'notice_assessment', record: @record, multiple: false} %>
+                      Avis d'imposition
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      <%= render partial: 'shared/icon_status', locals: { file: 'rent_receipts', record: @record, multiple: true} %>
+                      Quittances de loyer
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      <%= render partial: 'shared/icon_status', locals: { file: 'student_card', record: @record, multiple: false} %>
+                      Justificatif d'étude
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      <%= render partial: 'shared/icon_status', locals: { file: 'bank_identity', record: @record, multiple: false} %>
+                      Relevé d'identité bancaire
+                    </p>
+                  </li>
+                </ul>
+                <% if ((number_document_mandatory_attached(@record) + number_document_optional_attached(@record)) / 7) == 1 %>
+                  <h6 id="record-show-grid--stats-footer">Super ! Ton profil est maintenant complet </h6>
+                <% elsif ((number_document_mandatory_attached(@record) + number_document_optional_attached(@record)) / 7) > 0.50 %>
+                  <h6 id="record-show-grid--stats-footer">Plus qu'un petit effort et ton profil sera complété</h6>
+                <% else %>
+                  <h6 id="record-show-grid--stats-footer">Pour mettre toutes tes chances de ton côté, renseigne ton profil !</h6>
+                <% end %>
+              </div>
             </div>
           </div>
         </div>

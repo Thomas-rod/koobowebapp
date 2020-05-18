@@ -13,7 +13,7 @@
           <% else %>
             <%= f.input file.to_sym, as: :file, input_html: { multiple: multiple, class: 'hidden d-none' }, label: ('<i class="fas fa-cloud-download-alt"></i>').html_safe, label_html: { class: "add-file-clickable", id: "js-#{file}"}%>
           <% end %>
-          <%= f.submit "Ajouter", class: "koobo-button", id: "submit-file-upload-#{file}" %>
+          <%= f.submit "Ajouter", class: "koobo-button hide-file", id: "submit-file-upload-#{file}" %>
         <% end %>
       </div>
       <div class="file-delete-form">
@@ -52,7 +52,7 @@
           <% else %>
             <%= f.input file.to_sym, as: :file, input_html: { class: 'hidden d-none' }, label: ('<i class="fas fa-cloud-download-alt"></i>').html_safe, label_html: { class: "add-file-clickable", id: "js-#{file}"}%>
           <% end %>
-          <%= f.submit "Ajouter", class: "koobo-button", id: "submit-file-upload-#{file}" %>
+          <%= f.submit "Ajouter", class: "koobo-button hide-file", id: "submit-file-upload-#{file}" %>
         <% end %>
       </div>
       <div class="file-delete-form">
@@ -72,7 +72,7 @@
           <% elsif file == 'student_card' %>
             <p>Un document attestant votre statut d'étudiant. Une carte étudiante, un certificat de scolarité ...</p>
           <% elsif file == 'bank_identity' %>
-            <p>RIB</p>
+            <p>Le relevé d'identité bancaire via lequel le règlement des loyers va être effectué</p>
           <% else %>
             <p>Ce document fait parti des éléments indispensables à un bon dossier !</p>
           <% end %>

@@ -38,7 +38,8 @@ import { initUpdateNavbarOnScroll } from '../components/navbar';
 import { makeFormAppear } from '../components/multi_etaps_form';
 import { previewImageOnFileSelect } from '../components/photo_preview';
 import { pluralizeOrNot } from '../components/pluriel_form';
-import { makeButtonLoaderAppear } from '../components/upload_button';
+import { makeButtonLoaderAppearRenter } from '../components/upload_button';
+import { makeButtonLoaderAppearTenant } from '../components/upload_button_tenant';
 // import { addcl, remcl } from '../components/login';
 
 import { initAutocomplete } from '../plugins/init_autocomplete';
@@ -61,7 +62,8 @@ document.addEventListener('turbolinks:load', () => {
   makeFormAppear();
   previewImageOnFileSelect();
   pluralizeOrNot();
-  makeButtonLoaderAppear();
+  makeButtonLoaderAppearRenter();
+  makeButtonLoaderAppearTenant();
   initMapbox();
   // addcl();
   // remcl();

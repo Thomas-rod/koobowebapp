@@ -25,37 +25,52 @@
             #SPECIFIC CSS
 \*------------------------------------*/
 .record-show-grid {
-
 }
-    .record-show-grid--importants {
-      text-align:start !important;
+    .record-show-grid--documents {
+      .card-positioning > h5:first-child {
+        padding-bottom: 1rem;
+      }
+    }
+      .record-show-grid--documents__disposition {
+        display:flex;
+        justify-content: space-between;
+        align-items:center;
+        height:93%;
+        .nav {
+          width:30%;
+        }
+        .tab-content {
+          width:70%;
+          height:100%;
+          border: 1px solid rgba($blue-light, 0.1);
+          border-radius:5px;
+        }
+      }
+
+
+    .record-show-grid--stats {
+      position:relative;
     }
 
-
-
-
-
-
-
-
-
-
-.record-show-grid--documents__disposition {
-  display:flex;
-  justify-content: space-between;
-  align-items:center;
-  height:93%;
-  .nav {
-    width:30%;
-  }
-  .tab-content {
-    width:70%;
-    height:100%;
-    border: 1px solid rgba($blue-light, 0.1);
-    border-radius:5px;
-  }
-}
-
+        .record-show-grid--stats--header {
+          margin: 5% auto;
+          p {
+            margin-bottom: 0.5rem;
+          }
+        }
+        .record-show-grid--stats--body {
+          text-align:start;
+          height:80%;
+          width:100%;
+          margin-top:1rem;
+          ul {
+            margin-bottom: 1rem;
+          }
+        }
+        #record-show-grid--stats-footer {
+          margin-top:2rem;
+          text-align:center;
+        }
 
 /*------------------------------------*\
           #UPLOAD DOCS
@@ -69,5 +84,23 @@
   background-color: rgba($blue-light, 0.2);
   color: rgba($blue, 0.9);
 
+}
+
+
+/*------------------------------------*\
+          #PROGRESSBAR
+\*------------------------------------*/
+
+.progress-bar#global {
+  background-color: $blue;
+}
+
+.progress-bar#global_complete {
+  color: white;
+  background-color: $green !important;
+}
+
+.progress-bar:not(#global) {
+  background-color: $coral-light;
 }
 
