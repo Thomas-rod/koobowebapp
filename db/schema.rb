@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_14_085033) do
+ActiveRecord::Schema.define(version: 2020_05_18_175346) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,18 @@ ActiveRecord::Schema.define(version: 2020_05_14_085033) do
     t.string "checksum", null: false
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "backers", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "phone_number"
+    t.string "email"
+    t.float "revenue"
+    t.bigint "record_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["record_id"], name: "index_backers_on_record_id"
   end
 
   create_table "flats", force: :cascade do |t|
@@ -101,6 +113,9 @@ ActiveRecord::Schema.define(version: 2020_05_14_085033) do
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.string "email"
     t.index ["user_id"], name: "index_records_on_user_id"
   end
 
@@ -168,6 +183,7 @@ ActiveRecord::Schema.define(version: 2020_05_14_085033) do
     t.string "contract"
     t.string "phone"
     t.text "message", default: ""
+    t.boolean "renting"
     t.index ["schedule_id"], name: "index_visits_on_schedule_id"
     t.index ["user_id"], name: "index_visits_on_user_id"
   end

@@ -1,0 +1,147 @@
+  <div class="dashboard-data-set" data-line="my-file">
+    <div class="screen-container">
+      <div class="dashboard-container full">
+        <% if user_current_renting?(current_user) %>
+          <%= render partial: 'shared/dashboard_tenant', locals: { renting: user_current_renting(current_user)} %>
+        <% else %>
+          <%= render partial: 'shared/dashboard_tenant', locals: { renting: "empty" }%>
+        <% end %>
+      </div>
+      <div class="nav-container full">
+        <%= render partial: 'shared/navbar_dashboard', locals: { notif_counter: @counter} %>
+        <h3>Mon dossier</h3>
+      </div>
+      <div class="content-container full">
+        <div class="record-show-grid">
+          <div class="record-show-grid--documents">
+            <div class="card-positioning">
+              <h5><%= current_user.first_name.nil? ? "" : current_user.first_name.capitalize %>, voici l'endroit où tu vas pouvoir préparer ton dossier de location</h5>
+              <nav>
+                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                  <% @records.each do |record| %>
+                    <% if record == @records.first %>
+                      <a class="nav-item nav-link active" id="nav-<%= record.first_name.capitalize %>-tab" data-toggle="tab" href="#nav-<%= record.first_name.capitalize %>" role="tab" aria-controls="nav-<%= record.first_name.capitalize %>" aria-selected="true"><%= record.first_name.capitalize %></a>
+                    <% else %>
+                      <div class="nav-item nav-link" id="nav-<%= record.first_name.capitalize %>-tab" data-toggle="tab" href="#nav-<%= record.first_name.capitalize %>" role="tab" aria-controls="nav-<%= record.first_name.capitalize %>" style="cursor: pointer;" aria-selected="true">
+                        <%= record.first_name.capitalize %>
+                        <%= link_to record_path(record), method: 'delete', data: { confirm: "Es-tu certain de vouloir supprimer #{record.first_name}" } do %>
+                          <i class="fas fa-times"></i>
+                        <% end %>
+                      </div>
+                    <% end %>
+                  <% end %>
+                  <button type="button" class="nav-item nav-link" data-toggle="modal" data-target="#addRecordModal">
+                    <i class="fas fa-plus-circle"></i>
+                  </button>
+                  <div class="modal fade" id="addRecordModal" tabindex="-1" role="dialog" aria-labelledby="addRecordModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">Une moitiée ? Un ami ? Un colocataire ?</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          <%= simple_form_for @record do |f| %>
+                            <%= f.input :first_name, label: "Prénom", placeholder: "John...", required: true %>
+                            <%= f.input :last_name, label: "Nom", placeholder: "Doe...", required: true %>
+                            <%= f.input :email, label: "Email", placeholder: "john.doe@gmail.com...", required: true %>
+                            <button type="button" class="btn delete-link" data-dismiss="modal">Fermer</button>
+                            <%= f.button :submit, "Ajouter",class:"koobo-button" %>
+                          <% end %>
+                        </div>
+                        <div class="modal-footer">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </nav>
+              <div class="tab-content" id="nav-tabContent">
+                <% counter_record_accordion = 0 %>
+                <% @records.each do |record| %>
+                  <div class="tab-pane fade <%= "show active" if record == @records.first%>" id="nav-<%= record.first_name.capitalize %>" role="tabpanel" aria-labelledby="nav-<%= record.first_name.capitalize %>-tab">
+                    <%= render partial: 'shared/accordion_records', locals: { record: record, counter: counter_record_accordion} %>
+                  </div>
+                  <% counter_record_accordion += 1 %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+          <div class="record-show-grid--stats">
+            <div class="card-positioning">
+              <div class="record-show-grid--stats--header">
+                <% if current_user.photo.attached? %>
+                  <%= image_tag current_user.photo, class: "avatar-large bordered white" %>
+                <% else %>
+                  <%= image_tag ("avatar.png"), class: "avatar-large bordered"%>
+                <% end %>
+                <p><%= current_user.first_name.capitalize %> <%= current_user.last_name.capitalize %></p>
+                <%= render partial: 'shared/progression', locals: { number: (records_number_document_mandatory_attached(@records) + records_number_document_optional_attached(@records)), max_number: 7*@records.count} %>
+              </div>
+              <div class="record-show-grid--stats--body">
+                <h6>Documents obligatoires</h6>
+                <%= render partial: 'shared/progression', locals: { number: records_number_document_mandatory_attached(@records), max_number: 3*@records.count} %>
+                <ul>
+                  <li>
+                    <p>
+                      <%= render partial: 'shared/icon_status', locals: { file: 'identity_card', record: @records, multiple: false} %>
+                      Carte d'identité
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      <%= render partial: 'shared/icon_status', locals: { file: 'payslips', record: @records, multiple: true} %>
+                      Bulletins de salaire
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      <%= render partial: 'shared/icon_status', locals: { file: 'proof_residence', record: @records, multiple: false} %>
+                      Justificatif de domicile
+                    </p>
+                  </li>
+                </ul>
+                <h6>Documents optionnels</h6>
+                <%= render partial: 'shared/progression', locals: { number: records_number_document_optional_attached(@records), max_number: 4*@records.count} %>
+                <ul>
+                  <li>
+                    <p>
+                      <%= render partial: 'shared/icon_status', locals: { file: 'notice_assessment', record: @records, multiple: false} %>
+                      Avis d'imposition
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      <%= render partial: 'shared/icon_status', locals: { file: 'rent_receipts', record: @records, multiple: true} %>
+                      Quittances de loyer
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      <%= render partial: 'shared/icon_status', locals: { file: 'student_card', record: @records, multiple: false} %>
+                      Justificatif d'étude
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      <%= render partial: 'shared/icon_status', locals: { file: 'bank_identity', record: @records, multiple: false} %>
+                      Relevé d'identité bancaire
+                    </p>
+                  </li>
+                </ul>
+                <% if ((records_number_document_mandatory_attached(@records) + records_number_document_optional_attached(@records)) / 7) == 1 %>
+                  <h6 id="record-show-grid--stats-footer">Super ! Ton profil est maintenant complet </h6>
+                <% elsif ((records_number_document_mandatory_attached(@records) + records_number_document_optional_attached(@records)) / 7) > 0.50 %>
+                  <h6 id="record-show-grid--stats-footer">Plus qu'un petit effort et ton profil sera complété</h6>
+                <% else %>
+                  <h6 id="record-show-grid--stats-footer">Pour mettre toutes tes chances de ton côté, renseigne ton profil !</h6>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

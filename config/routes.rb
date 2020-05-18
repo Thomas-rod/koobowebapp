@@ -28,7 +28,11 @@ require "sidekiq/web"
     resources :visits, only: :update
   end
 
-  resources :records, only: [:update, :show]
+  resources :records, only: [:index, :create] do
+    resources :backers, only: [:update]
+  end
+
+  resources :records, only: [:update, :destroy]
 
   resources :visits, only: [:index]
   resources :rentings, only: [:create, :edit, :update, :new, :index, :show]
@@ -50,6 +54,13 @@ require "sidekiq/web"
   #*------------------------------------*#
   patch "users/:id", to: "application#update_user_renter", as: :update_user_renter
 
+
+  #*------------------------------------*#
+          #ROUTES USED FOR VISIT MODIFICATIONS
+  #*------------------------------------*#
+  patch "visits/:id/false", to: "visits#update_renting_visit_false", as: :visit_no_renting
+  patch "visits/:id/true", to: "visits#update_renting_visit_true", as: :visit_create_renting
+  patch "visits/:id", to: "visits#update_renting_visit_default", as: :visit_reset_renting
   #*------------------------------------*#
           #ROUTES USED RECORD MODIFICATIONS
   #*------------------------------------*#

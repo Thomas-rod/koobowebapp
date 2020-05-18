@@ -5,6 +5,7 @@ class VisitsController < ApplicationController
                 #CRUD
   #------------------------------------#
   def index
+    @records = Record.all.select{ |r| r.user == current_user}
     @visits = Visit.select {|v| v.user == current_user}
     @renting_folders = RentingFolder.select { |r| r.users.first == current_user}
     find_flat(@visits, @renting_folders)
@@ -48,11 +49,34 @@ class VisitsController < ApplicationController
       redirect_to request.referrer, notice: "Vous venez de refuser la demande de #{@visit.user.first_name} !"
      else
        deny_pending_visits
+       @schedule.update(booked: true)
        redirect_to request.referrer, notice: "Vous venez d'accepter la demande de #{@visit.user.first_name} ! Les autres demandes ont été annulées"
      end
      VisitMailer.with(tenant: @visit.user, visit: @visit).send_answer_visit_mail.deliver_now
     # switch visit status to accepted
     # Broadcast to locataire (recup l'id du locataire
+  end
+
+  def update_renting_visit_default
+    @visit = Visit.find(params[:id])
+    @visit.renting = ""
+    @visit.save!
+    redirect_to visits_path, notice: "Tu peux maintenant déposer ton dossier"
+  end
+
+  def update_renting_visit_false
+    @visit = Visit.find(params[:id])
+    @visit.renting = false
+    @visit.save!
+    redirect_to visits_path, notice: "Tu n'as pas donné suite à cette visite"
+  end
+
+  def update_renting_visit_true
+    @visit = Visit.find(params[:id])
+    @visit.renting = true
+    @visit.save!
+    RentingFolder.create(visit: @visit, status: 'pending')
+    redirect_to visits_path, notice: "Ton dossier a été envoyé"
   end
 
 
@@ -61,13 +85,12 @@ class VisitsController < ApplicationController
   #------------------------------------#
 
   def params_visit
-    params.require(:visit).permit(:schedule_id, :status, :people, :income, :contract, :phone)
+    params.require(:visit).permit(:schedule_id, :status, :people, :income, :contract, :phone, :renting)
   end
 
   def deny_pending_visits
-    pending_visits = @schedule.visits.select do |visit|
-     visit.status != "accepted"
-    end
+
+    pending_visits = @schedule.visits.select{ |v| v.status != 'accepted'}
     pending_visits.each do |visit|
      visit.status = "denied"
      visit.save

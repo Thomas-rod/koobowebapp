@@ -1,6 +1,6 @@
-<% if  number == max_number && max_number == 7 %>
+<% if  number == max_number && max_number == 7*@records.count %>
   <% status = "global_complete" %>
-<% elsif max_number == 7 %>
+<% elsif max_number == 7*@records.count %>
   <% status = "global" %>
 <% else %>
   <% status = "" %>

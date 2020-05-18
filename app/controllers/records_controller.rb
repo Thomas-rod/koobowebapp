@@ -1,51 +1,71 @@
 class RecordsController < ApplicationController
-  before_action :notif_visit, :notif_counter, :set_record
+  before_action :notif_visit, :notif_counter
 
-  def show
+  def index
+    @record = Record.new
+    @records = Record.all.select{|r| r.user == current_user}.sort_by{ |r| r[:created_at]}
+    @backer = Backer.new()
+  end
 
+  def create
+    @record = Record.new(record_params)
+    @record.user = current_user
+    if @record.save
+      redirect_to records_path, notice: "Tu as ajouté un nouveau locataire pour ton dossier"
+    else
+      redirect_to records_path, alert: "Attention il y a une erreur dans la personne que tu as voulu ajouter"
+    end
   end
 
   def update
+    set_record
     if params[:record].nil?
-      redirect_to record_path(@record), alert: "Attention, tu dois sélectionner un fichier Youston"
+      redirect_to records_path, alert: "Attention, tu dois sélectionner un fichier Youston"
     else
       @record.send(which_document_upload).attach(params[:record][which_document_upload.to_sym])
       if @record.update(record_params)
-        redirect_to record_path(@record), notice: "Super, ton fichier a bien été téléchargé Youston"
+        redirect_to records_path, notice: "Super, ton fichier a bien été téléchargé Youston"
       else
-        redirect_to record_path(@record), alert: @record.errors.messages["#{which_document_upload}_format".to_sym].first
+        redirect_to records_path, alert: @record.errors.messages["#{which_document_upload}_format".to_sym].first
       end
     end
+  end
+
+  def destroy
+    set_record
+    @record.destroy
+    redirect_to records_path, notice: "La personne que tu as ajouté a été enlevé"
   end
 
   def purge_document_record
     set_record
     unless params[:file].nil?
-
       unless params[:file_position].nil?
         file = params[:file]
         file_position = params[:file_position]
         @record.send(file)[file_position.to_i].purge
-        redirect_to record_path(@record), notice: "C'est bon, le document a été supprimé !"
+        redirect_to records_path, notice: "C'est bon, le document a été supprimé !"
       else
         file = params[:file]
         @record.send(file).purge
-        redirect_to record_path(@record), notice: "C'est bon, le document a été supprimé !"
+        redirect_to records_path, notice: "C'est bon, le document a été supprimé !"
       end
     else
-      redirect_to record_path(@record), alert: "Jeff, on a un soucis. Contacte nous par mail bokoo@koobo.co"
+      redirect_to records_path, alert: "Jeff, on a un soucis. Contacte nous par mail bokoo@koobo.co"
     end
   end
+
+
 
 
   private
 
   def set_record
-    @record = Record.find(current_user.record.id)
+    @record = Record.find(params[:id])
   end
 
   def record_params
-    params.require(:record).permit(:user, :identity_card, :proof_residence, :notice_assessment, :student_card, :rent_receipts, :bank_identity, payslips: [])
+    params.require(:record).permit(:user, :first_name, :last_name, :email, :identity_card, :proof_residence, :notice_assessment, :student_card, :rent_receipts, :bank_identity, payslips: [])
   end
 
   def which_document_upload
