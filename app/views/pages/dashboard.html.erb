@@ -125,7 +125,7 @@
                     <h3 id="card-renting-tenant-header">Ma location</h3>
                     <div id="card-renting-tenant-body">
                       <% if user_current_renting(current_user).flat&.user&.photo&.attached? %>
-                        <%= image_tag user_current_renting(current_user).flat.user.photo, class: 'avatar-extra-large' %>
+                        <%= image_tag user_current_renting(current_user).flat.user.photo, class: 'avatar-large bordered white' %>
                       <% else %>
                         <%= image_tag ("avatar.png"), class: 'avatar-middle bordered white' %>
                       <% end %>

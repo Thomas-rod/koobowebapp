@@ -75,7 +75,9 @@
           <% end %>
         </div>
         <div class="modal-footer">
-          <% if (visit.renting == "" || visit.renting.nil?) && (visit.schedule.start - Time.now) > 0%>
+          <% if  !(records_number_document_mandatory_attached(current_user.records) == 3*current_user.records.count) %>
+            <%= link_to 'Mon dossier',records_path, class:'koobo-button' %>
+          <% elsif (visit.renting == "" || visit.renting.nil?) && (visit.schedule.start - Time.now) > 0%>
             <%= link_to "Déposer un dossier en avance", visit_create_renting_path(visit), method: 'patch',class:"koobo-button" %>
           <% elsif (visit.renting == "" || visit.renting.nil?) && (visit.schedule.start - Time.now) < 0 %>
             <%= link_to "Non", visit_no_renting_path(visit),method: 'patch', class:"delete-link" %>

@@ -143,11 +143,11 @@
       </div>
       <div class="modal-footer">
         <% if request.is_a?(Visit) %>
-          <%= link_to "Refuser", schedule_visit_path(request.schedule, request, visit: { status: "denied"}), method: :patch, class: "delete-link"%>
-          <%= link_to "Accepter", schedule_visit_path(request.schedule, request, visit: { status: "accepted"}), method: :patch, class: "koobo-button"%>
+          <%= link_to "Refuser", schedule_visit_path(request.schedule, request, visit: { status: "denied"}),data: { confirm: "Es-tu sûr de vouloir refuser la demande de visite de #{request.user.first_name.capitalize} ?" }, method: :patch, class: "delete-link"%>
+          <%= link_to "Accepter", schedule_visit_path(request.schedule, request, visit: { status: "accepted"}), data: { confirm: "Es-tu sûr de vouloir accepter la demande de visite de #{request.user.first_name.capitalize} ? Cela va refuser les autres visites sur ce créneau"}, method: :patch, class: "koobo-button"%>
         <% elsif request.is_a?(RentingFolder) %>
-          <%= link_to 'Refuser', renting_folder_path(request, status: 'denied'), method: 'patch', class:"delete-link" %>
-          <%= link_to 'Accepter', renting_folder_path(request, status: 'accepted'), method: 'patch', class:"koobo-button" %>
+          <%= link_to 'Refuser', renting_folder_path(request, status: 'denied'), method: 'patch', data: { confirm: "Es-tu sûr de vouloir refuser le dossier de #{request.visit.user.first_name.capitalize}?" }, class:"delete-link" %>
+          <%= link_to 'Accepter', renting_folder_path(request, status: 'accepted'), method: 'patch', data: { confirm: "Es-tu sûr de vouloir accepter le dossier de #{request.visit.user.first_name.capitalize}? Cela va refuser toutes les demandes de visites, envoyer un mail aux demandes de visites acceptés pour les annuler et refuser tous les dossiers que tu as reçu" }, class:"koobo-button" %>
         <% end %>
       </div>
     </div>

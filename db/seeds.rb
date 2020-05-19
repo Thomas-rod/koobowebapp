@@ -49,8 +49,14 @@ stefan.save!
 puts "#{User.count} users created"
 
 
+puts "Creating records"
+thomas_second_record = Record.create(first_name: 'Salomé', last_name: 'Marcade', phone_number: '01.90.93.93.95', email: 'salome@gmail.com')
+
+puts "#{Record.count} records created"
 
 
+puts "Creating backers"
+puts "#{Backer.count} backers created"
 
 #--------------------------------------------------------------------------------------------------------#
 #-------------------------------------------FLATS--------------------------------------------------------#

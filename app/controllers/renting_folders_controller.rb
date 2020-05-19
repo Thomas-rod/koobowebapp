@@ -25,10 +25,12 @@ class RentingFoldersController < ApplicationController
   def change_visits_remaining_status
     flat = @renting_folder.visit.schedule.flat
     visits_remaining = flat.visits.select{|v| v.status == 'pending' || v.status == 'accepted'}
-    visits_remaining.each do |vm|
-      vm.status = 'denied'
-      vm.save
-      VisitMailer.with(tenant: vm.user, renter: vm.schedule.flat.user, visit: vm).automatic_visit_denied.deliver_now
+    visits_remaining.each do |vr|
+      unless vr == @renting_folder.visit && vr.renting == false
+        vr.status = 'denied'
+        vr.save
+        VisitMailer.with(tenant: vr.user, renter: vr.schedule.flat.user, visit: vr).automatic_visit_denied.deliver_now
+      end
     end
   end
 
@@ -37,7 +39,9 @@ class RentingFoldersController < ApplicationController
     renting_folder_remaining = []
     flat.schedules.each do |s|
       s.visits.each do |v|
-        renting_folder_remaining << v.renting_folder if v.renting_folder.status == 'pending'
+        unless v.renting_folder.nil? && v.renting_folder == @renting_folder
+          renting_folder_remaining << v.renting_folder if v.renting_folder.status == 'pending'
+        end
       end
     end
     renting_folder_remaining.each do |rfm|
