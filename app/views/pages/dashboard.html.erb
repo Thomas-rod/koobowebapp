@@ -30,10 +30,10 @@
                             <div class="card-small-three-blocks--second">
                               <h6><strong><%= flat.name %></strong></h6>
                               <p>Loué depuis le <strong> <%=flat.rentings.find_by(status: "current").start_date.strftime("%d/%m/%Y") %></strong>.</p>
-                              <p>par <strong><%= helper_flat_current_tenants(flat).first.first_name %> <%= helper_flat_current_tenants(flat).first.last_name %></strong></p>
+                              <p>par <strong><%= helper_flat_current_tenants(flat).first_name %> <%= helper_flat_current_tenants(flat).last_name %></strong></p>
                             </div>
                             <div class="card-small-three-blocks--third">
-                              <% if helper_flat_current_tenants(flat).first.photo&.attached?  %>
+                              <% if helper_flat_current_tenants(flat).photo&.attached?  %>
                                 <%= image_tag helper_flat_current_tenants(flat).first.photo, class: "avatar-middle bordered white" %>
                               <% else %>
                                 <%= image_tag ("avatar.png"), class: 'avatar-middle bordered white' %>
@@ -124,7 +124,11 @@
                   <%= link_to renting_path(user_current_renting(current_user)) do %>
                     <h3 id="card-renting-tenant-header">Ma location</h3>
                     <div id="card-renting-tenant-body">
-                    <%= image_tag user_current_renting(current_user).flat.user.photo, class: 'avatar-extra-large' %>
+                      <% if user_current_renting(current_user).flat&.user&.photo&.attached? %>
+                        <%= image_tag user_current_renting(current_user).flat.user.photo, class: 'avatar-extra-large' %>
+                      <% else %>
+                        <%= image_tag ("avatar.png"), class: 'avatar-middle bordered white' %>
+                      <% end %>
                     <p><%= user_current_renting(current_user).flat.user.first_name %></p>
                     <p><%= user_current_renting(current_user).flat.user.last_name %></p>
                     </div>

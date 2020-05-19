@@ -21,4 +21,12 @@ class VisitMailer < ApplicationMailer
     mail( :to => @tenant.email,
       :subject => "Alors ? Qu'as tu pensé de ta visite ?")
   end
+
+  def automatic_visit_denied
+    @tenant = params[:tenant]
+    @renter = params[:renter]
+    @visit = params[:visit]
+    mail( :to => @tenant.email,
+      :subject => "Malheureusement, l'appartement pour lequel tu as fait une demande de visite vient d'être loué...")
+  end
 end

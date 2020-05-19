@@ -10,10 +10,10 @@
       <p class="bubble visits-not-available">Visite refusée</p>
     <% end %>
     <% if flat_renting_folder_current_user(flat, current_user)&.first&.status == 'pending' %>
-      <p class="bubble price">Visite en attente</p>
+      <p class="bubble price">Dossier en attente</p>
     <% elsif flat_renting_folder_current_user(flat, current_user)&.first&.status == 'accepted' %>
       <p class="bubble visits-available">Dossier acceptée</p>
-    <% elsif flat_renting_folder_current_user(flat, current_user)&.first&.empty? || flat_renting_folder_current_user(flat, current_user).first.nil? %>
+    <% elsif flat_renting_folder_current_user(flat, current_user)&.empty? || flat_renting_folder_current_user(flat, current_user).first.nil? %>
       <p class="bubble nothing">Aucun dossier</p>
     <% else %>
       <p class="bubble visits-not-available">Dossier refusée</p>

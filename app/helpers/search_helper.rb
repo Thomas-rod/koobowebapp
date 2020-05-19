@@ -25,10 +25,10 @@ module SearchHelper
   def schedule_available_for_visit(flat)
     flat_rented = flat.is_there_renting?
     if flat_rented.empty?
-      return flat.schedules.select{ |s| s.booked == false}
+      return flat.schedules.select{ |s| s.booked == false && s.killed == false}
     else
       # I use . first because in is_there_renting? method it's sorted by status. (Current is at first place)
-      return flat.schedules.select{ |s| s.start > flat_rented.first.start_date && s.booked == false}
+      return flat.schedules.select{ |s| s.start > flat_rented.first.start_date && s.booked == false && s.killed == false}
     end
   end
 

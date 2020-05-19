@@ -348,6 +348,27 @@
     color:$blue;
   }
 }
+
+.list-document-records {
+  display:flex;
+  justify-content:space-between;
+}
+
+.list-document-renting-folder {
+  li {
+    width:100%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding-bottom: 1rem;
+    &:first-child {
+      padding-top: 1rem;
+    }
+    .fa-home {
+      margin-top:0px !important;
+    }
+  }
+}
 .modal-body {
   text-align:start;
 }
@@ -374,6 +395,11 @@
           color: rgba($green, 0.9);
         }
         .gray-bubble {
+          border: 1px dashed rgba($blue-light, 0.1);
+          background-color: rgba($gray, 0.1);
+          color: $blue;
+        }
+        .gray-lighter-bubble {
           border: 1px dashed rgba($blue-light, 0.1);
           background-color: rgba($light-gray, 0.9);
           color: $blue;

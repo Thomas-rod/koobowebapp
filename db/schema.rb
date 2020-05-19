@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_18_175346) do
+ActiveRecord::Schema.define(version: 2020_05_19_165750) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -77,6 +77,7 @@ ActiveRecord::Schema.define(version: 2020_05_18_175346) do
     t.text "property_advertisement", default: ""
     t.float "latitude"
     t.float "longitude"
+    t.date "start_renting_date", default: "2020-05-19"
     t.index ["user_id"], name: "index_flats_on_user_id"
   end
 
@@ -93,15 +94,6 @@ ActiveRecord::Schema.define(version: 2020_05_18_175346) do
     t.index ["renting_id"], name: "index_flows_on_renting_id"
   end
 
-  create_table "folders", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.bigint "renting_folder_id"
-    t.index ["renting_folder_id"], name: "index_folders_on_renting_folder_id"
-    t.index ["user_id"], name: "index_folders_on_user_id"
-  end
-
   create_table "messages", force: :cascade do |t|
     t.bigint "renting_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -116,6 +108,7 @@ ActiveRecord::Schema.define(version: 2020_05_18_175346) do
     t.string "first_name"
     t.string "last_name"
     t.string "email"
+    t.string "phone_number", default: ""
     t.index ["user_id"], name: "index_records_on_user_id"
   end
 
@@ -131,7 +124,7 @@ ActiveRecord::Schema.define(version: 2020_05_18_175346) do
     t.bigint "flat_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "status", default: "current"
+    t.string "status", default: "ongoing"
     t.date "end_date"
     t.date "start_date"
     t.bigint "renting_folder_id"
@@ -146,6 +139,7 @@ ActiveRecord::Schema.define(version: 2020_05_18_175346) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "booked", default: false
+    t.boolean "killed", default: false
     t.index ["flat_id"], name: "index_schedules_on_flat_id"
   end
 
@@ -191,8 +185,6 @@ ActiveRecord::Schema.define(version: 2020_05_18_175346) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "flats", "users"
   add_foreign_key "flows", "rentings"
-  add_foreign_key "folders", "renting_folders"
-  add_foreign_key "folders", "users"
   add_foreign_key "messages", "rentings"
   add_foreign_key "records", "users"
   add_foreign_key "renting_folders", "visits"

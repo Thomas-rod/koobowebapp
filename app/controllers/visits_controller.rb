@@ -7,7 +7,7 @@ class VisitsController < ApplicationController
   def index
     @records = Record.all.select{ |r| r.user == current_user}
     @visits = Visit.select {|v| v.user == current_user}
-    @renting_folders = RentingFolder.select { |r| r.users.first == current_user}
+    @renting_folders = RentingFolder.select { |r| r.visit.user == current_user}
     find_flat(@visits, @renting_folders)
     @markers = @flats.map do |flat| {
             lat: flat.latitude,
@@ -35,7 +35,7 @@ class VisitsController < ApplicationController
         @visit.schedule.flat.user,
         render_to_string(partial: "shared/notif", locals: { visit: @visit })
       )
-      redirect_to request.referrer, notice: 'Votre demande de visite a bien été envoyé !'
+      redirect_to visits_path, notice: 'Votre demande de visite a bien été envoyé !'
     else
       redirect_to request.referrer, notice: 'Aïe ! Il y a eu un soucis.'
     end
@@ -85,7 +85,7 @@ class VisitsController < ApplicationController
   #------------------------------------#
 
   def params_visit
-    params.require(:visit).permit(:schedule_id, :status, :people, :income, :contract, :phone, :renting)
+    params.require(:visit).permit(:schedule_id, :status, :people, :income, :contract, :phone, :renting, :message)
   end
 
   def deny_pending_visits

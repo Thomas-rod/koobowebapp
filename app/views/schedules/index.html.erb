@@ -26,7 +26,7 @@
               <div class="card-positioning">
                 <% counter = 0 %>
                 <% current_user.schedules.each do |schedule| %>
-                  <% counter += 1 %>
+
                   <div class="clickable-schedule d-none" id="scheduled<%= schedule.id %>">
                     <%= image_tag schedule.flat.photos.first, class: "image-resize-large" %>
                     <div class = "info-flat">
@@ -38,6 +38,7 @@
                         <%= render partial: 'shared/card_with_answer', locals: { request: accepted_visit.first, label_text: 'Visite'} %>
                       <% elsif pending_visit != []%>
                         <% pending_visit.each do |visit| %>
+                          <% counter += 1 %>
                           <%= render partial: "shared/card_pending", locals: { request: visit, counter: counter}  %>
                         <% end %>
                       <% else %>

@@ -12,8 +12,7 @@ class User < ApplicationRecord
   has_many :rentings, through: :flats, dependent: :destroy
   has_many :visits, dependent: :destroy
   has_many :schedules, through: :flats
-  has_many :folders, dependent: :destroy
-  has_many :renting_folders, through: :folders
+  has_many :renting_folders, through: :visits
   has_many :records, dependent: :destroy
   has_one_attached :photo
   validates :email, uniqueness: true
@@ -56,7 +55,7 @@ class User < ApplicationRecord
   private
 
   def record_creation
-    @record = Record.new(user: self, first_name: self.first_name, last_name: self.last_name, email: self.email)
+    @record = Record.new(user: self, first_name: self.first_name, last_name: self.last_name, email: self.email, phone_number: self.phone_number)
     @record.save!
   end
 

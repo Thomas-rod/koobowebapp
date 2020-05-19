@@ -36,6 +36,7 @@ require "sidekiq/web"
 
   resources :visits, only: [:index]
   resources :rentings, only: [:create, :edit, :update, :new, :index, :show]
+  resources :renting_folders, only: [:update]
   resources :flows, only: [:index, :create]
 
   #*------------------------------------*#

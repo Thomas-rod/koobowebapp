@@ -22,9 +22,7 @@ module IndexVisitHelper
     flat.schedules.each do |schedule|
       schedule.visits.each do |visit|
         unless visit.renting_folder.nil?
-          unless visit.renting_folder.users.select{|u| u == user}.empty?
-            renting_folder_tenant << visit.renting_folder
-          end
+          renting_folder_tenant << visit.renting_folder
         end
       end
     end

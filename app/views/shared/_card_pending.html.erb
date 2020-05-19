@@ -32,7 +32,7 @@
       <p><strong><%= request.visit.user.first_name %></strong> a finalisé son dossier. Prêt(e) à étudier son dossier ?</p>
       <div class="card-request-contact">
         <p class= "btn-card-request"><i class="fas fa-phone-alt"></i><%= request.visit.user.phone_number.scan(/../).join(" ")%></p>
-        <button type="button" class="btn-card btn-accept-border">Dossier</button>
+        <button type="button" class="btn-card btn-accept-border" data-toggle="modal" data-target="#exampleModalCenter<%= counter %>">Dossier</button>
       </div>
     </div>
   <% end %>
@@ -57,11 +57,98 @@
             <p class="icon-pending--bubble gray-bubble"><i class="fas fa-phone-alt icon-pending"></i><%= request.phone %></p>
             <p class="icon-pending--bubble coral-bubble"><i class="fas fa-file-signature icon-pending"></i><%= request.contract %></p>
           </div>
+          <p class="icon-pending--bubble gray-lighter-bubble"><%= request.message %></p>
+        <% else %>
+          <h6><%= request.visit.user.first_name %> vient de déposer un dossier !</h6>
+          <p>Début de la location <span class="icon-pending--bubble coral-bubble"><%= request.visit.schedule.flat.start_renting_date.strftime("%d %B %Y") %></span></p>
+          <br>
+          <p>Voici les informations transmises lors de la visite :</p>
+          <div class="icon-card-pending">
+            <p class="icon-pending--bubble gray-bubble"><i class="fas fa-user-alt icon-pending__size"></i> x <%= request.visit.people %></p>
+            <p class="icon-pending--bubble gray-bubble"><i class="fas fa-coins icon-pending"></i><%= request.visit.income.round %>€</p>
+            <p class="icon-pending--bubble gray-bubble"><i class="fas fa-phone-alt icon-pending"></i><%= request.visit.phone %></p>
+            <p class="icon-pending--bubble gray-bubble"><i class="fas fa-file-signature icon-pending"></i><%= request.visit.contract %></p>
+          </div>
+          <p class="icon-pending--bubble gray-bubble"><i><%= request.visit.message %></i></p>
+          <br>
+          <p>Voici les documents  transmis :</p>
+          <br>
+          <div class="list-document-records">
+            <% request.visit.user.records.each do |record| %>
+              <div style="width: 45%;">
+                <strong><p><%= record.first_name.capitalize %> <%= record.last_name.capitalize %></p></strong>
+                <ul class="list-document-renting-folder">
+                  <% if record.identity_card.attached? %>
+                    <li>
+                      <p>Carte d'identité</p>
+                      <a href="<%= rails_blob_path(record.identity_card) %>" target="_blank"><i class="fas fa-file-image icon-renting-folder icon-pending--bubble green-bubble"></i></a></li>
+                  <% end %>
+                  <% if record.payslips.attached? %>
+                    <li>
+                      <div class="dropdown">
+                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Bulletins de paies
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                          <% record.payslips.each_with_index do |payslip, index| %>
+                            <a class="dropdown-item" href="<%= rails_blob_path(record.payslips[index])%>" target="_blank">Bulletin <%= payslip.record.first_name.capitalize %> <%= index + 1 %></a>
+                          <% end %>
+                        </div>
+                      </div>
+                    </li>
+                  <% end %>
+                  <% if record.proof_residence.attached? %>
+                    <li>
+                      <p>Jutificatif domicile</p>
+                      <a href="<%= rails_blob_path(record.proof_residence) %>" target="_blank"><i class="fas fa-file-image icon-renting-folder icon-pending--bubble green-bubble"></i></a>
+                    </li>
+                  <% end %>
+                  <% if record.notice_assessment.attached? %>
+                    <li>
+                      <p>Avis d'impôts</p>
+                      <a href="<%= rails_blob_path(record.notice_assessment)%>" target="_blank"><i class="fas fa-file-image icon-renting-folder icon-pending--bubble green-bubble"></i></a>
+                    </li>
+                  <% end %>
+                  <% if record.rent_receipts.attached? %>
+                    <li>
+                      <div class="dropdown">
+                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Quittances
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                          <% record.rent_receipts.each_with_index do |receipt, index| %>
+                            <a class="dropdown-item " href="<%= rails_blob_path(record.rent_receipts[index])%>" target="_blank">Quittances <%= receipt.record.first_name.capitalize %> <%= index + 1 %></a>
+                          <% end %>
+                        </div>
+                      </div>
+                    </li>
+                  <% end %>
+                  <% if record.student_card.attached? %>
+                    <li>
+                      <p>Justificatif situation</p>
+                      <a href="<%= rails_blob_path(record.student_card)%>" target="_blank"><i class="fas fa-file-image icon-renting-folder icon-pending--bubble green-bubble"></i></a>
+                    </li>
+                  <% end %>
+                  <% if record.bank_identity.attached? %>
+                    <li>
+                      <p>R. d'identité bancaire</p>
+                      <a href="<%= rails_blob_path(record.bank_identity)%>" target="_blank"><i class="fas fa-file-image icon-renting-folder icon-pending--bubble green-bubble"></i></a>
+                    </li>
+                  <% end %>
+                 </ul>
+              </div>
+            <% end %>
+          </div>
         <% end %>
       </div>
       <div class="modal-footer">
-        <%= link_to "accepter", schedule_visit_path(request.schedule, request, visit: { status: "accepted"}), method: :patch, class: "btn btn-accept-full"%>
-        <%= link_to "refuser", schedule_visit_path(request.schedule, request, visit: { status: "denied"}), method: :patch, class: "btn btn-refuse-full"%>
+        <% if request.is_a?(Visit) %>
+          <%= link_to "Refuser", schedule_visit_path(request.schedule, request, visit: { status: "denied"}), method: :patch, class: "delete-link"%>
+          <%= link_to "Accepter", schedule_visit_path(request.schedule, request, visit: { status: "accepted"}), method: :patch, class: "koobo-button"%>
+        <% elsif request.is_a?(RentingFolder) %>
+          <%= link_to 'Refuser', renting_folder_path(request, status: 'denied'), method: 'patch', class:"delete-link" %>
+          <%= link_to 'Accepter', renting_folder_path(request, status: 'accepted'), method: 'patch', class:"koobo-button" %>
+        <% end %>
       </div>
     </div>
   </div>

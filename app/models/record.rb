@@ -10,6 +10,8 @@ class Record < ApplicationRecord
   has_one_attached :student_card
   has_one_attached :bank_identity
 
+  validates :first_name, :last_name, :email, :phone_number, presence: true
+
 
   validate :identity_card_validation
   validate :payslips_validation

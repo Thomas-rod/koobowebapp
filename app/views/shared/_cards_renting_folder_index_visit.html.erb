@@ -25,17 +25,30 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+          <h5 class="modal-title" id="exampleModalLongTitle">
+            <% if renting_folder.status == 'pending'%>
+              Ton dossier est en cours de traitement
+            <% elsif renting_folder.status == 'accepted'%>
+              Félicitation ! Te voilà locataire
+            <% else %>
+              Malheureusement ton dossier a été refusé
+            <% end %>
+          </h5>
         </div>
         <div class="modal-body">
-          ...
+          <% if renting_folder.status == 'pending'%>
+            <h6><strong><span class="font-coral"><%= renting_folder.visit.schedule.flat.user.first_name.capitalize %></span></strong> va bientôt prendre connaissance de ton dossier</h6>
+            <p>En attendant, voilà un lien vers un <i><strong><a class="font-coral" href="https://skribbl.io/">pictionnary en ligne</a></strong></i> pour que l'attente soit plus fun</p>
+          <% elsif renting_folder.status == 'accepted' %>
+            <h6><strong><span class="font-coral"><%= renting_folder.visit.schedule.flat.user.first_name.capitalize %></span></strong> t'a choisi pour devenir son locataire !</h6>
+            <p>Maintenant, passons à la partie administrative.</p>
+            <p>On se retrouve sur ton espace <strong><%= link_to "'Ma Location'", renting_path(renting_folder.renting), class:"font-coral"%></strong></p>
+          <% else %>
+            <h6><strong><span class="font-coral"><%= renting_folder.visit.schedule.flat.user.first_name.capitalize %></span></strong> n'a pas décidé de continuer, et sa sentence est irrévocable...</h6>
+          <% end %>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+          <%= link_to 'Fermer', "#", class:"delete-link", data: { dismiss: "modal"} %>
         </div>
       </div>
     </div>

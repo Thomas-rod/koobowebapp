@@ -9,10 +9,10 @@
   <div id="disposition-three-left-bottom">
     <div class="card-positioning">
       <div id="container-card-tenant-ongoing-flat">
-        <% helper_flat_current_tenants(@flat).each do |tenant| %>
+        <% helper_flat_current_tenants(@flat).records.each do |tenant| %>
           <div class="card-tenant_ongoing_flat">
-            <% if tenant&.photo&.attached?  %>
-              <%= image_tag tenant.photo, class: "avatar-large bordered white" %>
+            <% if tenant&.user&.photo&.attached?  %>
+              <%= image_tag tenant.user.photo, class: "avatar-large bordered white" %>
             <% else %>
               <%= image_tag ("avatar.png"), class: "avatar-large bordered white" %>
             <% end %>
@@ -21,7 +21,7 @@
         <% end %>
         <div id="container-infos-card-tenant">
           <h6>Voilà vos prochains locataires !</h6>
-          <% helper_flat_current_tenants(@flat).each do |tenant| %>
+          <% helper_flat_current_tenants(@flat).records.each do |tenant| %>
             <p><%= tenant.first_name %> - <%= tenant.phone_number.scan(/../).join(" ") %></p>
           <% end %>
         </div>
