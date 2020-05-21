@@ -15,7 +15,6 @@ User.destroy_all
 Flat.destroy_all
 Schedule.destroy_all
 Visit.destroy_all
-Folder.destroy_all
 RentingFolder.destroy_all
 Renting.destroy_all
 Flow.destroy_all
@@ -50,8 +49,14 @@ stefan.save!
 puts "#{User.count} users created"
 
 
+puts "Creating records"
+thomas_second_record = Record.create(first_name: 'Salomé', last_name: 'Marcade', phone_number: '01.90.93.93.95', email: 'salome@gmail.com')
+
+puts "#{Record.count} records created"
 
 
+puts "Creating backers"
+puts "#{Backer.count} backers created"
 
 #--------------------------------------------------------------------------------------------------------#
 #-------------------------------------------FLATS--------------------------------------------------------#
@@ -192,33 +197,6 @@ second_renting_folder_first_flat = RentingFolder.new(visit: second_visit_third_s
 first_renting_folder_second_flat = RentingFolder.new(visit: first_visit_first_schedule_second_flat, status: 'accepted')
 
 puts "#{RentingFolder.count} renting folders created"
-
-
-
-
-
-#--------------------------------------------------------------------------------------------------------#
-#-------------------------------------------FOLDERS------------------------------------------------------#
-#--------------------------------------------------------------------------------------------------------#
-puts "Creating folders"
-#*------------------------------------*#
-  # THIS FOLDER SECOND FLAT FIRST RENTING
-#*------------------------------------*#
-stefan_folder_first_flat = Folder.create!(user:stefan, renting_folder: first_renting_folder_first_flat)
-
-#*------------------------------------*#
-  # THIS FOLDER SECOND FLAT SECOND RENTING
-#*------------------------------------*#
-joker_folder_first_flat = Folder.create!(user:joker, renting_folder: second_renting_folder_first_flat)
-
-#*------------------------------------*#
-  # THIS FOLDER SECOND FLAT FIRST RENTING
-#*------------------------------------*#
-john_folder_second_flat = Folder.create!(user:john, renting_folder: first_renting_folder_second_flat)
-puts "#{Folder.count} folders created"
-
-
-
 
 #--------------------------------------------------------------------------------------------------------#
 #-------------------------------------------RENTINGS-----------------------------------------------------#

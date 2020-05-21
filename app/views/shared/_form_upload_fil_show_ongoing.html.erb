@@ -7,7 +7,7 @@
   </div>
   <div class="body-file">
     <div class="file-upload-form">
-      <%= simple_form_for flat, url: upload_document_path, method: 'post' do |f| %>
+      <%= simple_form_for flat, url: upload_document_path,html: {id: "edit_recrod_#{file}"}, method: 'post' do |f| %>
         <% if flat.send(file).attached? %>
           <%= f.input file.to_sym, as: :file, input_html: { class: 'hidden d-none' }, label: ('<i class="fas fa-check-circle"></i>').html_safe, label_html: { class: "add-file-clickable uploaded-document", id: "js-#{file}"}%>
         <% else %>
@@ -24,7 +24,7 @@
           <% end %>
         </p>
       <% else %>
-        <p><i>Le document doit être fourni lors de la signature du bail, on compte sur toi !</i></p>
+        <p><i>Le document doit être fourni lors de la signature du bail, on compte sur toi!</i></p>
       <% end %>
     </div>
   </div>

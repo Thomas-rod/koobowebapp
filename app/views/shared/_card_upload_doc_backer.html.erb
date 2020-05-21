@@ -1,0 +1,17 @@
+<div class="card-upload-doc <%= backer.send(file).attached? ? "fulfill" : "empty"%>">
+  <p><%= title %></p>
+  <%= simple_form_for backer, url: record_backer_path(record, backer), class:"form_to_upload_js", html: { id: "edit_record_#{file}#{backer.id}" },namespace: backer.id, method: 'patch' do |f| %>
+    <% if record.backer.send(file).attached? %>
+      <%= f.input file.to_sym, as: :file, input_html: { class: 'hidden d-none' }, label: ("#{image_tag('sync_files.svg')}").html_safe, label_html: { class: "add-file-clickable"}%>
+    <% else %>
+      <%= f.input file.to_sym, as: :file, input_html: { class: 'hidden d-none' }, label: ("#{image_tag('add_file2.svg')}").html_safe, label_html: { class: "add-file-clickable"}%>
+    <% end %>
+    <%= f.submit "Ajouter", class: "koobo-button hide-file submit-file-upload" %>
+  <% end %>
+  <% if backer.send(file).attached? %>
+    <%= link_to purge_document_backer_path(backer, file: file), method: 'delete', data: { confirm: "Tu veux supprimer le document ?" } do %>
+      <i class="fas fa-times delete-document"></i>
+    <% end %>
+    <p class="file-name"><i><%= record.backer.send(file).filename %></i></p>
+  <% end %>
+</div>

@@ -8,7 +8,13 @@
       <% if visit.status == 'pending' %>
         <p>Votre demande de <strong><span class="font-coral">visite</span></strong> est <br><span class="bubble price">en attente</span></p>
       <% elsif visit.status == 'accepted' %>
-        <p>Votre demande de <strong><span class="font-coral"> visite</span></strong> a été <br><span class="bubble visits-available">acceptée</span></p>
+        <p>Votre demande de <strong><span class="font-coral"> visite</span></strong> a été <br><span class="bubble visits-available">acceptée</span>
+        <% if (visit.schedule.start - Time.now) > 0%>
+          <span class="bubble price"> en cours</span>
+        <% else %>
+          <span class="bubble visits-not-available"> passé </span>
+        <% end %>
+        </p>
       <% else %>
         <p>Votre demande de <strong><span class="font-coral"> visite</span></strong> a été <br><span class="bubble visits-not-available">refusée</span></p>
       <% end %>
@@ -25,17 +31,71 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+          <h5 class="modal-title" id="exampleModalLongTitle">
+            <% if status == 'accepted' %>
+              <% if (visit.schedule.start - Time.now) < 0 %>
+                Alors ? Comment était ta visite ?
+              <% else %>
+                Ta demande de visite a été acceptée !
+              <% end %>
+            <% elsif status == 'pending' %>
+              <%= visit.schedule.flat.user.first_name.capitalize %> n'a pas encore donné suite !
+            <% else %>
+              Malheureusement, le propriétaire n'a pas donné suite à ta demande.
+            <% end %>
+          </h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
-          ...
+          <% if status == 'accepted' %>
+            <% if records_number_document_mandatory_attached(current_user.records) + records_number_document_optional_attached(current_user.records) == 7*current_user.records.count%>
+              <strong><h6>Super, ton dossier est prêt !</h6></strong>
+              <p>Document obligatoires (<%= (records_number_document_mandatory_attached(current_user.records)/(3*current_user.records.count)).round * 100 %>%) : <%= render partial: 'shared/progression', locals: {number: records_number_document_mandatory_attached(current_user.records), max_number: 3*current_user.records.count , status: 'global'}%></p>
+              <p>Document optionnels (<%= (records_number_document_optional_attached(current_user.records)/(4*current_user.records.count)).round * 100 %>%) : <%= render partial: 'shared/progression', locals: {number: records_number_document_optional_attached(current_user.records), max_number: 4*current_user.records.count , status: 'global'}%></p>
+              <% unless @backers.empty? %>
+                <p>Document garants (<%= (backers_number_document_attached(@backers)/(4*@backers.count)).round * 100 %>%) : <%= render partial: 'shared/progression', locals: {number: backers_number_document_attached(@backers), max_number: 4*@backers.count , status: 'global'}%></p>
+              <% end %>
+              <p>Tu n'as plus qu'à faire une demande et <%= visit.schedule.flat.user.first_name.capitalize %> pourra étudier ton dossier</p>
+            <% elsif records_number_document_mandatory_attached(current_user.records) == 3*current_user.records.count && backers_number_document_attached(@backers) == 4*@backers.count%>
+              <strong><p>Génial ! Tu as renseigné les documents obligatoires</p></strong>
+              <p>Pour mettre toute les chances de ton côté, on te conseil vivement de renseigner également les documents optionnels !</p>
+              <br>
+              <p>Document obligatoires (<%= (records_number_document_mandatory_attached(current_user.records)/(3*current_user.records.count))* 100 %>%) : <%= render partial: 'shared/progression', locals: {number: records_number_document_mandatory_attached(current_user.records), max_number: 3*current_user.records.count , status: 'global'} %></p>
+              <p>Document optionnels (<%= (records_number_document_optional_attached(current_user.records)/(4*current_user.records.count)).round * 100 %>%) : <%= render partial: 'shared/progression', locals: {number: records_number_document_optional_attached(current_user.records), max_number: 4*current_user.records.count , status: 'global'} %></p>
+              <% unless @backers.empty? %>
+                <p>Document garants (<%= (backers_number_document_attached(@backers)/(4*@backers.count)).round * 100 %>%) : <%= render partial: 'shared/progression', locals: {number: backers_number_document_attached(@backers), max_number: 4*@backers.count , status: 'global'}%></p>
+              <% end %>
+            <% else %>
+              <strong><p>Malheureusement ton dossier n'est pas complet.</p></strong>
+              <p>Pour continuer, il faut que tu renseignes ton dossier !</p>
+              <br>
+              <p>Document obligatoires (<%= (records_number_document_mandatory_attached(current_user.records)/(4*current_user.records.count)).round * 100 %>%) : <%= render partial: 'shared/progression', locals: {number: records_number_document_mandatory_attached(current_user.records), max_number: 3*current_user.records.count , status: 'global'}%></p>
+              <p>Document optionnels (<%= (records_number_document_optional_attached(current_user.records)/(4*current_user.records.count)).round * 100 %>%) : <%= render partial: 'shared/progression', locals: {number: records_number_document_optional_attached(current_user.records), max_number: 4*current_user.records.count , status: 'global'}%></p>
+              <% unless @backers.empty? %>
+                <p>Document garants (<%= (backers_number_document_attached(@backers)/(4*@backers.count)).round * 100 %>%) : <%= render partial: 'shared/progression', locals: {number: backers_number_document_attached(@backers), max_number: 4*@backers.count , status: 'global'}%></p>
+              <% end %>
+            <% end %>
+          <% elsif status == 'pending' %>
+            <%= visit.schedule.flat.user.first_name.capitalize %> n'a pas encore regardé. Sois patient !
+          <% else %>
+            Retente ta chance avec un autre bien ! Comme on le dit chez Koobo, 100% des locataires ont visité leur bien !
+          <% end %>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+          <% if  !(records_number_document_mandatory_attached(current_user.records) == 3*current_user.records.count && backers_number_document_attached(@backers) == 4*@backers.count) %>
+            <%= link_to 'Mon dossier',records_path, class:'koobo-button' %>
+          <% elsif (visit.renting == "" || visit.renting.nil?) && (visit.schedule.start - Time.now) > 0%>
+            <%= link_to "Déposer un dossier en avance", visit_create_renting_path(visit), method: 'patch',class:"koobo-button" %>
+          <% elsif (visit.renting == "" || visit.renting.nil?) && (visit.schedule.start - Time.now) < 0 %>
+            <%= link_to "Non", visit_no_renting_path(visit),method: 'patch', class:"delete-link" %>
+            <%= link_to "Oui", visit_create_renting_path(visit), method: 'patch',class:"koobo-button" %>
+          <% elsif visit.renting == true %>
+            <p>Ton dossier a été envoyé</p>
+          <% else %>
+            <%= link_to "J'ai changé d'avis", visit_reset_renting_path(visit), method: 'patch',class:"koobo-button" %>
+          <% end %>
         </div>
       </div>
     </div>

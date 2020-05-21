@@ -1,0 +1,236 @@
+<div class="dashboard-data-set" data-line="my-file">
+  <div class="screen-container">
+    <div class="dashboard-container full">
+      <% if user_current_renting?(current_user) %>
+        <%= render partial: 'shared/dashboard_tenant', locals: { renting: user_current_renting(current_user)} %>
+      <% else %>
+        <%= render partial: 'shared/dashboard_tenant', locals: { renting: "empty" }%>
+      <% end %>
+    </div>
+    <div class="nav-container full">
+      <%= render partial: 'shared/navbar_dashboard', locals: { notif_counter: @counter} %>
+      <h3>Mon dossier</h3>
+    </div>
+    <div class="content-container full">
+      <div class="record-show-grid">
+        <div class="record-show-grid--documents">
+          <div class="card-positioning">
+            <h5><%= current_user.first_name.nil? ? "" : current_user.first_name.capitalize %>, voici l'endroit où tu vas pouvoir préparer ton dossier de location</h5>
+            <nav>
+              <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                <% @records.each do |record| %>
+                  <% if record == @records.first %>
+                    <a class="nav-item nav-link active" id="nav-<%= record.first_name.capitalize %>-tab" data-toggle="tab" href="#nav-<%= record.first_name.capitalize %>" role="tab" aria-controls="nav-<%= record.first_name.capitalize %>" aria-selected="true"><%= record.first_name.capitalize %></a>
+                  <% else %>
+                    <div class="nav-item nav-link" id="nav-<%= record.first_name.capitalize %>-tab" data-toggle="tab" href="#nav-<%= record.first_name.capitalize %>" role="tab" aria-controls="nav-<%= record.first_name.capitalize %>" style="cursor: pointer;" aria-selected="true">
+                      <%= record.first_name.capitalize %>
+                      <%= link_to record_path(record), method: 'delete', data: { confirm: "Es-tu certain de vouloir supprimer #{record.first_name}" } do %>
+                        <i class="fas fa-times"></i>
+                      <% end %>
+                    </div>
+                  <% end %>
+                <% end %>
+                <button type="button" class="nav-item nav-link" data-toggle="modal" data-target="#addRecordModal">
+                  <i class="fas fa-plus-circle"></i>
+                </button>
+                <div class="modal fade" id="addRecordModal" tabindex="-1" role="dialog" aria-labelledby="addRecordModalLabel" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Une moitiée ? Un ami ? Un colocataire ?</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <%= simple_form_for @record do |f| %>
+                          <%= f.input :first_name, label: "Prénom", placeholder: "John...", required: true %>
+                          <%= f.input :last_name, label: "Nom", placeholder: "Doe...", required: true %>
+                          <%= f.input :email, label: "Email", placeholder: "john.doe@gmail.com...", required: true %>
+                          <%= f.input :phone_number, label: "Numéro de téléphone", placeholder: "06 07 08 09 10", required: true %>
+                          <button type="button" class="btn delete-link" data-dismiss="modal">Fermer</button>
+                          <%= f.button :submit, "Ajouter",class:"koobo-button" %>
+                        <% end %>
+                      </div>
+                      <div class="modal-footer">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </nav>
+            <div class="tab-content" id="nav-tabContent">
+              <% counter_record_accordion = 0 %>
+              <% @records.each do |record| %>
+                <div class="tab-pane fade <%= "show active" if record == @records.first%>" id="nav-<%= record.first_name.capitalize %>" role="tabpanel" aria-labelledby="nav-<%= record.first_name.capitalize %>-tab">
+                  <h6 class="title-record-documents">Document obligatoires</h6>
+                  <div class="record-documents">
+                    <%= render partial: 'shared/card_upload_doc', locals: { record: record, file: 'identity_card', title: "Carte d'identité", multiple: false} %>
+                    <%= render partial: 'shared/card_upload_doc', locals: { record: record, file: 'payslips', title: "Bulletins de salaires", multiple: true} %>
+                    <%= render partial: 'shared/card_upload_doc', locals: { record: record, file: 'proof_residence', title: "Justificatif de domicile", multiple: false} %>
+                  </div>
+                  <h6 class="title-record-documents">Document optionnels</h6>
+                  <div class="record-documents">
+                    <%= render partial: 'shared/card_upload_doc', locals: { record: record, file: 'notice_assessment', title: "Avis d'imposition", multiple: false} %>
+                    <%= render partial: 'shared/card_upload_doc', locals: { record: record, file: 'rent_receipts', title: "Quittances de loyer", multiple: true} %>
+                    <%= render partial: 'shared/card_upload_doc', locals: { record: record, file: 'student_card', title: "Justificatif professionnelle", multiple: false} %>
+                    <%= render partial: 'shared/card_upload_doc', locals: { record: record, file: 'bank_identity', title: "Relevé d'identité bancaire", multiple: false} %>
+                  </div>
+                  <% if record.backer %>
+                    <div class="backer-present">
+                      <h6 class="title-record-documents">Documents Garants
+                        <%= link_to backer_path(record.backer), method: 'delete', data: { confirm: "Tu veux supprimer ton garant ?" } do %>
+                          <i class="fas fa-times delete-document" style="margin-right: 10px !important"></i>
+                        <% end %>
+                      </h6>
+                      <div class="backer-present--informations">
+
+                      </div>
+                      <div class="record-documents">
+                        <%= render partial: 'shared/card_upload_doc_backer', locals: { record: record, file: 'identity_card', title: "Justificatif d'identité", backer: record.backer} %>
+                        <%= render partial: 'shared/card_upload_doc_backer', locals: { record: record, file: 'proof_residence', title: "Justificatif de domicile", backer: record.backer} %>
+                        <%= render partial: 'shared/card_upload_doc_backer', locals: { record: record, file: 'proof_work', title: "Justificatif professionnelle", backer: record.backer} %>
+                        <%= render partial: 'shared/card_upload_doc_backer', locals: { record: record, file: 'proof_revenue', title: "Justificatif de revenue", backer: record.backer} %>
+                      </div>
+                    </div>
+                  <% else %>
+                    <div class="add-backer">
+                      <button type="button" class="koobo-button" data-toggle="modal" data-target="#addBackerModal">
+                        Ajouter un garant <i class="fas fa-plus-circle"></i>
+                      </button>
+                      <div class="modal fade" id="addBackerModal" tabindex="-1" role="dialog" aria-labelledby="addBackerModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLabel">Tu souhaites ajouter un garant ?</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                              <%= simple_form_for @backer, url: record_backers_path(record) do |f| %>
+                                <%= f.input :first_name, label: "Prénom", placeholder: "John...", required: true %>
+                                <%= f.input :last_name, label: "Nom", placeholder: "Doe...", required: true %>
+                                <%= f.input :email, label: "Email", placeholder: "john.doe@gmail.com...", required: true %>
+                                <button type="button" class="btn delete-link" data-dismiss="modal">Fermer</button>
+                                <%= f.button :submit, "Ajouter",class:"koobo-button" %>
+                              <% end %>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  <% end %>
+                </div>
+                <% counter_record_accordion += 1 %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <div class="record-show-grid--stats">
+            <div class="card-positioning">
+              <div class="record-show-grid--stats--header">
+                <% if current_user.photo.attached? %>
+                  <%= image_tag current_user.photo, class: "avatar-large bordered white" %>
+                <% else %>
+                  <%= image_tag ("avatar.png"), class: "avatar-large bordered"%>
+                <% end %>
+                <p><%= current_user.first_name.capitalize %> <%= current_user.last_name.capitalize %></p>
+                <%= render partial: 'shared/progression', locals: { number: (records_number_document_mandatory_attached(@records) + records_number_document_optional_attached(@records) + backers_number_document_attached(@backers)), max_number: (7*@records.count)+(4*@backers.count)} %>
+              </div>
+              <div class="record-show-grid--stats--body">
+                <h6>Documents obligatoires</h6>
+                <%= render partial: 'shared/progression', locals: { number: records_number_document_mandatory_attached(@records), max_number: 3*@records.count} %>
+                <ul>
+                  <li>
+                    <p>
+                      <%= render partial: 'shared/icon_status_records', locals: { file: 'identity_card', record: @records, multiple: false} %>
+                      Carte d'identité
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      <%= render partial: 'shared/icon_status_records', locals: { file: 'payslips', record: @records, multiple: true} %>
+                      Bulletins de salaire
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      <%= render partial: 'shared/icon_status_records', locals: { file: 'proof_residence', record: @records, multiple: false} %>
+                      Justificatif de domicile
+                    </p>
+                  </li>
+                </ul>
+                <h6>Documents optionnels</h6>
+                <%= render partial: 'shared/progression', locals: { number: records_number_document_optional_attached(@records), max_number: 4*@records.count} %>
+                <ul>
+                  <li>
+                    <p>
+                      <%= render partial: 'shared/icon_status_records', locals: { file: 'notice_assessment', record: @records, multiple: false} %>
+                      Avis d'imposition
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      <%= render partial: 'shared/icon_status_records', locals: { file: 'rent_receipts', record: @records, multiple: true} %>
+                      Quittances de loyer
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      <%= render partial: 'shared/icon_status_records', locals: { file: 'student_card', record: @records, multiple: false} %>
+                      Justificatif d'étude
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      <%= render partial: 'shared/icon_status_records', locals: { file: 'bank_identity', record: @records, multiple: false} %>
+                      Relevé d'identité bancaire
+                    </p>
+                  </li>
+                </ul>
+                <% if !@backers.empty? %>
+                  <h6>Documents garants</h6>
+                  <%= render partial: 'shared/progression', locals: { number: backers_number_document_attached(@backers), max_number: 4*@backers.count} %>
+                  <ul>
+                    <li>
+                      <p>
+                        <%= render partial: 'shared/icon_status_backers', locals: { file: 'identity_card', backers: @backers} %>
+                        Justificatif d'identité
+                      </p>
+                    </li>
+                    <li>
+                      <p>
+                        <%= render partial: 'shared/icon_status_backers', locals: { file: 'proof_residence', backers: @backers} %>
+                        Justificatif de domicile
+                      </p>
+                    </li>
+                    <li>
+                      <p>
+                        <%= render partial: 'shared/icon_status_backers', locals: { file: 'proof_work', backers: @backers} %>
+                        Justificatif professionnelle
+                      </p>
+                    </li>
+                    <li>
+                      <p>
+                        <%= render partial: 'shared/icon_status_backers', locals: { file: 'proof_revenue', backers: @backers} %>
+                        Justificatif de revenue
+                      </p>
+                    </li>
+                  </ul>
+                <% else %>
+                  <% if ((records_number_document_mandatory_attached(@records) + records_number_document_optional_attached(@records)) / 7) == 1 %>
+                    <h6 id="record-show-grid--stats-footer">Super ! Ton profil est maintenant complet </h6>
+                  <% elsif ((records_number_document_mandatory_attached(@records) + records_number_document_optional_attached(@records)) / 7) > 0.50 %>
+                    <h6 id="record-show-grid--stats-footer">Plus qu'un petit effort et ton profil sera complété</h6>
+                  <% else %>
+                    <h6 id="record-show-grid--stats-footer">Pour mettre toutes tes chances de ton côté, renseigne ton profil !</h6>
+                  <% end %>
+                <% end %>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -25,13 +25,13 @@
                     <% @flats_rented << flat if @renting %>
                     <% if @renting && rent_payed?(flat) %>
                       <div class="card-small-one-line">
-                        <p><%= @renting.renting_folder.users.first.first_name %>  a bien payé son loyer de month</p>
+                        <p><%= @renting.renting_folder.visit.user.first_name %>  a bien payé son loyer de month</p>
                         <%= link_to "Remercier", "#", class: "koobo-button" %>
                       </div>
                     <% end %>
                     <% if @renting && !rent_payed?(flat) %>
                       <div class="card-small-one-line">
-                        <p><%= @renting.renting_folder.users.first.first_name %> n'a pas encore payé son loyer de month</p>
+                        <p><%= @renting.renting_folder.visit.user.first_name %> n'a pas encore payé son loyer de month</p>
                         <%= link_to "Relancer", "#", class: "btn-card border btn-pending-full" %>
                       </div>
                     <% end %>

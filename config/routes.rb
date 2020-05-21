@@ -28,10 +28,15 @@ require "sidekiq/web"
     resources :visits, only: :update
   end
 
-  resources :records, only: [:update, :show]
+  resources :records, only: [:create, :update, :destroy]
+  resources :records, only: [:index] do
+    resources :backers, only: [:create, :update]
+  end
+  resources :backers, only: [:destroy]
 
   resources :visits, only: [:index]
   resources :rentings, only: [:create, :edit, :update, :new, :index, :show]
+  resources :renting_folders, only: [:update]
   resources :flows, only: [:index, :create]
 
   #*------------------------------------*#
@@ -50,8 +55,18 @@ require "sidekiq/web"
   #*------------------------------------*#
   patch "users/:id", to: "application#update_user_renter", as: :update_user_renter
 
+
+  #*------------------------------------*#
+          #ROUTES USED FOR VISIT MODIFICATIONS
+  #*------------------------------------*#
+  patch "visits/:id/false", to: "visits#update_renting_visit_false", as: :visit_no_renting
+  patch "visits/:id/true", to: "visits#update_renting_visit_true", as: :visit_create_renting
+  patch "visits/:id", to: "visits#update_renting_visit_default", as: :visit_reset_renting
   #*------------------------------------*#
           #ROUTES USED RECORD MODIFICATIONS
   #*------------------------------------*#
   delete "record/:id/purge_document_record", to: "records#purge_document_record", as: :purge_document_record
+
+
+  delete "backers/:backer_id/purge_document_backer", to: "backers#purge_document_backer", as: :purge_document_backer
 end

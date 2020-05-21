@@ -27,7 +27,7 @@
                 </div>
                 <h8><%= flat.monthly_price.round  %>€/mois</h8>
                 <% if tenant?(flat) %>
-                  <% if helper_flat_current_tenants(flat).first&.photo&.attached?  %>
+                  <% if helper_flat_current_tenants(flat)&.photo&.attached?  %>
                     <%= image_tag helper_flat_current_tenants(flat).first.photo, class: "avatar-middle bordered avatar-card-large" %>
                   <% else %>
                     <%= image_tag ("avatar.png"), class: 'avatar-middle bordered avatar-card-large' %>

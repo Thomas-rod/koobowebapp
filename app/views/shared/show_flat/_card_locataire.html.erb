@@ -1,15 +1,15 @@
-<% current_tenants = helper_flat_current_tenants(@flat) %>
+<% current_tenants = helper_flat_current_tenants(@flat).records %>
 <div class="card-locataire">
   <% current_tenants.each do |tenant| %>
-    <% if tenant.photo&.attached?  %>
-      <%= image_tag tenant.photo, class: "avatar-large" %>
+    <% if tenant.user&.photo&.attached?  %>
+      <%= image_tag tenant.user.photo, class: "avatar-large bordered white" %>
     <% else %>
-      <%= image_tag ("avatar.png"), class: "avatar-large" %>
+      <%= image_tag ("avatar.png"), class: "avatar-large bordered white" %>
     <% end %>
   <% end %>
   <div class="card-name-locataire">
     <h4><%= current_tenants.first.first_name %> <%= current_tenants.first.last_name %></h4>
-    <p><i class="fas fa-phone-alt"></i><%= current_tenants.first.phone_number %></p>
+    <p><i class="fas fa-phone-alt"></i><%= current_tenants.first.email %></p>
     <p>Locataire depuis <%= ((Date.today - @flat.rentings.select{|r| r.status == 'current'}.last.start_date)).to_f.round %> jours</p>
   </div>
   <div class="card-icon-uptodate-payments">

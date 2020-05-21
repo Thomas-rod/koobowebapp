@@ -1,181 +1,139 @@
-/*------------------------------------*\
-  #ACCORDION CSS ON BOOTSTRAP DROPDOWN
-\*------------------------------------*/
+// /*------------------------------------*\
+//   #ACCORDION CSS ON BOOTSTRAP DROPDOWN
+// \*------------------------------------*/
 
-#collapseThree {
-  .card-body {
-    padding: 0;
-  }
-}
+// #collapseThree {
+//   .card-body {
+//     padding: 0;
+//   }
+// }
 
-/*------------------------------------*\
-  #INPUT FILE
-\*------------------------------------*/
-
-
-.container-input-files-accordion {
-  margin: 2.5%;
-  height:95%;
-  align-items:center;
-}
-
-.input-files-accordion {
-  height:100%;
-  width:100%;
-  display:flex;
-  justify-content:space-around;
-  align-items:center;
-  flex-grow:1;
-}
+// /*------------------------------------*\
+//   #INPUT FILE
+// \*------------------------------------*/
 
 
-.body-file {
-  border-radius: $border-radius;
-  display:grid;
-  grid-gap: 20px;
-  grid-template-columns: 35% 50%;
-  height:80%;
-  align-items:center;
-  padding-left:15px;
-}
+// .container-input-files-accordion {
+//   margin: 7% 2.5%;
+//   height:95%;
+//   align-items:center;
+// }
 
-.file-delete-form {
-  #file-name {
-    font-size: 0.8rem;
-  }
-}
-
-
-.file-upload-form {
-  .form-group {
-    display:flex;
-    justify-content:space-around;
-    align-items:center;
-    margin-bottom: 0rem;
-  }
-}
-
-/*------------------------------------*\
-  #ICON TO UPLOAD A DOC
-\*------------------------------------*/
-
-.add-file-clickable {
-  width:70px;
-  height:70px;
-  border-radius:$border-radius;
-  background-color: rgba($blue, 0.02);
-  box-shadow: 0 1px 2px rgba($blue, 0.3);
-  text-align:center;
-  font-weight:bold;
-  display:flex;
-  flex-direction:column;
-  justify-content:space-around;
-  align-items:center;
-  cursor: pointer !important;
-  & .fa-cloud-download-alt {
-    font-size:2.5em;
-    margin:0px auto;
-    color:rgba($blue, 0.8);
-  }
-  & label {
-    margin:0px;
-    height:100%;
-    width:100%;
-  }
-}
-
-.uploaded-document {
-  color:$green;
-  font-size:2.5em;
-}
+// .input-files-accordion {
+//   height:100%;
+//   width:100%;
+//   display:flex;
+//   justify-content:space-around;
+//   align-items:center;
+//   flex-grow:1;
+// }
 
 
-/*------------------------------------*\
-  #OTHER DOCUMENTS
-\*------------------------------------*/
+// .body-file {
+//   border-radius: $border-radius;
+//   display:grid;
+//   grid-gap: 20px;
+//   grid-template-columns: 35% 55%;
+//   height:80%;
+//   align-items:center;
+//   padding-left:15px;
+// }
 
-#pills-container {
-  height:85%;
-}
+// .file-delete-form {
+//   #file-name {
+//     font-size: 0.8rem;
+//   }
+// }
 
-#pills-header {
-  border-right: 1px solid rgba(0, 0, 0, 0.125);
-  padding-right: 0px;
-  height:100%;
-}
 
-.hide-file {
-  opacity: 0;
-}
+// .file-upload-form {
+//   .form-group {
+//     display:flex;
+//     justify-content:space-around;
+//     align-items:center;
+//     margin-bottom: 0rem;
+//   }
+// }
 
-/*------------------------------------*\
-  #OVERWRITTING BOOTSTRAP
-\*------------------------------------*/
+// /*------------------------------------*\
+//   #OTHER DOCUMENTS
+// \*------------------------------------*/
 
-.card-header {
-  display :flex;
-  justify-content: space-between;
-  align-items:center;
-}
+// #pills-container {
+//   height:85%;
+// }
 
-.accordion {
-  max-height:100%;
-  display:flex;
-  flex-direction: column;
-  justify-content:center;
-}
+// #pills-header {
+//   border-right: 1px solid rgba(0, 0, 0, 0.125);
+//   padding-right: 0px;
+//   height:100%;
+// }
 
-.card-body {
-  width: 100%;
-  height:100%;
-  padding: 0px;
-}
+// .hide-file {
+//   display:none;
+// }
 
-.tab-content, .tab-pane {
-  overflow:auto;
-}
+// /*------------------------------------*\
+//   #OVERWRITTING BOOTSTRAP
+// \*------------------------------------*/
 
-.tab-pane {
-  form {
-    width:100%;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-  }
-}
+// .card-header {
+//   display :flex;
+//   justify-content: space-between;
+//   align-items:center;
+// }
 
-.nav-pills {
-  height:84%;
-  width:100%;
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
-  text-align:center;
-  a {
-    align-content:center;
-  }
-}
+// #accordion {
+//   max-height:100%;
+//   display:flex;
+//   flex-direction: column;
+//   justify-content:center;
+// }
 
-.nav-link {
-  height:33.33%;
-  padding: 1.2rem 1rem;
-  &:hover {
-    color:inherit;
-    background-color:inherit;
-    opacity:1
-  }
-}
+// .card-body {
+//   width: 100%;
+//   height:100%;
+//   padding: 0px;
+// }
 
-.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-  background-color: rgba($blue, 0.2);
-  color:$blue;
-}
+// .tab-content, .tab-pane {
+//   overflow:auto;
+// }
 
-#pills-container {
-  .col-7, .col-5 {
-    padding-right: 0px;
-    padding-left: 0px;
-  }
-  margin-right: 0px;
-  margin-left: 0px;
-}
+
+
+// .nav-pills {
+//   height:84%;
+//   width:100%;
+//   display:flex;
+//   flex-direction:column;
+//   justify-content:space-between;
+//   text-align:center;
+//   a {
+//     align-content:center;
+//   }
+// }
+
+// .nav-link {
+//   height:33.33%;
+//   padding: 1.2rem 1rem;
+//   &:hover {
+//     color:inherit;
+//     background-color:inherit;
+//     opacity:1
+//   }
+// }
+
+// .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+//   background-color: rgba($blue, 0.2);
+//   color:$blue;
+// }
+
+// #pills-container {
+//   .col-7, .col-5 {
+//     padding-right: 0px;
+//     padding-left: 0px;
+//   }
+//   margin-right: 0px;
+//   margin-left: 0px;
+// }

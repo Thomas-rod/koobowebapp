@@ -1,0 +1,17 @@
+<% unless multiple %>
+  <% @records.each do |record| %>
+    <% if record.send(file).attached? %>
+      <i class="fas fa-check-circle font-green"></i>
+    <% else %>
+      <i class="fas fa-times"></i>
+    <% end %>
+  <% end %>
+<% else %>
+  <% @records.each do |record| %>
+    <% if record.send(file).attached? && record.send(file).count == 3 %>
+      <i class="fas fa-check-circle font-green"></i>
+    <% else %>
+      <i class="fas fa-times"></i>
+    <% end %>
+  <% end %>
+<% end %>

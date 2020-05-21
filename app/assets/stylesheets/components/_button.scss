@@ -15,6 +15,9 @@
     background-color: $coral;
     color:white;
   }
+  &:focus {
+      outline: -webkit-focus-ring-color auto 0px;
+    }
 }
 
 .button-sign-home {
@@ -173,7 +176,5 @@
     text-shadow: none;
     cursor: copy;
 }
-
-
 
 

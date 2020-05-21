@@ -41,7 +41,7 @@
       </div>
     <% else %>
       <div class="card-request-infos">
-        <p>Tu n'as pas donné suite à la demande de <strong><%= request.users.first.first_name %></strong> pour sa demande de visite du <strong><%= request.visit.schedule.start.strftime("%d/%m") %></strong></p>
+        <p>Tu n'as pas donné suite au dossier de <strong><%= request.visit.user.first_name %></strong></p>
       </div>
     <% end %>
   <% end %>

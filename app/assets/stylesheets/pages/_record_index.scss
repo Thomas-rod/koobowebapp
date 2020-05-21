@@ -1,0 +1,191 @@
+/*------------------------------------*\
+  #CARD-USED-IN-HOME-PAGE
+\*------------------------------------*/
+
+.record-show-grid {
+  height:95%;
+  max-width:100%;
+  padding: 15px 20px;
+  display:grid;
+  grid-gap: 20px;
+  grid-template-columns: minmax(74%, 3fr) minmax(25%, 1fr);
+  grid-template-rows: minmax(80vh, 1fr);
+  grid-template-areas:
+    "one two"
+    "one two"
+  ;
+  .record-show-grid--documents {
+    grid-area: one;
+  }
+  .record-show-grid--stats {
+    grid-area: two;
+  }
+}
+
+/*------------------------------------*\
+            #SPECIFIC CSS
+\*------------------------------------*/
+.record-show-grid {
+}
+    .record-show-grid--documents {
+      .card-positioning > h5:first-child {
+        padding-bottom: 0.2rem;
+      }
+      .fa-plus-circle {
+        font-size: 1.3rem;
+        color: white;
+      }
+    }
+        .record-documents {
+          display:flex;
+          justify-content:space-between;
+          align-items:center;
+          padding-bottom: 1rem;
+          border-bottom: 1px solid rgba($gray, 0.1);
+          &:last-child {
+            border-bottom: none;
+          }
+        }
+
+            .title-record-documents {
+              margin:1rem 0px;
+              text-align:start;
+              font-size: 1rem;
+
+            }
+      .record-show-grid--documents__disposition {
+        display:flex;
+        justify-content: space-between;
+        align-items:center;
+        height:93%;
+        .nav {
+          width:30%;
+        }
+        .tab-content {
+          width:70%;
+          height:100%;
+          border: 1px solid rgba($blue-light, 0.1);
+          border-radius:5px;
+        }
+      }
+
+      .add-backer {
+        padding-top: 0.5rem;
+        text-align:start;
+      }
+
+
+    .record-show-grid--stats {
+      position:relative;
+    }
+
+        .record-show-grid--stats--header {
+          margin: 5% auto;
+          p {
+            margin-bottom: 0.5rem;
+          }
+        }
+        .record-show-grid--stats--body {
+          text-align:start;
+          height:80%;
+          width:100%;
+          margin-top:1rem;
+          ul {
+            margin-bottom: 1rem;
+          }
+        }
+        #record-show-grid--stats-footer {
+          margin-top:2rem;
+          text-align:center;
+        }
+
+/*------------------------------------*\
+          #UPLOAD DOCS
+\*------------------------------------*/
+.tab-pane {
+  form {
+    width:100%;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+  }
+}
+
+.record-documents {
+  .form-group {
+    width: 60%;
+    margin: 0 auto;
+
+  }
+}
+
+.document-button {
+  padding: 3em 4em;
+  border-radius: 5px;
+  border: 1px solid rgba($blue-light, 0.1);
+  background-color: rgba($blue-light, 0.2);
+  color: rgba($blue, 0.9);
+}
+
+.add-file-clickable {
+  height:80px;
+  border-radius:$border-radius;
+  background-color: rgba($blue, 0.02);
+  box-shadow: 0 1px 2px rgba($blue, 0.3);
+  text-align:center;
+  font-weight:bold;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-around;
+  align-items:center;
+  cursor: pointer !important;
+  & .fa-cloud-download-alt {
+    font-size:2.5em;
+    margin:0px auto;
+    color:rgba($blue, 0.8);
+  }
+  & label {
+    margin:0px;
+    height:100%;
+    width:100%;
+  }
+  img, svg {
+    border-radius:$border-radius;
+    width:70px;
+    height:70px;
+  }
+}
+
+.uploaded-document {
+  color:$green;
+  font-size:2.5em;
+}
+
+.hide-file {
+  display:none;
+}
+
+.file-delete-form {
+  .file-name {
+    width:inherit;
+    font-size: 0.8rem;
+  }
+}
+
+/*------------------------------------*\
+          #PROGRESSBAR
+\*------------------------------------*/
+
+.progress-bar#global {
+  background-color: $blue;
+}
+
+.progress-bar#global_complete {
+  color: white;
+  background-color: $green !important;
+}
+
+.progress-bar:not(#global) {
+  background-color: $coral-light;
+}
+

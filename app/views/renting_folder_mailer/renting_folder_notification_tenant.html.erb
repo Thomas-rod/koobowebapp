@@ -1,0 +1,13 @@
+<h3>Hello <%= @tenant.first_name.nil? ? "" : @tenant.first_name.capitalize%> !</h3>
+<p><%= @renter.first_name.nil? ? "" : @renter.first_name.capitalize %> a donné une réponse à ta demande de location</p>
+<% if @renting_folder.status == 'accepted' %>
+  <p>Félicitations ! Tu vas devenir locataire</p>
+  <p>Maintenant, passons à la partie administrative.</p>
+
+  <p>On se retrouve sur <a href="https://www.koobo.co/renting/<%= @renting_folder.renting.id %>">Koobo</a></p>
+  <p>A tout de suite !</p>
+<% else %>
+  <p>Malheureusement il n'a pas donné suite à ta demande.</p>
+  <p>La prochaine sera la bonne !</p>
+
+<% end %>

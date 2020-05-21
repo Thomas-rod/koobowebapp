@@ -1,4 +1,4 @@
-const makeButtonLoaderAppear = () => {
+const makeButtonLoaderAppearRenter = () => {
 
   const form_technical_diagnostic = document.getElementById("js-technical_diagnostic")
   const form_information_leaflet = document.getElementById("js-information_leaflet")
@@ -22,7 +22,7 @@ const makeButtonLoaderAppear = () => {
       form_information_leaflet.addEventListener('click', () => {
         document.getElementById("submit-file-upload-information_leaflet").classList.toggle('hide-file')
       })
-      button_loader_technical.addEventListener('click', () => {
+      button_loader_leaflet.addEventListener('click', () => {
         document.getElementById("submit-file-upload-information_leaflet").classList.toggle('hide-file')
       })
     }
@@ -31,7 +31,7 @@ const makeButtonLoaderAppear = () => {
       form_co_owner_document.addEventListener('click', () => {
         document.getElementById("submit-file-upload-co_owner_document").classList.toggle('hide-file')
       })
-      button_loader_technical.addEventListener('click', () => {
+      button_loader_owner.addEventListener('click', () => {
         document.getElementById("submit-file-upload-co_owner_document").classList.toggle('hide-file')
       })
     }
@@ -40,4 +40,4 @@ const makeButtonLoaderAppear = () => {
 
 
 
-export { makeButtonLoaderAppear };
+export { makeButtonLoaderAppearRenter };

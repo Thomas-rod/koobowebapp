@@ -348,6 +348,27 @@
     color:$blue;
   }
 }
+
+.list-document-records {
+  display:flex;
+  justify-content:space-between;
+}
+
+.list-document-renting-folder {
+  li {
+    width:100%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding-bottom: 1rem;
+    &:first-child {
+      padding-top: 1rem;
+    }
+    .fa-home {
+      margin-top:0px !important;
+    }
+  }
+}
 .modal-body {
   text-align:start;
 }
@@ -374,6 +395,11 @@
           color: rgba($green, 0.9);
         }
         .gray-bubble {
+          border: 1px dashed rgba($blue-light, 0.1);
+          background-color: rgba($gray, 0.1);
+          color: $blue;
+        }
+        .gray-lighter-bubble {
           border: 1px dashed rgba($blue-light, 0.1);
           background-color: rgba($light-gray, 0.9);
           color: $blue;
@@ -520,8 +546,41 @@
         text-align:center;
         margin-bottom:10px;
       }
-
     }
+
+/*------------------------------------*\
+  #CARD SPECIFIC FOR UPLOAD DOCUMENT
+\*------------------------------------*/
+
+.card-upload-doc {
+  text-align:center;
+  padding:1%;
+  border-radius:5px;
+  width:22.5%;
+  justify-content:center;
+  height: 170px;
+  position:relative;
+  &.empty {
+    background-color: rgba($light-gray, 0.4);
+    border: 1.5px dashed rgba($light-gray, 0.7);
+  }
+  &.fulfill{
+    background-color: rgba($green, 0.1);
+    border: 1.5px dashed rgba($green, 0.4);
+  }
+  p:first-child {
+    padding: 0.1rem 0px 0.4rem 0px;
+    font-size: 0.75rem;
+  }
+  p:last-child {
+    font-size: 0.8rem;
+    white-space: nowrap;
+    overflow: hidden;
+    width:100%;
+    text-overflow:ellipsis;
+    padding-bottom: 0.2rem;
+  }
+}
 
 // DON'T KNOW WHERE IT'S USED
 
@@ -591,7 +650,7 @@
           "three three three";
   justify-items:center;
   align-items:center;
-  .avatar-extra-large {
+  .avatar-large {
     grid-area: one;
     justify-items:center;
   }
