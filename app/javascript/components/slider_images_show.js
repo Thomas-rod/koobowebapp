@@ -9,6 +9,12 @@ const sliderBannerShow = () => {
     const buttonToggleThree = document.getElementById('mockup-three-set');
 
     // THIS CONST IS TO TARGET THE ACTIVE-IMAGE
+    console.log(imagesToggle);
+    console.log(buttonsToggle);
+    console.log(buttonToggleOne);
+    console.log(buttonToggleTwo);
+    console.log(buttonToggleThree);
+
 
 
 
@@ -31,7 +37,7 @@ const sliderBannerShow = () => {
       else {
 
         buttonsToggle[1].classList.remove('image-active');
-        // buttonsToggle[position(actualToggle)]
+        buttonsToggle[position(actualToggle)]
         buttonToggleOne.classList.add('image-active')
         imagesToggle[1].classList.add('d-none')
         imagesToggle[0].classList.remove('d-none')

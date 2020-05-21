@@ -6,7 +6,7 @@
   width:100%;
 }
 #navbar-home, #banner-home, #valueprop-home, .details-valueprop-home-left, .details-valueprop-home-right, #save-money-koobo, #tenant-present, #footer-home {
-  padding: 0px 100px;
+  padding: 0px 5%;
   width:100%;
 }
 
@@ -72,6 +72,10 @@
       }
     }
 
+    .bullet-grey {
+      // box-shadow:
+    }
+
 /*------------------------------------*\
   #BANNER CSS
 \*------------------------------------*/
@@ -83,13 +87,17 @@
   width:100%;
   display:grid;
   grid-gap: 0 5%;
-  grid-template-columns: 55% 45%;
+  grid-template-columns: 55% 40%;
   grid-template-rows: 100%;
+  grid-template-areas:
+      "one two"
+  ;
   background: rgb(246,182,171);
   background: linear-gradient(280deg, rgba(246,182,171,1) 50%, rgba(32,30,80,1) 50%);
 }
 
     #banner-home--left {
+      grid-area: one;
       margin: auto 0;
       h1 {
         font-size: 50px;
@@ -99,6 +107,7 @@
         margin-bottom: 100px;
       }
       a {
+        text-align: center;
         margin: 0 auto;
         font-size: 20px;
       }
@@ -109,6 +118,7 @@
 
     }
     #banner-home--right {
+      grid-area:two;
       margin: auto 0;
       list-direction:column;
       ul {
@@ -128,7 +138,7 @@
       }
     }
         .mockup-images {
-          width:90%;
+          width:100%;
           border-radius: 15px;
           box-shadow: $box-shadow;
         }
@@ -182,7 +192,6 @@
             padding: 1em;
             max-width:280px;
             max-height:210px;
-
           }
         }
 
@@ -216,7 +225,7 @@
 
               img.image-home-value-prop-details {
                 max-width: 550px;
-
+                margin: auto 0;
               }
 
         .details-valueprop-home-left--body {
@@ -313,7 +322,7 @@
     }
 
         #save-money-koobo--header {
-          padding-bottom: 2em;
+          // padding-bottom: 2em;
           height:20%;
         }
 
@@ -334,7 +343,7 @@
           }
 
         #save-money-koobo--footer {
-          height:15%;
+          height:30%;
 
         }
 
@@ -368,8 +377,12 @@
 }
 
     #list-footer {
-      display:flex;
-      align-items:flex-start;
+      display:grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-areas:
+          "one two three four"
+      ;
+      // align-items:flex-start;
       padding-bottom: 1em;
       li {
         padding: 0.4em;
@@ -382,8 +395,6 @@
       }
     }
         .list-footer--column {
-          width:25%;
-
           &:last-child {
             text-align:center;
             h5 {
@@ -445,28 +456,556 @@
 
 
 /* Extra small devices (phones, 600px and down) */
-@media only screen and (max-width: 600px) {
-  #value-prop-home--cards {
-    grid-template-colums:1fr;
+@media only screen and (max-width: 400px) {
+  #navbar-home {
+    margin-top: 1em;
   }
+
+      #navbar-home--left {
+        width:40%;
+        display:block;
+        h2 {
+          font-size:35px;
+        }
+        a:not(#koobo-logo) {
+          display:none;
+        }
+      }
+      #navbar-home--right {
+        width:60%;
+        .button-no-style {
+          display:none;
+        }
+        a:last-child {
+          font-size: 15px;
+        }
+        .button-sign-home {
+          padding: 0.5rem 1rem;
+        }
+      }
+
+  // BANNER CHANGES
+  #banner-home {
+    height:90vh;
+    padding-top: 20%;
+    grid-template-columns:100%;
+    grid-template-rows: 50% 50%;
+    grid-template-areas:
+        "one"
+        "two"
+    ;
+    h1 {
+      width:90%;
+      margin:0 auto;
+      font-size: 2rem;
+    }
+  }
+        #banner-home--left{
+          margin:auto;
+          a {
+            margin-top:10%;
+            display:block;
+            height:10%;
+            width:45%;
+          }
+          h1 {
+            margin-bottom: 0px;
+          }
+        }
+
+        .coral {
+          padding: 0.76rem 2rem;
+        }
+
+        .mockup-images {
+          box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+        }
+
+  // VALUE-PROP CHANGES
+  #valueprop-home {
+    height: 150vh;
+    h2 {
+      font-size: 1.25rem;
+    }
+  }
+        #value-prop-home--cards {
+          display:block;
+          width:90%;
+          margin: 0 auto;
+          .home-card {
+            margin: 5% 0;
+            grid-template-rows: 2fr 5fr;
+          }
+        }
+
+  .details-valueprop-home-left {
+    padding: 0 17%;
+    height: 95vh;
+    display:block;
+  }
+  .details-valueprop-home-right {
+    padding: 0 17%;
+    height: 85vh;
+    display:block;
+
+  }
+      img.image-home-value-prop-details {
+        display:none;
+      }
+
+      .details-valueprop-home-right--header {
+        justify-content:flex-start;
+      }
+      .details-valueprop-home-right--body, .details-valueprop-home-left--body {
+        display:block;
+      }
+
+  #save-money-koobo {
+    margin-top:15%;
+    height:50vh;
+  }
+
+        #save-money-koobo--header {
+          height: 30%;
+          padding-bottom: 0;
+          h2 {
+            font-size: 1.4rem;
+          }
+          h5 {
+            font-size: 0.7rem;
+          }
+        }
+
+        #save-money-koobo--input {
+          input {
+            width:80%;
+            height:50px;
+          }
+          p {
+            padding-top:0;
+          }
+          p:last-child {
+            display:none;
+
+          }
+          h6 {
+            padding-top: 0;
+          }
+        }
+
+        #save-money-koobo--footer {
+          h6 {
+            font-size: 0.8rem;
+          }
+        }
+
+
+  #tenant-present--details img {
+    display:block;
+    max-width:200px;
+  }
+
+  #tenant-present {
+    margin: 2em 0;
+    h2 {
+      font-size: 1.25em;
+    }
+  }
+
+  #footer-home {
+    p {
+      padding-top: 5%;
+    }
+  }
+
+      #list-footer {
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 5% 0px;
+        grid-template-rows: 40% 60%;
+        grid-template-areas:
+          "one four"
+          "two three"
+        ;
+        .list-footer--column:nth-child(1) {
+          grid-area:one;
+        }
+        .list-footer--column:nth-child(2) {
+          grid-area:two;
+        }
+        .list-footer--column:nth-child(3) {
+          grid-area:three;
+        }
+        .list-footer--column:nth-child(4) {
+          grid-area:four;
+        }
+      }
+
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (min-width: 600px) {
+@media only screen and (max-width: 768px) and (min-width: 400px){
+
+  #navbar-home {
+    margin-top: 1em;
+  }
+
+      #navbar-home--left {
+        width:40%;
+        display:block;
+        h2 {
+          font-size:35px;
+        }
+        a:not(#koobo-logo) {
+          display:none;
+        }
+      }
+      #navbar-home--right {
+        width:60%;
+        .button-no-style {
+          display:none;
+        }
+        a:last-child {
+          font-size: 15px;
+        }
+        .button-sign-home {
+          padding: 0.5rem 1rem;
+        }
+      }
+
+  // BANNER CHANGES
+  #banner-home {
+    height:90vh;
+    padding-top: 20%;
+    grid-template-columns:100%;
+    grid-template-rows: 50% 50%;
+    grid-template-areas:
+        "one"
+        "two"
+    ;
+    h1 {
+      width:90%;
+      margin:0 auto;
+      font-size: 2rem;
+    }
+  }
+        #banner-home--left{
+          margin:auto;
+          a {
+            margin-top:10%;
+            display:block;
+            height:10%;
+            width:45%;
+          }
+          h1 {
+            margin-bottom: 0px;
+          }
+        }
+
+        .coral {
+          padding: 0.76rem 2rem;
+        }
+
+        .mockup-images {
+          box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+        }
+
+  // VALUE-PROP CHANGES
+  #valueprop-home {
+    height: 150vh;
+    h2 {
+      font-size: 1.25rem;
+    }
+  }
+        #value-prop-home--cards {
+          display:block;
+          width:90%;
+          margin: 0 auto;
+          .home-card {
+            margin: 5% 0;
+            grid-template-rows: 2fr 5fr;
+          }
+        }
+
+  .details-valueprop-home-left {
+    padding: 0 17%;
+    height: 95vh;
+    display:block;
+  }
+  .details-valueprop-home-right {
+    padding: 0 17%;
+    height: 85vh;
+    display:block;
+
+  }
+      img.image-home-value-prop-details {
+        display:none;
+      }
+
+      .details-valueprop-home-right--header {
+        justify-content:flex-start;
+      }
+      .details-valueprop-home-right--body, .details-valueprop-home-left--body {
+        display:block;
+      }
+
+  #save-money-koobo {
+    margin-top:15%;
+    height:50vh;
+  }
+
+        #save-money-koobo--header {
+          height: 30%;
+          padding-bottom: 0;
+          h2 {
+            font-size: 1.4rem;
+          }
+          h5 {
+            font-size: 0.7rem;
+          }
+        }
+
+        #save-money-koobo--input {
+          input {
+            width:80%;
+            height:50px;
+          }
+          p {
+            padding-top:0;
+          }
+          p:last-child {
+            display:none;
+
+          }
+          h6 {
+            padding-top: 0;
+          }
+        }
+
+        #save-money-koobo--footer {
+          h6 {
+            font-size: 0.8rem;
+          }
+        }
+
+
+  #tenant-present--details img {
+    display:block;
+    max-width:200px;
+  }
+
+  #tenant-present {
+    margin: 2em 0;
+    h2 {
+      font-size: 1.25em;
+    }
+  }
+
+  #footer-home {
+    p {
+      padding-top: 5%;
+    }
+  }
+
+      #list-footer {
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 5% 0px;
+        grid-template-rows: 40% 60%;
+        grid-template-areas:
+          "one four"
+          "two three"
+        ;
+        .list-footer--column:nth-child(1) {
+          grid-area:one;
+        }
+        .list-footer--column:nth-child(2) {
+          grid-area:two;
+        }
+        .list-footer--column:nth-child(3) {
+          grid-area:three;
+        }
+        .list-footer--column:nth-child(4) {
+          grid-area:four;
+        }
+      }
 
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
-@media only screen and (min-width: 768px) {
+@media only screen and (max-width: 992px) and (min-width: 768px) {
 
+  #navbar-home--left {
+    width:55%;
+    grid-template-columns: 30% 10% 10% 15%;
+    grid-gap: 0px 25px;
+    a:nth-child(4) {
+      display:none;
+    }
+  }
+  #navbar-home--right {
+    width:45%
+  }
+
+  // BANNER CHANGES
+  #banner-home {
+    height:90vh;
+    padding-top: 12%;
+    grid-template-columns:1fr;
+    grid-template-rows: 35% 60%;
+    grid-template-areas:
+        "one"
+        "two"
+    ;
+    h1 {
+      font-size: 2.5rem;
+    }
+  }
+        #banner-home--left{
+          display:flex;
+          align-items:flex-end;
+          margin:auto;
+          a {
+            height:10%;
+          }
+          h1 {
+            margin-bottom: 0px;
+          }
+        }
+
+        .mockup-images {
+          box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+        }
+
+  // VALUE-PROP CHANGES
+  #valueprop-home {
+    height: 107vh;
+  }
+        #value-prop-home--cards {
+          display:block;
+          width:75%;
+          margin: 0 auto;
+          .home-card {
+            margin: 5% 0;
+          }
+        }
+
+  .details-valueprop-home-right, .details-valueprop-home-left {
+    padding: 0 17%;
+    height: 50vh;
+    display:block;
+  }
+
+      img.image-home-value-prop-details {
+        display:none;
+      }
+
+      .details-valueprop-home-right--header {
+        justify-content:flex-start;
+      }
+      .details-valueprop-home-right--body, .details-valueprop-home-left--body {
+        display:block;
+      }
+
+
+
+
+
+  #save-money-koobo {
+    margin-top:15%;
+    height:35vh;
+  }
+
+        #save-money-koobo--input {
+          h6 {
+            padding-top: 1em;
+          }
+          input {
+            width:80%;
+            height:50px;
+          }
+        }
+
+
+  #tenant-present--details img {
+    display:block;
+    max-width:450px;
+  }
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
-@media only screen and (min-width: 992px) {
+@media only screen and  (max-width: 1100px) and (min-width: 992px){
+
+
+  // NAVBAR CHANGES
+  #navbar-home--left {
+    width:60%
+
+  }
+  #navbar-home--right {
+    width:40%
+  }
+
+  // BANNER CHANGES
+  #banner-home {
+    padding-top: 10%;
+    grid-template-columns:1fr;
+    grid-template-rows: 30% 60%;
+    grid-template-areas:
+        "one"
+        "two"
+    ;
+  }
+        #banner-home--left{
+          display:flex;
+          align-items:flex-end;
+          margin:auto;
+          a {
+            height:10%;
+          }
+          h1 {
+            margin-bottom: 0px;
+          }
+        }
+
+        .mockup-images {
+          box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+        }
+
+  // VALUE-PROP CHANGES
+  #valueprop-home {
+    height: 75vh;
+  }
+        #value-prop-home--cards {
+          display:block;
+          width:55%;
+          margin: 0 auto;
+          .home-card {
+            margin: 5% 0;
+          }
+        }
+
+
+  .details-valueprop-home-right, .details-valueprop-home-left {
+    height: 50vh
+  }
+
+
+  #save-money-koobo {
+    height:35vh;
+  }
+
+        #save-money-koobo--input {
+          h6 {
+            padding-top: 1em;
+          }
+          input {
+            width:80%;
+            height:50px;
+          }
+        }
 
 }
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
-@media only screen and (min-width: 1200px) {
+@media only screen and (min-width: 1100px) {
 
 }

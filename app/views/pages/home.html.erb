@@ -29,17 +29,10 @@
   <div id="banner-home">
     <div id="banner-home--left">
       <h1>Ne perdez plus de temps<br>dans votre <br>gestion locative</h1>
-      <%= link_to "S'inscrire", new_user_session_path, class:"button-sign-home coral" %>
+      <%= link_to "Découvrir", new_user_session_path, class:"button-sign-home coral" %>
     </div>
     <div id="banner-home--right">
       <%= image_tag ('mockup_1'), class:'mockup-images'%>
-      <%#= image_tag ('mockup_2'), class:'mockup-images d-none'%>
-      <%#= image_tag ('mockup_3'), class:'mockup-images d-none'%>
-      <!-- <ul>
-        <li class="bullet-grey" id="mockup-one-set" data-toggle="mockup-one"><a href="#"><i class="fas fa-circle"></i></a></li>
-        <li class="bullet-grey image-active" id="mockup-two-set" data-toggle="mockup-two"><a href="#"><i class="fas fa-circle"></i></a></li>
-        <li class="bullet-grey" id="mockup-three-set" data-toggle="mockup-three"><a href="#"><i class="fas fa-circle"></i></a></li>
-      </ul> -->
     </div>
   </div>
   <div id="valueprop-home">
@@ -130,7 +123,7 @@
       </div>
       <div id="save-money-koobo--input">
         <h6>Montant de mon loyer : <span id="value_rent">200</span>€ par mois</h6>
-        <p><input type="range" min="200" max="2500" value="200" id="sliderRent"></p>
+        <p><input type="range" min="200" max="2500" value="200" step="10" id="sliderRent"></p>
         <p><%= link_to "S'inscrire", new_user_registration_path, class:"button-sign-home coral" %></p>
         <p>Commission d'une agence immobilière traditionnelle (6% / an), soit <span id="agency-price">144</span> €</p>
       </div>
