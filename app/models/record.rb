@@ -1,6 +1,6 @@
 class Record < ApplicationRecord
   belongs_to :user
-  has_many :backers
+  has_one :backer, dependent: :destroy
 
   has_one_attached :identity_card
   has_many_attached :payslips

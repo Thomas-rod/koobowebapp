@@ -1,0 +1,7 @@
+<% @backers.each do |backer| %>
+  <% if backer.send(file).attached? %>
+    <i class="fas fa-check-circle font-green"></i>
+  <% else %>
+    <i class="fas fa-times"></i>
+  <% end %>
+<% end %>

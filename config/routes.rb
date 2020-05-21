@@ -28,11 +28,11 @@ require "sidekiq/web"
     resources :visits, only: :update
   end
 
-  resources :records, only: [:index, :create] do
-    resources :backers, only: [:update]
+  resources :records, only: [:create, :update, :destroy]
+  resources :records, only: [:index] do
+    resources :backers, only: [:create, :update]
   end
-
-  resources :records, only: [:update, :destroy]
+  resources :backers, only: [:destroy]
 
   resources :visits, only: [:index]
   resources :rentings, only: [:create, :edit, :update, :new, :index, :show]
@@ -66,4 +66,7 @@ require "sidekiq/web"
           #ROUTES USED RECORD MODIFICATIONS
   #*------------------------------------*#
   delete "record/:id/purge_document_record", to: "records#purge_document_record", as: :purge_document_record
+
+
+  delete "backers/:backer_id/purge_document_backer", to: "backers#purge_document_backer", as: :purge_document_backer
 end

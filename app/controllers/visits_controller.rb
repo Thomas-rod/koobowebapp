@@ -6,6 +6,12 @@ class VisitsController < ApplicationController
   #------------------------------------#
   def index
     @records = Record.all.select{ |r| r.user == current_user}
+    @backers = []
+    @records.each do |record|
+      unless record.backer.nil?
+        @backers << record.backer
+      end
+    end
     @visits = Visit.select {|v| v.user == current_user}
     @renting_folders = RentingFolder.select { |r| r.visit.user == current_user}
     find_flat(@visits, @renting_folders)
@@ -89,7 +95,6 @@ class VisitsController < ApplicationController
   end
 
   def deny_pending_visits
-
     pending_visits = @schedule.visits.select{ |v| v.status != 'accepted'}
     pending_visits.each do |visit|
      visit.status = "denied"

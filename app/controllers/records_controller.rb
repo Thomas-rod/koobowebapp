@@ -5,6 +5,12 @@ class RecordsController < ApplicationController
     @record = Record.new
     @records = Record.all.select{|r| r.user == current_user}.sort_by{ |r| r[:created_at]}
     @backer = Backer.new()
+    @backers = []
+    @records.each do |record|
+      unless record.backer.nil?
+        @backers << record.backer
+      end
+    end
   end
 
   def create
@@ -65,7 +71,7 @@ class RecordsController < ApplicationController
   end
 
   def record_params
-    params.require(:record).permit(:user, :first_name, :last_name, :email, :identity_card, :proof_residence, :notice_assessment, :student_card, :rent_receipts, :bank_identity, payslips: [])
+    params.require(:record).permit(:user, :first_name, :last_name, :email, :phone_number, :identity_card, :proof_residence, :notice_assessment, :student_card, :rent_receipts, :bank_identity, payslips: [])
   end
 
   def which_document_upload

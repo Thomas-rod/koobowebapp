@@ -33,13 +33,13 @@
           <div class="col-7">
             <div class="tab-content" id="v-pills-tabContent">
               <div class="tab-pane fade show active" id="v-pills-identity-card<%= counter %>" role="tabpanel" aria-labelledby="v-pills-identity-card<%= counter %>-tab">
-                <%= render partial: 'shared/form_upload_fil_record', locals: { title: "Carte d'identité", link: "https://www.service-public.fr/particuliers/vosdroits/F1169", file: "identity_card", record: record, multiple: false} %>
+                <%= render partial: 'shared/form_upload_fil_record', locals: { title: "Carte d'identité", link: "https://www.service-public.fr/particuliers/vosdroits/F1169", file: "identity_card", record: record, backer: nil, multiple: false} %>
               </div>
               <div class="tab-pane fade " id="v-pills-payslips<%= counter %>" role="tabpanel" aria-labelledby="v-pills-payslips-tab<%= counter %>">
-                <%= render partial: 'shared/form_upload_fil_record', locals: { title: "Bulletins de salaire", link: "https://www.service-public.fr/particuliers/vosdroits/F1169", file: "payslips", record: record, multiple: true} %>
+                <%= render partial: 'shared/form_upload_fil_record', locals: { title: "Bulletins de salaire", link: "https://www.service-public.fr/particuliers/vosdroits/F1169", file: "payslips", record: record, backer: nil, multiple: true} %>
               </div>
               <div class="tab-pane fade" id="v-pills-proof-residence<%= counter %>" role="tabpanel" aria-labelledby="v-pills-proof-residence<%= counter %>-tab">
-                <%= render partial: 'shared/form_upload_fil_record', locals: { title: "Justificatif de domicile", link: "https://www.service-public.fr/particuliers/vosdroits/F1169", file: "proof_residence", record: record, multiple: false} %>
+                <%= render partial: 'shared/form_upload_fil_record', locals: { title: "Justificatif de domicile", link: "https://www.service-public.fr/particuliers/vosdroits/F1169", file: "proof_residence", record: record, backer: nil, multiple: false} %>
               </div>
             </div>
           </div>
@@ -86,16 +86,16 @@
           <div class="col-7">
             <div class="tab-content" id="v-pills-tabContent">
               <div class="tab-pane fade show active" id="v-pills-notice-assessment<%= counter %>" role="tabpanel" aria-labelledby="v-pills-notice-assessment<%= counter %>-tab">
-                <%= render partial: 'shared/form_upload_fil_record', locals: { title: "Avis d'imposition", link: "https://www.service-public.fr/particuliers/vosdroits/F1169", file: "notice_assessment", record: record, multiple: false} %>
+                <%= render partial: 'shared/form_upload_fil_record', locals: { title: "Avis d'imposition", link: "https://www.service-public.fr/particuliers/vosdroits/F1169", file: "notice_assessment", record: record, backer: nil, multiple: false} %>
               </div>
               <div class="tab-pane fade " id="v-pills-rent-receipts<%= counter %>" role="tabpanel" aria-labelledby="v-pills-rent-receipts<%= counter %>-tab">
-                <%= render partial: 'shared/form_upload_fil_record', locals: { title: "Quittances de loyer", link: "https://www.service-public.fr/particuliers/vosdroits/F1169", file: "rent_receipts", record: record, multiple: true} %>
+                <%= render partial: 'shared/form_upload_fil_record', locals: { title: "Quittances de loyer", link: "https://www.service-public.fr/particuliers/vosdroits/F1169", file: "rent_receipts", record: record, backer: nil, multiple: true} %>
               </div>
               <div class="tab-pane fade" id="v-pills-student-card<%= counter %>" role="tabpanel" aria-labelledby="v-pills-student-card<%= counter %>-tab">
-                <%= render partial: 'shared/form_upload_fil_record', locals: { title: "Justificatif d'étude'", link: "https://www.service-public.fr/particuliers/vosdroits/F1169", file: "student_card", record: record, multiple: false} %>
+                <%= render partial: 'shared/form_upload_fil_record', locals: { title: "Justificatif d'étude'", link: "https://www.service-public.fr/particuliers/vosdroits/F1169", file: "student_card", record: record, backer: nil, multiple: false} %>
               </div>
               <div class="tab-pane fade" id="v-pills-bank-identity<%= counter %>" role="tabpanel" aria-labelledby="v-pills-bank-identity<%= counter %>-tab">
-                <%= render partial: 'shared/form_upload_fil_record', locals: { title: "Relevé d'identité bancaire", link: "https://www.service-public.fr/particuliers/vosdroits/F1169", file: "bank_identity", record: record, multiple: false} %>
+                <%= render partial: 'shared/form_upload_fil_record', locals: { title: "Relevé d'identité bancaire", link: "https://www.service-public.fr/particuliers/vosdroits/F1169", file: "bank_identity", record: record, backer: nil, multiple: false} %>
               </div>
             </div>
           </div>
@@ -103,4 +103,91 @@
       </div>
     </div>
   </div>
+  <% if !record.backer.nil? %>
+    <div class="card">
+      <div class="card-header" id="headingThree<%= counter %>">
+        <h5 class="mb-0">
+          <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree<%= counter %>" aria-expanded="false" aria-controls="collapseThree<%= counter %>">
+            Documents garants
+          </button>
+        </h5>
+        <h6 class=""> 0/4 documents joins</h6>
+      </div>
+      <div id="collapseThree<%= counter %>" class="collapse" aria-labelledby="headingThree<%= counter %>" data-parent="#accordion<%= counter %>">
+        <div class="card-body">
+          <div class="row" id="pills-container">
+            <div class="col-5" id="pills-header">
+              <div class="nav nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                <a class="nav-link <%= record.backer.identity_card.attached? ? "good" : "" %> active" id="v-pills-identity-card<%= counter %>-tab" data-toggle="pill" href="#v-pills-identity-card<%= counter %>" role="tab" aria-controls="v-pills-identity-card<%= counter %>" aria-selected="true">Justificatif d'identité
+                  <% if record.backer.identity_card.attached? %>
+                    <i class="fas fa-check-circle font-green"></i>
+                  <% end %>
+                </a>
+                <a class="nav-link <%= record.backer.proof_residence.attached? ? "good" : "" %>" id="v-pills-proof-residence<%= counter %>-tab" data-toggle="pill" href="#v-pills-proof-residence<%= counter %>" role="tab" aria-controls="v-pills-proof-residence<%= counter %>" aria-selected="false">Justificatif de domicile
+                  <% if record.backer.proof_residence.attached? %>
+                    <i class="fas fa-check-circle font-green"></i>
+                  <% end %>
+                </a>
+                <a class="nav-link <%= record.backer.proof_work.attached? ? "good" : "" %>" id="v-pills-proof-work<%= counter %>-tab" data-toggle="pill" href="#v-pills-proof-work<%= counter %>" role="tab" aria-controls="v-pills-proof-work<%= counter %>" aria-selected="false">Justificatif situation professionnelle
+                  <% if record.backer.proof_work.attached? %>
+                    <i class="fas fa-check-circle font-green"></i>
+                  <% end %>
+                </a>
+                <a class="nav-link <%= record.backer.proof_revenue.attached? ? "good" : "" %>" id="v-pills-proof-revenue<%= counter %>-tab" data-toggle="pill" href="#v-pills-proof-revenue<%= counter %>" role="tab" aria-controls="v-pills-proof-revenue<%= counter %>" aria-selected="false">Justificatif de revenue
+                  <% if record.backer.proof_revenue.attached? %>
+                    <i class="fas fa-check-circle font-green"></i>
+                  <% end %>
+                </a>
+              </div>
+            </div>
+            <div class="col-7">
+              <div class="tab-content" id="v-pills-tabContent">
+                <div class="tab-pane fade show active" id="v-pills-identity-card<%= counter %>" role="tabpanel" aria-labelledby="v-pills-identity-card<%= counter %>-tab">
+                  <%= render partial: 'shared/form_upload_fil_record', locals: { title: "Justificatif d'identité", link: "https://www.pap.fr/locataire/constituer-dossier/locataire-quels-documents-presenter-a-votre-proprietaire/a19766/quels-documents-doit-presenter-le-garant", file: "identity_card", record: nil, backer: record.backer, multiple: false} %>
+                </div>
+                <div class="tab-pane fade " id="v-pills-proof-residence<%= counter %>" role="tabpanel" aria-labelledby="v-pills-proof-residence<%= counter %>-tab">
+                  <%= render partial: 'shared/form_upload_fil_record', locals: { title: "Justificatif de domicile", link: "https://www.pap.fr/locataire/constituer-dossier/locataire-quels-documents-presenter-a-votre-proprietaire/a19766/quels-documents-doit-presenter-le-garant", file: "proof_residence", record: nil, backer: record.backer, multiple: false} %>
+                </div>
+                <div class="tab-pane fade" id="v-pills-proof-work<%= counter %>" role="tabpanel" aria-labelledby="v-pills-proof-work<%= counter %>-tab">
+                  <%= render partial: 'shared/form_upload_fil_record', locals: { title: "Justificatif situation professionnelle'", link: "https://www.pap.fr/locataire/constituer-dossier/locataire-quels-documents-presenter-a-votre-proprietaire/a19766/quels-documents-doit-presenter-le-garant", file: "proof_work", record: nil, backer: record.backer, multiple: false} %>
+                </div>
+                <div class="tab-pane fade" id="v-pills-proof-revenue<%= counter %>" role="tabpanel" aria-labelledby="v-pills-proof-revenue<%= counter %>-tab">
+                  <%= render partial: 'shared/form_upload_fil_record', locals: { title: "Justificatif de revenue", link: "https://www.pap.fr/locataire/constituer-dossier/locataire-quels-documents-presenter-a-votre-proprietaire/a19766/quels-documents-doit-presenter-le-garant", file: "proof_revenue", record: nil, backer: record.backer, multiple: false} %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% elsif record.backer.nil? %>
+    <div class="card">
+      <div class="card-header" id="headingFour<%= counter %>">
+        <button type="button" class="nav-item nav-link" data-toggle="modal" data-target="#addBackerModal">
+          Ajouter un garant <i class="fas fa-plus-circle"></i>
+        </button>
+        <div class="modal fade" id="addBackerModal" tabindex="-1" role="dialog" aria-labelledby="addBackerModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Tu souhaites ajouter un garant ?</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <%= simple_form_for @backer, url: record_backers_path(record) do |f| %>
+                  <%= f.input :first_name, label: "Prénom", placeholder: "John...", required: true %>
+                  <%= f.input :last_name, label: "Nom", placeholder: "Doe...", required: true %>
+                  <%= f.input :email, label: "Email", placeholder: "john.doe@gmail.com...", required: true %>
+                  <button type="button" class="btn delete-link" data-dismiss="modal">Fermer</button>
+                  <%= f.button :submit, "Ajouter",class:"koobo-button" %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
 </div>

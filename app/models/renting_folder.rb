@@ -6,6 +6,12 @@ class RentingFolder < ApplicationRecord
   validates :status, presence: true
   validates :status, inclusion: { in: STATUS_RENTINGFOLDER }
 
+
+#--------------------------------------#
+#----DOCUMENTS FROM RENTING_FOLDER-----#
+#--------------------------------------#
+  has_many_attached :other_documents
+
   after_create :send_mail_creation_renting_folder
 
 
