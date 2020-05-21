@@ -431,24 +431,7 @@
   #HOME CSS SUBSCRIBE MAILCHIMP
 \*------------------------------------*/
 
-        .simple-form-subscribe {
-          color: rgba($gray, 0.5);
-          background-color: white;
-          padding: 10px 15px;
-          border-radius: 20px;
-          border: 1px solid $coral;
-          width:70%;
-          // IN ORDER TO SWITCH OFF THE DATA-SET FROM MAILCHIMP WHICH APPLY A SQUARE ARROUND FORM
-          &:focus {
-              outline: -webkit-focus-ring-color auto 0px;
-            }
-        }
-        .subscribe-mail {
-          display:flex;
-          justify-content:space-around;
-          align-items:center;
-          margin:50px 30px;
-        }
+
 
 /*------------------------------------*\
   #RESPONSIVENESS

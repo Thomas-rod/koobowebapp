@@ -1,0 +1,123 @@
+#container-pricing {
+  background-color: $blue;
+  min-height:100vh;
+  z-index: -100;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+#pop-up-subscribe {
+  display:block;
+  color:white;
+  text-align:center;
+  background-color: rgba($blue, 0.9);
+  margin: auto;
+  width:60%;
+  height:70vh;
+  padding:2%;
+  border-radius: 15px;
+  box-shadow: $box-shadow;
+  position:relative;
+  h1 {
+    font-weight: bold;
+  }
+  img {
+    display:block;
+    margin: 0 auto;
+    height:65%;
+  }
+}
+
+.simple-form-subscribe {
+  color: rgba($gray, 0.5);
+  background-color: white;
+  padding: 10px 15px;
+  border-radius: 20px;
+  border: 1px solid $coral;
+  width:70%;
+  // IN ORDER TO SWITCH OFF THE DATA-SET FROM MAILCHIMP WHICH APPLY A SQUARE ARROUND FORM
+  &:focus {
+      outline: -webkit-focus-ring-color auto 0px;
+    }
+}
+.subscribe-mail {
+  display:flex;
+  justify-content:space-around;
+  align-items:center;
+  margin: 2% 0;
+}
+
+@media only screen and (max-width: 330px) {
+  #pop-up-subscribe {
+    height:90vh;
+    width:85%;
+    img {
+      display:none;
+    }
+    input {
+      margin: 4% 0;
+    }
+  }
+  .subscribe-mail {
+    display:block;
+    align-items:center;
+    margin: 2% 0;
+  }
+}
+
+
+@media only screen and (max-width: 400px) and (min-width: 330px) {
+  #pop-up-subscribe {
+    height:90vh;
+    width:85%;
+    img {
+      height:30%;
+    }
+    input {
+      margin: 4% 0;
+    }
+  }
+  .subscribe-mail {
+    display:block;
+    align-items:center;
+    margin: 2% 0;
+  }
+}
+
+
+@media only screen and (max-width: 768px) and (min-width: 400px){
+  #pop-up-subscribe {
+    width:85%;
+    img {
+      display:none;
+    }
+    input {
+      margin: 4% 0;
+    }
+  }
+  .subscribe-mail {
+    display:block;
+    align-items:center;
+    margin: 2% 0;
+  }
+}
+
+
+@media only screen and (max-width: 992px) and (min-width: 768px) {
+  #pop-up-subscribe {
+    img {
+      // display:none;
+    }
+  }
+}
+
+
+@media only screen and  (max-width: 1100px) and (min-width: 992px){
+
+}
+
+
+@media only screen and (min-width: 1100px) {
+
+}

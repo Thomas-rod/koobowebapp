@@ -4,16 +4,16 @@
       <%= link_to root_path, id:"koobo-logo" do %>
         <h2 ><strong><span class="k-logo">K</span><span class="oobo-logo">oobo</span></strong></h1>
       <% end %>
-      <%= link_to '#' do %>
+      <%= link_to pricing_path do %>
         <p>Tarifs</p>
       <% end %>
-      <%= link_to '#' do %>
+      <%= link_to pricing_path do %>
         <p>Blog</p>
       <% end %>
-      <%= link_to '#' do %>
+      <%= link_to pricing_path do %>
         <p>À propos</p>
       <% end %>
-      <%= link_to '#' do %>
+      <%= link_to pricing_path do %>
         <p>Contact</p>
       <% end %>
     </div>
@@ -22,14 +22,14 @@
         <%= link_to "Dashboard", dashboard_path, class:"button-sign-home blue" %>
       <% else %>
         <%= link_to 'Se connecter', new_user_session_path, class:"button-no-style" %>
-        <%= link_to "S'inscrire", new_user_registration_path, class:"button-sign-home blue" %>
+        <%= link_to "S'inscrire", pricing_path, class:"button-sign-home blue" %>
       <% end %>
     </div>
   </div>
   <div id="banner-home">
     <div id="banner-home--left">
       <h1>Ne perdez plus de temps<br>dans votre <br>gestion locative</h1>
-      <%= link_to "Découvrir", new_user_session_path, class:"button-sign-home coral" %>
+      <%= link_to "Découvrir", pricing_path, class:"button-sign-home coral" %>
     </div>
     <div id="banner-home--right">
       <%= image_tag ('mockup_1'), class:'mockup-images'%>
@@ -124,7 +124,7 @@
       <div id="save-money-koobo--input">
         <h6>Montant de mon loyer : <span id="value_rent">200</span>€ par mois</h6>
         <p><input type="range" min="200" max="2500" value="200" step="10" id="sliderRent"></p>
-        <p><%= link_to "S'inscrire", new_user_registration_path, class:"button-sign-home coral" %></p>
+        <p><%= link_to "S'inscrire", pricing_path, class:"button-sign-home coral" %></p>
         <p>Commission d'une agence immobilière traditionnelle (6% / an), soit <span id="agency-price">144</span> €</p>
       </div>
       <div id="save-money-koobo--footer">
@@ -150,21 +150,21 @@
         <ul>
           <li>
             <h6>
-              <%= link_to '#', class:"mail-link" do %>
+              <%= link_to pricing_path, class:"mail-link" do %>
                 Tarifs
               <% end %>
             </h6>
           </li>
           <li>
             <h6>
-              <%= link_to '#', class:"mail-link" do %>
+              <%= link_to pricing_path, class:"mail-link" do %>
                 Blog
               <% end %>
             </h6>
           </li>
           <li>
             <h6>
-              <%= link_to '#', class:"mail-link" do %>
+              <%= link_to pricing_path, class:"mail-link" do %>
                 A propos
               <% end %>
             </h6>
