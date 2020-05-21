@@ -1,269 +1,1011 @@
-// Specific CSS for your home-page
-// BANNER
+/*------------------------------------*\
+  #NAVBAR CSS
+\*------------------------------------*/
 
 #container-home {
-}
-
-#container-header-home {
-  position:relative;
-  background-color:$blue;
   width:100%;
-  min-width:90%;
-  height: 70vh;
-  min-height: 70vh;
-  opacity:0.99;
-  h1 {
-    color: white;
-    font-weight: bold;
-    font-size: 40px;
-  }
-  h4 {
-    color:white;
-  }
 }
-
-#inside-banner {
-  padding:10% 25%;
-  height:100%;
-  position:relative;
-  h1 {
-    font-size:48px;
-  }
-  //
-}
-
-#inside-banner-top{
-  height:50%;
-  //
-}
-
-#banner-typed-text {
-  height:70px;
-  font-size:48px;
-  color:$coral;
-  font-weight:bold;
-}
-
-// SUBSCRIBE FORM HOME
-
-.subscribe-mail {
-  display:flex;
-  justify-content:space-around;
-  align-items:center;
-  margin:50px 30px;
-}
-
-.simple-form-subscribe {
-  color: rgba($gray, 0.5);
-  background-color: white;
-  padding: 10px 15px;
-  border-radius: 20px;
-  border: 1px solid $coral;
-  width:70%;
-  // IN ORDER TO SWITCH OFF THE DATA-SET FROM MAILCHIMP WHICH APPLY A SQUARE ARROUND FORM
-  &:focus {
-      outline: -webkit-focus-ring-color auto 0px;
-    }
-}
-
-// FROM CSS DISPLAY IN BANNER
-
-#flat-banner {
-    position:absolute;
-    bottom:0;
-    right:0;
-    width:350px;
-  }
-
-#people-handshake {
-  position:absolute;
-  bottom:0;
-  left:0;
-  width:350px;
-}
-
-#half-circle {
-  width:120px;
-  position:absolute;
-  top: 14%;
-  left:19px;
-}
-
-// SECTION TWO
-
-#section-two {
-  position: relative;
-  background-color: $white;
-}
-
-#section-two-header {
-  background-color: white;
+#navbar-home, #banner-home, #valueprop-home, .details-valueprop-home-left, .details-valueprop-home-right, #save-money-koobo, #tenant-present, #footer-home {
+  padding: 0px 5%;
   width:100%;
-  text-align:center;
-  padding: 50px 200px 0px 200px;
-}
-
-.linecoral {
-  display: inline;
-  white-space: pre-wrap;
-  box-shadow: $coral 0px -1rem 0px inset;
-  padding: 0px 0.2rem;
-}
-
-#section-card-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 16px;
-  margin-top: 30px;
 }
 
 
-// SECTION THREE
-
-
-#section-three {
-  padding: 50px 210px;
-  text-align:center;
-  h2 {
-    margin-bottom:4%;
-  }
-  p {
-    margin-bottom:3%;
-  }
-}
-
-.two-element {
+#navbar-home {
+  color:$white;
+  position:absolute;
+  top:0px;
+  left:0px;
+  width:100%;
+  margin-top: 2em;
   display:flex;
   justify-content:space-between;
   align-items:center;
+}
 
-  img {
-    max-height: 320px;
-    width: auto;
-    margin-top: 60px;
+    #navbar-home--left {
+      width:50%;
+      display:grid;
+      grid-template-columns: 30% 10% 10% 15% 15%;
+      grid-gap: 0px 20px;
+      text-align:center;
+      align-content:center;
+      h2 {
+        font-size: 40px;
+      }
+      a {
+        color:$white;
+        margin: auto 0px;
+        padding-bottom: 5px;
+        font-size: 20px;
+        font-weight: lighter;
+        text-align: start;
+        &:hover:not(#koobo-logo) {
+          font-weight:bolder;
+          border-bottom: 1px solid white;
+        }
+        #koobo-logo:hover {
+            border-bottom: none;
+          }
+      }
+      .active {
+        font-weight:bolder;
+        border-bottom: 1px solid white;
+      }
+    }
+
+    #navbar-home--right {
+      width:50%;
+      display:flex;
+      align-items:center;
+      justify-content:flex-end;
+      .button-no-style {
+        font-size: 16px;
+        margin-right: 20px;
+        color:white;
+        &:hover {
+          color:$blue;
+        }
+      }
+      a:last-child {
+        font-size: 20px;
+      }
+    }
+
+    .bullet-grey {
+      // box-shadow:
+    }
+
+/*------------------------------------*\
+  #BANNER CSS
+\*------------------------------------*/
+
+
+#banner-home {
+  padding-top: 60px;
+  min-height:85vh;
+  width:100%;
+  display:grid;
+  grid-gap: 0 5%;
+  grid-template-columns: 55% 40%;
+  grid-template-rows: 100%;
+  grid-template-areas:
+      "one two"
+  ;
+  background: rgb(246,182,171);
+  background: linear-gradient(280deg, rgba(246,182,171,1) 50%, rgba(32,30,80,1) 50%);
+}
+
+    #banner-home--left {
+      grid-area: one;
+      margin: auto 0;
+      h1 {
+        font-size: 50px;
+        font-weight: bold;
+        color:white;
+        width:100%;
+        margin-bottom: 100px;
+      }
+      a {
+        text-align: center;
+        margin: 0 auto;
+        font-size: 20px;
+      }
+      span {
+        font-size: 45px;
+        font-weight:bold;
+      }
+
+    }
+    #banner-home--right {
+      grid-area:two;
+      margin: auto 0;
+      list-direction:column;
+      ul {
+        margin-top: 1.5em;
+        text-align:center;
+      }
+      li {
+        padding-right: 1.5em;
+        display: inline-block;
+        i {
+          color: $blue;
+          &:hover {
+            color: rgba($blue, 0.8);
+          }
+        }
+
+      }
+    }
+        .mockup-images {
+          width:100%;
+          border-radius: 15px;
+          box-shadow: $box-shadow;
+        }
+
+/*------------------------------------*\
+  #VALUEPROPR-HOME CSS
+\*------------------------------------*/
+
+#valueprop-home {
+  padding-top: 2em;
+  height:65vh;
+}
+  .valueprop-home--header {
+    font-size: 2.25em;
+    text-align:center;
+    font-weight:bold;
+    line-height:2.30em;
   }
+  .linecoral {
+    display: inline;
+    white-space: pre-wrap;
+    box-shadow: $coral-light 0px -0.8rem 0px inset;;
+    padding:0;
+  }
+
+    #value-prop-home--cards {
+      margin-top:2em;
+      display:grid;
+      grid-gap: 0 5em;
+      grid-template-columns: repeat(3,1fr);
+    }
+
+        .home-card {
+          padding:0 0.2em;
+          display:grid;
+          grid-template-columns: 100%;
+          grid-template-rows: 2fr 8fr;
+          box-shadow: $box-shadow;
+          cursor:pointer;
+          border-radius: 15px;
+          transition: all 0.2s;
+          &:hover {
+            transform: translate(0px, -2px)
+          }
+          h6 {
+            padding-top: 0.5em;
+            text-align:center;
+          }
+          img.image-home-value-prop {
+            margin: 0 auto;
+            padding: 1em;
+            max-width:280px;
+            max-height:210px;
+          }
+        }
+
+
+/*------------------------------------*\
+  #DETAILS-VALUEPROPR-HOME-LEFT CSS
+\*------------------------------------*/
+
+.details-valueprop-home-left {
+  height: 80vh;
 }
 
-#one-element{
-  margin-top: 3%;
-  padding: 3% 4%;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-  border-radius:25px;
+    .details-valueprop-home-left--header {
+      display:flex;
+      justify-content:flex-start;
+      align-items:center;
+      margin-bottom:2.6em;
+      border-bottom: 1px solid rgba($blue-light,0.1);
+      p:first-child {
+        font-size: 60px;
+        font-weight:bold;
+        margin-right:0.3em;
+      }
+    }
 
+        .details-valueprop-home-left--header--subheader {
+          h4 {
+            font-weight:bold;
+          }
+        }
+
+              img.image-home-value-prop-details {
+                max-width: 550px;
+                margin: auto 0;
+              }
+
+        .details-valueprop-home-left--body {
+          display:grid;
+          grid-template-columns: 1fr 1fr;
+          grid-gap: 0 5%;
+        }
+
+              .details-valueprop-home-left--body--details {
+                h5 {
+                  font-weight:bold;
+                }
+                li {
+                  margin: 3em 0;
+                }
+                i {
+                  color: $coral;
+                  padding-right: 1em;
+                }
+              }
+
+/*------------------------------------*\
+  #DETAILS-VALUEPROPR-HOME-RIGHT CSS
+\*------------------------------------*/
+.details-valueprop-home-right {
+  height:80vh;
 }
-// FOOTER
 
-#footer {
-  background: $blue;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 100px;
-  padding: 0px 50px;
-  color: white
+    .details-valueprop-home-right--header {
+      display:flex;
+      justify-content:flex-end;
+      align-items:center;
+      margin-bottom:2.6em;
+      border-bottom: 1px solid rgba($blue-light,0.1);
+      p:first-child {
+        font-size: 60px;
+        font-weight:bold;
+        margin-right:0.3em;
+      }
+    }
+
+        .details-valueprop-home-right--header--subheader {
+          h4 {
+            font-weight:bold;
+          }
+        }
+
+              img.image-home-value-prop-details {
+                max-width: 550px;
+
+              }
+
+        .details-valueprop-home-right--body {
+          display:grid;
+          grid-template-columns: 1fr 1fr;
+          grid-gap: 0 5%;
+        }
+
+              .details-valueprop-home-right--body--details {
+                h5 {
+                  font-weight:bold;
+                }
+                li {
+                  margin: 3em 0;
+                }
+                i {
+                  color: $coral;
+                  padding-right: 1em;
+                }
+              }
+
+
+
+
+/*------------------------------------*\
+  #SAVE MONEY CSS
+\*------------------------------------*/
+#save-money-koobo {
+  width:100%;
+  height: 50vh;
 }
 
-#footer-links {
-  text-align: center;
-  //
+    #save-money-koobo-container {
+      margin: 0 auto;
+      width:80%;
+      height:100%;
+      box-shadow: $box-shadow;
+      border-radius: 15px;
+      padding:1.5em 1em;
+      text-align:center;
+      h2 {
+        font-weight:bold;
+      }
+    }
+
+        #save-money-koobo--header {
+          // padding-bottom: 2em;
+          height:20%;
+        }
+
+        #save-money-koobo--input {
+          height:50%;
+          h6 {
+            padding-top: 2em;
+          }
+          p {
+            padding-top: 1em;
+          }
+        }
+          #save-money-koobo--input input {
+            width:40%;
+            padding: 0;
+            font-family: inherit;
+
+          }
+
+        #save-money-koobo--footer {
+          height:30%;
+
+        }
+
+
+
+/*------------------------------------*\
+  #TENANT PRESENT CSS
+\*------------------------------------*/
+
+#tenant-present {
+  margin-top: 2em;
 }
 
-#footer-links a {
-  color: $coral;
+    #tenant-present--details {
+      display:grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: 100%;
+      align-items:center;
+      h6 {
+        font-weight:bold;
+      }
+    }
+
+
+
+#footer-home {
+  padding-top:2em;
+  padding-bottom:2em;
+  background-color: $blue;
+  color:white;
+}
+
+    #list-footer {
+      display:grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-areas:
+          "one two three four"
+      ;
+      // align-items:flex-start;
+      padding-bottom: 1em;
+      li {
+        padding: 0.4em;
+        color:$white;
+      }
+      li h6 {
+        color:$white;
+        align-items:end;
+        font-weight: lighter;
+      }
+    }
+        .list-footer--column {
+          &:last-child {
+            text-align:center;
+            h5 {
+              padding-bottom: 1em;
+            }
+            a {
+              color:$white;
+            }
+          }
+        }
+
+        #social-network {
+          display:flex;
+          align-items:center;
+          justify-content:space-around;
+        }
+
+.icon-home {
+  font-size: 32px;
+  color: rgba($white, 0.8);
+  margin-right: 1em;
+}
+
+.mail-link {
   text-decoration: none;
-  font-size: 24px;
-  padding: 0px 10px;
+  color:$white;
   &:hover {
-    opacity: 0.7;
+    color: white;
   }
 }
 
 
-// RESPONSIVNESS
+/*------------------------------------*\
+  #HOME CSS SUBSCRIBE MAILCHIMP
+\*------------------------------------*/
 
-@media (max-width: 1120px) {
+        .simple-form-subscribe {
+          color: rgba($gray, 0.5);
+          background-color: white;
+          padding: 10px 15px;
+          border-radius: 20px;
+          border: 1px solid $coral;
+          width:70%;
+          // IN ORDER TO SWITCH OFF THE DATA-SET FROM MAILCHIMP WHICH APPLY A SQUARE ARROUND FORM
+          &:focus {
+              outline: -webkit-focus-ring-color auto 0px;
+            }
+        }
+        .subscribe-mail {
+          display:flex;
+          justify-content:space-around;
+          align-items:center;
+          margin:50px 30px;
+        }
 
-  #people-handshake {
-    width:250px;
+/*------------------------------------*\
+  #RESPONSIVENESS
+\*------------------------------------*/
+
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 400px) {
+  #navbar-home {
+    margin-top: 1em;
   }
+
+      #navbar-home--left {
+        width:40%;
+        display:block;
+        h2 {
+          font-size:35px;
+        }
+        a:not(#koobo-logo) {
+          display:none;
+        }
+      }
+      #navbar-home--right {
+        width:60%;
+        .button-no-style {
+          display:none;
+        }
+        a:last-child {
+          font-size: 15px;
+        }
+        .button-sign-home {
+          padding: 0.5rem 1rem;
+        }
+      }
+
+  // BANNER CHANGES
+  #banner-home {
+    height:90vh;
+    padding-top: 20%;
+    grid-template-columns:100%;
+    grid-template-rows: 50% 50%;
+    grid-template-areas:
+        "one"
+        "two"
+    ;
+    h1 {
+      width:90%;
+      margin:0 auto;
+      font-size: 2rem;
+    }
+  }
+        #banner-home--left{
+          margin:auto;
+          a {
+            margin-top:10%;
+            display:block;
+            height:10%;
+            width:45%;
+          }
+          h1 {
+            margin-bottom: 0px;
+          }
+        }
+
+        .coral {
+          padding: 0.76rem 2rem;
+        }
+
+        .mockup-images {
+          box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+        }
+
+  // VALUE-PROP CHANGES
+  #valueprop-home {
+    height: 150vh;
+    h2 {
+      font-size: 1.25rem;
+    }
+  }
+        #value-prop-home--cards {
+          display:block;
+          width:90%;
+          margin: 0 auto;
+          .home-card {
+            margin: 5% 0;
+            grid-template-rows: 2fr 5fr;
+          }
+        }
+
+  .details-valueprop-home-left {
+    padding: 0 17%;
+    height: 95vh;
+    display:block;
+  }
+  .details-valueprop-home-right {
+    padding: 0 17%;
+    height: 85vh;
+    display:block;
+
+  }
+      img.image-home-value-prop-details {
+        display:none;
+      }
+
+      .details-valueprop-home-right--header {
+        justify-content:flex-start;
+      }
+      .details-valueprop-home-right--body, .details-valueprop-home-left--body {
+        display:block;
+      }
+
+  #save-money-koobo {
+    margin-top:15%;
+    height:50vh;
+  }
+
+        #save-money-koobo--header {
+          height: 30%;
+          padding-bottom: 0;
+          h2 {
+            font-size: 1.4rem;
+          }
+          h5 {
+            font-size: 0.7rem;
+          }
+        }
+
+        #save-money-koobo--input {
+          input {
+            width:80%;
+            height:50px;
+          }
+          p {
+            padding-top:0;
+          }
+          p:last-child {
+            display:none;
+
+          }
+          h6 {
+            padding-top: 0;
+          }
+        }
+
+        #save-money-koobo--footer {
+          h6 {
+            font-size: 0.8rem;
+          }
+        }
+
+
+  #tenant-present--details img {
+    display:block;
+    max-width:200px;
+  }
+
+  #tenant-present {
+    margin: 2em 0;
+    h2 {
+      font-size: 1.25em;
+    }
+  }
+
+  #footer-home {
+    p {
+      padding-top: 5%;
+    }
+  }
+
+      #list-footer {
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 5% 0px;
+        grid-template-rows: 40% 60%;
+        grid-template-areas:
+          "one four"
+          "two three"
+        ;
+        .list-footer--column:nth-child(1) {
+          grid-area:one;
+        }
+        .list-footer--column:nth-child(2) {
+          grid-area:two;
+        }
+        .list-footer--column:nth-child(3) {
+          grid-area:three;
+        }
+        .list-footer--column:nth-child(4) {
+          grid-area:four;
+        }
+      }
 
 }
 
-// Smallest device
-@media (min-width: 100px) and (max-width: 575px) {
-  .cards {
-    grid-template-columns: 1fr;
-  }
-  .two-element{
-    flex-direction: column;
-    margin-top: 48px;
-  }
-  #inside-banner-top{
-      height:30%;
-      margin-top:180px;
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (max-width: 768px) and (min-width: 400px){
 
+  #navbar-home {
+    margin-top: 1em;
+  }
+
+      #navbar-home--left {
+        width:40%;
+        display:block;
+        h2 {
+          font-size:35px;
+        }
+        a:not(#koobo-logo) {
+          display:none;
+        }
+      }
+      #navbar-home--right {
+        width:60%;
+        .button-no-style {
+          display:none;
+        }
+        a:last-child {
+          font-size: 15px;
+        }
+        .button-sign-home {
+          padding: 0.5rem 1rem;
+        }
+      }
+
+  // BANNER CHANGES
+  #banner-home {
+    height:90vh;
+    padding-top: 20%;
+    grid-template-columns:100%;
+    grid-template-rows: 50% 50%;
+    grid-template-areas:
+        "one"
+        "two"
+    ;
+    h1 {
+      width:90%;
+      margin:0 auto;
+      font-size: 2rem;
+    }
+  }
+        #banner-home--left{
+          margin:auto;
+          a {
+            margin-top:10%;
+            display:block;
+            height:10%;
+            width:45%;
+          }
+          h1 {
+            margin-bottom: 0px;
+          }
+        }
+
+        .coral {
+          padding: 0.76rem 2rem;
+        }
+
+        .mockup-images {
+          box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+        }
+
+  // VALUE-PROP CHANGES
+  #valueprop-home {
+    height: 150vh;
+    h2 {
+      font-size: 1.25rem;
+    }
+  }
+        #value-prop-home--cards {
+          display:block;
+          width:90%;
+          margin: 0 auto;
+          .home-card {
+            margin: 5% 0;
+            grid-template-rows: 2fr 5fr;
+          }
+        }
+
+  .details-valueprop-home-left {
+    padding: 0 17%;
+    height: 95vh;
+    display:block;
+  }
+  .details-valueprop-home-right {
+    padding: 0 17%;
+    height: 85vh;
+    display:block;
+
+  }
+      img.image-home-value-prop-details {
+        display:none;
+      }
+
+      .details-valueprop-home-right--header {
+        justify-content:flex-start;
+      }
+      .details-valueprop-home-right--body, .details-valueprop-home-left--body {
+        display:block;
+      }
+
+  #save-money-koobo {
+    margin-top:15%;
+    height:50vh;
+  }
+
+        #save-money-koobo--header {
+          height: 30%;
+          padding-bottom: 0;
+          h2 {
+            font-size: 1.4rem;
+          }
+          h5 {
+            font-size: 0.7rem;
+          }
+        }
+
+        #save-money-koobo--input {
+          input {
+            width:80%;
+            height:50px;
+          }
+          p {
+            padding-top:0;
+          }
+          p:last-child {
+            display:none;
+
+          }
+          h6 {
+            padding-top: 0;
+          }
+        }
+
+        #save-money-koobo--footer {
+          h6 {
+            font-size: 0.8rem;
+          }
+        }
+
+
+  #tenant-present--details img {
+    display:block;
+    max-width:200px;
+  }
+
+  #tenant-present {
+    margin: 2em 0;
+    h2 {
+      font-size: 1.25em;
+    }
+  }
+
+  #footer-home {
+    p {
+      padding-top: 5%;
+    }
+  }
+
+      #list-footer {
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 5% 0px;
+        grid-template-rows: 40% 60%;
+        grid-template-areas:
+          "one four"
+          "two three"
+        ;
+        .list-footer--column:nth-child(1) {
+          grid-area:one;
+        }
+        .list-footer--column:nth-child(2) {
+          grid-area:two;
+        }
+        .list-footer--column:nth-child(3) {
+          grid-area:three;
+        }
+        .list-footer--column:nth-child(4) {
+          grid-area:four;
+        }
+      }
+
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (max-width: 992px) and (min-width: 768px) {
+
+  #navbar-home--left {
+    width:55%;
+    grid-template-columns: 30% 10% 10% 15%;
+    grid-gap: 0px 25px;
+    a:nth-child(4) {
+      display:none;
+    }
+  }
+  #navbar-home--right {
+    width:45%
+  }
+
+  // BANNER CHANGES
+  #banner-home {
+    height:90vh;
+    padding-top: 12%;
+    grid-template-columns:1fr;
+    grid-template-rows: 35% 60%;
+    grid-template-areas:
+        "one"
+        "two"
+    ;
+    h1 {
+      font-size: 2.5rem;
+    }
+  }
+        #banner-home--left{
+          display:flex;
+          align-items:flex-end;
+          margin:auto;
+          a {
+            height:10%;
+          }
+          h1 {
+            margin-bottom: 0px;
+          }
+        }
+
+        .mockup-images {
+          box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+        }
+
+  // VALUE-PROP CHANGES
+  #valueprop-home {
+    height: 107vh;
+  }
+        #value-prop-home--cards {
+          display:block;
+          width:75%;
+          margin: 0 auto;
+          .home-card {
+            margin: 5% 0;
+          }
+        }
+
+  .details-valueprop-home-right, .details-valueprop-home-left {
+    padding: 0 17%;
+    height: 50vh;
+    display:block;
+  }
+
+      img.image-home-value-prop-details {
+        display:none;
+      }
+
+      .details-valueprop-home-right--header {
+        justify-content:flex-start;
+      }
+      .details-valueprop-home-right--body, .details-valueprop-home-left--body {
+        display:block;
+      }
+
+
+
+
+
+  #save-money-koobo {
+    margin-top:15%;
+    height:35vh;
+  }
+
+        #save-money-koobo--input {
+          h6 {
+            padding-top: 1em;
+          }
+          input {
+            width:80%;
+            height:50px;
+          }
+        }
+
+
+  #tenant-present--details img {
+    display:block;
+    max-width:450px;
   }
 }
 
-// Small devices (landscape phones, 576px and up)
-@media (min-width: 576px) {
-  .cards-home {
-    grid-template-columns: 1fr;
-  }
-  .two-element{
-    flex-direction: column;
-    margin-top: 48px;
-  }
-  #inside-banner-top{
-      height:30%;
-      margin-top:180px;
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and  (max-width: 1100px) and (min-width: 992px){
+
+
+  // NAVBAR CHANGES
+  #navbar-home--left {
+    width:60%
 
   }
+  #navbar-home--right {
+    width:40%
+  }
+
+  // BANNER CHANGES
+  #banner-home {
+    padding-top: 10%;
+    grid-template-columns:1fr;
+    grid-template-rows: 30% 60%;
+    grid-template-areas:
+        "one"
+        "two"
+    ;
+  }
+        #banner-home--left{
+          display:flex;
+          align-items:flex-end;
+          margin:auto;
+          a {
+            height:10%;
+          }
+          h1 {
+            margin-bottom: 0px;
+          }
+        }
+
+        .mockup-images {
+          box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+        }
+
+  // VALUE-PROP CHANGES
+  #valueprop-home {
+    height: 75vh;
+  }
+        #value-prop-home--cards {
+          display:block;
+          width:55%;
+          margin: 0 auto;
+          .home-card {
+            margin: 5% 0;
+          }
+        }
+
+
+  .details-valueprop-home-right, .details-valueprop-home-left {
+    height: 50vh
+  }
+
+
+  #save-money-koobo {
+    height:35vh;
+  }
+
+        #save-money-koobo--input {
+          h6 {
+            padding-top: 1em;
+          }
+          input {
+            width:80%;
+            height:50px;
+          }
+        }
+
 }
 
-// Medium devices (tablets, 768px and up)
-@media (min-width: 768px) {
-  .cards-home {
-    grid-template-columns: 1fr;
-  }
-  .two-element{
-    flex-direction: column;
-    margin-top: 48px;
-  }
-  #inside-banner-top{
-      height:30%;
-      margin-top:180px;
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1100px) {
 
-  }
-}
-
-// Large devices (desktops, 992px and up)
-@media (min-width: 992px) {
-  .cards-home {
-    grid-template-columns: 1fr;
-  }
-  .two-element{
-    flex-direction: column;
-    margin-top: 48px;
-  }
-  #inside-banner-top{
-      height:40%;
-      margin-top:64px;
-
-  }
-}
-
-// Extra large devices (large desktops, 1200px and up)
-@media (min-width: 1200px) {
-  .cards-home {
-    grid-template-columns: 1fr 1fr 1fr;
-  }
-  .two-element{
-    flex-direction: inherit;
-  }
-  #inside-banner-top{
-      height:50%;
-      margin-top:0;
-
-  }
 }

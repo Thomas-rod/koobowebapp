@@ -21,17 +21,36 @@
 }
 
 .button-sign-home {
+  padding: 0.5rem 3rem;
+  border-radius: 10px;
+  box-shadow:$box-shadow;
+}
+
+.blue {
   color: white;
   background-color: $blue;
-  padding: 10px 15px;
-  border-radius: 10px;
-  border: 1px solid white;
+  border: 0.1rem solid $blue;
   &:hover {
     transition: 0.2s;
     background-color: $coral;
-    border: 1px solid $coral;
+    border: 0.1rem solid $coral;
     color: white;
   }
+}
+
+.coral {
+  box-shadow:0 0 15px rgba($coral, 0.2);
+  color: $white;
+  background-color: $coral;
+  border: 0.1rem solid $coral;
+  padding: 0.76rem 3rem;
+  &:hover {
+    transition: 0.2s;
+    background-color: $coral-light;
+    border: 0.1rem solid $coral-light;
+    color: white;
+  }
+
 }
 
 .documents-button {

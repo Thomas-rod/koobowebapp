@@ -38,13 +38,16 @@ import { initUpdateNavbarOnScroll } from '../components/navbar';
 import { makeFormAppear } from '../components/multi_etaps_form';
 import { previewImageOnFileSelect } from '../components/photo_preview';
 import { pluralizeOrNot } from '../components/pluriel_form';
+// import { sliderBannerShow } from '../components/slider_images_show'
 import { makeButtonLoaderAppearRenter } from '../components/upload_button';
 import { makeButtonLoaderAppearTenant } from '../components/upload_button_tenant';
+import { loadDynamicPriceHome } from '../components/calcul_home';
 // import { addcl, remcl } from '../components/login';
 
 import { initAutocomplete } from '../plugins/init_autocomplete';
 import { initFlatpicker } from '../plugins/flatpickr';
 import { initMapbox } from '../plugins/init_mapbox';
+
 
 
 
@@ -65,6 +68,8 @@ document.addEventListener('turbolinks:load', () => {
   makeButtonLoaderAppearRenter();
   makeButtonLoaderAppearTenant();
   initMapbox();
+  loadDynamicPriceHome();
+  // sliderBannerShow();
   // addcl();
   // remcl();
 });

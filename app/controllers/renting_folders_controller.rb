@@ -69,6 +69,7 @@ class RentingFoldersController < ApplicationController
   def attach_to_renting
     records = @renting.renting_folder.visit.user.records
     records.each_with_index do |record, index|
+      attach_file(@renting, rails_blob_path(record.identity_card), "#{index}-identite", )
       identity_card = URI.open(rails_blob_path(record.identity_card))
       @renting.attach()
       file = URI.open(string)
@@ -77,5 +78,8 @@ class RentingFoldersController < ApplicationController
     end
   end
 
-  def attach_file(string, file_name, content_type)
+  def attach_file(renting, string, file_name, content_type)
+    file = URI.open(string)
+    renting.other_documents.attach(io: file, filename: "#{file_name}", content_type: "#{content_type}")
+  end
 end
