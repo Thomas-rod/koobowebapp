@@ -5,7 +5,6 @@
 <% else %>
   <% status = "" %>
 <% end %>
-<% stop %>
 <div class="progress">
   <div class="progress-bar" id="<%= status %>" role="progressbar" style="width: <%= number_to_percentage((number.to_f / max_number.to_f)*100, precision: 0)%>;" aria-valuenow="<%= number %>" aria-valuemin="0" aria-valuemax="<%=  max_number %>"><%= number_to_percentage((number.to_f / max_number.to_f)*100, precision: 0)  %></div>
 </div>
