@@ -1,6 +1,6 @@
 <% unless multiple %>
   <% @records.each do |record| %>
-    <% if record.send(file).attached? %>
+    <% unless record.record_documents.select{|rd| rd.document.title == file && rd.document.destroy_by_user == nil }.empty? %>
       <i class="fas fa-check-circle font-green"></i>
     <% else %>
       <i class="fas fa-times"></i>
@@ -8,7 +8,7 @@
   <% end %>
 <% else %>
   <% @records.each do |record| %>
-    <% if record.send(file).attached? && record.send(file).count == 3 %>
+    <% unless record.record_documents.select{|rd| rd.document.title == file && rd.document.destroy_by_user == nil && rd.document.docs.count == 3}.empty? %>
       <i class="fas fa-check-circle font-green"></i>
     <% else %>
       <i class="fas fa-times"></i>

@@ -3,6 +3,7 @@ class RecordsController < ApplicationController
 
   def index
     @record = Record.new
+    @document = Document.new
     @records = Record.all.select{|r| r.user == current_user}.sort_by{ |r| r[:created_at]}
     @backer = Backer.new()
     @backers = []
@@ -23,42 +24,10 @@ class RecordsController < ApplicationController
     end
   end
 
-  def update
-    set_record
-    if params[:record].nil?
-      redirect_to records_path, alert: "Attention, tu dois sélectionner un fichier Youston"
-    else
-      @record.send(which_document_upload).attach(params[:record][which_document_upload.to_sym])
-      if @record.update(record_params)
-        redirect_to records_path, notice: "Super, ton fichier a bien été téléchargé Youston"
-      else
-        redirect_to records_path, alert: @record.errors.messages["#{which_document_upload}_format".to_sym].first
-      end
-    end
-  end
-
   def destroy
     set_record
     @record.destroy
     redirect_to records_path, notice: "La personne que tu as ajouté a été enlevé"
-  end
-
-  def purge_document_record
-    set_record
-    unless params[:file].nil?
-      unless params[:file_position].nil?
-        file = params[:file]
-        file_position = params[:file_position]
-        @record.send(file)[file_position.to_i].purge
-        redirect_to records_path, notice: "C'est bon, le document a été supprimé !"
-      else
-        file = params[:file]
-        @record.send(file).purge
-        redirect_to records_path, notice: "C'est bon, le document a été supprimé !"
-      end
-    else
-      redirect_to records_path, alert: "Jeff, on a un soucis. Contacte nous par mail bokoo@koobo.co"
-    end
   end
 
 

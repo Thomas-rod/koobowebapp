@@ -1,6 +1,6 @@
 <% if  number == max_number && max_number == 7*@records.count %>
   <% status = "global_complete" %>
-<% elsif max_number == 7*@records.count %>
+<% elsif max_number == 7*@records.count + 4*@backers.count %>
   <% status = "global" %>
 <% else %>
   <% status = "" %>
