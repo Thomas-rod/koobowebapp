@@ -31,11 +31,20 @@
       .card-positioning > h5:first-child {
         padding-bottom: 0.2rem;
       }
-      .fa-plus-circle {
+      .fa-plus-circle:first-child {
         font-size: 1.3rem;
-        color: white;
+        color:$coral-light;
+        // color: white;
       }
     }
+
+        .nav-item.nav-link.active {
+          background-color:rgba($coral-light, 0.4);
+          border: 0px;
+        }
+        .nav-tabs.nav-link {
+          color:$coral-light;
+        }
         .record-documents {
           display:flex;
           justify-content:space-between;

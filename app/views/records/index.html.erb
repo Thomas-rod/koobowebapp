@@ -20,7 +20,7 @@
               <div class="nav nav-tabs" id="nav-tab" role="tablist">
                 <% @records.each do |record| %>
                   <% if record == @records.first %>
-                    <a class="nav-item nav-link active" id="nav-<%= record.first_name.capitalize %>-tab" data-toggle="tab" href="#nav-<%= record.first_name.capitalize %>" role="tab" aria-controls="nav-<%= record.first_name.capitalize %>" aria-selected="true"><%= record.first_name.capitalize %></a>
+                    <a class="nav-item nav-link active" id="nav-<%= record.first_name.capitalize %>-tab" data-toggle="tab" href="#nav-<%= record.first_name.capitalize %>" role="tab" aria-controls="nav-<%= record.first_name.capitalize %>" aria-selected="true">Mon dossier</a>
                   <% else %>
                     <div class="nav-item nav-link" id="nav-<%= record.first_name.capitalize %>-tab" data-toggle="tab" href="#nav-<%= record.first_name.capitalize %>" role="tab" aria-controls="nav-<%= record.first_name.capitalize %>" style="cursor: pointer;" aria-selected="true">
                       <%= record.first_name.capitalize %>
