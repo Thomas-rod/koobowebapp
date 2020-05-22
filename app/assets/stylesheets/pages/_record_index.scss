@@ -41,9 +41,11 @@
         .nav-item.nav-link.active {
           background-color:rgba($coral-light, 0.4);
           border: 0px;
+          border-radius: 5px;
         }
         .nav-tabs.nav-link {
           color:$coral-light;
+          border-radius: 5px;
         }
         .record-documents {
           display:flex;

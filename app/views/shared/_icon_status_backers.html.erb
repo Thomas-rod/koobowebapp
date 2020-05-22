@@ -1,5 +1,5 @@
 <% @backers.each do |backer| %>
-  <% if backer.send(file).attached? %>
+  <% unless backer.backer_documents.select{|rd| rd.document.title == file && rd.document.destroy_by_user == nil }.empty? %>
     <i class="fas fa-check-circle font-green"></i>
   <% else %>
     <i class="fas fa-times"></i>

@@ -3,6 +3,7 @@ class RentingFolder < ApplicationRecord
   belongs_to :visit
   has_one :renting, dependent: :destroy
   has_one :user
+  has_many :renting_documents
   validates :status, presence: true
   validates :status, inclusion: { in: STATUS_RENTINGFOLDER }
 

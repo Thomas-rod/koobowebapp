@@ -39,6 +39,10 @@ require "sidekiq/web"
   resources :renting_folders, only: [:update]
   resources :flows, only: [:index, :create]
 
+  resources :documents, only: [:create, :update, :destroy]
+  resources :backer_documents, only: [:destroy]
+  resources :record_documents, only: [:destroy]
+
   #*------------------------------------*#
           #ROUTES USED FLAT MODIFICATIONS
   #*------------------------------------*#

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_20_085159) do
+ActiveRecord::Schema.define(version: 2020_05_22_084837) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,15 @@ ActiveRecord::Schema.define(version: 2020_05_20_085159) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "backer_documents", force: :cascade do |t|
+    t.bigint "document_id", null: false
+    t.bigint "backer_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["backer_id"], name: "index_backer_documents_on_backer_id"
+    t.index ["document_id"], name: "index_backer_documents_on_document_id"
+  end
+
   create_table "backers", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
@@ -44,6 +53,14 @@ ActiveRecord::Schema.define(version: 2020_05_20_085159) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["record_id"], name: "index_backers_on_record_id"
+  end
+
+  create_table "documents", force: :cascade do |t|
+    t.string "title"
+    t.date "destroy_by_user"
+    t.boolean "multiple", default: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "flats", force: :cascade do |t|
@@ -75,7 +92,7 @@ ActiveRecord::Schema.define(version: 2020_05_20_085159) do
     t.text "property_advertisement", default: ""
     t.float "latitude"
     t.float "longitude"
-    t.date "start_renting_date", default: "2020-05-19"
+    t.date "start_renting_date", default: "2020-05-22"
     t.index ["user_id"], name: "index_flats_on_user_id"
   end
 
@@ -99,6 +116,15 @@ ActiveRecord::Schema.define(version: 2020_05_20_085159) do
     t.index ["renting_id"], name: "index_messages_on_renting_id"
   end
 
+  create_table "record_documents", force: :cascade do |t|
+    t.bigint "document_id", null: false
+    t.bigint "record_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["document_id"], name: "index_record_documents_on_document_id"
+    t.index ["record_id"], name: "index_record_documents_on_record_id"
+  end
+
   create_table "records", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -108,6 +134,15 @@ ActiveRecord::Schema.define(version: 2020_05_20_085159) do
     t.string "email"
     t.string "phone_number", default: ""
     t.index ["user_id"], name: "index_records_on_user_id"
+  end
+
+  create_table "renting_documents", force: :cascade do |t|
+    t.bigint "renting_id", null: false
+    t.bigint "document_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["document_id"], name: "index_renting_documents_on_document_id"
+    t.index ["renting_id"], name: "index_renting_documents_on_renting_id"
   end
 
   create_table "renting_folders", force: :cascade do |t|
@@ -181,10 +216,16 @@ ActiveRecord::Schema.define(version: 2020_05_20_085159) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "backer_documents", "backers"
+  add_foreign_key "backer_documents", "documents"
   add_foreign_key "flats", "users"
   add_foreign_key "flows", "rentings"
   add_foreign_key "messages", "rentings"
+  add_foreign_key "record_documents", "documents"
+  add_foreign_key "record_documents", "records"
   add_foreign_key "records", "users"
+  add_foreign_key "renting_documents", "documents"
+  add_foreign_key "renting_documents", "rentings"
   add_foreign_key "renting_folders", "visits"
   add_foreign_key "rentings", "flats"
   add_foreign_key "rentings", "renting_folders"

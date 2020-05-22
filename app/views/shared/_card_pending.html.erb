@@ -78,87 +78,87 @@
               <div style="width: 45%;">
                 <strong><p><%= record.first_name.capitalize %> <%= record.last_name.capitalize %></p></strong>
                 <ul class="list-document-renting-folder">
-                  <% if record.identity_card.attached? %>
+                  <% unless find_record_document(record, 'identity_card').nil? %>
                     <li>
                       <p>Carte d'identité</p>
-                      <a href="<%= rails_blob_path(record.identity_card) %>" target="_blank"><i class="fas fa-file-image icon-renting-folder icon-pending--bubble green-bubble"></i></a></li>
+                      <a href="<%= rails_blob_path(find_record_document(record, 'identity_card').docs.first) %>" target="_blank"><i class="fas fa-file-image icon-renting-folder icon-pending--bubble green-bubble"></i></a></li>
                   <% end %>
-                  <% if record.payslips.attached? %>
-                    <li>
+                  <% unless find_record_document(record, 'payslips').nil? %>
+                    <!-- <li>
                       <div class="dropdown">
                         <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                           Bulletins de paies
                         </a>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                          <% record.payslips.each_with_index do |payslip, index| %>
-                            <a class="dropdown-item" href="<%= rails_blob_path(record.payslips[index])%>" target="_blank">Bulletin <%= payslip.record.first_name.capitalize %> <%= index + 1 %></a>
-                          <% end %>
+                          <%# record.payslips.each_with_index do |payslip, index| %>
+                            <!-- <a class="dropdown-item" href="<%#= rails_blob_path(record.payslips[index])%>" target="_blank">Bulletin <%#= payslip.record.first_name.capitalize %> <%#= index + 1 %></a>
+                          <%# end %>
                         </div>
                       </div>
-                    </li>
+                    </li> -->
                   <% end %>
-                  <% if record.proof_residence.attached? %>
+                  <% unless find_record_document(record, 'proof_residence').nil? %>
                     <li>
                       <p>Jutificatif domicile</p>
-                      <a href="<%= rails_blob_path(record.proof_residence) %>" target="_blank"><i class="fas fa-file-image icon-renting-folder icon-pending--bubble green-bubble"></i></a>
+                      <a href="<%= rails_blob_path(find_record_document(record, 'proof_residence').docs.first) %>" target="_blank"><i class="fas fa-file-image icon-renting-folder icon-pending--bubble green-bubble"></i></a>
                     </li>
                   <% end %>
-                  <% if record.notice_assessment.attached? %>
+                  <% unless find_record_document(record, 'notice_assessment').nil? %>
                     <li>
                       <p>Avis d'impôts</p>
-                      <a href="<%= rails_blob_path(record.notice_assessment)%>" target="_blank"><i class="fas fa-file-image icon-renting-folder icon-pending--bubble green-bubble"></i></a>
+                      <a href="<%= rails_blob_path(find_record_document(record, 'notice_assessment').docs.first)%>" target="_blank"><i class="fas fa-file-image icon-renting-folder icon-pending--bubble green-bubble"></i></a>
                     </li>
                   <% end %>
-                  <% if record.rent_receipts.attached? %>
-                    <li>
+                  <% unless find_record_document(record, 'rent_receipts').nil? %>
+                    <!-- <li>
                       <div class="dropdown">
                         <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                           Quittances
                         </a>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                          <% record.rent_receipts.each_with_index do |receipt, index| %>
-                            <a class="dropdown-item " href="<%= rails_blob_path(record.rent_receipts[index])%>" target="_blank">Quittances <%= receipt.record.first_name.capitalize %> <%= index + 1 %></a>
-                          <% end %>
+                          <%# record.rent_receipts.each_with_index do |receipt, index| %>
+                            <a class="dropdown-item " href="<%#= rails_blob_path(record.rent_receipts[index])%>" target="_blank">Quittances <%#= receipt.record.first_name.capitalize %> <%#= index + 1 %></a>
+                          <%# end %>
                         </div>
                       </div>
-                    </li>
+                    </li> -->
                   <% end %>
-                  <% if record.student_card.attached? %>
+                  <% unless find_record_document(record, 'student_card').nil? %>
                     <li>
                       <p>Justificatif situation</p>
-                      <a href="<%= rails_blob_path(record.student_card)%>" target="_blank"><i class="fas fa-file-image icon-renting-folder icon-pending--bubble green-bubble"></i></a>
+                      <a href="<%= rails_blob_path(find_record_document(record, 'student_card').docs.first)%>" target="_blank"><i class="fas fa-file-image icon-renting-folder icon-pending--bubble green-bubble"></i></a>
                     </li>
                   <% end %>
-                  <% if record.bank_identity.attached? %>
+                  <% unless find_record_document(record, 'bank_identity').nil? %>
                     <li>
                       <p>R. d'identité bancaire</p>
-                      <a href="<%= rails_blob_path(record.bank_identity)%>" target="_blank"><i class="fas fa-file-image icon-renting-folder icon-pending--bubble green-bubble"></i></a>
+                      <a href="<%= rails_blob_path(find_record_document(record, 'bank_identity').docs.first)%>" target="_blank"><i class="fas fa-file-image icon-renting-folder icon-pending--bubble green-bubble"></i></a>
                     </li>
                   <% end %>
                   <% unless record.backer.nil? %>
                     <strong><p>Son garant</p></strong>
-                    <% if record.backer.identity_card.attached? %>
+                    <% unless find_backer_document(record.backer, 'identity_card').nil? %>
                       <li>
                         <p>Justificatif d'identité</p>
-                        <a href="<%= rails_blob_path(record.backer.identity_card)%>" target="_blank"><i class="fas fa-file-image icon-renting-folder icon-pending--bubble green-bubble"></i></a>
+                        <a href="<%= rails_blob_path(find_backer_document(record.backer, 'identity_card').docs.first)%>" target="_blank"><i class="fas fa-file-image icon-renting-folder icon-pending--bubble green-bubble"></i></a>
                       </li>
                     <% end %>
-                    <% if record.backer.proof_residence.attached? %>
+                    <% unless find_backer_document(record.backer, 'proof_residence').nil? %>
                       <li>
                         <p>Justificatif de domicile</p>
-                        <a href="<%= rails_blob_path(record.backer.proof_residence)%>" target="_blank"><i class="fas fa-file-image icon-renting-folder icon-pending--bubble green-bubble"></i></a>
+                        <a href="<%= rails_blob_path(find_backer_document(record.backer, 'proof_residence').docs.first)%>" target="_blank"><i class="fas fa-file-image icon-renting-folder icon-pending--bubble green-bubble"></i></a>
                       </li>
                     <% end %>
-                    <% if record.backer.proof_work.attached? %>
+                    <% unless find_backer_document(record.backer, 'proof_work').nil? %>
                       <li>
                         <p>Justificatif professionnelle</p>
-                        <a href="<%= rails_blob_path(record.backer.proof_work)%>" target="_blank"><i class="fas fa-file-image icon-renting-folder icon-pending--bubble green-bubble"></i></a>
+                        <a href="<%= rails_blob_path(find_backer_document(record.backer, 'proof_work').docs.first)%>" target="_blank"><i class="fas fa-file-image icon-renting-folder icon-pending--bubble green-bubble"></i></a>
                       </li>
                     <% end %>
-                    <% if record.backer.proof_revenue.attached? %>
+                    <% unless find_backer_document(record.backer, 'proof_revenue').nil? %>
                       <li>
                         <p>Justificatif de revenue</p>
-                        <a href="<%= rails_blob_path(record.backer.proof_revenue)%>" target="_blank"><i class="fas fa-file-image icon-renting-folder icon-pending--bubble green-bubble"></i></a>
+                        <a href="<%= rails_blob_path(find_backer_document(record.backer, 'proof_revenue').docs.first)%>" target="_blank"><i class="fas fa-file-image icon-renting-folder icon-pending--bubble green-bubble"></i></a>
                       </li>
                     <% end %>
                   <% end %>

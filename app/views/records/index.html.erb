@@ -65,16 +65,16 @@
                 <div class="tab-pane fade <%= "show active" if record == @records.first%>" id="nav-<%= record.first_name.capitalize %>" role="tabpanel" aria-labelledby="nav-<%= record.first_name.capitalize %>-tab">
                   <h6 class="title-record-documents">Document obligatoires</h6>
                   <div class="record-documents">
-                    <%= render partial: 'shared/card_upload_doc', locals: { record: record, file: 'identity_card', title: "Carte d'identité", multiple: false} %>
-                    <%= render partial: 'shared/card_upload_doc', locals: { record: record, file: 'payslips', title: "Bulletins de salaires", multiple: true} %>
-                    <%= render partial: 'shared/card_upload_doc', locals: { record: record, file: 'proof_residence', title: "Justificatif de domicile", multiple: false} %>
+                    <%= render partial: 'shared/card_upload_doc', locals: { document: @document, record: record, file: 'identity_card', title: "Carte d'identité", multiple: false} %>
+                    <%= render partial: 'shared/card_upload_doc', locals: { document: @document, record: record, file: 'payslips', title: "Bulletins de salaires", multiple: false} %>
+                    <%= render partial: 'shared/card_upload_doc', locals: { document: @document, record: record, file: 'proof_residence', title: "Justificatif de domicile", multiple: false} %>
                   </div>
                   <h6 class="title-record-documents">Document optionnels</h6>
                   <div class="record-documents">
-                    <%= render partial: 'shared/card_upload_doc', locals: { record: record, file: 'notice_assessment', title: "Avis d'imposition", multiple: false} %>
-                    <%= render partial: 'shared/card_upload_doc', locals: { record: record, file: 'rent_receipts', title: "Quittances de loyer", multiple: true} %>
-                    <%= render partial: 'shared/card_upload_doc', locals: { record: record, file: 'student_card', title: "Justificatif professionnelle", multiple: false} %>
-                    <%= render partial: 'shared/card_upload_doc', locals: { record: record, file: 'bank_identity', title: "Relevé d'identité bancaire", multiple: false} %>
+                    <%= render partial: 'shared/card_upload_doc', locals: { document: @document, record: record, file: 'notice_assessment', title: "Avis d'imposition", multiple: false} %>
+                    <%= render partial: 'shared/card_upload_doc', locals: { document: @document, record: record, file: 'rent_receipts', title: "Quittances de loyer", multiple: false} %>
+                    <%= render partial: 'shared/card_upload_doc', locals: { document: @document, record: record, file: 'student_card', title: "Justificatif professionnelle", multiple: false} %>
+                    <%= render partial: 'shared/card_upload_doc', locals: { document: @document, record: record, file: 'bank_identity', title: "Relevé d'identité bancaire", multiple: false} %>
                   </div>
                   <% if record.backer %>
                     <div class="backer-present">
@@ -136,7 +136,7 @@
                   <%= image_tag ("avatar.png"), class: "avatar-large bordered"%>
                 <% end %>
                 <p><%= current_user.first_name.capitalize %> <%= current_user.last_name.capitalize %></p>
-                <%= render partial: 'shared/progression', locals: { number: (records_number_document_mandatory_attached(@records) + records_number_document_optional_attached(@records) + backers_number_document_attached(@backers)), max_number: (7*@records.count)+(4*@backers.count)} %>
+                <%= render partial: 'shared/progression', locals: { number: (records_number_document_mandatory_attached(@records) +  records_number_document_optional_attached(@records) +  backers_number_document_attached(@backers)), max_number: (7*@records.count)+(4*@backers.count)} %>
               </div>
               <div class="record-show-grid--stats--body">
                 <h6>Documents obligatoires</h6>
