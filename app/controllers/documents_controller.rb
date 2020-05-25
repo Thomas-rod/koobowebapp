@@ -6,7 +6,7 @@ class DocumentsController < ApplicationController
     else
       params[:document][:docs].is_a?(Array) ? @document.multiple = true : @document.multiple = false
       attach_document
-      if @document.save!
+      if @document.save
         if params[:backer].nil?
           RecordDocument.create(record: Record.find(params[:record]), document: @document)
         else

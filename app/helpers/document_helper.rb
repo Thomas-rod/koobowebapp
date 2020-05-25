@@ -5,8 +5,8 @@ module DocumentHelper
     rentings_tenant = Renting.all.select{ |r| r.renting_folder.visit.user == tenant }
     return false if rentings_tenant.empty?
     rentings_tenant.each do |r|
-      if r.renting_documents.document == document
-        return true
+      r.renting_documents.each do |rd|
+        return true if rd.document == @document
       end
     end
   end

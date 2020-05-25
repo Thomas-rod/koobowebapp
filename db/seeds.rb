@@ -50,12 +50,12 @@ puts "#{User.count} users created"
 
 
 puts "Creating records"
-thomas_second_record = Record.create(first_name: 'Salomé', last_name: 'Marcade', phone_number: '01.90.93.93.95', email: 'salome@gmail.com')
-
+thomas_second_record = Record.create!(user: thomas, first_name: 'Salomé', last_name: 'Marcade', phone_number: '01.90.93.93.95', email: 'salome@gmail.com')
 puts "#{Record.count} records created"
 
 
 puts "Creating backers"
+thomas_backer = Backer.create!(first_name: 'Philippe', last_name: 'Rodier', email: 'philippe@gmail.com', record: thomas.records.first)
 puts "#{Backer.count} backers created"
 
 #--------------------------------------------------------------------------------------------------------#
@@ -176,6 +176,8 @@ nine_visit = Visit.create!(schedule: third_schedule, user: john, contract: 'CDI'
 ten_visit = Visit.create!(schedule: fourth_schedule, user: joker, contract: 'CDI', income: 2230, people: 1, phone: Faker::PhoneNumber.phone_number)
 eleven_visit = Visit.create!(schedule: fourth_schedule, user: stefan, contract: 'CDI', income: 2230, people: 1, phone: Faker::PhoneNumber.phone_number)
 twelve_visit = Visit.create!(schedule: fourth_schedule, user: john, contract: 'CDD', income: 2230, people: 1, phone: Faker::PhoneNumber.phone_number)
+
+first_visit_thomas_stefan = Visit.create!(schedule:first_schedule_fourth_flat, user: thomas, contract: 'CDI', income: 2500, people: 2, phone: Faker::PhoneNumber.phone_number, message:" Je souhaite visite votre appartement avec ma compagne. Nous souhaitons nous installer sur Paris à la suite de la validation de nos périodes d'essais respectives", status: 'accepted')
 puts "#{Visit.count} visits created"
 
 
@@ -186,16 +188,15 @@ puts "Creating renting_folders"
 #*------------------------------------*#
   # THIS RENTING FOLDER FIRST FLAT FIRST RENTING
 #*------------------------------------*#
-first_renting_folder_first_flat = RentingFolder.new(visit: second_visit_first_schedule_first_flat, status: 'accepted')
+first_renting_folder_first_flat = RentingFolder.create!(visit: second_visit_first_schedule_first_flat, status: 'accepted')
 #*------------------------------------*#
   # THIS RENTING FOLDER FIRST FLAT SECOND RENTING
 #*------------------------------------*#
-second_renting_folder_first_flat = RentingFolder.new(visit: second_visit_third_schedule_first_flat, status: 'accepted')
+second_renting_folder_first_flat = RentingFolder.create!(visit: second_visit_third_schedule_first_flat, status: 'accepted')
 #*------------------------------------*#
   # THIS RENTING FOLDER SECOND FLAT FIRST RENTING
 #*------------------------------------*#
-first_renting_folder_second_flat = RentingFolder.new(visit: first_visit_first_schedule_second_flat, status: 'accepted')
-
+first_renting_folder_second_flat = RentingFolder.create!(visit: first_visit_first_schedule_second_flat, status: 'accepted')
 puts "#{RentingFolder.count} renting folders created"
 
 #--------------------------------------------------------------------------------------------------------#

@@ -19,7 +19,7 @@ class RentingsController < ApplicationController
   def update
     @renting = Renting.find(params[:id])
     @renting.update(renting_params)
-    redirect_to rentings_path
+    redirect_to request.referrer, notice: "Vos informations ont bien été mis à jours"
   end
 
   #-----------------------------------#
@@ -27,7 +27,7 @@ class RentingsController < ApplicationController
   #------------------------------------#
 
   def renting_params
-    params.require(:renting).permit( bails: [], etats_des_lieux: [], quittances: [])
+    params.require(:renting).permit(:flat, :status, :end_date, :start_date, :renting_folder, :type_renter, :renter, :renter_address, bails: [], etats_des_lieux: [], quittances: [])
   end
 
   def find_renting

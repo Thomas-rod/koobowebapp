@@ -1,5 +1,4 @@
 class RentingFoldersController < ApplicationController
-  require 'open-uri'
 
   def update
     @renting_folder = RentingFolder.find(params[:id])
@@ -66,20 +65,17 @@ class RentingFoldersController < ApplicationController
     end
   end
 
-  def attach_to_renting
-    records = @renting.renting_folder.visit.user.records
-    records.each_with_index do |record, index|
-      attach_file(@renting, rails_blob_path(record.identity_card), "#{index}-identite", )
-      identity_card = URI.open(rails_blob_path(record.identity_card))
-      @renting.attach()
-      file = URI.open(string)
-      user.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
-
+  def attach_to_renting(renting)
+    records = renting.renting_folder.visit.user.records
+    records.each do |record|
+      record.record_documents.each do |rd|
+        RentingDocument.create(renting: renting, document: rd.document, kind: "tenant")
+      end
+      unless record.backer.nil?
+        record.backer.backer_documents.each do |bd|
+          RentingDocument.create(renting: renting, document: bd.document, kind: "backer")
+        end
+      end
     end
-  end
-
-  def attach_file(renting, string, file_name, content_type)
-    file = URI.open(string)
-    renting.other_documents.attach(io: file, filename: "#{file_name}", content_type: "#{content_type}")
   end
 end

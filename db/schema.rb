@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_22_084837) do
+ActiveRecord::Schema.define(version: 2020_05_25_105613) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -92,7 +92,7 @@ ActiveRecord::Schema.define(version: 2020_05_22_084837) do
     t.text "property_advertisement", default: ""
     t.float "latitude"
     t.float "longitude"
-    t.date "start_renting_date", default: "2020-05-22"
+    t.date "start_renting_date", default: "2020-05-25"
     t.index ["user_id"], name: "index_flats_on_user_id"
   end
 
@@ -107,6 +107,11 @@ ActiveRecord::Schema.define(version: 2020_05_22_084837) do
     t.integer "month_rent"
     t.integer "year_rent"
     t.index ["renting_id"], name: "index_flows_on_renting_id"
+  end
+
+  create_table "leases", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "messages", force: :cascade do |t|
@@ -141,6 +146,7 @@ ActiveRecord::Schema.define(version: 2020_05_22_084837) do
     t.bigint "document_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "kind"
     t.index ["document_id"], name: "index_renting_documents_on_document_id"
     t.index ["renting_id"], name: "index_renting_documents_on_renting_id"
   end
@@ -161,6 +167,9 @@ ActiveRecord::Schema.define(version: 2020_05_22_084837) do
     t.date "end_date"
     t.date "start_date"
     t.bigint "renting_folder_id"
+    t.string "type_renter"
+    t.string "renter"
+    t.string "renter_address"
     t.index ["flat_id"], name: "index_rentings_on_flat_id"
     t.index ["renting_folder_id"], name: "index_rentings_on_renting_folder_id"
   end

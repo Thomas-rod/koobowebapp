@@ -14,6 +14,7 @@ class FlatsController < ApplicationController
 
   def show
     find_flat
+    @renting = Renting.select{ |r| r.flat == @flat && r.status == 'ongoing'}.first if !Renting.select{ |r| r.flat == @flat && r.status == 'ongoing'}.first.nil?
     @schedule = Schedule.new
     flat_requests
   end

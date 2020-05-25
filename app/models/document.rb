@@ -10,12 +10,12 @@ has_many_attached :docs
 validates :title, inclusion: {in: TITTLE}
 validates :title, presence: true
 
-validate :document_attached
+# validate :document_attached
 
 private
 
   def document_attached
-if docs.count == 1 && !docs.first.content_type.in?(%w(image/jpeg image/jpg image/png application/pdf application/msword application/vnd.openxmlformats-officedocument.wordprocessingml.document))
+    if docs.count == 1 && !docs.first.content_type.in?(%w(image/jpeg image/jpg image/png application/pdf application/msword application/vnd.openxmlformats-officedocument.wordprocessingml.document))
       errors.add(:docs_format, "Le format n'est pas le bon ! Essaye à nouveau")
     else
       docs.each do |doc|

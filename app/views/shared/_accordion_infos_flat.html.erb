@@ -6,11 +6,22 @@
           Mes informations
         </button>
       </h5>
-      <p class="font-orange">0/4 champs remplis</p>
+      <p class="<%= renter_informations_number?(@renting) ? "font-green" : "font-orange" %>"><%= renter_informations_number(@renting)%>/3 champs remplis</p>
     </div>
-    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
       <div class="card-body">
-        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+        <%= simple_form_for @renting, method: 'patch' do |f| %>
+          <div class="form-accordion">
+            <%= f.input :type_renter, label: "Personne physique ou morale ?", selected: "Physique", collection: [['Physique', 'private_individual'], ['Morale', 'juridical_person']], label_method: :first, value_method: :second %>
+            <%= f.input :renter, label: "Prénom & nom ou dénomination", input_html: { value: "#{current_user.first_name.capitalize} #{current_user.last_name.capitalize}"} %>
+            <%= f.input :renter_address, label: "Adresse ou siége social" %>
+          </div>
+          <div class="form-accordion-submit">
+            <p>Ces informations sont essentielles pour l'élaboration du bail.</p>
+            <p>Veuillez vous assurez de la conformité de celles-ci.</p>
+            <%= f.submit "Sauvegarder", class:"koobo-button" %>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>
@@ -38,41 +49,58 @@
       </h2>
       <p class="<%= @flat.number_file_attached == 3 ? "font-green" : "font-orange" %>"><%= @flat.number_file_attached %>/3 documents joins</p>
     </div>
-    <div id="collapseThree" class="collapse show" aria-labelledby="headingThree" data-parent="#accordion">
+    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
       <div class="card-body">
-        <div class="row" id="pills-container">
-          <div class="col-5" id="pills-header">
-            <div class="nav nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-              <a class="nav-link <%= @flat.technical_diagnostic.attached? ? "good" : "" %> active" id="v-pills-technical-diagnostic-tab" data-toggle="pill" href="#v-pills-technical-diagnostic" role="tab" aria-controls="v-pills-technical-diagnostic" aria-selected="true">Diagnostic Technique
-                <% if @flat.technical_diagnostic.attached? %>
-                  <i class="fas fa-check-circle font-green"></i>
-                <% end %>
-              </a>
-              <a class="nav-link <%= @flat.information_leaflet.attached? ? "good" : "" %>" id="v-pills-information-leaflet-tab" data-toggle="pill" href="#v-pills-information-leaflet" role="tab" aria-controls="v-pills-information-leaflet" aria-selected="false">Notice d'information
-                <% if @flat.information_leaflet.attached? %>
-                  <i class="fas fa-check-circle font-green"></i>
-                <% end %>
-              </a>
-              <a class="nav-link <%= @flat.co_owner_document.attached? ? "good" : "" %>" id="v-pills-co-owner-document-tab" data-toggle="pill" href="#v-pills-co-owner-document" role="tab" aria-controls="v-pills-co-owner-document" aria-selected="false">Règlement co-propriété
-                <% if @flat.co_owner_document.attached? %>
-                  <i class="fas fa-check-circle font-green"></i>
-                <% end %>
-              </a>
-            </div>
-          </div>
-          <div class="col-7">
-            <div class="tab-content" id="v-pills-tabContent">
-              <div class="tab-pane fade show active" id="v-pills-technical-diagnostic" role="tabpanel" aria-labelledby="v-pills-technical-diagnostic-tab">
-                <%= render partial: 'shared/form_upload_fil_show_ongoing', locals: { title: "Le diagnistic technique", link: "https://www.anil.org/fileadmin/ANIL/Editions_grand_public/serie_rapports_locatifs/quels_diagnostics_louer.pdf", file: "technical_diagnostic", flat: @flat} %>
-              </div>
-              <div class="tab-pane fade " id="v-pills-information-leaflet" role="tabpanel" aria-labelledby="v-pills-information-leaflet-tab">
-                <%= render partial: 'shared/form_upload_fil_show_ongoing', locals: { title: "La notice d'information", link: "https://droit-finances.commentcamarche.com/download/telecharger-334-location-notice-d-information-type", file: "information_leaflet", flat: @flat} %>
-              </div>
-              <div class="tab-pane fade" id="v-pills-co-owner-document" role="tabpanel" aria-labelledby="v-pills-co-owner-document-tab">
-                <%= render partial: 'shared/form_upload_fil_show_ongoing', locals: { title: "Le réglement de co-propriété", link: "https://www.service-public.fr/particuliers/vosdroits/F2589", file: "co_owner_document", flat: @flat} %>
-              </div>
-            </div>
-          </div>
+        <div class="card-upload-doc <%= @flat.technical_diagnostic.attached? ? "fulfill" : "empty" %>">
+          <p>Diagnostic Technique</p>
+          <%= simple_form_for @flat, url: upload_document_path, html: {id: "edit_recrod_technical_diagnostic"}, method: 'post' do |f| %>
+            <% if @flat.technical_diagnostic.attached? %>
+              <%= f.input :technical_diagnostic, as: :file, input_html: { class: 'hidden d-none' }, label: ("#{image_tag('sync_files.svg')}").html_safe, label_html: { class: "add-file-clickable", id: "js-technical_diagnostic"}%>
+            <% else %>
+              <%= f.input :technical_diagnostic, as: :file, input_html: { class: 'hidden d-none' }, label: ("#{image_tag('add_file2.svg')}").html_safe, label_html: { class: "add-file-clickable", id: "js-technical_diagnostic"}%>
+            <% end %>
+            <%= f.submit "Ajouter", class: "koobo-button hide-file", id: "submit-file-upload-technical_diagnostic" %>
+          <% end %>
+          <% if @flat.technical_diagnostic.attached? %>
+            <%= link_to purge_document_path(:file => "technical_diagnostic"), method: 'delete', data: { confirm: "Tu veux supprimer le document ?" } do %>
+              <i class="fas fa-times"></i>
+            <% end %>
+            <p id="file-name"><i><%= @flat.technical_diagnostic.filename %></i></p>
+          <% end %>
+        </div>
+        <div class="card-upload-doc <%= @flat.information_leaflet.attached? ? "fulfill" : "empty" %>">
+          <p>Notice d'information</p>
+          <%= simple_form_for @flat, url: upload_document_path, html: {id: "edit_recrod_information_leaflet"}, method: 'post' do |f| %>
+            <% if @flat.information_leaflet.attached? %>
+              <%= f.input :information_leaflet, as: :file, input_html: { class: 'hidden d-none' }, label: ("#{image_tag('sync_files.svg')}").html_safe, label_html: { class: "add-file-clickable", id: "js-information_leaflet"}%>
+            <% else %>
+              <%= f.input :information_leaflet, as: :file, input_html: { class: 'hidden d-none' }, label: ("#{image_tag('add_file2.svg')}").html_safe, label_html: { class: "add-file-clickable", id: "js-information_leaflet"}%>
+            <% end %>
+            <%= f.submit "Ajouter", class: "koobo-button hide-file", id: "submit-file-upload-information_leaflet" %>
+          <% end %>
+          <% if @flat.information_leaflet.attached? %>
+            <%= link_to purge_document_path(:file => "information_leaflet"), method: 'delete', data: { confirm: "Tu veux supprimer le document ?" } do %>
+              <i class="fas fa-times"></i>
+            <% end %>
+            <p id="file-name"><i><%= @flat.information_leaflet.filename %></i></p>
+          <% end %>
+        </div>
+        <div class="card-upload-doc <%= @flat.co_owner_document.attached? ? "fulfill" : "empty" %>">
+          <p>Règlement co-pro</p>
+          <%= simple_form_for @flat, url: upload_document_path, html: {id: "edit_recrod_co_owner_document"}, method: 'post' do |f| %>
+            <% if @flat.co_owner_document.attached? %>
+              <%= f.input :co_owner_document, as: :file, input_html: { class: 'hidden d-none' }, label: ("#{image_tag('sync_files.svg')}").html_safe, label_html: { class: "add-file-clickable", id: "js-co_owner_document"}%>
+            <% else %>
+              <%= f.input :co_owner_document, as: :file, input_html: { class: 'hidden d-none' }, label: ("#{image_tag('add_file2.svg')}").html_safe, label_html: { class: "add-file-clickable", id: "js-co_owner_document"}%>
+            <% end %>
+            <%= f.submit "Ajouter", class: "koobo-button hide-file", id: "submit-file-upload-co_owner_document" %>
+          <% end %>
+          <% if @flat.co_owner_document.attached? %>
+            <%= link_to purge_document_path(:file => "co_owner_document"), method: 'delete', data: { confirm: "Tu veux supprimer le document ?" } do %>
+              <i class="fas fa-times"></i>
+            <% end %>
+            <p id="file-name"><i><%= @flat.co_owner_document.filename %></i></p>
+          <% end %>
         </div>
       </div>
     </div>
