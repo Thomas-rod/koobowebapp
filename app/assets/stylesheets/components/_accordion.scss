@@ -1,177 +1,154 @@
 
-.accordion {
-  margin-top: 0.5rem;
-}
+// .accordion {
+//   margin-top: 0.5rem;
+// }
 
-/*------------------------------------*\
-  #ACCORDION CSS FIRST PART
-\*------------------------------------*/
-
-.card-body {
-  form.simple_form {
-    padding:0.5rem;
-    display:flex;
-    justify-content:space-between;
-    align-items:start;
-    position:relative;
-    height:100%;
-  }
-}
-
-.form-accordion {
-  width:50%;
-}
-.form-accordion-submit {
-  width:45%;
-  justify-content:flex-end;
-  input {
-    position:absolute;
-    bottom: 1rem;
-
-  }
-
-}
-
-
-/*------------------------------------*\
-  #ACCORDION CSS ON BOOTSTRAP DROPDOWN
-\*------------------------------------*/
-
-#collapseThree {
-  .card-body {
-    display:flex;
-    justify-content:space-around;
-    align-items:center;
-    padding: 1rem 0;
-  }
-}
-
-/*------------------------------------*\
-  #INPUT FILE
-\*------------------------------------*/
-
-
-.container-input-files-accordion {
-  margin: 7% 2.5%;
-  height:95%;
-  align-items:center;
-}
-
-.input-files-accordion {
-  height:100%;
-  width:100%;
-  display:flex;
-  justify-content:space-around;
-  align-items:center;
-  flex-grow:1;
-}
-
-
-.body-file {
-  border-radius: $border-radius;
-  display:grid;
-  grid-gap: 20px;
-  grid-template-columns: 35% 55%;
-  height:80%;
-  align-items:center;
-  padding-left:15px;
-}
-
-.file-delete-form {
-  #file-name {
-    font-size: 0.8rem;
-  }
-}
-
-
-.card-upload-doc {
-  .form-group {
-    display:flex;
-    justify-content:space-around;
-    align-items:center;
-    margin-bottom: 0rem !important;
-  }
-}
-
-/*------------------------------------*\
-  #OTHER DOCUMENTS
-\*------------------------------------*/
-
-#pills-container {
-  height:85%;
-}
-
-#pills-header {
-  border-right: 1px solid rgba(0, 0, 0, 0.125);
-  padding-right: 0px;
-  height:100%;
-}
-
-.hide-file {
-  display:none;
-}
-
-/*------------------------------------*\
-  #OVERWRITTING BOOTSTRAP
-\*------------------------------------*/
-
-.card-header {
-  display :flex;
-  justify-content: space-between;
-  align-items:center;
-}
-
-#accordion {
-  max-height:100%;
-  display:flex;
-  flex-direction: column;
-  justify-content:center;
-}
-
-.card-body {
-  width: 100%;
-  height:100%;
-  padding: 0px;
-}
-
-.tab-content, .tab-pane {
-  overflow:auto;
-}
+// /*------------------------------------*\
+//   #ACCORDION CSS FIRST PART
+// \*------------------------------------*/
 
 
 
-.nav-pills {
-  height:84%;
-  width:100%;
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
-  text-align:center;
-  a {
-    align-content:center;
-  }
-}
 
-.nav-link {
-  height:33.33%;
-  padding: 1.2rem 1rem;
-  &:hover {
-    color:inherit;
-    background-color:inherit;
-    opacity:1
-  }
-}
+// /*------------------------------------*\
+//   #ACCORDION CSS ON BOOTSTRAP DROPDOWN
+// \*------------------------------------*/
 
-.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-  background-color: rgba($blue, 0.2);
-  color:$blue;
-}
+// #collapseThree {
+//   .card-body {
+//     display:flex;
+//     justify-content:space-around;
+//     align-items:center;
+//     padding: 1rem 0;
+//   }
+// }
 
-#pills-container {
-  .col-7, .col-5 {
-    padding-right: 0px;
-    padding-left: 0px;
-  }
-  margin-right: 0px;
-  margin-left: 0px;
-}
+// /*------------------------------------*\
+//   #INPUT FILE
+// \*------------------------------------*/
+
+
+// .container-input-files-accordion {
+//   margin: 7% 2.5%;
+//   height:95%;
+//   align-items:center;
+// }
+
+// .input-files-accordion {
+//   height:100%;
+//   width:100%;
+//   display:flex;
+//   justify-content:space-around;
+//   align-items:center;
+//   flex-grow:1;
+// }
+
+
+// .body-file {
+//   border-radius: $border-radius;
+//   display:grid;
+//   grid-gap: 20px;
+//   grid-template-columns: 35% 55%;
+//   height:80%;
+//   align-items:center;
+//   padding-left:15px;
+// }
+
+// .file-delete-form {
+//   #file-name {
+//     font-size: 0.8rem;
+//   }
+// }
+
+
+// .card-upload-doc {
+//   .form-group {
+//     display:flex;
+//     justify-content:space-around;
+//     align-items:center;
+//     margin-bottom: 0rem !important;
+//   }
+// }
+
+// /*------------------------------------*\
+//   #OTHER DOCUMENTS
+// \*------------------------------------*/
+
+// #pills-container {
+//   height:85%;
+// }
+
+// #pills-header {
+//   border-right: 1px solid rgba(0, 0, 0, 0.125);
+//   padding-right: 0px;
+//   height:100%;
+// }
+
+// .hide-file {
+//   display:none;
+// }
+
+// /*------------------------------------*\
+//   #OVERWRITTING BOOTSTRAP
+// \*------------------------------------*/
+
+// .card-header {
+//   display :flex;
+//   justify-content: space-between;
+//   align-items:center;
+// }
+
+// #accordion {
+//   max-height:100%;
+//   display:flex;
+//   flex-direction: column;
+//   justify-content:center;
+// }
+
+// .card-body {
+//   width: 100%;
+//   height:100%;
+//   padding: 0px;
+// }
+
+// .tab-content, .tab-pane {
+//   overflow:auto;
+// }
+
+
+
+// .nav-pills {
+//   height:84%;
+//   width:100%;
+//   display:flex;
+//   flex-direction:column;
+//   justify-content:space-between;
+//   text-align:center;
+//   a {
+//     align-content:center;
+//   }
+// }
+
+// .nav-link {
+//   height:33.33%;
+//   padding: 1.2rem 1rem;
+//   &:hover {
+//     color:inherit;
+//     background-color:inherit;
+//     opacity:1
+//   }
+// }
+
+// .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+//   background-color: rgba($blue, 0.2);
+//   color:$blue;
+// }
+
+// #pills-container {
+//   .col-7, .col-5 {
+//     padding-right: 0px;
+//     padding-left: 0px;
+//   }
+//   margin-right: 0px;
+//   margin-left: 0px;
+// }

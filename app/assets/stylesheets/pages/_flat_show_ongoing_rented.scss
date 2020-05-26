@@ -4,18 +4,17 @@
 
 #disposition-card-three {
   display: grid;
-  grid-template-columns: 2fr 1fr;
-  grid-template-rows: repeat(4, 1fr);
+  grid-template-columns: 66% 33%;
+  grid-template-rows: 75% 23%;
   position:relative;
   grid-gap: 20px;
   padding: 15px 20px;
   grid-template-areas:
         "one two"
-        "one two"
-        "one two"
         "three two";
   #disposition-three-left-top {
     grid-area:one;
+    height:100%;
   }
   #disposition-three-right {
     grid-area:two;
@@ -30,15 +29,75 @@
 \*------------------------------------*/
 
 #disposition-three-left-top {
-
+  // overflow:scroll;
   border-radius: $border-radius;
   > .card-positioning h5, p {
     text-align:center;
   }
 }
 
-#disposition-three-left-bottom {
+    .information-renter,
+    .information-flat,
+    .document-renter {
+      margin:1rem 0px;
+    }
 
+        .information-renter--button,
+        .information-flat--button,
+        .document-renter--button {
+          display:flex;
+          justify-content:space-between;
+          align-items:center;
+          border-bottom: 1px solid rgba($gray, 0.1);
+          padding-bottom:0.5rem;
+          &:hover {
+            color: $blue;
+          }
+        }
+        .card {
+          background-color: white;
+          background-clip: border-box;
+          border: 0px;
+          border-radius: 0px;
+        }
+
+        .information-renter--body,
+        .information-flat--body,
+        .document-renter--body {
+
+        }
+
+        .information-renter--body > form {
+          &.simple_form {
+            padding:0.5rem;
+            display:flex;
+            justify-content:space-between;
+            align-items:start;
+            position:relative;
+            height:100%;
+          }
+        }
+
+        .form-accordion {
+          width:50%;
+        }
+        .form-accordion-submit {
+          width:45%;
+          justify-content:flex-end;
+          input {
+            position:absolute;
+            bottom: 1rem;
+          }
+        }
+
+
+        .document-renter--body {
+          display:flex;
+          align-items:center;
+          justify-content:space-between;
+        }
+
+#disposition-three-left-bottom {
   grid-area: three;
   border-radius: $border-radius;
 }
@@ -55,6 +114,7 @@
   justify-content:space-around;
   align-items:center;
   flex-grow:1;
+  height:100%;
 }
 
 /*------------------------------------*\

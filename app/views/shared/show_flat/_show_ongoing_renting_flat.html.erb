@@ -3,7 +3,105 @@
     <div class="card-positioning">
       <h5>Nous avons besoins de quelques informations</h5>
       <p>(Ps: Ne t'en fait pas, cela durera moins de 3 minutes)</p>
-      <%= render partial: 'shared/accordion_infos_flat' %>
+      <div class="information-renter">
+        <a class="information-renter--button" data-toggle="collapse" href="#collapseInformationRenter" role="button" aria-expanded="false" aria-controls="collapseInformationRenter">
+          <h6>Mes informations</h6>
+          <p class="<%= renter_informations_number?(@renting) ? "font-green" : "font-orange" %>"><%= renter_informations_number(@renting)%>/3 champs remplis <i class="fas fa-caret-down"></i></p>
+        </a>
+        <div class="collapse" id="collapseInformationRenter">
+          <div class="card card-body">
+            <div class="information-renter--body">
+              <%= simple_form_for @renting, method: 'patch' do |f| %>
+              <div class="form-accordion">
+                <%= f.input :type_renter, label: "Personne physique ou morale ?", selected: "Physique", collection: [['Physique', 'private_individual'], ['Morale', 'juridical_person']], label_method: :first, value_method: :second %>
+                <%= f.input :renter, label: "Prénom & nom ou dénomination", input_html: { value: "#{current_user.first_name.capitalize} #{current_user.last_name.capitalize}"} %>
+                <%= f.input :renter_address, label: "Adresse ou siége social" %>
+              </div>
+              <div class="form-accordion-submit">
+                <p>Ces informations sont essentielles pour l'élaboration du bail.</p>
+                <p>Veuillez vous assurez de la conformité de celles-ci.</p>
+                <%= f.submit "Sauvegarder", class:"koobo-button" %>
+              </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="information-flat">
+        <a class="information-flat--button" data-toggle="collapse" href="#collapseInformationFlat" role="button" aria-expanded="false" aria-controls="collapseInformationFlat">
+          <h6>Mon bien</h6>
+          <p class="font-orange">0/3 champs remplis <i class="fas fa-caret-down"></i></p>
+        </a>
+        <div class="collapse" id="collapseInformationFlat">
+          <div class="card card-body">
+            <div class="information-flat--body">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="document-renter">
+        <a class="document-renter--button" data-toggle="collapse" href="#collapseDocumentRenter" role="button" aria-expanded="false" aria-controls="collapseDocumentRenter">
+          <h6>Mes documents</h6>
+          <p class="<%= @flat.number_file_attached == 3 ? "font-green" : "font-orange" %>"><%= @flat.number_file_attached %>/3 documents joins</p>
+        </a>
+        <div class="collapse" id="collapseDocumentRenter">
+          <div class="card card-body">
+            <div class="document-renter--body">
+              <div class="card-upload-doc <%= @flat.technical_diagnostic.attached? ? "fulfill" : "empty" %>">
+                <p>Diagnostic Technique</p>
+                <%= simple_form_for @flat, url: upload_document_path, html: {id: "edit_recrod_technical_diagnostic"}, method: 'post' do |f| %>
+                  <% if @flat.technical_diagnostic.attached? %>
+                    <%= f.input :technical_diagnostic, as: :file, input_html: { class: 'hidden d-none' }, label: ("#{image_tag('sync_files.svg')}").html_safe, label_html: { class: "add-file-clickable", id: "js-technical_diagnostic"}%>
+                  <% else %>
+                    <%= f.input :technical_diagnostic, as: :file, input_html: { class: 'hidden d-none' }, label: ("#{image_tag('add_file2.svg')}").html_safe, label_html: { class: "add-file-clickable", id: "js-technical_diagnostic"}%>
+                  <% end %>
+                  <%= f.submit "Ajouter", class: "koobo-button hide-file", id: "submit-file-upload-technical_diagnostic" %>
+                <% end %>
+                <% if @flat.technical_diagnostic.attached? %>
+                  <%= link_to purge_document_path(:file => "technical_diagnostic"), method: 'delete', data: { confirm: "Tu veux supprimer le document ?" } do %>
+                    <i class="fas fa-times"></i>
+                  <% end %>
+                  <p id="file-name"><i><%= @flat.technical_diagnostic.filename %></i></p>
+                <% end %>
+              </div>
+              <div class="card-upload-doc <%= @flat.information_leaflet.attached? ? "fulfill" : "empty" %>">
+                <p>Notice d'information</p>
+                <%= simple_form_for @flat, url: upload_document_path, html: {id: "edit_recrod_information_leaflet"}, method: 'post' do |f| %>
+                  <% if @flat.information_leaflet.attached? %>
+                    <%= f.input :information_leaflet, as: :file, input_html: { class: 'hidden d-none' }, label: ("#{image_tag('sync_files.svg')}").html_safe, label_html: { class: "add-file-clickable", id: "js-information_leaflet"}%>
+                  <% else %>
+                    <%= f.input :information_leaflet, as: :file, input_html: { class: 'hidden d-none' }, label: ("#{image_tag('add_file2.svg')}").html_safe, label_html: { class: "add-file-clickable", id: "js-information_leaflet"}%>
+                  <% end %>
+                  <%= f.submit "Ajouter", class: "koobo-button hide-file", id: "submit-file-upload-information_leaflet" %>
+                <% end %>
+                <% if @flat.information_leaflet.attached? %>
+                  <%= link_to purge_document_path(:file => "information_leaflet"), method: 'delete', data: { confirm: "Tu veux supprimer le document ?" } do %>
+                    <i class="fas fa-times"></i>
+                  <% end %>
+                  <p id="file-name"><i><%= @flat.information_leaflet.filename %></i></p>
+                <% end %>
+              </div>
+              <div class="card-upload-doc <%= @flat.co_owner_document.attached? ? "fulfill" : "empty" %>">
+                <p>Règlement co-pro</p>
+                <%= simple_form_for @flat, url: upload_document_path, html: {id: "edit_recrod_co_owner_document"}, method: 'post' do |f| %>
+                  <% if @flat.co_owner_document.attached? %>
+                    <%= f.input :co_owner_document, as: :file, input_html: { class: 'hidden d-none' }, label: ("#{image_tag('sync_files.svg')}").html_safe, label_html: { class: "add-file-clickable", id: "js-co_owner_document"}%>
+                  <% else %>
+                    <%= f.input :co_owner_document, as: :file, input_html: { class: 'hidden d-none' }, label: ("#{image_tag('add_file2.svg')}").html_safe, label_html: { class: "add-file-clickable", id: "js-co_owner_document"}%>
+                  <% end %>
+                  <%= f.submit "Ajouter", class: "koobo-button hide-file", id: "submit-file-upload-co_owner_document" %>
+                <% end %>
+                <% if @flat.co_owner_document.attached? %>
+                  <%= link_to purge_document_path(:file => "co_owner_document"), method: 'delete', data: { confirm: "Tu veux supprimer le document ?" } do %>
+                    <i class="fas fa-times"></i>
+                  <% end %>
+                  <p id="file-name"><i><%= @flat.co_owner_document.filename %></i></p>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
   <div id="disposition-three-left-bottom">
