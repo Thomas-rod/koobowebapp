@@ -30,7 +30,7 @@ gem 'redis', '~> 4.0'
 # gem 'image_processing', '~> 1.2'
 
 # Used for zapier integrations and HTTP Requests
-gem 'httparty', '~> 0.18.0'
+gem 'httparty', '~> 0.21.0'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
